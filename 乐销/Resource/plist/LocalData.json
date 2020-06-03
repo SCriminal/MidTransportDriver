@@ -1,0 +1,179 @@
+{
+    "smart":[{
+             "icon":"znyx_xsje",
+             "count":"2000000",
+             "unit":"万元",
+             "notice":"订单金额"
+             },{
+             "icon":"znyx_xsmb",
+             "count":"20",
+             "unit":"万元",
+             "notice":"销售目标"
+             },{
+             "icon":"znyx_ndjh",
+             "count":"12334455",
+             "unit":"个",
+             "notice":"年度销售机会"
+             },{
+             "icon":"znyx_xzjh",
+             "count":"22211",
+             "unit":"个",
+             "notice":"新增销售机会"
+             },{
+             "icon":"znyx_byjh",
+             "count":"218731",
+             "unit":"个",
+             "notice":"本月销售机会"
+             },{
+             "icon":"znyx_lsjh",
+             "count":"187332",
+             "unit":"个",
+             "notice":"流失销售机会"
+             }],
+    "sale":[{
+             "icon":"xsgl_dj",
+             "count":"5",
+             "unit":"今日",
+             "notice":"订单管理"
+             },{
+             "icon":"xsgl_xs",
+             "count":"20",
+             "unit":"本月",
+             "notice":"销售管理"
+             },{
+             "icon":"xsgl_kh",
+             "count":"35",
+             "unit":"位",
+             "notice":"我的客户"
+             },{
+             "icon":"xsgl_sp",
+             "count":"45",
+             "unit":"个",
+             "notice":"我的商品"
+             },{
+             "icon":"xsgl_kqgl",
+             "count":"45",
+             "unit":"最近",
+             "notice":"客情管理"
+            },{
+            "icon":"xsgl_ph",
+            "count":"45",
+            "unit":"个",
+            "notice":"铺货管理"
+            },{
+            "icon":"xsgl_tx",
+            "count":"45",
+            "unit":"个",
+            "notice":"提醒管理"
+            }],
+    "addressBook":[{
+               "icon":"dt_kq",
+               "count":"28",
+               "unit":"天",
+               "notice":"考勤",
+               "tag":21
+                },{
+                "icon":"dt_hb",
+                "count":"28",
+                "unit":"篇",
+                "notice":"工作汇报",
+                "tag":22
+                }],
+    "addressBookSec":[{
+               "icon":"dt_jy",
+               "count":"1",
+               "unit":"个",
+               "notice":"教育经历",
+               "tag":23
+               },{
+               "icon":"dt_gz",
+               "count":"3",
+               "unit":"个",
+               "notice":"工作经历",
+               "tag":24
+                },{
+                "icon":"dt_gh",
+                "count":"20",
+                "unit":"天后",
+                "notice":"亲人关怀",
+                "tag":25
+                }],
+    "smartTransform":[{
+        "ID" : 41,
+        "HeadImage" : "http:\/\/slx.laodao.so\/App\/Upload\/2017\/2\/11\/9ee36768-c62f-4d4d-895a-c8e7cfc02e7b.jpg",
+        "CusComName" : "潍坊新世纪有限公司",
+        "ContName" : "李红",
+        "Sex" : "女",
+        "ptmsg" : [
+                   {
+                   "FactoryName" : "",
+                   "StartDate" : "2017-03-23T00:00:00",
+                   "CmName" : "苹果",
+                   "GenericName" : "大量元素水溶肥料",
+                   "ProCoverImg" : "file:\/\/\/storage\/emulated\/0\/laodao\/IMG_20170110_082932.jpg",
+                   "Unit" : "袋",
+                   "ProductName" : "微生物肥料",
+                   "PSID" : 153,
+                   "Dosage" : null,
+                   "price" : 100,
+                   "CroTime" : "苗期",
+                   "EndDate" : "2017-04-08T00:00:00",
+                   "Specifications" : "60",
+                   "PID" : 66,
+                   "SameSales" : 0
+                   },
+                   {
+                   "FactoryName" : "",
+                   "StartDate" : "2017-03-23T00:00:00",
+                   "CmName" : null,
+                   "GenericName" : "大量元素水溶肥料",
+                   "ProCoverImg" : "file:\/\/\/storage\/emulated\/0\/laodao\/IMG_20170110_082932.jpg",
+                   "Unit" : "袋",
+                   "ProductName" : "微生物肥料",
+                   "PSID" : 153,
+                   "Dosage" : null,
+                   "price" : 100,
+                   "CroTime" : "苗期",
+                   "EndDate" : "2017-04-08T00:00:00",
+                   "Specifications" : "60",
+                   "PID" : 66,
+                   "SameSales" : 0
+                   },
+                   {
+                   "FactoryName" : "",
+                   "StartDate" : "2017-03-22T00:00:00",
+                   "CmName" : "苹果",
+                   "GenericName" : "大量元素水溶肥料",
+                   "ProCoverImg" : "file:\/\/\/storage\/emulated\/0\/laodao\/IMG_20170110_082932.jpg",
+                   "Unit" : "袋",
+                   "ProductName" : "微生物肥料",
+                   "PSID" : 153,
+                   "Dosage" : null,
+                   "price" : 100,
+                   "CroTime" : "苗期",
+                   "EndDate" : "2017-04-07T00:00:00",
+                   "Specifications" : "60",
+                   "PID" : 66,
+                   "SameSales" : 0
+                   },
+                   {
+                   "FactoryName" : "",
+                   "StartDate" : "2017-03-22T00:00:00",
+                   "CmName" : null,
+                   "GenericName" : "大量元素水溶肥料",
+                   "ProCoverImg" : "file:\/\/\/storage\/emulated\/0\/laodao\/IMG_20170110_082932.jpg",
+                   "Unit" : "袋",
+                   "ProductName" : "微生物肥料",
+                   "PSID" : 153,
+                   "Dosage" : null,
+                   "price" : 100,
+                   "CroTime" : "苗期",
+                   "EndDate" : "2017-04-07T00:00:00",
+                   "Specifications" : "60",
+                   "PID" : 66,
+                   "SameSales" : 0
+                   }
+                   ]
+    }]
+    
+}

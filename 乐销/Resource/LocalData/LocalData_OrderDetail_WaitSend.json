@@ -1,0 +1,102 @@
+{
+    "company": {
+        "name": "老刀王强生产企业",
+        "number": 208
+    },
+    "createType": 1,
+    "customer": {
+        "contactName": "王强",
+        "logoUrl": null,
+        "name": "customerCompanyName",
+        "number": 0,
+        "phone": "15150592553"
+    },
+    "deliveryEmployee": {
+        "name": "王强",
+        "number": 132,
+        "phone": "15150592553"
+    },
+    "deliveryNo": "18060500551120176307",
+    "goodsList": [{
+                  "amount": 23.00000,
+                  "discountRate": 10,
+                  "genericName": null,
+                  "name": "西瓜",
+                  "number": 154,
+                  "price": 23.00000,
+                  "productNo": "ABC1000010002",
+                  "qty": 1,
+                  "remark": "0",
+                  "spec": {
+                  "number": 730,
+                  "proUnit": "",
+                  "specifications": "2毫升/桶"
+                  },
+                  "type": 0
+                  }, {
+                  "amount": 10.00000,
+                  "discountRate": 10,
+                  "genericName": null,
+                  "name": "敌敌畏",
+                  "number": 156,
+                  "price": 5.00000,
+                  "productNo": "ABC3000010003",
+                  "qty": 2,
+                  "remark": "0",
+                  "spec": {
+                  "number": 735,
+                  "proUnit": "瓶",
+                  "specifications": "1克/瓶"
+                  },
+                  "type": 0
+                  }],
+    "isThrough": 1,
+    "lastActionDate": "2018-06-05 11:20:17",
+    "logistics": {
+        "deliveryPerson": "TransportName",
+        "expressType": 0,
+        "freightCharge": 12.00000,
+        "imageList": [],
+        "phone": "13123123123",
+        "vehicleBrand": "Daka",
+        "vehicleLicense": "W123"
+    },
+    "logisticsType": 2,
+    "number": "1806050087111104931101",
+    "orderAmount": 33.00000,
+    "orderDate": "2018-06-05 11:11:04",
+    "orderEmployee": {
+        "name": "王强",
+        "number": 74,
+        "phone": null
+    },
+    "paidAmount": 0.00000,
+    "purchaseNo": "180605101395111104",
+    "receivingAddress": {
+        "city": null,
+        "cityCode": 0,
+        "desc": null,
+        "dist": null,
+        "distCode": 0,
+        "lat": 0,
+        "lng": 0,
+        "name": null,
+        "phone": null,
+        "prov": null,
+        "provCode": 0
+    },
+    "remark": null,
+    "reportOrderEmployee": {
+        "name": "王强",
+        "number": 74,
+        "phone": "15150592553"
+    },
+    "saleNo": "",
+    "salePrincipalEmployee": {
+        "name": "王强",
+        "number": 74,
+        "phone": "15150592553"
+    },
+    "status": 6,
+    "type": 1
+}

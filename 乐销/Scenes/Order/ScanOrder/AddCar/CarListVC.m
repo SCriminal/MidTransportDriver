@@ -1,0 +1,102 @@
+//
+//  CarListVC.m
+//  Driver
+//
+//  Created by 隋林栋 on 2020/5/29.
+//Copyright © 2020 ping. All rights reserved.
+//
+
+#import "CarListVC.h"
+//cell
+#import "CarListCell.h"
+//request
+#import "RequestApi+Order.h"
+#import "AddCarVC.h"
+@interface CarListVC ()
+
+@end
+
+@implementation CarListVC
+#pragma mark noresult view
+@synthesize noResultView = _noResultView;
+- (BOOL)isShowNoResult{
+    return true;
+}
+- (NoResultView *)noResultView{
+    if (!_noResultView) {
+        _noResultView = [NoResultView new];
+        [_noResultView resetWithImageName:@"empty_attach" title:@"暂无车辆"];
+    }
+    return _noResultView;
+}
+#pragma mark view did load
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    //添加导航栏
+    [self addNav];
+    //table
+    [self.tableView registerClass:[CarListCell class] forCellReuseIdentifier:@"CarListCell"];
+    [self addRefreshHeader];
+    //request
+    [self requestList];
+}
+
+#pragma mark 添加导航栏
+- (void)addNav{
+    WEAKSELF
+    [self.view addSubview:[BaseNavView initNavBackTitle:@"我的车辆" rightTitle:@"添加" rightBlock:^{
+        if (weakSelf.aryDatas.count) {
+            [GlobalMethod showAlert:@"一个用户只能有一辆车，请删除后再添加"];
+            return;
+        }
+        AddCarVC * vc = [AddCarVC new];
+        vc.blockBack = ^(UIViewController *item) {
+            [weakSelf refreshHeaderAll];
+        };
+        [GB_Nav pushViewController:vc animated:true];
+    }]];
+}
+
+#pragma mark UITableViewDelegate
+//row num
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.aryDatas.count;
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+//cell
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CarListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CarListCell"];
+    [cell resetCellWithModel:self.aryDatas[indexPath.row]];
+    return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [CarListCell fetchHeight:self.aryDatas[indexPath.row]];
+}
+
+#pragma mark request
+- (void)requestList{
+    [RequestApi requestCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        NSMutableArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelValidCar"];
+        BOOL carValid = false;
+        for (ModelValidCar * car in ary) {
+            if (car.state == 3) {
+                carValid = true;
+                break;
+            }else{
+                [RequestApi requestCarDetailWithId:car.iDProperty entId:34 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                       ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
+                    self.aryDatas = @[modelDetail].mutableCopy;
+                    [self.tableView reloadData];
+                   } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                       
+                   }];
+            }
+        }
+        
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+}
+@end
