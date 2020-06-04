@@ -56,7 +56,7 @@
     //table
     [self.tableView registerClass:[ScanListCell class] forCellReuseIdentifier:@"ScanListCell"];
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, W(10), 0);
-
+    
     self.tableView.backgroundColor = [UIColor clearColor];
     //request
     [self requestList];
@@ -103,8 +103,8 @@
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
-
-   
+    
+    
 }
 
 #pragma mark click
@@ -129,27 +129,29 @@
     [RequestApi requestValidCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSMutableArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelValidCar"];
         if (ary.count == 0) {
-           ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+            [self requestPersonalCar];
+            return;
+        }
+        QRCoderVC * vc = [QRCoderVC new];
+        [GB_Nav pushViewController:vc animated:true];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+}
+- (void)requestPersonalCar{
+    [RequestApi requestCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [self.aryDatas removeAllObjects];
+        NSMutableArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelValidCar"];
+        if (ary.count) {
+            [GlobalMethod showBigAlert:@"车辆信息已经提交，审核通过后请扫码下单"];
+            [GB_Nav pushVCName:@"CarListVC" animated:true];
+        }else{
+            ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
             ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
             modelConfirm.blockClick = ^(void){
-               [GB_Nav pushVCName:@"AddCarVC" animated:true];
+                [GB_Nav pushVCName:@"AddCarVC" animated:true];
             };
             [BaseAlertView initWithTitle:@"提示" content:@"挂靠或添加车辆才能扫码下单" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
-            return ;
-        }
-        BOOL carValid = false;
-        for (ModelValidCar * car in ary) {
-            if (car.state == 3) {
-                carValid = true;
-                break;
-            }
-        }
-        if (carValid) {
-            QRCoderVC * vc = [QRCoderVC new];
-            [GB_Nav pushViewController:vc animated:true];
-        }else{
-            [GlobalMethod showBigAlert:@"车辆信息已经提交，审核通过后请扫码下单"];
-            [GB_Nav pushVCName:@"CarTeamListManagementVC" animated:true];
         }
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         

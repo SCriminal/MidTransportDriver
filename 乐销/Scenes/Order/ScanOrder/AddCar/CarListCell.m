@@ -108,9 +108,12 @@
     view.tag = TAG_LINE;
     
     self.editIcon.rightCenterY = XY(self.deleteIcon.left - W(20),self.carNumber.centerY);
-     view = [self.contentView addControlFrame:CGRectInset(self.editIcon.frame, -W(10), -W(10)) belowView:self.editIcon target:self action:@selector(editClick)];
-     view.tag = TAG_LINE;
-
+    self.editIcon.hidden = self.model.qualificationState != 10;
+    if (!self.editIcon.hidden) {
+         view = [self.contentView addControlFrame:CGRectInset(self.editIcon.frame, -W(10), -W(10)) belowView:self.editIcon target:self action:@selector(editClick)];
+        view.tag = TAG_LINE;
+    }
+    
     //设置总高度
     self.height = self.statusDetail.bottom + W(20);
 

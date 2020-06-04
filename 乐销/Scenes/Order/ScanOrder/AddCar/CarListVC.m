@@ -91,22 +91,16 @@
     [RequestApi requestCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [self.aryDatas removeAllObjects];
         NSMutableArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelValidCar"];
-        BOOL carValid = false;
-        for (ModelValidCar * car in ary) {
-            if (car.state == 3) {
-                carValid = true;
-                break;
-            }else{
-                [RequestApi requestCarDetailWithId:car.iDProperty entId:car.fleetId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                       ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
-                    self.aryDatas = @[modelDetail].mutableCopy;
-                    [self.tableView reloadData];
-                   } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                       
-                   }];
-            }
+        if (ary.count) {
+            ModelValidCar * car= ary.lastObject;
+            [RequestApi requestCarDetailWithId:car.iDProperty entId:car.fleetId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
+                self.aryDatas = @[modelDetail].mutableCopy;
+                [self.tableView reloadData];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
         }
-        
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
