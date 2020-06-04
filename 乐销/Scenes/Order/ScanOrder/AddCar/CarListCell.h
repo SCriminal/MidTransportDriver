@@ -18,6 +18,7 @@
 @property (strong, nonatomic) UIImageView *deleteIcon;
 @property (strong, nonatomic) UIImageView *editIcon;
 @property (nonatomic, strong) ModelCar *model;
+@property (nonatomic, strong) void (^blockDelete)(ModelCar *);
 
 #pragma mark 刷新cell
 - (void)resetCellWithModel:(id)model;

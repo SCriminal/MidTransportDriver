@@ -12,6 +12,7 @@
 //request
 #import "RequestApi+Order.h"
 #import "AddCarVC.h"
+#import "CarDetailVC.h"
 @interface CarListVC ()
 
 @end
@@ -69,15 +70,26 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CarListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CarListCell"];
     [cell resetCellWithModel:self.aryDatas[indexPath.row]];
+    WEAKSELF
+    cell.blockDelete = ^(ModelCar *model) {
+        [weakSelf requestDeleteCar:model];
+    };
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [CarListCell fetchHeight:self.aryDatas[indexPath.row]];
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ModelCar * model = self.aryDatas[indexPath.row];
+    CarDetailVC * detailVC = [CarDetailVC new];
+    detailVC.carID = model.iDProperty;
+    detailVC.entID = model.entId;
+    [GB_Nav pushViewController:detailVC animated:true];
+}
 #pragma mark request
 - (void)requestList{
     [RequestApi requestCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [self.aryDatas removeAllObjects];
         NSMutableArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelValidCar"];
         BOOL carValid = false;
         for (ModelValidCar * car in ary) {
@@ -85,7 +97,7 @@
                 carValid = true;
                 break;
             }else{
-                [RequestApi requestCarDetailWithId:car.iDProperty entId:34 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [RequestApi requestCarDetailWithId:car.iDProperty entId:car.fleetId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                        ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
                     self.aryDatas = @[modelDetail].mutableCopy;
                     [self.tableView reloadData];
@@ -95,6 +107,14 @@
             }
         }
         
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+}
+- (void)requestDeleteCar:(ModelCar *)model{
+    [RequestApi requestDeleteCarWithId:model.iDProperty entId:model.entId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"删除成功"];
+        [self refreshHeaderAll];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];

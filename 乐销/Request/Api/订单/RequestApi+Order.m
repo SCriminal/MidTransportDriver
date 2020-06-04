@@ -519,5 +519,16 @@ trailerTripartiteInsuranceUrl:(NSString *)trailerTripartiteInsuranceUrl
     NSDictionary *dic = @{@"entId":NSNumber.dou(entId)};
     [self postUrl:@"/zhongcheyun/driverdependent/1_0_75" delegate:delegate parameters:dic success:success failure:failure];
 }
-
+/**
+ 删除车辆
+ */
++(void)requestDeleteCarWithId:(double)identity
+                        entId:(double)entId
+                     delegate:(id <RequestDelegate>)delegate
+                      success:(void (^)(NSDictionary * response, id mark))success
+                      failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"id":NSNumber.dou(identity),
+                          @"entId":NSNumber.dou(entId)};
+    [self deleteUrl:@"/zhongcheyun/vehicle/{id}" delegate:delegate parameters:dic success:success failure:failure];
+}
 @end

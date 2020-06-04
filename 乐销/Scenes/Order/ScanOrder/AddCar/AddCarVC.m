@@ -499,7 +499,7 @@
     if (!self.carID) {
         return;
     }
-    [RequestApi requestCarDetailWithId:self.carID entId:34 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestCarDetailWithId:self.carID entId:self.entID delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
         self.modelDetail = modelDetail;
         
@@ -588,18 +588,6 @@
         self.modelHangCode.subString = modelDetail.trailerNumber;
         self.modelHangCode.isChangeInvalid = modelDetail.isAuthorityAcceptOrAuthering;
 
-        //解绑司机
-        WEAKSELF
-        self.modelUnbindDriver.isSelected = modelDetail.driverId;
-        self.modelUnbindDriver.blocClick = modelDetail.driverId?^(ModelBaseData *m) {
-            ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
-            ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
-            modelConfirm.blockClick = ^(void){
-                [weakSelf configData];
-                [weakSelf requestEdit];
-            };
-            [BaseAlertView initWithTitle:@"提示" content:@"确认解绑司机？" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:weakSelf.view];
-        }:nil;
         
         
         self.modelOwner.subString = modelDetail.vehicleOwner;

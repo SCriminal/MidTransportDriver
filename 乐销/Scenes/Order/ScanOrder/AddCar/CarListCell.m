@@ -75,13 +75,13 @@
         self.backgroundColor = [UIColor whiteColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.carNumber];
-    [self.contentView addSubview:self.driverNumber];
-    [self.contentView addSubview:self.weight];
-    [self.contentView addSubview:self.status];
-    [self.contentView addSubview:self.statusDetail];
-    [self.contentView addSubview:self.deleteIcon];
-    [self.contentView addSubview:self.editIcon];
-
+        [self.contentView addSubview:self.driverNumber];
+        [self.contentView addSubview:self.weight];
+        [self.contentView addSubview:self.status];
+        [self.contentView addSubview:self.statusDetail];
+        [self.contentView addSubview:self.deleteIcon];
+        [self.contentView addSubview:self.editIcon];
+        
     }
     return self;
 }
@@ -119,11 +119,21 @@
 
 #pragma mark click
 - (void)deleteClick{
+    WEAKSELF
+    ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+    ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+    modelConfirm.blockClick = ^(void){
+        if (weakSelf.blockDelete) {
+            weakSelf.blockDelete(weakSelf.model);
+        }
+    };
+    [BaseAlertView initWithTitle:@"确认删除？" content:@"确认删除当前车辆" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
     
 }
 - (void)editClick{
     AddCarVC * vc = [AddCarVC new];
     vc.carID = self.model.iDProperty;
+    vc.entID = self.model.entId;
     [GB_Nav pushViewController:vc animated:true];
 }
 @end

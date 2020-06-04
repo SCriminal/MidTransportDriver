@@ -11,6 +11,8 @@
 @interface AddCarVC : BaseTableVC
 
 @property (nonatomic, assign) double carID;
+@property (nonatomic, assign) double entID;
+
 #pragma mark exchange type
 + (NSString *)exchangeVehicleLength:(NSString *)identity;
 + (NSString *)exchangeVehicleType:(NSString *)identity;

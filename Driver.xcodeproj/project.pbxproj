@@ -186,6 +186,8 @@
 		D2A3004A2267248E00AE2EC3 /* AccountFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300492267248E00AE2EC3 /* AccountFilterView.m */; };
 		D2A3FD651F0B1EDB000A5C1B /* BaseVC+Location.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3FD641F0B1EDB000A5C1B /* BaseVC+Location.m */; };
 		D2A6670D230F7BF00064F94B /* AuthortiyExampleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A6670C230F7BF00064F94B /* AuthortiyExampleVC.m */; };
+		D2A797612488C8470062B4F6 /* CarDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A7975D2488C8470062B4F6 /* CarDetailView.m */; };
+		D2A797622488C8470062B4F6 /* CarDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A797602488C8470062B4F6 /* CarDetailVC.m */; };
 		D2A946D72192B69C00AD1E5B /* ModelProvince.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946D52192B69B00AD1E5B /* ModelProvince.m */; };
 		D2A946DA2192B75600AD1E5B /* SelectDistrictView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946D92192B75600AD1E5B /* SelectDistrictView.m */; };
 		D2A946DD2192C66900AD1E5B /* GlobalMethod+Logical.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946DC2192C66900AD1E5B /* GlobalMethod+Logical.m */; };
@@ -713,6 +715,10 @@
 		D2A3FD641F0B1EDB000A5C1B /* BaseVC+Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseVC+Location.m"; sourceTree = "<group>"; };
 		D2A6670B230F7BF00064F94B /* AuthortiyExampleVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthortiyExampleVC.h; sourceTree = "<group>"; };
 		D2A6670C230F7BF00064F94B /* AuthortiyExampleVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthortiyExampleVC.m; sourceTree = "<group>"; };
+		D2A7975D2488C8470062B4F6 /* CarDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarDetailView.m; sourceTree = "<group>"; };
+		D2A7975E2488C8470062B4F6 /* CarDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarDetailVC.h; sourceTree = "<group>"; };
+		D2A7975F2488C8470062B4F6 /* CarDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarDetailView.h; sourceTree = "<group>"; };
+		D2A797602488C8470062B4F6 /* CarDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarDetailVC.m; sourceTree = "<group>"; };
 		D2A946D52192B69B00AD1E5B /* ModelProvince.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelProvince.m; sourceTree = "<group>"; };
 		D2A946D62192B69B00AD1E5B /* ModelProvince.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelProvince.h; sourceTree = "<group>"; };
 		D2A946D82192B75600AD1E5B /* SelectDistrictView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDistrictView.h; sourceTree = "<group>"; };
@@ -2038,6 +2044,17 @@
 			path = OrderAccountList;
 			sourceTree = "<group>";
 		};
+		D2A7975C2488C8470062B4F6 /* CarDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D2A7975E2488C8470062B4F6 /* CarDetailVC.h */,
+				D2A797602488C8470062B4F6 /* CarDetailVC.m */,
+				D2A7975F2488C8470062B4F6 /* CarDetailView.h */,
+				D2A7975D2488C8470062B4F6 /* CarDetailView.m */,
+			);
+			path = CarDetail;
+			sourceTree = "<group>";
+		};
 		D2A946D02192B0B600AD1E5B /* SelectAddress */ = {
 			isa = PBXGroup;
 			children = (
@@ -2592,6 +2609,7 @@
 		D2FC339A247F56D4000DE338 /* AddCar */ = {
 			isa = PBXGroup;
 			children = (
+				D2A7975C2488C8470062B4F6 /* CarDetail */,
 				D2FC339E247F57AE000DE338 /* AuthorityImageView.h */,
 				D2FC339F247F57AE000DE338 /* AuthorityImageView.m */,
 				D2FC339C247F5776000DE338 /* AddCarVC.h */,
@@ -3181,6 +3199,7 @@
 				D21B2FBF23960AF2005B43D0 /* AttachedCarTeamListVC.m in Sources */,
 				D2BCE9162269653A00E8C4E2 /* ListAlertView.m in Sources */,
 				D2136CEA1E13AAE9003B4B92 /* GlobalMethod+Data.m in Sources */,
+				D2A797612488C8470062B4F6 /* CarDetailView.m in Sources */,
 				D2D6D9AD21AFD623005A4F5B /* LeftMenuVC.m in Sources */,
 				D2C55812238CC9D50050694F /* ModelValidCar.m in Sources */,
 				D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */,
@@ -3292,6 +3311,7 @@
 				D2DFD7712292A50100363142 /* AuthorityVerifyingVC.m in Sources */,
 				D21015081EB879BF0096C9CF /* NSDate+Format.m in Sources */,
 				D27646AB1F2B0FD2001096DB /* UIView+Coordeinate.m in Sources */,
+				D2A797622488C8470062B4F6 /* CarDetailVC.m in Sources */,
 				D2C27AC11E0266880097DAAD /* GlobalMethod+Version.m in Sources */,
 				D2C5580F238CC18D0050694F /* ScheduleConfirmView.m in Sources */,
 				D22499E8219A74FF00608246 /* WebVC.m in Sources */,
