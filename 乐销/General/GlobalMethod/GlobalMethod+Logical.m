@@ -21,7 +21,7 @@
     }
 }
 + (BOOL)isLoginSuccess{
-    return [GlobalData sharedInstance].GB_UserModel.iDProperty && [GlobalData sharedInstance].GB_UserModel.isDriver == 1 && [GlobalData sharedInstance].GB_UserModel.isIdentity == 1;
+    return [GlobalData sharedInstance].GB_UserModel.iDProperty ;
 }
 
 

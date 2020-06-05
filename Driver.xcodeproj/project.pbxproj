@@ -98,6 +98,8 @@
 		D24992D11E05140C001A32DF /* BaseNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = D24992D01E05140C001A32DF /* BaseNavController.m */; };
 		D24A93CB2360449400CB672C /* AuthorityReFailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A93CA2360449400CB672C /* AuthorityReFailVC.m */; };
 		D24A93CE2360470B00CB672C /* AuthorityReVerifyingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A93CD2360470B00CB672C /* AuthorityReVerifyingVC.m */; };
+		D24D0742248A353F0029FCEC /* CarType.json in Sources */ = {isa = PBXBuildFile; fileRef = D24D0741248A353F0029FCEC /* CarType.json */; };
+		D24D0743248A40260029FCEC /* CarType.json in Resources */ = {isa = PBXBuildFile; fileRef = D24D0741248A353F0029FCEC /* CarType.json */; };
 		D2512BCA1E8CDA0F005F9B54 /* CustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2512BC91E8CDA0F005F9B54 /* CustomPickerView.m */; };
 		D25145CF1E32ECA700E8107F /* UITableView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D25145CE1E32ECA700E8107F /* UITableView+Category.m */; };
 		D25145D21E33055300E8107F /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D25145D11E33055300E8107F /* NSArray+Category.m */; };
@@ -542,6 +544,7 @@
 		D24A93CC2360470B00CB672C /* AuthorityReVerifyingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthorityReVerifyingVC.h; sourceTree = "<group>"; };
 		D24A93CD2360470B00CB672C /* AuthorityReVerifyingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthorityReVerifyingVC.m; sourceTree = "<group>"; };
 		D24ABE071E52FB8100ED2C65 /* 乐销.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "乐销.entitlements"; sourceTree = "<group>"; };
+		D24D0741248A353F0029FCEC /* CarType.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CarType.json; sourceTree = "<group>"; };
 		D24DFE9A22F122EA0072B607 /* LDMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDMacro.h; sourceTree = "<group>"; };
 		D2512BC81E8CDA0F005F9B54 /* CustomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPickerView.h; sourceTree = "<group>"; };
 		D2512BC91E8CDA0F005F9B54 /* CustomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPickerView.m; sourceTree = "<group>"; };
@@ -2614,6 +2617,7 @@
 				D2FC339F247F57AE000DE338 /* AuthorityImageView.m */,
 				D2FC339C247F5776000DE338 /* AddCarVC.h */,
 				D2FC339B247F5776000DE338 /* AddCarVC.m */,
+				D24D0741248A353F0029FCEC /* CarType.json */,
 				D2C5826F2480F2C800121039 /* CarListVC.h */,
 				D2C582702480F2C800121039 /* CarListVC.m */,
 				D2C582722480F39500121039 /* CarListCell.h */,
@@ -2954,6 +2958,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D24D0743248A40260029FCEC /* CarType.json in Resources */,
 				D2BC9A881DFFA75600B0468E /* allCitiesDics.plist in Resources */,
 				D2821CC1218AD9B90057688B /* point.png in Resources */,
 				D2B1040B22EADE40002D9BFF /* TestDate.json in Resources */,
@@ -3198,6 +3203,7 @@
 				D2043B4B1F42CDAC0032AFB0 /* UIScrollView+Category.m in Sources */,
 				D21B2FBF23960AF2005B43D0 /* AttachedCarTeamListVC.m in Sources */,
 				D2BCE9162269653A00E8C4E2 /* ListAlertView.m in Sources */,
+				D24D0742248A353F0029FCEC /* CarType.json in Sources */,
 				D2136CEA1E13AAE9003B4B92 /* GlobalMethod+Data.m in Sources */,
 				D2A797612488C8470062B4F6 /* CarDetailView.m in Sources */,
 				D2D6D9AD21AFD623005A4F5B /* LeftMenuVC.m in Sources */,

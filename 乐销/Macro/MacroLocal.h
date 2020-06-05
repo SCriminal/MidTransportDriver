@@ -20,6 +20,7 @@
 #define UnPackStr(T)     (((T)&&([(T) isKindOfClass:NSString.class]||[(T) isKindOfClass:NSNumber.class]))?(T):@"")
 //请求处理
 #define RequestStrKey(T)  (((T)&&[(T) isKindOfClass:NSString.class])?(T):[NSNull null])
+#define RequestDoubleKey(T)  ((T!=0)?(NSNumber.dou(T)):[NSNull null])
 
 //封装
 #define strDotF(T) [NSString stringWithFormat:@"%.f",(T)]

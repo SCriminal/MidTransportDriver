@@ -20,11 +20,6 @@
     //重置视图坐标
     CGFloat bottom =  [self addDetailSubView:@[^(){
         ModelBtn * model = [ModelBtn new];
-        model.title = @"行驶证号";
-        model.subTitle = modelDetail.vehicleLicense;
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
         model.title = @"当前状态";
         model.subTitle = modelDetail.authStatusShow;
         model.color = modelDetail.authStatusColorShow;
@@ -36,45 +31,15 @@
         return model;
     }(),^(){
         ModelBtn * model = [ModelBtn new];
-        model.title = @"关联司机";
-        model.subTitle = [NSString stringWithFormat:@"%@ %@",modelDetail.driverName,modelDetail.driverPhone];
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"识别代码";
-        model.subTitle = modelDetail.vin;
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"发动机号";
-        model.subTitle = modelDetail.engineNumber;
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"挂车号码";
-        model.subTitle = modelDetail.trailerNumber;
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"车辆长度";
-        model.subTitle = [NSString stringWithFormat:@"%@",[AddCarVC exchangeVehicleLength:strDotF(modelDetail.vehicleLength)]];
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
         model.title = @"车辆类型";
         model.subTitle = [AddCarVC exchangeVehicleType:strDotF(modelDetail.vehicleType)];
         return model;
     }(),^(){
         ModelBtn * model = [ModelBtn new];
-        model.title = @"标准载重";
+        model.title = @"核定载质量";
         model.subTitle = [NSString stringWithFormat:@"%@吨",strDotF(modelDetail.vehicleLoad)];
         return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"车轴数";
-        model.subTitle = strDotF(modelDetail.axle);
-        return model;
-    }(),] inView:self title:modelDetail.vehicleNumber];
+    }()] inView:self title:modelDetail.vehicleNumber];
     //设置总高度
     self.height = [self addLineFrame:CGRectMake(W(15), bottom, SCREEN_WIDTH - W(30), 1)];
 }
