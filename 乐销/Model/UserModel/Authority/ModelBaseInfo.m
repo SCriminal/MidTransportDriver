@@ -113,8 +113,9 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
 }
 + (void)jumpToAuthorityStateVCSuccessBlock:(void (^)(void))successBlock{
     ModelBaseInfo *modelUser = [GlobalData sharedInstance].GB_UserModel;
+    //因为有已经认证
     BOOL isQuantity  = modelUser.isIdentity == 1&& modelUser.isDriver == 1;
-    if (isQuantity && successBlock) {
+    if (modelUser.reviewStatus!=1 && successBlock) {
         successBlock();
         return;
     }

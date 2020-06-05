@@ -64,8 +64,8 @@
             ModelBaseData * model = [ModelBaseData new];
             model.enumType = ENUM_PERFECT_CELL_TEXT;
             model.imageName = @"";
-            model.string = @"行驶证号";
-            model.placeHolderString = @"输入行驶证号码(必填)";
+            model.string = @"档案编号";
+            model.placeHolderString = @"输入档案编号(必填)";
             return model;
         }();
     }
@@ -77,8 +77,8 @@
             ModelBaseData * model = [ModelBaseData new];
             model.enumType = ENUM_PERFECT_CELL_TEXT;
             model.imageName = @"";
-            model.string = @"车所有人";
-            model.placeHolderString = @"输入行驶证上车辆所有人 (必填)";
+            model.string = @"车拥有人";
+            model.placeHolderString = @"输入车辆拥有人(必填)";
             return model;
         }();
     }
@@ -201,8 +201,8 @@
             ModelBaseData * model = [ModelBaseData new];
             model.enumType = ENUM_PERFECT_CELL_TEXT;
             model.imageName = @"";
-            model.string = @"标准载重";
-            model.placeHolderString = @"输入标准载重:吨(必填)";
+            model.string = @"核定载质量";
+            model.placeHolderString = @"输入核定载质量:吨(必填)";
             return model;
         }();
     }
@@ -215,7 +215,7 @@
             model.enumType = ENUM_PERFECT_CELL_TEXT;
             model.imageName = @"";
             model.string = @"车轴数";
-            model.placeHolderString = @"输入车轴数(必填)";
+            model.placeHolderString = @"输入车轴数";
             return model;
         }();
     }
@@ -335,7 +335,7 @@
 
 #pragma mark config data
 - (void)configData{
-    self.aryDatas = @[self.modelUnbindDriver,self.modelCarNum,self.modelVehicleLicense,self.modelOwner,self.modelCarIdentityCode,self.modelMotorCode,self.modelHangCode,self.modelVehicleLength,self.modelVehicleType,self.modelVehicleLoad,self.modelAxle,^(){
+    self.aryDatas = @[self.modelUnbindDriver,self.modelCarNum,self.modelVehicleLicense,self.modelOwner,self.modelVehicleLoad,self.modelVehicleType,self.modelHangCode,self.modelVehicleLength,self.modelAxle,self.modelCarIdentityCode,self.modelMotorCode,^(){
         ModelBaseData * model = [ModelBaseData new];
         model.enumType = ENUM_PERFECT_CELL_EMPTY;
         model.imageName = @"";
