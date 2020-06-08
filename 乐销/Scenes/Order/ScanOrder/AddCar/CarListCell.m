@@ -18,14 +18,14 @@
     }
     return _carNumber;
 }
-//- (UILabel *)driverNumber{
-//    if (_driverNumber == nil) {
-//        _driverNumber = [UILabel new];
-//        _driverNumber.textColor = COLOR_666;
-//        _driverNumber.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-//    }
-//    return _driverNumber;
-//}
+- (UILabel *)carOwner{
+    if (_carOwner == nil) {
+        _carOwner = [UILabel new];
+        _carOwner.textColor = COLOR_666;
+        _carOwner.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+    }
+    return _carOwner;
+}
 - (UILabel *)weight{
     if (_weight == nil) {
         _weight = [UILabel new];
@@ -75,7 +75,7 @@
         self.backgroundColor = [UIColor whiteColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.carNumber];
-//        [self.contentView addSubview:self.driverNumber];
+        [self.contentView addSubview:self.carOwner];
         [self.contentView addSubview:self.weight];
         [self.contentView addSubview:self.status];
         [self.contentView addSubview:self.statusDetail];
@@ -93,12 +93,16 @@
     //刷新view
     [self.carNumber fitTitle:UnPackStr(model.vehicleNumber) variable:W(260)];
     self.carNumber.leftTop = XY(W(15),W(20));
-//    [self.driverNumber fitTitle:[NSString stringWithFormat:@"行驶证号：%@",UnPackStr(model.vin)] variable:SCREEN_WIDTH - W(30)];
-//    self.driverNumber.leftTop = XY(W(15),self.carNumber.bottom+W(20));
+    
+    [self.carOwner fitTitle:[NSString stringWithFormat:@"车辆拥有人：%@",UnPackStr(model.vehicleOwner)] variable:SCREEN_WIDTH - W(30)];
+    self.carOwner.leftTop = XY(W(15),self.carNumber.bottom+W(20));
+    
     [self.weight fitTitle:[NSString stringWithFormat:@"核定载质量：%@",NSNumber.dou(model.vehicleLoad).stringValue] variable:SCREEN_WIDTH - W(30)];
-    self.weight.leftTop = XY(W(15),self.carNumber.bottom+W(20));
+    self.weight.leftTop = XY(W(15),self.carOwner.bottom+W(15));
+    
     [self.status fitTitle:@"当前状态：" variable:SCREEN_WIDTH - W(30)];
     self.status.leftTop = XY(W(15),self.weight.bottom+W(15));
+    
     [self.statusDetail fitTitle:model.authStatusShow variable:SCREEN_WIDTH - W(30)];
     self.statusDetail.leftTop = XY(self.status.right,self.status.top);
     self.statusDetail.textColor = model.authStatusColorShow;

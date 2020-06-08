@@ -11,7 +11,7 @@
 @interface CarListCell : UITableViewCell
 
 @property (strong, nonatomic) UILabel *carNumber;
-//@property (strong, nonatomic) UILabel *driverNumber;
+@property (strong, nonatomic) UILabel *carOwner;
 @property (strong, nonatomic) UILabel *weight;
 @property (strong, nonatomic) UILabel *status;
 @property (strong, nonatomic) UILabel *statusDetail;
