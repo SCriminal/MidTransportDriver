@@ -68,7 +68,7 @@
     if (!_bulkManageVC) {
         _bulkManageVC = [BulkCargoListManageVC new];
         _bulkManageVC.view.frame = CGRectMake(0, NAVIGATIONBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - HEIGHT_ORDERMANAGEMENTBOTTOMVIEW);
-        _bulkManageVC.view.hidden = true;
+//        _bulkManageVC.view.hidden = true;
     }
     return _bulkManageVC;
 }
@@ -99,7 +99,7 @@
         _bottomTypeSwitchView.bottom = SCREEN_HEIGHT;
         WEAKSELF
         _bottomTypeSwitchView.blockIndexChange = ^(int index) {
-                weakSelf.bulkManageVC.view.hidden = index == 0;
+                weakSelf.bulkManageVC.view.hidden = index == 1;
         };
         _bottomTypeSwitchView.blockMainClick = ^(void) {
             [GB_Nav pushVCName:@"ScanOrderListVC" animated:true];

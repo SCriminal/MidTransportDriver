@@ -30,7 +30,7 @@
         _titleLeft = [UILabel new];
         _titleLeft.textColor = COLOR_BLUE;
         _titleLeft.font =  [UIFont systemFontOfSize:F(10) weight:UIFontWeightRegular];
-        [_titleLeft  fitTitle:@"集运运单"  variable:0];
+        [_titleLeft  fitTitle:@"散货运单"  variable:0];
     }
     return _titleLeft;
 }
@@ -58,7 +58,7 @@
         _titleRight = [UILabel new];
         _titleRight.textColor = COLOR_999;
         _titleRight.font =  [UIFont systemFontOfSize:F(10) weight:UIFontWeightRegular];
-        [_titleRight  fitTitle:@"散货运单"  variable:0];
+        [_titleRight  fitTitle:@"集运运单"  variable:0];
     }
     return _titleRight;
 }
