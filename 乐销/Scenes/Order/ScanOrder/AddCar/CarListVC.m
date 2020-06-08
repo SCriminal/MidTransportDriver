@@ -92,7 +92,7 @@
         [self.aryDatas removeAllObjects];
         NSMutableArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelValidCar"];
         if (ary.count) {
-            ModelValidCar * car= ary.lastObject;
+            ModelValidCar * car= ary.firstObject;
             [RequestApi requestCarDetailWithId:car.iDProperty entId:car.fleetId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
                 self.aryDatas = @[modelDetail].mutableCopy;
