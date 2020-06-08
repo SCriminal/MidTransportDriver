@@ -83,13 +83,17 @@
                                        idCardFrontUrl:(NSString *)idCardFrontUrl
                                         idCardBackUrl:(NSString *)idCardBackUrl
                                       idCardHandelUrl:(NSString *)idCardHandelUrl
+                                             realName:(NSString *)realName
+                                             idNumber:(NSString *)idNumber
                                              delegate:(id <RequestDelegate>)delegate
                                               success:(void (^)(NSDictionary * response, id mark))success
                                               failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"driverLicenseUrl":RequestStrKey(driverLicenseUrl),
                           @"idCardFrontUrl":RequestStrKey(idCardFrontUrl),
                           @"idCardBackUrl":RequestStrKey(idCardBackUrl),
-                          @"idCardHandelUrl":RequestStrKey(idCardHandelUrl)
+                          @"idCardHandelUrl":RequestStrKey(idCardHandelUrl),
+                          @"realName":RequestStrKey(realName),
+                          @"idNumber":RequestStrKey(idNumber),
                           };
     [self postUrl:@"/ums/user/review/1_8_27/1" delegate:delegate parameters:dic success:success failure:failure];
 }

@@ -15,7 +15,10 @@
 #define isAry(T) ((T) && [(T) isKindOfClass:[NSArray class]] && (T).count > 0)
 #define isNum(T) ((T) && [(T) isKindOfClass:[NSNumber class]])
 #define isDic(T) ((T) && [(T) isKindOfClass:[NSDictionary class]] && [(T) count] >0)
-
+//判断手机号
+#define isPhoneNum(T) ((T) && [(T) isKindOfClass:[NSString class]] && (T).length == 11)
+#define isIdentityNum(T) ((T) && [(T) isKindOfClass:[NSString class]] && (T).length == 18)
+#define isBusinessNum(T) ((T) && [(T) isKindOfClass:[NSString class]] && ((T).length == 18||(T).length == 15))
 //解包
 #define UnPackStr(T)     (((T)&&([(T) isKindOfClass:NSString.class]||[(T) isKindOfClass:NSNumber.class]))?(T):@"")
 //请求处理

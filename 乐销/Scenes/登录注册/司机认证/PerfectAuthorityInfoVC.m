@@ -15,6 +15,7 @@
 #import "AuthortiyExampleVC.h"
 //request
 #import "RequestApi+UserApi.h"
+#import "BaseTableVC+Authority.h"
 
 @interface PerfectAuthorityInfoVC ()
 @property (nonatomic, strong) UILabel *labelIdentity;
@@ -28,12 +29,41 @@
 @property (nonatomic, strong) UIImageView *ivSelected;
 @property (nonatomic, strong) UIView *viewAll;
 @property (nonatomic, strong) UIView *viewAuthorityExample;
+@property (nonatomic, strong) ModelBaseData *modelRealName;
+@property (nonatomic, strong) ModelBaseData *modelIdentityNumber;
 
 @end
 
 @implementation PerfectAuthorityInfoVC
 #pragma mark 懒加载
-
+- (ModelBaseData *)modelRealName{
+    if (!_modelRealName) {
+        _modelRealName = ^(){
+            ModelBaseData * model = [ModelBaseData new];
+            model.enumType = ENUM_PERFECT_CELL_TEXT;
+            model.imageName = @"";
+            model.string = @"真实姓名";
+            model.placeHolderString = @"输入真实姓名";
+            model.isRequired = true;
+            return model;
+        }();
+    }
+    return _modelRealName;
+}
+- (ModelBaseData *)modelIdentityNumber{
+    if (!_modelIdentityNumber) {
+        _modelIdentityNumber = ^(){
+            ModelBaseData * model = [ModelBaseData new];
+            model.enumType = ENUM_PERFECT_CELL_TEXT;
+            model.imageName = @"";
+            model.string = @"身份证号";
+            model.placeHolderString = @"输入身份证号";
+            model.isRequired = true;
+            return model;
+        }();
+    }
+    return _modelIdentityNumber;
+}
 - (UIView *)viewAuthorityExample{
     if (!_viewAuthorityExample) {
         _viewAuthorityExample = [UIView new];
@@ -77,7 +107,6 @@
     }
     return _labelIdentity;
 }
-
 - (UIImageView *)ivIdentity{
     if (_ivIdentity == nil) {
         _ivIdentity = [UIImageView new];
@@ -88,7 +117,6 @@
     }
     return _ivIdentity;
 }
-
 - (UILabel *)labelIdentityReverse{
     if (_labelIdentityReverse == nil) {
         _labelIdentityReverse = [UILabel new];
@@ -97,7 +125,6 @@
     }
     return _labelIdentityReverse;
 }
-
 - (UILabel *)labelHand{
     if (_labelHand == nil) {
         _labelHand = [UILabel new];
@@ -149,15 +176,27 @@
     [super viewDidLoad];
     //添加导航栏
     [self addNav];
+    self.aryDatas = @[self.modelRealName,self.modelIdentityNumber].mutableCopy;
+
+    [self registAuthorityCell];
     self.viewBG.backgroundColor = [UIColor whiteColor];
     //config view
     [self configView];
     //request
     [self requestInfo];
+    //add keyboard observe
+    [self addObserveOfKeyboard];
+
 }
 - (void)configView{
     //添加subView
-    [self.viewAll addSubview:self.viewAuthorityExample];
+    self.tableView.tableHeaderView = self.viewAuthorityExample;
+    {
+        self.viewAuthorityExample.leftTop = XY(0, 0);
+    }
+    
+    [self.viewAll removeAllSubViews];
+   
     [self.viewAll addSubview:self.labelIdentity];
     [self.viewAll addSubview:self.ivIdentity];
     [self.viewAll addSubview:self.labelIdentityReverse];
@@ -168,11 +207,15 @@
     [self.viewAll addSubview:self.ivHand];
 
     //刷新view
+    [self.viewAll addSubview:^(){
+           UIView * v = [UIView new];
+           v.width = SCREEN_WIDTH;
+           v.height = W(20);
+           v.backgroundColor = COLOR_BACKGROUND;
+           return v;
+       }()];
     {
-        self.viewAuthorityExample.leftTop = XY(0, 0);
-    }
-    {
-        self.ivIdentity.rightTop = XY(SCREEN_WIDTH - W(15),W(25)+self.viewAuthorityExample.height);
+        self.ivIdentity.rightTop = XY(SCREEN_WIDTH - W(15),W(25)+W(20));
         
         [self.labelIdentity fitTitle:@"身份证人像面" variable:0];
         self.labelIdentity.leftCenterY = XY(W(15),self.ivIdentity.centerY);
@@ -204,7 +247,7 @@
     }
     self.viewAll.height  = self.ivHand.bottom + W(40);
     
-    self.tableView.tableHeaderView = self.viewAll;
+    self.tableView.tableFooterView = self.viewAll;
 }
 #pragma mark 添加导航栏
 - (void)addNav{
@@ -283,6 +326,19 @@
     }()].mutableCopy;
     [GB_Nav pushViewController:vc animated:true];
 }
+
+#pragma mark UITableViewDelegate
+//row num
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.aryDatas.count;
+}
+//cell
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [self dequeueAuthorityCell:indexPath];
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [self fetchAuthorityCellHeight:indexPath];
+}
 #pragma mark request
 - (void)requestSubmit{
     if (!isStr([BaseImage fetchUrl:self.ivIdentity.image] )) {
@@ -301,7 +357,22 @@
         [GlobalMethod showAlert:@"请添加手持身份证"];
         return;
     }
-    [RequestApi requestSubmitAuthorityInfoWithDriverlicenseurl:[BaseImage fetchUrl:self.ivDriver.image]  idCardFrontUrl:[BaseImage fetchUrl:self.ivIdentity.image]  idCardBackUrl:[BaseImage fetchUrl:self.ivIdentityReverse.image] idCardHandelUrl:[BaseImage fetchUrl:self.ivHand.image]  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [GlobalMethod endEditing];
+    for (ModelBaseData *model  in self.aryDatas) {
+        if (model.enumType == ENUM_PERFECT_CELL_TEXT||model.enumType == ENUM_PERFECT_CELL_SELECT||model.enumType == ENUM_PERFECT_CELL_ADDRESS) {
+            if (!isStr(model.subString)) {
+                [GlobalMethod showAlert:model.placeHolderString];
+                return;
+            }
+        }
+    }
+    if (!isIdentityNum(self.modelIdentityNumber.subString)) {
+        [GlobalMethod showAlert:@"请输入有效身份证号"];
+        return;
+    }
+    [RequestApi requestSubmitAuthorityInfoWithDriverlicenseurl:[BaseImage fetchUrl:self.ivDriver.image]  idCardFrontUrl:[BaseImage fetchUrl:self.ivIdentity.image]  idCardBackUrl:[BaseImage fetchUrl:self.ivIdentityReverse.image] idCardHandelUrl:[BaseImage fetchUrl:self.ivHand.image]                                              realName:self.modelRealName.subString
+    idNumber:self.modelIdentityNumber.subString
+  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [RequestApi requestUserInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             [GlobalData sharedInstance].GB_UserModel = [ModelBaseInfo modelObjectWithDictionary:response];
             BOOL isQuantity  =  [GlobalData sharedInstance].GB_UserModel.isIdentity == 1&&  [GlobalData sharedInstance].GB_UserModel.isDriver == 1;
@@ -327,7 +398,6 @@
         
     }];
 }
-
 - (void)requestInfo{
     if (!self.userId) {
         return;
@@ -362,6 +432,9 @@
                 }
             }];
         }
+        self.modelRealName.subString = [response stringValueForKey:@"realName"];
+        self.modelIdentityNumber.subString = [response stringValueForKey:@"idNumber"];
+        [self.tableView reloadData];
     };
     [RequestApi requestUserAuthorityInfoWithDelegate:self success:blockSuccess failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
