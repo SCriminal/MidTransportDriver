@@ -31,7 +31,7 @@
 @property (nonatomic, strong) ModelBaseData *modelVehicleType;
 @property (nonatomic, strong) ModelBaseData *modelVehicleLoad;
 @property (nonatomic, strong) ModelBaseData *modelUnbindDriver;
-
+@property (nonatomic, strong) UIView *viewHeaderFailure;
 @property (nonatomic, strong) AuthorityImageView *bottomView;
 @property (nonatomic, strong) ModelCar *modelDetail;
 @property (nonatomic, strong) NSMutableArray *aryCarType;
@@ -167,7 +167,14 @@
     }
     return _bottomView;
 }
-
+- (UIView *)viewHeaderFailure{
+    if (!_viewHeaderFailure) {
+        _viewHeaderFailure = [UIView new];
+        _viewHeaderFailure.width = SCREEN_WIDTH;
+        _viewHeaderFailure.backgroundColor = [UIColor redColor];
+    }
+    return _viewHeaderFailure;
+}
 - (ModelBaseData *)modelUnbindDriver{
     if (!_modelUnbindDriver) {
         _modelUnbindDriver = ^(){
@@ -261,6 +268,21 @@
     [self.tableView reloadData];
     
 }
+- (void)configHeaderView:(NSString *)reason{
+    [self.viewHeaderFailure removeAllSubViews];
+    UILabel * l = [UILabel new];
+    l.font = [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+    l.textColor = [UIColor whiteColor];
+    l.backgroundColor = [UIColor clearColor];
+    l.numberOfLines = 0;
+    l.lineSpace = W(3);
+    [l fitTitle:[NSString stringWithFormat:@"%@",UnPackStr(reason)] variable:SCREEN_WIDTH - W(30)];
+    l.leftTop = XY(W(15), W(10));
+    [self.viewHeaderFailure addSubview:l];
+    self.viewHeaderFailure.height = l.bottom + l.top;
+    self.tableView.tableHeaderView = self.modelDetail.qualificationState == 10?self.viewHeaderFailure:nil;
+    
+}
 #pragma mark image select
 - (void)imageSelect:(BaseImage *)image{
 }
@@ -283,9 +305,27 @@
 
 #pragma mark request
 - (void)requestAdd{
+    [GlobalMethod endEditing];
     ModelImage * model0 = [self.bottomView.aryDatas objectAtIndex:0];
     ModelImage * model1 = [self.bottomView.aryDatas objectAtIndex:1];
-
+    if (!isStr(model0.image.imageURL)) {
+        [GlobalMethod showAlert:[NSString stringWithFormat:@"请添加%@",model0.desc]];
+        return;
+    }
+    if (!isStr(model1.image.imageURL)) {
+        [GlobalMethod showAlert:[NSString stringWithFormat:@"请添加%@",model1.desc]];
+        return;
+    }
+    for (ModelBaseData *model  in self.aryDatas) {
+        if (model.isRequired) {
+             if (model.enumType == ENUM_PERFECT_CELL_TEXT||model.enumType == ENUM_PERFECT_CELL_SELECT||model.enumType == ENUM_PERFECT_CELL_ADDRESS) {
+                       if (!isStr(model.subString)) {
+                           [GlobalMethod showAlert:model.placeHolderString];
+                           return;
+                       }
+                   }
+        }
+    }
     self.modelCarNum.subString = self.modelCarNum.subString.uppercaseString;
     [RequestApi requestAddCarWithVin:nil
                         engineNumber:nil
@@ -319,7 +359,25 @@
 
 - (void)requestEdit{
     ModelImage * model0 = [self.bottomView.aryDatas objectAtIndex:0];
-    ModelImage * model1 = [self.bottomView.aryDatas objectAtIndex:1];
+       ModelImage * model1 = [self.bottomView.aryDatas objectAtIndex:1];
+       if (!isStr(model0.image.imageURL)) {
+           [GlobalMethod showAlert:[NSString stringWithFormat:@"请添加%@",model0.desc]];
+           return;
+       }
+       if (!isStr(model1.image.imageURL)) {
+           [GlobalMethod showAlert:[NSString stringWithFormat:@"请添加%@",model1.desc]];
+           return;
+       }
+       for (ModelBaseData *model  in self.aryDatas) {
+           if (model.isRequired) {
+                if (model.enumType == ENUM_PERFECT_CELL_TEXT||model.enumType == ENUM_PERFECT_CELL_SELECT||model.enumType == ENUM_PERFECT_CELL_ADDRESS) {
+                          if (!isStr(model.subString)) {
+                              [GlobalMethod showAlert:model.placeHolderString];
+                              return;
+                          }
+                      }
+           }
+       }
     self.modelCarNum.subString = self.modelCarNum.subString.uppercaseString;
     [RequestApi requestResubmitCarWithVin:nil
                              engineNumber:nil
@@ -352,8 +410,9 @@
     [RequestApi requestCarDetailWithId:self.carID entId:self.entID delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
         self.modelDetail = modelDetail;
-        
-        
+        if (self.modelDetail.qualificationState == 10) {
+            [self requestAuditRecord];
+        }
         
         [self.bottomView resetViewWithAryModels:@[^(){
             ModelImage * model = [ModelImage new];
@@ -397,7 +456,17 @@
         
     }];
 }
-
+- (void)requestAuditRecord{
+    [RequestApi requestCarAuditListWithId:self.modelDetail.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelAuditRecord"];
+        if (ary.count) {
+            ModelAuditRecord * model = ary.firstObject;
+            [self configHeaderView:model.iDPropertyDescription];
+        }
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+}
 #pragma mark exchange type
 + (NSString *)exchangeVehicleLength:(NSString *)identity{
     NSArray * aryDateTypes = @[@"1.8米",@"2.7米",@"3.8米",@"4.2米",@"5米",@"6.2米",@"6.6米",@"6.8米",@"7.7米",@"7.8米",@"8.2米",@"8.7米",@"9.6米",@"11.7米",@"12.5米",@"13米",@"15米",@"16米",@"17.5米"];

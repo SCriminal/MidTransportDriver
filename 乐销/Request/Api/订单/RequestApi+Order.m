@@ -379,12 +379,13 @@
 /**
  车辆列表（司机）
  */
-+(void)requestCarListWithDelegate:(id <RequestDelegate>)delegate
++(void)requestPersonalCarWithDelegate:(id <RequestDelegate>)delegate
                               success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/zhongcheyun/vehicle/1_0_100/list/all" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/zhongcheyun/vehicle/1_0_101/pool" delegate:delegate parameters:dic success:success failure:failure];
 }
+//
 /**
  新增车辆
  */
@@ -486,7 +487,16 @@ trailerTripartiteInsuranceUrl:(NSString *)trailerTripartiteInsuranceUrl
                           };
     [self patchUrl:@"/zhongcheyun/vehicle/1_0_100/driver/submit/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
-
+/**
+ 车辆审核记录列表
+ */
++(void)requestCarAuditListWithId:(double)vehicleId
+                     delegate:(id <RequestDelegate>)delegate
+                      success:(void (^)(NSDictionary * response, id mark))success
+                      failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"vehicleId":NSNumber.dou(vehicleId)};
+    [self getUrl:@"/zhongcheyun/vehicle/qulification/list" delegate:delegate parameters:dic success:success failure:failure];
+}
 /**
  车辆详情
  */

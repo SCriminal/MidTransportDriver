@@ -74,6 +74,15 @@
     cell.blockDelete = ^(ModelCar *model) {
         [weakSelf requestDeleteCar:model];
     };
+    cell.blockEdit = ^(ModelCar *model) {
+        AddCarVC * vc = [AddCarVC new];
+        vc.carID = model.iDProperty;
+        vc.entID = model.entId;
+        vc.blockBack = ^(UIViewController *vc) {
+            [weakSelf refreshHeaderAll];
+        };
+        [GB_Nav pushViewController:vc animated:true];
+    };
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -88,19 +97,14 @@
 }
 #pragma mark request
 - (void)requestList{
-    [RequestApi requestCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestPersonalCarWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [self.aryDatas removeAllObjects];
-        NSMutableArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelValidCar"];
-        if (ary.count) {
-            ModelValidCar * car= ary.firstObject;
-            [RequestApi requestCarDetailWithId:car.iDProperty entId:car.fleetId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
-                self.aryDatas = @[modelDetail].mutableCopy;
-                [self.tableView reloadData];
-            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                
-            }];
+                       ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
+        if (modelDetail.iDProperty) {
+            self.aryDatas = @[modelDetail].mutableCopy;
         }
+        [self.tableView reloadData];
+
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];

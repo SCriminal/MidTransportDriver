@@ -3320,8 +3320,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "-exchangeValue"
             landmarkType = "7">
          </BreakpointContent>
@@ -3400,8 +3400,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
             landmarkName = "-requestAdd"
             landmarkType = "7">
          </BreakpointContent>
@@ -3410,14 +3410,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "71FF8151-5324-46A9-87CF-FCC6FD062FA7"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
             landmarkName = "-requestEdit"
             landmarkType = "7">
          </BreakpointContent>
@@ -3432,8 +3432,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "-addNav"
             landmarkType = "7">
          </BreakpointContent>
@@ -3448,9 +3448,41 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/&#x8ba2;&#x5355;/RequestApi+Order.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "436"
-            endingLineNumber = "436"
+            startingLineNumber = "437"
+            endingLineNumber = "437"
             landmarkName = "+requestAddCarWithVin:engineNumber:vehicleNumber:licenceType:trailerNumber:vehicleLicense:vehicleLength:vehicleType:vehicleLoad:axle:vehicleOwner:drivingLicenseFrontUrl:drivingLicenseNegativeUrl:vehicleInsuranceUrl:vehicleTripartiteInsuranceUrl:trailerInsuranceUrl:trailerTripartiteInsuranceUrl:trailerGoodsInsuranceUrl:vehiclePhotoUrl:managementLicenseUrl:delegate:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "678B2F0E-C46A-48EA-ACDD-E68999E51AE8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/CarListVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "-requestList"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "14576D4A-C9A6-43D9-9088-4D370276E73C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
+            landmarkName = "-requestAdd"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

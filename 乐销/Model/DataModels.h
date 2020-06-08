@@ -55,4 +55,5 @@
 
 //车辆
 #import "ModelCar.h"
+#import "ModelAuditRecord.h"
 

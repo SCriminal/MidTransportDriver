@@ -205,6 +205,7 @@
 		D2B6B9CE1E961456005F00C6 /* ImagePickerCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B6B9CD1E961456005F00C6 /* ImagePickerCollectionCell.m */; };
 		D2B9374022D828390005B5D2 /* ModelAccessoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9373F22D828390005B5D2 /* ModelAccessoryItem.m */; };
 		D2B9374622D862830005B5D2 /* OrderDetailAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9374522D862830005B5D2 /* OrderDetailAccessoryView.m */; };
+		D2B9FF1C248DDE740082E8D2 /* ModelAuditRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF1B248DDE740082E8D2 /* ModelAuditRecord.m */; };
 		D2BC9A871DFFA75600B0468E /* allCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A831DFFA75600B0468E /* allCities.plist */; };
 		D2BC9A881DFFA75600B0468E /* allCitiesDics.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */; };
 		D2BC9A891DFFA75600B0468E /* hotCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A851DFFA75600B0468E /* hotCities.plist */; };
@@ -752,6 +753,8 @@
 		D2B9373F22D828390005B5D2 /* ModelAccessoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAccessoryItem.m; sourceTree = "<group>"; };
 		D2B9374422D862830005B5D2 /* OrderDetailAccessoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailAccessoryView.h; sourceTree = "<group>"; };
 		D2B9374522D862830005B5D2 /* OrderDetailAccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailAccessoryView.m; sourceTree = "<group>"; };
+		D2B9FF1A248DDE740082E8D2 /* ModelAuditRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAuditRecord.h; sourceTree = "<group>"; };
+		D2B9FF1B248DDE740082E8D2 /* ModelAuditRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAuditRecord.m; sourceTree = "<group>"; };
 		D2BC9A831DFFA75600B0468E /* allCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = allCities.plist; sourceTree = "<group>"; };
 		D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = allCitiesDics.plist; sourceTree = "<group>"; };
 		D2BC9A851DFFA75600B0468E /* hotCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotCities.plist; sourceTree = "<group>"; };
@@ -2629,6 +2632,8 @@
 		D2FC33A1247F5A56000DE338 /* 车辆 */ = {
 			isa = PBXGroup;
 			children = (
+				D2B9FF1A248DDE740082E8D2 /* ModelAuditRecord.h */,
+				D2B9FF1B248DDE740082E8D2 /* ModelAuditRecord.m */,
 				D2FC33A2247F5A56000DE338 /* ModelCar.m */,
 				D2FC33A3247F5A56000DE338 /* ModelCar.h */,
 			);
@@ -3174,6 +3179,7 @@
 				C6AACD181EB434FD0044C1C7 /* UILabel+Category.m in Sources */,
 				D2DDCFB0233380BA002A24C4 /* BankCardListVC.m in Sources */,
 				D2BE30CE210711BD0059929D /* ModelAddress.m in Sources */,
+				D2B9FF1C248DDE740082E8D2 /* ModelAuditRecord.m in Sources */,
 				D2C6D16122DF245600A22EA6 /* ModelLocationItem.m in Sources */,
 				D2BE30C6210711430059929D /* ModelBtn.m in Sources */,
 				D2DFD7942297C28800363142 /* OrderDetailTopView.m in Sources */,

@@ -109,12 +109,12 @@
 
 #pragma mark click
 - (void)scanClick{
-    if ([GlobalData sharedInstance].GB_UserModel.reviewStatus == 3) {
+    if ([GlobalData sharedInstance].GB_UserModel.reviewStatus != 1) {
         [self requestCarList];
     }else{
         [RequestApi requestUserInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             ModelBaseInfo * model = [ModelBaseInfo modelObjectWithDictionary:response];
-            if (model.reviewStatus == 3) {
+            if (model.reviewStatus != 1) {
                 [self requestCarList];
             }else{
                 [GlobalMethod showBigAlert:@"审核通过才可以扫码下单"];
@@ -139,11 +139,14 @@
     }];
 }
 - (void)requestPersonalCar{
-    [RequestApi requestCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestPersonalCarWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [self.aryDatas removeAllObjects];
-        NSMutableArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelValidCar"];
-        if (ary.count) {
+        ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
+        if (modelDetail.qualificationState == 2) {
             [GlobalMethod showBigAlert:@"车辆信息已经提交，审核通过后请扫码下单"];
+            [GB_Nav pushVCName:@"CarListVC" animated:true];
+        }else if (modelDetail.qualificationState == 10) {
+            [GlobalMethod showBigAlert:@"车辆信息已经驳回，重新提交并审核通过后才可以扫码下单"];
             [GB_Nav pushVCName:@"CarListVC" animated:true];
         }else{
             ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
