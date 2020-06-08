@@ -206,6 +206,8 @@
 		D2B9374022D828390005B5D2 /* ModelAccessoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9373F22D828390005B5D2 /* ModelAccessoryItem.m */; };
 		D2B9374622D862830005B5D2 /* OrderDetailAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9374522D862830005B5D2 /* OrderDetailAccessoryView.m */; };
 		D2B9FF1C248DDE740082E8D2 /* ModelAuditRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF1B248DDE740082E8D2 /* ModelAuditRecord.m */; };
+		D2B9FF1F248E0D620082E8D2 /* EnergyType.json in Resources */ = {isa = PBXBuildFile; fileRef = D2B9FF1D248E0D620082E8D2 /* EnergyType.json */; };
+		D2B9FF20248E0D620082E8D2 /* LicenseType.json in Resources */ = {isa = PBXBuildFile; fileRef = D2B9FF1E248E0D620082E8D2 /* LicenseType.json */; };
 		D2BC9A871DFFA75600B0468E /* allCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A831DFFA75600B0468E /* allCities.plist */; };
 		D2BC9A881DFFA75600B0468E /* allCitiesDics.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */; };
 		D2BC9A891DFFA75600B0468E /* hotCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A851DFFA75600B0468E /* hotCities.plist */; };
@@ -755,6 +757,8 @@
 		D2B9374522D862830005B5D2 /* OrderDetailAccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailAccessoryView.m; sourceTree = "<group>"; };
 		D2B9FF1A248DDE740082E8D2 /* ModelAuditRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAuditRecord.h; sourceTree = "<group>"; };
 		D2B9FF1B248DDE740082E8D2 /* ModelAuditRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAuditRecord.m; sourceTree = "<group>"; };
+		D2B9FF1D248E0D620082E8D2 /* EnergyType.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EnergyType.json; sourceTree = "<group>"; };
+		D2B9FF1E248E0D620082E8D2 /* LicenseType.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LicenseType.json; sourceTree = "<group>"; };
 		D2BC9A831DFFA75600B0468E /* allCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = allCities.plist; sourceTree = "<group>"; };
 		D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = allCitiesDics.plist; sourceTree = "<group>"; };
 		D2BC9A851DFFA75600B0468E /* hotCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotCities.plist; sourceTree = "<group>"; };
@@ -2621,6 +2625,8 @@
 				D2FC339C247F5776000DE338 /* AddCarVC.h */,
 				D2FC339B247F5776000DE338 /* AddCarVC.m */,
 				D24D0741248A353F0029FCEC /* CarType.json */,
+				D2B9FF1D248E0D620082E8D2 /* EnergyType.json */,
+				D2B9FF1E248E0D620082E8D2 /* LicenseType.json */,
 				D2C5826F2480F2C800121039 /* CarListVC.h */,
 				D2C582702480F2C800121039 /* CarListVC.m */,
 				D2C582722480F39500121039 /* CarListCell.h */,
@@ -2966,6 +2972,7 @@
 				D24D0743248A40260029FCEC /* CarType.json in Resources */,
 				D2BC9A881DFFA75600B0468E /* allCitiesDics.plist in Resources */,
 				D2821CC1218AD9B90057688B /* point.png in Resources */,
+				D2B9FF20248E0D620082E8D2 /* LicenseType.json in Resources */,
 				D2B1040B22EADE40002D9BFF /* TestDate.json in Resources */,
 				D2CF190C22548EF800542AEF /* HTMLResource.bundle in Resources */,
 				D2821CC0218AD9B90057688B /* circle.png in Resources */,
@@ -2982,6 +2989,7 @@
 				9CB5EBAF20F4FA1200EB22B4 /* Assets.xcassets in Resources */,
 				D2F733B41E8642EE0008E561 /* LocalData.json in Resources */,
 				DAA3C9E71D668FF6009CFDF7 /* Images.xcassets in Resources */,
+				D2B9FF1F248E0D620082E8D2 /* EnergyType.json in Resources */,
 				D2726BA721BE04DA006B626F /* AliyunEmasServices-Info.plist in Resources */,
 				DAAEC65E1E5E900E0034AED0 /* area.plist in Resources */,
 				D2BC9A871DFFA75600B0468E /* allCities.plist in Resources */,

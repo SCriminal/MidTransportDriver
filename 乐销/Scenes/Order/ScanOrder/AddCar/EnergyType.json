@@ -1,0 +1,69 @@
+[
+{
+  "value": 1,
+  "label": "汽油",
+  "value2": "",
+  "status": 1
+},{
+  "value": 2,
+  "label": "柴油",
+  "value2": "",
+  "status": 1
+},{
+  "value": 3,
+  "label": "电",
+  "value2": "",
+  "status": 1
+},{
+  "value": 4,
+  "label": "混合油",
+  "value2": "",
+  "status": 1
+},{
+  "value": 5,
+  "label": "天然气",
+  "value2": "",
+  "status": 1
+},{
+  "value": 6,
+  "label": "液化石油气",
+  "value2": "",
+  "status": 1
+},{
+  "value": 7,
+  "label": "甲醇",
+  "value2": "",
+  "status": 1
+},{
+  "value": 8,
+  "label": "乙醇",
+  "value2": "",
+  "status": 1
+},{
+  "value": 9,
+  "label": "太阳能",
+  "value2": "",
+  "status": 1
+},{
+  "value": 10,
+  "label": "混合动力",
+  "value2": "",
+  "status": 1
+},{
+  "value": 11,
+  "label": "无",
+  "value2": "",
+  "status": 1
+},{
+  "value": 12,
+  "label": "其他",
+  "value2": "",
+  "status": 1
+},{
+  "value": 13,
+  "label": "渐变绿",
+  "value2": "",
+  "status": 1
+}
+
+]

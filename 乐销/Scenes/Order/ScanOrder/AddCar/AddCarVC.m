@@ -82,7 +82,7 @@
             model.isRequired = true;
             model.blocClick = ^(ModelBaseData *modelClick) {
                 ListAlertView * listNew = [ListAlertView new];
-               
+                
                 for (PerfectSelectCell * cell in weakSelf.tableView.visibleCells) {
                     if ([cell isKindOfClass:[PerfectSelectCell class]] && [cell.model.string isEqualToString: weakSelf.modelVehicleType.string]) {
                         [weakSelf.tableView setContentOffset:CGPointMake(0, cell.top) animated:true];
@@ -118,9 +118,9 @@
             model.blocClick = ^(ModelBaseData *modelClick) {
                 ListAlertView * listNew = [ListAlertView new];
                 NSMutableArray * aryWeight = [NSMutableArray array];
-                                         for (int i = 0; i<55; i++) {
-                                             [aryWeight addObject:[NSString stringWithFormat:@"%d吨",i+1]];
-                                         }
+                for (int i = 0; i<55; i++) {
+                    [aryWeight addObject:[NSString stringWithFormat:@"%d吨",i+1]];
+                }
                 for (PerfectSelectCell * cell in weakSelf.tableView.visibleCells) {
                     if ([cell isKindOfClass:[PerfectSelectCell class]] && [cell.model.string isEqualToString: weakSelf.modelVehicleLoad.string]) {
                         [weakSelf.tableView setContentOffset:CGPointMake(0, cell.top) animated:true];
@@ -134,12 +134,12 @@
                 }
                 listNew.blockSelected = ^(NSInteger index) {
                     weakSelf.modelVehicleLoad.subString = aryWeight[index];
-
+                    
                     [weakSelf.tableView reloadData];
                 };
             };
-
-         
+            
+            
             return model;
         }();
     }
@@ -318,12 +318,12 @@
     }
     for (ModelBaseData *model  in self.aryDatas) {
         if (model.isRequired) {
-             if (model.enumType == ENUM_PERFECT_CELL_TEXT||model.enumType == ENUM_PERFECT_CELL_SELECT||model.enumType == ENUM_PERFECT_CELL_ADDRESS) {
-                       if (!isStr(model.subString)) {
-                           [GlobalMethod showAlert:model.placeHolderString];
-                           return;
-                       }
-                   }
+            if (model.enumType == ENUM_PERFECT_CELL_TEXT||model.enumType == ENUM_PERFECT_CELL_SELECT||model.enumType == ENUM_PERFECT_CELL_ADDRESS) {
+                if (!isStr(model.subString)) {
+                    [GlobalMethod showAlert:model.placeHolderString];
+                    return;
+                }
+            }
         }
     }
     self.modelCarNum.subString = self.modelCarNum.subString.uppercaseString;
@@ -359,25 +359,25 @@
 
 - (void)requestEdit{
     ModelImage * model0 = [self.bottomView.aryDatas objectAtIndex:0];
-       ModelImage * model1 = [self.bottomView.aryDatas objectAtIndex:1];
-       if (!isStr(model0.image.imageURL)) {
-           [GlobalMethod showAlert:[NSString stringWithFormat:@"请添加%@",model0.desc]];
-           return;
-       }
-       if (!isStr(model1.image.imageURL)) {
-           [GlobalMethod showAlert:[NSString stringWithFormat:@"请添加%@",model1.desc]];
-           return;
-       }
-       for (ModelBaseData *model  in self.aryDatas) {
-           if (model.isRequired) {
-                if (model.enumType == ENUM_PERFECT_CELL_TEXT||model.enumType == ENUM_PERFECT_CELL_SELECT||model.enumType == ENUM_PERFECT_CELL_ADDRESS) {
-                          if (!isStr(model.subString)) {
-                              [GlobalMethod showAlert:model.placeHolderString];
-                              return;
-                          }
-                      }
-           }
-       }
+    ModelImage * model1 = [self.bottomView.aryDatas objectAtIndex:1];
+    if (!isStr(model0.image.imageURL)) {
+        [GlobalMethod showAlert:[NSString stringWithFormat:@"请添加%@",model0.desc]];
+        return;
+    }
+    if (!isStr(model1.image.imageURL)) {
+        [GlobalMethod showAlert:[NSString stringWithFormat:@"请添加%@",model1.desc]];
+        return;
+    }
+    for (ModelBaseData *model  in self.aryDatas) {
+        if (model.isRequired) {
+            if (model.enumType == ENUM_PERFECT_CELL_TEXT||model.enumType == ENUM_PERFECT_CELL_SELECT||model.enumType == ENUM_PERFECT_CELL_ADDRESS) {
+                if (!isStr(model.subString)) {
+                    [GlobalMethod showAlert:model.placeHolderString];
+                    return;
+                }
+            }
+        }
+    }
     self.modelCarNum.subString = self.modelCarNum.subString.uppercaseString;
     [RequestApi requestResubmitCarWithVin:nil
                              engineNumber:nil
@@ -395,6 +395,7 @@
                 drivingLicenseNegativeUrl:UnPackStr(model1.image.imageURL)
                       vehicleInsuranceUrl:nil            vehicleTripartiteInsuranceUrl:nil
                       trailerInsuranceUrl:nil            trailerTripartiteInsuranceUrl:nil                 trailerGoodsInsuranceUrl:nil                          vehiclePhotoUrl:nil                     managementLicenseUrl:nil                                 delegate:self success:^(NSDictionary * _Nonnull response, id _Nonnull mark) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_CAR_REFERSH object:nil];
         [GlobalMethod showAlert:@"提交成功"];
         self.requestState = 1;
         [GB_Nav popViewControllerAnimated:true];
@@ -439,7 +440,7 @@
         
         self.modelOwner.subString = modelDetail.vehicleOwner;
         self.modelOwner.isChangeInvalid = modelDetail.isAuthorityAcceptOrAuthering;
-                
+        
         self.modelVehicleLoad.subString = modelDetail.vehicleLoad? [NSString stringWithFormat:@"%@吨",NSNumber.dou(modelDetail.vehicleLoad)]:nil;
         self.modelVehicleLoad.isChangeInvalid = modelDetail.isAuthorityAcceptOrAuthering;
         
@@ -482,17 +483,29 @@
 + (NSString *)exchangeVehicleType:(NSString *)identity{
     NSString * strPath = [[NSBundle mainBundle]pathForResource:@"CarType" ofType:@"json"];
     NSArray * ary = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:strPath] options:0 error:nil];
-       NSMutableArray * aryDateTypes = [NSMutableArray new];
-       NSMutableArray * aryDateId = [NSMutableArray new];
-       for (NSDictionary * dic in ary) {
-           [aryDateTypes addObject:[dic stringValueForKey:@"label"]];
-           [aryDateId addObject:[dic numberValueForKey:@"value"]];
-       }
-  
-    for (int i = 0; i<aryDateId.count; i++) {
-        NSNumber * num = aryDateId[i];
-        if (num.doubleValue == identity.doubleValue) {
-            return aryDateTypes[i];
+    for (NSDictionary * dic in ary) {
+        if (identity.doubleValue == [dic doubleValueForKey:@"value"]) {
+            return [dic stringValueForKey:@"label"];
+        }
+    }
+    return nil;
+}
++ (NSString *)exchangeLicenseType:(NSString *)identity{
+    NSString * strPath = [[NSBundle mainBundle]pathForResource:@"LicenseType" ofType:@"json"];
+    NSArray * ary = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:strPath] options:0 error:nil];
+    for (NSDictionary * dic in ary) {
+        if (identity.doubleValue == [dic doubleValueForKey:@"value"]) {
+            return [dic stringValueForKey:@"label"];
+        }
+    }
+    return nil;
+}
++ (NSString *)exchangeEnergeyType:(NSString *)identity{
+    NSString * strPath = [[NSBundle mainBundle]pathForResource:@"EnergyType" ofType:@"json"];
+    NSArray * ary = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:strPath] options:0 error:nil];
+    for (NSDictionary * dic in ary) {
+        if (identity.doubleValue == [dic doubleValueForKey:@"value"]) {
+            return [dic stringValueForKey:@"label"];
         }
     }
     return nil;

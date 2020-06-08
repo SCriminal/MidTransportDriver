@@ -96,6 +96,7 @@ return [UIColor colorWithRed:((float)((hexNumber & 0xFF0000) >> 16))/255.0 green
 
 #define NOTICE_ORDER_REFERSH @"NOTICE_ORDER_REFERSH"//订单修改
 #define NOTICE_MSG_REFERSH @"NOTICE_MSG_REFERSH"//消息修改
+#define NOTICE_CAR_REFERSH @"NOTICE_CAR_REFERSH"
 
 
 #endif /* MacroLocalKey_h */

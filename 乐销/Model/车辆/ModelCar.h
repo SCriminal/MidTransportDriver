@@ -42,6 +42,21 @@
 @property (nonatomic, strong) NSString *drivingLicenseNegativeUrl;
 @property (nonatomic, strong) NSString *vehicleInsuranceUrl;
 @property (nonatomic, strong) NSString *vehicleTripartiteInsuranceUrl;
+@property (nonatomic, strong) NSString *drivingNumber;
+@property (nonatomic, assign) double drivingEndDate;
+@property (nonatomic, assign) double drivingRegisterDate;
+@property (nonatomic, assign) double energyType;
+@property (nonatomic, assign) double drivingIssueDate;
+@property (nonatomic, assign) double weight;
+@property (nonatomic, assign) double length;
+@property (nonatomic, assign) double submitDate;
+@property (nonatomic, assign) double grossMass;
+@property (nonatomic, strong) NSString *truckNumber;
+@property (nonatomic, assign) double height;
+@property (nonatomic, strong) NSString *roadTransportNumber;
+@property (nonatomic, strong) NSString *useCharacter;
+@property (nonatomic, strong) NSString *drivingAgency;
+@property (nonatomic, strong) NSString *model;
 
 //logical
 @property (nonatomic, readonly) NSString *authStatusShow;

@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CarDetailView : UIView
+@interface CarDetailStatusView : UIView
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(ModelCar *)model;
+- (void)resetViewWithModel:(ModelCar *)model auditRecord:(ModelAuditRecord *)modelAudit;
 @end
+
+
 
 @interface CarDetailImageView : UIView
 @property (nonatomic, strong) NSArray *aryImages;

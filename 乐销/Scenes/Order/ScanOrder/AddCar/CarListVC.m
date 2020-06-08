@@ -33,6 +33,7 @@
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshHeaderAll) name:NOTICE_CAR_REFERSH object:nil];
     //添加导航栏
     [self addNav];
     //table
@@ -78,9 +79,6 @@
         AddCarVC * vc = [AddCarVC new];
         vc.carID = model.iDProperty;
         vc.entID = model.entId;
-        vc.blockBack = ^(UIViewController *vc) {
-            [weakSelf refreshHeaderAll];
-        };
         [GB_Nav pushViewController:vc animated:true];
     };
     return cell;

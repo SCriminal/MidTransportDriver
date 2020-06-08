@@ -39,6 +39,21 @@ NSString *const kModelCarTrailerTripartiteInsuranceUrl = @"trailerTripartiteInsu
 NSString *const kModelCarDrivingLicenseNegativeUrl = @"drivingLicenseNegativeUrl";
 NSString *const kModelCarVehicleInsuranceUrl = @"vehicleInsuranceUrl";
 NSString *const kModelCarVehicleTripartiteInsuranceUrl = @"vehicleTripartiteInsuranceUrl";
+NSString *const kModelCarDrivingEndDate = @"drivingEndDate";
+NSString *const kModelCarDrivingRegisterDate = @"drivingRegisterDate";
+NSString *const kModelCarEnergyType = @"energyType";
+NSString *const kModelCarDrivingIssueDate = @"drivingIssueDate";
+NSString *const kModelCarWeight = @"weight";
+NSString *const kModelCarLength = @"length";
+NSString *const kModelCarSubmitDate = @"submitDate";
+NSString *const kModelCarGrossMass = @"grossMass";
+NSString *const kModelCarTruckNumber = @"truckNumber";
+NSString *const kModelCarHeight = @"height";
+NSString *const kModelCarRoadTransportNumber = @"roadTransportNumber";
+NSString *const kModelCarUseCharacter = @"useCharacter";
+NSString *const kModelCarDrivingAgency = @"drivingAgency";
+NSString *const kModelCarModel = @"model";
+NSString *const kModelCarDrivingNumber = @"drivingNumber";
 
 @interface ModelCar ()
 
@@ -139,6 +154,22 @@ NSString *const kModelCarVehicleTripartiteInsuranceUrl = @"vehicleTripartiteInsu
         self.drivingLicenseNegativeUrl = [dict stringValueForKey:kModelCarDrivingLicenseNegativeUrl];
         self.vehicleInsuranceUrl = [dict stringValueForKey:kModelCarVehicleInsuranceUrl];
         self.vehicleTripartiteInsuranceUrl = [dict stringValueForKey:kModelCarVehicleTripartiteInsuranceUrl];
+        self.drivingNumber = [dict stringValueForKey:kModelCarDrivingNumber];
+        self.drivingEndDate = [dict doubleValueForKey:kModelCarDrivingEndDate];
+        self.drivingRegisterDate = [dict doubleValueForKey:kModelCarDrivingRegisterDate];
+        self.energyType = [dict doubleValueForKey:kModelCarEnergyType];
+        self.drivingIssueDate = [dict doubleValueForKey:kModelCarDrivingIssueDate];
+        self.weight = [dict doubleValueForKey:kModelCarWeight];
+        self.length = [dict doubleValueForKey:kModelCarLength];
+        self.submitDate = [dict doubleValueForKey:kModelCarSubmitDate];
+        self.grossMass = [dict doubleValueForKey:kModelCarGrossMass];
+        self.truckNumber = [dict stringValueForKey:kModelCarTruckNumber];
+        self.height = [dict doubleValueForKey:kModelCarHeight];
+        self.roadTransportNumber = [dict stringValueForKey:kModelCarRoadTransportNumber];
+        self.useCharacter = [dict stringValueForKey:kModelCarUseCharacter];
+        self.drivingAgency = [dict stringValueForKey:kModelCarDrivingAgency];
+        self.model = [dict stringValueForKey:kModelCarModel];
+
     }
     
     return self;
@@ -178,6 +209,22 @@ NSString *const kModelCarVehicleTripartiteInsuranceUrl = @"vehicleTripartiteInsu
     [mutableDict setValue:self.drivingLicenseNegativeUrl forKey:kModelCarDrivingLicenseNegativeUrl];
     [mutableDict setValue:self.vehicleInsuranceUrl forKey:kModelCarVehicleInsuranceUrl];
     [mutableDict setValue:self.vehicleTripartiteInsuranceUrl forKey:kModelCarVehicleTripartiteInsuranceUrl];
+    [mutableDict setValue:self.drivingNumber forKey:kModelCarDrivingNumber];
+    [mutableDict setValue:NSNumber.dou(self.drivingEndDate) forKey:kModelCarDrivingEndDate];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.drivingRegisterDate] forKey:kModelCarDrivingRegisterDate];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.energyType] forKey:kModelCarEnergyType];
+    [mutableDict setValue:NSNumber.dou(self.drivingIssueDate) forKey:kModelCarDrivingIssueDate];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.weight] forKey:kModelCarWeight];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.length] forKey:kModelCarLength];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.submitDate] forKey:kModelCarSubmitDate];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.grossMass] forKey:kModelCarGrossMass];
+    [mutableDict setValue:self.truckNumber forKey:kModelCarTruckNumber];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.height] forKey:kModelCarHeight];
+    [mutableDict setValue:self.roadTransportNumber forKey:kModelCarRoadTransportNumber];
+    [mutableDict setValue:self.useCharacter forKey:kModelCarUseCharacter];
+    [mutableDict setValue:self.drivingAgency forKey:kModelCarDrivingAgency];
+    [mutableDict setValue:self.model forKey:kModelCarModel];
+
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
