@@ -10,11 +10,8 @@
 
 
 @interface ModelValidCar : NSObject
-
-@property (nonatomic, assign) double fleetId;
-@property (nonatomic, assign) double vehicleId;
-@property (nonatomic, strong) NSString *vehicleNumber;
 @property (nonatomic, strong) NSString *fleetName;
+@property (nonatomic, assign) double fleetId;
 @property (nonatomic, readonly) NSString *nameShow;
 @property (nonatomic, assign) double state;
 @property (nonatomic, assign) double iDProperty;

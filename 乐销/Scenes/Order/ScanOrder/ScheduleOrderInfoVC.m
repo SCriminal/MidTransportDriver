@@ -146,7 +146,7 @@
 }
 
 - (void)requestConfirm:(ModelValidCar *)model phone:(NSString *)phone{
-    [RequestApi requestScheduleConfirmWithPlannumber:self.modelOrder.number vehicleId:model.vehicleId driverPhone:phone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestScheduleConfirmWithPlannumber:self.modelOrder.number vehicleId:model.iDProperty driverPhone:phone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"下单成功"];
         BaseTableVC * tableVC =  (BaseTableVC *)GB_Nav.lastSecondVC;
         if ([tableVC isKindOfClass:BaseTableVC.class]) {

@@ -17,6 +17,9 @@ NSString *const kModelValidCarId = @"id";
 
 
 @interface ModelValidCar ()
+@property (nonatomic, assign) double vehicleId;
+@property (nonatomic, strong) NSString *vehicleNumber;
+
 @end
 
 @implementation ModelValidCar
@@ -47,7 +50,11 @@ NSString *const kModelValidCarId = @"id";
             self.fleetName = [dict stringValueForKey:kModelValidCarFleetName];
         self.state = [dict doubleValueForKey:kModelValidCarState];
         self.iDProperty = [dict doubleValueForKey:kModelValidCarId];
-
+        
+        if (!isStr(self.vehicleNumber)) {
+                        self.vehicleNumber = [dict stringValueForKey:@"number"];
+        }
+      
     }
     
     return self;
