@@ -16,9 +16,9 @@
 #import <Photos/Photos.h>
 //image edit vc
 #import "UpImageWithTextVC.h"
-
 @interface ImagePickerVC ()
 @property (strong, nonatomic) NSMutableArray *groupArray;
+@property (nonatomic, strong) TakeAPictureView *takePicView; //扫名片
 
 @end
 
@@ -108,6 +108,27 @@
 - (PHAssetMediaType)assetType{
     return PHAssetMediaTypeImage;
 }
+- (TakeAPictureView *)takePicView{
+    if (!_takePicView) {
+        _takePicView = [[TakeAPictureView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) cameraType:self.cameraType];
+        _takePicView.shouldWriteToSavedPhotos = false;
+        WEAKSELF
+        _takePicView.blockBack = ^{
+            [weakSelf.takePicView stopRunning];
+            [weakSelf.takePicView removeFromSuperview];
+        };
+        _takePicView.getImage = ^(UIImage * image){
+            [weakSelf.takePicView stopRunning];
+            [weakSelf.takePicView removeFromSuperview];
+            if ([weakSelf.delegate respondsToSelector:@selector(ImagePickerVC:firstImageClick:)])
+                   {
+                       [weakSelf.delegate ImagePickerVC:weakSelf firstImageClick:image];
+                   }
+        };
+    }
+    return _takePicView;
+}
+
 #pragma mark view appear
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -257,6 +278,11 @@
 {
     if (indexPath.row == 0)
     {
+        if (self.cameraType != ENUM_CAMERA_DEFAULT) {
+            [self.view addSubview:self.takePicView];
+            [self.takePicView startRunning];
+            return;
+        }
         if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
         {
             UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];

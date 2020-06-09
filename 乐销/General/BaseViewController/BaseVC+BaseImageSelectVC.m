@@ -18,7 +18,15 @@
 
 //选择图片
 - (void)showImageVC:(int)imageNum{
-    [GB_Nav pushViewController:[self fetchImageVC:imageNum] animated:true];
+    [self showImageVC:imageNum cameraType:ENUM_CAMERA_DEFAULT];
+}
+//选择图片
+- (void)showImageVC:(int)imageNum cameraType:(ENUM_CAMERA_TYPE)type{
+    ImagePickerVC * vc = [[ImagePickerVC alloc]init];
+    vc.cameraType = type;
+       vc.photoNumber = imageNum;
+       vc.delegate = self;
+    [GB_Nav pushViewController:vc animated:true];
 }
 //选择视频
 - (void)showVideoVC:(int)imageNum{
@@ -27,13 +35,7 @@
     vc.delegate = self;
     [GB_Nav pushViewController:vc animated:true];
 }
-//选择图片vc
-- (UIViewController *)fetchImageVC:(int)imageNum{
-    ImagePickerVC * vc = [[ImagePickerVC alloc]init];
-    vc.photoNumber = imageNum;
-    vc.delegate = self;
-    return vc;
-}
+
 
 #pragma mark 选择图片回调
 - (void)ImagePickerVC: (ImagePickerVC *)ivc finishClick:(NSArray *)assetArray{

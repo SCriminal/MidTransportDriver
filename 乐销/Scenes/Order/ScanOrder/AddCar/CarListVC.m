@@ -87,10 +87,7 @@
     return [CarListCell fetchHeight:self.aryDatas[indexPath.row]];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ModelCar * model = self.aryDatas[indexPath.row];
     CarDetailVC * detailVC = [CarDetailVC new];
-    detailVC.carID = model.iDProperty;
-    detailVC.entID = model.entId;
     [GB_Nav pushViewController:detailVC animated:true];
 }
 #pragma mark request

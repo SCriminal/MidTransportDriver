@@ -162,7 +162,7 @@
         [GlobalMethod showAlert:@"不可修改"];
         return;
     }
-    [self showImageVC:1];
+    [self showImageVC:1 cameraType:self.model.cameraType];
 }
 - (void)imageSelect:(BaseImage *)image{
     [AliClient sharedInstance].imageType = self.model.imageType?self.model.imageType:ENUM_UP_IMAGE_TYPE_COMPANY_AUTHORITY;

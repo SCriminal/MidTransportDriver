@@ -14,6 +14,9 @@
 @interface UIView (SelectImageView)<ImagePickerVCDelegate>
 //选择图片
 - (void)showImageVC:(NSInteger)imageNum;
+//选择图片
+- (void)showImageVC:(NSInteger)imageNum cameraType:(ENUM_CAMERA_TYPE)cameraType;
+
 - (void)imageSelect:(BaseImage *)image;
 - (void)imagesSelect:(NSArray *)aryImages;
 

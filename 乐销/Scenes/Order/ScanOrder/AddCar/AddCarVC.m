@@ -154,6 +154,7 @@
             model.image = [BaseImage imageWithImage:[UIImage imageNamed:@"camera_行驶证正"] url:nil];
             model.isEssential = true;
             model.imageType = ENUM_UP_IMAGE_TYPE_COMPANY_CAR;
+            model.cameraType = ENUM_CAMERA_ROAD;
             return model;
         }(),^(){
             ModelImage * model = [ModelImage new];
@@ -423,6 +424,7 @@
             model.isEssential = true;
             model.isChangeInvalid = modelDetail.isAuthorityAcceptOrAuthering;
             model.imageType = ENUM_UP_IMAGE_TYPE_COMPANY_CAR;
+            model.cameraType = ENUM_CAMERA_ROAD;
             return model;
         }(),^(){
             ModelImage * model = [ModelImage new];

@@ -8,6 +8,7 @@
 
 #import "BaseVC.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "TakeAPictureView.h" //扫名片
 
 
 @class ImagePickerVC;
@@ -46,7 +47,7 @@
 @property (nonatomic, strong) BaseNavView *navView;
 @property (strong, nonatomic) ImagePikcerListBGVIew *viewListBG;
 @property (nonatomic, assign) NSInteger  photoNumber;  //限定图片选择的个数
-
+@property (nonatomic, assign) ENUM_CAMERA_TYPE cameraType;
 //view set
 @property (nonatomic, assign) PHAssetMediaType assetType;//assetType default PHAssetMediaTypeImage
 

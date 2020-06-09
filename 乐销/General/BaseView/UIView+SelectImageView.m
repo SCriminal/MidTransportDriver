@@ -18,12 +18,16 @@
 
 //选择图片
 - (void)showImageVC:(NSInteger)imageNum{
+    [self showImageVC:imageNum cameraType:ENUM_CAMERA_DEFAULT];
+}
+//选择图片
+- (void)showImageVC:(NSInteger)imageNum cameraType:(ENUM_CAMERA_TYPE)cameraType{
     ImagePickerVC * vc = [[ImagePickerVC alloc]init];
     vc.photoNumber = imageNum;
     vc.delegate = self;
+    vc.cameraType = cameraType;
     [GB_Nav pushViewController:vc animated:true];
 }
-
 
 #pragma mark 选择图片回调
 - (void)ImagePickerVC: (ImagePickerVC *)ivc finishClick:(NSArray *)assetArray{

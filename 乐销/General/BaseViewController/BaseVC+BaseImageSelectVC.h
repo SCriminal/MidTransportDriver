@@ -16,7 +16,9 @@
 @interface BaseVC (BaseImageSelectVC)<ImagePickerVCDelegate>
 //选择图片
 - (void)showImageVC:(int)imageNum;
-- (UIViewController *)fetchImageVC:(int)imageNum;
+//选择图片
+- (void)showImageVC:(int)imageNum cameraType:(ENUM_CAMERA_TYPE)type;
+
 - (void)imageSelect:(BaseImage *)image;
 - (void)imagesSelect:(NSArray *)aryImages;
 

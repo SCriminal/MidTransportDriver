@@ -134,9 +134,7 @@
     }
 }
 - (void)showSelectImage{
-//    UpImageWithTextVC *vcImage = [self fetchTextImageVC];
-//    [GB_Nav jumpToAry:@[vcImage,[vcImage fetchImageVC:NUM_IMAGE]]];
-    [GB_Nav pushViewController:[(BaseVC *)GB_Nav.lastVC fetchImageVC:NUM_IMAGE] animated:true];
+    [(BaseVC *)GB_Nav.lastVC showImageVC:NUM_IMAGE];
 }
 - (UpImageWithTextVC *)fetchTextImageVC{
     UpImageWithTextVC * vcImage = [UpImageWithTextVC new];

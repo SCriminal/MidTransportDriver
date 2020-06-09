@@ -208,6 +208,7 @@
 		D2B9FF1C248DDE740082E8D2 /* ModelAuditRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF1B248DDE740082E8D2 /* ModelAuditRecord.m */; };
 		D2B9FF1F248E0D620082E8D2 /* EnergyType.json in Resources */ = {isa = PBXBuildFile; fileRef = D2B9FF1D248E0D620082E8D2 /* EnergyType.json */; };
 		D2B9FF20248E0D620082E8D2 /* LicenseType.json in Resources */ = {isa = PBXBuildFile; fileRef = D2B9FF1E248E0D620082E8D2 /* LicenseType.json */; };
+		D2B9FF28248F2D3E0082E8D2 /* TakeAPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF27248F2D3D0082E8D2 /* TakeAPictureView.m */; };
 		D2BC9A871DFFA75600B0468E /* allCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A831DFFA75600B0468E /* allCities.plist */; };
 		D2BC9A881DFFA75600B0468E /* allCitiesDics.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */; };
 		D2BC9A891DFFA75600B0468E /* hotCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A851DFFA75600B0468E /* hotCities.plist */; };
@@ -759,6 +760,8 @@
 		D2B9FF1B248DDE740082E8D2 /* ModelAuditRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAuditRecord.m; sourceTree = "<group>"; };
 		D2B9FF1D248E0D620082E8D2 /* EnergyType.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EnergyType.json; sourceTree = "<group>"; };
 		D2B9FF1E248E0D620082E8D2 /* LicenseType.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LicenseType.json; sourceTree = "<group>"; };
+		D2B9FF26248F2D3D0082E8D2 /* TakeAPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeAPictureView.h; sourceTree = "<group>"; };
+		D2B9FF27248F2D3D0082E8D2 /* TakeAPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeAPictureView.m; sourceTree = "<group>"; };
 		D2BC9A831DFFA75600B0468E /* allCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = allCities.plist; sourceTree = "<group>"; };
 		D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = allCitiesDics.plist; sourceTree = "<group>"; };
 		D2BC9A851DFFA75600B0468E /* hotCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotCities.plist; sourceTree = "<group>"; };
@@ -1578,6 +1581,7 @@
 		D275DB181DFFA2E800670A40 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				D2B9FF25248F2D3D0082E8D2 /* 拍名片 */,
 				D22B1D4D2383942000BC00F0 /* 扫描二维码页面 */,
 				D27470AA22A787BA009B645D /* LocationRecord */,
 				D2996A2C21E6E3AA00562587 /* 上传图片 */,
@@ -2182,6 +2186,15 @@
 				D28A867B225F1571001E3372 /* SettingCell.m */,
 			);
 			path = "设置";
+			sourceTree = "<group>";
+		};
+		D2B9FF25248F2D3D0082E8D2 /* 拍名片 */ = {
+			isa = PBXGroup;
+			children = (
+				D2B9FF26248F2D3D0082E8D2 /* TakeAPictureView.h */,
+				D2B9FF27248F2D3D0082E8D2 /* TakeAPictureView.m */,
+			);
+			path = "拍名片";
 			sourceTree = "<group>";
 		};
 		D2BC9A7E1DFFA75600B0468E /* Resource */ = {
@@ -3207,6 +3220,7 @@
 				D2A3004A2267248E00AE2EC3 /* AccountFilterView.m in Sources */,
 				D2DFD7912296A58F00363142 /* ModelBaseInfo.m in Sources */,
 				D27470BA22A8E801009B645D /* ModelAccountList.m in Sources */,
+				D2B9FF28248F2D3E0082E8D2 /* TakeAPictureView.m in Sources */,
 				D2B9374022D828390005B5D2 /* ModelAccessoryItem.m in Sources */,
 				D2C5580C238CB7DB0050694F /* ModelScheduleInfo.m in Sources */,
 				D2A6670D230F7BF00064F94B /* AuthortiyExampleVC.m in Sources */,

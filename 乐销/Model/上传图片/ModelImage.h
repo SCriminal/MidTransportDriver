@@ -24,6 +24,7 @@
 @property (nonatomic, assign) BOOL isEssential;
 @property (nonatomic, assign) BOOL isChangeInvalid;
 @property (nonatomic, assign) ENUM_UP_IMAGE_TYPE imageType;
+@property (nonatomic, assign) NSUInteger cameraType;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

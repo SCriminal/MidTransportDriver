@@ -113,6 +113,8 @@
         _ivIdentity.image = [UIImage imageNamed:@"camera_身份证正"];
         _ivIdentity.widthHeight = XY(W(150),W(100));
         _ivIdentity.userInteractionEnabled = true;
+        _ivIdentity.contentMode = UIViewContentModeScaleAspectFill;
+        _ivIdentity.clipsToBounds = true;
         [_ivIdentity addTarget:self action:@selector(ivIdentityClick)];
     }
     return _ivIdentity;
@@ -139,6 +141,8 @@
         _ivIdentityReverse.image = [UIImage imageNamed:@"camera_身份证反"];
         _ivIdentityReverse.widthHeight = XY(W(150),W(100));
         _ivIdentityReverse.userInteractionEnabled = true;
+        _ivIdentityReverse.contentMode = UIViewContentModeScaleAspectFill;
+        _ivIdentityReverse.clipsToBounds = true;
         [_ivIdentityReverse addTarget:self action:@selector(ivIdentityReverseClick)];
     }
     return _ivIdentityReverse;
@@ -149,6 +153,8 @@
         _ivHand.image = [UIImage imageNamed:@"camera_手持身份证"];
         _ivHand.widthHeight = XY(W(150),W(100));
         _ivHand.userInteractionEnabled = true;
+        _ivHand.contentMode = UIViewContentModeScaleAspectFill;
+        _ivHand.clipsToBounds = true;
         [_ivHand addTarget:self action:@selector(ivHandClick)];
     }
     return _ivHand;
@@ -167,6 +173,8 @@
         _ivDriver.image = [UIImage imageNamed:@"camera_驾驶证"];
         _ivDriver.widthHeight = XY(W(150),W(100));
         _ivDriver.userInteractionEnabled = true;
+        _ivDriver.contentMode = UIViewContentModeScaleAspectFill;
+        _ivDriver.clipsToBounds = true;
         [_ivDriver addTarget:self action:@selector(ivDriverReverseClick)];
     }
     return _ivDriver;
@@ -260,7 +268,7 @@
 #pragma mark click
 - (void)ivIdentityClick{
     self.ivSelected = self.ivIdentity;
-    [self showImageVC:1];
+    [self showImageVC:1 cameraType:ENUM_CAMERA_IDENTITY_HEADER];
     
 }
 
@@ -271,13 +279,13 @@
 }
 - (void)ivIdentityReverseClick{
     self.ivSelected = self.ivIdentityReverse;
-    [self showImageVC:1];
-    
+    [self showImageVC:1 cameraType:ENUM_CAMERA_IDENTITY_EMBLEM];
+
 }
 - (void)ivDriverReverseClick{
     self.ivSelected = self.ivDriver;
-    [self showImageVC:1];
-    
+    [self showImageVC:1 cameraType:ENUM_CAMERA_DRIVING];
+
 }
 //选择图片
 - (void)imageSelect:(BaseImage *)image{

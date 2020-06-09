@@ -9,7 +9,5 @@
 #import "BaseTableVC.h"
 
 @interface CarDetailVC : BaseTableVC
-@property (nonatomic, assign) double carID;
-@property (nonatomic, assign) double entID;
 
 @end

@@ -58,26 +58,28 @@
 
 #pragma mark request
 - (void)requestInfo{
-    [RequestApi requestCarDetailWithId:self.carID entId:self.entID delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
-        self.modelDetail = modelDetail;
-        [self requestAuditRecord];
-        
-        if (modelDetail.qualificationState == 10) {
-            WEAKSELF
-            [self.nav resetNavBackTitle:@"车辆详情" rightTitle:@"重新提交" rightBlock:^{
-                AddCarVC * carVC = [AddCarVC new];
-                carVC.entID = weakSelf.modelDetail.entId;
-                carVC.carID = weakSelf.modelDetail.iDProperty;
-                [GB_Nav popLastAndPushVC:carVC];
-            }];
-        }
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+    [RequestApi requestPersonalCarWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+         ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
+           self.modelDetail = modelDetail;
+           [self requestAuditRecord];
+           
+           if (modelDetail.qualificationState == 10) {
+               WEAKSELF
+               [self.nav resetNavBackTitle:@"车辆详情" rightTitle:@"重新提交" rightBlock:^{
+                   AddCarVC * carVC = [AddCarVC new];
+                   carVC.entID = weakSelf.modelDetail.entId;
+                   carVC.carID = weakSelf.modelDetail.iDProperty;
+                   [GB_Nav popLastAndPushVC:carVC];
+               }];
+           }
+
+       } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+           
+       }];
+   
 }
 - (void)requestAuditRecord{
-    [RequestApi requestCarAuditListWithId:self.carID  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestCarAuditListWithId:self.modelDetail.iDProperty  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelAuditRecord"];
         if (!ary.count) {
             return;
