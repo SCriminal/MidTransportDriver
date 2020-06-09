@@ -3286,8 +3286,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
             landmarkName = "-exchangeValue"
             landmarkType = "7">
          </BreakpointContent>
@@ -3366,8 +3366,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
             landmarkName = "-requestAdd"
             landmarkType = "7">
          </BreakpointContent>
@@ -3382,8 +3382,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
             landmarkName = "-requestEdit"
             landmarkType = "7">
          </BreakpointContent>
@@ -3398,8 +3398,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "-addNav"
             landmarkType = "7">
          </BreakpointContent>
@@ -3446,8 +3446,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
             landmarkName = "-requestAdd"
             landmarkType = "7">
          </BreakpointContent>
@@ -3561,6 +3561,118 @@
             startingLineNumber = "113"
             endingLineNumber = "113"
             landmarkName = "-takePicView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D2A830F0-C6E3-44C3-AE3A-248B5B96FDC8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddPlateNumberVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "560"
+            endingLineNumber = "560"
+            landmarkName = "-btnClick:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3E0B7438-CA84-45A2-87AA-417027F3D8B4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/General/&#x81ea;&#x5b9a;&#x4e49;&#x8f66;&#x724c;&#x952e;&#x76d8;View/SelectCarNumberView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-alphaView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CD412D74-B6F5-429F-A894-4688A9A06A7B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/General/&#x81ea;&#x5b9a;&#x4e49;&#x8f66;&#x724c;&#x952e;&#x76d8;View/SelectCarNumberView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "-btnClick:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F182F8A3-098A-4284-9BB6-8E3A61689CE1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/General/&#x81ea;&#x5b9a;&#x4e49;&#x8f66;&#x724c;&#x952e;&#x76d8;View/SelectCarNumberView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "-alphaView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "623D00A7-0A00-43AE-BD6F-CD3EB02FEDC0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/General/&#x81ea;&#x5b9a;&#x4e49;&#x8f66;&#x724c;&#x952e;&#x76d8;View/SelectCarNumberView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "-btnClick:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0E2E34CB-2748-4040-8060-D42BA6AF6F14"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "-modelCarNum"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D2B3AAB8-A86D-4172-8FD9-D95A6C71AF8A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/General/&#x81ea;&#x5b9a;&#x4e49;&#x8f66;&#x724c;&#x952e;&#x76d8;View/SelectCarNumberView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "-alphaView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -24,6 +24,8 @@
 #import "AliClient.h"
 //example vc
 #import "AuthortiyExampleVC.h"
+//车牌汉字选择
+#import "SelectCarNumberView.h"
 
 @interface AddCarVC ()
 @property (nonatomic, strong) ModelBaseData *modelCarNum;
@@ -46,11 +48,32 @@
     if (!_modelCarNum) {
         _modelCarNum = ^(){
             ModelBaseData * model = [ModelBaseData new];
-            model.enumType = ENUM_PERFECT_CELL_TEXT;
+            model.enumType = ENUM_PERFECT_CELL_SELECT;
             model.imageName = @"";
             model.string = @"车牌号码";
             model.placeHolderString = @"输入车牌号码";
             model.isRequired = true;
+            model.isArrowHide = true;
+            WEAKSELF
+            model.blocClick = ^(ModelBaseData *item) {
+                for (PerfectSelectCell * cell in weakSelf.tableView.visibleCells) {
+                                   if ([cell isKindOfClass:[PerfectSelectCell class]] && [cell.model.string isEqualToString: weakSelf.modelCarNum.string]) {
+                                       CGRect rectOrigin = [cell convertRect:cell.frame toView:[UIApplication sharedApplication].keyWindow];
+                                       if (CGRectGetMinY(rectOrigin)>SCREEN_HEIGHT/2.0) {
+                                                                                  [weakSelf.tableView setContentOffset:CGPointMake(0, cell.top) animated:true];
+                                       }
+                                       break;
+                                   }
+                               }
+                
+                SelectCarNumberView * selectNumView = [SelectCarNumberView new];
+                [selectNumView resetViewWithContent:weakSelf.modelCarNum.subString];
+                [weakSelf.view addSubview:selectNumView];
+                selectNumView.blockSelected = ^(NSString *str) {
+                    weakSelf.modelCarNum.subString = str;
+                    [weakSelf.tableView reloadData];
+                };
+            };
             return model;
         }();
     }
@@ -81,6 +104,7 @@
             model.placeHolderString = @"选择车辆类型";
             model.isRequired = true;
             model.blocClick = ^(ModelBaseData *modelClick) {
+                [GlobalMethod endEditing];
                 ListAlertView * listNew = [ListAlertView new];
                 
                 for (PerfectSelectCell * cell in weakSelf.tableView.visibleCells) {
@@ -116,6 +140,7 @@
             model.placeHolderString = @"选择核定载质量";
             model.isRequired = true;
             model.blocClick = ^(ModelBaseData *modelClick) {
+                [GlobalMethod endEditing];
                 ListAlertView * listNew = [ListAlertView new];
                 NSMutableArray * aryWeight = [NSMutableArray array];
                 for (int i = 0; i<55; i++) {
@@ -189,7 +214,28 @@
     }
     return _modelUnbindDriver;
 }
-
+//- (CustomCharactersKeyBoardView *)charactersKeyBoardView
+//{
+//    if (_charactersKeyBoardView == nil) {
+//        _charactersKeyBoardView = [CustomCharactersKeyBoardView  new];
+//        _charactersKeyBoardView.leftBottom = XY(0, SCREEN_HEIGHT);
+//        WEAKSELF
+//        _charactersKeyBoardView.btnClickBlock = ^(NSString *str) {
+//            weakSelf.context = [weakSelf.context stringByAppendingString:str];
+//            weakSelf.myTextField.text = weakSelf.context;
+//            [weakSelf resetKeyBoardViewWithText:weakSelf.myTextField.text];
+//            [weakSelf exchangeKeyBoardWithisHide:YES];
+//        };
+//        _charactersKeyBoardView.deleteClickBlock = ^{
+//            if (weakSelf.context.length > 0) {
+//                weakSelf.context = [weakSelf.context substringToIndex:([weakSelf.context length]-1)];// 去掉最后一个","
+//                weakSelf.myTextField.text = weakSelf.context;
+//                [weakSelf resetKeyBoardViewWithText:weakSelf.myTextField.text];
+//            }
+//        };
+//    }
+//    return  _charactersKeyBoardView;
+//}
 
 #pragma mark view did load
 - (void)viewDidLoad {

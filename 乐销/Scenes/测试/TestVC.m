@@ -294,7 +294,7 @@ hail hell hall prejudice intrigue retrospect therapy selection negligible optimi
     NSLog(@"true");
 }
 - (void)jump{
-    [GB_Nav pushVCName:@"QRCoderVC" animated:true];
+    [GB_Nav pushVCName:@"AddPlateNumberVC" animated:true];
 //    d dateFromString:<#(nonnull NSString *)#>
 }
 

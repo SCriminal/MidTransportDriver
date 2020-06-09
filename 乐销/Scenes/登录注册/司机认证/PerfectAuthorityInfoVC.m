@@ -361,10 +361,10 @@
         [GlobalMethod showAlert:@"请添加驾驶证"];
         return;
     }
-    if (!isStr([BaseImage fetchUrl:self.ivHand.image] )) {
-        [GlobalMethod showAlert:@"请添加手持身份证"];
-        return;
-    }
+//    if (!isStr([BaseImage fetchUrl:self.ivHand.image] )) {
+//        [GlobalMethod showAlert:@"请添加手持身份证"];
+//        return;
+//    }
     [GlobalMethod endEditing];
     for (ModelBaseData *model  in self.aryDatas) {
         if (model.enumType == ENUM_PERFECT_CELL_TEXT||model.enumType == ENUM_PERFECT_CELL_SELECT||model.enumType == ENUM_PERFECT_CELL_ADDRESS) {

@@ -209,6 +209,7 @@
 		D2B9FF1F248E0D620082E8D2 /* EnergyType.json in Resources */ = {isa = PBXBuildFile; fileRef = D2B9FF1D248E0D620082E8D2 /* EnergyType.json */; };
 		D2B9FF20248E0D620082E8D2 /* LicenseType.json in Resources */ = {isa = PBXBuildFile; fileRef = D2B9FF1E248E0D620082E8D2 /* LicenseType.json */; };
 		D2B9FF28248F2D3E0082E8D2 /* TakeAPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF27248F2D3D0082E8D2 /* TakeAPictureView.m */; };
+		D2B9FF32248F900C0082E8D2 /* SelectCarNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF31248F900C0082E8D2 /* SelectCarNumberView.m */; };
 		D2BC9A871DFFA75600B0468E /* allCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A831DFFA75600B0468E /* allCities.plist */; };
 		D2BC9A881DFFA75600B0468E /* allCitiesDics.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */; };
 		D2BC9A891DFFA75600B0468E /* hotCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A851DFFA75600B0468E /* hotCities.plist */; };
@@ -762,6 +763,8 @@
 		D2B9FF1E248E0D620082E8D2 /* LicenseType.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LicenseType.json; sourceTree = "<group>"; };
 		D2B9FF26248F2D3D0082E8D2 /* TakeAPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeAPictureView.h; sourceTree = "<group>"; };
 		D2B9FF27248F2D3D0082E8D2 /* TakeAPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeAPictureView.m; sourceTree = "<group>"; };
+		D2B9FF30248F900C0082E8D2 /* SelectCarNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCarNumberView.h; sourceTree = "<group>"; };
+		D2B9FF31248F900C0082E8D2 /* SelectCarNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCarNumberView.m; sourceTree = "<group>"; };
 		D2BC9A831DFFA75600B0468E /* allCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = allCities.plist; sourceTree = "<group>"; };
 		D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = allCitiesDics.plist; sourceTree = "<group>"; };
 		D2BC9A851DFFA75600B0468E /* hotCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotCities.plist; sourceTree = "<group>"; };
@@ -1581,6 +1584,7 @@
 		D275DB181DFFA2E800670A40 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				D2B9FF29248F68E70082E8D2 /* 自定义车牌键盘View */,
 				D2B9FF25248F2D3D0082E8D2 /* 拍名片 */,
 				D22B1D4D2383942000BC00F0 /* 扫描二维码页面 */,
 				D27470AA22A787BA009B645D /* LocationRecord */,
@@ -2195,6 +2199,15 @@
 				D2B9FF27248F2D3D0082E8D2 /* TakeAPictureView.m */,
 			);
 			path = "拍名片";
+			sourceTree = "<group>";
+		};
+		D2B9FF29248F68E70082E8D2 /* 自定义车牌键盘View */ = {
+			isa = PBXGroup;
+			children = (
+				D2B9FF30248F900C0082E8D2 /* SelectCarNumberView.h */,
+				D2B9FF31248F900C0082E8D2 /* SelectCarNumberView.m */,
+			);
+			path = "自定义车牌键盘View";
 			sourceTree = "<group>";
 		};
 		D2BC9A7E1DFFA75600B0468E /* Resource */ = {
@@ -3100,6 +3113,7 @@
 				C6BAD7051EDBCBF300954439 /* UIView+Category.m in Sources */,
 				D2C55800238BCADC0050694F /* RequestApi+Schedule.m in Sources */,
 				D21B58D81FA6A5BF00B2A788 /* UIImage+info.m in Sources */,
+				D2B9FF32248F900C0082E8D2 /* SelectCarNumberView.m in Sources */,
 				D28642EB1E484A350041B64C /* UITapGestureRecognizer+Base.m in Sources */,
 				D26A14A21E49C25700126F7A /* NSMutableDictionary+Category.m in Sources */,
 				DAB576881E305E5C006626BC /* NoResultView.m in Sources */,
