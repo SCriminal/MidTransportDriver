@@ -376,13 +376,19 @@
         [RequestApi requestUserInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             [GlobalData sharedInstance].GB_UserModel = [ModelBaseInfo modelObjectWithDictionary:response];
             BOOL isQuantity  =  [GlobalData sharedInstance].GB_UserModel.isIdentity == 1&&  [GlobalData sharedInstance].GB_UserModel.isDriver == 1;
-
+            if (!isQuantity) {
+                NSMutableArray * ary = [NSMutableArray arrayWithObject:GB_Nav.viewControllers.firstObject];
+                [ary addObject:[NSClassFromString(@"DriverDetailVC") new]];
+                [GB_Nav setViewControllers:ary animated:true];
+                [GlobalMethod showAlert:@"提交成功"];
+                return;
+            }
             NSMutableArray * ary = [NSMutableArray array];
             for (UIViewController * vc in GB_Nav.viewControllers) {
                 if ([vc isKindOfClass:NSClassFromString(@"LoginViewController")]||[vc isKindOfClass:NSClassFromString(@"DriverDetailVC")]) {
                     [GlobalMethod showAlert:@"提交成功"];
                     [ary addObject:vc];
-                    [ary addObject:[NSClassFromString(isQuantity?@"AuthorityReVerifyingVC":@"AuthorityVerifyingVC") new]];
+                    [ary addObject:[NSClassFromString(@"AuthorityReVerifyingVC") new]];
                     [GB_Nav setViewControllers:ary animated:true];
                     return;
                 }else{
