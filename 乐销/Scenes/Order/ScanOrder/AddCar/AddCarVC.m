@@ -26,6 +26,7 @@
 #import "AuthortiyExampleVC.h"
 //车牌汉字选择
 #import "SelectCarNumberView.h"
+#import "SelectCarTypeVC.h"
 
 @interface AddCarVC ()
 @property (nonatomic, strong) ModelBaseData *modelCarNum;
@@ -36,8 +37,6 @@
 @property (nonatomic, strong) UIView *viewHeaderFailure;
 @property (nonatomic, strong) AuthorityImageView *bottomView;
 @property (nonatomic, strong) ModelCar *modelDetail;
-@property (nonatomic, strong) NSMutableArray *aryCarType;
-@property (nonatomic, strong) NSMutableArray *aryCarID;
 
 @end
 
@@ -105,24 +104,13 @@
             model.isRequired = true;
             model.blocClick = ^(ModelBaseData *modelClick) {
                 [GlobalMethod endEditing];
-                ListAlertView * listNew = [ListAlertView new];
-                
-                for (PerfectSelectCell * cell in weakSelf.tableView.visibleCells) {
-                    if ([cell isKindOfClass:[PerfectSelectCell class]] && [cell.model.string isEqualToString: weakSelf.modelVehicleType.string]) {
-                        [weakSelf.tableView setContentOffset:CGPointMake(0, cell.top) animated:true];
-                        [listNew showWithPoint:CGPointMake(W(15), NAVIGATIONBAR_HEIGHT + cell.height)  width:SCREEN_WIDTH - W(30) ary:weakSelf.aryCarType];
-                        listNew.alpha = 0;
-                        [UIView animateWithDuration:0.3 animations:^{
-                            listNew.alpha = 1;
-                        }];
-                        break;
-                    }
-                }
-                listNew.blockSelected = ^(NSInteger index) {
-                    weakSelf.modelVehicleType.subString = weakSelf.aryCarType[index];
-                    weakSelf.modelVehicleType.identifier = [NSString stringWithFormat:@"%@", weakSelf.aryCarID[index]];
+                SelectCarTypeVC * selectVC = [SelectCarTypeVC new];
+                selectVC.blockSelected = ^(NSString *type, NSNumber *idNumber) {
+                    weakSelf.modelVehicleType.subString = type;
+                    weakSelf.modelVehicleType.identifier = idNumber.stringValue;
                     [weakSelf.tableView reloadData];
                 };
+                [GB_Nav pushViewController:selectVC animated:true];
             };
             return model;
         }();
@@ -214,34 +202,10 @@
     }
     return _modelUnbindDriver;
 }
-//- (CustomCharactersKeyBoardView *)charactersKeyBoardView
-//{
-//    if (_charactersKeyBoardView == nil) {
-//        _charactersKeyBoardView = [CustomCharactersKeyBoardView  new];
-//        _charactersKeyBoardView.leftBottom = XY(0, SCREEN_HEIGHT);
-//        WEAKSELF
-//        _charactersKeyBoardView.btnClickBlock = ^(NSString *str) {
-//            weakSelf.context = [weakSelf.context stringByAppendingString:str];
-//            weakSelf.myTextField.text = weakSelf.context;
-//            [weakSelf resetKeyBoardViewWithText:weakSelf.myTextField.text];
-//            [weakSelf exchangeKeyBoardWithisHide:YES];
-//        };
-//        _charactersKeyBoardView.deleteClickBlock = ^{
-//            if (weakSelf.context.length > 0) {
-//                weakSelf.context = [weakSelf.context substringToIndex:([weakSelf.context length]-1)];// 去掉最后一个","
-//                weakSelf.myTextField.text = weakSelf.context;
-//                [weakSelf resetKeyBoardViewWithText:weakSelf.myTextField.text];
-//            }
-//        };
-//    }
-//    return  _charactersKeyBoardView;
-//}
 
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //转化车辆数据
-    [self exchangeValue];
     //添加导航栏
     [self addNav];
     //table
@@ -259,24 +223,7 @@
     //configImage
     [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_COMPANY_CAR;
 }
-- (void)exchangeValue{
-    NSString * strPath = [[NSBundle mainBundle]pathForResource:@"CarType" ofType:@"json"];
-    // 将文件数据化
-    NSData *data = [[NSData alloc] initWithContentsOfFile:strPath];
-    // 对数据进行JSON格式化并返回字典形式
-    NSArray * ary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    NSMutableArray * aryLabel = [NSMutableArray new];
-    NSMutableArray * aryID = [NSMutableArray new];
-    for (NSDictionary * dic in ary) {
-        int status = [dic doubleValueForKey:@"status"];
-        if (status != 0) {
-            [aryLabel addObject:[dic stringValueForKey:@"label"]];
-            [aryID addObject:[dic numberValueForKey:@"value"]];
-        }
-    }
-    self.aryCarType = aryLabel;
-    self.aryCarID = aryID;
-}
+
 #pragma mark 添加导航栏
 - (void)addNav{
     WEAKSELF

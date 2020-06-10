@@ -210,6 +210,7 @@
 		D2B9FF20248E0D620082E8D2 /* LicenseType.json in Resources */ = {isa = PBXBuildFile; fileRef = D2B9FF1E248E0D620082E8D2 /* LicenseType.json */; };
 		D2B9FF28248F2D3E0082E8D2 /* TakeAPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF27248F2D3D0082E8D2 /* TakeAPictureView.m */; };
 		D2B9FF32248F900C0082E8D2 /* SelectCarNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF31248F900C0082E8D2 /* SelectCarNumberView.m */; };
+		D2B9FF362490B5890082E8D2 /* SelectCarTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF352490B5890082E8D2 /* SelectCarTypeVC.m */; };
 		D2BC9A871DFFA75600B0468E /* allCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A831DFFA75600B0468E /* allCities.plist */; };
 		D2BC9A881DFFA75600B0468E /* allCitiesDics.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */; };
 		D2BC9A891DFFA75600B0468E /* hotCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A851DFFA75600B0468E /* hotCities.plist */; };
@@ -765,6 +766,8 @@
 		D2B9FF27248F2D3D0082E8D2 /* TakeAPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeAPictureView.m; sourceTree = "<group>"; };
 		D2B9FF30248F900C0082E8D2 /* SelectCarNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCarNumberView.h; sourceTree = "<group>"; };
 		D2B9FF31248F900C0082E8D2 /* SelectCarNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCarNumberView.m; sourceTree = "<group>"; };
+		D2B9FF342490B5890082E8D2 /* SelectCarTypeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectCarTypeVC.h; sourceTree = "<group>"; };
+		D2B9FF352490B5890082E8D2 /* SelectCarTypeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectCarTypeVC.m; sourceTree = "<group>"; };
 		D2BC9A831DFFA75600B0468E /* allCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = allCities.plist; sourceTree = "<group>"; };
 		D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = allCitiesDics.plist; sourceTree = "<group>"; };
 		D2BC9A851DFFA75600B0468E /* hotCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotCities.plist; sourceTree = "<group>"; };
@@ -1584,6 +1587,7 @@
 		D275DB181DFFA2E800670A40 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				D2B9FF332490B5770082E8D2 /* SelectCarTypeVC */,
 				D2B9FF29248F68E70082E8D2 /* 自定义车牌键盘View */,
 				D2B9FF25248F2D3D0082E8D2 /* 拍名片 */,
 				D22B1D4D2383942000BC00F0 /* 扫描二维码页面 */,
@@ -2208,6 +2212,15 @@
 				D2B9FF31248F900C0082E8D2 /* SelectCarNumberView.m */,
 			);
 			path = "自定义车牌键盘View";
+			sourceTree = "<group>";
+		};
+		D2B9FF332490B5770082E8D2 /* SelectCarTypeVC */ = {
+			isa = PBXGroup;
+			children = (
+				D2B9FF342490B5890082E8D2 /* SelectCarTypeVC.h */,
+				D2B9FF352490B5890082E8D2 /* SelectCarTypeVC.m */,
+			);
+			path = SelectCarTypeVC;
 			sourceTree = "<group>";
 		};
 		D2BC9A7E1DFFA75600B0468E /* Resource */ = {
@@ -3146,6 +3159,7 @@
 				D22BA9D11E5EB8CA00C5B391 /* FSCalendar.m in Sources */,
 				D2C6D14322DEBBFA00A22EA6 /* BulkCargoListManageVC.m in Sources */,
 				D20375FA210717B10054F8A6 /* ModelBaseData.m in Sources */,
+				D2B9FF362490B5890082E8D2 /* SelectCarTypeVC.m in Sources */,
 				D2C55806238BE70E0050694F /* ScheduleOrderInfoVC.m in Sources */,
 				D2996A4121E6E3AA00562587 /* UpImageWithTextVC.m in Sources */,
 				D2C6D15B22DEEEF600A22EA6 /* ModelBulkCargoOrder.m in Sources */,
