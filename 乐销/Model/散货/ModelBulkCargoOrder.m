@@ -102,6 +102,7 @@ NSString *const kModelBulkCargoOrderUnloadTime = @"unloadTime";
 NSString *const kModelBulkCargoOrderKey = @"key";
 
 @interface ModelBulkCargoOrder ()
+@property (nonatomic, assign) double vehicleType;
 
 @end
 

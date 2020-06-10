@@ -239,7 +239,7 @@
     {
         self.ivDriver.rightTop = XY(SCREEN_WIDTH - W(15),[self.viewAll addLineFrame:CGRectMake(W(15), self.ivIdentityReverse.bottom + W(25), SCREEN_WIDTH - W(30), 1)]+W(25));
         
-        [self.labelDriver fitTitle:@"驾驶证" variable:0];
+        [self.labelDriver fitTitle:@"驾驶证主页" variable:0];
         self.labelDriver.leftCenterY = XY(W(15),self.ivDriver.centerY);
         [self.viewAll addLineFrame:CGRectMake(W(15), self.ivDriver.bottom + W(25), SCREEN_WIDTH - W(30), 1)];
     }
@@ -323,7 +323,7 @@
         return model;
     }(),^(){
         ModelBaseData * model = [ModelBaseData new];
-        model.string = @"驾驶证示例";
+        model.string = @"驾驶证主页示例";
         model.imageName = @"authority_example_driverlicense";
         return model;
     }(),^(){
@@ -358,7 +358,7 @@
         return;
     }
     if (!isStr([BaseImage fetchUrl:self.ivDriver.image] )) {
-        [GlobalMethod showAlert:@"请添加驾驶证"];
+        [GlobalMethod showAlert:@"请添加驾驶证主页"];
         return;
     }
 //    if (!isStr([BaseImage fetchUrl:self.ivHand.image] )) {

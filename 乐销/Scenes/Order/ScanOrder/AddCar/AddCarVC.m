@@ -175,7 +175,7 @@
         _bottomView = [AuthorityImageView new];
         [_bottomView resetViewWithAryModels:@[^(){
             ModelImage * model = [ModelImage new];
-            model.desc = @"添加行驶证正面";
+            model.desc = @"添加行驶证主页";
             model.image = [BaseImage imageWithImage:[UIImage imageNamed:@"camera_行驶证正"] url:nil];
             model.isEssential = true;
             model.imageType = ENUM_UP_IMAGE_TYPE_COMPANY_CAR;
@@ -183,7 +183,7 @@
             return model;
         }(),^(){
             ModelImage * model = [ModelImage new];
-            model.desc = @"添加行驶证反面";
+            model.desc = @"添加行驶证副页";
             model.image = [BaseImage imageWithImage:[UIImage imageNamed:@"camera_行驶证反"] url:nil];
             model.isEssential = true;
             model.imageType = ENUM_UP_IMAGE_TYPE_COMPANY_CAR;
@@ -299,12 +299,12 @@
             AuthortiyExampleVC * vc = [AuthortiyExampleVC new];
             vc.aryDatas =@[^(){
                 ModelBaseData * model = [ModelBaseData new];
-                model.string = @"行驶证正面示例";
+                model.string = @"行驶证主页示例";
                 model.imageName = @"行驶证正";
                 return model;
             }(),^(){
                 ModelBaseData * model = [ModelBaseData new];
-                model.string = @"行驶证反面示例";
+                model.string = @"行驶证副页示例";
                 model.imageName = @"行驶证反";
                 return model;
             }()].mutableCopy;
@@ -464,7 +464,7 @@
         
         [self.bottomView resetViewWithAryModels:@[^(){
             ModelImage * model = [ModelImage new];
-            model.desc = @"添加行驶证正面";
+            model.desc = @"添加行驶证主页";
             model.image = [BaseImage imageWithImage:[UIImage imageNamed:@"camera_行驶证正"] url:nil];
             model.url = modelDetail.drivingLicenseFrontUrl;
             model.isEssential = true;
@@ -474,7 +474,7 @@
             return model;
         }(),^(){
             ModelImage * model = [ModelImage new];
-            model.desc = @"添加行驶证反面";
+            model.desc = @"添加行驶证副页";
             model.isEssential = true;
             model.image = [BaseImage imageWithImage:[UIImage imageNamed:@"camera_行驶证反"] url:nil];
             model.url = modelDetail.drivingLicenseNegativeUrl;

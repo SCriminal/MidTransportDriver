@@ -1288,8 +1288,8 @@
             timestampString = "600691505.9867409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "793"
-            endingLineNumber = "793"
+            startingLineNumber = "788"
+            endingLineNumber = "788"
             landmarkName = "-resetViewWithTitle:aryImage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1305,8 +1305,8 @@
             timestampString = "600691505.986809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "818"
-            endingLineNumber = "818"
+            startingLineNumber = "813"
+            endingLineNumber = "813"
             landmarkName = "-resetViewWithTitle:aryImage:"
             landmarkType = "7">
          </BreakpointContent>

@@ -251,7 +251,7 @@
             return model;
         }(),^(){
             ModelImage * model = [ModelImage new];
-            model.desc = @"驾驶证";
+            model.desc = @"驾驶证主页";
             model.url = [response stringValueForKey:@"driverLicenseUrl"];
             model.image = [BaseImage imageWithImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT] url:[NSURL URLWithString:model.url]];
             return model;

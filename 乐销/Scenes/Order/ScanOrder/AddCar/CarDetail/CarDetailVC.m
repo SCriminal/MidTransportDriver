@@ -89,7 +89,7 @@
         
         [self.bottomView resetViewWithAryModels:@[^(){
             ModelImage * model = [ModelImage new];
-            model.desc = @"行驶证正面";
+            model.desc = @"行驶证主页";
             model.url = self.modelDetail.drivingLicenseFrontUrl;
             model.image = [BaseImage imageWithImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT] url:[NSURL URLWithString:model.url]];
             model.isEssential = true;
@@ -98,7 +98,7 @@
             return model;
         }(),^(){
             ModelImage * model = [ModelImage new];
-            model.desc = @"行驶证反面";
+            model.desc = @"行驶证副页";
             model.isEssential = true;
             model.url = self.modelDetail.drivingLicenseNegativeUrl;
             model.image = [BaseImage imageWithImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT] url:[NSURL URLWithString:model.url]];

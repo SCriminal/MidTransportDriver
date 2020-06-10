@@ -31,7 +31,6 @@
 @property (nonatomic, assign) double actualLoad;
 @property (nonatomic, strong) NSString *paymentFinishTime;
 @property (nonatomic, assign) double realityPrice;
-@property (nonatomic, assign) double vehicleType;
 @property (nonatomic, strong) NSString *taxEntName;
 @property (nonatomic, strong) NSString *taxEntAddr;
 @property (nonatomic, assign) double realityFeeRate;

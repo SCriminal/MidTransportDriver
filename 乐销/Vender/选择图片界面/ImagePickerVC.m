@@ -278,11 +278,11 @@
 {
     if (indexPath.row == 0)
     {
-        if (self.cameraType != ENUM_CAMERA_DEFAULT) {
-            [self.view addSubview:self.takePicView];
-            [self.takePicView startRunning];
-            return;
-        }
+//        if (self.cameraType != ENUM_CAMERA_DEFAULT) {
+//            [self.view addSubview:self.takePicView];
+//            [self.takePicView startRunning];
+//            return;
+//        }
         if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
         {
             UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
