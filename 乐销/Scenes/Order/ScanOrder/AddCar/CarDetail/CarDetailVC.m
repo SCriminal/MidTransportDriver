@@ -32,7 +32,7 @@
 }
 - (BaseNavView *)nav{
     if (!_nav) {
-        _nav = [BaseNavView initNavBackTitle:@"车辆详情" rightView:nil];
+        _nav = [BaseNavView initNavBackTitle:@"车辆认证" rightView:nil];
     }
     return _nav;
 }

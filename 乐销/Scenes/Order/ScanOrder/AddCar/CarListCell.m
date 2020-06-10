@@ -94,10 +94,10 @@
     [self.carNumber fitTitle:UnPackStr(model.vehicleNumber) variable:W(260)];
     self.carNumber.leftTop = XY(W(15),W(20));
     
-    [self.carOwner fitTitle:[NSString stringWithFormat:@"车辆拥有人：%@",UnPackStr(model.vehicleOwner)] variable:SCREEN_WIDTH - W(30)];
+    [self.carOwner fitTitle:[NSString stringWithFormat:@"车拥有人：%@",UnPackStr(model.vehicleOwner)] variable:SCREEN_WIDTH - W(30)];
     self.carOwner.leftTop = XY(W(15),self.carNumber.bottom+W(20));
     
-    [self.weight fitTitle:[NSString stringWithFormat:@"核定载质量：%@",NSNumber.dou(model.vehicleLoad).stringValue] variable:SCREEN_WIDTH - W(30)];
+    [self.weight fitTitle:[NSString stringWithFormat:@"核定载质量：%@吨",NSNumber.dou(model.vehicleLoad).stringValue] variable:SCREEN_WIDTH - W(30)];
     self.weight.leftTop = XY(W(15),self.carOwner.bottom+W(15));
     
     [self.status fitTitle:@"当前状态：" variable:SCREEN_WIDTH - W(30)];

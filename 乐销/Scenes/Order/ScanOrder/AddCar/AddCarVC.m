@@ -86,7 +86,7 @@
             model.enumType = ENUM_PERFECT_CELL_TEXT;
             model.imageName = @"";
             model.string = @"车拥有人";
-            model.placeHolderString = @"输入车辆拥有人";
+            model.placeHolderString = @"输入车拥有人";
             model.isRequired = true;
             return model;
         }();
@@ -394,7 +394,7 @@
                      vehiclePhotoUrl:nil
                 managementLicenseUrl:nil
                             delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        [GlobalMethod showAlert:@"添加成功"];
+        [GlobalMethod showAlert:@"您的车辆信息已经提交成功"];
         self.requestState = 1;
         [GB_Nav popViewControllerAnimated:true];
         
@@ -443,7 +443,7 @@
                       vehicleInsuranceUrl:nil            vehicleTripartiteInsuranceUrl:nil
                       trailerInsuranceUrl:nil            trailerTripartiteInsuranceUrl:nil                 trailerGoodsInsuranceUrl:nil                          vehiclePhotoUrl:nil                     managementLicenseUrl:nil                                 delegate:self success:^(NSDictionary * _Nonnull response, id _Nonnull mark) {
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_CAR_REFERSH object:nil];
-        [GlobalMethod showAlert:@"提交成功"];
+        [GlobalMethod showAlert:@"您的车辆信息已经提交成功"];
         self.requestState = 1;
         [GB_Nav popViewControllerAnimated:true];
         
@@ -455,7 +455,7 @@
     if (!self.carID) {
         return;
     }
-    [RequestApi requestCarDetailWithId:self.carID entId:self.entID delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestPersonalCarWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
         self.modelDetail = modelDetail;
         if (self.modelDetail.qualificationState == 10) {

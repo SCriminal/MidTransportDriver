@@ -81,10 +81,10 @@ NSString *const kModelCarDrivingNumber = @"drivingNumber";
             return @"审核中";
             break;
         case 3:
-            return @"审核成功";
+            return @"已认证";
             break;
         case 10:
-            return @"审核拒绝";
+            return @"认证失败";
             break;
         default:
             break;

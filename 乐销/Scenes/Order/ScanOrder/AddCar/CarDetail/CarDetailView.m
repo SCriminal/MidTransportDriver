@@ -120,7 +120,7 @@
             return model;
         }(),^(){
             ModelBtn * model = [ModelBtn new];
-            model.title = @"车所有人";
+            model.title = @"车拥有人";
             model.subTitle = modelDetail.vehicleOwner;
             
             return model;
@@ -133,15 +133,17 @@
         }(),^(){
             ModelBtn * model = [ModelBtn new];
             model.title = @"牌照类型";
-            model.subTitle = [AddCarVC exchangeVehicleType:strDotF(modelDetail.licenceType)];
+            model.subTitle = [AddCarVC exchangeLicenseType:strDotF(modelDetail.licenceType)];
             
             return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"车长";
-            model.subTitle =modelDetail.vehicleLength?[AddCarVC exchangeVehicleLength:strDotF(modelDetail.vehicleLength)]:@"暂无";
-            return model;
-        }(),^(){
+        }(),
+//                                        ^(){
+//            ModelBtn * model = [ModelBtn new];
+//            model.title = @"车长";
+//            model.subTitle =modelDetail.vehicleLength?[AddCarVC exchangeVehicleLength:strDotF(modelDetail.vehicleLength)]:@"暂无";
+//            return model;
+//        }(),
+                                        ^(){
             ModelBtn * model = [ModelBtn new];
             model.title = @"档案编号";
             model.subTitle = modelDetail.drivingNumber;
@@ -161,19 +163,12 @@
         }(),^(){
             ModelBtn * model = [ModelBtn new];
             model.title = @"车辆长度";
-            model.subTitle = modelDetail.length?[NSNumber.dou(modelDetail.length).stringValue stringByAppendingString:@"mm"]:@"暂无";
+            NSString * strLength = modelDetail.length?[NSNumber.dou(modelDetail.length).stringValue stringByAppendingString:@"mm "]:@"";
+            NSString * strWidth = modelDetail.weight?[NSNumber.dou(modelDetail.weight).stringValue stringByAppendingString:@"mm "]:@"";
+            NSString * strHeight = modelDetail.height?[NSNumber.dou(modelDetail.height).stringValue stringByAppendingString:@"mm "]:@"";
             
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"车辆宽度";
-            model.subTitle = modelDetail.weight?[NSNumber.dou(modelDetail.weight).stringValue stringByAppendingString:@"mm"]:@"暂无";
-            
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"车辆高度";
-            model.subTitle = modelDetail.height?[NSNumber.dou(modelDetail.height).stringValue stringByAppendingString:@"mm"]:@"暂无";
+            NSString * strAll = [NSString stringWithFormat:@"%@%@%@",strLength,strWidth,strHeight];
+            model.subTitle = (modelDetail.length==0&&modelDetail.weight==0&&modelDetail.height==0)?@"暂无":strAll;
             
             return model;
         }(),^(){
@@ -313,7 +308,7 @@
         left = iv.right +W(9);
         bottom = iv.bottom + W(15);
         if ((i+1)%4 ==0) {
-            left = W(20);
+            left = W(40);
             top = iv.bottom + W(12);
         }
         i ++;

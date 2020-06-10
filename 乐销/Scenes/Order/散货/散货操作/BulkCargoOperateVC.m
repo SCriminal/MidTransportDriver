@@ -266,15 +266,15 @@
 #endif
         [RequestApi requestBulkCargoDetailWithId:strDotF(self.modelOrder.iDProperty) delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             self.modelOrder = [ModelBulkCargoOrder modelObjectWithDictionary:response];
+            [self reconfigView];
                         if (self.modelOrder.operateType == ENUM_BULKCARGO_ORDER_OPERATE_COMPLETE||self.modelOrder.operateType == ENUM_BULKCARGO_ORDER_OPERATE_ARRIVE) {
-                            [GB_Nav popLastAndPushVC:^(){
-                                BulkCargoOrderDetailVC  * detailVC = [BulkCargoOrderDetailVC new];
-                                detailVC.modelOrder =self.modelOrder;
-                                return detailVC;
-                            }()];
+//                            [GB_Nav popLastAndPushVC:^(){
+//                                BulkCargoOrderDetailVC  * detailVC = [BulkCargoOrderDetailVC new];
+//                                detailVC.modelOrder =self.modelOrder;
+//                                return detailVC;
+//                            }()];
             
                         }else{
-                            [self reconfigView];
                             WEAKSELF
                             [[LocationRecordInstance sharedInstance]upLocation:^{
                                 [weakSelf requestDetail];
