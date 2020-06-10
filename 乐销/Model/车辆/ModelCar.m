@@ -54,6 +54,7 @@ NSString *const kModelCarUseCharacter = @"useCharacter";
 NSString *const kModelCarDrivingAgency = @"drivingAgency";
 NSString *const kModelCarModel = @"model";
 NSString *const kModelCarDrivingNumber = @"drivingNumber";
+NSString *const kModelCarDriving2NegativeUrl = @"driving2NegativeUrl";
 
 @interface ModelCar ()
 
@@ -169,6 +170,7 @@ NSString *const kModelCarDrivingNumber = @"drivingNumber";
         self.useCharacter = [dict stringValueForKey:kModelCarUseCharacter];
         self.drivingAgency = [dict stringValueForKey:kModelCarDrivingAgency];
         self.model = [dict stringValueForKey:kModelCarModel];
+        self.driving2NegativeUrl = [dict stringValueForKey:kModelCarDriving2NegativeUrl];
 
     }
     
@@ -224,6 +226,7 @@ NSString *const kModelCarDrivingNumber = @"drivingNumber";
     [mutableDict setValue:self.useCharacter forKey:kModelCarUseCharacter];
     [mutableDict setValue:self.drivingAgency forKey:kModelCarDrivingAgency];
     [mutableDict setValue:self.model forKey:kModelCarModel];
+    [mutableDict setValue:self.driving2NegativeUrl forKey:kModelCarDriving2NegativeUrl];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

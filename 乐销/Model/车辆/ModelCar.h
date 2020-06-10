@@ -57,6 +57,7 @@
 @property (nonatomic, strong) NSString *useCharacter;
 @property (nonatomic, strong) NSString *drivingAgency;
 @property (nonatomic, strong) NSString *model;
+@property (nonatomic, strong) NSString *driving2NegativeUrl;
 
 //logical
 @property (nonatomic, readonly) NSString *authStatusShow;
