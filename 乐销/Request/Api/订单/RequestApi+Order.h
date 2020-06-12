@@ -194,6 +194,7 @@ trailerTripartiteInsuranceUrl:(NSString *)trailerTripartiteInsuranceUrl
    trailerGoodsInsuranceUrl:(NSString *)trailerGoodsInsuranceUrl
             vehiclePhotoUrl:(NSString *)vehiclePhotoUrl
        managementLicenseUrl:(NSString *)managementLicenseUrl
+driving2NegativeUrl:(NSString *)driving2NegativeUrl
                    delegate:(id <RequestDelegate>)delegate
                     success:(void (^)(NSDictionary * response, id mark))success
                     failure:(void (^)(NSString * errorStr, id mark))failure;
@@ -221,6 +222,7 @@ trailerTripartiteInsuranceUrl:(NSString *)trailerTripartiteInsuranceUrl
    trailerGoodsInsuranceUrl:(NSString *)trailerGoodsInsuranceUrl
             vehiclePhotoUrl:(NSString *)vehiclePhotoUrl
        managementLicenseUrl:(NSString *)managementLicenseUrl
+    driving2NegativeUrl:(NSString *)driving2NegativeUrl
                    delegate:(id <RequestDelegate>)delegate
                     success:(void (^)(NSDictionary * response, id mark))success
 failure:(void (^)(NSString * errorStr, id mark))failure;

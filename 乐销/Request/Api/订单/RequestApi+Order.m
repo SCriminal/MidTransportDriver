@@ -409,6 +409,7 @@ trailerTripartiteInsuranceUrl:(NSString *)trailerTripartiteInsuranceUrl
    trailerGoodsInsuranceUrl:(NSString *)trailerGoodsInsuranceUrl
             vehiclePhotoUrl:(NSString *)vehiclePhotoUrl
        managementLicenseUrl:(NSString *)managementLicenseUrl
+        driving2NegativeUrl:(NSString *)driving2NegativeUrl
                    delegate:(id <RequestDelegate>)delegate
                     success:(void (^)(NSDictionary * response, id mark))success
                     failure:(void (^)(NSString * errorStr, id mark))failure{
@@ -433,6 +434,7 @@ trailerTripartiteInsuranceUrl:(NSString *)trailerTripartiteInsuranceUrl
                           @"trailerGoodsInsuranceUrl":RequestStrKey(trailerGoodsInsuranceUrl),
                           @"vehiclePhotoUrl":RequestStrKey(vehiclePhotoUrl),
                           @"managementLicenseUrl":RequestStrKey(managementLicenseUrl),
+                          @"driving2NegativeUrl":RequestStrKey(driving2NegativeUrl)
                           };
     [self postUrl:@"/zhongcheyun/vehicle/1_0_100/driver/submit" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -460,6 +462,7 @@ trailerTripartiteInsuranceUrl:(NSString *)trailerTripartiteInsuranceUrl
    trailerGoodsInsuranceUrl:(NSString *)trailerGoodsInsuranceUrl
             vehiclePhotoUrl:(NSString *)vehiclePhotoUrl
        managementLicenseUrl:(NSString *)managementLicenseUrl
+driving2NegativeUrl:(NSString *)driving2NegativeUrl
                    delegate:(id <RequestDelegate>)delegate
                     success:(void (^)(NSDictionary * response, id mark))success
                     failure:(void (^)(NSString * errorStr, id mark))failure{
@@ -484,6 +487,7 @@ trailerTripartiteInsuranceUrl:(NSString *)trailerTripartiteInsuranceUrl
                           @"trailerGoodsInsuranceUrl":RequestStrKey(trailerGoodsInsuranceUrl),
                           @"vehiclePhotoUrl":RequestStrKey(vehiclePhotoUrl),
                           @"managementLicenseUrl":RequestStrKey(managementLicenseUrl),
+                          @"driving2NegativeUrl":RequestStrKey(driving2NegativeUrl)
                           };
     [self patchUrl:@"/zhongcheyun/vehicle/1_0_100/driver/submit/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "车辆.png",
+      "filename" : "检验页.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "车辆@2x.png",
+      "filename" : "检验页@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "车辆@3x.png",
+      "filename" : "检验页@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

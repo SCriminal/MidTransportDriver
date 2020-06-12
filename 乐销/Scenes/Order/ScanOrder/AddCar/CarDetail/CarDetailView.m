@@ -286,17 +286,18 @@
 
 #pragma mark 刷新view
 - (void)resetViewWithAryModels:(NSArray *)aryImages{
-    self.aryImages = aryImages;
     [self removeAllSubViews];//移除线
     CGFloat left= W(40);
     CGFloat top = W(20);
     CGFloat bottom = 0;
     //重置视图坐标
     int i= 0;
+    NSMutableArray * aryFilterImage = [NSMutableArray array];
     for (ModelImage *model in aryImages) {
         if (!isStr(model.url)) {
             continue;
         }
+        [aryFilterImage addObject:model];
         UIImageView * iv = [[UIImageView alloc]initWithFrame:CGRectMake(left, top, W(67), W(50))];
         [iv sd_setImageWithURL:[NSURL URLWithString:model.url] placeholderImage:model.image];
         [GlobalMethod setRoundView:iv color:[UIColor clearColor] numRound:5 width:0];
@@ -313,7 +314,8 @@
         }
         i ++;
     }
-    
+    self.aryImages = aryFilterImage;
+
     self.height = bottom;
 }
 

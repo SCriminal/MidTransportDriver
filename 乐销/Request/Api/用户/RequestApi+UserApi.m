@@ -82,7 +82,7 @@
 +(void)requestSubmitAuthorityInfoWithDriverlicenseurl:(NSString *)driverLicenseUrl
                                        idCardFrontUrl:(NSString *)idCardFrontUrl
                                         idCardBackUrl:(NSString *)idCardBackUrl
-                                      idCardHandelUrl:(NSString *)idCardHandelUrl
+                                      idCardHandelUrl:( NSString *_Nullable)idCardHandelUrl
                                              realName:(NSString *)realName
                                              idNumber:(NSString *)idNumber
                                              delegate:(id <RequestDelegate>)delegate

@@ -2823,7 +2823,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "600A6B35-91F4-4B4B-922D-3B45295372CC"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/General/&#x7248;&#x672c;&#x5347;&#x7ea7;&#x9875;&#x9762;/VersionUpView.m"
@@ -3350,8 +3350,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "-requestAdd"
             landmarkType = "7">
          </BreakpointContent>
@@ -3366,8 +3366,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
+            startingLineNumber = "392"
+            endingLineNumber = "392"
             landmarkName = "-requestEdit"
             landmarkType = "7">
          </BreakpointContent>
@@ -3382,8 +3382,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "-addNav"
             landmarkType = "7">
          </BreakpointContent>
@@ -3398,9 +3398,9 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/&#x8ba2;&#x5355;/RequestApi+Order.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "437"
-            endingLineNumber = "437"
-            landmarkName = "+requestAddCarWithVin:engineNumber:vehicleNumber:licenceType:trailerNumber:vehicleLicense:vehicleLength:vehicleType:vehicleLoad:axle:vehicleOwner:drivingLicenseFrontUrl:drivingLicenseNegativeUrl:vehicleInsuranceUrl:vehicleTripartiteInsuranceUrl:trailerInsuranceUrl:trailerTripartiteInsuranceUrl:trailerGoodsInsuranceUrl:vehiclePhotoUrl:managementLicenseUrl:delegate:success:failure:"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
+            landmarkName = "+requestAddCarWithVin:engineNumber:vehicleNumber:licenceType:trailerNumber:vehicleLicense:vehicleLength:vehicleType:vehicleLoad:axle:vehicleOwner:drivingLicenseFrontUrl:drivingLicenseNegativeUrl:vehicleInsuranceUrl:vehicleTripartiteInsuranceUrl:trailerInsuranceUrl:trailerTripartiteInsuranceUrl:trailerGoodsInsuranceUrl:vehiclePhotoUrl:managementLicenseUrl:driving2NegativeUrl:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3430,8 +3430,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "-requestAdd"
             landmarkType = "7">
          </BreakpointContent>
@@ -3446,8 +3446,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x53f8;&#x673a;&#x8ba4;&#x8bc1;/PerfectAuthorityInfoVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "352"
-            endingLineNumber = "352"
+            startingLineNumber = "412"
+            endingLineNumber = "412"
             landmarkName = "-requestSubmit"
             landmarkType = "7">
          </BreakpointContent>
@@ -3462,8 +3462,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x53f8;&#x673a;&#x8ba4;&#x8bc1;/PerfectAuthorityInfoVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
+            startingLineNumber = "414"
+            endingLineNumber = "414"
             landmarkName = "-requestSubmit"
             landmarkType = "7">
             <Locations>
@@ -3638,8 +3638,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-modelCarNum"
             landmarkType = "7">
          </BreakpointContent>

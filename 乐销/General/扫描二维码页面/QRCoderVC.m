@@ -501,12 +501,12 @@ static const NSInteger QRBTNTAG     = 3;
         [GB_Nav popViewControllerAnimated:true];
         return;
     }
-    if (![stringValue hasPrefix:PREFIX_SCHEDULE]) {
+    if (![stringValue containsString:PREFIX_SCHEDULE]) {
         [GlobalMethod showBigAlert:@"无效二维码"];
         [GB_Nav popViewControllerAnimated:true];
         return;
     }
-    stringValue = [stringValue substringFromIndex:PREFIX_SCHEDULE.length];
+    stringValue = [stringValue componentsSeparatedByString:PREFIX_SCHEDULE].lastObject;
     [RequestApi requestScheduleDetailWithNumber:stringValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         int code = [response intValueForKey:RESPONSE_CODE];
         if (code == RESPONSE_CODE_SCHEDULE) {
