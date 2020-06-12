@@ -3561,6 +3561,7 @@
 					"$(PROJECT_DIR)/乐销/SDKFile/SDK1.6.2",
 					"$(PROJECT_DIR)/乐销/General/语音录制与播放/LDVoiceRecord/arm/lib",
 				);
+				MARKETING_VERSION = 1.63;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lsqlite3",
@@ -3613,6 +3614,7 @@
 					"$(PROJECT_DIR)/乐销/SDKFile/SDK1.6.2",
 					"$(PROJECT_DIR)/乐销/General/语音录制与播放/LDVoiceRecord/arm/lib",
 				);
+				MARKETING_VERSION = 1.63;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lsqlite3",
