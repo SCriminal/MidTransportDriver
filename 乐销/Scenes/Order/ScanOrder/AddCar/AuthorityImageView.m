@@ -173,6 +173,9 @@
     } upSuccess:^{
         [self configBaseImage:image];
         [vc.loadingView hideLoading];
+        if (self.model.blockUpSuccess) {
+            self.model.blockUpSuccess(self.model);
+        }
     } fail:^{
         [vc.loadingView hideLoading];
     }];
@@ -181,6 +184,7 @@
 
 - (void)configBaseImage:(BaseImage *)image{
     self.model.image = image;
+    self.model.url = image.imageURL;
     self.ivImage.image = image;
     self.ivBG.hidden = true;
 //    self.labelTitle.hidden = true;

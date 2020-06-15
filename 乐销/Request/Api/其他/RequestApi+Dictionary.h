@@ -84,10 +84,10 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
  */
 +(void)requestEditBankCardWithAccountnumber:(NSString *)accountNumber
                                    bankName:(NSString *)bankName
-                                         id:(double)identity
-                                   delegate:(id <RequestDelegate>)delegate
-                                    success:(void (^)(NSDictionary * response, id mark))success
-                                    failure:(void (^)(NSString * errorStr, id mark))failure;
+id:(double)identity
+delegate:(id <RequestDelegate>)delegate
+success:(void (^)(NSDictionary * response, id mark))success
+failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
  获取当前用户银行账户信息
  */
@@ -100,12 +100,13 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
  */
 +(void)requestOCRIdentityWithurl:(NSString *)url
                         delegate:(id <RequestDelegate>)delegate
-                           success:(void (^)(NSDictionary * response, id mark))success
+                         success:(void (^)(NSDictionary * response, id mark))success
                          failure:(void (^)(NSString * errorStr, id mark))failure;
 
 +(void)requestOCRDriverWithurl:(NSString *)url
-                        delegate:(id <RequestDelegate>)delegate
-                           success:(void (^)(NSDictionary * response, id mark))success
+                          side:(NSString *)side
+                      delegate:(id <RequestDelegate>)delegate
+                       success:(void (^)(NSDictionary * response, id mark))success
                        failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 

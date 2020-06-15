@@ -141,6 +141,7 @@
 		D2821CC1218AD9B90057688B /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = D2821CB8218AD9B80057688B /* point.png */; };
 		D2821CC2218AD9B90057688B /* point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2821CB9218AD9B80057688B /* point@2x.png */; };
 		D2821CC3218AD9B90057688B /* point@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2821CBA218AD9B80057688B /* point@3x.png */; };
+		D284B2CB24936B4100E2605A /* ModelOCR.m in Sources */ = {isa = PBXBuildFile; fileRef = D284B2C924936B4100E2605A /* ModelOCR.m */; };
 		D285E2961E6D472F00DE9A6D /* NSDateFormatter+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D285E2951E6D472F00DE9A6D /* NSDateFormatter+Category.m */; };
 		D285E2991E6D49E100DE9A6D /* NSDate+CategorySld.m in Sources */ = {isa = PBXBuildFile; fileRef = D285E2981E6D49E100DE9A6D /* NSDate+CategorySld.m */; };
 		D28642EB1E484A350041B64C /* UITapGestureRecognizer+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = D28642EA1E484A350041B64C /* UITapGestureRecognizer+Base.m */; };
@@ -626,6 +627,8 @@
 		D2821CB9218AD9B80057688B /* point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "point@2x.png"; sourceTree = "<group>"; };
 		D2821CBA218AD9B80057688B /* point@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "point@3x.png"; sourceTree = "<group>"; };
 		D2821CBB218AD9B80057688B /* ORChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORChartView.h; sourceTree = "<group>"; };
+		D284B2C924936B4100E2605A /* ModelOCR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelOCR.m; sourceTree = "<group>"; };
+		D284B2CA24936B4100E2605A /* ModelOCR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelOCR.h; sourceTree = "<group>"; };
 		D285E28C1E6CF65300DE9A6D /* ModelBaseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBaseDelegate.h; sourceTree = "<group>"; };
 		D285E2941E6D472F00DE9A6D /* NSDateFormatter+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+Category.h"; sourceTree = "<group>"; };
 		D285E2951E6D472F00DE9A6D /* NSDateFormatter+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+Category.m"; sourceTree = "<group>"; };
@@ -1555,6 +1558,7 @@
 			isa = PBXGroup;
 			children = (
 				D293A3911E00F340005B772A /* DataModels.h */,
+				D284B2C824936B4100E2605A /* OCR */,
 				D2FC33A1247F5A56000DE338 /* 车辆 */,
 				D2D871042338C8D700F79173 /* 银行卡 */,
 				D2C6D15822DEEEF600A22EA6 /* 散货 */,
@@ -1795,6 +1799,15 @@
 				D239D112218822D6009D7D45 /* DriverDetail */,
 			);
 			path = Mine;
+			sourceTree = "<group>";
+		};
+		D284B2C824936B4100E2605A /* OCR */ = {
+			isa = PBXGroup;
+			children = (
+				D284B2C924936B4100E2605A /* ModelOCR.m */,
+				D284B2CA24936B4100E2605A /* ModelOCR.h */,
+			);
+			path = OCR;
 			sourceTree = "<group>";
 		};
 		D28642E81E484A180041B64C /* BaseTapgesture */ = {
@@ -3204,6 +3217,7 @@
 				D275DB381DFFA43B00670A40 /* NSData+transformData.m in Sources */,
 				D2A076E71E10EBC700CDCA0A /* DatePicker.m in Sources */,
 				D2BC9A8F1DFFA7C400B0468E /* CustomTabBar.m in Sources */,
+				D284B2CB24936B4100E2605A /* ModelOCR.m in Sources */,
 				D2ACCC2221DC8E4600F39E28 /* ModelApns.m in Sources */,
 				D2C6D15122DEC99300A22EA6 /* BulkCargoOperateVC.m in Sources */,
 				D279C0141E29D77800D0FF94 /* CustomPicker.m in Sources */,
@@ -3536,6 +3550,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = RMT7KDQ67T;
 				ENABLE_BITCODE = NO;
@@ -3561,7 +3576,7 @@
 					"$(PROJECT_DIR)/乐销/SDKFile/SDK1.6.2",
 					"$(PROJECT_DIR)/乐销/General/语音录制与播放/LDVoiceRecord/arm/lib",
 				);
-				MARKETING_VERSION = 1.64;
+				MARKETING_VERSION = 1.63;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lsqlite3",
@@ -3590,6 +3605,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = RMT7KDQ67T;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3614,7 +3630,7 @@
 					"$(PROJECT_DIR)/乐销/SDKFile/SDK1.6.2",
 					"$(PROJECT_DIR)/乐销/General/语音录制与播放/LDVoiceRecord/arm/lib",
 				);
-				MARKETING_VERSION = 1.64;
+				MARKETING_VERSION = 1.63;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lsqlite3",

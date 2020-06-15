@@ -14,8 +14,8 @@
 @property (nonatomic, assign) double entID;
 
 #pragma mark exchange type
-+ (NSString *)exchangeVehicleLength:(NSString *)identity;
 + (NSString *)exchangeVehicleType:(NSString *)identity;
 + (NSString *)exchangeLicenseType:(NSString *)identity;
 + (NSString *)exchangeEnergeyType:(NSString *)identity;
++ (NSNumber *)exchangeEnergeyTypeWithName:(NSString *)name;
 @end

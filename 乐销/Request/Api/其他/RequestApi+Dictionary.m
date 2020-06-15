@@ -77,8 +77,8 @@
  银行列表
  */
 +(void)requestBankListWithDelegate:(id <RequestDelegate>)delegate
-                              success:(void (^)(NSDictionary * response, id mark))success
-                              failure:(void (^)(NSString * errorStr, id mark))failure{
+                           success:(void (^)(NSDictionary * response, id mark))success
+                           failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
     [self getUrl:@"/zhongcheyun/dict/bank/1_0_35/label/list" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -97,13 +97,13 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
  新增
  */
 +(void)requestAddBankCardWithAccountNumber:(NSString *)accountNumber
-                                bankName:(NSString *)bankName
-                                delegate:(id <RequestDelegate>)delegate
-                                 success:(void (^)(NSDictionary * response, id mark))success
-                                 failure:(void (^)(NSString * errorStr, id mark))failure{
+                                  bankName:(NSString *)bankName
+                                  delegate:(id <RequestDelegate>)delegate
+                                   success:(void (^)(NSDictionary * response, id mark))success
+                                   failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{
-                          @"accountNumber":RequestStrKey(accountNumber),
-                          @"bankName":RequestStrKey(bankName)};
+        @"accountNumber":RequestStrKey(accountNumber),
+        @"bankName":RequestStrKey(bankName)};
     [self postUrl:@"/zhongcheyun/bankaccount/user/1_0_25" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
@@ -111,14 +111,14 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
  */
 +(void)requestEditBankCardWithAccountnumber:(NSString *)accountNumber
                                    bankName:(NSString *)bankName
-                                         id:(double)identity
-                                   delegate:(id <RequestDelegate>)delegate
-                                    success:(void (^)(NSDictionary * response, id mark))success
-                                    failure:(void (^)(NSString * errorStr, id mark))failure{
+id:(double)identity
+delegate:(id <RequestDelegate>)delegate
+success:(void (^)(NSDictionary * response, id mark))success
+failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"accountNumber":RequestStrKey(accountNumber),
                           @"bankName":RequestStrKey(bankName),
                           @"id":NSNumber.dou(identity),
-                          };
+    };
     [self patchUrl:@"/zhongcheyun/bankaccount/user/1_0_25/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
@@ -135,20 +135,22 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
  */
 +(void)requestOCRIdentityWithurl:(NSString *)url
                         delegate:(id <RequestDelegate>)delegate
-                           success:(void (^)(NSDictionary * response, id mark))success
-                           failure:(void (^)(NSString * errorStr, id mark))failure{
+                         success:(void (^)(NSDictionary * response, id mark))success
+                         failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"url":UnPackStr(url),
                           @"side":@"face"
     };
     [self getUrl:@"/zhongcheyun/file/ocr/id/file" delegate:delegate parameters:dic success:success failure:failure];
 }
 +(void)requestOCRDriverWithurl:(NSString *)url
-                        delegate:(id <RequestDelegate>)delegate
-                           success:(void (^)(NSDictionary * response, id mark))success
-                           failure:(void (^)(NSString * errorStr, id mark))failure{
+                          side:(NSString *)side
+                      delegate:(id <RequestDelegate>)delegate
+                       success:(void (^)(NSDictionary * response, id mark))success
+                       failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"url":UnPackStr(url),
-                          @"side":@"face"
+                          @"side":UnPackStr(side)
     };
     [self getUrl:@"/zhongcheyun/file/ocr/driving/file" delegate:delegate parameters:dic success:success failure:failure];
 }
+
 @end

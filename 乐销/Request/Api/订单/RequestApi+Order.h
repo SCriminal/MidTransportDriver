@@ -172,60 +172,47 @@ typedef NS_ENUM(NSUInteger, ENUM_ORDER_OPERATE_TYPE) {
                               success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
- 新增车辆
- */
+提交我的车辆
+*/
 +(void)requestAddCarWithVin:(NSString *)vin
-               engineNumber:(NSString *)engineNumber
-              vehicleNumber:(NSString *)vehicleNumber
+                engineNumber:(NSString *)engineNumber
+                vehicleNumber:(NSString *)vehicleNumber
                 licenceType:(double)licenceType
-              trailerNumber:(NSString *)trailerNumber
-             vehicleLicense:(NSString *)vehicleLicense
-              vehicleLength:(double)vehicleLength
+                trailerNumber:(NSString *)trailerNumber
+                vehicleLicense:(NSString *)vehicleLicense
+                vehicleLength:(double)vehicleLength
                 vehicleType:(double)vehicleType
                 vehicleLoad:(double)vehicleLoad
-                       axle:(double)axle
-               vehicleOwner:(NSString *)vehicleOwner
-     drivingLicenseFrontUrl:(NSString *)drivingLicenseFrontUrl
-  drivingLicenseNegativeUrl:(NSString *)drivingLicenseNegativeUrl
-        vehicleInsuranceUrl:(NSString *)vehicleInsuranceUrl
-vehicleTripartiteInsuranceUrl:(NSString *)vehicleTripartiteInsuranceUrl
-        trailerInsuranceUrl:(NSString *)trailerInsuranceUrl
-trailerTripartiteInsuranceUrl:(NSString *)trailerTripartiteInsuranceUrl
-   trailerGoodsInsuranceUrl:(NSString *)trailerGoodsInsuranceUrl
-            vehiclePhotoUrl:(NSString *)vehiclePhotoUrl
-       managementLicenseUrl:(NSString *)managementLicenseUrl
-driving2NegativeUrl:(NSString *)driving2NegativeUrl
-                   delegate:(id <RequestDelegate>)delegate
-                    success:(void (^)(NSDictionary * response, id mark))success
+                axle:(double)axle
+                vehicleOwner:(NSString *)vehicleOwner
+                drivingLicenseFrontUrl:(NSString *)drivingLicenseFrontUrl
+                drivingLicenseNegativeUrl:(NSString *)drivingLicenseNegativeUrl
+                vehicleInsuranceUrl:(NSString *)vehicleInsuranceUrl
+                vehicleTripartiteInsuranceUrl:(NSString *)vehicleTripartiteInsuranceUrl
+                trailerInsuranceUrl:(NSString *)trailerInsuranceUrl
+                trailerTripartiteInsuranceUrl:(NSString *)trailerTripartiteInsuranceUrl
+                trailerGoodsInsuranceUrl:(NSString *)trailerGoodsInsuranceUrl
+                vehiclePhotoUrl:(NSString *)vehiclePhotoUrl
+                managementLicenseUrl:(NSString *)managementLicenseUrl
+                length:(double)length
+                weight:(double)weight
+                height:(double)height
+                grossMass:(double)grossMass
+                drivingNumber:(NSString *)drivingNumber
+                model:(NSString *)model
+                useCharacter:(NSString *)useCharacter
+                energyType:(double)energyType
+                roadTransportNumber:(NSString *)roadTransportNumber
+                drivingAgency:(NSString *)drivingAgency
+                drivingRegisterDate:(double)drivingRegisterDate
+                drivingIssueDate:(double)drivingIssueDate
+                drivingEndDate:(double)drivingEndDate
+                driving2NegativeUrl:(NSString *)driving2NegativeUrl
+                   identity:(double)identity
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
                     failure:(void (^)(NSString * errorStr, id mark))failure;
-/**
- resubmit车辆
- */
-+(void)requestResubmitCarWithVin:(NSString *)vin
-               engineNumber:(NSString *)engineNumber
-              vehicleNumber:(NSString *)vehicleNumber
-                licenceType:(double)licenceType
-              trailerNumber:(NSString *)trailerNumber
-             vehicleLicense:(NSString *)vehicleLicense
-              vehicleLength:(double)vehicleLength
-                vehicleType:(double)vehicleType
-                vehicleLoad:(double)vehicleLoad
-                       axle:(double)axle
-                        id:(double)identity
-               vehicleOwner:(NSString *)vehicleOwner
-     drivingLicenseFrontUrl:(NSString *)drivingLicenseFrontUrl
-  drivingLicenseNegativeUrl:(NSString *)drivingLicenseNegativeUrl
-        vehicleInsuranceUrl:(NSString *)vehicleInsuranceUrl
-vehicleTripartiteInsuranceUrl:(NSString *)vehicleTripartiteInsuranceUrl
-        trailerInsuranceUrl:(NSString *)trailerInsuranceUrl
-trailerTripartiteInsuranceUrl:(NSString *)trailerTripartiteInsuranceUrl
-   trailerGoodsInsuranceUrl:(NSString *)trailerGoodsInsuranceUrl
-            vehiclePhotoUrl:(NSString *)vehiclePhotoUrl
-       managementLicenseUrl:(NSString *)managementLicenseUrl
-    driving2NegativeUrl:(NSString *)driving2NegativeUrl
-                   delegate:(id <RequestDelegate>)delegate
-                    success:(void (^)(NSDictionary * response, id mark))success
-failure:(void (^)(NSString * errorStr, id mark))failure;
+
 /**
  车辆审核记录列表
  */

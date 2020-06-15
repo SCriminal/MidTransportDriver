@@ -57,3 +57,5 @@
 #import "ModelCar.h"
 #import "ModelAuditRecord.h"
 
+//身份识别
+#import "ModelOCR.h"
