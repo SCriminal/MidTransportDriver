@@ -179,7 +179,7 @@
 - (void)imageSelect:(BaseImage *)image{
     //case 4:
     [[AliClient sharedInstance] updateImageAry:@[image]  
- storageSuccess:nil upSuccess:nil fail:nil];
+ storageSuccess:nil upSuccess:nil upHighQualitySuccess:nil fail:nil];
     self.headImgView.image = image;
     self.modelImageInfo.url = image.imageURL;
     self.modelImageInfo.image = image;

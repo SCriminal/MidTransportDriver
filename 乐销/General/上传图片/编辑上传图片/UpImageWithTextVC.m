@@ -148,7 +148,7 @@
 - (void)imagesSelect:(NSArray *)aryImages
 {
     [[AliClient sharedInstance]updateImageAry:aryImages  
- storageSuccess:nil upSuccess:nil fail:nil];
+ storageSuccess:nil upSuccess:nil upHighQualitySuccess:nil fail:nil];
     for (BaseImage *image in aryImages) {
         ModelImage * modelImageInfo = [ModelImage new];
         modelImageInfo.url = image.imageURL;

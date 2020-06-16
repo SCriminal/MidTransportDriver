@@ -520,7 +520,7 @@
     [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_ORDER;
     [[AliClient sharedInstance]updateImageAry:@[image] storageSuccess:^{
         
-    } upSuccess:^{
+    } upSuccess:nil upHighQualitySuccess:^{
         [self orc:image.imageURL];
     } fail:^{
         

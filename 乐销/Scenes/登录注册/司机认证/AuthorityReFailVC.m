@@ -74,7 +74,7 @@
 - (UIImageView *)ivIdentity{
     if (_ivIdentity == nil) {
         _ivIdentity = [UIImageView new];
-        _ivIdentity.image = [UIImage imageNamed:@"perfectAuthorityIdentity"];
+        _ivIdentity.image = [UIImage imageNamed:IMAGE_BIG_DEFAULT];
         _ivIdentity.widthHeight = XY(W(65),W(50));
         _ivIdentity.contentMode = UIViewContentModeScaleAspectFill;
         _ivIdentity.clipsToBounds = true;
@@ -84,7 +84,7 @@
 - (UIImageView *)ivIdentityReverse{
     if (_ivIdentityReverse == nil) {
         _ivIdentityReverse = [UIImageView new];
-        _ivIdentityReverse.image = [UIImage imageNamed:@"perfectAuthorityIdentity"];
+        _ivIdentityReverse.image = [UIImage imageNamed:IMAGE_BIG_DEFAULT];
         _ivIdentityReverse.widthHeight = XY(W(65),W(50));
         _ivIdentityReverse.contentMode = UIViewContentModeScaleAspectFill;
         _ivIdentityReverse.clipsToBounds = true;
@@ -94,7 +94,7 @@
 - (UIImageView *)ivHand{
     if (_ivHand == nil) {
         _ivHand = [UIImageView new];
-        _ivHand.image = [UIImage imageNamed:@"perfectAuthorityIdentity"];
+        _ivHand.image = [UIImage imageNamed:IMAGE_BIG_DEFAULT];
         _ivHand.widthHeight = XY(W(65),W(50));
         _ivHand.contentMode = UIViewContentModeScaleAspectFill;
         _ivHand.clipsToBounds = true;
@@ -104,7 +104,7 @@
 - (UIImageView *)ivDriver{
     if (_ivDriver == nil) {
         _ivDriver = [UIImageView new];
-        _ivDriver.image = [UIImage imageNamed:@"perfectAuthorityIdentity"];
+        _ivDriver.image = [UIImage imageNamed:IMAGE_BIG_DEFAULT];
         _ivDriver.widthHeight = XY(W(65),W(50));
         _ivDriver.contentMode = UIViewContentModeScaleAspectFill;
         _ivDriver.clipsToBounds = true;

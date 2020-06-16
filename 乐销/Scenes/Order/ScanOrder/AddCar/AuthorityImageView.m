@@ -170,7 +170,7 @@
     [vc showLoadingView];
     [[AliClient sharedInstance]updateImageAry:@[image] storageSuccess:^{
         
-    } upSuccess:^{
+    } upSuccess:nil upHighQualitySuccess:^{
         [self configBaseImage:image];
         [vc.loadingView hideLoading];
         if (self.model.blockUpSuccess) {

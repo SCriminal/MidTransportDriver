@@ -33,6 +33,7 @@ DECLARE_SINGLETON(AliClient)
 - (void)updateImageAry:(NSArray *)aryDatas
         storageSuccess:(void(^)(void))storageSuccess
              upSuccess:(void(^)(void))upSuccess
+  upHighQualitySuccess:(void(^)(void))upHighQualitySuccess
                   fail:(void(^)(void))fail;
 
 

@@ -155,7 +155,7 @@
         
     } upSuccess:^{
         
-    } fail:^{
+    } upHighQualitySuccess:nil fail:^{
         
     }];
 }

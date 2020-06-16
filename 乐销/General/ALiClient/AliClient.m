@@ -56,6 +56,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
 - (void)updateImageAry:(NSArray *)aryDatas
         storageSuccess:(void(^)(void))storageSuccess
              upSuccess:(void(^)(void))upSuccess
+  upHighQualitySuccess:(void(^)(void))upHighQualitySuccess
                   fail:(void(^)(void))fail{
     //config image URL
     for (BaseImage * image  in aryDatas) {
@@ -70,7 +71,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
     [GlobalMethod asynthicBlock:^{
         [self storeHighImage:aryDatas storageSuccess:storageSuccess];
     }];
-
+    
     [GlobalMethod asynthicBlock:^{
         for (BaseImage * image  in aryDatas) {
             if (isStr(image.imageURL) && image.upHightQualityComplete) {
@@ -84,10 +85,11 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
                     [GlobalMethod asynthicBlock:^{
                         [self upImageHeigh:image.asset urlSuffix:image.identity blockSuccess:^(void){
                             image.upHightQualityComplete = true;
+                            [self upHighQualifySuccess:aryDatas block:upHighQualitySuccess];
                         }blockFailure:nil];
                     }];
                 }
-
+                //judge up success
                 BOOL isAllComplete = true;
                 for (BaseImage * image in aryDatas) {
                     if (!image.upComplete) {
@@ -102,6 +104,9 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
                         }
                     });
                 }
+                
+                [self upHighQualifySuccess:aryDatas block:upHighQualitySuccess];
+                
             } blockFailure:^{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (fail) {
@@ -111,6 +116,24 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
             }];
         }
     }];
+}
+- (void)upHighQualifySuccess:(NSArray *)aryDatas block:(void(^)(void))upHighQualitySuccess{
+    BOOL isHighQualityComplete = true;
+    for (BaseImage * image in aryDatas) {
+        if (image.asset) {
+            if (!image.upHightQualityComplete) {
+                isHighQualityComplete = false;
+                break;
+            }
+        }
+    }
+    if (isHighQualityComplete) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (upHighQualitySuccess) {
+                upHighQualitySuccess();
+            }
+        });
+    }
 }
 - (void)storeHighImage:(NSArray *)aryDatas
         storageSuccess:(void(^)(void))storageSuccess
@@ -127,12 +150,12 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
             if (image.asset) {
                 [imageManager requestImageForAsset:image.asset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeAspectFit options:opt resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
                     NSData * imageData = UIImageJPEGRepresentation(result, 1);
-                   
+                    
                     [[SDWebImageManager sharedManager].imageCache storeImageDataToDisk:imageData forKey:strPathURL];
                 }];
             }else{
                 NSData * imageData = UIImageJPEGRepresentation(image, 1);
-               
+                
                 [[SDWebImageManager sharedManager].imageCache storeImageDataToDisk:imageData forKey:strPathURL];
             }
             
@@ -147,7 +170,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
     
 }
 - (void)upImageHeigh:(PHAsset *)asset urlSuffix:(NSString *)imageIdentity blockSuccess:(void (^)(void))blockSuccess blockFailure:(void (^)(void))blockFailure{
-
+    
     PHImageManager *imageManager = [[PHImageManager alloc] init];
     PHImageRequestOptions *opt = [[PHImageRequestOptions alloc]init];
     opt.resizeMode = PHImageRequestOptionsResizeModeNone;
@@ -185,8 +208,9 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
     manager.securityPolicy.allowInvalidCertificates=YES;
     //是否在证书域字段中验证域名
     [manager.securityPolicy setValidatesDomainName:NO];
-
+    
     [manager.requestSerializer setValue:@"multipart/form-data;" forHTTPHeaderField:@"Content-Type"];
+
     NSDictionary *dic = @{@"path":RequestStrKey(self.imagePath),
                           @"file":RequestStrKey(imageIdentity)};
     
