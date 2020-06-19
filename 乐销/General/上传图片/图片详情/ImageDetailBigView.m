@@ -128,7 +128,9 @@
     self.aryDatas = ary;
     self.isEdit = isEdit;
     self.btnDelete.hidden = !self.isEdit;
-
+    if (self.aryDatas.count==0) {
+        return;
+    }
     WEAKSELF
     [self.collectionImageDetail performBatchUpdates:^{
         [weakSelf.collectionImageDetail reloadData];

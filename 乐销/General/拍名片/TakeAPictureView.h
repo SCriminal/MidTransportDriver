@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, ENUM_CAMERA_TYPE) {
 
 @interface TakeAPictureView : UIView
 @property (nonatomic, assign) ENUM_CAMERA_TYPE cameraType;
-@property (nonatomic, strong) void (^blockBack)();
+@property (nonatomic, strong) void (^blockBack)(void);
 
 - (void)startRunning;
 - (void)stopRunning;
