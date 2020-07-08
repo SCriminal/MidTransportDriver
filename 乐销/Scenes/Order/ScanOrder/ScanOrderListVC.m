@@ -129,7 +129,12 @@
     [RequestApi requestValidCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSMutableArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelValidCar"];
         if (ary.count == 0) {
-            [self requestPersonalCar];
+            ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+            ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+            modelConfirm.blockClick = ^(void){
+                [GB_Nav pushVCName:@"AddCarVC" animated:true];
+            };
+            [BaseAlertView initWithTitle:@"提示" content:@"挂靠或添加车辆才能扫码下单" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
             return;
         }
         QRCoderVC * vc = [QRCoderVC new];
@@ -138,26 +143,5 @@
         
     }];
 }
-- (void)requestPersonalCar{
-    [RequestApi requestPersonalCarWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        [self.aryDatas removeAllObjects];
-        ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
-        if (modelDetail.qualificationState == 2) {
-            [GlobalMethod showBigAlert:@"车辆信息已经提交，审核通过后请扫码下单"];
-            [GB_Nav pushVCName:@"CarListVC" animated:true];
-        }else if (modelDetail.qualificationState == 10) {
-            [GlobalMethod showBigAlert:@"车辆信息已经驳回，重新提交并审核通过后才可以扫码下单"];
-            [GB_Nav pushVCName:@"CarListVC" animated:true];
-        }else{
-            ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
-            ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
-            modelConfirm.blockClick = ^(void){
-                [GB_Nav pushVCName:@"AddCarVC" animated:true];
-            };
-            [BaseAlertView initWithTitle:@"提示" content:@"挂靠或添加车辆才能扫码下单" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
-        }
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
-}
+
 @end

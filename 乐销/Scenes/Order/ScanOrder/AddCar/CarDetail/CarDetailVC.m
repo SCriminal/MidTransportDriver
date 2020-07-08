@@ -58,24 +58,22 @@
 
 #pragma mark request
 - (void)requestInfo{
-    [RequestApi requestPersonalCarWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-         ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
-           self.modelDetail = modelDetail;
-           [self requestAuditRecord];
-           
-           if (modelDetail.qualificationState == 10) {
-               WEAKSELF
-               [self.nav resetNavBackTitle:@"车辆详情" rightTitle:@"重新提交" rightBlock:^{
-                   AddCarVC * carVC = [AddCarVC new];
-                   carVC.entID = weakSelf.modelDetail.entId;
-                   carVC.carID = weakSelf.modelDetail.iDProperty;
-                   [GB_Nav popLastAndPushVC:carVC];
-               }];
-           }
-
-       } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-           
-       }];
+    [RequestApi requestCarDetailWithId:self.carID delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
+                  self.modelDetail = modelDetail;
+                  [self requestAuditRecord];
+                  
+                  if (modelDetail.qualificationState == 10) {
+                      WEAKSELF
+                      [self.nav resetNavBackTitle:@"车辆详情" rightTitle:@"重新提交" rightBlock:^{
+                          AddCarVC * carVC = [AddCarVC new];
+                          carVC.carID = weakSelf.modelDetail.iDProperty;
+                          [GB_Nav popLastAndPushVC:carVC];
+                      }];
+                  }
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
    
 }
 - (void)requestAuditRecord{

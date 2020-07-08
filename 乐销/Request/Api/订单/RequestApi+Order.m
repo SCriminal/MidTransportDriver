@@ -379,11 +379,21 @@
 /**
  车辆列表（司机）
  */
-+(void)requestPersonalCarWithDelegate:(id <RequestDelegate>)delegate
++(void)requestPersonalCarListWithDelegate:(id <RequestDelegate>)delegate
                               success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/zhongcheyun/vehicle/1_0_101/pool" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/zhongcheyun/vehicle/1_0_110/list/user" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
+ 车辆详情
+ */
++(void)requestCarDetailWithId:(double)identity
+                     delegate:(id <RequestDelegate>)delegate
+                      success:(void (^)(NSDictionary * response, id mark))success
+                      failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"id":NSNumber.dou(identity)};
+    [self getUrl:@"/zhongcheyun/vehicle/1_0_10/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
 //
 

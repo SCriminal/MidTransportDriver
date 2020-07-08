@@ -168,9 +168,16 @@ typedef NS_ENUM(NSUInteger, ENUM_ORDER_OPERATE_TYPE) {
 /**
  车辆列表（司机）
  */
-+(void)requestPersonalCarWithDelegate:(id <RequestDelegate>)delegate
++(void)requestPersonalCarListWithDelegate:(id <RequestDelegate>)delegate
                               success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+ 车辆详情
+ */
++(void)requestCarDetailWithId:(double)identity
+                     delegate:(id <RequestDelegate>)delegate
+                      success:(void (^)(NSDictionary * response, id mark))success
+                      failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
 提交我的车辆
 */

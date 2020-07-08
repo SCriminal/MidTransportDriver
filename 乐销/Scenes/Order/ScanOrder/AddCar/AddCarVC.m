@@ -348,7 +348,7 @@
     if (!self.carID) {
         return;
     }
-    [RequestApi requestPersonalCarWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestCarDetailWithId:self.carID delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
         self.modelDetail = modelDetail;
         if (self.modelDetail.qualificationState == 10) {
@@ -373,7 +373,7 @@
         
         
         [self configData];
-        
+
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];

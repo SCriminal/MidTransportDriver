@@ -47,10 +47,7 @@
 - (void)addNav{
     WEAKSELF
     [self.view addSubview:[BaseNavView initNavBackTitle:@"我的车辆" rightTitle:@"添加" rightBlock:^{
-        if (weakSelf.aryDatas.count) {
-            [GlobalMethod showAlert:@"一个用户只能有一辆车，请删除后再添加"];
-            return;
-        }
+        
         AddCarVC * vc = [AddCarVC new];
         vc.blockBack = ^(UIViewController *item) {
             [weakSelf refreshHeaderAll];
@@ -78,7 +75,6 @@
     cell.blockEdit = ^(ModelCar *model) {
         AddCarVC * vc = [AddCarVC new];
         vc.carID = model.iDProperty;
-        vc.entID = model.entId;
         [GB_Nav pushViewController:vc animated:true];
     };
     return cell;
@@ -92,12 +88,9 @@
 }
 #pragma mark request
 - (void)requestList{
-    [RequestApi requestPersonalCarWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestPersonalCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [self.aryDatas removeAllObjects];
-                       ModelCar * modelDetail = [ModelCar modelObjectWithDictionary:response];
-        if (modelDetail.iDProperty) {
-            self.aryDatas = @[modelDetail].mutableCopy;
-        }
+        self.aryDatas = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelCar"];
         [self.tableView reloadData];
 
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
