@@ -175,12 +175,12 @@ NSString *const kModelCarDriving2NegativeUrl = @"driving2NegativeUrl";
         if (self.qualificationState == 0) {
             self.qualificationState = [dict doubleValueForKey:@"state"];
         }
-        if (self.qualificationState == 0) {
+        if (self.vehicleLoad == 0) {
             self.vehicleLoad = [dict doubleValueForKey:@"load"];
         }
-        if (self.qualificationState == 0) {
-            self.qualificationState = [dict doubleValueForKey:@"state"];
-        }
+//        if (self.qualificationState == 0) {
+//            self.qualificationState = [dict doubleValueForKey:@"state"];
+//        }
     }
     
     return self;
