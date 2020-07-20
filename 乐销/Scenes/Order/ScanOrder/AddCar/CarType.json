@@ -1,881 +1,1610 @@
 [
-    {
-      "value": 60,
-      "label": "重型半挂牵引车",
-      "value2": "Q11",
-      "status": 1
-    },
-    {
-      "value": 23,
-      "label": "重型厢式货车",
-      "value2": "H12",
-      "status": 1
-    },
-    {
-      "value": 30,
-      "label": "重型仓栅式货车",
-      "value2": "H19",
-      "status":1
-    },
-    {
-      "value": 1,
-      "label": "普通货车",
-      "value2": "H01",
-      "status": 0
-    },
-    {
-      "value": 2,
-      "label": "厢式货车",
-      "value2": "H02",
-      "status": 0
-    },
-    {
-      "value": 3,
-      "label": "罐式货车",
-      "value2": "H04",
-      "status": 0
-    },
-    {
-      "value": 4,
-      "label": "牵引车",
-      "value2": "Q00",
-      "status": 0
-    },
-    {
-      "value": 5,
-      "label": "普通挂车",
-      "value2": "Q01",
-      "status": 0
-    },
-    {
-      "value": 6,
-      "label": "罐式挂车",
-      "value2": "Q03",
-      "status": 0
-    },
-    {
-      "value": 7,
-      "label": "集装箱挂车",
-      "value2": "Q05",
-      "status": 0
-    },
-    {
-      "value": 8,
-      "label": "仓栅式货车",
-      "value2": "H09",
-      "status": 0
-    },
-    {
-      "value": 9,
-      "label": "封闭货车",
-      "value2": "H03",
-      "status": 0
-    },
-    {
-      "value": 10,
-      "label": "平板货车",
-      "value2": "H05",
-      "status": 0
-    },
-    {
-      "value": 11,
-      "label": "集装箱车",
-      "value2": "H06",
-      "status": 0
-    },
-    {
-      "value": 12,
-      "label": "自卸货车",
-      "value2": "H07",
-      "status": 0
-    },
-    {
-      "value": 13,
-      "label": "特殊结构货车",
-      "value2": "H08",
-      "status": 0
-    },
-    {
-      "value": 14,
-      "label": "专项作业车",
-      "value2": "Z00",
-      "status": 0
-    },
-    {
-      "value": 15,
-      "label": "厢式挂车",
-      "value2": "G02",
-      "status": 0
-    },
-    {
-      "value": 16,
-      "label": "仓栅式挂车",
-      "value2": "G07",
-      "status": 0
-    },
-    {
-      "value": 17,
-      "label": "平板挂车",
-      "value2": "G04",
-      "status": 0
-    },
-    {
-      "value": 18,
-      "label": "自卸挂车",
-      "value2": "G06",
-      "status": 0
-    },
-    {
-      "value": 19,
-      "label": "专项作业挂车",
-      "value2": "G09",
-      "status": 0
-    },
-    {
-      "value": 20,
-      "label": "车辆运输车",
-      "value2": "X91",
-      "status": 0
-    },
-    {
-      "value": 21,
-      "label": "车辆运输车（单排）",
-      "value2": "X92",
-      "status": 0
-    },
-    {
-      "value": 22,
-      "label": "重型普通货车",
-      "value2": "H11",
-      "status":1
-    },
-
-    {
-      "value": 24,
-      "label": "重型封闭货车",
-      "value2": "H13",
-      "status":1
-    },
-    {
-      "value": 25,
-      "label": "重型罐式货车",
-      "value2": "H14",
-      "status":1
-    },
-    {
-      "value": 26,
-      "label": "重型平板货车",
-      "value2": "H15",
-      "status":1
-    },
-    {
-      "value": 27,
-      "label": "重型集装厢车",
-      "value2": "H16",
-      "status":1
-    },
-    {
-      "value": 28,
-      "label": "重型自卸货车",
-      "value2": "H17",
-      "status":1
-    },
-    {
-      "value": 29,
-      "label": "重型特殊结构货车",
-      "value2": "H18",
-      "status":1
-    },
-    {
-      "value": 31,
-      "label": "中型普通货车",
-      "value2": "H21",
-      "status":1
-    },
-    {
-      "value": 32,
-      "label": "中型厢式货车",
-      "value2": "H22",
-      "status":1
-    },
-    {
-      "value": 33,
-      "label": "中型封闭货车",
-      "value2": "H23",
-      "status":1
-    },
-    {
-      "value": 34,
-      "label": "中型罐式货车",
-      "value2": "H24",
-      "status":1
-    },
-    {
-      "value": 35,
-      "label": "中型平板货车",
-      "value2": "H25",
-      "status":1
-    },
-    {
-      "value": 36,
-      "label": "中型集装厢车",
-      "value2": "H26",
-      "status":1
-    },
-    {
-      "value": 37,
-      "label": "中型自卸货车",
-      "value2": "H27",
-      "status":1
-    },
-    {
-      "value": 38,
-      "label": "中型特殊结构货车",
-      "value2": "H28",
-      "status":1
-    },
-    {
-      "value": 39,
-      "label": "中型仓栅式货车",
-      "value2": "H29",
-      "status":1
-    },
-    {
-      "value": 40,
-      "label": "轻型普通货车",
-      "value2": "H31",
-      "status":1
-    },
-    {
-      "value": 41,
-      "label": "轻型厢式货车",
-      "value2": "H32",
-      "status":1
-    },
-    {
-      "value": 42,
-      "label": "轻型封闭货车",
-      "value2": "H33",
-      "status":1
-    },
-    {
-      "value": 43,
-      "label": "轻型罐式货车",
-      "value2": "H34",
-      "status":1
-    },
-    {
-      "value": 44,
-      "label": "轻型平板货车",
-      "value2": "H35",
-      "status":1
-    },
-    {
-      "value": 45,
-      "label": "轻型自卸货车",
-      "value2": "H37",
-      "status":1
-    },
-  
-    {
-      "value": 46,
-      "label": "轻型特殊结构货车",
-      "value2": "H38",
-      "status":1
-    },
-    {
-      "value": 47,
-      "label": "轻型仓栅式货车",
-      "value2": "H39",
-      "status":1
-    },
-    {
-      "value": 48,
-      "label": "微型普通货车",
-      "value2": "H41",
-      "status":1
-    },
-    {
-      "value": 49,
-      "label": "微型厢式货车",
-      "value2": "H42",
-      "status":1
-    },
-    {
-      "value": 50,
-      "label": "微型封闭货车",
-      "value2": "H43",
-      "status":1
-    },
-    {
-      "value": 51,
-      "label": "微型罐式货车",
-      "value2": "H44",
-      "status":1
-    },
-    {
-      "value": 52,
-      "label": "微型自卸货车",
-      "value2": "H45",
-      "status":1
-    },
-    {
-      "value": 53,
-      "label": "微型特殊结构货车",
-      "value2": "H46",
-      "status":1
-    },
-    {
-      "value": 54,
-      "label": "微型仓栅式货车",
-      "value2": "H47",
-      "status":1
-    },
-    {
-      "value": 55,
-      "label": "普通低速货车",
-      "value2": "H51",
-      "status":1
-    },
-    {
-      "value": 56,
-      "label": "厢式低速货车",
-      "value2": "H52",
-      "status":1
-    },
-    {
-      "value": 57,
-      "label": "罐式低速货车",
-      "value2": "H53",
-      "status":1
-    },
-    {
-      "value": 58,
-      "label": "自卸低速货车",
-      "value2": "H54",
-      "status":1
-    },
-    {
-      "value": 59,
-      "label": "仓栅式低速货车",
-      "value2": "H55",
-      "status":1
-    },
-
-    {
-      "value": 61,
-      "label": "重型全挂牵引车",
-      "value2": "Q12",
-      "status":1
-    },
-    {
-      "value": 62,
-      "label": "中型半挂牵引车",
-      "value2": "Q21",
-      "status":1
-    },
-    {
-      "value": 63,
-      "label": "中型全挂牵引车",
-      "value2": "Q22",
-      "status":1
-    },
-    {
-      "value": 64,
-      "label": "轻型半挂牵引车",
-      "value2": "Q31",
-      "status":1
-    },
-    {
-      "value": 65,
-      "label": "轻型全挂牵引车",
-      "value2": "Q32",
-      "status":1
-    },
-    {
-      "value": 66,
-      "label": "大型专项作业车",
-      "value2": "Z11",
-      "status":1
-    },
-    {
-      "value": 67,
-      "label": "中型专项作业车",
-      "value2": "Z21",
-      "status":1
-    },
-    {
-      "value": 68,
-      "label": "小型专项作业车",
-      "value2": "Z31",
-      "status":1
-    },
-    {
-      "value": 69,
-      "label": "微型专项作业车",
-      "value2": "Z41",
-      "status":1
-    },
-    {
-      "value": 70,
-      "label": "重型专项作业车",
-      "value2": "Z51",
-      "status":1
-    },
-    {
-      "value": 71,
-      "label": "轻型专项作业车",
-      "value2": "Z71",
-      "status":1
-    },
-    {
-      "value": 72,
-      "label": "无轨电车",
-      "value2": "D11",
-      "status":1
-    },
-    {
-      "value": 73,
-      "label": "有轨电车",
-      "value2": "D12",
-      "status":1
-    },
-    {
-      "value": 74,
-      "label": "普通正三轮摩托车",
-      "value2": "M11",
-      "status":1
-    },
-    {
-      "value": 75,
-      "label": "轻便正三轮摩托车",
-      "value2": "M12",
-      "status":1
-    },
-    {
-      "value": 76,
-      "label": "正三轮载客摩托车",
-      "value2": "M13",
-      "status":1
-    },
-    {
-      "value": 77,
-      "label": "正三轮载货摩托车",
-      "value2": "M14",
-      "status":1
-    },
-    {
-      "value": 78,
-      "label": "侧三轮摩托车",
-      "value2": "M15",
-      "status":1
-    },
-    {
-      "value": 79,
-      "label": "普通二轮摩托车",
-      "value2": "M21",
-      "status":1
-    },
-    {
-      "value": 80,
-      "label": "轻便二轮摩托车",
-      "value2": "M22",
-      "status":1
-    },
-    {
-      "value": 81,
-      "label": "三轮汽车",
-      "value2": "N11",
-      "status":1
-    },
-    {
-      "value": 82,
-      "label": "大型轮式拖拉机",
-      "value2": "T11",
-      "status":1
-    },
-    {
-      "value": 83,
-      "label": "小型轮式拖拉机",
-      "value2": "T21",
-      "status":1
-    },
-    {
-      "value": 84,
-      "label": "手扶拖拉机",
-      "value2": "T22",
-      "status":1
-    },
-    {
-      "value": 85,
-      "label": "手扶变形运输机",
-      "value2": "T23",
-      "status":1
-    },
-    {
-      "value": 86,
-      "label": "轮式装载机械",
-      "value2": "J11",
-      "status":1
-    },
-    {
-      "value": 87,
-      "label": "轮式挖掘机械",
-      "value2": "J12",
-      "status":1
-    },
-    {
-      "value": 88,
-      "label": "轮式平地机械",
-      "value2": "J13",
-      "status":1
-    },
-    {
-      "value": 89,
-      "label": "重型普通全挂车",
-      "value2": "G11",
-      "status":1
-    },
-    {
-      "value": 90,
-      "label": "重型厢式全挂车",
-      "value2": "G12",
-      "status":1
-    },
-    {
-      "value": 91,
-      "label": "重型罐式全挂车",
-      "value2": "G13",
-      "status":1
-    },
-    {
-      "value": 92,
-      "label": "重型平板全挂车",
-      "value2": "G14",
-      "status":1
-    },
-    {
-      "value": 93,
-      "label": "重型集装箱全挂车",
-      "value2": "G15",
-      "status":1
-    },
-    {
-      "value": 94,
-      "label": "重型自卸全挂车",
-      "value2": "G16",
-      "status":1
-    },
-    {
-      "value": 95,
-      "label": "重型仓栅式全挂车",
-      "value2": "G17",
-      "status":1
-    },
-    {
-      "value": 96,
-      "label": "重型旅居全挂车",
-      "value2": "G18",
-      "status":1
-    },
-    {
-      "value": 97,
-      "label": "重型专项作业全挂车",
-      "value2": "G19",
-      "status":1
-    },
-    {
-      "value": 98,
-      "label": "中型普通全挂车",
-      "value2": "G21",
-      "status":1
-    },
-    {
-      "value": 99,
-      "label": "中型厢式全挂车",
-      "value2": "G22",
-      "status":1
-    },
-    {
-      "value": 100,
-      "label": "中型罐式全挂车",
-      "value2": "G23",
-      "status":1
-    },
-    {
-      "value": 101,
-      "label": "中型平板全挂车",
-      "value2": "G24",
-      "status":1
-    },
-    {
-      "value": 102,
-      "label": "中型集装箱全挂车",
-      "value2": "G25",
-      "status":1
-    },
-    {
-      "value": 103,
-      "label": "中型自卸全挂车",
-      "value2": "G26",
-      "status":1
-    },
-    {
-      "value": 104,
-      "label": "中型仓栅式全挂车",
-      "value2": "G27",
-      "status":1
-    },
-    {
-      "value": 105,
-      "label": "中型旅居全挂车",
-      "value2": "G28",
-      "status":1
-    },
-    {
-      "value": 106,
-      "label": "中型专项作业全挂车",
-      "value2": "G29",
-      "status":1
-    },
-    {
-      "value": 107,
-      "label": "轻型普通全挂车",
-      "value2": "G31",
-      "status":1
-    },
-    {
-      "value": 108,
-      "label": "轻型厢式全挂车",
-      "value2": "G32",
-      "status":1
-    },
-    {
-      "value": 109,
-      "label": "轻型罐式全挂车",
-      "value2": "G33",
-      "status":1
-    },
-    {
-      "value": 110,
-      "label": "轻型平板全挂车",
-      "value2": "G34",
-      "status":1
-    },
-    {
-      "value": 111,
-      "label": "轻型自卸全挂车",
-      "value2": "G35",
-      "status":1
-    },
-    {
-      "value": 112,
-      "label": "轻型仓栅式全挂车",
-      "value2": "G36",
-      "status":1
-    },
-    {
-      "value": 113,
-      "label": "轻型旅居全挂车",
-      "value2": "G37",
-      "status":1
-    },
-    {
-      "value": 114,
-      "label": "轻型专项作业全挂车",
-      "value2": "G38",
-      "status":1
-    },
-    {
-      "value": 115,
-      "label": "重型普通半挂车",
-      "value2": "B11",
-      "status":1
-    },
-    {
-      "value": 116,
-      "label": "重型厢式半挂车",
-      "value2": "B12",
-      "status":1
-    },
-    {
-      "value": 117,
-      "label": "重型罐式半挂车",
-      "value2": "B13",
-      "status":1
-    },
-    {
-      "value": 118,
-      "label": "重型平板半挂车",
-      "value2": "B14",
-      "status":1
-    },
-    {
-      "value": 119,
-      "label": "重型集装箱半挂车",
-      "value2": "B15",
-      "status":1
-    },
-    {
-      "value": 120,
-      "label": "重型自卸半挂车",
-      "value2": "B16",
-      "status":1
-    },
-    {
-      "value": 121,
-      "label": "重型特殊结构半挂车",
-      "value2": "B17",
-      "status":1
-    },
-    {
-      "value": 122,
-      "label": "重型仓栅式半挂车",
-      "value2": "B18",
-      "status":1
-    },
-    {
-      "value": 123,
-      "label": "重型旅居半挂车",
-      "value2": "B19",
-      "status":1
-    },
-    {
-      "value": 124,
-      "label": "重型专项作业半挂车",
-      "value2": "B1A",
-      "status":1
-    },
-    {
-      "value": 125,
-      "label": "重型低平板半挂车",
-      "value2": "B1B",
-      "status":1
-    },
-    {
-      "value": 126,
-      "label": "中型普通半挂车",
-      "value2": "B21",
-      "status":1
-    },
-    {
-      "value": 127,
-      "label": "中型厢式半挂车",
-      "value2": "B22",
-      "status":1
-    },
-    {
-      "value": 128,
-      "label": "中型罐式半挂车",
-      "value2": "B23",
-      "status":1
-    },
-    {
-      "value": 129,
-      "label": "中型平板半挂车",
-      "value2": "B24",
-      "status":1
-    },
-    {
-      "value": 130,
-      "label": "中型集装箱半挂车",
-      "value2": "B25",
-      "status":1
-    },
-    {
-      "value": 131,
-      "label": "中型自卸半挂车",
-      "value2": "B26",
-      "status":1
-    },
-    {
-      "value": 132,
-      "label": "中型特殊结构半挂车",
-      "value2": "B27",
-      "status":1
-    },
-    {
-      "value": 133,
-      "label": "中型仓栅式半挂车",
-      "value2": "B28",
-      "status":1
-    },
-    {
-      "value": 134,
-      "label": "中型旅居半挂车",
-      "value2": "B29",
-      "status":1
-    },
-    {
-      "value": 135,
-      "label": "中型专项作业半挂车",
-      "value2": "B2A",
-      "status":1
-    },
-    {
-      "value": 136,
-      "label": "中型低平板半挂车",
-      "value2": "B2B",
-      "status":1
-    },
-    {
-      "value": 137,
-      "label": "轻型普通半挂车",
-      "value2": "B31",
-      "status":1
-    },
-    {
-      "value": 138,
-      "label": "轻型厢式半挂车",
-      "value2": "B32",
-      "status":1
-    },
-    {
-      "value": 139,
-      "label": "轻型罐式半挂车",
-      "value2": "B33",
-      "status":1
-    },
-    {
-      "value": 140,
-      "label": "轻型平板半挂车",
-      "value2": "B34",
-      "status":1
-    },
-    {
-      "value": 141,
-      "label": "轻型自卸半挂车",
-      "value2": "B35",
-      "status":1
-    },
-    {
-      "value": 142,
-      "label": "轻型仓栅式半挂车",
-      "value2": "B36",
-      "status":1
-    },
-    {
-      "value": 143,
-      "label": "轻型旅居半挂车",
-      "value2": "B37",
-      "status":1
-    },
-    {
-      "value": 144,
-      "label": "轻型专项作业半挂车",
-      "value2": "B38",
-      "status":1
-    },
-    {
-      "value": 145,
-      "label": "轻型低平板半挂车",
-      "value2": "B39",
-      "status":1
-    },
-    {
-      "value": 146,
-      "label": "其他",
-      "value2": "X99",
-      "status":1
-    }
-  ]
+ {
+    "label" : "重型半挂牵引车",
+    "status" : 1,
+    "value" : 60,
+    "value2" : "Q11"
+  },
+  {
+    "label" : "重型厢式货车",
+    "status" : 1,
+    "value" : 23,
+    "value2" : "H12"
+  },
+  {
+    "label" : "重型仓栅式货车",
+    "status" : 1,
+    "value" : 30,
+    "value2" : "H19"
+  },
+  {
+    "label" : "普通货车",
+    "status" : 0,
+    "value" : 1,
+    "value2" : ""
+  },
+  {
+    "label" : "厢式货车",
+    "status" : 0,
+    "value" : 2,
+    "value2" : "H02"
+  },
+  {
+    "label" : "罐式货车",
+    "status" : 0,
+    "value" : 3,
+    "value2" : "H04"
+  },
+  {
+    "label" : "牵引车",
+    "status" : 0,
+    "value" : 4,
+    "value2" : "Q00"
+  },
+  {
+    "label" : "普通挂车",
+    "status" : 0,
+    "value" : 5,
+    "value2" : "G01"
+  },
+  {
+    "label" : "罐式挂车",
+    "status" : 0,
+    "value" : 6,
+    "value2" : "G03"
+  },
+  {
+    "label" : "集装箱挂车",
+    "status" : 0,
+    "value" : 7,
+    "value2" : "G05"
+  },
+  {
+    "label" : "仓栅式货车",
+    "status" : 0,
+    "value" : 8,
+    "value2" : "H09"
+  },
+  {
+    "label" : "封闭货车",
+    "status" : 0,
+    "value" : 9,
+    "value2" : "H03"
+  },
+  {
+    "label" : "平板货车",
+    "status" : 0,
+    "value" : 10,
+    "value2" : "H05"
+  },
+  {
+    "label" : "集装箱车",
+    "status" : 0,
+    "value" : 11,
+    "value2" : "H06"
+  },
+  {
+    "label" : "自卸货车",
+    "status" : 0,
+    "value" : 12,
+    "value2" : "H07"
+  },
+  {
+    "label" : "特殊结构货车",
+    "status" : 0,
+    "value" : 13,
+    "value2" : "H08"
+  },
+  {
+    "label" : "专项作业车",
+    "status" : 0,
+    "value" : 14,
+    "value2" : "Z00"
+  },
+  {
+    "label" : "厢式挂车",
+    "status" : 0,
+    "value" : 15,
+    "value2" : "G02"
+  },
+  {
+    "label" : "仓栅式挂车",
+    "status" : 0,
+    "value" : 16,
+    "value2" : "G07"
+  },
+  {
+    "label" : "平板挂车",
+    "status" : 0,
+    "value" : 17,
+    "value2" : "G04"
+  },
+  {
+    "label" : "自卸挂车",
+    "status" : 0,
+    "value" : 18,
+    "value2" : "G06"
+  },
+  {
+    "label" : "专项作业挂车",
+    "status" : 0,
+    "value" : 19,
+    "value2" : "G09"
+  },
+  {
+    "label" : "车辆运输车",
+    "status" : 0,
+    "value" : 20,
+    "value2" : "X91"
+  },
+  {
+    "label" : "车辆运输车(单排)",
+    "status" : 0,
+    "value" : 21,
+    "value2" : "X92"
+  },
+  {
+    "label" : "重型普通货车",
+    "status" : 1,
+    "value" : 22,
+    "value2" : "H11"
+  },
+  {
+    "label" : "重型封闭货车",
+    "status" : 1,
+    "value" : 24,
+    "value2" : "H13"
+  },
+  {
+    "label" : "重型罐式货车",
+    "status" : 1,
+    "value" : 25,
+    "value2" : "H14"
+  },
+  {
+    "label" : "重型平板货车",
+    "status" : 1,
+    "value" : 26,
+    "value2" : "H15"
+  },
+  {
+    "label" : "重型集装厢车",
+    "status" : 1,
+    "value" : 27,
+    "value2" : "H16"
+  },
+  {
+    "label" : "重型自卸货车",
+    "status" : 1,
+    "value" : 28,
+    "value2" : "H17"
+  },
+  {
+    "label" : "重型特殊结构货车",
+    "status" : 1,
+    "value" : 29,
+    "value2" : "H18"
+  },
+  {
+    "label" : "中型普通货车",
+    "status" : 1,
+    "value" : 31,
+    "value2" : "H21"
+  },
+  {
+    "label" : "中型厢式货车",
+    "status" : 1,
+    "value" : 32,
+    "value2" : "H22"
+  },
+  {
+    "label" : "中型封闭货车",
+    "status" : 1,
+    "value" : 33,
+    "value2" : "H23"
+  },
+  {
+    "label" : "中型罐式货车",
+    "status" : 1,
+    "value" : 34,
+    "value2" : "H24"
+  },
+  {
+    "label" : "中型平板货车",
+    "status" : 1,
+    "value" : 35,
+    "value2" : "H25"
+  },
+  {
+    "label" : "中型集装厢车",
+    "status" : 1,
+    "value" : 36,
+    "value2" : "H26"
+  },
+  {
+    "label" : "中型自卸货车",
+    "status" : 1,
+    "value" : 37,
+    "value2" : "H27"
+  },
+  {
+    "label" : "中型特殊结构货车",
+    "status" : 1,
+    "value" : 38,
+    "value2" : "H28"
+  },
+  {
+    "label" : "中型仓栅式货车",
+    "status" : 1,
+    "value" : 39,
+    "value2" : "H29"
+  },
+  {
+    "label" : "轻型普通货车",
+    "status" : 1,
+    "value" : 40,
+    "value2" : "H31"
+  },
+  {
+    "label" : "轻型厢式货车",
+    "status" : 1,
+    "value" : 41,
+    "value2" : "H32"
+  },
+  {
+    "label" : "轻型封闭货车",
+    "status" : 1,
+    "value" : 42,
+    "value2" : "H33"
+  },
+  {
+    "label" : "轻型罐式货车",
+    "status" : 1,
+    "value" : 43,
+    "value2" : "H34"
+  },
+  {
+    "label" : "轻型平板货车",
+    "status" : 1,
+    "value" : 44,
+    "value2" : "H35"
+  },
+  {
+    "label" : "轻型自卸货车",
+    "status" : 1,
+    "value" : 45,
+    "value2" : "H37"
+  },
+  {
+    "label" : "轻型特殊结构货车",
+    "status" : 1,
+    "value" : 46,
+    "value2" : "H38"
+  },
+  {
+    "label" : "轻型仓栅式货车",
+    "status" : 1,
+    "value" : 47,
+    "value2" : "H39"
+  },
+  {
+    "label" : "微型普通货车",
+    "status" : 1,
+    "value" : 48,
+    "value2" : "H41"
+  },
+  {
+    "label" : "微型厢式货车",
+    "status" : 1,
+    "value" : 49,
+    "value2" : "H42"
+  },
+  {
+    "label" : "微型封闭货车",
+    "status" : 1,
+    "value" : 50,
+    "value2" : "H43"
+  },
+  {
+    "label" : "微型罐式货车",
+    "status" : 1,
+    "value" : 51,
+    "value2" : "H44"
+  },
+  {
+    "label" : "微型自卸货车",
+    "status" : 1,
+    "value" : 52,
+    "value2" : "H45"
+  },
+  {
+    "label" : "微型特殊结构货车",
+    "status" : 1,
+    "value" : 53,
+    "value2" : "H46"
+  },
+  {
+    "label" : "微型仓栅式货车",
+    "status" : 1,
+    "value" : 54,
+    "value2" : "H47"
+  },
+  {
+    "label" : "普通低速货车",
+    "status" : 1,
+    "value" : 55,
+    "value2" : "H51"
+  },
+  {
+    "label" : "厢式低速货车",
+    "status" : 1,
+    "value" : 56,
+    "value2" : "H52"
+  },
+  {
+    "label" : "罐式低速货车",
+    "status" : 1,
+    "value" : 57,
+    "value2" : "H53"
+  },
+  {
+    "label" : "自卸低速货车",
+    "status" : 1,
+    "value" : 58,
+    "value2" : "H54"
+  },
+  {
+    "label" : "仓栅式低速货车",
+    "status" : 1,
+    "value" : 59,
+    "value2" : "H55"
+  },
+  {
+    "label" : "重型全挂牵引车",
+    "status" : 1,
+    "value" : 61,
+    "value2" : "Q12"
+  },
+  {
+    "label" : "中型半挂牵引车",
+    "status" : 1,
+    "value" : 62,
+    "value2" : "Q21"
+  },
+  {
+    "label" : "中型全挂牵引车",
+    "status" : 1,
+    "value" : 63,
+    "value2" : "Q22"
+  },
+  {
+    "label" : "轻型半挂牵引车",
+    "status" : 1,
+    "value" : 64,
+    "value2" : "Q31"
+  },
+  {
+    "label" : "轻型全挂牵引车",
+    "status" : 1,
+    "value" : 65,
+    "value2" : "Q32"
+  },
+  {
+    "label" : "大型专项作业车",
+    "status" : 1,
+    "value" : 66,
+    "value2" : "Z11"
+  },
+  {
+    "label" : "中型专项作业车",
+    "status" : 1,
+    "value" : 67,
+    "value2" : "Z21"
+  },
+  {
+    "label" : "小型专项作业车",
+    "status" : 1,
+    "value" : 68,
+    "value2" : "Z31"
+  },
+  {
+    "label" : "微型专项作业车",
+    "status" : 1,
+    "value" : 69,
+    "value2" : "Z41"
+  },
+  {
+    "label" : "重型专项作业车",
+    "status" : 1,
+    "value" : 70,
+    "value2" : "Z51"
+  },
+  {
+    "label" : "轻型专项作业车",
+    "status" : 1,
+    "value" : 71,
+    "value2" : "Z71"
+  },
+  {
+    "label" : "无轨电车",
+    "status" : 1,
+    "value" : 72,
+    "value2" : "D11"
+  },
+  {
+    "label" : "有轨电车",
+    "status" : 1,
+    "value" : 73,
+    "value2" : "D12"
+  },
+  {
+    "label" : "普通正三轮摩托车",
+    "status" : 1,
+    "value" : 74,
+    "value2" : "M11"
+  },
+  {
+    "label" : "轻便正三轮摩托车",
+    "status" : 1,
+    "value" : 75,
+    "value2" : "M12"
+  },
+  {
+    "label" : "正三轮载客摩托车",
+    "status" : 1,
+    "value" : 76,
+    "value2" : "M13"
+  },
+  {
+    "label" : "正三轮载货摩托车",
+    "status" : 1,
+    "value" : 77,
+    "value2" : "M14"
+  },
+  {
+    "label" : "侧三轮摩托车",
+    "status" : 1,
+    "value" : 78,
+    "value2" : "M15"
+  },
+  {
+    "label" : "普通二轮摩托车",
+    "status" : 1,
+    "value" : 79,
+    "value2" : "M21"
+  },
+  {
+    "label" : "轻便二轮摩托车",
+    "status" : 1,
+    "value" : 80,
+    "value2" : "M22"
+  },
+  {
+    "label" : "三轮汽车",
+    "status" : 1,
+    "value" : 81,
+    "value2" : "N11"
+  },
+  {
+    "label" : "大型轮式拖拉机",
+    "status" : 1,
+    "value" : 82,
+    "value2" : "T11"
+  },
+  {
+    "label" : "小型轮式拖拉机",
+    "status" : 1,
+    "value" : 83,
+    "value2" : "T21"
+  },
+  {
+    "label" : "手扶拖拉机",
+    "status" : 1,
+    "value" : 84,
+    "value2" : "T22"
+  },
+  {
+    "label" : "手扶变形运输机",
+    "status" : 1,
+    "value" : 85,
+    "value2" : "T23"
+  },
+  {
+    "label" : "轮式装载机械",
+    "status" : 1,
+    "value" : 86,
+    "value2" : "J11"
+  },
+  {
+    "label" : "轮式挖掘机械",
+    "status" : 1,
+    "value" : 87,
+    "value2" : "J12"
+  },
+  {
+    "label" : "轮式平地机械",
+    "status" : 1,
+    "value" : 88,
+    "value2" : "J13"
+  },
+  {
+    "label" : "重型普通全挂车",
+    "status" : 1,
+    "value" : 89,
+    "value2" : "G11"
+  },
+  {
+    "label" : "重型厢式全挂车",
+    "status" : 1,
+    "value" : 90,
+    "value2" : "G12"
+  },
+  {
+    "label" : "重型罐式全挂车",
+    "status" : 1,
+    "value" : 91,
+    "value2" : "G13"
+  },
+  {
+    "label" : "重型平板全挂车",
+    "status" : 1,
+    "value" : 92,
+    "value2" : "G14"
+  },
+  {
+    "label" : "重型集装箱全挂车",
+    "status" : 1,
+    "value" : 93,
+    "value2" : "G15"
+  },
+  {
+    "label" : "重型自卸全挂车",
+    "status" : 1,
+    "value" : 94,
+    "value2" : "G16"
+  },
+  {
+    "label" : "重型仓栅式全挂车",
+    "status" : 1,
+    "value" : 95,
+    "value2" : "G17"
+  },
+  {
+    "label" : "重型旅居全挂车",
+    "status" : 1,
+    "value" : 96,
+    "value2" : "G18"
+  },
+  {
+    "label" : "重型专项作业全挂车",
+    "status" : 1,
+    "value" : 97,
+    "value2" : "G19"
+  },
+  {
+    "label" : "中型普通全挂车",
+    "status" : 1,
+    "value" : 98,
+    "value2" : "G21"
+  },
+  {
+    "label" : "中型厢式全挂车",
+    "status" : 1,
+    "value" : 99,
+    "value2" : "G22"
+  },
+  {
+    "label" : "中型罐式全挂车",
+    "status" : 1,
+    "value" : 100,
+    "value2" : "G23"
+  },
+  {
+    "label" : "中型平板全挂车",
+    "status" : 1,
+    "value" : 101,
+    "value2" : "G24"
+  },
+  {
+    "label" : "中型集装箱全挂车",
+    "status" : 1,
+    "value" : 102,
+    "value2" : "G25"
+  },
+  {
+    "label" : "中型自卸全挂车",
+    "status" : 1,
+    "value" : 103,
+    "value2" : "G26"
+  },
+  {
+    "label" : "中型仓栅式全挂车",
+    "status" : 1,
+    "value" : 104,
+    "value2" : "G27"
+  },
+  {
+    "label" : "中型旅居全挂车",
+    "status" : 1,
+    "value" : 105,
+    "value2" : "G28"
+  },
+  {
+    "label" : "中型专项作业全挂车",
+    "status" : 1,
+    "value" : 106,
+    "value2" : "G29"
+  },
+  {
+    "label" : "轻型普通全挂车",
+    "status" : 1,
+    "value" : 107,
+    "value2" : "G31"
+  },
+  {
+    "label" : "轻型厢式全挂车",
+    "status" : 1,
+    "value" : 108,
+    "value2" : "G32"
+  },
+  {
+    "label" : "轻型罐式全挂车",
+    "status" : 1,
+    "value" : 109,
+    "value2" : "G33"
+  },
+  {
+    "label" : "轻型平板全挂车",
+    "status" : 1,
+    "value" : 110,
+    "value2" : "G34"
+  },
+  {
+    "label" : "轻型自卸全挂车",
+    "status" : 1,
+    "value" : 111,
+    "value2" : "G35"
+  },
+  {
+    "label" : "轻型仓栅式全挂车",
+    "status" : 1,
+    "value" : 112,
+    "value2" : "G36"
+  },
+  {
+    "label" : "轻型旅居全挂车",
+    "status" : 1,
+    "value" : 113,
+    "value2" : "G37"
+  },
+  {
+    "label" : "轻型专项作业全挂车",
+    "status" : 1,
+    "value" : 114,
+    "value2" : "G38"
+  },
+  {
+    "label" : "重型普通半挂车",
+    "status" : 1,
+    "value" : 115,
+    "value2" : "B11"
+  },
+  {
+    "label" : "重型厢式半挂车",
+    "status" : 1,
+    "value" : 116,
+    "value2" : "B12"
+  },
+  {
+    "label" : "重型罐式半挂车",
+    "status" : 1,
+    "value" : 117,
+    "value2" : "B13"
+  },
+  {
+    "label" : "重型平板半挂车",
+    "status" : 1,
+    "value" : 118,
+    "value2" : "B14"
+  },
+  {
+    "label" : "重型集装箱半挂车",
+    "status" : 1,
+    "value" : 119,
+    "value2" : "B15"
+  },
+  {
+    "label" : "重型自卸半挂车",
+    "status" : 1,
+    "value" : 120,
+    "value2" : "B16"
+  },
+  {
+    "label" : "重型特殊结构半挂车",
+    "status" : 1,
+    "value" : 121,
+    "value2" : "B17"
+  },
+  {
+    "label" : "重型仓栅式半挂车",
+    "status" : 1,
+    "value" : 122,
+    "value2" : "B18"
+  },
+  {
+    "label" : "重型旅居半挂车",
+    "status" : 1,
+    "value" : 123,
+    "value2" : "B19"
+  },
+  {
+    "label" : "重型专项作业半挂车",
+    "status" : 1,
+    "value" : 124,
+    "value2" : "B1A"
+  },
+  {
+    "label" : "重型低平板半挂车",
+    "status" : 1,
+    "value" : 125,
+    "value2" : "B1B"
+  },
+  {
+    "label" : "中型普通半挂车",
+    "status" : 1,
+    "value" : 126,
+    "value2" : "B21"
+  },
+  {
+    "label" : "中型厢式半挂车",
+    "status" : 1,
+    "value" : 127,
+    "value2" : "B22"
+  },
+  {
+    "label" : "中型罐式半挂车",
+    "status" : 1,
+    "value" : 128,
+    "value2" : "B23"
+  },
+  {
+    "label" : "中型平板半挂车",
+    "status" : 1,
+    "value" : 129,
+    "value2" : "B24"
+  },
+  {
+    "label" : "中型集装箱半挂车",
+    "status" : 1,
+    "value" : 130,
+    "value2" : "B25"
+  },
+  {
+    "label" : "中型自卸半挂车",
+    "status" : 1,
+    "value" : 131,
+    "value2" : "B26"
+  },
+  {
+    "label" : "中型特殊结构半挂车",
+    "status" : 1,
+    "value" : 132,
+    "value2" : "B27"
+  },
+  {
+    "label" : "中型仓栅式半挂车",
+    "status" : 1,
+    "value" : 133,
+    "value2" : "B28"
+  },
+  {
+    "label" : "中型旅居半挂车",
+    "status" : 1,
+    "value" : 134,
+    "value2" : "B29"
+  },
+  {
+    "label" : "中型专项作业半挂车",
+    "status" : 1,
+    "value" : 135,
+    "value2" : "B2A"
+  },
+  {
+    "label" : "中型低平板半挂车",
+    "status" : 1,
+    "value" : 136,
+    "value2" : "B2B"
+  },
+  {
+    "label" : "轻型普通半挂车",
+    "status" : 1,
+    "value" : 137,
+    "value2" : "B31"
+  },
+  {
+    "label" : "轻型厢式半挂车",
+    "status" : 1,
+    "value" : 138,
+    "value2" : "B32"
+  },
+  {
+    "label" : "轻型罐式半挂车",
+    "status" : 1,
+    "value" : 139,
+    "value2" : "B33"
+  },
+  {
+    "label" : "轻型平板半挂车",
+    "status" : 1,
+    "value" : 140,
+    "value2" : "B34"
+  },
+  {
+    "label" : "轻型自卸半挂车",
+    "status" : 1,
+    "value" : 141,
+    "value2" : "B35"
+  },
+  {
+    "label" : "轻型仓栅式半挂车",
+    "status" : 1,
+    "value" : 142,
+    "value2" : "B36"
+  },
+  {
+    "label" : "轻型旅居半挂车",
+    "status" : 1,
+    "value" : 143,
+    "value2" : "B37"
+  },
+  {
+    "label" : "轻型专项作业半挂车",
+    "status" : 1,
+    "value" : 144,
+    "value2" : "B38"
+  },
+  {
+    "label" : "轻型低平板半挂车",
+    "status" : 1,
+    "value" : 145,
+    "value2" : "B39"
+  },
+  {
+    "label" : "其他",
+    "status" : 1,
+    "value" : 146,
+    "value2" : "X99"
+  },
+  {
+    "label" : "重型车辆运输半挂车",
+    "status" : 1,
+    "value" : 147,
+    "value2" : "B1C"
+  },
+  {
+    "label" : "重型罐式自卸半挂车",
+    "status" : 1,
+    "value" : 148,
+    "value2" : "B1D"
+  },
+  {
+    "label" : "重型平板自卸半挂车",
+    "status" : 1,
+    "value" : 149,
+    "value2" : "B1E"
+  },
+  {
+    "label" : "重型集装箱自卸半挂车",
+    "status" : 1,
+    "value" : 150,
+    "value2" : "B1F"
+  },
+  {
+    "label" : "重型特殊结构自卸半挂车",
+    "status" : 1,
+    "value" : 151,
+    "value2" : "B1G"
+  },
+  {
+    "label" : "重型仓栅式自卸半挂车",
+    "status" : 1,
+    "value" : 152,
+    "value2" : "B1H"
+  },
+  {
+    "label" : "重型专项作业自卸半挂车",
+    "status" : 1,
+    "value" : 153,
+    "value2" : "B1J"
+  },
+  {
+    "label" : "重型低平板自卸半挂车",
+    "status" : 1,
+    "value" : 154,
+    "value2" : "B1K"
+  },
+  {
+    "label" : "重型专门用途半挂车",
+    "status" : 1,
+    "value" : 155,
+    "value2" : "B1L"
+  },
+  {
+    "label" : "重型中置轴车辆运输挂车",
+    "status" : 1,
+    "value" : 156,
+    "value2" : "B1V"
+  },
+  {
+    "label" : "重型中置轴普通挂车",
+    "status" : 1,
+    "value" : 157,
+    "value2" : "B1W"
+  },
+  {
+    "label" : "中型车辆运输半挂车",
+    "status" : 1,
+    "value" : 158,
+    "value2" : "B2C"
+  },
+  {
+    "label" : "中型罐式自卸半挂车",
+    "status" : 1,
+    "value" : 159,
+    "value2" : "B2D"
+  },
+  {
+    "label" : "中型平板自卸半挂车",
+    "status" : 1,
+    "value" : 160,
+    "value2" : "B2E"
+  },
+  {
+    "label" : "中型集装箱自卸半挂车",
+    "status" : 1,
+    "value" : 161,
+    "value2" : "B2F"
+  },
+  {
+    "label" : "中型特殊结构自卸半挂车",
+    "status" : 1,
+    "value" : 162,
+    "value2" : "B2G"
+  },
+  {
+    "label" : "中型仓栅式自卸半挂车",
+    "status" : 1,
+    "value" : 163,
+    "value2" : "B2H"
+  },
+  {
+    "label" : "中型专项作业自卸半挂车",
+    "status" : 1,
+    "value" : 164,
+    "value2" : "B2J"
+  },
+  {
+    "label" : "中型低平板自卸半挂车",
+    "status" : 1,
+    "value" : 165,
+    "value2" : "B2K"
+  },
+  {
+    "label" : "中型专门用途半挂车",
+    "status" : 1,
+    "value" : 166,
+    "value2" : "B2L"
+  },
+  {
+    "label" : "中型中置轴车辆运输挂车",
+    "status" : 1,
+    "value" : 167,
+    "value2" : "B2V"
+  },
+  {
+    "label" : "中型中置轴普通挂车",
+    "status" : 1,
+    "value" : 168,
+    "value2" : "B2W"
+  },
+  {
+    "label" : "轻型车辆运输半挂车",
+    "status" : 1,
+    "value" : 169,
+    "value2" : "B3C"
+  },
+  {
+    "label" : "轻型罐式自卸半挂车",
+    "status" : 1,
+    "value" : 170,
+    "value2" : "B3D"
+  },
+  {
+    "label" : "轻型平板自卸半挂车",
+    "status" : 1,
+    "value" : 171,
+    "value2" : "B3E"
+  },
+  {
+    "label" : "轻型集装箱自卸半挂车",
+    "status" : 1,
+    "value" : 172,
+    "value2" : "B3F"
+  },
+  {
+    "label" : "轻型特殊结构自卸半挂车",
+    "status" : 1,
+    "value" : 173,
+    "value2" : "B3G"
+  },
+  {
+    "label" : "轻型仓栅式自卸半挂车",
+    "status" : 1,
+    "value" : 174,
+    "value2" : "B3H"
+  },
+  {
+    "label" : "轻型专项作业自卸半挂车",
+    "status" : 1,
+    "value" : 175,
+    "value2" : "B3J"
+  },
+  {
+    "label" : "轻型低平板自卸半挂车",
+    "status" : 1,
+    "value" : 176,
+    "value2" : "B3K"
+  },
+  {
+    "label" : "轻型专门用途半挂车",
+    "status" : 1,
+    "value" : 177,
+    "value2" : "B3L"
+  },
+  {
+    "label" : "轻型中置轴车辆运输挂车",
+    "status" : 1,
+    "value" : 178,
+    "value2" : "B3V"
+  },
+  {
+    "label" : "轻型中置轴普通挂车",
+    "status" : 1,
+    "value" : 179,
+    "value2" : "B3W"
+  },
+  {
+    "label" : "微型栏板半挂车",
+    "status" : 1,
+    "value" : 180,
+    "value2" : "B41"
+  },
+  {
+    "label" : "微型厢式半挂车",
+    "status" : 1,
+    "value" : 181,
+    "value2" : "B42"
+  },
+  {
+    "label" : "微型罐式半挂车",
+    "status" : 1,
+    "value" : 182,
+    "value2" : "B43"
+  },
+  {
+    "label" : "微型平板半挂车",
+    "status" : 1,
+    "value" : 183,
+    "value2" : "B44"
+  },
+  {
+    "label" : "微型自卸半挂车",
+    "status" : 1,
+    "value" : 184,
+    "value2" : "B45"
+  },
+  {
+    "label" : "微型仓栅式半挂车",
+    "status" : 1,
+    "value" : 185,
+    "value2" : "B46"
+  },
+  {
+    "label" : "微型专项作业半挂车",
+    "status" : 1,
+    "value" : 186,
+    "value2" : "B48"
+  },
+  {
+    "label" : "微型低平板半挂车",
+    "status" : 1,
+    "value" : 187,
+    "value2" : "B49"
+  },
+  {
+    "label" : "微型车辆运输半挂车",
+    "status" : 1,
+    "value" : 188,
+    "value2" : "B4C"
+  },
+  {
+    "label" : "微型罐式自卸半挂车",
+    "status" : 1,
+    "value" : 189,
+    "value2" : "B4D"
+  },
+  {
+    "label" : "微型平板自卸半挂车",
+    "status" : 1,
+    "value" : 190,
+    "value2" : "B4E"
+  },
+  {
+    "label" : "微型集装箱自卸半挂车",
+    "status" : 1,
+    "value" : 191,
+    "value2" : "B4F"
+  },
+  {
+    "label" : "微型特殊结构自卸半挂车",
+    "status" : 1,
+    "value" : 192,
+    "value2" : "B4G"
+  },
+  {
+    "label" : "微型仓栅式自卸半挂车",
+    "status" : 1,
+    "value" : 193,
+    "value2" : "B4H"
+  },
+  {
+    "label" : "微型专项作业自卸半挂车",
+    "status" : 1,
+    "value" : 194,
+    "value2" : "B4J"
+  },
+  {
+    "label" : "微型低平板自卸半挂车",
+    "status" : 1,
+    "value" : 195,
+    "value2" : "B4K"
+  },
+  {
+    "label" : "微型专门用途半挂车",
+    "status" : 1,
+    "value" : 196,
+    "value2" : "B4L"
+  },
+  {
+    "label" : "微型中置轴车辆运输挂车",
+    "status" : 1,
+    "value" : 197,
+    "value2" : "B4V"
+  },
+  {
+    "label" : "微型中置轴普通挂车",
+    "status" : 1,
+    "value" : 198,
+    "value2" : "B4W"
+  },
+  {
+    "label" : "重型厢式自卸全挂车",
+    "status" : 1,
+    "value" : 199,
+    "value2" : "G1A"
+  },
+  {
+    "label" : "重型罐式自卸全挂车",
+    "status" : 1,
+    "value" : 200,
+    "value2" : "G1B"
+  },
+  {
+    "label" : "重型平板自卸全挂车",
+    "status" : 1,
+    "value" : 201,
+    "value2" : "G1C"
+  },
+  {
+    "label" : "重型集装箱自卸全挂车",
+    "status" : 1,
+    "value" : 202,
+    "value2" : "G1D"
+  },
+  {
+    "label" : "重型仓栅式自卸全挂车",
+    "status" : 1,
+    "value" : 203,
+    "value2" : "G1E"
+  },
+  {
+    "label" : "重型特殊用途自卸全挂车",
+    "status" : 1,
+    "value" : 204,
+    "value2" : "G1F"
+  },
+  {
+    "label" : "中型厢式自卸全挂车",
+    "status" : 1,
+    "value" : 205,
+    "value2" : "G2A"
+  },
+  {
+    "label" : "中型罐式自卸全挂车",
+    "status" : 1,
+    "value" : 206,
+    "value2" : "G2B"
+  },
+  {
+    "label" : "中型平板自卸全挂车",
+    "status" : 1,
+    "value" : 207,
+    "value2" : "G2C"
+  },
+  {
+    "label" : "中型集装箱自卸全挂车",
+    "status" : 1,
+    "value" : 208,
+    "value2" : "G2D"
+  },
+  {
+    "label" : "中型仓栅式自卸全挂车",
+    "status" : 1,
+    "value" : 209,
+    "value2" : "G2E"
+  },
+  {
+    "label" : "中型特殊用途自卸全挂车",
+    "status" : 1,
+    "value" : 210,
+    "value2" : "G2F"
+  },
+  {
+    "label" : "轻型厢式自卸全挂车",
+    "status" : 1,
+    "value" : 211,
+    "value2" : "G3A"
+  },
+  {
+    "label" : "轻型罐式自卸全挂车",
+    "status" : 1,
+    "value" : 212,
+    "value2" : "G3B"
+  },
+  {
+    "label" : "轻型平板自卸全挂车",
+    "status" : 1,
+    "value" : 213,
+    "value2" : "G3C"
+  },
+  {
+    "label" : "轻型集装箱自卸全挂车",
+    "status" : 1,
+    "value" : 214,
+    "value2" : "G3D"
+  },
+  {
+    "label" : "轻型仓栅式自卸全挂车",
+    "status" : 1,
+    "value" : 215,
+    "value2" : "G3E"
+  },
+  {
+    "label" : "轻型特殊用途自卸全挂车",
+    "status" : 1,
+    "value" : 216,
+    "value2" : "G3F"
+  },
+  {
+    "label" : "微型栏板全挂车",
+    "status" : 1,
+    "value" : 217,
+    "value2" : "G41"
+  },
+  {
+    "label" : "微型厢式全挂车",
+    "status" : 1,
+    "value" : 218,
+    "value2" : "G42"
+  },
+  {
+    "label" : "微型罐式全挂车",
+    "status" : 1,
+    "value" : 219,
+    "value2" : "G43"
+  },
+  {
+    "label" : "微型平板全挂车",
+    "status" : 1,
+    "value" : 220,
+    "value2" : "G44"
+  },
+  {
+    "label" : "微型自卸全挂车",
+    "status" : 1,
+    "value" : 221,
+    "value2" : "G45"
+  },
+  {
+    "label" : "微型仓栅式全挂车",
+    "status" : 1,
+    "value" : 222,
+    "value2" : "G46"
+  },
+  {
+    "label" : "微型特殊用途全挂车",
+    "status" : 1,
+    "value" : 223,
+    "value2" : "G48"
+  },
+  {
+    "label" : "微型厢式自卸全挂车",
+    "status" : 1,
+    "value" : 224,
+    "value2" : "G4A"
+  },
+  {
+    "label" : "微型罐式自卸全挂车",
+    "status" : 1,
+    "value" : 225,
+    "value2" : "G4B"
+  },
+  {
+    "label" : "微型平板自卸全挂车",
+    "status" : 1,
+    "value" : 226,
+    "value2" : "G4C"
+  },
+  {
+    "label" : "微型集装箱自卸全挂车",
+    "status" : 1,
+    "value" : 227,
+    "value2" : "G4D"
+  },
+  {
+    "label" : "微型仓栅式自卸全挂车",
+    "status" : 1,
+    "value" : 228,
+    "value2" : "G4E"
+  },
+  {
+    "label" : "微型特殊用途自卸全挂车",
+    "status" : 1,
+    "value" : 229,
+    "value2" : "G4F"
+  },
+  {
+    "label" : "重型车辆运输车",
+    "status" : 1,
+    "value" : 230,
+    "value2" : "H1A"
+  },
+  {
+    "label" : "重型厢式自卸货车",
+    "status" : 1,
+    "value" : 231,
+    "value2" : "H1B"
+  },
+  {
+    "label" : "重型罐式自卸货车",
+    "status" : 1,
+    "value" : 232,
+    "value2" : "H1C"
+  },
+  {
+    "label" : "重型平板自卸货车",
+    "status" : 1,
+    "value" : 233,
+    "value2" : "H1D"
+  },
+  {
+    "label" : "重型集装箱自卸货车",
+    "status" : 1,
+    "value" : 234,
+    "value2" : "H1E"
+  },
+  {
+    "label" : "重型特殊结构自卸货车",
+    "status" : 1,
+    "value" : 235,
+    "value2" : "H1F"
+  },
+  {
+    "label" : "重型仓栅式自卸货车",
+    "status" : 1,
+    "value" : 236,
+    "value2" : "H1G"
+  },
+  {
+    "label" : "重型专门用途货车",
+    "status" : 1,
+    "value" : 237,
+    "value2" : "H1J"
+  },
+  {
+    "label" : "中型车辆运输车",
+    "status" : 1,
+    "value" : 238,
+    "value2" : "H2A"
+  },
+  {
+    "label" : "中型厢式自卸货车",
+    "status" : 1,
+    "value" : 239,
+    "value2" : "H2B"
+  },
+  {
+    "label" : "中型罐式自卸货车",
+    "status" : 1,
+    "value" : 240,
+    "value2" : "H2C"
+  },
+  {
+    "label" : "中型平板自卸货车",
+    "status" : 1,
+    "value" : 241,
+    "value2" : "H2D"
+  },
+  {
+    "label" : "中型集装箱自卸货车",
+    "status" : 1,
+    "value" : 242,
+    "value2" : "H2E"
+  },
+  {
+    "label" : "中型特殊结构自卸货车",
+    "status" : 1,
+    "value" : 243,
+    "value2" : "H2F"
+  },
+  {
+    "label" : "中型仓栅式自卸货车",
+    "status" : 1,
+    "value" : 244,
+    "value2" : "H2G"
+  },
+  {
+    "label" : "中型专门用途货车",
+    "status" : 1,
+    "value" : 245,
+    "value2" : "H2J"
+  },
+  {
+    "label" : "轻型车辆运输车",
+    "status" : 1,
+    "value" : 246,
+    "value2" : "H3A"
+  },
+  {
+    "label" : "轻型厢式自卸货车",
+    "status" : 1,
+    "value" : 247,
+    "value2" : "H3B"
+  },
+  {
+    "label" : "轻型罐式自卸货车",
+    "status" : 1,
+    "value" : 248,
+    "value2" : "H3C"
+  },
+  {
+    "label" : "轻型平板自卸货车",
+    "status" : 1,
+    "value" : 249,
+    "value2" : "H3D"
+  },
+  {
+    "label" : "轻型特殊结构自卸货车",
+    "status" : 1,
+    "value" : 250,
+    "value2" : "H3F"
+  },
+  {
+    "label" : "轻型仓栅式自卸货车",
+    "status" : 1,
+    "value" : 251,
+    "value2" : "H3G"
+  },
+  {
+    "label" : "轻型多用途货车",
+    "status" : 1,
+    "value" : 252,
+    "value2" : "H3H"
+  },
+  {
+    "label" : "轻型专门用途货车",
+    "status" : 1,
+    "value" : 253,
+    "value2" : "H3J"
+  },
+  {
+    "label" : "微型车辆运输车",
+    "status" : 1,
+    "value" : 254,
+    "value2" : "H4A"
+  },
+  {
+    "label" : "微型厢式自卸货车",
+    "status" : 1,
+    "value" : 255,
+    "value2" : "H4B"
+  },
+  {
+    "label" : "微型罐式自卸货车",
+    "status" : 1,
+    "value" : 256,
+    "value2" : "H4C"
+  },
+  {
+    "label" : "微型特殊结构自卸货车",
+    "status" : 1,
+    "value" : 257,
+    "value2" : "H4F"
+  },
+  {
+    "label" : "微型仓栅式自卸货车",
+    "status" : 1,
+    "value" : 258,
+    "value2" : "H4G"
+  },
+  {
+    "label" : "微型多用途货车",
+    "status" : 1,
+    "value" : 259,
+    "value2" : "H4H"
+  },
+  {
+    "label" : "微型专门用途货车",
+    "status" : 1,
+    "value" : 260,
+    "value2" : "H4J"
+  },
+  {
+    "label" : "厢式自卸低速货车",
+    "status" : 1,
+    "value" : 261,
+    "value2" : "H5B"
+  },
+  {
+    "label" : "罐式自卸低速货车",
+    "status" : 1,
+    "value" : 262,
+    "value2" : "H5C"
+  },
+  {
+    "label" : "大型载货专项作业车",
+    "status" : 1,
+    "value" : 263,
+    "value2" : "Z12"
+  },
+  {
+    "label" : "中型载货专项作业车",
+    "status" : 1,
+    "value" : 264,
+    "value2" : "Z22"
+  },
+  {
+    "label" : "小型载货专项作业车",
+    "status" : 1,
+    "value" : 265,
+    "value2" : "Z32"
+  },
+  {
+    "label" : "微型载货专项作业车",
+    "status" : 1,
+    "value" : 266,
+    "value2" : "Z42"
+  },
+  {
+    "label" : "重型载货专项作业车",
+    "status" : 1,
+    "value" : 267,
+    "value2" : "Z52"
+  },
+  {
+    "label" : "轻型载货专项作业车",
+    "status" : 1,
+    "value" : 268,
+    "value2" : "Z72"
+  }
+]
