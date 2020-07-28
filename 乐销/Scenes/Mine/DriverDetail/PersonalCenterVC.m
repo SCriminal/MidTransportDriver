@@ -6,7 +6,7 @@
 //Copyright © 2018年 ping. All rights reserved.
 //
 
-#import "DriverDetailVC.h"
+#import "PersonalCenterVC.h"
 //image select
 #import "BaseVC+BaseImageSelectVC.h"
 //up image
@@ -25,7 +25,7 @@
 #import "AddCardVC.h"
 #import "BankCardListVC.h"
 
-@interface DriverDetailVC ()
+@interface PersonalCenterVC ()
 @property (nonatomic, strong) DriverDetailTopView *topView;
 @property (nonatomic, strong) HotLineView *hotLineView;
 @property (nonatomic, strong) UIVisualEffectView *masksView;//蒙板
@@ -34,7 +34,7 @@
 
 @end
 
-@implementation DriverDetailVC
+@implementation PersonalCenterVC
 
 #pragma mark lazy init
 - (DriverDetailTopView *)topView{
@@ -186,6 +186,14 @@
         model.imageName = @"driverDetail_card";
         model.blockClick = ^{
             [weakSelf requestBank];
+        };
+        return model;
+    }(),^(){
+        ModelBtn * model = [ModelBtn new];
+        model.title = @"设置";
+        model.imageName = @"driverDetail_card";
+        model.blockClick = ^{
+            [GB_Nav pushVCName:@"SettingVC" animated:true];
         };
         return model;
     }()].mutableCopy;

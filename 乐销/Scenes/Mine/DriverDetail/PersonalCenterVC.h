@@ -8,7 +8,7 @@
 
 #import "BaseTableVC.h"
 #import "UINavigationController+EndEditing.h"
-@interface DriverDetailVC : BaseTableVC
+@interface PersonalCenterVC : BaseTableVC
 
 @end
 

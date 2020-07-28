@@ -83,25 +83,16 @@
 
 //创建rootNav
 + (void)createRootNav{
-    BaseNavController * navMain = [[BaseNavController alloc]initWithRootViewController:[NSClassFromString(@"OrderListManagementVC") new]];
-    navMain.navigationBarHidden = true;
-    
-    BaseNavController *leftNav = [[BaseNavController alloc]initWithRootViewController:[NSClassFromString(@"LeftMenuVC") new]];
-    leftNav.navigationBarHidden = true;
-    
-    IIViewDeckController *viewDeckController = [[IIViewDeckController alloc] initWithCenterViewController:navMain leftViewController:leftNav];
-    BaseNavController *navRoot = [[BaseNavController alloc]initWithRootViewController:viewDeckController];
-    navRoot.navigationBarHidden = true;
-    GB_Nav = navRoot;
-
+    BaseNavController * navMain = [[BaseNavController alloc]initWithRootViewController:[CustomTabBarController new]];
+       navMain.navigationBarHidden = YES;
+       GB_Nav = navMain;
     
     UIWindow * window = [UIApplication sharedApplication].keyWindow;
     if (!window) {
         window = [[UIWindow alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     }
-    
 
-    window.rootViewController = navRoot;
+    window.rootViewController = GB_Nav;
     [window setBackgroundColor:[UIColor clearColor]];
     [window makeKeyAndVisible];
     

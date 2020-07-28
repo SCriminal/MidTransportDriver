@@ -23,10 +23,6 @@
 @property (nonatomic, assign) BOOL isNotFirstLoad;
 @property (nonatomic, strong) NSArray *arySliderDatas;
 @property (nonatomic, strong) BaseNavView *nav;
-@property (nonatomic, strong) UIImageView *ivHead;
-@property (nonatomic, strong) UIControl *conHead;
-@property (nonatomic, strong) OrderManagementBottomView *bottomTypeSwitchView;
-@property (nonatomic, strong) BulkCargoListManageVC *bulkManageVC;
 
 @end
 
@@ -34,8 +30,8 @@
 #pragma mark lazy init
 - (UIScrollView *)scAll{
     if (_scAll == nil) {
-        _scAll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, self.sliderView.bottom +1, SCREEN_WIDTH, SCREEN_HEIGHT - self.sliderView.height-NAVIGATIONBAR_HEIGHT - HEIGHT_ORDERMANAGEMENTBOTTOMVIEW)];
-        _scAll.contentSize = CGSizeMake(SCREEN_WIDTH * 3, 0);
+        _scAll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, self.sliderView.bottom +1, SCREEN_WIDTH, SCREEN_HEIGHT - self.sliderView.height-NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT)];
+        _scAll.contentSize = CGSizeMake(SCREEN_WIDTH * self.arySliderDatas.count, 0);
         _scAll.backgroundColor = [UIColor clearColor];
         _scAll.delegate = self;
         _scAll.pagingEnabled = true;
@@ -44,34 +40,9 @@
     }
     return _scAll;
 }
-- (UIImageView *)ivHead{
-    if (!_ivHead) {
-        _ivHead = [UIImageView new];
-        _ivHead.backgroundColor = [UIColor clearColor];
-        _ivHead.widthHeight = XY(W(30), W(30));
-        [GlobalMethod setRoundView:_ivHead color:[UIColor clearColor] numRound:_ivHead.width/2.0 width:0];
-        [_ivHead sd_setImageWithURL:[NSURL URLWithString:[GlobalData sharedInstance].GB_UserModel.headUrl] placeholderImage:[UIImage imageNamed:IMAGE_HEAD_DEFAULT]];
-    }
-    return _ivHead;
-}
-- (UIControl *)conHead {
-    if (!_conHead) {
-        _conHead = [UIControl new];
-        _conHead.frame = CGRectMake(0, STATUSBAR_HEIGHT, W(100), NAVIGATIONBAR_HEIGHT - STATUSBAR_HEIGHT);
-        [_conHead addSubview:self.ivHead];
-        self.ivHead.leftCenterY = XY(W(20), _conHead.height/2.0);
-        [_conHead addTarget:self action:@selector(headClick) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _conHead;
-}
-- (BulkCargoListManageVC *)bulkManageVC{
-    if (!_bulkManageVC) {
-        _bulkManageVC = [BulkCargoListManageVC new];
-        _bulkManageVC.view.frame = CGRectMake(0, NAVIGATIONBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - HEIGHT_ORDERMANAGEMENTBOTTOMVIEW);
-//        _bulkManageVC.view.hidden = true;
-    }
-    return _bulkManageVC;
-}
+
+
+
 - (NSArray *)arySliderDatas{
     if (!_arySliderDatas) {
         _arySliderDatas = @[^(){
@@ -93,20 +64,7 @@
     }
     return _arySliderDatas;
 }
-- (OrderManagementBottomView *)bottomTypeSwitchView{
-    if (!_bottomTypeSwitchView) {
-        _bottomTypeSwitchView = [OrderManagementBottomView new];
-        _bottomTypeSwitchView.bottom = SCREEN_HEIGHT;
-        WEAKSELF
-        _bottomTypeSwitchView.blockIndexChange = ^(int index) {
-                weakSelf.bulkManageVC.view.hidden = index == 1;
-        };
-        _bottomTypeSwitchView.blockMainClick = ^(void) {
-            [GB_Nav pushVCName:@"ScanOrderListVC" animated:true];
-        };
-    }
-    return _bottomTypeSwitchView;
-}
+
 #pragma mark 初始化子控制器
 - (void)setupChildVC
 {
@@ -157,7 +115,7 @@
 }
 - (BaseNavView *)nav{
     if (!_nav) {
-        _nav = [BaseNavView initNavTitle:@"运单中心" leftView:self.conHead rightView:nil];
+        _nav = [BaseNavView initNavTitle:@"集运运单" leftView:nil rightView:nil];
         _nav.line.hidden = true;
     }
     return _nav;
@@ -170,9 +128,7 @@
     [self.view addSubview:self.sliderView];
     [self.view addSubview:self.scAll];
     [self setupChildVC];
-    [self addBulkVC];
-    [self.view addSubview:self.bottomTypeSwitchView];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reconfigView) name:NOTICE_SELFMODEL_CHANGE object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshAll) name:NOTICE_SELFMODEL_CHANGE object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshAll) name:NOTICE_ORDER_REFERSH object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshAll) name:UIApplicationDidBecomeActiveNotification object:nil];
     //request extend token
@@ -197,14 +153,8 @@
         }
     }
 }
-#pragma mark refonfig view
-- (void)reconfigView{
-    [self.ivHead sd_setImageWithURL:[NSURL URLWithString:[GlobalData sharedInstance].GB_UserModel.headUrl] placeholderImage:[UIImage imageNamed:IMAGE_HEAD_DEFAULT]];
-}
-#pragma mark click
-- (void)headClick{
-    [self.viewDeckController openSide:IIViewDeckSideLeft animated:YES];
-}
+
+
 #pragma mark scrollview delegat
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     [self fetchCurrentView];
@@ -235,10 +185,6 @@
 - (void)addNav{
     [self.view addSubview:self.nav];
   
-}
-- (void)addBulkVC{
-    [self addChildViewController:self.bulkManageVC];
-    [self.view addSubview:self.bulkManageVC.view];
 }
 #pragma mark status bar
 - (UIStatusBarStyle)preferredStatusBarStyle{

@@ -86,7 +86,7 @@
 		D23327CE2185A6CB00495488 /* OrderListManagementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D23327CD2185A6CB00495488 /* OrderListManagementVC.m */; };
 		D23398601EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D233985F1EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m */; };
 		D23458401FD4E5E100F72EF5 /* UIImageView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D234583F1FD4E5E100F72EF5 /* UIImageView+Category.m */; };
-		D239D115218822E3009D7D45 /* DriverDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D239D114218822E3009D7D45 /* DriverDetailVC.m */; };
+		D239D115218822E3009D7D45 /* PersonalCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D239D114218822E3009D7D45 /* PersonalCenterVC.m */; };
 		D239EACA1E2E0EB000E803F6 /* MJChiBaoZiHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D239EAC91E2E0EB000E803F6 /* MJChiBaoZiHeader.m */; };
 		D239EACD1E2E175100E803F6 /* CutomFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = D239EACC1E2E175100E803F6 /* CutomFooter.m */; };
 		D23D90C71F8B245A00489F95 /* UIViewController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D23D90C61F8B245A00489F95 /* UIViewController+Category.m */; };
@@ -296,6 +296,7 @@
 		D2F11C6D2097103600F18CBD /* UITextField+Text.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F11C6C2097103600F18CBD /* UITextField+Text.m */; };
 		D2F733B41E8642EE0008E561 /* LocalData.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F733B31E8642EE0008E561 /* LocalData.json */; };
 		D2F8473D21B1101E00833C56 /* LeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F8473C21B1101E00833C56 /* LeftMenuCell.m */; };
+		D2F926AC24CFC62900FB256D /* tab_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F926AB24CFC62900FB256D /* tab_shadow@2x.png */; };
 		D2FC339D247F5776000DE338 /* AddCarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC339B247F5776000DE338 /* AddCarVC.m */; };
 		D2FC33A0247F57AE000DE338 /* AuthorityImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC339F247F57AE000DE338 /* AuthorityImageView.m */; };
 		D2FC33A4247F5A56000DE338 /* ModelCar.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC33A2247F5A56000DE338 /* ModelCar.m */; };
@@ -526,8 +527,8 @@
 		D233985F1EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableParagraphStyle+Category.m"; sourceTree = "<group>"; };
 		D234583E1FD4E5E100F72EF5 /* UIImageView+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Category.h"; sourceTree = "<group>"; };
 		D234583F1FD4E5E100F72EF5 /* UIImageView+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Category.m"; sourceTree = "<group>"; };
-		D239D113218822E3009D7D45 /* DriverDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DriverDetailVC.h; sourceTree = "<group>"; };
-		D239D114218822E3009D7D45 /* DriverDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DriverDetailVC.m; sourceTree = "<group>"; };
+		D239D113218822E3009D7D45 /* PersonalCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalCenterVC.h; sourceTree = "<group>"; };
+		D239D114218822E3009D7D45 /* PersonalCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalCenterVC.m; sourceTree = "<group>"; };
 		D239EAC81E2E0EB000E803F6 /* MJChiBaoZiHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJChiBaoZiHeader.h; sourceTree = "<group>"; };
 		D239EAC91E2E0EB000E803F6 /* MJChiBaoZiHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJChiBaoZiHeader.m; sourceTree = "<group>"; };
 		D239EACB1E2E175100E803F6 /* CutomFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutomFooter.h; sourceTree = "<group>"; };
@@ -926,6 +927,7 @@
 		D2F733B31E8642EE0008E561 /* LocalData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocalData.json; sourceTree = "<group>"; };
 		D2F8473B21B1101E00833C56 /* LeftMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuCell.h; sourceTree = "<group>"; };
 		D2F8473C21B1101E00833C56 /* LeftMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuCell.m; sourceTree = "<group>"; };
+		D2F926AB24CFC62900FB256D /* tab_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_shadow@2x.png"; sourceTree = "<group>"; };
 		D2FC339B247F5776000DE338 /* AddCarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCarVC.m; sourceTree = "<group>"; };
 		D2FC339C247F5776000DE338 /* AddCarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCarVC.h; sourceTree = "<group>"; };
 		D2FC339E247F57AE000DE338 /* AuthorityImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorityImageView.h; sourceTree = "<group>"; };
@@ -1375,8 +1377,8 @@
 		D239D112218822D6009D7D45 /* DriverDetail */ = {
 			isa = PBXGroup;
 			children = (
-				D239D113218822E3009D7D45 /* DriverDetailVC.h */,
-				D239D114218822E3009D7D45 /* DriverDetailVC.m */,
+				D239D113218822E3009D7D45 /* PersonalCenterVC.h */,
+				D239D114218822E3009D7D45 /* PersonalCenterVC.m */,
 				D2E46D7621D4A1A1007B04A1 /* DriverDetailTopView.h */,
 				D2E46D7721D4A1A1007B04A1 /* DriverDetailTopView.m */,
 			);
@@ -2272,6 +2274,7 @@
 		D2BC9A8A1DFFA7C400B0468E /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				D2F926AB24CFC62900FB256D /* tab_shadow@2x.png */,
 				D2BC9A8B1DFFA7C400B0468E /* CustomTabBar.h */,
 				D2BC9A8C1DFFA7C400B0468E /* CustomTabBar.m */,
 				D2BC9A8D1DFFA7C400B0468E /* CustomTabBarController.h */,
@@ -3026,6 +3029,7 @@
 				D2821CC1218AD9B90057688B /* point.png in Resources */,
 				D2B9FF20248E0D620082E8D2 /* LicenseType.json in Resources */,
 				D2B1040B22EADE40002D9BFF /* TestDate.json in Resources */,
+				D2F926AC24CFC62900FB256D /* tab_shadow@2x.png in Resources */,
 				D2CF190C22548EF800542AEF /* HTMLResource.bundle in Resources */,
 				D2821CC0218AD9B90057688B /* circle.png in Resources */,
 				D25F55D92178801000FD4898 /* 闪屏.m4v in Resources */,
@@ -3306,7 +3310,7 @@
 				D2478142218C35A1005747FC /* DVPieChart.m in Sources */,
 				D2A3002F2266BF2F00AE2EC3 /* PerfectAuthorityInfoSuccessVC.m in Sources */,
 				D25145CF1E32ECA700E8107F /* UITableView+Category.m in Sources */,
-				D239D115218822E3009D7D45 /* DriverDetailVC.m in Sources */,
+				D239D115218822E3009D7D45 /* PersonalCenterVC.m in Sources */,
 				D2A3FD651F0B1EDB000A5C1B /* BaseVC+Location.m in Sources */,
 				D2A0901D1E077DA20021B96C /* SliderView.m in Sources */,
 				D22BA9D81E5EB8CA00C5B391 /* FSCalendarDelegationFactory.m in Sources */,

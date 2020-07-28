@@ -27,7 +27,7 @@
 #pragma mark lazy init
 - (UIScrollView *)scAll{
     if (_scAll == nil) {
-        _scAll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, self.sliderView.bottom +1, SCREEN_WIDTH, SCREEN_HEIGHT - self.sliderView.height-NAVIGATIONBAR_HEIGHT-HEIGHT_ORDERMANAGEMENTBOTTOMVIEW)];
+        _scAll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, self.sliderView.bottom +1, SCREEN_WIDTH, SCREEN_HEIGHT - self.sliderView.height-NAVIGATIONBAR_HEIGHT-TABBAR_HEIGHT)];
         _scAll.contentSize = CGSizeMake(SCREEN_WIDTH * 4, 0);
         _scAll.backgroundColor = [UIColor clearColor];
         _scAll.delegate = self;
@@ -127,7 +127,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //添加导航栏
-//    [self addNav];
+    [self addNav];
     [self.view addSubview:self.sliderView];
     [self.view addSubview:self.scAll];
     self.view.clipsToBounds = true;

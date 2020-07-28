@@ -13,7 +13,7 @@
 - (UIImageView *)icon{
     if (_icon == nil) {
         _icon = [UIImageView new];
-        _icon.widthHeight = XY(W(18),W(18));
+        _icon.widthHeight = XY(W(25),W(25));
     }
     return _icon;
 }
@@ -80,7 +80,7 @@
 - (void)resetCellWithModel:(ModelBtn *)model{
     self.model = model;
     //设置总高度
-    self.height = W(66);
+    self.height = W(65);
 
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
@@ -89,13 +89,13 @@
     self.icon.leftCenterY = XY(W(15),self.height/2.0);
     
     [self.labelTitle fitTitle:model.title variable:0];
-    self.labelTitle.leftCenterY = XY(isStr(model.imageName)?self.icon.right + W(15):W(15),self.icon.centerY);
+    self.labelTitle.leftCenterY = XY(isStr(model.imageName)?self.icon.right + W(10):W(15),self.icon.centerY);
     
     self.arrow.rightCenterY = XY(SCREEN_WIDTH - W(10),self.labelTitle.centerY);
     self.arrow.hidden = model.isHide;
 
     [self.subTitle fitTitle:model.subTitle variable:0];
-    self.subTitle.rightCenterY = XY(self.arrow.hidden?SCREEN_WIDTH - W(15):(self.arrow.left - W(10)), self.icon.centerY);
+    self.subTitle.rightCenterY = XY(self.arrow.hidden?SCREEN_WIDTH - W(15):(self.arrow.left - W(3)), self.icon.centerY);
     
     self.labelAlert.hidden = !model.num;
     [GlobalMethod exchangeLabel:self.labelAlert count:model.num];
