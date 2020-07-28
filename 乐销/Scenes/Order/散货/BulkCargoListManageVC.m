@@ -28,7 +28,7 @@
 - (UIScrollView *)scAll{
     if (_scAll == nil) {
         _scAll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, self.sliderView.bottom +1, SCREEN_WIDTH, SCREEN_HEIGHT - self.sliderView.height-NAVIGATIONBAR_HEIGHT-TABBAR_HEIGHT)];
-        _scAll.contentSize = CGSizeMake(SCREEN_WIDTH * 4, 0);
+        _scAll.contentSize = CGSizeMake(SCREEN_WIDTH * self.arySliderDatas.count, 0);
         _scAll.backgroundColor = [UIColor clearColor];
         _scAll.delegate = self;
         _scAll.pagingEnabled = true;
@@ -46,17 +46,19 @@
             model.title = @"进行中";
             model.num = ENUM_ORDER_LIST_SORT_GOING;
             return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"待接单";
-            model.num = ENUM_ORDER_LIST_SORT_WAIT_RECEIVE;
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"已到达";
-            model.num = ENUM_ORDER_LIST_SORT_ARRIVE;
-            return model;
-        }(),^(){
+        }()
+//                             ,^(){
+//            ModelBtn * model = [ModelBtn new];
+//            model.title = @"待接单";
+//            model.num = ENUM_ORDER_LIST_SORT_WAIT_RECEIVE;
+//            return model;
+//        }(),^(){
+//            ModelBtn * model = [ModelBtn new];
+//            model.title = @"已到达";
+//            model.num = ENUM_ORDER_LIST_SORT_ARRIVE;
+//            return model;
+//        }()
+                             ,^(){
             ModelBtn * model = [ModelBtn new];
             model.title = @"已完成";
             model.num = ENUM_ORDER_LIST_SORT_COMPLETE;
@@ -80,15 +82,15 @@
             if (type == ENUM_ORDER_LIST_SORT_GOING) {
                 [weakSelf.sliderView refreshBtn:0 title:[NSString stringWithFormat:@"进行中%@",strTotal]];
             }
-            if (type == ENUM_ORDER_LIST_SORT_WAIT_RECEIVE) {
-                [weakSelf.sliderView refreshBtn:1 title:[NSString stringWithFormat:@"待接单%@",strTotal]];
-            }
-            if (type == ENUM_ORDER_LIST_SORT_ARRIVE) {
-                [weakSelf.sliderView refreshBtn:2 title:[NSString stringWithFormat:@"已到达%@",strTotal]];
-            }
+//            if (type == ENUM_ORDER_LIST_SORT_WAIT_RECEIVE) {
+//                [weakSelf.sliderView refreshBtn:1 title:[NSString stringWithFormat:@"待接单%@",strTotal]];
+//            }
+//            if (type == ENUM_ORDER_LIST_SORT_ARRIVE) {
+//                [weakSelf.sliderView refreshBtn:2 title:[NSString stringWithFormat:@"已到达%@",strTotal]];
+//            }
            
             if (type == ENUM_ORDER_LIST_SORT_COMPLETE) {
-                [weakSelf.sliderView refreshBtn:3 title:[NSString stringWithFormat:@"已完成%@",strTotal]];
+                [weakSelf.sliderView refreshBtn:1 title:[NSString stringWithFormat:@"已完成%@",strTotal]];
             }
         };
         sourceVC.sortType = model.num;
@@ -102,7 +104,7 @@
     if (_sliderView == nil) {
         _sliderView = ^(){
             SliderView * sliderView = [SliderView new];
-            sliderView.frame = CGRectMake(0, 0, SCREEN_WIDTH, W(50));
+            sliderView.frame = CGRectMake(0, NAVIGATIONBAR_HEIGHT, SCREEN_WIDTH, W(50));
             sliderView.isHasSlider = true;
             sliderView.isScroll = false;
             sliderView.isLineVerticalHide = true;
@@ -118,7 +120,7 @@
 }
 - (BaseNavView *)nav{
     if (!_nav) {
-        _nav = [BaseNavView initNavBackTitle:@"散货运单" rightView:nil];
+        _nav = [BaseNavView initNavTitle:@"散货运单" leftView:nil rightView:nil];
         _nav.line.hidden = true;
     }
     return _nav;

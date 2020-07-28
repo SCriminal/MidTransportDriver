@@ -31,7 +31,7 @@
         _topView.blockClick = ^{
             [weakSelf.viewDeckController closeSide:true];
             //            [GlobalMethod judgeLoginState:^{
-            [GB_Nav pushVCName:@"DriverDetailVC" animated:true];
+            [GB_Nav pushVCName:@"PersonalCenterVC" animated:true];
             //            }];
         };
     }

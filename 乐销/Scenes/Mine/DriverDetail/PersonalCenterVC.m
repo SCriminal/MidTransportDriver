@@ -1,5 +1,5 @@
 //
-//  DriverDetailVC.m
+//  PersonalCenterVC.m
 //中车运
 //
 //  Created by 隋林栋 on 2018/10/30.
@@ -24,12 +24,11 @@
 //car list
 #import "AddCardVC.h"
 #import "BankCardListVC.h"
+//cell
+#import "SettingCell.h"
 
 @interface PersonalCenterVC ()
 @property (nonatomic, strong) DriverDetailTopView *topView;
-@property (nonatomic, strong) HotLineView *hotLineView;
-@property (nonatomic, strong) UIVisualEffectView *masksView;//蒙板
-@property (nonatomic, strong) UIImageView *ivBG;
 @property (nonatomic, assign) int numMotorCade;
 
 @end
@@ -40,101 +39,62 @@
 - (DriverDetailTopView *)topView{
     if (!_topView) {
         _topView = [DriverDetailTopView new];
+        _topView.blockClick = ^{
+            [GB_Nav pushVCName:@"EditInfoVC" animated:true];
+        };
     }
     return _topView;
 }
-- (HotLineView *)hotLineView{
-    if (!_hotLineView) {
-        _hotLineView = [HotLineView new];
-    }
-    return _hotLineView;
-}
-- (UIVisualEffectView *)masksView
-{
-    if (_masksView == nil) {
-        _masksView = [UIVisualEffectView  new];
-        UIBlurEffect * beffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-        _masksView = [[UIVisualEffectView alloc]initWithEffect:beffect];
-        _masksView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    }
-    return  _masksView;
-}
-- (UIImageView *)ivBG{
-    if (!_ivBG) {
-        _ivBG = [UIImageView new];
-        _ivBG.backgroundColor = [UIColor whiteColor];
-        _ivBG.contentMode = UIViewContentModeScaleAspectFill;
-        WEAKSELF
-        [_ivBG sd_setImageWithURL:[NSURL URLWithString:[GlobalData sharedInstance].GB_UserModel.headUrl] placeholderImage:[UIImage imageNamed:IMAGE_HEAD_DEFAULT] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            [weakSelf.ivBG addSubview:self.masksView];
-        }];
-        _ivBG.widthHeight = XY(SCREEN_WIDTH, SCREEN_HEIGHT);
-        _ivBG.clipsToBounds = true;
-        [_ivBG addSubview:^(){
-            UIView * viewWhite = [UIView new];
-            viewWhite.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.9];
-            viewWhite.widthHeight = XY( SCREEN_WIDTH, SCREEN_HEIGHT);
-            return viewWhite;
-        }()];
-    }
-    return _ivBG;
-}
+
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.viewBG.backgroundColor = [UIColor whiteColor];
-    [self.view insertSubview:self.ivBG belowSubview:self.tableView];
     //添加导航栏
-    [self addNav];
     //bg
     self.tableView.backgroundColor = [UIColor clearColor];
     [self.tableBackgroundView removeFromSuperview];
     self.tableView.tableHeaderView = self.topView;
+    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBAR_HEIGHT);
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userInfoChange) name:NOTICE_SELFMODEL_CHANGE  object:nil];
-    self.tableView.tableFooterView = self.hotLineView;
+
     //table
-    [self.tableView registerClass:[DriverDetailCell class] forCellReuseIdentifier:@"DriverDetailCell"];
+    [self.tableView registerClass:[SettingCell class] forCellReuseIdentifier:@"SettingCell"];
+    [self.tableView registerClass:[SettingEmptyCell class] forCellReuseIdentifier:@"SettingEmptyCell"];
     //request
     [self reconfigData];
     [self request];
 }
 
-#pragma mark 添加导航栏
-- (void)addNav{
-    [self.view addSubview:^(){
-        BaseNavView * nav = [BaseNavView initNavBackTitle:@"" rightTitle:@"编辑资料" rightBlock:^{
-            [GB_Nav pushVCName:@"EditInfoVC" animated:true];
-        }];
-        nav.backgroundColor = [UIColor clearColor];
-        nav.line.hidden = true;
-        return nav;
-    }()];
-}
+
 
 #pragma mark UITableViewDelegate
 //row num
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.aryDatas.count;
 }
-
 //cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ModelBtn * model = self.aryDatas[indexPath.row];
-    DriverDetailCell * cell = [tableView dequeueReusableCellWithIdentifier:@"DriverDetailCell"];
+    if (!isStr(model.title)) {
+        SettingEmptyCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SettingEmptyCell"];
+        [cell resetCellWithModel:nil];
+        return cell;
+    }
+    SettingCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCell"];
     [cell resetCellWithModel:model];
+
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     ModelBtn * model = self.aryDatas[indexPath.row];
-    return [DriverDetailCell fetchHeight:model];
+    if (!isStr(model.title)) {
+        return [SettingEmptyCell fetchHeight:model];
+    }
+    return [SettingCell fetchHeight:model];
 }
 
 #pragma mark user detail change
 - (void)userInfoChange{
-    WEAKSELF
-    [self.ivBG sd_setImageWithURL:[NSURL URLWithString:[GlobalData sharedInstance].GB_UserModel.headUrl] placeholderImage:[UIImage imageNamed:IMAGE_HEAD_DEFAULT] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        [weakSelf.ivBG addSubview:self.masksView];
-    }];
     [self reconfigData];
 }
 #pragma mark request
@@ -152,21 +112,31 @@
         };
         return model;
     }(),*/
-                       
-                       ^(){
+        ^(){
+               ModelBtn * model = [ModelBtn new];
+               return model;
+           }(),^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"司机认证";
         model.subTitle = modelUser.authStatusShow;
-        model.imageName = @"driverDetail_driver";
+        model.imageName = @"personalCenter_driver";
         model.blockClick = ^{
             [ModelBaseInfo jumpToAuthorityStateVCSuccessBlock:nil];
         };
         return model;
     }(),^(){
         ModelBtn * model = [ModelBtn new];
+        model.title = @"车辆认证";
+        model.imageName = @"personalCenter_car";
+        model.blockClick = ^{
+            [GB_Nav pushVCName:@"CarListVC" animated:true];
+        };
+        return model;
+    }(),^(){
+        ModelBtn * model = [ModelBtn new];
         model.title = @"我的车队";
         model.subTitle = [NSString stringWithFormat:@"绑定%d家",weakSelf.numMotorCade];
-        model.imageName = @"driverDetail_motorcade";
+        model.imageName = @"personalCenter_motorcade";
         model.blockClick = ^{
             CarTeamListManagementVC * vc = [CarTeamListManagementVC new];
             [GB_Nav pushViewController:vc animated:true];
@@ -174,24 +144,19 @@
         return model;
     }(),^(){
         ModelBtn * model = [ModelBtn new];
-        model.title = @"我的车辆";
-        model.imageName = @"driverDetail_car";
-        model.blockClick = ^{
-            [GB_Nav pushVCName:@"CarListVC" animated:true];
-        };
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
         model.title = @"我的银行卡";
-        model.imageName = @"driverDetail_card";
+        model.imageName = @"personalCenter_card";
         model.blockClick = ^{
             [weakSelf requestBank];
         };
         return model;
-    }(),^(){
+    }(), ^(){
+                  ModelBtn * model = [ModelBtn new];
+                  return model;
+              }(),^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"设置";
-        model.imageName = @"driverDetail_card";
+        model.imageName = @"personalCenter_set";
         model.blockClick = ^{
             [GB_Nav pushVCName:@"SettingVC" animated:true];
         };
@@ -240,6 +205,10 @@
         
     } ];
   
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 @end

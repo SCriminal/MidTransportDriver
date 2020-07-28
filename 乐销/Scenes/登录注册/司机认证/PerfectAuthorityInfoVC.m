@@ -182,14 +182,14 @@
             BOOL isQuantity  =  [GlobalData sharedInstance].GB_UserModel.isIdentity == 1&&  [GlobalData sharedInstance].GB_UserModel.isDriver == 1;
             if (!isQuantity) {
                 NSMutableArray * ary = [NSMutableArray arrayWithObject:GB_Nav.viewControllers.firstObject];
-                [ary addObject:[NSClassFromString(@"DriverDetailVC") new]];
+                [ary addObject:[NSClassFromString(@"PersonalCenterVC") new]];
                 [GB_Nav setViewControllers:ary animated:true];
                 [GlobalMethod showAlert:@"提交成功"];
                 return;
             }
             NSMutableArray * ary = [NSMutableArray array];
             for (UIViewController * vc in GB_Nav.viewControllers) {
-                if ([vc isKindOfClass:NSClassFromString(@"LoginViewController")]||[vc isKindOfClass:NSClassFromString(@"DriverDetailVC")]) {
+                if ([vc isKindOfClass:NSClassFromString(@"LoginViewController")]||[vc isKindOfClass:NSClassFromString(@"PersonalCenterVC")]) {
                     [GlobalMethod showAlert:@"提交成功"];
                     [ary addObject:vc];
                     [ary addObject:[NSClassFromString(@"AuthorityReVerifyingVC") new]];

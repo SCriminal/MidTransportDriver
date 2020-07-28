@@ -20,27 +20,38 @@
 - (UIImageView *)head{
     if (_head == nil) {
         _head = [UIImageView new];
-        _head.widthHeight = XY(W(100),W(100));
+        _head.widthHeight = XY(W(65),W(65));
         [GlobalMethod setRoundView:_head color:[UIColor clearColor] numRound:_head.width/2.0 width:0];
         _head.userInteractionEnabled = true;
     }
     return _head;
 }
+- (UIImageView *)bg{
+    if (_bg == nil) {
+        UIImageView * iv = [UIImageView new];
+               iv.backgroundColor = [UIColor clearColor];
+               iv.contentMode = UIViewContentModeScaleAspectFill;
+               iv.clipsToBounds = true;
+               iv.image = [UIImage imageNamed:@"personalCenterBG"];
+               iv.widthHeight = XY(SCREEN_WIDTH,W(160)+iphoneXTopInterval);
+        _bg = iv;
+    }
+    return _bg;
+}
 - (UILabel *)name{
     if (_name == nil) {
         _name = [UILabel new];
-        _name.textColor = COLOR_333;
-        _name.font =  [UIFont systemFontOfSize:F(20) weight:UIFontWeightRegular];
+        _name.textColor = [UIColor whiteColor];
+        _name.font =  [UIFont systemFontOfSize:F(20) weight:UIFontWeightMedium];
     }
     return _name;
 }
 - (UILabel *)brief{
     if (!_brief) {
         _brief = [UILabel new];
-        _brief.textColor = COLOR_666;
+        _brief.textColor = [UIColor whiteColor];
         _brief.numberOfLines = 1;
-        _brief.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
-
+        _brief.font =  [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
     }
     return _brief;
 }
@@ -50,6 +61,7 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         self.width = SCREEN_WIDTH;
+        self.height = self.bg.height;
         [self addSubView];
         //add notice observe
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userInfoChange) name:NOTICE_SELFMODEL_CHANGE object:nil];
@@ -59,6 +71,7 @@
 }
 //添加subview
 - (void)addSubView{
+    [self addSubview:self.bg];
     [self addSubview:self.head];
     [self addSubview:self.name];
     [self addSubview:self.brief];
@@ -72,20 +85,16 @@
     
     //刷新view
     [self.head sd_setImageWithURL:[NSURL URLWithString:UnPackStr(model.headUrl.smallImage)] placeholderImage:[UIImage imageNamed:IMAGE_HEAD_DEFAULT]];
-    self.head.centerXTop = XY(SCREEN_WIDTH/2.0, W(35));
+    self.head.leftBottom = XY(W(15), self.height - W(40));
     
     NSString * strShow = UnPackStr(model.nickname);
 
     [self.name fitTitle:strShow variable:0];
-    self.name.centerXTop = XY(SCREEN_WIDTH/2.0, self.head.bottom + W(25));
+    self.name.leftTop = XY(self.head.right + W(15), self.head.top + W(6));
 
     NSString * strBrief = isStr([GlobalData sharedInstance].GB_UserModel.introduce)?[GlobalData sharedInstance].GB_UserModel.introduce:@"还未填写个性签名，介绍一下自己吧";
     [self.brief fitTitle:strBrief variable:SCREEN_WIDTH- W(50)];
-    self.brief.centerXTop = XY(SCREEN_WIDTH/2.0, self.name.bottom + W(20));
-    
-    self.height = self.brief.bottom + W(70);
-
-    [self addLineFrame: CGRectMake(W(30), self.height - 1, SCREEN_WIDTH - W(60), 1)];
+    self.brief.leftBottom = XY(self.name.left, self.head.bottom - W(6));
 }
 
 

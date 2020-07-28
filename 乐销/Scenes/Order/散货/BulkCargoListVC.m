@@ -89,20 +89,20 @@
     int sortAcceptTime = 1;
     int sortFinishTime = 1;
     switch (self.sortType) {
-        case ENUM_ORDER_LIST_SORT_WAIT_RECEIVE:
-            strOrderType = @"1";
-            sortCreateTime = 3;
-            break;
+//        case ENUM_ORDER_LIST_SORT_WAIT_RECEIVE:
+//            strOrderType = @"1";
+//            sortCreateTime = 3;
+//            break;
         case ENUM_ORDER_LIST_SORT_GOING:
-            strOrderType = @"2,3";//2,3
+            strOrderType = @"1,2,3";//2,3
             sortAcceptTime = 3;
             break;
-        case ENUM_ORDER_LIST_SORT_ARRIVE:
-            strOrderType = @"10";//2,3
-            sortFinishTime = 3;
-            break;
+//        case ENUM_ORDER_LIST_SORT_ARRIVE:
+//            strOrderType = @"10";//2,3
+//            sortFinishTime = 3;
+//            break;
         case ENUM_ORDER_LIST_SORT_COMPLETE:
-            strOrderType = @"11";
+            strOrderType = @"10,11";
             sortFinishTime = 3;
             break;
         default:
