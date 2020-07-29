@@ -78,7 +78,6 @@
     [self.title fitTitle:model.string variable:0];
     self.title.leftCenterY = XY(W(15),self.height/2.0);
     
-    
     self.textField.widthHeight = XY(self.iconArrow.left - W(99) - W(10), [GlobalMethod fetchHeightFromFont:self.textField.font.pointSize]);
     self.textField.leftCenterY = XY(W(99), self.title.centerY);
     self.textField.text = model.subString;

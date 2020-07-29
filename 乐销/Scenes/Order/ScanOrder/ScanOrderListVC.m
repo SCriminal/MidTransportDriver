@@ -42,7 +42,7 @@
         _ivScan = [UIImageView new];
         _ivScan.widthHeight = XY(W(117), W(117));
         _ivScan.image = [UIImage imageNamed:@"scan_list"];
-        _ivScan.centerXBottom = XY(SCREEN_WIDTH/2.0, SCREEN_HEIGHT - iphoneXBottomInterval);
+        _ivScan.centerXBottom = XY(SCREEN_WIDTH/2.0, SCREEN_HEIGHT  - TABBAR_HEIGHT);
         [_ivScan addTarget:self action:@selector(scanClick)];
     }
     return _ivScan;
@@ -56,7 +56,7 @@
     //table
     [self.tableView registerClass:[ScanListCell class] forCellReuseIdentifier:@"ScanListCell"];
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, W(10), 0);
-    
+    self.tableView.height = SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT;
     self.tableView.backgroundColor = [UIColor clearColor];
     //request
     [self requestList];
@@ -66,7 +66,7 @@
 
 #pragma mark 添加导航栏
 - (void)addNav{
-    [self.view addSubview:[BaseNavView initNavBackTitle:@"扫码运单中心" rightView:nil]];
+    [self.view addSubview:[BaseNavView initNavTitle:@"扫码运单中心" leftView:nil  rightView:nil]];
 }
 
 #pragma mark UITableViewDelegate

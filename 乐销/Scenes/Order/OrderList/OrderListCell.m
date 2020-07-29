@@ -122,7 +122,7 @@
     self.model = model;
        //刷新view
        CGFloat top = 0;
-       __block int tag = 0;
+       __block int tag = 100;
        top = [BulkCargoListCell addTitle:^(){
            ModelBtn * m = [ModelBtn new];
            m.title = @"提单号";
