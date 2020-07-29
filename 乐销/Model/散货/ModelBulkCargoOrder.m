@@ -238,9 +238,14 @@ NSString *const kModelBulkCargoOrderKey = @"key";
         case ENUM_BULKCARGO_ORDER_OPERATE_WAIT_RECEIVE:
             return COLOR_BLUE;
             break;
+            
         case ENUM_BULKCARGO_ORDER_OPERATE_ARRIVE:
-            return [UIColor colorWithHexString:@"#F97A1B"];
+            return [UIColor colorWithHexString:@"#66CC00"];
             break;
+            case ENUM_BULKCARGO_ORDER_OPERATE_WAIT_LOAD:
+                return [UIColor colorWithHexString:@"#F97A1B"];
+                break;
+        case ENUM_BULKCARGO_ORDER_OPERATE_WAIT_UNLOAD:
         case ENUM_BULKCARGO_ORDER_OPERATE_COMPLETE:
             return COLOR_GREEN ;
             break;

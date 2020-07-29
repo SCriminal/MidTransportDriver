@@ -69,6 +69,10 @@ NSString *const kModelPackageInfoAcceptTime = @"acceptTime";
 }
 
 - (NSString *)containerTypeShow{
+    return [ModelPackageInfo exchangeContainerType:self.containerType];
+}
+
++ (NSString *)exchangeContainerType:(int)containerType{
     static NSMutableDictionary * dicTyps = nil;
     if (!dicTyps) {
         NSMutableArray * aryLocal = [GlobalMethod readAry:LOCAL_PACKAGE_TYPE modelName:@"ModelPackageType"];
@@ -77,58 +81,59 @@ NSString *const kModelPackageInfoAcceptTime = @"acceptTime";
         }
     }
     if (isDic(dicTyps)) {
-        ModelPackageType * model = [dicTyps objectForKey:[NSNumber numberWithInt:self.containerType]];
+        ModelPackageType * model = [dicTyps objectForKey:[NSNumber numberWithInt:containerType]];
         if (model && [model isKindOfClass:ModelPackageType.class]) {
             return model.name;
         }
     }
-    if (self.containerType == 1) {
+    if (containerType == 1) {
         return @"20GP";
     }
-    if (self.containerType == 2) {
+    if (containerType == 2) {
         return @"40GP";
     }
-    if (self.containerType == 3) {
+    if (containerType == 3) {
         return @"40HC";
     }
-    if (self.containerType == 4) {
+    if (containerType == 4) {
         return @"20HC";
     }
-    if (self.containerType == 5) {
+    if (containerType == 5) {
         return @"20RF";
     }
-    if (self.containerType == 6) {
+    if (containerType == 6) {
         return @"20TK";
     }
-    if (self.containerType == 7) {
+    if (containerType == 7) {
         return @"20OT";
     }
-    if (self.containerType == 8) {
+    if (containerType == 8) {
         return @"40RF";
     }
-    if (self.containerType == 9) {
+    if (containerType == 9) {
         return @"40TK";
     }
-    if (self.containerType == 10) {
+    if (containerType == 10) {
         return @"40OT";
     }
-    if (self.containerType == 11) {
+    if (containerType == 11) {
         return @"45GP";
     }
-    if (self.containerType == 12) {
+    if (containerType == 12) {
         return @"45HC";
     }
-    if (self.containerType == 13) {
+    if (containerType == 13) {
         return @"45RF";
     }
-    if (self.containerType == 14) {
+    if (containerType == 14) {
         return @"45TK";
     }
-    if (self.containerType == 15) {
+    if (containerType == 15) {
         return @"45OT";
     }
     return @"";
 }
+
 - (NSString *)backTypeShow{
     if (self.containerType == 1) {
         return @"单背";

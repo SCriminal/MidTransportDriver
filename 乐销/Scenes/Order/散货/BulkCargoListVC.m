@@ -16,6 +16,8 @@
 #import "BulkCargoOperateVC.h"
 //bottom view
 #import "OrderManagementBottomView.h"
+//up iamgeview
+#import "BulkCargoOperateLoadView.h"
 
 @interface BulkCargoListVC ()
 
@@ -60,27 +62,98 @@
 }
 //cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    WEAKSELF
     BulkCargoListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"BulkCargoListCell"];
+    cell.blockReject = ^(ModelBulkCargoOrder *model) {
+        //拒单
+               ModelBtn * modelDismiss = [ModelBtn   modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+               ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+               WEAKSELF
+               modelConfirm.blockClick = ^(void){
+                   [weakSelf requestRejectModel:model];
+               };
+               [BaseAlertView initWithTitle:@"提示" content:@"确认拒单?" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:weakSelf.view];
+    };
+    cell.blockAccept  = ^(ModelBulkCargoOrder *model) {
+        //判断地理位置权限
+        if (![GlobalMethod fetchLocalAuthorityBlock:nil]) {
+            return;
+        }
+        //接单
+        ModelBtn * modelDismiss = [ModelBtn   modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+        ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+        WEAKSELF
+        modelConfirm.blockClick = ^(void){
+            [weakSelf requestOperate:nil model:model];
+        };
+        [BaseAlertView initWithTitle:@"提示" content:@"确认接单?" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:weakSelf.view];
+    };
+    cell.blockLoad  = ^(ModelBulkCargoOrder *model) {
+        BulkCargoOperateLoadView *upLoadImageView = [BulkCargoOperateLoadView new];
+        upLoadImageView.blockComplete = ^(NSArray *aryImages) {
+            NSMutableArray *ary = [aryImages fetchValues:@"url"];
+            [weakSelf requestOperate:[ary componentsJoinedByString:@","] model:model];
+        };
+        [upLoadImageView show];
+    };
+    cell.blockArrive = ^(ModelBulkCargoOrder *model) {
+        BulkCargoOperateLoadView *upUnLoadImageView = [BulkCargoOperateLoadView new];
+        [upUnLoadImageView.labelInput fitTitle:@"上传完成凭证" variable:0];
+        [upUnLoadImageView.labelTitle fitTitle:@"请上传完成凭证 (回单、卸车磅单)" variable:0];
+        WEAKSELF
+        upUnLoadImageView.blockComplete = ^(NSArray *aryImages) {
+            NSMutableArray *ary = [aryImages fetchValues:@"url"];
+            [weakSelf requestOperate:[ary componentsJoinedByString:@","] model:model];
+        };
+        [upUnLoadImageView show];
+    };
+    cell.blockDetail = ^(ModelBulkCargoOrder *model) {
+        [weakSelf jumpToDetail:model];
+    };
     [cell resetCellWithModel: self.aryDatas[indexPath.row]];
     
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     return [BulkCargoListCell fetchHeight:self.aryDatas[indexPath.row]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ModelBulkCargoOrder * model = self.aryDatas[indexPath.row];
-   
+    [self jumpToDetail:model];
+}
+- (void)jumpToDetail:(ModelBulkCargoOrder *)model{
     BulkCargoOperateVC * operateVC = [BulkCargoOperateVC new];
-    operateVC.modelOrder = model;
-    WEAKSELF
-    operateVC.blockBack = ^(UIViewController *vc) {
-        [weakSelf refreshHeaderAll];
-    };
-    [GB_Nav pushViewController:operateVC animated:true];
+       operateVC.modelOrder = model;
+       WEAKSELF
+       operateVC.blockBack = ^(UIViewController *vc) {
+           [weakSelf refreshHeaderAll];
+       };
+       [GB_Nav pushViewController:operateVC animated:true];
+}
+
+- (void)requestRejectModel:(ModelBulkCargoOrder *)model{
+}
+- (void)requestOperate:(NSString *)url model:(ModelBulkCargoOrder *)model{
+    
+    [RequestApi requestOperateBulkCargoOrder:model.iDProperty operateType:model.operateType url:url delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        //交通部
+#ifdef UP_TRANSPORT
+        if (self.modelOrder.operateType == ENUM_BULKCARGO_ORDER_OPERATE_WAIT_LOAD) {
+            [[LocationRecordInstance sharedInstance]startLocationWithShippingNoteInfos:@[self.modelOrder] listener:^(id model, NSError *error) {
+                
+            }];
+        }else if(self.modelOrder.operateType == ENUM_BULKCARGO_ORDER_OPERATE_WAIT_UNLOAD){
+            [[LocationRecordInstance sharedInstance]stopLocationWithShippingNoteInfos:@[self.modelOrder] listener:^(id model, NSError *error) {
+                
+            }];
+        }
+#endif
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_ORDER_REFERSH object:nil];
+
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
 }
 #pragma mark request
 - (void)requestList{
