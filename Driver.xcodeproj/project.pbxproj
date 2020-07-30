@@ -104,6 +104,7 @@
 		D25145CF1E32ECA700E8107F /* UITableView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D25145CE1E32ECA700E8107F /* UITableView+Category.m */; };
 		D25145D21E33055300E8107F /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D25145D11E33055300E8107F /* NSArray+Category.m */; };
 		D2545A5D1E72AD2500DEC7CE /* UIControl+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2545A5C1E72AD2500DEC7CE /* UIControl+Category.m */; };
+		D257759524D2AF1300449C75 /* RejectOrderReason.m in Sources */ = {isa = PBXBuildFile; fileRef = D257759424D2AF1300449C75 /* RejectOrderReason.m */; };
 		D259AC4A20F435CF00F71C87 /* SendMsgHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259AC4920F435CF00F71C87 /* SendMsgHelper.m */; };
 		D259D54A228E4B2F00CE2632 /* RequestApi+UserAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = D259D546228E4B2F00CE2632 /* RequestApi+UserAuth.m */; };
 		D259D54B228E4B2F00CE2632 /* RequestApi+UserApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D259D549228E4B2F00CE2632 /* RequestApi+UserApi.m */; };
@@ -560,6 +561,8 @@
 		D25145D11E33055300E8107F /* NSArray+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Category.m"; sourceTree = "<group>"; };
 		D2545A5B1E72AD2500DEC7CE /* UIControl+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+Category.h"; sourceTree = "<group>"; };
 		D2545A5C1E72AD2500DEC7CE /* UIControl+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+Category.m"; sourceTree = "<group>"; };
+		D257759324D2AF1300449C75 /* RejectOrderReason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RejectOrderReason.h; sourceTree = "<group>"; };
+		D257759424D2AF1300449C75 /* RejectOrderReason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RejectOrderReason.m; sourceTree = "<group>"; };
 		D259AC4820F435CF00F71C87 /* SendMsgHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMsgHelper.h; sourceTree = "<group>"; };
 		D259AC4920F435CF00F71C87 /* SendMsgHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendMsgHelper.m; sourceTree = "<group>"; };
 		D259D546228E4B2F00CE2632 /* RequestApi+UserAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+UserAuth.m"; sourceTree = "<group>"; };
@@ -1356,6 +1359,8 @@
 		D23327C52185A22B00495488 /* OrderList */ = {
 			isa = PBXGroup;
 			children = (
+				D257759324D2AF1300449C75 /* RejectOrderReason.h */,
+				D257759424D2AF1300449C75 /* RejectOrderReason.m */,
 				D23327C62185A23900495488 /* OrderListVC.h */,
 				D23327C72185A23900495488 /* OrderListVC.m */,
 				D23327C92185A27900495488 /* OrderListCell.h */,
@@ -3311,6 +3316,7 @@
 				D20FFB6B1E0D0A7700ACA896 /* DownListView.m in Sources */,
 				D2A30041226706CE00AE2EC3 /* OrderAccountListVC.m in Sources */,
 				D21014FA1EB81A010096C9CF /* MultiRadioBtnView.m in Sources */,
+				D257759524D2AF1300449C75 /* RejectOrderReason.m in Sources */,
 				D2FC33A0247F57AE000DE338 /* AuthorityImageView.m in Sources */,
 				D2DDCFB3233380CD002A24C4 /* AddCardVC.m in Sources */,
 				D23327AC21854FE000495488 /* MapView.m in Sources */,

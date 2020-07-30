@@ -46,14 +46,6 @@
     }
     return _iconAddress;
 }
-- (UIImageView *)ivBg{
-    if (_ivBg == nil) {
-        _ivBg = [UIImageView new];
-        _ivBg.image = IMAGE_WHITE_BG;
-        _ivBg.backgroundColor = [UIColor clearColor];
-    }
-    return _ivBg;
-}
 - (UILabel *)packageAddress{
     if (_packageAddress == nil) {
         _packageAddress = [UILabel new];
@@ -78,6 +70,15 @@
     }
     return _loadAddress;
 }
+- (UIImageView *)ivBg{
+    if (_ivBg == nil) {
+        _ivBg = [UIImageView new];
+        _ivBg.image = IMAGE_WHITE_BG;
+        _ivBg.backgroundColor = [UIColor clearColor];
+    }
+    return _ivBg;
+}
+
 -(UIButton *)btnLeft{
     if (_btnLeft == nil) {
         _btnLeft = [UIButton buttonWithType:UIButtonTypeCustom];

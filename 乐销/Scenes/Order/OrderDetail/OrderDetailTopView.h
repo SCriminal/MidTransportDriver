@@ -23,12 +23,10 @@
 
 @interface OrderDetailPackageView : UIView
 //属性
-@property (strong, nonatomic) UILabel *labelTitle;
-@property (strong, nonatomic) UIImageView *ivBg;
-@property (nonatomic, strong) ModelOrderList *model;
+@property (nonatomic, strong) NSArray *aryDatas;
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(ModelOrderList *)model;
+- (void)resetViewWithAry:(NSArray *)ary;
 @end
 
 @interface OrderDetailStatusView : UIView
@@ -45,9 +43,13 @@
 
 @interface OrderDetailPathView : UIView
 //属性
-@property (strong, nonatomic) UILabel *labelPath;
-@property (nonatomic, strong) UILabel *labelAddressFrom;
-@property (nonatomic, strong) UILabel *labelAddressTo;
+@property (strong, nonatomic) UILabel *labelTitle;
+@property (strong, nonatomic) UILabel *addressFrom;
+@property (strong, nonatomic) UILabel *addressTo;
+@property (strong, nonatomic) UIView *iconAddress;
+@property (strong, nonatomic) UILabel *packageAddress;
+@property (strong, nonatomic) UILabel *import;
+@property (strong, nonatomic) UILabel *loadAddress;
 @property (strong, nonatomic) UIImageView *ivBg;
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelOrderList *)model;
@@ -73,19 +75,16 @@
 - (void)resetViewWithModel:(ModelOrderList *)model;
 @end
 
-@interface OrderDetailDriverView : UIView
+@interface OrderDetailReturnAddressView : UIView
 //属性
 @property (strong, nonatomic) UILabel *labelTitle;
-@property (strong, nonatomic) UILabel *labelName;
-@property (strong, nonatomic) UILabel *labelPhone;
-@property (strong, nonatomic) UIImageView *ivHead;
-@property (strong, nonatomic) UIImageView *ivPhone;
 @property (strong, nonatomic) UIImageView *ivBg;
 @property (nonatomic, strong) ModelOrderList *model;
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelOrderList *)model;
 @end
+
 
 
 @interface OrderDetailRemarkView : UIView

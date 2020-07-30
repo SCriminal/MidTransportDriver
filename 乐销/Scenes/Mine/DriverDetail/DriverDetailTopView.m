@@ -38,6 +38,19 @@
     }
     return _bg;
 }
+- (UIImageView *)arrow{
+    if (_arrow == nil) {
+        UIImageView * iv = [UIImageView new];
+               iv.backgroundColor = [UIColor clearColor];
+               iv.contentMode = UIViewContentModeScaleAspectFill;
+               iv.clipsToBounds = true;
+               iv.image = [UIImage imageNamed:@"arrow_white"];
+               iv.widthHeight = XY(W(25),W(25));
+        _arrow = iv;
+    }
+    return _arrow;
+}
+
 - (UILabel *)name{
     if (_name == nil) {
         _name = [UILabel new];
@@ -75,6 +88,7 @@
     [self addSubview:self.head];
     [self addSubview:self.name];
     [self addSubview:self.brief];
+    [self addSubview:self.arrow];
     //初始化页面
     [self userInfoChange];
 }
@@ -86,6 +100,8 @@
     //刷新view
     [self.head sd_setImageWithURL:[NSURL URLWithString:UnPackStr(model.headUrl.smallImage)] placeholderImage:[UIImage imageNamed:IMAGE_HEAD_DEFAULT]];
     self.head.leftBottom = XY(W(15), self.height - W(40));
+    
+    self.arrow.rightCenterY = XY(SCREEN_WIDTH - W(10), self.head.centerY);
     
     NSString * strShow = UnPackStr(model.nickname);
 

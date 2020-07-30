@@ -65,7 +65,7 @@
         self.width = SCREEN_WIDTH;
         [self addSubView];
         [self addTarget:self action:@selector(copyCodeClick)];
-
+        
     }
     return self;
 }
@@ -90,20 +90,20 @@
     [self.labelBillNo fitTitle:UnPackStr(model.blNumber ) variable:0];
     self.labelBillNo.centerXTop = XY(SCREEN_WIDTH/2.0,self.labelBill.bottom + W(15));
     self.labelCopy.centerXTop = XY(SCREEN_WIDTH/2.0,self.labelBillNo.bottom + W(15));
-
+    
     [self addControlFrame:CGRectInset(self.labelBillNo.frame, -W(90), -W(50)) belowView:self.labelBillNo target:self action:@selector(copyCodeClick)];
     
     CGFloat top = [self addLineFrame:CGRectMake(W(25), self.labelCopy.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
     
-       __block int tag = 100;
-       top = [BulkCargoListCell addTitle:^(){
-           ModelBtn * m = [ModelBtn new];
-           m.title = @"当前状态";
-           m.subTitle = model.orderStatusShow;
-           m.color = model.colorStateShow;
-           m.tag = ++tag;
-           return m;
-       }() view:self top:top + W(18)];
+    __block int tag = 100;
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"当前状态";
+        m.subTitle = model.orderStatusShow;
+        m.color = model.colorStateShow;
+        m.tag = ++tag;
+        return m;
+    }() view:self top:top + W(18)];
     
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
@@ -124,7 +124,7 @@
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"船      名";
-        m.subTitle = model.oceanVessel;
+        m.subTitle = isStr(model.oceanVessel)?model.oceanVessel:@"暂无";
         m.tag = ++tag;
         return m;
     }() view:self top:top + W(18)];
@@ -132,12 +132,12 @@
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"船      次";
-        m.subTitle = model.voyageNumber;
+        m.subTitle = isStr(model.voyageNumber)?model.voyageNumber:@"暂无";
         m.tag = ++tag;
         return m;
     }() view:self top:top + W(18)];
     
-   
+    
     self.height = top+W(20);
     self.ivBg.frame = CGRectMake(0, -W(10), SCREEN_WIDTH, self.height + W(20));
 }
@@ -149,24 +149,6 @@
 @end
 
 @implementation OrderDetailPackageView
-#pragma mark 懒加载
-- (UILabel *)labelTitle{
-    if (_labelTitle == nil) {
-        _labelTitle = [UILabel new];
-        _labelTitle.textColor = COLOR_333;
-        _labelTitle.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-    }
-    return _labelTitle;
-}
-
-- (UIImageView *)ivBg{
-    if (_ivBg == nil) {
-        _ivBg = [UIImageView new];
-        _ivBg.image = IMAGE_WHITE_BG;
-        _ivBg.backgroundColor = [UIColor clearColor];
-    }
-    return _ivBg;
-}
 
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -175,83 +157,82 @@
         self.backgroundColor = [UIColor clearColor];
         self.width = SCREEN_WIDTH;
         self.clipsToBounds = false;
-        [self addSubView];
-        [self addTarget:self action:@selector(phoneClick)];
     }
     return self;
 }
-//添加subview
-- (void)addSubView{
-    [self addSubview:self.ivBg];
-    [self addSubview:self.labelTitle];
-    
-    //初始化页面
-    [self resetViewWithModel:nil];
-}
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(ModelOrderList *)modelOrder{
-    self.model = modelOrder;
-    [self removeSubViewWithTag:TAG_LINE];//移除线
+- (void)resetViewWithAry:(NSArray *)ary{
+    self.aryDatas = ary;
+    [self removeAllSubViews];//移除线
     
-    //刷新view
-    [self.labelTitle fitTitle:modelOrder.orderType == ENUM_ORDER_TYPE_INPUT?@"卸货信息":@"装货信息" variable:0];
-    self.labelTitle.leftTop = XY(W(25),W(20));
+    CGFloat height = 0;
     
-    [self addLineFrame:CGRectMake(W(25), self.labelTitle.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
+    CGFloat top = 0;
     
-    NSArray * aryModels = @[^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"联系人员：";
-        model.subTitle = UnPackStr(modelOrder.placeContact);
-        model.isSelected = false;
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"联系电话：";
-        model.subTitle = UnPackStr(modelOrder.placePhone);
-        model.isSelected = true;
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = modelOrder.orderType == ENUM_ORDER_TYPE_INPUT?@"卸货时间：":@"装货时间：";
-        model.subTitle = [GlobalMethod exchangeTimeWithStamp:modelOrder.placeTime andFormatter:TIME_SEC_SHOW];
-        model.isSelected = false;
-        return model;
-    }()];
-    CGFloat top = self.labelTitle.bottom + W(40);
-    for (int i = 0; i<aryModels.count; i++) {
-        ModelBtn * model = aryModels[i];
-        UILabel * label = [UILabel new];
-        label.fontNum = F(15);
-        label.textColor = COLOR_333;
-        [label fitTitle:model.title variable:0];
-        label.leftTop = XY(W(25), top);
-        label.tag = TAG_LINE;
-        [self addSubview:label];
-        top = label.bottom + W(20);
+       
+          __block int tag = 100;
+    for (ModelPackageInfo * modelPackage in ary) {
         
+        UIImageView * _ivBg = [UIImageView new];
+        _ivBg.image = IMAGE_WHITE_BG;
+        _ivBg.backgroundColor = [UIColor clearColor];
+        [self addSubview:_ivBg];
         
-        UILabel * labelTime = [UILabel new];
-        labelTime.fontNum = F(15);
-        labelTime.textColor = model.isSelected?COLOR_BLUE:COLOR_333;
-        [labelTime fitTitle:UnPackStr(model.subTitle) variable:SCREEN_WIDTH - label.right -W(5)];
-        labelTime.leftCenterY = XY(label.right + W(2), label.centerY);
-        labelTime.tag = TAG_LINE;
-        [self addSubview:labelTime];
+        top = [BulkCargoListCell addTitle:^(){
+            ModelBtn * m = [ModelBtn new];
+            m.title = @"箱货信息";
+            m.subTitle = @" ";
+            m.tag = ++tag;
+            return m;
+        }() view:self top:height + W(20)];
         
+       top = [self addLineFrame:CGRectMake(W(25), top + W(20), SCREEN_WIDTH - W(50), 1)];
+        
+        top = [BulkCargoListCell addTitle:^(){
+            ModelBtn * m = [ModelBtn new];
+            m.title = @"货物名称";
+            m.subTitle = modelPackage.cargoName;
+            m.tag = ++tag;
+            return m;
+        }() view:self top:top + W(18)];
+        
+        top = [BulkCargoListCell addTitle:^(){
+                   ModelBtn * m = [ModelBtn new];
+                   m.title = @"箱型箱量";
+                   m.subTitle = [NSString stringWithFormat:@"%@*1",modelPackage.containerTypeShow];
+                   m.tag = ++tag;
+                   return m;
+               }() view:self top:top + W(18)];
+        
+        top = [BulkCargoListCell addTitle:^(){
+            ModelBtn * m = [ModelBtn new];
+            m.title = @"铅  封  号";
+            m.subTitle = isStr(modelPackage.sealNumber)?modelPackage.sealNumber:@"暂无";
+            m.tag = ++tag;
+            return m;
+        }() view:self top:top + W(18)];
+        top = [BulkCargoListCell addTitle:^(){
+            ModelBtn * m = [ModelBtn new];
+            m.title = @"箱      号";
+            m.subTitle = isStr(modelPackage.containerNumber)?modelPackage.containerNumber:@"暂无";
+            m.tag = ++tag;
+            return m;
+        }() view:self top:top + W(18)];
+       
+        
+        _ivBg.frame = CGRectMake(0, height-W(10), SCREEN_WIDTH, top - height + W(40));
+        height = top + W(40);
+
     }
     
-    self.height = top;
-    self.ivBg.frame = CGRectMake(0, -W(10), SCREEN_WIDTH, self.height + W(20));
+    self.height = height-W(20);
+    
+   
     
 }
 
-#pragma mark click
-- (void)phoneClick{
-    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel://%@",UnPackStr(self.model.placePhone)];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-}
+
 @end
 
 
@@ -374,34 +355,66 @@
 
 @implementation OrderDetailPathView
 #pragma mark 懒加载
-- (UILabel *)labelPath{
-    if (_labelPath == nil) {
-        _labelPath = [UILabel new];
-        _labelPath.textColor = COLOR_333;
-        _labelPath.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+- (UILabel *)labelTitle{
+    if (_labelTitle == nil) {
+        _labelTitle = [UILabel new];
+        _labelTitle.textColor = COLOR_666;
+        _labelTitle.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        [_labelTitle fitTitle:@"路线信息" variable:0];
     }
-    return _labelPath;
+    return _labelTitle;
 }
-- (UILabel *)labelAddressFrom{
-    if (_labelAddressFrom == nil) {
-        _labelAddressFrom = [UILabel new];
-        _labelAddressFrom.textColor = COLOR_333;
-        _labelAddressFrom.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-        _labelAddressFrom.numberOfLines = 0;
-        _labelAddressFrom.lineSpace = 0;
+- (UILabel *)addressFrom{
+    if (_addressFrom == nil) {
+        _addressFrom = [UILabel new];
+        _addressFrom.textColor = COLOR_333;
+        _addressFrom.numberOfLines = 1;
+        _addressFrom.font =  [UIFont systemFontOfSize:F(17) weight:UIFontWeightMedium];
     }
-    return _labelAddressFrom;
+    return _addressFrom;
 }
-- (UILabel *)labelAddressTo{
-    if (_labelAddressTo == nil) {
-        _labelAddressTo = [UILabel new];
-        _labelAddressTo.textColor = COLOR_333;
-        _labelAddressTo.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-        _labelAddressTo.numberOfLines = 0;
-        _labelAddressTo.lineSpace = 0;
+- (UILabel *)addressTo{
+    if (_addressTo == nil) {
+        _addressTo = [UILabel new];
+        _addressTo.textColor = COLOR_333;
+        _addressTo.numberOfLines = 1;
+        _addressTo.font =  [UIFont systemFontOfSize:F(17) weight:UIFontWeightMedium];
     }
-    return _labelAddressTo;
+    return _addressTo;
 }
+- (UIView *)iconAddress{
+    if (_iconAddress == nil) {
+        _iconAddress = [UIView new];
+        _iconAddress.widthHeight = XY(W(30),W(2));
+        _iconAddress.backgroundColor = [UIColor colorWithHexString:@"#4E4745"];
+    }
+    return _iconAddress;
+}
+- (UILabel *)packageAddress{
+    if (_packageAddress == nil) {
+        _packageAddress = [UILabel new];
+        _packageAddress.textColor = COLOR_666;
+        _packageAddress.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
+    }
+    return _packageAddress;
+}
+- (UILabel *)import{
+    if (_import == nil) {
+        _import = [UILabel new];
+        _import.textColor = COLOR_666;
+        _import.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
+    }
+    return _import;
+}
+- (UILabel *)loadAddress{
+    if (_loadAddress == nil) {
+        _loadAddress = [UILabel new];
+        _loadAddress.textColor = COLOR_666;
+        _loadAddress.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
+    }
+    return _loadAddress;
+}
+
 - (UIImageView *)ivBg{
     if (_ivBg == nil) {
         _ivBg = [UIImageView new];
@@ -410,7 +423,6 @@
     }
     return _ivBg;
 }
-
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -425,9 +437,13 @@
 //添加subview
 - (void)addSubView{
     [self addSubview:self.ivBg];
-    [self addSubview:self.labelPath];
-    [self addSubview:self.labelAddressFrom];
-    [self addSubview:self.labelAddressTo];
+    [self addSubview:self.labelTitle];
+    [self addSubview:self.addressFrom];
+    [self addSubview:self.addressTo];
+    [self addSubview:self.iconAddress];
+    [self addSubview:self.packageAddress];
+    [self addSubview:self.import];
+    [self addSubview:self.loadAddress];
     
     //初始化页面
     [self resetViewWithModel:nil];
@@ -437,36 +453,51 @@
 - (void)resetViewWithModel:(ModelOrderList *)model{
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-    [self.labelPath fitTitle:@"路线信息" variable:0];
-    self.labelPath.leftTop = XY(W(25),W(20));
+    self.labelTitle.leftTop = XY(W(25),W(20));
+    //刷新view
+    CGFloat top =     [self addLineFrame:CGRectMake(W(25), self.labelTitle.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
+    __block int tag = 100;
     
-    [self addLineFrame:CGRectMake(W(25), self.labelPath.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
     
-    [self.labelAddressFrom fitTitle:[NSString stringWithFormat:@"%@：%@",model.orderType == ENUM_ORDER_TYPE_INPUT?@"提箱港":@"提箱点",UnPackStr(model.backPackageAddressShow)] variable:SCREEN_WIDTH - W(57)*2];
-    self.labelAddressFrom.leftTop = XY(W(57),self.labelPath.bottom+W(40));
-    [self.labelAddressTo fitTitle:[NSString stringWithFormat:@"%@：%@",model.orderType == ENUM_ORDER_TYPE_INPUT?@"卸货地":@"装货地",UnPackStr(model.loadAddressShow)] variable:SCREEN_WIDTH - W(57)*2];
-    self.labelAddressTo.leftTop = XY(self.labelAddressFrom.left,self.labelAddressFrom.bottom+W(20));
     
-    UIView * viewDot = [UIView new];
-    viewDot.widthHeight = XY(W(7), W(7));
-    [GlobalMethod setRoundView:viewDot color:[UIColor clearColor] numRound:viewDot.width/2.0 width:0];
-    viewDot.backgroundColor = COLOR_BLUE;
-    viewDot.leftCenterY = XY( W(30), self.labelAddressFrom.centerY);
-    [self addLineFrame:CGRectMake(viewDot.centerX-1, viewDot.centerY, 1, self.labelAddressTo.centerY - self.labelAddressFrom.centerY)];
-    viewDot.tag = TAG_LINE;
-    [self addSubview:viewDot];
+    self.iconAddress.centerXTop = XY(SCREEN_WIDTH/2.0, W(50) + top);
     
-    UIView * viewDotRed = [UIView new];
-    viewDotRed.widthHeight = XY(W(7), W(7));
-    [GlobalMethod setRoundView:viewDotRed color:[UIColor clearColor] numRound:viewDot.width/2.0 width:0];
-    viewDotRed.backgroundColor = COLOR_RED;
-    viewDotRed.leftCenterY = XY( W(30), self.labelAddressTo.centerY);
-    [self addSubview:viewDotRed];
-    viewDotRed.tag = TAG_LINE;
+    [self.addressFrom fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.startProvinceName),[model.startPortName isEqualToString:model.startProvinceName]?@"":UnPackStr(model.startPortName)] variable:W(160)];
+    self.addressFrom.centerXCenterY = XY((self.iconAddress.left - W(10))/2.0+W(10), self.iconAddress.centerY);
     
-    self.height = self.labelAddressTo.bottom + W(20);
+    [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.endProvinceName),[model.endPortName isEqualToString:model.endProvinceName]?@"":UnPackStr(model.endPortName)] variable:W(160)];
+    self.addressTo.centerXCenterY = XY((SCREEN_WIDTH - self.iconAddress.right - W(10))/2.0 + SCREEN_WIDTH/2.0 + self.iconAddress.width/2.0, self.iconAddress.centerY);
+    
+    [self.import fitTitle:model.orderType== ENUM_ORDER_TYPE_INPUT?@"进口":@"出口" variable:0];
+    self.import.centerXBottom = XY(SCREEN_WIDTH/2.0, self.iconAddress.top - W(18));
+    
+    [self.packageAddress fitTitle:model.orderType == ENUM_ORDER_TYPE_INPUT?@"提箱港":@"提箱点" variable:0];
+    self.packageAddress.centerXCenterY = XY(self.addressFrom.centerX, self.import.centerY);
+    
+    [self.loadAddress fitTitle:model.orderType == ENUM_ORDER_TYPE_INPUT?@"卸货地":@"装货地" variable:0];
+    self.loadAddress.centerXCenterY = XY(self.addressTo.centerX, self.import.centerY);
+    
+    
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = model.orderType == ENUM_ORDER_TYPE_INPUT?@"提  箱  港":@"提  箱  点";
+        m.subTitle = model.backPackageAddressShow;
+        m.numOfLines = 10;
+        m.tag = ++tag;
+        return m;
+    }() view:self top:self.iconAddress.bottom + W(34)];
+    
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = model.orderType == ENUM_ORDER_TYPE_INPUT?@"卸  货  地":@"装  货  地";
+        m.subTitle = model.loadAddressShow;
+        m.numOfLines = 10;
+        m.tag = ++tag;
+        return m;
+    }() view:self top:top + W(18)];
+    
+    self.height = top+W(20);
     self.ivBg.frame = CGRectMake(0, -W(10), SCREEN_WIDTH, self.height + W(20));
-    
 }
 
 @end
@@ -522,51 +553,43 @@
     [self.labelTitle fitTitle:modelOrder.orderType == ENUM_ORDER_TYPE_INPUT?@"卸货信息":@"装货信息" variable:0];
     self.labelTitle.leftTop = XY(W(25),W(20));
     
-    [self addLineFrame:CGRectMake(W(25), self.labelTitle.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
+    CGFloat top = [self addLineFrame:CGRectMake(W(25), self.labelTitle.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
     
-    NSArray * aryModels = @[^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"联系人员：";
-        model.subTitle = UnPackStr(modelOrder.placeContact);
-        model.isSelected = false;
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"联系电话：";
-        model.subTitle = UnPackStr(modelOrder.placePhone);
-        model.isSelected = true;
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = modelOrder.orderType == ENUM_ORDER_TYPE_INPUT?@"卸货时间：":@"装货时间：";
-        model.subTitle = [GlobalMethod exchangeTimeWithStamp:modelOrder.placeTime andFormatter:TIME_SEC_SHOW];
-        model.isSelected = false;
-        return model;
-    }()];
-    CGFloat top = self.labelTitle.bottom + W(40);
-    for (int i = 0; i<aryModels.count; i++) {
-        ModelBtn * model = aryModels[i];
-        UILabel * label = [UILabel new];
-        label.fontNum = F(15);
-        label.textColor = COLOR_333;
-        [label fitTitle:model.title variable:0];
-        label.leftTop = XY(W(25), top);
-        label.tag = TAG_LINE;
-        [self addSubview:label];
-        top = label.bottom + W(20);
-        
-        
-        UILabel * labelTime = [UILabel new];
-        labelTime.fontNum = F(15);
-        labelTime.textColor = model.isSelected?COLOR_BLUE:COLOR_333;
-        [labelTime fitTitle:UnPackStr(model.subTitle) variable:SCREEN_WIDTH - label.right -W(5)];
-        labelTime.leftCenterY = XY(label.right + W(2), label.centerY);
-        labelTime.tag = TAG_LINE;
-        [self addSubview:labelTime];
-        
-    }
+       __block int tag = 100;
+       top = [BulkCargoListCell addTitle:^(){
+           ModelBtn * m = [ModelBtn new];
+           m.title = @"单位名称";
+           m.subTitle = modelOrder.placeEnvName;
+           m.tag = ++tag;
+           return m;
+       }() view:self top:top + W(18)];
+      top = [BulkCargoListCell addTitle:^(){
+             ModelBtn * m = [ModelBtn new];
+             m.title = @"联  系  人";
+             m.subTitle = modelOrder.placeContact;
+             m.tag = ++tag;
+             return m;
+         }() view:self top:top + W(18)];
     
-    self.height = top;
+    top = [BulkCargoListCell addTitle:^(){
+                ModelBtn * m = [ModelBtn new];
+                m.title = @"联系电话";
+                m.subTitle = modelOrder.placePhone;
+                m.tag = ++tag;
+                return m;
+            }() view:self top:top + W(18)];
+    
+    [self addControlFrame:CGRectMake(0, top - W(50), SCREEN_WIDTH, W(50)) belowView:[self viewWithTag:tag] target:self action:@selector(phoneClick)];
+
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = modelOrder.orderType == ENUM_ORDER_TYPE_OUTPUT?@"装货时间":@"卸货时间" ;
+        m.subTitle = [GlobalMethod exchangeTimeWithStamp:modelOrder.placeTime andFormatter:TIME_SEC_SHOW];
+        m.tag = ++tag;
+        return m;
+    }() view:self top:top + W(18)];
+    
+    self.height = top + W(20);
     self.ivBg.frame = CGRectMake(0, -W(10), SCREEN_WIDTH, self.height + W(20));
     
 }
@@ -584,7 +607,7 @@
 - (UILabel *)labelTitle{
     if (_labelTitle == nil) {
         _labelTitle = [UILabel new];
-        _labelTitle.textColor = COLOR_333;
+        _labelTitle.textColor = COLOR_666;
         _labelTitle.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
     }
     return _labelTitle;
@@ -617,187 +640,67 @@
     [self removeAllSubViews];//移除线
     [self addSubview:self.ivBg];
     [self addSubview:self.labelTitle];
-
+    
     self.model = modelOrder;
     //刷新view
-    [self.labelTitle fitTitle:@"场站信息" variable:0];
+    //刷新view
+    [self.labelTitle fitTitle:modelOrder.orderType == ENUM_ORDER_TYPE_OUTPUT?@"提箱点信息":@"提箱港区信息" variable:0];
     self.labelTitle.leftTop = XY(W(25),W(20));
-    [self addLineFrame:CGRectMake(W(25), self.labelTitle.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
-    NSArray * aryModels ;
-    if (modelOrder.orderType == ENUM_ORDER_TYPE_INPUT) {
-        aryModels = @[^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"提  箱  港：";
-            model.subTitle = UnPackStr(modelOrder.startAreaName);
-            model.isSelected = false;
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"提箱港区：";
-            model.subTitle = UnPackStr(modelOrder.startCyName);
-            model.isSelected = false;
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"联系人员：";
-            model.subTitle = UnPackStr(modelOrder.startContact);
-            model.isSelected = false;
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"联系电话：";
-            model.subTitle = UnPackStr(modelOrder.startPhone);
-            model.isSelected = true;
-            model.tag = 1;
-            return model;
-        }()];
-    }else {
-        aryModels = @[^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"提  箱  点：";
-            model.subTitle = UnPackStr(modelOrder.startCyName);
-            model.isSelected = false;
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"联系人员：";
-            model.subTitle = UnPackStr(modelOrder.startContact);
-            model.isSelected = false;
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"联系电话：";
-            model.subTitle = UnPackStr(modelOrder.startPhone);
-            model.isSelected = true;
-            model.tag = 1;
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"还  箱  点：";
-            model.subTitle = UnPackStr(modelOrder.endCyName);
-            model.isSelected = false;
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"联系人员：";
-            model.subTitle = UnPackStr(modelOrder.endContact);
-            model.isSelected = false;
-            return model;
-        }(),^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"联系电话：";
-            model.subTitle = UnPackStr(modelOrder.endPhone);
-            model.isSelected = true;
-            model.tag = 2;
-            return model;
-        }()];
-    }
     
-    CGFloat top = self.labelTitle.bottom + W(40);
-    for (int i = 0; i<aryModels.count; i++) {
-        ModelBtn * model = aryModels[i];
-        UILabel * label = [UILabel new];
-        label.fontNum = F(15);
-        label.textColor = COLOR_333;
-        [label fitTitle:model.title variable:0];
-        label.leftTop = XY(W(25), top);
-        label.tag = TAG_LINE;
-        [self addSubview:label];
-        top = label.bottom + W(20);
-        
-        
-        UILabel * labelTime = [UILabel new];
-        labelTime.fontNum = F(15);
-        labelTime.textColor = model.isSelected?COLOR_BLUE:COLOR_333;
-        [labelTime fitTitle:UnPackStr(model.subTitle) variable:SCREEN_WIDTH - label.right -W(5)];
-        labelTime.tag = TAG_LINE;
-        labelTime.leftCenterY = XY(label.right + W(2), label.centerY);
-        [self addSubview:labelTime];
-        
-        if (model.isSelected) {
-            UIView * con =  [self addControlFrame:CGRectInset(labelTime.frame, -W(100), -W(20)) belowView:labelTime target:self action:@selector(click:)];
-            con.tag = model.tag;
-        }
-        
-    }
+    CGFloat top = [self addLineFrame:CGRectMake(W(25), self.labelTitle.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
     
-    self.height = top;
+       __block int tag = 100;
+       top = [BulkCargoListCell addTitle:^(){
+           ModelBtn * m = [ModelBtn new];
+           m.title = modelOrder.orderType == ENUM_ORDER_TYPE_OUTPUT?@"提  箱  点":@"提箱港区";
+           m.subTitle = modelOrder.startCyName;
+           m.tag = ++tag;
+           return m;
+       }() view:self top:top + W(18)];
+      top = [BulkCargoListCell addTitle:^(){
+             ModelBtn * m = [ModelBtn new];
+             m.title = @"联  系  人";
+             m.subTitle = modelOrder.startContact;
+             m.tag = ++tag;
+             return m;
+         }() view:self top:top + W(18)];
+    
+    top = [BulkCargoListCell addTitle:^(){
+                ModelBtn * m = [ModelBtn new];
+                m.title = @"联系电话";
+                m.subTitle = modelOrder.startPhone;
+                m.tag = ++tag;
+                return m;
+            }() view:self top:top + W(18)];
+    
+    [self addControlFrame:CGRectMake(0, top - W(50), SCREEN_WIDTH, W(50)) belowView:[self viewWithTag:tag] target:self action:@selector(phoneClick)];
+
+   
+    
+    self.height = top + W(20);
     self.ivBg.frame = CGRectMake(0, -W(10), SCREEN_WIDTH, self.height + W(20));
     
 }
 
 #pragma mark click
-- (void)click:(UIControl *)con{
-    switch (con.tag) {
-        case 1:
-            {
+- (void)phoneClick{
                 NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel://%@",UnPackStr(self.model.startPhone)];
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 
-            }
-            break;
-        case 2:
-        {
-            NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel://%@",UnPackStr(self.model.endPhone)];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-            
-        }
-            break;
-        default:
-            break;
-    }
 }
 @end
 
-
-
-@implementation OrderDetailDriverView
+@implementation OrderDetailReturnAddressView
 #pragma mark 懒加载
 - (UILabel *)labelTitle{
     if (_labelTitle == nil) {
         _labelTitle = [UILabel new];
-        _labelTitle.textColor = COLOR_333;
+        _labelTitle.textColor = COLOR_666;
         _labelTitle.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
     }
     return _labelTitle;
 }
-- (UILabel *)labelName{
-    if (_labelName == nil) {
-        _labelName = [UILabel new];
-        _labelName.textColor = COLOR_333;
-        _labelName.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-        _labelName.numberOfLines = 0;
-        _labelName.lineSpace = 0;
-    }
-    return _labelName;
-}
-- (UILabel *)labelPhone{
-    if (_labelPhone == nil) {
-        _labelPhone = [UILabel new];
-        _labelPhone.textColor = COLOR_333;
-        _labelPhone.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
-        _labelPhone.numberOfLines = 0;
-        _labelPhone.lineSpace = 0;
-    }
-    return _labelPhone;
-}
-- (UIImageView *)ivHead{
-    if (_ivHead == nil) {
-        _ivHead = [UIImageView new];
-        _ivHead.image = [UIImage imageNamed:IMAGE_HEAD_DEFAULT];
-        _ivHead.widthHeight = XY(W(50),W(50));
-        [GlobalMethod setRoundView:_ivHead color:[UIColor clearColor] numRound:_ivHead.width/2.0 width:0];
-    }
-    return _ivHead;
-}
-- (UIImageView *)ivPhone{
-    if (_ivPhone == nil) {
-        _ivPhone = [UIImageView new];
-        _ivPhone.image = [UIImage imageNamed:@"orderCell_call"];
-        _ivPhone.widthHeight = XY(W(25),W(25));
-    }
-    return _ivPhone;
-}
+
 - (UIImageView *)ivBg{
     if (_ivBg == nil) {
         _ivBg = [UIImageView new];
@@ -812,57 +715,68 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        self.clipsToBounds = false;
         self.width = SCREEN_WIDTH;
-        [self addSubView];
-        [self addTarget:self action:@selector(phoneClick)];
+        self.clipsToBounds = false;
+        [self resetViewWithModel:nil];
     }
     return self;
 }
-//添加subview
-- (void)addSubView{
-    [self addSubview:self.ivBg];
-    [self addSubview:self.labelTitle];
-    [self addSubview:self.labelName];
-    [self addSubview:self.labelPhone];
-    [self addSubview:self.ivHead];
-    //    [self addSubview:self.ivPhone];
-    
-    //初始化页面
-    [self resetViewWithModel:nil];
-}
+
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(ModelOrderList *)model{
-    [self removeSubViewWithTag:TAG_LINE];//移除线
-    self.model = model;
+- (void)resetViewWithModel:(ModelOrderList *)modelOrder{
+    [self removeAllSubViews];//移除线
+    [self addSubview:self.ivBg];
+    [self addSubview:self.labelTitle];
+    
+    self.model = modelOrder;
     //刷新view
-    [self.labelTitle fitTitle:@"承运司机" variable:0];
+    [self.labelTitle fitTitle:@"还箱点信息" variable:0];
     self.labelTitle.leftTop = XY(W(25),W(20));
-    [self addLineFrame:CGRectMake(W(25), self.labelTitle.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
     
-    [self.ivHead sd_setImageWithURL:[NSURL URLWithString:[GlobalData sharedInstance].GB_UserModel.headUrl] placeholderImage:[UIImage imageNamed:IMAGE_HEAD_DEFAULT]];
-    self.ivHead.leftTop = XY(W(25),self.labelTitle.bottom+W(35));
+    CGFloat top = [self addLineFrame:CGRectMake(W(25), self.labelTitle.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
     
-    NSString * strTruckNum =isStr( model.truckNumber)? [NSString stringWithFormat:@" (%@)",model.truckNumber]:@"";
-    [self.labelName fitTitle:[NSString stringWithFormat:@"%@%@",[GlobalData sharedInstance].GB_UserModel.nickname,strTruckNum] variable:0];
-    self.labelName.leftTop = XY(self.ivHead.right + W(10),self.ivHead.top + W(3));
+       __block int tag = 100;
+       top = [BulkCargoListCell addTitle:^(){
+           ModelBtn * m = [ModelBtn new];
+           m.title = @"还  箱  点";
+           m.subTitle = modelOrder.endCyName;
+           m.tag = ++tag;
+           return m;
+       }() view:self top:top + W(18)];
+      top = [BulkCargoListCell addTitle:^(){
+             ModelBtn * m = [ModelBtn new];
+             m.title = @"联  系  人";
+             m.subTitle = modelOrder.endContact;
+             m.tag = ++tag;
+             return m;
+         }() view:self top:top + W(18)];
     
-    [self.labelPhone fitTitle:UnPackStr([GlobalData sharedInstance].GB_UserModel.cellPhone) variable:0];
-    self.labelPhone.leftBottom = XY(self.labelName.left,self.ivHead.bottom);
+    top = [BulkCargoListCell addTitle:^(){
+                ModelBtn * m = [ModelBtn new];
+                m.title = @"联系电话";
+                m.subTitle = modelOrder.endPhone;
+                m.tag = ++tag;
+                return m;
+            }() view:self top:top + W(18)];
     
-    self.ivPhone.rightCenterY = XY(SCREEN_WIDTH - W(25),self.ivHead.centerY);
+    [self addControlFrame:CGRectMake(0, top - W(50), SCREEN_WIDTH, W(50)) belowView:[self viewWithTag:tag] target:self action:@selector(phoneClick)];
+
+   
     
-    self.height = self.ivHead.bottom + W(15);
+    self.height = top + W(20);
     self.ivBg.frame = CGRectMake(0, -W(10), SCREEN_WIDTH, self.height + W(20));
+    
 }
 
 #pragma mark click
 - (void)phoneClick{
-    //    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel://%@",[GlobalData sharedInstance].GB_UserModel.account];
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+                NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel://%@",UnPackStr(self.model.endPhone)];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+
 }
 @end
+
 
 
 @implementation OrderDetailRemarkView
@@ -870,7 +784,7 @@
 - (UILabel *)labelTitle{
     if (_labelTitle == nil) {
         _labelTitle = [UILabel new];
-        _labelTitle.textColor = COLOR_333;
+        _labelTitle.textColor = COLOR_666;
         _labelTitle.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
     }
     return _labelTitle;

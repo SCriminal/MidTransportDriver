@@ -18,7 +18,7 @@
 #import "OrderManagementBottomView.h"
 //up iamgeview
 #import "BulkCargoOperateLoadView.h"
-
+#import "RejectOrderReason.h"
 @interface BulkCargoListVC ()
 
 @end
@@ -65,14 +65,12 @@
     WEAKSELF
     BulkCargoListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"BulkCargoListCell"];
     cell.blockReject = ^(ModelBulkCargoOrder *model) {
-        //拒单
-               ModelBtn * modelDismiss = [ModelBtn   modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
-               ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
-               WEAKSELF
-               modelConfirm.blockClick = ^(void){
-                   [weakSelf requestRejectModel:model];
-               };
-               [BaseAlertView initWithTitle:@"提示" content:@"确认拒单?" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:weakSelf.view];
+        WEAKSELF
+        RejectOrderReason * cancelView = [RejectOrderReason new];
+        cancelView.blockComplete = ^(NSString *reason) {
+            [weakSelf requestRejectModel:model reason:reason];
+        };
+        [cancelView show];
     };
     cell.blockAccept  = ^(ModelBulkCargoOrder *model) {
         //判断地理位置权限
@@ -132,7 +130,14 @@
        [GB_Nav pushViewController:operateVC animated:true];
 }
 
-- (void)requestRejectModel:(ModelBulkCargoOrder *)model{
+- (void)requestRejectModel:(ModelBulkCargoOrder *)model reason:(NSString *)reason{
+    
+    [RequestApi requestOperateBulkCargoRejectWithReason:reason id:model.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_ORDER_REFERSH object:nil];
+
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
 }
 - (void)requestOperate:(NSString *)url model:(ModelBulkCargoOrder *)model{
     

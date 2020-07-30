@@ -47,7 +47,6 @@
     if (!_packageView) {
         _packageView = [OrderDetailPackageView new];
         _packageView.topToUpView = W(15);
-        [_packageView resetViewWithModel:self.modelOrder];
     }
     return _packageView;
 }
@@ -117,7 +116,7 @@
     //table
     self.tableBackgroundView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.pathView,self.packageView,self.loadInfoView,self.stationView,isStr(self.modelOrder.iDPropertyDescription)?self.remarkView:[NSNull null]]];
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.pathView,self.loadInfoView,self.stationView,isStr(self.modelOrder.iDPropertyDescription)?self.remarkView:[NSNull null]]];
     self.tableView.tableFooterView = ^(){
         UIView * view = [UIView new];
         view.height = W(20);
@@ -135,13 +134,13 @@
 }
 #pragma mark refresh table header view
 - (void)reconfigTableHeaderView{
-    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,isAry(self.statusView.aryDatas)?self.statusView:[NSNull null],self.pathView,self.packageView,self.loadInfoView,self.stationView,isStr(self.modelOrder.iDPropertyDescription)?self.remarkView:[NSNull null],isAry(self.accessoryView.aryDatas)?self.accessoryView:[NSNull null]]];
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,isAry(self.statusView.aryDatas)?self.statusView:[NSNull null],self.pathView,isAry(self.packageView.aryDatas)?self.packageView:[NSNull null],self.loadInfoView,self.stationView,isStr(self.modelOrder.iDPropertyDescription)?self.remarkView:[NSNull null],isAry(self.accessoryView.aryDatas)?self.accessoryView:[NSNull null]]];
 }
 #pragma mark request
 - (void)requestGoodsInfo{
     [RequestApi requestGoosListWithId:self.modelOrder.iDProperty entID:self.modelOrder.shipperId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelPackageInfo"];
-        [self.topView resetViewWithModel:self.modelOrder goodlist:ary];
+        [self.packageView resetViewWithAry:ary];
         [self reconfigTableHeaderView];
         [self requestAccessory];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -168,7 +167,6 @@
         [self.loadInfoView resetViewWithModel:self.modelOrder];
         [self.stationView resetViewWithModel:self.modelOrder];
         [self.pathView resetViewWithModel:self.modelOrder];
-        [self.packageView resetViewWithModel:self.modelOrder];
         [self.remarkView resetViewWithModel:self.modelOrder];
         
         
