@@ -23,7 +23,7 @@
 @property (nonatomic, strong) OrderDetailPathView *pathView;
 @property (nonatomic, strong) OrderDetailLoadView *loadInfoView;
 @property (nonatomic, strong) OrderDetailStationView *stationView;
-@property (nonatomic, strong) OrderDetailDriverView *driverView;
+@property (nonatomic, strong) OrderDetailPackageView *packageView;
 @property (nonatomic, strong) OrderDetailRemarkView *remarkView;
 @property (nonatomic, strong) OrderDetailAccessoryView *accessoryView;
 
@@ -37,26 +37,26 @@
         WEAKSELF
         _nav = [BaseNavView initNavBackWithTitle:@"运单详情" rightImageName:@"orderTopShare" rightImageSize:CGSizeMake(W(25), W(25)) righBlock:^{
             [ShareView show:weakSelf.modelOrder];
-
+            
         }];
         _nav.line.hidden = true;
     }
     return _nav;
 }
-- (OrderDetailDriverView *)driverView{
-    if (!_driverView) {
-        _driverView = [OrderDetailDriverView new];
-        _driverView.topToUpView = W(15);
-        [_driverView resetViewWithModel:self.modelOrder];
+- (OrderDetailPackageView *)packageView {
+    if (!_packageView) {
+        _packageView = [OrderDetailPackageView new];
+        _packageView.topToUpView = W(15);
+        [_packageView resetViewWithModel:self.modelOrder];
     }
-    return _driverView;
+    return _packageView;
 }
 - (OrderDetailRemarkView *)remarkView{
     if (!_remarkView) {
         _remarkView = [OrderDetailRemarkView new];
         _remarkView.topToUpView = W(15);
         [_remarkView resetViewWithModel:self.modelOrder];
-
+        
     }
     return _remarkView;
 }
@@ -72,6 +72,7 @@
     if (!_statusView) {
         _statusView = [OrderDetailStatusView new];
         _statusView.topToUpView = W(15);
+        [self reconfigTimeAxle];
     }
     return _statusView;
 }
@@ -80,7 +81,7 @@
         _pathView = [OrderDetailPathView new];
         _pathView.topToUpView = W(15);
         [_pathView resetViewWithModel:self.modelOrder];
-
+        
     }
     return _pathView;
 }
@@ -116,7 +117,7 @@
     //table
     self.tableBackgroundView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.pathView,self.loadInfoView,self.stationView,isStr(self.modelOrder.iDPropertyDescription)?self.remarkView:[NSNull null],self.driverView]];
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.pathView,self.packageView,self.loadInfoView,self.stationView,isStr(self.modelOrder.iDPropertyDescription)?self.remarkView:[NSNull null]]];
     self.tableView.tableFooterView = ^(){
         UIView * view = [UIView new];
         view.height = W(20);
@@ -134,7 +135,7 @@
 }
 #pragma mark refresh table header view
 - (void)reconfigTableHeaderView{
-    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,isAry(self.statusView.aryDatas)?self.statusView:[NSNull null],self.pathView,self.loadInfoView,self.stationView,isStr(self.modelOrder.iDPropertyDescription)?self.remarkView:[NSNull null],isAry(self.accessoryView.aryDatas)?self.accessoryView:[NSNull null],self.driverView]];
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,isAry(self.statusView.aryDatas)?self.statusView:[NSNull null],self.pathView,self.packageView,self.loadInfoView,self.stationView,isStr(self.modelOrder.iDPropertyDescription)?self.remarkView:[NSNull null],isAry(self.accessoryView.aryDatas)?self.accessoryView:[NSNull null]]];
 }
 #pragma mark request
 - (void)requestGoodsInfo{
@@ -142,27 +143,18 @@
         NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelPackageInfo"];
         [self.topView resetViewWithModel:self.modelOrder goodlist:ary];
         [self reconfigTableHeaderView];
-        [self requestTimeAxle];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
-}
-- (void)requestTimeAxle{
-    [RequestApi requestDriverOrderTimeAxleWithFormid:self.modelOrder.iDProperty entId:self.modelOrder.shipperId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelOrderOperateTimeItem"];
-        [self.statusView resetViewWithAry:ary modelOrder:self.modelOrder];
-        [self reconfigTableHeaderView];
         [self requestAccessory];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
 }
+
 - (void)requestAccessory{
     [RequestApi requestAccessoryListWithFormid:self.modelOrder.iDProperty formType:0 entId:self.modelOrder.shipperId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelAccessoryItem"];
         [self.accessoryView resetViewWithAry:ary modelOrder:self.modelOrder];
         [self reconfigTableHeaderView];
-
+        
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
@@ -170,19 +162,58 @@
 - (void)requestList{
     [RequestApi requestOrderDetailWithId:self.modelOrder.iDProperty  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.modelOrder = [ModelOrderList modelObjectWithDictionary:response];
-
+        
+        [self reconfigTimeAxle];
+        
         [self.loadInfoView resetViewWithModel:self.modelOrder];
         [self.stationView resetViewWithModel:self.modelOrder];
         [self.pathView resetViewWithModel:self.modelOrder];
-        [self.driverView resetViewWithModel:self.modelOrder];
+        [self.packageView resetViewWithModel:self.modelOrder];
         [self.remarkView resetViewWithModel:self.modelOrder];
-
-
+        
+        
         [self reconfigTableHeaderView];
         [self requestGoodsInfo];
         
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
+}
+
+- (void)reconfigTimeAxle{
+    NSMutableArray * aryTimes = [NSMutableArray array];
+    
+    [aryTimes addObject:^(){
+        ModelBaseData * model = [ModelBaseData new];
+        model.string = @"接单";
+        model.subString = [GlobalMethod exchangeTimeWithStamp:self.modelOrder.acceptTime andFormatter:TIME_SEC_SHOW];
+        return model;
+    }()];
+    [aryTimes addObject:^(){
+        ModelBaseData * model = [ModelBaseData new];
+        model.string = @"提箱";
+        model.subString = [GlobalMethod exchangeTimeWithStamp:self.modelOrder.stuffTime andFormatter:TIME_SEC_SHOW];
+        return model;
+    }()];
+    [aryTimes addObject:^(){
+        ModelBaseData * model = [ModelBaseData new];
+        model.string = @"到场";
+        model.subString = [GlobalMethod exchangeTimeWithStamp:self.modelOrder.toFactoryTime andFormatter:TIME_SEC_SHOW];
+        return model;
+    }()];
+    [aryTimes addObject:^(){
+        ModelBaseData * model = [ModelBaseData new];
+        model.string = self.modelOrder.orderType == ENUM_ORDER_TYPE_OUTPUT? @"装货":@"卸货";
+        model.subString = [GlobalMethod exchangeTimeWithStamp:self.modelOrder.handleTime andFormatter:TIME_SEC_SHOW];
+        return model;
+    }()];
+    [aryTimes addObject:^(){
+        ModelBaseData * model = [ModelBaseData new];
+        model.string = @"还箱";
+        model.subString = [GlobalMethod exchangeTimeWithStamp:self.modelOrder.finishTime andFormatter:TIME_SEC_SHOW];
+        return model;
+    }()];
+    
+    [self.statusView resetViewWithAry:aryTimes];
 }
 @end

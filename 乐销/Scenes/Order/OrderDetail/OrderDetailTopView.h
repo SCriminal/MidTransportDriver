@@ -12,9 +12,7 @@
 //属性
 @property (strong, nonatomic) UILabel *labelBill;
 @property (strong, nonatomic) UILabel *labelBillNo;
-@property (strong, nonatomic) UILabel *labelOrderNo;
-@property (strong, nonatomic) UILabel *labelOrderType;
-
+@property (strong, nonatomic) UILabel *labelCopy;
 @property (strong, nonatomic) UIImageView *ivBg;
 @property (nonatomic, strong) NSArray *aryDatas;
 @property (nonatomic, strong) ModelOrderList *model;
@@ -23,13 +21,24 @@
 - (void)resetViewWithModel:(ModelOrderList *)model goodlist:(NSArray *)ary;
 @end
 
+@interface OrderDetailPackageView : UIView
+//属性
+@property (strong, nonatomic) UILabel *labelTitle;
+@property (strong, nonatomic) UIImageView *ivBg;
+@property (nonatomic, strong) ModelOrderList *model;
+
+#pragma mark 刷新view
+- (void)resetViewWithModel:(ModelOrderList *)model;
+@end
+
 @interface OrderDetailStatusView : UIView
 //属性
 @property (strong, nonatomic) UILabel *labelStatus;
 @property (strong, nonatomic) UIImageView *ivBg;
 @property (nonatomic, strong) NSArray *aryDatas;
+@property (nonatomic, strong) UIScrollView *sc;
 #pragma mark 刷新view
-- (void)resetViewWithAry:(NSArray *)ary modelOrder:(ModelOrderList *)modelOrder;
+- (void)resetViewWithAry:(NSArray *)ary;
 @end
 
 

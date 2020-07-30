@@ -36,7 +36,7 @@
         _labelCopy.numberOfLines = 0;
         _labelCopy.lineSpace = 0;
         [_labelCopy fitTitle:@"点击运单号可复制" variable:0];
-
+        
     }
     return _labelCopy;
 }
@@ -76,7 +76,7 @@
     [self addSubview:self.labelBill];
     [self addSubview:self.labelBillNo];
     [self addSubview:self.labelCopy];
-
+    
     //初始化页面
     [self resetViewWithModel:nil ];
 }
@@ -86,25 +86,25 @@
     self.model = model;
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-
+    
     self.labelBill.centerXTop = XY(SCREEN_WIDTH/2.0,W(25));
     [self.labelBillNo fitTitle:UnPackStr(model.waybillNumber ) variable:0];
     self.labelBillNo.centerXTop = XY(SCREEN_WIDTH/2.0,self.labelBill.bottom + W(25));
     
     self.labelCopy.centerXTop = XY(SCREEN_WIDTH/2.0,self.labelBillNo.bottom + W(15));
-
+    
     [self addControlFrame:CGRectInset(self.labelBillNo.frame, -W(40), -W(50)) belowView:self.labelBillNo target:self action:@selector(copyClick)];
     
     CGFloat top = [self addLineFrame:CGRectMake(W(25), self.labelCopy.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
     
-       __block int tag = 100;
-       top = [BulkCargoListCell addTitle:^(){
-           ModelBtn * m = [ModelBtn new];
-           m.title = @"下单时间";
-           m.subTitle = [GlobalMethod exchangeTimeWithStamp:model.createTime andFormatter:TIME_SEC_SHOW];
-           m.tag = ++tag;
-           return m;
-       }() view:self top:top + W(18)];
+    __block int tag = 100;
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"下单时间";
+        m.subTitle = [GlobalMethod exchangeTimeWithStamp:model.createTime andFormatter:TIME_SEC_SHOW];
+        m.tag = ++tag;
+        return m;
+    }() view:self top:top + W(18)];
     
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
@@ -124,13 +124,13 @@
     }() view:self top:top + W(18)];
     
     top = [BulkCargoListCell addTitle:^(){
-           ModelBtn * m = [ModelBtn new];
-           m.title = @"发  货  量";
-           m.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(model.actualLoad),UnPackStr(model.loadUnit)];;
-           m.tag = ++tag;
-           return m;
-       }() view:self top:top + W(18)];
-        
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"发  货  量";
+        m.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(model.actualLoad),UnPackStr(model.loadUnit)];;
+        m.tag = ++tag;
+        return m;
+    }() view:self top:top + W(18)];
+    
     self.height = top+W(20);
     self.ivBg.frame = CGRectMake(0, -W(10), SCREEN_WIDTH, self.height + W(20));
 }
@@ -154,7 +154,7 @@
         _labelStatus.numberOfLines = 0;
         _labelStatus.lineSpace = 0;
         [_labelStatus fitTitle:@"运单状态" variable:0];
-
+        
     }
     return _labelStatus;
 }
@@ -194,7 +194,7 @@
     [self addSubview:self.ivBg];
     [self addSubview:self.labelStatus];
     [self addSubview:self.sc];
-
+    
 }
 
 #pragma mark 刷新view
@@ -204,7 +204,7 @@
     [self addSubView];
     //刷新view
     self.labelStatus.leftTop = XY(W(25),W(20));
-   CGFloat top = [self addLineFrame:CGRectMake(W(25), self.labelStatus.bottom + W(18), SCREEN_WIDTH - W(50), 1)];
+    CGFloat top = [self addLineFrame:CGRectMake(W(25), self.labelStatus.bottom + W(18), SCREEN_WIDTH - W(50), 1)];
     
     self.sc.frame = CGRectMake(W(10), top, SCREEN_WIDTH - W(20), W(86));
     CGFloat left = W(33);
@@ -223,7 +223,7 @@
         
         NSString * time = isStr(item.subString)?[GlobalMethod exchangeString:item.subString fromFormatter:TIME_SEC_SHOW toFormatter:TIME_DAY_SHOW]:[NSString stringWithFormat:@"未%@",item.string];
         NSString * subTime = isStr(item.subString)?[GlobalMethod exchangeString:item.subString fromFormatter:TIME_SEC_SHOW toFormatter:@"HH:mm:ss"]:@"";
-
+        
         UILabel * subLabel = [UILabel new];
         subLabel.font = [UIFont systemFontOfSize:F(11) weight:UIFontWeightRegular];
         subLabel.textColor = COLOR_666;
@@ -249,7 +249,7 @@
             viewLine.leftCenterY = XY(l.right + W(28), l.centerY);
             [self.sc addSubview:viewLine];
         }
-
+        
     }
     self.sc.contentSize = CGSizeMake(left, 0);
     
@@ -325,7 +325,7 @@
     [self addSubview:self.addressFrom];
     [self addSubview:self.addressTo];
     [self addSubview:self.iconAddress];
-
+    
     //初始化页面
     [self resetViewWithModel:nil];
 }
@@ -337,16 +337,16 @@
     [self.labelPath fitTitle:@"路线信息" variable:0];
     self.labelPath.leftTop = XY(W(25),W(20));
     
-   CGFloat top = [self addLineFrame:CGRectMake(W(25), self.labelPath.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
-   __block int tag = 100;
-
-       self.iconAddress.centerXTop = XY(SCREEN_WIDTH/2.0, W(20) + top);
-       
-       [self.addressFrom fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.startProvinceName),[model.startCityName isEqualToString:model.startProvinceName]?@"":UnPackStr(model.startCityName)] variable:W(160)];
-       self.addressFrom.centerXCenterY = XY((self.iconAddress.left - W(10))/2.0+W(10), self.iconAddress.centerY);
-       
-       [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.endProvinceName),[model.endCityName isEqualToString:model.endProvinceName]?@"":UnPackStr(model.endCityName)] variable:W(160)];
-       self.addressTo.centerXCenterY = XY((SCREEN_WIDTH - self.iconAddress.right - W(10))/2.0 + SCREEN_WIDTH/2.0 + self.iconAddress.width/2.0, self.iconAddress.centerY);
+    CGFloat top = [self addLineFrame:CGRectMake(W(25), self.labelPath.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
+    __block int tag = 100;
+    
+    self.iconAddress.centerXTop = XY(SCREEN_WIDTH/2.0, W(20) + top);
+    
+    [self.addressFrom fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.startProvinceName),[model.startCityName isEqualToString:model.startProvinceName]?@"":UnPackStr(model.startCityName)] variable:W(160)];
+    self.addressFrom.centerXCenterY = XY((self.iconAddress.left - W(10))/2.0+W(10), self.iconAddress.centerY);
+    
+    [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.endProvinceName),[model.endCityName isEqualToString:model.endProvinceName]?@"":UnPackStr(model.endCityName)] variable:W(160)];
+    self.addressTo.centerXCenterY = XY((SCREEN_WIDTH - self.iconAddress.right - W(10))/2.0 + SCREEN_WIDTH/2.0 + self.iconAddress.width/2.0, self.iconAddress.centerY);
     
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
@@ -383,7 +383,7 @@
         _labelTitle.textColor = COLOR_666;
         _labelTitle.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         [_labelTitle fitTitle:@"发货信息" variable:0];
-
+        
     }
     return _labelTitle;
 }
@@ -429,14 +429,14 @@
     CGFloat top = [self addLineFrame:CGRectMake(W(25), self.labelTitle.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
     __block int tag = 100;
     
-
+    
     top = [BulkCargoListCell addTitle:^(){
-          ModelBtn * m = [ModelBtn new];
-          m.title = @"单位名称";
-          m.subTitle = model.shipperName;
-          m.tag = ++tag;
-          return m;
-      }() view:self top:top + W(18)];
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"单位名称";
+        m.subTitle = model.shipperName;
+        m.tag = ++tag;
+        return m;
+    }() view:self top:top + W(18)];
     
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
@@ -533,12 +533,12 @@
     __block int tag = 100;
     
     top = [BulkCargoListCell addTitle:^(){
-          ModelBtn * m = [ModelBtn new];
-          m.title = @"单位名称";
-          m.subTitle = model.endEntName;
-          m.tag = ++tag;
-          return m;
-      }() view:self top:top + W(18)];
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"单位名称";
+        m.subTitle = model.endEntName;
+        m.tag = ++tag;
+        return m;
+    }() view:self top:top + W(18)];
     
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
@@ -812,7 +812,7 @@
 }
 - (void)resetViewWithUnloadModel:(ModelBulkCargoOrder *)model{
     [self resetViewWithTitle:@"到达信息" aryImage:model.unloadUrlList];
-
+    
 }
 - (void)resetViewWithTitle:(NSString *)title aryImage:(NSArray *)aryImages{
     [self removeAllSubViews];//移除线
@@ -820,7 +820,7 @@
     //刷新view
     [self.labelTitle fitTitle:title variable:0];
     self.labelTitle.leftTop = XY(W(25),W(20));
-   CGFloat bottom =  [self addLineFrame:CGRectMake(W(25), self.labelTitle.bottom + W(20), SCREEN_WIDTH - W(50), 1)] + W(20);
+    CGFloat bottom =  [self addLineFrame:CGRectMake(W(25), self.labelTitle.bottom + W(20), SCREEN_WIDTH - W(50), 1)] + W(20);
     
     
     [self.aryDatas removeAllObjects];
