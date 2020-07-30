@@ -13,6 +13,7 @@
 @property (strong, nonatomic) UILabel *title;
 @property (strong, nonatomic) UITextField *textField;
 @property (nonatomic, strong) UIImageView *iconArrow;
+@property (strong, nonatomic) UILabel *essential;
 @property (nonatomic, strong) ModelBaseData *model;
 
 #pragma mark 刷新cell

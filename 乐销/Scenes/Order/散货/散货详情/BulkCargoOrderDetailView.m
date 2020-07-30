@@ -9,6 +9,7 @@
 #import "BulkCargoOrderDetailView.h"
 //detail
 #import "ImageDetailBigView.h"
+#import "BulkCargoListCell.h"
 
 @interface BulkCargoOrderDetailTopView ()
 
@@ -19,12 +20,25 @@
 - (UILabel *)labelBill{
     if (_labelBill == nil) {
         _labelBill = [UILabel new];
-        _labelBill.textColor = COLOR_333;
-        _labelBill.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        _labelBill.textColor = COLOR_666;
+        _labelBill.font =  [UIFont systemFontOfSize:F(11) weight:UIFontWeightRegular];
         _labelBill.numberOfLines = 0;
         _labelBill.lineSpace = 0;
+        [_labelBill fitTitle:@"运单号" variable:0];
     }
     return _labelBill;
+}
+- (UILabel *)labelCopy{
+    if (_labelCopy == nil) {
+        _labelCopy = [UILabel new];
+        _labelCopy.textColor = COLOR_666;
+        _labelCopy.font =  [UIFont systemFontOfSize:F(11) weight:UIFontWeightRegular];
+        _labelCopy.numberOfLines = 0;
+        _labelCopy.lineSpace = 0;
+        [_labelCopy fitTitle:@"点击运单号可复制" variable:0];
+
+    }
+    return _labelCopy;
 }
 - (UILabel *)labelBillNo{
     if (_labelBillNo == nil) {
@@ -61,70 +75,69 @@
     [self addSubview:self.ivBg];
     [self addSubview:self.labelBill];
     [self addSubview:self.labelBillNo];
-    
+    [self addSubview:self.labelCopy];
+
     //初始化页面
     [self resetViewWithModel:nil ];
 }
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(ModelBulkCargoOrder *)modelCargo  {
+- (void)resetViewWithModel:(ModelBulkCargoOrder *)model  {
+    self.model = model;
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-    [self.labelBill fitTitle:@"运单号" variable:0];
+
     self.labelBill.centerXTop = XY(SCREEN_WIDTH/2.0,W(25));
-    [self.labelBillNo fitTitle:UnPackStr(modelCargo.waybillNumber ) variable:0];
+    [self.labelBillNo fitTitle:UnPackStr(model.waybillNumber ) variable:0];
     self.labelBillNo.centerXTop = XY(SCREEN_WIDTH/2.0,self.labelBill.bottom + W(25));
     
-    CGFloat bottom = [self addLineFrame:CGRectMake(W(25), self.labelBillNo.bottom + W(25), SCREEN_WIDTH - W(50), 1)];
-    
-    
-    {
-        NSMutableArray * aryModels = [NSMutableArray array];
-            [aryModels addObject:^(){
-                ModelBtn * model = [ModelBtn new];
-                model.title = @"货物名称：";
-                model.subTitle = UnPackStr(modelCargo.cargoName);
-                return model;
-            }()];
-        [aryModels addObject:^(){
-            ModelBtn * model = [ModelBtn new];
-            model.title = @"货  物  量：";
-            model.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(modelCargo.actualLoad),UnPackStr(modelCargo.loadUnit)];
-            return model;
-        }()];
-//          
+    self.labelCopy.centerXTop = XY(SCREEN_WIDTH/2.0,self.labelBillNo.bottom + W(15));
 
+    [self addControlFrame:CGRectInset(self.labelBillNo.frame, -W(40), -W(50)) belowView:self.labelBillNo target:self action:@selector(copyClick)];
+    
+    CGFloat top = [self addLineFrame:CGRectMake(W(25), self.labelCopy.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
+    
+       __block int tag = 100;
+       top = [BulkCargoListCell addTitle:^(){
+           ModelBtn * m = [ModelBtn new];
+           m.title = @"下单时间";
+           m.subTitle = [GlobalMethod exchangeTimeWithStamp:model.createTime andFormatter:TIME_SEC_SHOW];
+           m.tag = ++tag;
+           return m;
+       }() view:self top:top + W(18)];
+    
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"当前状态";
+        m.subTitle = model.orderStatusShow;
+        m.color = model.colorStateShow;
+        m.tag = ++tag;
+        return m;
+    }() view:self top:top + W(18)];
+    
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"货物名称";
+        m.subTitle = model.cargoName;
+        m.tag = ++tag;
+        return m;
+    }() view:self top:top + W(18)];
+    
+    top = [BulkCargoListCell addTitle:^(){
+           ModelBtn * m = [ModelBtn new];
+           m.title = @"发  货  量";
+           m.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(model.actualLoad),UnPackStr(model.loadUnit)];;
+           m.tag = ++tag;
+           return m;
+       }() view:self top:top + W(18)];
         
-            
-        
-        for (int i = 0; i<aryModels.count; i++) {
-            ModelBtn * model = aryModels[i];
-            if (!isStr(model.title)) {
-                bottom = [self addLineFrame:CGRectMake(W(25), bottom + W(20), SCREEN_WIDTH - W(50), 1)];
-                continue;
-            }
-            UILabel * label = [UILabel new];
-            label.fontNum = F(15);
-            label.textColor = COLOR_333;
-            [label fitTitle:model.title variable:0];
-            label.leftTop = XY(W(25), bottom + W(20));
-            label.tag = TAG_LINE;
-            [self addSubview:label];
-            bottom = label.bottom;
-            
-            UILabel * labelTime = [UILabel new];
-            labelTime.fontNum = F(15);
-            labelTime.textColor = COLOR_333;
-            [labelTime fitTitle:UnPackStr(model.subTitle) variable:0];
-            labelTime.leftCenterY = XY(label.right + W(2), label.centerY);
-            labelTime.tag = TAG_LINE;
-            [self addSubview:labelTime];
-            
-          
-        }
-    }
-    self.height = bottom+W(20);
+    self.height = top+W(20);
     self.ivBg.frame = CGRectMake(0, -W(10), SCREEN_WIDTH, self.height + W(20));
+}
+
+- (void)copyClick{
+    [GlobalMethod copyToPlte:self.model.waybillNumber];
+    [GlobalMethod showAlert:@"复制成功"];
 }
 
 @end
@@ -136,10 +149,12 @@
 - (UILabel *)labelStatus{
     if (_labelStatus == nil) {
         _labelStatus = [UILabel new];
-        _labelStatus.textColor = COLOR_333;
+        _labelStatus.textColor = COLOR_666;
         _labelStatus.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         _labelStatus.numberOfLines = 0;
         _labelStatus.lineSpace = 0;
+        [_labelStatus fitTitle:@"运单状态" variable:0];
+
     }
     return _labelStatus;
 }
@@ -151,7 +166,20 @@
     }
     return _ivBg;
 }
-
+- (UIScrollView *)sc{
+    if (!_sc) {
+        _sc = [UIScrollView new];
+        _sc.scrollEnabled = true;
+        _sc.backgroundColor = [UIColor clearColor];
+        _sc.showsVerticalScrollIndicator = false;
+        _sc.showsHorizontalScrollIndicator = false;
+        if (@available(iOS 11.0, *)) {
+            _sc.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+        
+    }
+    return _sc;
+}
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -166,6 +194,8 @@
 - (void)addSubView{
     [self addSubview:self.ivBg];
     [self addSubview:self.labelStatus];
+    [self addSubview:self.sc];
+
 }
 
 #pragma mark 刷新view
@@ -174,52 +204,58 @@
     [self removeAllSubViews];//移除线
     [self addSubView];
     //刷新view
-    [self.labelStatus fitTitle:@"运单状态" variable:0];
     self.labelStatus.leftTop = XY(W(25),W(20));
-    [self addLineFrame:CGRectMake(W(25), self.labelStatus.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
+   CGFloat top = [self addLineFrame:CGRectMake(W(25), self.labelStatus.bottom + W(18), SCREEN_WIDTH - W(50), 1)];
     
-    NSMutableArray * aryModels = [NSMutableArray array];
-    for (ModelBaseData * item in ary) {
-        ModelBtn * model = [ModelBtn new];
-        model.title = item.string;
-        model.subTitle = item.subString;
-        model.isSelected = true;
-        [aryModels addObject:model];
-    }
-    
-    CGFloat top = self.labelStatus.bottom + W(50);
-    for (int i = 0; i<aryModels.count; i++) {
-        ModelBtn * model = aryModels[i];
-        UILabel * label = [UILabel new];
-        label.fontNum = F(15);
-        label.textColor = model.isSelected?COLOR_333:COLOR_666;
-        [label fitTitle:model.title variable:0];
-        label.leftTop = XY(W(25), top);
-        [self addSubview:label];
-        top = label.bottom + W(35);
+    self.sc.frame = CGRectMake(W(10), top, SCREEN_WIDTH - W(20), W(86));
+    CGFloat left = W(33);
+    [self.sc removeAllSubViews];
+    for (int i = 0; i<ary.count; i++) {
+        ModelBaseData * item = ary[i];
         
-        UIView * viewDot = [UIView new];
-        viewDot.widthHeight = XY(W(7), W(7));
-        [GlobalMethod setRoundView:viewDot color:[UIColor clearColor] numRound:viewDot.width/2.0 width:0];
-        viewDot.backgroundColor = model.isSelected?COLOR_BLUE:COLOR_666;
-        viewDot.leftCenterY = XY(label.right + W(20), label.centerY);
-        if (i!=aryModels.count -1) {
-            [self addLineFrame:CGRectMake(viewDot.centerX, viewDot.centerY, 1, W(35)+label.height) color:viewDot.backgroundColor];
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        l.textColor = isStr(item.subString)?COLOR_BLUE:COLOR_333;
+        l.backgroundColor = [UIColor clearColor];
+        [l fitTitle:item.string variable:0];
+        l.leftTop = XY(left, W(18));
+        [self.sc addSubview:l];
+        left = l.right + W(76);
+        
+        NSString * time = isStr(item.subString)?[GlobalMethod exchangeString:item.subString fromFormatter:TIME_SEC_SHOW toFormatter:TIME_DAY_SHOW]:[NSString stringWithFormat:@"未%@",item.string];
+        NSString * subTime = isStr(item.subString)?[GlobalMethod exchangeString:item.subString fromFormatter:TIME_SEC_SHOW toFormatter:@"HH:mm:ss"]:@"";
+
+        UILabel * subLabel = [UILabel new];
+        subLabel.font = [UIFont systemFontOfSize:F(11) weight:UIFontWeightRegular];
+        subLabel.textColor = COLOR_666;
+        subLabel.backgroundColor = [UIColor clearColor];
+        [subLabel fitTitle:time variable:0];
+        subLabel.centerXTop = XY(l.centerX, l.bottom + W(9));
+        [self.sc addSubview:subLabel];
+        
+        if (isStr(subTime)) {
+            UILabel * subTimeLabel = [UILabel new];
+            subTimeLabel.font = [UIFont systemFontOfSize:F(11) weight:UIFontWeightRegular];
+            subTimeLabel.textColor = COLOR_666;
+            subTimeLabel.backgroundColor = [UIColor clearColor];
+            [subTimeLabel fitTitle:subTime variable:0];
+            subTimeLabel.centerXTop = XY(l.centerX, subLabel.bottom + W(2));
+            [self.sc addSubview:subTimeLabel];
         }
-        [self addSubview:viewDot];
         
-        
-        UILabel * labelTime = [UILabel new];
-        labelTime.fontNum = F(15);
-        labelTime.textColor = model.isSelected?COLOR_333:COLOR_666;
-        [labelTime fitTitle:UnPackStr(model.subTitle) variable:0];
-        labelTime.leftCenterY = XY(viewDot.right + W(25), label.centerY);
-        [self addSubview:labelTime];
-        
+        if (i != ary.count -1) {
+            UIView * viewLine = [UIView new];
+            viewLine.widthHeight = XY(W(20), 1);
+            viewLine.backgroundColor = isStr(subTime)?COLOR_BLUE:COLOR_666;
+            viewLine.leftCenterY = XY(l.right + W(28), l.centerY);
+            [self.sc addSubview:viewLine];
+        }
+
     }
+    self.sc.contentSize = CGSizeMake(left, 0);
     
     //设置总高度
-    self.height = top - W(5);
+    self.height = self.sc.bottom;
     self.ivBg.frame = CGRectMake(0, -W(10), SCREEN_WIDTH, self.height + W(20));
 }
 

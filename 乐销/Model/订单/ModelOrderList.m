@@ -74,6 +74,7 @@ NSString *const kModelOrderListStartProvinceName = @"startProvinceName";
 NSString *const kModelOrderListStartCardContact = @"startCardContact";
 NSString *const kModelOrderListShipperPhone = @"shipperPhone";
 NSString *const kModelOrderListKey = @"key";
+NSString *const kModelOrderListContainers = @"containers";
 
 
 @interface ModelOrderList ()
@@ -361,6 +362,7 @@ NSString *const kModelOrderListKey = @"key";
             self.startCardContact = [dict stringValueForKey:kModelOrderListStartCardContact];
         self.shipperPhone = [dict stringValueForKey:kModelOrderListShipperPhone];
         self.key = [dict stringValueForKey:kModelOrderListKey];
+        self.containers = [dict stringValueForKey:kModelOrderListContainers];
 
         [self configClosingTimeShow];
     }
@@ -437,6 +439,7 @@ NSString *const kModelOrderListKey = @"key";
     [mutableDict setValue:self.startCardContact forKey:kModelOrderListStartCardContact];
     [mutableDict setValue:self.shipperPhone forKey:kModelOrderListShipperPhone];
     [mutableDict setValue:self.key forKey:kModelOrderListKey];
+    [mutableDict setValue:self.containers forKey:kModelOrderListContainers];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

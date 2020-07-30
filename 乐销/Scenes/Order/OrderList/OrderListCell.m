@@ -172,7 +172,7 @@
               ModelBtn * m = [ModelBtn new];
               m.title = @"箱型箱量";
            NSString * type = [ModelPackageInfo exchangeContainerType:model.total];
-           m.subTitle = [NSString stringWithFormat:@"%@%@",type,isStr(type)?@"*1":@""];
+           m.subTitle = model.containers;
               m.tag = ++tag;
               return m;
        }() view:self.contentView top:top + W(15)];

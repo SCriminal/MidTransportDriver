@@ -81,6 +81,7 @@ typedef NS_ENUM(NSUInteger, ENUM_ORDER_TYPE) {
 @property (nonatomic, strong) NSString *startProvinceName;
 @property (nonatomic, strong) NSString *startCardContact;
 @property (nonatomic, strong) NSString *key;
+@property (nonatomic, strong) NSString *containers;
 
 
 @property (nonatomic, readonly) ENUM_ORDER_OPERATE_TYPE operateType;

@@ -1237,9 +1237,9 @@
             timestampString = "600691505.9867409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "788"
-            endingLineNumber = "788"
-            landmarkName = "-resetViewWithTitle:aryImage:"
+            startingLineNumber = "824"
+            endingLineNumber = "824"
+            landmarkName = "-sc"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1254,9 +1254,9 @@
             timestampString = "600691505.986809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "813"
-            endingLineNumber = "813"
-            landmarkName = "-resetViewWithTitle:aryImage:"
+            startingLineNumber = "849"
+            endingLineNumber = "849"
+            landmarkName = "-sc"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2701,40 +2701,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "95CF9802-647D-4909-9657-23D4676A42BB"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x5b8c;&#x5584;&#x4fe1;&#x606f;/PerfectTextCell.m"
-            timestampString = "593513309.188586"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "-cellClick"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "57A32539-8B55-4D2A-B79C-8F97DDFA13AF"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x5b8c;&#x5584;&#x4fe1;&#x606f;/PerfectTextCell.m"
-            timestampString = "593513309.188625"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "-cellClick"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "F933E1CB-51E2-47EC-8862-4AD340EBEEBF"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -3841,8 +3807,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/&#x6563;&#x8d27;/BulkCargoListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "+addTitle:view:top:"
             landmarkType = "7">
          </BreakpointContent>

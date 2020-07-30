@@ -212,6 +212,7 @@
             self.btnLeft.leftTop = XY(W(25), top + W(15));
             [GlobalMethod setRoundView:self.btnLeft color:[UIColor clearColor] numRound:5 width:0];
             break;
+            case ENUM_BULKCARGO_ORDER_OPERATE_COMPLETE:
         case ENUM_BULKCARGO_ORDER_OPERATE_ARRIVE:
         case ENUM_BULKCARGO_ORDER_OPERATE_CLOSE:
             [self.btnLeft setTitle:@"呼叫" forState:UIControlStateNormal];
@@ -287,13 +288,12 @@
         labelTitle = l;
     }
     [labelTitle fitTitle:UnPackStr(modelBtn.title) variable:W(90)];
-    labelTitle.leftTop = XY(W(25), top);
+    labelTitle.leftTop = XY(modelBtn.left?modelBtn.left:W(25), top);
     
     UILabel * labelSubtitle = [superView viewWithTag:modelBtn.tag+100];
     if (labelSubtitle == nil) {
         UILabel * l = [UILabel new];
         l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-        l.textColor = COLOR_333;
         l.backgroundColor = [UIColor clearColor];
         l.numberOfLines = 1;
         l.lineSpace = W(0);
@@ -306,14 +306,18 @@
         labelSubtitle.backgroundColor = modelBtn.color;
         labelSubtitle.textColor = [UIColor whiteColor];
         labelSubtitle.textAlignment = NSTextAlignmentCenter;
-        labelSubtitle.widthHeight = XY(W(45), W(18));
+        CGFloat width = [modelBtn.subTitle sizeWithAttributes:@{NSFontAttributeName: labelSubtitle.font}].width + W(10);
+        labelSubtitle.widthHeight = XY(width, W(18));
         [GlobalMethod setRoundView:labelSubtitle color:[UIColor clearColor] numRound:3 width:0];
         labelSubtitle.text = modelBtn.subTitle;
-        labelSubtitle.rightCenterY = XY(SCREEN_WIDTH - W(25), labelTitle.centerY);
+        labelSubtitle.rightCenterY = XY(SCREEN_WIDTH - (modelBtn.right?modelBtn.right:W(25)), labelTitle.centerY);
     }else{
+        labelSubtitle.numberOfLines = modelBtn.numOfLines?modelBtn.numOfLines:1;
         [labelSubtitle fitTitle:UnPackStr(modelBtn.subTitle) variable:W(250)];
-        labelSubtitle.rightTop = XY(SCREEN_WIDTH - W(25), top);
+        labelSubtitle.textColor = modelBtn.colorSelect?modelBtn.colorSelect:COLOR_333;
+        labelSubtitle.rightTop = XY(SCREEN_WIDTH - (modelBtn.right?modelBtn.right:W(25)), top);
     }
+
     return labelTitle.bottom;
 }
 

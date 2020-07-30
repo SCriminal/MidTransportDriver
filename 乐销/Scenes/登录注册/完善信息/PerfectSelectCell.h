@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UILabel *title;
 @property (strong, nonatomic) UILabel *subTitle;
 @property (nonatomic, strong) ModelBaseData *model;
+@property (strong, nonatomic) UILabel *essential;
 
 #pragma mark 刷新cell
 - (void)resetCellWithModel:(ModelBaseData *)model;

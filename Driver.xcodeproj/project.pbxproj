@@ -278,8 +278,6 @@
 		D2DDCFB0233380BA002A24C4 /* BankCardListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDCFAF233380BA002A24C4 /* BankCardListVC.m */; };
 		D2DDCFB3233380CD002A24C4 /* AddCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDCFB2233380CD002A24C4 /* AddCardVC.m */; };
 		D2DDCFB62334C0FA002A24C4 /* CardListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDCFB52334C0FA002A24C4 /* CardListCell.m */; };
-		D2DFD7712292A50100363142 /* AuthorityVerifyingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD76D2292A50000363142 /* AuthorityVerifyingVC.m */; };
-		D2DFD7722292A50100363142 /* AuthorityFailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD76E2292A50000363142 /* AuthorityFailVC.m */; };
 		D2DFD77B22938CA300363142 /* BaseTableVC+Authority.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD77A22938CA300363142 /* BaseTableVC+Authority.m */; };
 		D2DFD7902296A58F00363142 /* ModelAuthorityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD78A2296A58E00363142 /* ModelAuthorityInfo.m */; };
 		D2DFD7912296A58F00363142 /* ModelBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD78B2296A58E00363142 /* ModelBaseInfo.m */; };
@@ -895,10 +893,6 @@
 		D2DDCFB2233380CD002A24C4 /* AddCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddCardVC.m; sourceTree = "<group>"; };
 		D2DDCFB42334C0FA002A24C4 /* CardListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardListCell.h; sourceTree = "<group>"; };
 		D2DDCFB52334C0FA002A24C4 /* CardListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardListCell.m; sourceTree = "<group>"; };
-		D2DFD76D2292A50000363142 /* AuthorityVerifyingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorityVerifyingVC.m; sourceTree = "<group>"; };
-		D2DFD76E2292A50000363142 /* AuthorityFailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorityFailVC.m; sourceTree = "<group>"; };
-		D2DFD76F2292A50000363142 /* AuthorityFailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorityFailVC.h; sourceTree = "<group>"; };
-		D2DFD7702292A50000363142 /* AuthorityVerifyingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorityVerifyingVC.h; sourceTree = "<group>"; };
 		D2DFD77922938CA300363142 /* BaseTableVC+Authority.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BaseTableVC+Authority.h"; sourceTree = "<group>"; };
 		D2DFD77A22938CA300363142 /* BaseTableVC+Authority.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseTableVC+Authority.m"; sourceTree = "<group>"; };
 		D2DFD78A2296A58E00363142 /* ModelAuthorityInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAuthorityInfo.m; sourceTree = "<group>"; };
@@ -1282,8 +1276,8 @@
 			isa = PBXGroup;
 			children = (
 				D2FC339A247F56D4000DE338 /* AddCar */,
-				D22B1D522383E34400BC00F0 /* ScanOrderListVC.h */,
 				D22B1D532383E34400BC00F0 /* ScanOrderListVC.m */,
+				D22B1D522383E34400BC00F0 /* ScanOrderListVC.h */,
 				D22B1D552383E40700BC00F0 /* ScanListCell.h */,
 				D22B1D562383E40700BC00F0 /* ScanListCell.m */,
 				D2C55804238BE70E0050694F /* ScheduleOrderInfoVC.h */,
@@ -2041,12 +2035,8 @@
 		D2A3002A2266BF2F00AE2EC3 /* 司机认证 */ = {
 			isa = PBXGroup;
 			children = (
-				D2DFD76F2292A50000363142 /* AuthorityFailVC.h */,
-				D2DFD76E2292A50000363142 /* AuthorityFailVC.m */,
 				D24A93C92360449400CB672C /* AuthorityReFailVC.h */,
 				D24A93CA2360449400CB672C /* AuthorityReFailVC.m */,
-				D2DFD7702292A50000363142 /* AuthorityVerifyingVC.h */,
-				D2DFD76D2292A50000363142 /* AuthorityVerifyingVC.m */,
 				D24A93CC2360470B00CB672C /* AuthorityReVerifyingVC.h */,
 				D24A93CD2360470B00CB672C /* AuthorityReVerifyingVC.m */,
 				D2A3002E2266BF2F00AE2EC3 /* PerfectAuthorityInfoSuccessVC.h */,
@@ -3365,7 +3355,6 @@
 				D23327C82185A23900495488 /* OrderListVC.m in Sources */,
 				D2AADB502191625400E2173E /* RequestApi+Order.m in Sources */,
 				D2C582742480F39500121039 /* CarListCell.m in Sources */,
-				D2DFD7722292A50100363142 /* AuthorityFailVC.m in Sources */,
 				D2C6D14C22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m in Sources */,
 				D2996A4C21E6E4C700562587 /* UpImageView.m in Sources */,
 				D2A300442267072000AE2EC3 /* OrderAccountListCell.m in Sources */,
@@ -3388,7 +3377,6 @@
 				D217A54A21C0F57800B9B2F9 /* LeftMenuTopView.m in Sources */,
 				D2E46D7821D4A1A1007B04A1 /* DriverDetailTopView.m in Sources */,
 				D2BE30B621070BD40059929D /* ModelImage.m in Sources */,
-				D2DFD7712292A50100363142 /* AuthorityVerifyingVC.m in Sources */,
 				D21015081EB879BF0096C9CF /* NSDate+Format.m in Sources */,
 				D27646AB1F2B0FD2001096DB /* UIView+Coordeinate.m in Sources */,
 				D2A797622488C8470062B4F6 /* CarDetailVC.m in Sources */,

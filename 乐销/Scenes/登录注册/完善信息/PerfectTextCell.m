@@ -48,6 +48,15 @@
     }
     return _textField;
 }
+- (UILabel *)essential{
+    if (_essential == nil) {
+        _essential = [UILabel new];
+        _essential.textColor = [UIColor redColor];
+        _essential.font =  [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+        [_essential fitTitle:@"*" variable:0];
+    }
+    return _essential;
+}
 
 #pragma mark 初始化
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -59,6 +68,7 @@
         [self.contentView addSubview:self.title];
         [self.contentView addSubview:self.textField];
         [self.contentView addSubview:self.iconArrow];
+        [self.contentView addSubview:self.essential];
 
         [self.contentView addTarget:self action:@selector(cellClick)];
         
@@ -77,6 +87,9 @@
 
     [self.title fitTitle:model.string variable:0];
     self.title.leftCenterY = XY(W(15),self.height/2.0);
+    
+    self.essential.rightCenterY = XY(self.title.left-W(2), self.title.centerY);
+    self.essential.hidden = !model.isRequired;
     
     self.textField.widthHeight = XY(self.iconArrow.left - W(99) - W(10), [GlobalMethod fetchHeightFromFont:self.textField.font.pointSize]);
     self.textField.leftCenterY = XY(W(99), self.title.centerY);

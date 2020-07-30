@@ -162,22 +162,18 @@
             return model;
         }()];
     }
-    if (self.modelOrder.acceptTime) {
-        [aryTimes addObject:^(){
-            ModelBaseData * model = [ModelBaseData new];
-            model.string = @"接单";
-            model.subString = [GlobalMethod exchangeTimeWithStamp:self.modelOrder.acceptTime andFormatter:TIME_SEC_SHOW];
-            return model;
-        }()];
-    }
-    if (self.modelOrder.loadTime) {
-        [aryTimes addObject:^(){
-            ModelBaseData * model = [ModelBaseData new];
-            model.string = @"装车";
-            model.subString = [GlobalMethod exchangeTimeWithStamp:self.modelOrder.loadTime andFormatter:TIME_SEC_SHOW];
-            return model;
-        }()];
-    }
+     [aryTimes addObject:^(){
+               ModelBaseData * model = [ModelBaseData new];
+               model.string = @"接单";
+               model.subString = [GlobalMethod exchangeTimeWithStamp:self.modelOrder.acceptTime andFormatter:TIME_SEC_SHOW];
+               return model;
+           }()];
+     [aryTimes addObject:^(){
+               ModelBaseData * model = [ModelBaseData new];
+               model.string = @"装车";
+               model.subString = [GlobalMethod exchangeTimeWithStamp:self.modelOrder.loadTime andFormatter:TIME_SEC_SHOW];
+               return model;
+           }()];
     if (self.modelOrder.unloadTime) {
         [aryTimes addObject:^(){
             ModelBaseData * model = [ModelBaseData new];
@@ -193,6 +189,13 @@
             model.subString = [GlobalMethod exchangeTimeWithStamp:self.modelOrder.finishTime andFormatter:TIME_SEC_SHOW];
             return model;
         }()];
+    }
+    if (!self.modelOrder.unloadTime && !self.modelOrder.finishTime) {
+         [aryTimes addObject:^(){
+                   ModelBaseData * model = [ModelBaseData new];
+                   model.string = @"到达";
+                   return model;
+               }()];
     }
     
     if (self.modelOrder.rejectTime) {

@@ -8,6 +8,8 @@
 
 #import "CarListCell.h"
 #import "AddCarVC.h"
+#import "BulkCargoListCell.h"
+
 @implementation CarListCell
 #pragma mark 懒加载
 - (UILabel *)carNumber{
@@ -17,38 +19,6 @@
         _carNumber.font =  [UIFont systemFontOfSize:F(16) weight:UIFontWeightMedium];
     }
     return _carNumber;
-}
-- (UILabel *)carOwner{
-    if (_carOwner == nil) {
-        _carOwner = [UILabel new];
-        _carOwner.textColor = COLOR_666;
-        _carOwner.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-    }
-    return _carOwner;
-}
-- (UILabel *)weight{
-    if (_weight == nil) {
-        _weight = [UILabel new];
-        _weight.textColor = COLOR_666;
-        _weight.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-    }
-    return _weight;
-}
-- (UILabel *)status{
-    if (_status == nil) {
-        _status = [UILabel new];
-        _status.textColor = COLOR_666;
-        _status.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-    }
-    return _status;
-}
-- (UILabel *)statusDetail{
-    if (_statusDetail == nil) {
-        _statusDetail = [UILabel new];
-        _statusDetail.textColor = COLOR_666;
-        _statusDetail.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-    }
-    return _statusDetail;
 }
 - (UIImageView *)deleteIcon{
     if (_deleteIcon == nil) {
@@ -75,10 +45,6 @@
         self.backgroundColor = [UIColor whiteColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.carNumber];
-        [self.contentView addSubview:self.carOwner];
-        [self.contentView addSubview:self.weight];
-        [self.contentView addSubview:self.status];
-        [self.contentView addSubview:self.statusDetail];
         [self.contentView addSubview:self.deleteIcon];
         [self.contentView addSubview:self.editIcon];
         
@@ -94,18 +60,39 @@
     [self.carNumber fitTitle:UnPackStr(model.vehicleNumber) variable:W(260)];
     self.carNumber.leftTop = XY(W(15),W(20));
     
-    [self.carOwner fitTitle:[NSString stringWithFormat:@"车拥有人：%@",UnPackStr(model.vehicleOwner)] variable:SCREEN_WIDTH - W(30)];
-    self.carOwner.leftTop = XY(W(15),self.carNumber.bottom+W(20));
-    
-    [self.weight fitTitle:[NSString stringWithFormat:@"核定载质量：%@吨",NSNumber.dou(model.vehicleLoad).stringValue] variable:SCREEN_WIDTH - W(30)];
-    self.weight.leftTop = XY(W(15),self.carOwner.bottom+W(15));
-    
-    [self.status fitTitle:@"当前状态：" variable:SCREEN_WIDTH - W(30)];
-    self.status.leftTop = XY(W(15),self.weight.bottom+W(15));
-    
-    [self.statusDetail fitTitle:model.authStatusShow variable:SCREEN_WIDTH - W(30)];
-    self.statusDetail.leftTop = XY(self.status.right,self.status.top);
-    self.statusDetail.textColor = model.authStatusColorShow;
+    CGFloat top = 0;
+    __block int tag = 100;
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"车所有人";
+        m.subTitle = model.vehicleOwner;
+        m.tag = ++tag;
+        m.left = W(15);
+        m.right = W(15);
+        return m;
+    }() view:self.contentView top:self.carNumber.bottom + W(20)];
+
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"核定载质量";
+        m.subTitle = NSNumber.dou(model.vehicleLoad).stringValue;
+        m.tag = ++tag;
+        m.left = W(15);
+        m.right = W(15);
+        return m;
+    }() view:self.contentView top:top + W(15)];
+
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"当前状态";
+        m.subTitle = model.authStatusShow;
+        m.color = model.authStatusColorShow;
+        m.tag = ++tag;
+        m.left = W(15);
+        m.right = W(15);
+        return m;
+    }() view:self.contentView top:top + W(15)];
+
     
     self.deleteIcon.rightCenterY = XY(SCREEN_WIDTH -  W(15),self.carNumber.centerY);
    UIView * view = [self.contentView addControlFrame:CGRectInset(self.deleteIcon.frame, -W(10), -W(10)) belowView:self.deleteIcon target:self action:@selector(deleteClick)];
@@ -119,7 +106,7 @@
     }
     
     //设置总高度
-    self.height = self.statusDetail.bottom + W(20);
+    self.height = top + W(20);
 
     [self.contentView addLineFrame:CGRectMake(0, self.height -1, SCREEN_WIDTH, 1)];
 }

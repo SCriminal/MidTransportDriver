@@ -13,70 +13,35 @@
 #import "PerfectAuthorityInfoVC.h"
 //image detail
 #import "ImageDetailBigView.h"
+#import "BulkCargoListCell.h"
 
 @interface AuthorityReVerifyingVC ()
-@property (nonatomic, strong) UIImageView *ivLogan;
-@property (nonatomic, strong) UILabel *labelTitle;
-@property (nonatomic, strong) UILabel *labelTime;
+@property (nonatomic, strong) UIImageView *ivSuccess;
 @property (nonatomic, strong) UIImageView *ivIdentity;
 @property (nonatomic, strong) UIImageView *ivIdentityReverse;
 @property (nonatomic, strong) UIImageView *ivDriver;
 @property (nonatomic, strong) UIImageView *ivHand;
-@property (nonatomic, strong) UILabel *labelInfo;
 @property (strong, nonatomic) ModelBaseInfo *modelBaseInfo;
-@property (strong, nonatomic) UILabel *labelReason;
 @property (nonatomic, strong) NSMutableArray *aryImages;
+@property (strong, nonatomic) ModelAuthorityInfo *modelInfo;
 
 @end
 
 @implementation AuthorityReVerifyingVC
 #pragma mark 懒加载
-- (UIImageView *)ivLogan{
-    if (_ivLogan == nil) {
-        _ivLogan = [UIImageView new];
-        _ivLogan.image = [UIImage imageNamed:@"authority_succeed"];
-        _ivLogan.widthHeight = XY(W(100),W(100));
+- (UIImageView *)ivSuccess{
+    if (_ivSuccess == nil) {
+        _ivSuccess = [UIImageView new];
+        _ivSuccess.image = [UIImage imageNamed:@"authority_audit"];
+        _ivSuccess.widthHeight = XY(W(100),W(100));
     }
-    return _ivLogan;
-}
-- (UILabel *)labelReason{
-    if (_labelReason == nil) {
-        _labelReason = [UILabel new];
-        _labelReason.textColor = COLOR_666;
-        _labelReason.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-        _labelReason.numberOfLines = 0;
-        _labelReason.lineSpace = 0;
-        [_labelReason fitTitle:@"变更认证信息已提交" variable:0];
-    }
-    return _labelReason;
-}
-
-- (UILabel *)labelTitle{
-    if (_labelTitle == nil) {
-        _labelTitle = [UILabel new];
-        _labelTitle.textColor = COLOR_333;
-        _labelTitle.font =  [UIFont systemFontOfSize:F(20) weight:UIFontWeightMedium];
-        ModelBaseInfo * modelUser = GlobalData.sharedInstance.GB_UserModel;
-        [_labelTitle fitTitle:(modelUser.isDriver==1&&modelUser.isIdentity==1)? @"您的认证信息已通过":@"认证信息审核中" variable:0];
-
-    }
-    return _labelTitle;
-}
-- (UILabel *)labelTime{
-    if (_labelTime == nil) {
-        _labelTime = [UILabel new];
-        _labelTime.textColor = COLOR_666;
-        _labelTime.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-        _labelTime.numberOfLines = 0;
-        _labelTime.lineSpace = 0;
-    }
-    return _labelTime;
+    return _ivSuccess;
 }
 - (UIImageView *)ivIdentity{
     if (_ivIdentity == nil) {
         _ivIdentity = [UIImageView new];
         _ivIdentity.image = [UIImage imageNamed:IMAGE_BIG_DEFAULT];
-        _ivIdentity.widthHeight = XY(W(65),W(50));
+        _ivIdentity.widthHeight = XY(W(78),W(65));
         _ivIdentity.contentMode = UIViewContentModeScaleAspectFill;
         _ivIdentity.clipsToBounds = true;
     }
@@ -86,7 +51,7 @@
     if (_ivIdentityReverse == nil) {
         _ivIdentityReverse = [UIImageView new];
         _ivIdentityReverse.image = [UIImage imageNamed:IMAGE_BIG_DEFAULT];
-        _ivIdentityReverse.widthHeight = XY(W(65),W(50));
+        _ivIdentityReverse.widthHeight = XY(W(78),W(65));
         _ivIdentityReverse.contentMode = UIViewContentModeScaleAspectFill;
         _ivIdentityReverse.clipsToBounds = true;
     }
@@ -96,7 +61,7 @@
     if (_ivHand == nil) {
         _ivHand = [UIImageView new];
         _ivHand.image = [UIImage imageNamed:IMAGE_BIG_DEFAULT];
-        _ivHand.widthHeight = XY(W(65),W(50));
+        _ivHand.widthHeight = XY(W(78),W(65));
         _ivHand.contentMode = UIViewContentModeScaleAspectFill;
         _ivHand.clipsToBounds = true;
     }
@@ -106,22 +71,11 @@
     if (_ivDriver == nil) {
         _ivDriver = [UIImageView new];
         _ivDriver.image = [UIImage imageNamed:IMAGE_BIG_DEFAULT];
-        _ivDriver.widthHeight = XY(W(65),W(50));
+        _ivDriver.widthHeight = XY(W(78),W(65));
         _ivDriver.contentMode = UIViewContentModeScaleAspectFill;
         _ivDriver.clipsToBounds = true;
     }
     return _ivDriver;
-}
-- (UILabel *)labelInfo{
-    if (_labelInfo == nil) {
-        _labelInfo = [UILabel new];
-        _labelInfo.textColor = COLOR_666;
-        _labelInfo.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-        _labelInfo.textAlignment = NSTextAlignmentCenter;
-        _labelInfo.backgroundColor = [UIColor whiteColor];
-        [_labelInfo fitTitle:@"认证资料" fixed:W(112)];
-    }
-    return _labelInfo;
 }
 
 #pragma mark view did load
@@ -130,7 +84,6 @@
     self.viewBG.backgroundColor = [UIColor clearColor];
     //添加导航栏
     [self addNav];
-    [self configView];
     //config view
     [self reqeustInfo];
     [self addClickAction];
@@ -159,44 +112,79 @@
     [detailView resetView:self.aryImages isEdit:false index: view.tag];
     [detailView showInView:[GB_Nav.lastVC view] imageViewShow:view];
 }
-- (void)configView{
+- (void)configView:(NSDictionary *)response{
     //添加subView
-    [self.view addSubview:self.ivLogan];
-    [self.view addSubview:self.labelTitle];
-    [self.view addSubview:self.labelTime];
+    [self.view addSubview:self.ivSuccess];
     [self.view addSubview:self.ivIdentity];
     [self.view addSubview:self.ivIdentityReverse];
     [self.view addSubview:self.ivDriver];
     [self.view addSubview:self.ivHand];
-    [self.view addSubview:self.labelInfo];
-    [self.view addSubview:self.labelReason];
     
     
-    //刷新view
+    self.ivSuccess.centerXTop = XY(SCREEN_WIDTH/2.0,NAVIGATIONBAR_HEIGHT + W(46));
     
-    self.ivLogan.centerXTop = XY(SCREEN_WIDTH/2.0,NAVIGATIONBAR_HEIGHT + W(80));
-    self.labelTitle.centerXTop = XY(self.ivLogan.centerX,self.ivLogan.bottom+W(50));
-    [self.labelTime fitTitle:@" " variable:0];
-    self.labelTime.centerXTop = XY(self.ivLogan.centerX,self.labelTitle.bottom+W(20));
+    CGFloat top = [self.view addLineFrame:CGRectMake(W(15), self.ivSuccess.bottom + W(50), SCREEN_WIDTH - W(30), 1)];
+    __block int tag = 100;
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"审核状态";
+        m.color = COLOR_BLUE;
+        m.subTitle = @"审核通过";
+        m.tag = ++tag;
+        m.left = W(15);
+        m.right = W(15);
+        return m;
+    }() view:self.view top:top + W(20)];
+
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"提交时间";
+        m.subTitle = [GlobalMethod exchangeTimeWithStamp:self.modelInfo.submitTime andFormatter:TIME_SEC_SHOW];
+        m.tag = ++tag;
+        m.left = W(15);
+        m.right = W(15);
+        return m;
+    }() view:self.view top:top + W(20)];
     
-    self.labelReason.centerXTop = XY(SCREEN_WIDTH/2.0,self.labelTime.bottom+W(20));
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"真实姓名";
+        m.subTitle = [response stringValueForKey:@"realName"];
+        m.tag = ++tag;
+        m.left = W(15);
+        m.right = W(15);
+        return m;
+    }() view:self.view top:top + W(20)];
     
-    self.labelInfo.centerXTop = XY(self.ivLogan.centerX, self.labelTime.bottom + W(102));
-    [self.view insertSubview:^(){
-        UIView * viewLine = [UIView new];
-        viewLine.frame = CGRectMake(W(44), self.labelInfo.centerY, SCREEN_WIDTH - W(88), 1);
-        viewLine.backgroundColor = COLOR_LINE;
-        return viewLine;
-    }() belowSubview:self.labelInfo];
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"身份证号";
+        m.subTitle = [response stringValueForKey:@"idNumber"];
+        m.tag = ++tag;
+        m.left = W(15);
+        m.right = W(15);
+        return m;
+    }() view:self.view top:top + W(20)];
     
-    self.ivIdentityReverse.rightTop = XY(SCREEN_WIDTH/2.0 - W(5),self.labelInfo.bottom+W(25));
+    top = [self.view addLineFrame:CGRectMake(W(15), top + W(20), SCREEN_WIDTH - W(30), 1)];
     
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"认证资料";
+        m.subTitle = @"";
+        m.tag = ++tag;
+        m.left = W(15);
+        m.right = W(15);
+        return m;
+    }() view:self.view top:top + W(20)];
+    
+    self.ivIdentityReverse.rightTop = XY(SCREEN_WIDTH/2.0 - W(5),top+W(15));
+
     self.ivIdentity.rightCenterY = XY(self.ivIdentityReverse.left - W(10),self.ivIdentityReverse.centerY);
     
     self.ivDriver.leftCenterY = XY(self.ivIdentityReverse.right + W(10),self.ivIdentityReverse.centerY);
-    
+
     self.ivHand.leftCenterY = XY(self.ivDriver.right + W(10),self.ivIdentityReverse.centerY);
-    
     
 }
 
@@ -216,15 +204,15 @@
                 NSDictionary * dicItem = aryRespons[i];
                 ModelAuthorityInfo * modelItem = [ModelAuthorityInfo modelObjectWithDictionary:dicItem];
                 if (modelItem.status == 3) {
-                    [self.labelTime fitTitle: [GlobalMethod exchangeTimeWithStamp:modelItem.reviewTime andFormatter:TIME_SEC_SHOW] variable:0];
-                    self.labelTime.centerXTop = XY(self.ivLogan.centerX,self.labelTitle.bottom+W(20));
+                    self.modelInfo = modelItem;
                     break;
                 }
             }
         }
         [self requestQualificationImages];
         
-        
+        [self configView:response];
+
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
@@ -262,6 +250,8 @@
             model.image = [BaseImage imageWithImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT] url:[NSURL URLWithString:model.url]];
             return model;
         }()].mutableCopy;
+        
+
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];

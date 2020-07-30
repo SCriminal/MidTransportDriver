@@ -124,7 +124,8 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
             [GB_Nav pushVCName:@"PerfectAuthorityInfoVC" animated:true];
             break;
         case 2:
-            [GB_Nav pushVCName:isQuantity?@"AuthorityReVerifyingVC":@"AuthorityVerifyingVC" animated:true];
+            [GB_Nav pushVCName:@"AuthorityReVerifyingVC" animated:true];
+
             break;
         case 3:
             if (successBlock) {
@@ -134,7 +135,7 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
             }
             break;
         case 10:
-            [GB_Nav pushVCName:isQuantity?@"AuthorityReFailVC":@"AuthorityFailVC" animated:true];
+            [GB_Nav pushVCName:@"AuthorityReFailVC" animated:true];
             break;
         default:
             break;

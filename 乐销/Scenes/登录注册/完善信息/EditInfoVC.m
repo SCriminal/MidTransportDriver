@@ -24,10 +24,9 @@
 @property (nonatomic, strong) ModelBaseData *modelName;
 @property (nonatomic, strong) ModelBaseData *modelAge;
 @property (nonatomic, strong) ModelBaseData *modelPhone;
-
-@property (nonatomic, strong) ModelBaseData *modelBrief;
 @property (nonatomic, strong) EditInfoTopView *topView;
 @property (nonatomic, strong) ModelBaseInfo *modelInfo;
+@property (nonatomic, strong) EditInfoBottomView *bottomView;
 
 @end
 
@@ -44,6 +43,12 @@
         };
     }
     return _topView;
+}
+- (EditInfoBottomView *)bottomView{
+    if (!_bottomView) {
+        _bottomView = [EditInfoBottomView new];
+    }
+    return _bottomView;
 }
 - (ModelBaseInfo *)modelInfo{
     if (!_modelInfo) {
@@ -102,28 +107,19 @@
     }
     return _modelAge;
 }
-- (ModelBaseData *)modelBrief{
-    if (!_modelBrief) {
-        _modelBrief = ^(){
-            ModelBaseData * model = [ModelBaseData new];
-            model.enumType = ENUM_PERFECT_CELL_ADDRESS;
-            model.subString = [GlobalData sharedInstance].GB_UserModel.introduce;
-            return model;
-        }();
-    }
-    return _modelBrief;
-}
+
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
     //添加导航栏
     [self addNav];
     //table
-    //    self.tableView.tableHeaderView = self.topView;
     self.tableView.backgroundColor = COLOR_BACKGROUND;
     [self registAuthorityCell];
     self.tableView.tableHeaderView = self.topView;
-    self.tableView.contentInset = UIEdgeInsetsMake(W(10), 0, 0, 0);
+    self.tableView.tableFooterView = self.bottomView;
+
+//    self.tableView.contentInset = UIEdgeInsetsMake(W(10), 0, 0, 0);
     //config data
     [self configData];
     //add keyboard observe
@@ -144,7 +140,7 @@
 #pragma mark config data
 - (void)configData{
     
-    self.aryDatas = @[ self.modelName,self.modelPhone,self.modelAge,self.modelBrief].mutableCopy;
+    self.aryDatas = @[ self.modelName,self.modelPhone,self.modelAge].mutableCopy;
     [self.tableView reloadData];
 }
 #pragma mark image select
@@ -159,7 +155,6 @@
         
     }];
 }
-#pragma mark UITableViewDelegate
 #pragma mark UITableViewDelegate
 //row num
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -179,11 +174,11 @@
     NSDate * dateBirthday = [GlobalMethod exchangeStringToDate:self.modelAge.subString formatter:TIME_DAY_CN];
     double timeBirthday = [dateBirthday timeIntervalSince1970];
     
-    [RequestApi requestChangeUserInfoWithNickname:self.modelName.subString headUrl:strUrl gender:@"" birthday:[NSString stringWithFormat:@"%.f",timeBirthday] contactPhone:@"" areaId:@"" address:@"" email:@"" weChat:@"" introduce:self.modelBrief.subString delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestChangeUserInfoWithNickname:self.modelName.subString headUrl:strUrl gender:@"" birthday:[NSString stringWithFormat:@"%.f",timeBirthday] contactPhone:@"" areaId:@"" address:@"" email:@"" weChat:@"" introduce:self.bottomView.textView.text delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         //notice
         [GlobalData sharedInstance].GB_UserModel.headUrl = strUrl;
         [GlobalData sharedInstance].GB_UserModel.nickname = self.modelName.subString;
-        [GlobalData sharedInstance].GB_UserModel.introduce = self.modelBrief.subString;
+        [GlobalData sharedInstance].GB_UserModel.introduce = self.bottomView.textView.text;
         [GlobalData saveUserModel];
         [GB_Nav popViewControllerAnimated:true];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -198,7 +193,7 @@
         self.modelInfo = [ModelBaseInfo modelObjectWithDictionary:response];
         self.modelName.subString = self.modelInfo.nickname;
         self.modelAge.subString = [GlobalMethod exchangeTimeWithStamp:self.modelInfo.birthday andFormatter:TIME_DAY_CN];
-        self.modelBrief.subString = self.modelInfo.introduce;
+        self.bottomView.textView.text = self.modelInfo.introduce;
         [self configData];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
@@ -233,6 +228,22 @@
     }
     return _ivHead;
 }
+- (UILabel *)baseInfo{
+    if (_baseInfo == nil) {
+        _baseInfo = [UILabel new];
+        _baseInfo.textColor = COLOR_666;
+        _baseInfo.font =  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
+        [_baseInfo fitTitle:@"基本信息" variable:0];
+    }
+    return _baseInfo;
+}
+- (UIView *)BG{
+    if (_BG == nil) {
+        _BG = [UIView new];
+        _BG.backgroundColor = COLOR_BACKGROUND;
+    }
+    return _BG;
+}
 
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -249,6 +260,8 @@
 - (void)addSubView{
     [self addSubview:self.labelInfo];
     [self addSubview:self.ivHead];
+    [self addSubview:self.BG];
+    [self addSubview:self.baseInfo];
     
     //初始化页面
     [self resetViewWithModel:nil];
@@ -257,10 +270,13 @@
 #pragma mark 刷新view
 - (void)resetViewWithModel:(id)model{
     [self removeSubViewWithTag:TAG_LINE];//移除线
-    //刷新view
-    self.ivHead.leftTop = XY(W(15),W(20));
+    self.baseInfo.leftTop = XY(W(15),W(15));
+    self.BG.widthHeight = XY(SCREEN_WIDTH, self.baseInfo.bottom + W(15));
     
-    [self.labelInfo fitTitle:@"修改头像" variable:0];
+    //刷新view
+    self.ivHead.leftTop = XY(W(15),self.BG.bottom + W(20));
+    
+    [self.labelInfo fitTitle:@"更换头像" variable:0];
     self.labelInfo.leftCenterY = XY(W(99),self.ivHead.centerY);
     
     //设置总高度
@@ -274,4 +290,63 @@
         self.blockClick();
     }
 }
+@end
+
+
+@implementation EditInfoBottomView
+
+- (PlaceHolderTextView *)textView{
+    if (_textView == nil) {
+        _textView = [PlaceHolderTextView new];
+        _textView.backgroundColor = [UIColor clearColor];
+        //        _textView.delegate = self;
+        [GlobalMethod setLabel:_textView.placeHolder widthLimit:0 numLines:0 fontNum:F(16) textColor:COLOR_999 text:@"这家伙很懒，什么也没填"];
+        [_textView setTextColor:COLOR_333];
+        _textView.font = [UIFont systemFontOfSize:F(16)];
+        _textView.text = [GlobalData sharedInstance].GB_UserModel.introduce;
+    }
+    return _textView;
+}
+- (UILabel *)labelOpinion{
+    if (_labelOpinion == nil) {
+        _labelOpinion = [UILabel new];
+        _labelOpinion.textColor = COLOR_666;
+        _labelOpinion.font =  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
+        [_labelOpinion fitTitle:@"个性签名" variable:0];
+    }
+    return _labelOpinion;
+}
+#pragma mark 初始化
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor whiteColor];
+        self.width = SCREEN_WIDTH;
+        [self addSubView];
+    }
+    return self;
+}
+//添加subview
+- (void)addSubView{
+    [self addSubview:self.labelOpinion];
+    [self addSubview:self.textView];
+    
+    //初始化页面
+    [self resetViewWithModel:nil];
+}
+- (void)resetViewWithModel:(id)model{
+    [self removeSubViewWithTag:TAG_LINE];//移除线
+    self.labelOpinion.leftTop = XY(W(15), W(15));
+    UIView * viewWhite = [UIView new];
+    viewWhite.widthHeight = XY(SCREEN_WIDTH, self.labelOpinion.bottom+ W(15));
+    viewWhite.backgroundColor = COLOR_BACKGROUND;
+    [self insertSubview:viewWhite belowSubview:self.labelOpinion];
+    
+    self.textView.widthHeight = XY(SCREEN_WIDTH- W(30), W(100));
+    self.textView.leftTop = XY(W(15), viewWhite.bottom + W(20));
+    
+    self.height = self.textView.bottom;
+}
+
+
 @end

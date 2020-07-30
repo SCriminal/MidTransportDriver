@@ -17,6 +17,9 @@
 @property (nonatomic, strong) UIColor * colorSelect;
 @property (nonatomic, assign) CGFloat width;//btn 宽度
 @property (nonatomic, assign) CGFloat height;//btn 高度
+@property (nonatomic, assign) CGFloat left;//btn 宽度
+@property (nonatomic, assign) CGFloat right;//btn 宽度
+@property (nonatomic, assign) int numOfLines;
 @property (nonatomic, assign) BOOL isHide;//是否隐藏
 @property (nonatomic, assign) BOOL isLineHide;//是否隐藏
 @property (nonatomic, assign) BOOL isNotShowAnimated;//slider remove animate btn selected是否显示动画

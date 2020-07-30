@@ -12,8 +12,10 @@
 //属性
 @property (strong, nonatomic) UILabel *labelBill;
 @property (strong, nonatomic) UILabel *labelBillNo;
+@property (strong, nonatomic) UILabel *labelCopy;
 
 @property (strong, nonatomic) UIImageView *ivBg;
+@property (nonatomic, strong) ModelBulkCargoOrder *model;
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelBulkCargoOrder *)model;
@@ -24,6 +26,8 @@
 @property (strong, nonatomic) UILabel *labelStatus;
 @property (strong, nonatomic) UIImageView *ivBg;
 @property (nonatomic, strong) NSArray *aryDatas;
+@property (nonatomic, strong) UIScrollView *sc;
+
 #pragma mark 刷新view
 - (void)resetViewWithAry:(NSArray *)ary ;
 @end
