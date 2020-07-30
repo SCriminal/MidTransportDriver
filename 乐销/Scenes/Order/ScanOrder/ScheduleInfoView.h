@@ -30,6 +30,7 @@
 @property (strong, nonatomic) UIImageView *iconArrow;
 @property (nonatomic, strong) UILabel *labelAddressFrom;
 @property (nonatomic, strong) UILabel *labelAddressTo;
+@property (nonatomic, strong) UILabel *labelTitle;
 @property (strong, nonatomic) UIImageView *ivBg;
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelScheduleInfo *)model;

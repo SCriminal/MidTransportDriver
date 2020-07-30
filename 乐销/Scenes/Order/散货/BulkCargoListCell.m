@@ -287,7 +287,7 @@
         [superView addSubview:l];
         labelTitle = l;
     }
-    [labelTitle fitTitle:UnPackStr(modelBtn.title) variable:W(90)];
+    [labelTitle fitTitle:UnPackStr(modelBtn.title) variable:W(100)];
     labelTitle.leftTop = XY(modelBtn.left?modelBtn.left:W(25), top);
     
     UILabel * labelSubtitle = [superView viewWithTag:modelBtn.tag+100];
@@ -298,6 +298,7 @@
         l.numberOfLines = 1;
         l.lineSpace = W(0);
         l.tag = modelBtn.tag + 100;
+        l.textAlignment = NSTextAlignmentRight;
         [superView addSubview:l];
         labelSubtitle = l;
     }
@@ -318,7 +319,7 @@
         labelSubtitle.rightTop = XY(SCREEN_WIDTH - (modelBtn.right?modelBtn.right:W(25)), top);
     }
 
-    return labelTitle.bottom;
+    return MAX(labelTitle.bottom, labelSubtitle.bottom);
 }
 
 @end

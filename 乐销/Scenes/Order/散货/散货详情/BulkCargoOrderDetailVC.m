@@ -24,7 +24,7 @@
 @property (nonatomic, strong) BulkCargoOrderDetailPathView *pathView;
 @property (nonatomic, strong) BulkCargoOrderDetailSendView *sendView;
 @property (nonatomic, strong) BulkCargoOrderDetailReceiveView *receiveView;
-@property (nonatomic, strong) BulkCargoOrderDetailDriverView *driverView;
+//@property (nonatomic, strong) BulkCargoOrderDetailDriverView *driverView;
 @property (nonatomic, strong) BulkCargoOrderDetailRemarkView *remarkView;
 @property (nonatomic, strong) BulkLoadImageView *loadImageView;;
 @property (nonatomic, strong) BulkLoadImageView *unloadImageView;;
@@ -45,14 +45,14 @@
     }
     return _nav;
 }
-- (BulkCargoOrderDetailDriverView *)driverView{
-    if (!_driverView) {
-        _driverView = [BulkCargoOrderDetailDriverView new];
-        _driverView.topToUpView = W(15);
-        [_driverView resetViewWithModel:self.modelOrder];
-    }
-    return _driverView;
-}
+//- (BulkCargoOrderDetailDriverView *)driverView{
+//    if (!_driverView) {
+//        _driverView = [BulkCargoOrderDetailDriverView new];
+//        _driverView.topToUpView = W(15);
+//        [_driverView resetViewWithModel:self.modelOrder];
+//    }
+//    return _driverView;
+//}
 - (BulkCargoOrderDetailRemarkView *)remarkView{
     if (!_remarkView) {
         _remarkView = [BulkCargoOrderDetailRemarkView new];
@@ -148,7 +148,7 @@
 }
 #pragma mark refresh table header view
 - (void)reconfigTableHeaderView{
-    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,isAry(self.statusView.aryDatas)?self.statusView:[NSNull null],self.pathView,self.sendView,self.receiveView,isStr(self.modelOrder.internalBaseClassDescription)?self.remarkView:[NSNull null],self.loadImageView.aryDatas.count?self.loadImageView:[NSNull null],self.unloadImageView.aryDatas.count?self.unloadImageView:[NSNull null],self.driverView]];
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,isAry(self.statusView.aryDatas)?self.statusView:[NSNull null],self.pathView,self.sendView,self.receiveView,isStr(self.modelOrder.internalBaseClassDescription)?self.remarkView:[NSNull null],self.loadImageView.aryDatas.count?self.loadImageView:[NSNull null],self.unloadImageView.aryDatas.count?self.unloadImageView:[NSNull null]]];
 }
 #pragma mark request
 
@@ -219,7 +219,7 @@
         [self.sendView resetViewWithModel:self.modelOrder];
         [self.receiveView resetViewWithModel:self.modelOrder];
         [self.pathView resetViewWithModel:self.modelOrder];
-        [self.driverView resetViewWithModel:self.modelOrder];
+//        [self.driverView resetViewWithModel:self.modelOrder];
         [self.remarkView resetViewWithModel:self.modelOrder];
         [self.loadImageView resetViewWithLoadModel:self.modelOrder];
         [self.unloadImageView resetViewWithUnloadModel:self.modelOrder];

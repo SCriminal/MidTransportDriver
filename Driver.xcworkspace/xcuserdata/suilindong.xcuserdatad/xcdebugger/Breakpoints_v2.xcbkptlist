@@ -1237,9 +1237,9 @@
             timestampString = "600691505.9867409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "824"
-            endingLineNumber = "824"
-            landmarkName = "-sc"
+            startingLineNumber = "828"
+            endingLineNumber = "828"
+            landmarkName = "-resetViewWithTitle:aryImage:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1254,9 +1254,9 @@
             timestampString = "600691505.986809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "849"
-            endingLineNumber = "849"
-            landmarkName = "-sc"
+            startingLineNumber = "853"
+            endingLineNumber = "853"
+            landmarkName = "-resetViewWithTitle:aryImage:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3810,6 +3810,22 @@
             startingLineNumber = "290"
             endingLineNumber = "290"
             landmarkName = "+addTitle:view:top:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "755CEE53-6CA3-43CB-A402-2D0BD0453456"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Order/&#x6563;&#x8d27;/&#x6563;&#x8d27;&#x8be6;&#x60c5;/BulkCargoOrderDetailView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "476"
+            endingLineNumber = "476"
+            landmarkName = "-phoneClick"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

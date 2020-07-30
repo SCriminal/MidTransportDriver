@@ -37,8 +37,9 @@
 @interface BulkCargoOrderDetailPathView : UIView
 //属性
 @property (strong, nonatomic) UILabel *labelPath;
-@property (nonatomic, strong) UILabel *labelAddressFrom;
-@property (nonatomic, strong) UILabel *labelAddressTo;
+@property (strong, nonatomic) UILabel *addressFrom;
+@property (strong, nonatomic) UILabel *addressTo;
+@property (strong, nonatomic) UIImageView *iconAddress;
 @property (strong, nonatomic) UIImageView *ivBg;
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelBulkCargoOrder *)model;
