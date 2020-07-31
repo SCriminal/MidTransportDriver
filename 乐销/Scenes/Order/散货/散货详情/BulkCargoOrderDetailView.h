@@ -27,9 +27,17 @@
 @property (strong, nonatomic) UIImageView *ivBg;
 @property (nonatomic, strong) NSArray *aryDatas;
 @property (nonatomic, strong) UIScrollView *sc;
+@property (nonatomic, strong) ModelBulkCargoOrder *model;
+@property (strong, nonatomic) UIButton *btnLeft;
+@property (strong, nonatomic) UIButton *btnRight;
+@property (nonatomic, strong) void (^blockReject)(ModelBulkCargoOrder *);
+@property (nonatomic, strong) void (^blockAccept)(ModelBulkCargoOrder *);
+@property (nonatomic, strong) void (^blockLoad)(ModelBulkCargoOrder *);
+@property (nonatomic, strong) void (^blockArrive)(ModelBulkCargoOrder *);
+@property (nonatomic, strong) void (^blockDetail)(ModelBulkCargoOrder *);
 
 #pragma mark 刷新view
-- (void)resetViewWithAry:(NSArray *)ary ;
+- (void)resetViewWithAry:(NSArray *)ary model:(ModelBulkCargoOrder *)model;
 @end
 
 

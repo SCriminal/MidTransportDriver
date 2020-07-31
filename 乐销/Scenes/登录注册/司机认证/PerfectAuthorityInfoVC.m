@@ -20,11 +20,12 @@
 #import "RequestApi+Dictionary.h"
 
 @interface PerfectAuthorityInfoVC ()
-
+@property (nonatomic, strong) UIView *viewReason;
 @property (nonatomic, strong) ModelBaseData *modelRealName;
 @property (nonatomic, strong) ModelBaseData *modelIdentityNumber;
 @property (nonatomic, strong) ModelBaseData *modelUnbindDriver;
 @property (nonatomic, strong) AuthorityImageView *bottomView;
+@property (strong, nonatomic) ModelAuthorityInfo *modelAuditInfo;
 
 @end
 
@@ -71,7 +72,14 @@
     }
     return _modelUnbindDriver;
 }
-
+- (UIView *)viewReason{
+    if (!_viewReason) {
+        _viewReason = [UIView new];
+        _viewReason.backgroundColor = [UIColor redColor];
+        _viewReason.width = SCREEN_WIDTH;
+    }
+    return _viewReason;
+}
 - (AuthorityImageView *)bottomView{
     if (!_bottomView) {
         _bottomView = [AuthorityImageView new];
@@ -147,7 +155,8 @@
     ModelImage * model0 = [self.bottomView.aryDatas objectAtIndex:0];
     ModelImage * model1 = [self.bottomView.aryDatas objectAtIndex:1];
     ModelImage * model2 = [self.bottomView.aryDatas objectAtIndex:2];
-    
+    ModelImage * model3 = [self.bottomView.aryDatas objectAtIndex:3];
+
     if (!isStr(model0.image.imageURL)) {
         [GlobalMethod showAlert:@"请添加身份证人像面"];
         return;
@@ -174,33 +183,13 @@
         [GlobalMethod showAlert:@"请输入有效身份证号"];
         return;
     }
-    [RequestApi requestSubmitAuthorityInfoWithDriverlicenseurl:model2.image.imageURL  idCardFrontUrl:model0.image.imageURL  idCardBackUrl:model1.image.imageURL idCardHandelUrl:nil                                              realName:self.modelRealName.subString
+    [RequestApi requestSubmitAuthorityInfoWithDriverlicenseurl:model2.image.imageURL  idCardFrontUrl:model0.image.imageURL  idCardBackUrl:model1.image.imageURL idCardHandelUrl:model3.image.imageURL                                              realName:self.modelRealName.subString
                                                       idNumber:self.modelIdentityNumber.subString
                                                       delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [RequestApi requestUserInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             [GlobalData sharedInstance].GB_UserModel = [ModelBaseInfo modelObjectWithDictionary:response];
-            BOOL isQuantity  =  [GlobalData sharedInstance].GB_UserModel.isIdentity == 1&&  [GlobalData sharedInstance].GB_UserModel.isDriver == 1;
-            if (!isQuantity) {
-                NSMutableArray * ary = [NSMutableArray arrayWithObject:GB_Nav.viewControllers.firstObject];
-                [ary addObject:[NSClassFromString(@"PersonalCenterVC") new]];
-                [GB_Nav setViewControllers:ary animated:true];
-                [GlobalMethod showAlert:@"提交成功"];
-                return;
-            }
-            NSMutableArray * ary = [NSMutableArray array];
-            for (UIViewController * vc in GB_Nav.viewControllers) {
-                if ([vc isKindOfClass:NSClassFromString(@"LoginViewController")]||[vc isKindOfClass:NSClassFromString(@"PersonalCenterVC")]) {
-                    [GlobalMethod showAlert:@"提交成功"];
-                    [ary addObject:vc];
-                    [ary addObject:[NSClassFromString(@"AuthorityReVerifyingVC") new]];
-                    [GB_Nav setViewControllers:ary animated:true];
-                    return;
-                }else{
-                    [ary addObject:vc];
-                }
-            }
-            [GlobalMethod clearUserInfo];
-            [GlobalMethod createRootNav];
+            [GlobalMethod showAlert:@"提交成功"];
+            [GB_Nav popToRootViewControllerAnimated:true];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
@@ -209,7 +198,7 @@
     }];
 }
 - (void)requestInfo{
-    if (!self.userId) {
+    if ([GlobalData sharedInstance].GB_UserModel.reviewStatus == 1) {
         return;
     }
     
@@ -217,12 +206,38 @@
         self.modelRealName.subString = [response stringValueForKey:@"realName"];
         self.modelIdentityNumber.subString = [response stringValueForKey:@"idNumber"];
         [self refreshBottomView:response];
+
+        NSArray * aryRespons = [response arrayValueForKey:@"qualificationList"];
+        if (isAry(aryRespons)) {
+            self.modelAuditInfo = [GlobalMethod exchangeDic:aryRespons toAryWithModelName:@"ModelAuthorityInfo"].firstObject;
+            if (isStr(self.modelAuditInfo.explain)) {
+                 UILabel * l = [UILabel new];
+                           l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+                           l.textColor = [UIColor whiteColor];
+                           l.backgroundColor = [UIColor clearColor];
+                           l.numberOfLines = 0;
+                           l.lineSpace = W(3);
+                           [l fitTitle:[NSString stringWithFormat:@"%@,请重新提交！",self.modelAuditInfo.explain] variable:SCREEN_WIDTH - W(30)];
+                           l.leftTop = XY(W(15), W(15));
+                           [self.viewReason addSubview:l];
+                           self.viewReason.height = l.bottom + W(15);
+                
+                self.tableView.tableHeaderView = nil;
+                
+                UIView * viewHeader = [UIView initWithViews:@[self.viewReason,self.bottomView]];
+                self.tableView.tableHeaderView = viewHeader;
+            }
+           
+        }
+        
         [self.tableView reloadData];
+
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
-    
 }
+
+
 - (void)refreshBottomView:(NSDictionary *)response{
     WEAKSELF
     [self.bottomView resetViewWithAryModels:@[^(){
@@ -263,6 +278,15 @@
         model.image = [BaseImage imageWithImage:[UIImage imageNamed:@"camera_驾驶证"] url:nil];
         model.isEssential = true;
         model.url = [response stringValueForKey:@"driverLicenseUrl"];
+        model.imageType = ENUM_UP_IMAGE_TYPE_USER_AUTHORITY;
+        model.cameraType = ENUM_CAMERA_DRIVING;
+
+        return model;
+    }(),^(){
+        ModelImage * model = [ModelImage new];
+        model.desc = @"手持身份证";
+        model.image = [BaseImage imageWithImage:[UIImage imageNamed:@"camera_手持身份证"] url:nil];
+        model.url = [response stringValueForKey:@"idCardHandelUrl"];
         model.imageType = ENUM_UP_IMAGE_TYPE_USER_AUTHORITY;
         model.cameraType = ENUM_CAMERA_DRIVING;
 

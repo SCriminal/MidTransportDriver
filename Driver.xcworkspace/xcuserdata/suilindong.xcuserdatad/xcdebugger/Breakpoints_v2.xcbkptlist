@@ -1220,8 +1220,8 @@
             timestampString = "600691505.9867409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "828"
-            endingLineNumber = "828"
+            startingLineNumber = "935"
+            endingLineNumber = "935"
             landmarkName = "-resetViewWithTitle:aryImage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1237,8 +1237,8 @@
             timestampString = "600691505.986809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "853"
-            endingLineNumber = "853"
+            startingLineNumber = "960"
+            endingLineNumber = "960"
             landmarkName = "-resetViewWithTitle:aryImage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2658,8 +2658,8 @@
             timestampString = "597805667.27797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "+jumpToAuthorityStateVCSuccessBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3260,8 +3260,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x53f8;&#x673a;&#x8ba4;&#x8bc1;/PerfectAuthorityInfoVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "-requestSubmit"
             landmarkType = "7">
          </BreakpointContent>
@@ -3276,8 +3276,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x53f8;&#x673a;&#x8ba4;&#x8bc1;/PerfectAuthorityInfoVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-requestSubmit"
             landmarkType = "7">
             <Locations>
@@ -3500,8 +3500,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x53f8;&#x673a;&#x8ba4;&#x8bc1;/PerfectAuthorityInfoVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "-refreshBottomView:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3772,8 +3772,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/&#x6563;&#x8d27;/&#x6563;&#x8d27;&#x8be6;&#x60c5;/BulkCargoOrderDetailView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "476"
-            endingLineNumber = "476"
+            startingLineNumber = "583"
+            endingLineNumber = "583"
             landmarkName = "-phoneClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -3936,6 +3936,54 @@
                   offsetFromSymbolStart = "16">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3A739BB7-3B68-450C-BB61-789DD6F68A1F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x53f8;&#x673a;&#x8ba4;&#x8bc1;/AuthorityReVerifyingVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "-configView:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "48BEB181-770A-4A04-9EEB-778FEF430D29"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x53f8;&#x673a;&#x8ba4;&#x8bc1;/PerfectAuthorityInfoVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "-requestInfo"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "93938799-CBC6-41A7-83DD-A37D5C922FAD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Model/UserModel/Authority/ModelBaseInfo.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "+jumpToAuthorityStateVCSuccessBlock:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

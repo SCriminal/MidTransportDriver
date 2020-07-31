@@ -9,5 +9,4 @@
 #import "BaseVC.h"
 
 @interface PerfectAuthorityInfoVC : BaseTableVC
-@property (nonatomic, assign) double userId;
 @end

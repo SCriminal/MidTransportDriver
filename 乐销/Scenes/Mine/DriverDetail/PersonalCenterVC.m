@@ -62,9 +62,12 @@
     [self.tableView registerClass:[SettingEmptyCell class] forCellReuseIdentifier:@"SettingEmptyCell"];
     //request
     [self reconfigData];
-    [self request];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self request];
+}
 
 
 #pragma mark UITableViewDelegate

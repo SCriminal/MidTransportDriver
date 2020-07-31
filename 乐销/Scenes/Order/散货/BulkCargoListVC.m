@@ -13,7 +13,7 @@
 //request
 #import "RequestApi+BulkCargo.h"
 //operate
-#import "BulkCargoOperateVC.h"
+#import "BulkCargoOrderDetailVC.h"
 //bottom view
 #import "OrderManagementBottomView.h"
 //up iamgeview
@@ -121,7 +121,7 @@
     [self jumpToDetail:model];
 }
 - (void)jumpToDetail:(ModelBulkCargoOrder *)model{
-    BulkCargoOperateVC * operateVC = [BulkCargoOperateVC new];
+    BulkCargoOrderDetailVC * operateVC = [BulkCargoOrderDetailVC new];
        operateVC.modelOrder = model;
        WEAKSELF
        operateVC.blockBack = ^(UIViewController *vc) {

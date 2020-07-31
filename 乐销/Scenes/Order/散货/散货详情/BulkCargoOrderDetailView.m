@@ -179,6 +179,23 @@
     }
     return _sc;
 }
+-(UIButton *)btnLeft{
+    if (_btnLeft == nil) {
+        _btnLeft = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_btnLeft addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        _btnLeft.titleLabel.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
+        _btnLeft.widthHeight = XY(W(30),W(40));
+    }
+    return _btnLeft;
+}
+-(UIButton *)btnRight{
+    if (_btnRight == nil) {
+        _btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_btnRight addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        _btnRight.titleLabel.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
+    }
+    return _btnRight;
+}
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -198,7 +215,8 @@
 }
 
 #pragma mark 刷新view
-- (void)resetViewWithAry:(NSArray *)ary {
+- (void)resetViewWithAry:(NSArray *)ary  model:(ModelBulkCargoOrder *)model{
+    self.model = model;
     self.aryDatas = ary;
     [self removeAllSubViews];//移除线
     [self addSubView];
@@ -254,10 +272,99 @@
     self.sc.contentSize = CGSizeMake(left, 0);
     
     //设置总高度
-    self.height = self.sc.bottom;
+    self.height = [self resetBtn:self.sc.bottom];
     self.ivBg.frame = CGRectMake(0, -W(10), SCREEN_WIDTH, self.height + W(20));
 }
-
+- (CGFloat)resetBtn:(CGFloat)top {
+    self.btnRight.hidden = true;
+    switch (self.model.operateType) {
+        case ENUM_BULKCARGO_ORDER_OPERATE_WAIT_RECEIVE:
+            [self.btnLeft setTitle:@"拒单" forState:UIControlStateNormal];
+            [self.btnLeft setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            self.btnLeft.widthHeight = XY(W(155), W(40));
+            self.btnLeft.backgroundColor = [UIColor whiteColor];
+            self.btnLeft.tag = 1;
+            self.btnLeft.leftTop = XY(W(25), top + W(15));
+            [GlobalMethod setRoundView:self.btnLeft color:[UIColor colorWithHexString:@"#D9D9D9"] numRound:5 width:1];
+            
+            [self.btnRight setTitle:@"接单" forState:UIControlStateNormal];
+            [self.btnRight setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            self.btnRight.widthHeight = XY(W(155), W(40));
+            self.btnRight.backgroundColor = COLOR_BLUE;
+            self.btnRight.tag = 2;
+            self.btnRight.rightTop = XY(SCREEN_WIDTH - W(25), top + W(15));
+            [GlobalMethod setRoundView:self.btnRight color:[UIColor clearColor] numRound:5 width:0];
+            self.btnRight.hidden = false;
+            return self.btnLeft.bottom + W(15);
+            break;
+        case ENUM_BULKCARGO_ORDER_OPERATE_WAIT_LOAD:
+            [self.btnLeft setTitle:@"点击装车" forState:UIControlStateNormal];
+            [self.btnLeft setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            self.btnLeft.widthHeight = XY(W(325), W(40));
+            self.btnLeft.backgroundColor = [UIColor colorWithHexString:@"#F97A1B"];
+            self.btnLeft.tag = 3;
+            self.btnLeft.leftTop = XY(W(25), top + W(15));
+            [GlobalMethod setRoundView:self.btnLeft color:[UIColor clearColor] numRound:5 width:0];
+            return self.btnLeft.bottom + W(15);
+            break;
+        case ENUM_BULKCARGO_ORDER_OPERATE_WAIT_UNLOAD:
+            [self.btnLeft setTitle:@"点击到达" forState:UIControlStateNormal];
+            [self.btnLeft setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            self.btnLeft.widthHeight = XY(W(325), W(40));
+            self.btnLeft.backgroundColor = [UIColor colorWithHexString:@"#66CC00"];
+            self.btnLeft.tag = 4;
+            self.btnLeft.leftTop = XY(W(25), top + W(15));
+            [GlobalMethod setRoundView:self.btnLeft color:[UIColor clearColor] numRound:5 width:0];
+            return self.btnLeft.bottom + W(15);
+            break;
+            case ENUM_BULKCARGO_ORDER_OPERATE_COMPLETE:
+        case ENUM_BULKCARGO_ORDER_OPERATE_ARRIVE:
+        case ENUM_BULKCARGO_ORDER_OPERATE_CLOSE:
+            self.btnLeft.hidden = true;
+            self.btnRight.hidden = true;
+            break;
+        default:
+            break;
+    }
+    return top;
+}
+- (void)btnClick:(UIButton *)btn{
+    switch (btn.tag) {
+        case 1://reject
+            if (self.blockReject) {
+                self.blockReject(self.model);
+            }
+            break;
+        case 2://accept
+            if (self.blockAccept) {
+                self.blockAccept(self.model);
+            }
+            break;
+        case 3://load
+            if (self.blockLoad) {
+                self.blockLoad(self.model);
+            }
+            break;
+        case 4://arrive
+            if (self.blockArrive) {
+                self.blockArrive(self.model);
+            }
+            break;
+        case 5://call
+        {
+            NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel://%@",self.model.startPhone];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        }
+            break;
+        case 6://detail
+            if (self.blockDetail) {
+                self.blockDetail(self.model);
+            }
+            break;
+        default:
+            break;
+    }
+}
 @end
 
 

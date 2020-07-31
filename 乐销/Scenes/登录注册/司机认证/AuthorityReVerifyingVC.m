@@ -23,7 +23,7 @@
 @property (nonatomic, strong) UIImageView *ivHand;
 @property (strong, nonatomic) ModelBaseInfo *modelBaseInfo;
 @property (nonatomic, strong) NSMutableArray *aryImages;
-@property (strong, nonatomic) ModelAuthorityInfo *modelInfo;
+@property (strong, nonatomic) ModelAuthorityInfo *modelAuditInfo;
 
 @end
 
@@ -120,7 +120,7 @@
     [self.view addSubview:self.ivDriver];
     [self.view addSubview:self.ivHand];
     
-    
+    ModelBaseInfo * modelUser = [GlobalData sharedInstance].GB_UserModel;
     self.ivSuccess.centerXTop = XY(SCREEN_WIDTH/2.0,NAVIGATIONBAR_HEIGHT + W(46));
     
     CGFloat top = [self.view addLineFrame:CGRectMake(W(15), self.ivSuccess.bottom + W(50), SCREEN_WIDTH - W(30), 1)];
@@ -129,7 +129,7 @@
         ModelBtn * m = [ModelBtn new];
         m.title = @"审核状态";
         m.color = COLOR_BLUE;
-        m.subTitle = @"审核通过";
+        m.subTitle = @"认证中，请耐心等待";
         m.tag = ++tag;
         m.left = W(15);
         m.right = W(15);
@@ -139,7 +139,7 @@
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"提交时间";
-        m.subTitle = [GlobalMethod exchangeTimeWithStamp:self.modelInfo.submitTime andFormatter:TIME_SEC_SHOW];
+        m.subTitle = [GlobalMethod exchangeTimeWithStamp:self.modelAuditInfo.submitTime andFormatter:TIME_SEC_SHOW];
         m.tag = ++tag;
         m.left = W(15);
         m.right = W(15);
@@ -200,14 +200,15 @@
     [RequestApi requestUserAuthorityInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSArray * aryRespons = [response arrayValueForKey:@"qualificationList"];
         if (isAry(aryRespons)) {
-            for (int i = 0; i<aryRespons.count; i++) {
-                NSDictionary * dicItem = aryRespons[i];
-                ModelAuthorityInfo * modelItem = [ModelAuthorityInfo modelObjectWithDictionary:dicItem];
-                if (modelItem.status == 3) {
-                    self.modelInfo = modelItem;
-                    break;
-                }
-            }
+            self.modelAuditInfo = [GlobalMethod exchangeDic:aryRespons toAryWithModelName:@"ModelAuthorityInfo"].firstObject;
+//            for (int i = 0; i<aryRespons.count; i++) {
+//                NSDictionary * dicItem = aryRespons[i];
+//                ModelAuthorityInfo * modelItem = [ModelAuthorityInfo modelObjectWithDictionary:dicItem];
+//                if (modelItem.status == 3) {
+//                    self.modelAuditInfo = modelItem;
+//                    break;
+//                }
+//            }
         }
         [self requestQualificationImages];
         

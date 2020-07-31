@@ -114,11 +114,14 @@
     
     CGFloat top = [self.view addLineFrame:CGRectMake(W(15), self.ivSuccess.bottom + W(50), SCREEN_WIDTH - W(30), 1)];
     __block int tag = 100;
+    ModelBaseInfo * modelUser = [GlobalData sharedInstance].GB_UserModel;
+    BOOL isQuantity  = modelUser.isIdentity == 1&& modelUser.isDriver == 1;
+
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"审核状态";
-        m.color = COLOR_GREEN;
-        m.subTitle = @"审核通过";
+        m.color = [UIColor redColor];
+        m.subTitle = isQuantity?@"修改认证资料失败":@"审核失败";
         m.tag = ++tag;
         m.left = W(15);
         m.right = W(15);
@@ -168,7 +171,7 @@
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"失败原因";
-        m.subTitle = self.failReason;
+        m.subTitle = self.modelAuditInfo.explain;
         m.tag = ++tag;
         m.left = W(15);
         m.right = W(15);
@@ -224,7 +227,6 @@
 - (void)addNav{
     BaseNavView * nav = [BaseNavView initNavBackTitle:@"司机认证" rightTitle:@"修改认证" rightBlock:^{
         PerfectAuthorityInfoVC * reSubmitVC = [PerfectAuthorityInfoVC new];
-        reSubmitVC.userId = [GlobalData sharedInstance].GB_UserModel.iDProperty;
         [GB_Nav pushViewController:reSubmitVC animated:true];
     }];
     nav.line.hidden = true;
@@ -236,17 +238,18 @@
     [RequestApi requestUserAuthorityInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSArray * aryRespons = [response arrayValueForKey:@"qualificationList"];
         if (isAry(aryRespons)) {
-            for (int i = 0; i<aryRespons.count; i++) {
-                NSDictionary * dicItem = aryRespons[i];
-                ModelAuthorityInfo * modelItem = [ModelAuthorityInfo modelObjectWithDictionary:dicItem];
-                if (i == 0) {
-                    self.failReason = modelItem.explain;
-                }
-                if (modelItem.status == 3) {
-                    self.modelAuditInfo = modelItem;
-                    break;
-                }
-            }
+            self.modelAuditInfo = [GlobalMethod exchangeDic:aryRespons toAryWithModelName:@"ModelAuthorityInfo"].firstObject;
+//            for (int i = 0; i<aryRespons.count; i++) {
+//                NSDictionary * dicItem = aryRespons[i];
+//                ModelAuthorityInfo * modelItem = [ModelAuthorityInfo modelObjectWithDictionary:dicItem];
+//                if (i == 0) {
+//                    self.failReason = modelItem.explain;
+//                }
+//                if (modelItem.status == 3) {
+//                    self.modelAuditInfo = modelItem;
+//                    break;
+//                }
+//            }
         }
         [self requestQualificationImages];
         

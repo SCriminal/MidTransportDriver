@@ -22,7 +22,7 @@
 @property (nonatomic, strong) UIImageView *ivIdentityReverse;
 @property (nonatomic, strong) UIImageView *ivDriver;
 @property (nonatomic, strong) UIImageView *ivHand;
-@property (strong, nonatomic) ModelAuthorityInfo *modelInfo;
+@property (strong, nonatomic) ModelAuthorityInfo *modelAuditInfo;
 @property (strong, nonatomic) ModelBaseInfo *modelBaseInfo;
 @property (nonatomic, strong) NSMutableArray *aryImages;
 
@@ -143,7 +143,7 @@
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"提交时间";
-        m.subTitle = [GlobalMethod exchangeTimeWithStamp:self.modelInfo.submitTime andFormatter:TIME_SEC_SHOW];
+        m.subTitle = [GlobalMethod exchangeTimeWithStamp:self.modelAuditInfo.submitTime andFormatter:TIME_SEC_SHOW];
         m.tag = ++tag;
         m.left = W(15);
         m.right = W(15);
@@ -153,7 +153,7 @@
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"审核时间";
-        m.subTitle = [GlobalMethod exchangeTimeWithStamp:self.modelInfo.reviewTime andFormatter:TIME_SEC_SHOW];
+        m.subTitle = [GlobalMethod exchangeTimeWithStamp:self.modelAuditInfo.reviewTime andFormatter:TIME_SEC_SHOW];
         m.tag = ++tag;
         m.left = W(15);
         m.right = W(15);
@@ -205,9 +205,14 @@
 #pragma mark 添加导航栏
 - (void)addNav{
     BaseNavView * nav = [BaseNavView initNavBackTitle:@"司机认证" rightTitle:@"修改认证" rightBlock:^{
-        PerfectAuthorityInfoVC * reSubmitVC = [PerfectAuthorityInfoVC new];
-        reSubmitVC.userId = [GlobalData sharedInstance].GB_UserModel.iDProperty;
-        [GB_Nav pushViewController:reSubmitVC animated:true];
+        ModelBaseInfo *modelUser = [GlobalData sharedInstance].GB_UserModel;
+        //因为有已经认证
+        if (modelUser.reviewStatus == 2 ) {
+            [GB_Nav pushVCName:@"AuthorityReVerifyingVC" animated:true];
+        }else{
+            PerfectAuthorityInfoVC * reSubmitVC = [PerfectAuthorityInfoVC new];
+            [GB_Nav pushViewController:reSubmitVC animated:true];
+        }
     }];
     nav.line.hidden = true;
     [self.view addSubview:nav];
@@ -216,8 +221,17 @@
 #pragma mark request
 - (void)reqeustInfo{
     [RequestApi requestUserAuthorityInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        self.modelInfo = isAry([response arrayValueForKey:@"qualificationList"])?[ModelAuthorityInfo modelObjectWithDictionary:[response arrayValueForKey:@"qualificationList"].firstObject]:nil;
-
+         NSArray * aryRespons = [response arrayValueForKey:@"qualificationList"];
+                if (isAry(aryRespons)) {
+                    for (int i = 0; i<aryRespons.count; i++) {
+                        NSDictionary * dicItem = aryRespons[i];
+                        ModelAuthorityInfo * modelItem = [ModelAuthorityInfo modelObjectWithDictionary:dicItem];
+                        if (modelItem.status == 3) {
+                            self.modelAuditInfo = modelItem;
+                            break;
+                        }
+                    }
+                }
         
         [self.ivIdentity sd_setImageWithURL:[NSURL URLWithString:[response stringValueForKey:@"idCardFrontUrl"]] placeholderImage:self.ivIdentity.image];
         [self.ivIdentityReverse sd_setImageWithURL:[NSURL URLWithString:[response stringValueForKey:@"idCardBackUrl"]] placeholderImage:self.ivIdentityReverse.image];

@@ -115,6 +115,7 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
     ModelBaseInfo *modelUser = [GlobalData sharedInstance].GB_UserModel;
     //因为有已经认证
     BOOL isQuantity  = modelUser.isIdentity == 1&& modelUser.isDriver == 1;
+
     if (modelUser.reviewStatus!=1 && successBlock) {
         successBlock();
         return;
@@ -124,18 +125,17 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
             [GB_Nav pushVCName:@"PerfectAuthorityInfoVC" animated:true];
             break;
         case 2:
-            [GB_Nav pushVCName:@"AuthorityReVerifyingVC" animated:true];
-
-            break;
-        case 3:
-            if (successBlock) {
-                successBlock();
-            }else{
+            if (isQuantity) {
                 [GB_Nav pushVCName:@"PerfectAuthorityInfoSuccessVC" animated:true];
+            }else{
+                [GB_Nav pushVCName:@"AuthorityReVerifyingVC" animated:true];
             }
             break;
+        case 3:
+            [GB_Nav pushVCName:@"PerfectAuthorityInfoSuccessVC" animated:true];
+            break;
         case 10:
-            [GB_Nav pushVCName:@"AuthorityReFailVC" animated:true];
+            [GB_Nav pushVCName:@"PerfectAuthorityInfoVC" animated:true];
             break;
         default:
             break;
