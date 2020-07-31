@@ -211,7 +211,9 @@
     [self addSubview:self.ivBg];
     [self addSubview:self.labelStatus];
     [self addSubview:self.sc];
-    
+    [self addSubview:self.btnLeft];
+    [self addSubview:self.btnRight];
+
 }
 
 #pragma mark 刷新view
@@ -277,6 +279,7 @@
 }
 - (CGFloat)resetBtn:(CGFloat)top {
     self.btnRight.hidden = true;
+    self.btnLeft.hidden = true;
     switch (self.model.operateType) {
         case ENUM_BULKCARGO_ORDER_OPERATE_WAIT_RECEIVE:
             [self.btnLeft setTitle:@"拒单" forState:UIControlStateNormal];
@@ -285,6 +288,7 @@
             self.btnLeft.backgroundColor = [UIColor whiteColor];
             self.btnLeft.tag = 1;
             self.btnLeft.leftTop = XY(W(25), top + W(15));
+            self.btnLeft.hidden = false;
             [GlobalMethod setRoundView:self.btnLeft color:[UIColor colorWithHexString:@"#D9D9D9"] numRound:5 width:1];
             
             [self.btnRight setTitle:@"接单" forState:UIControlStateNormal];
@@ -304,6 +308,7 @@
             self.btnLeft.backgroundColor = [UIColor colorWithHexString:@"#F97A1B"];
             self.btnLeft.tag = 3;
             self.btnLeft.leftTop = XY(W(25), top + W(15));
+            self.btnLeft.hidden = false;
             [GlobalMethod setRoundView:self.btnLeft color:[UIColor clearColor] numRound:5 width:0];
             return self.btnLeft.bottom + W(15);
             break;
@@ -314,14 +319,13 @@
             self.btnLeft.backgroundColor = [UIColor colorWithHexString:@"#66CC00"];
             self.btnLeft.tag = 4;
             self.btnLeft.leftTop = XY(W(25), top + W(15));
+            self.btnLeft.hidden = false;
             [GlobalMethod setRoundView:self.btnLeft color:[UIColor clearColor] numRound:5 width:0];
             return self.btnLeft.bottom + W(15);
             break;
-            case ENUM_BULKCARGO_ORDER_OPERATE_COMPLETE:
+        case ENUM_BULKCARGO_ORDER_OPERATE_COMPLETE:
         case ENUM_BULKCARGO_ORDER_OPERATE_ARRIVE:
         case ENUM_BULKCARGO_ORDER_OPERATE_CLOSE:
-            self.btnLeft.hidden = true;
-            self.btnRight.hidden = true;
             break;
         default:
             break;

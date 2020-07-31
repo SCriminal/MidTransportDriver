@@ -15,7 +15,10 @@
 #import "RequestApi+BulkCargo.h"
 //share
 #import "ShareView.h"
-
+//up iamgeview
+#import "BulkCargoOperateLoadView.h"
+#import "RejectOrderReason.h"
+#import "BulkCargoOrderDetailTrackView.h"
 
 @interface BulkCargoOrderDetailVC ()
 @property (nonatomic, strong) BaseNavView *nav;
@@ -28,6 +31,7 @@
 @property (nonatomic, strong) BulkCargoOrderDetailRemarkView *remarkView;
 @property (nonatomic, strong) BulkLoadImageView *loadImageView;;
 @property (nonatomic, strong) BulkLoadImageView *unloadImageView;;
+@property (nonatomic, strong) BulkCargoOrderDetailTrackView *trackView;
 
 @end
 
@@ -45,14 +49,14 @@
     }
     return _nav;
 }
-//- (BulkCargoOrderDetailDriverView *)driverView{
-//    if (!_driverView) {
-//        _driverView = [BulkCargoOrderDetailDriverView new];
-//        _driverView.topToUpView = W(15);
-//        [_driverView resetViewWithModel:self.modelOrder];
-//    }
-//    return _driverView;
-//}
+- (BulkCargoOrderDetailTrackView *)trackView{
+    if (!_trackView) {
+        _trackView = [BulkCargoOrderDetailTrackView new];
+        _trackView.topToUpView = W(15);
+        [_trackView resetViewWithModel:self.modelOrder];
+    }
+    return _trackView;
+}
 - (BulkCargoOrderDetailRemarkView *)remarkView{
     if (!_remarkView) {
         _remarkView = [BulkCargoOrderDetailRemarkView new];
@@ -74,6 +78,39 @@
     if (!_statusView) {
         _statusView = [BulkCargoOrderDetailStatusView new];
         _statusView.topToUpView = W(15);
+        WEAKSELF
+        _statusView.blockAccept  = ^(ModelBulkCargoOrder *model) {
+               //判断地理位置权限
+               if (![GlobalMethod fetchLocalAuthorityBlock:nil]) {
+                   return;
+               }
+               //接单
+               ModelBtn * modelDismiss = [ModelBtn   modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+               ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+               modelConfirm.blockClick = ^(void){
+                   [weakSelf requestOperate:nil model:model];
+               };
+               [BaseAlertView initWithTitle:@"提示" content:@"确认接单?" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:weakSelf.view];
+           };
+           _statusView.blockLoad  = ^(ModelBulkCargoOrder *model) {
+               BulkCargoOperateLoadView *upLoadImageView = [BulkCargoOperateLoadView new];
+               upLoadImageView.blockComplete = ^(NSArray *aryImages) {
+                   NSMutableArray *ary = [aryImages fetchValues:@"url"];
+                   [weakSelf requestOperate:[ary componentsJoinedByString:@","] model:model];
+               };
+               [upLoadImageView show];
+           };
+           _statusView.blockArrive = ^(ModelBulkCargoOrder *model) {
+               BulkCargoOperateLoadView *upUnLoadImageView = [BulkCargoOperateLoadView new];
+               [upUnLoadImageView.labelInput fitTitle:@"上传完成凭证" variable:0];
+               [upUnLoadImageView.labelTitle fitTitle:@"请上传完成凭证 (回单、卸车磅单)" variable:0];
+               upUnLoadImageView.blockComplete = ^(NSArray *aryImages) {
+                   NSMutableArray *ary = [aryImages fetchValues:@"url"];
+                   [weakSelf requestOperate:[ary componentsJoinedByString:@","] model:model];
+               };
+               [upUnLoadImageView show];
+           };
+           
     }
     return _statusView;
 }
@@ -148,7 +185,7 @@
 }
 #pragma mark refresh table header view
 - (void)reconfigTableHeaderView{
-    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,isAry(self.statusView.aryDatas)?self.statusView:[NSNull null],self.pathView,self.sendView,self.receiveView,isStr(self.modelOrder.internalBaseClassDescription)?self.remarkView:[NSNull null],self.loadImageView.aryDatas.count?self.loadImageView:[NSNull null],self.unloadImageView.aryDatas.count?self.unloadImageView:[NSNull null]]];
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,isAry(self.statusView.aryDatas)?self.statusView:[NSNull null],self.pathView,self.sendView,self.receiveView,isStr(self.modelOrder.internalBaseClassDescription)?self.remarkView:[NSNull null],self.loadImageView.aryDatas.count?self.loadImageView:[NSNull null],self.unloadImageView.aryDatas.count?self.unloadImageView:[NSNull null],self.trackView]];
 }
 #pragma mark request
 
@@ -206,10 +243,40 @@
             return model;
         }()];
     }
-    [self.statusView resetViewWithAry:aryTimes ];
+    [self.statusView resetViewWithAry:aryTimes model:self.modelOrder];
     [self reconfigTableHeaderView];
     
     
+}
+- (void)requestRejectModel:(ModelBulkCargoOrder *)model reason:(NSString *)reason{
+    
+    [RequestApi requestOperateBulkCargoRejectWithReason:reason id:model.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_ORDER_REFERSH object:nil];
+
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+}
+- (void)requestOperate:(NSString *)url model:(ModelBulkCargoOrder *)model{
+    
+    [RequestApi requestOperateBulkCargoOrder:model.iDProperty operateType:model.operateType url:url delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        //交通部
+#ifdef UP_TRANSPORT
+        if (self.modelOrder.operateType == ENUM_BULKCARGO_ORDER_OPERATE_WAIT_LOAD) {
+            [[LocationRecordInstance sharedInstance]startLocationWithShippingNoteInfos:@[self.modelOrder] listener:^(id model, NSError *error) {
+                
+            }];
+        }else if(self.modelOrder.operateType == ENUM_BULKCARGO_ORDER_OPERATE_WAIT_UNLOAD){
+            [[LocationRecordInstance sharedInstance]stopLocationWithShippingNoteInfos:@[self.modelOrder] listener:^(id model, NSError *error) {
+                
+            }];
+        }
+#endif
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_ORDER_REFERSH object:nil];
+
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
 }
 
 - (void)requestList{

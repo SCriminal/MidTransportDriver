@@ -105,6 +105,7 @@
 		D25145D21E33055300E8107F /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D25145D11E33055300E8107F /* NSArray+Category.m */; };
 		D2545A5D1E72AD2500DEC7CE /* UIControl+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2545A5C1E72AD2500DEC7CE /* UIControl+Category.m */; };
 		D257759524D2AF1300449C75 /* RejectOrderReason.m in Sources */ = {isa = PBXBuildFile; fileRef = D257759424D2AF1300449C75 /* RejectOrderReason.m */; };
+		D257759824D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m in Sources */ = {isa = PBXBuildFile; fileRef = D257759724D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m */; };
 		D259AC4A20F435CF00F71C87 /* SendMsgHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259AC4920F435CF00F71C87 /* SendMsgHelper.m */; };
 		D259D54A228E4B2F00CE2632 /* RequestApi+UserAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = D259D546228E4B2F00CE2632 /* RequestApi+UserAuth.m */; };
 		D259D54B228E4B2F00CE2632 /* RequestApi+UserApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D259D549228E4B2F00CE2632 /* RequestApi+UserApi.m */; };
@@ -563,6 +564,8 @@
 		D2545A5C1E72AD2500DEC7CE /* UIControl+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+Category.m"; sourceTree = "<group>"; };
 		D257759324D2AF1300449C75 /* RejectOrderReason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RejectOrderReason.h; sourceTree = "<group>"; };
 		D257759424D2AF1300449C75 /* RejectOrderReason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RejectOrderReason.m; sourceTree = "<group>"; };
+		D257759624D3BFB000449C75 /* BulkCargoOrderDetailTrackView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulkCargoOrderDetailTrackView.h; sourceTree = "<group>"; };
+		D257759724D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOrderDetailTrackView.m; sourceTree = "<group>"; };
 		D259AC4820F435CF00F71C87 /* SendMsgHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMsgHelper.h; sourceTree = "<group>"; };
 		D259AC4920F435CF00F71C87 /* SendMsgHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendMsgHelper.m; sourceTree = "<group>"; };
 		D259D546228E4B2F00CE2632 /* RequestApi+UserAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+UserAuth.m"; sourceTree = "<group>"; };
@@ -2487,6 +2490,8 @@
 				D2C6D15322DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.m */,
 				D2C6D15C22DF0FBB00A22EA6 /* BulkCargoOrderDetailView.h */,
 				D2C6D15D22DF0FBB00A22EA6 /* BulkCargoOrderDetailView.m */,
+				D257759624D3BFB000449C75 /* BulkCargoOrderDetailTrackView.h */,
+				D257759724D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m */,
 			);
 			path = "散货详情";
 			sourceTree = "<group>";
@@ -3265,6 +3270,7 @@
 				D2B9374022D828390005B5D2 /* ModelAccessoryItem.m in Sources */,
 				D2C5580C238CB7DB0050694F /* ModelScheduleInfo.m in Sources */,
 				D2A6670D230F7BF00064F94B /* AuthortiyExampleVC.m in Sources */,
+				D257759824D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m in Sources */,
 				D28A8688225F1E78001E3372 /* CarTeamListVC.m in Sources */,
 				D22BA9D61E5EB8CA00C5B391 /* FSCalendarCollectionViewLayout.m in Sources */,
 				D29191FE21E0A6F6001B2F9E /* ModelOrderList.m in Sources */,
