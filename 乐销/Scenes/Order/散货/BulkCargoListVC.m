@@ -20,6 +20,9 @@
 #import "BulkCargoOperateLoadView.h"
 #import "RejectOrderReason.h"
 @interface BulkCargoListVC ()
+@property (nonatomic, strong) ModelBulkCargoOrder *modelOrder;
+@property (nonatomic, strong) BulkCargoOperateLoadView *upLoadImageView;
+@property (nonatomic, strong) BulkCargoOperateLoadView *upUnLoadImageView;
 
 @end
 
@@ -93,6 +96,8 @@
             [weakSelf requestOperate:[ary componentsJoinedByString:@","] model:model];
         };
         [upLoadImageView show];
+        weakSelf.upLoadImageView = upLoadImageView;
+        weakSelf.modelOrder = model;
     };
     cell.blockArrive = ^(ModelBulkCargoOrder *model) {
         BulkCargoOperateLoadView *upUnLoadImageView = [BulkCargoOperateLoadView new];
@@ -104,6 +109,8 @@
             [weakSelf requestOperate:[ary componentsJoinedByString:@","] model:model];
         };
         [upUnLoadImageView show];
+        weakSelf.upUnLoadImageView = upUnLoadImageView;
+        weakSelf.modelOrder = model;
     };
     cell.blockDetail = ^(ModelBulkCargoOrder *model) {
         [weakSelf jumpToDetail:model];
@@ -129,6 +136,32 @@
        };
        [GB_Nav pushViewController:operateVC animated:true];
 }
+
+#pragma mark 选择图片
+- (void)imagesSelect:(NSArray *)aryImages
+{
+    [[AliClient sharedInstance]updateImageAry:aryImages  storageSuccess:nil upSuccess:nil upHighQualitySuccess:nil fail:nil];
+    for (BaseImage *image in aryImages) {
+        ModelImage * modelImageInfo = [ModelImage new];
+        modelImageInfo.url = image.imageURL;
+        modelImageInfo.image = image;
+        modelImageInfo.width = image.size.width;
+        modelImageInfo.height = image.size.height;
+        if (self.modelOrder.operateType == ENUM_BULKCARGO_ORDER_OPERATE_WAIT_LOAD) {
+            [self.upLoadImageView.collection_Image.aryDatas insertObject:modelImageInfo atIndex:0];
+        }
+        if (self.modelOrder.operateType == ENUM_BULKCARGO_ORDER_OPERATE_WAIT_UNLOAD) {
+            [self.upUnLoadImageView.collection_Image.aryDatas insertObject:modelImageInfo atIndex:0];
+        }
+    }
+    if (self.modelOrder.operateType == ENUM_BULKCARGO_ORDER_OPERATE_WAIT_LOAD) {
+        [self.upLoadImageView.collection_Image.collectionView reloadData];
+    }
+    if (self.modelOrder.operateType == ENUM_BULKCARGO_ORDER_OPERATE_WAIT_UNLOAD) {
+        [self.upUnLoadImageView.collection_Image.collectionView reloadData];
+    }
+}
+#pragma mark request
 
 - (void)requestRejectModel:(ModelBulkCargoOrder *)model reason:(NSString *)reason{
     
@@ -160,7 +193,6 @@
         
     }];
 }
-#pragma mark request
 - (void)requestList{
     NSString * strOrderType = nil;
     int sortCreateTime = 1;

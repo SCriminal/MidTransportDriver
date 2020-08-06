@@ -109,7 +109,7 @@
     self.name.leftTop = XY(self.head.right + W(15), self.head.top + W(6));
 
     NSString * strBrief = isStr([GlobalData sharedInstance].GB_UserModel.introduce)?[GlobalData sharedInstance].GB_UserModel.introduce:@"还未填写个性签名，介绍一下自己吧";
-    [self.brief fitTitle:strBrief variable:SCREEN_WIDTH- W(50)];
+    [self.brief fitTitle:strBrief variable:W(240)];
     self.brief.leftBottom = XY(self.name.left, self.head.bottom - W(6));
 }
 

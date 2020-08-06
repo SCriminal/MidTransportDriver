@@ -23,6 +23,7 @@
 @property (nonatomic, strong) OrderDetailPathView *pathView;
 @property (nonatomic, strong) OrderDetailLoadView *loadInfoView;
 @property (nonatomic, strong) OrderDetailStationView *stationView;
+@property (nonatomic, strong) OrderDetailReturnAddressView *returnStationView;
 @property (nonatomic, strong) OrderDetailPackageView *packageView;
 @property (nonatomic, strong) OrderDetailRemarkView *remarkView;
 @property (nonatomic, strong) OrderDetailAccessoryView *accessoryView;
@@ -107,6 +108,14 @@
     }
     return _accessoryView;
 }
+- (OrderDetailReturnAddressView *)returnStationView{
+    if (!_returnStationView) {
+        _returnStationView = [OrderDetailReturnAddressView new];
+        _returnStationView.topToUpView = W(15);
+        [_returnStationView resetViewWithModel:self.modelOrder];
+    }
+    return _returnStationView;
+}
 
 #pragma mark view did load
 - (void)viewDidLoad {
@@ -116,7 +125,7 @@
     //table
     self.tableBackgroundView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.pathView,self.loadInfoView,self.stationView,isStr(self.modelOrder.iDPropertyDescription)?self.remarkView:[NSNull null]]];
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.pathView,self.loadInfoView,self.stationView,self.modelOrder.orderType == ENUM_ORDER_TYPE_OUTPUT?self.returnStationView:[NSNull null],isStr(self.modelOrder.iDPropertyDescription)?self.remarkView:[NSNull null]]];
     self.tableView.tableFooterView = ^(){
         UIView * view = [UIView new];
         view.height = W(20);
@@ -134,7 +143,7 @@
 }
 #pragma mark refresh table header view
 - (void)reconfigTableHeaderView{
-    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,isAry(self.statusView.aryDatas)?self.statusView:[NSNull null],self.pathView,isAry(self.packageView.aryDatas)?self.packageView:[NSNull null],self.loadInfoView,self.stationView,isStr(self.modelOrder.iDPropertyDescription)?self.remarkView:[NSNull null],isAry(self.accessoryView.aryDatas)?self.accessoryView:[NSNull null]]];
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,isAry(self.statusView.aryDatas)?self.statusView:[NSNull null],self.pathView,isAry(self.packageView.aryDatas)?self.packageView:[NSNull null],self.loadInfoView,self.stationView,self.modelOrder.orderType == ENUM_ORDER_TYPE_OUTPUT?self.returnStationView:[NSNull null],isStr(self.modelOrder.iDPropertyDescription)?self.remarkView:[NSNull null],isAry(self.accessoryView.aryDatas)?self.accessoryView:[NSNull null]]];
 }
 #pragma mark request
 - (void)requestGoodsInfo{
@@ -166,6 +175,7 @@
         
         [self.loadInfoView resetViewWithModel:self.modelOrder];
         [self.stationView resetViewWithModel:self.modelOrder];
+        [self.returnStationView resetViewWithModel:self.modelOrder];
         [self.pathView resetViewWithModel:self.modelOrder];
         [self.remarkView resetViewWithModel:self.modelOrder];
         

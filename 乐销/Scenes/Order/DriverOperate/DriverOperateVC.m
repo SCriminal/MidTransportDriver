@@ -305,20 +305,20 @@
 #endif
         [RequestApi requestOrderDetailWithId:self.modelOrder.iDProperty  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             self.modelOrder = [ModelOrderList modelObjectWithDictionary:response];
-            if (self.modelOrder.operateType == ENUM_ORDER_OPERATE_COMPLETE) {
-                [GB_Nav popLastAndPushVC:^(){
-                    OrderDetailVC  * detailVC = [OrderDetailVC new];
-                    detailVC.modelOrder =self.modelOrder;
-                    return detailVC;
-                }()];
-              
-            }else{
+//            if (self.modelOrder.operateType == ENUM_ORDER_OPERATE_COMPLETE) {
+//                [GB_Nav popLastAndPushVC:^(){
+//                    OrderDetailVC  * detailVC = [OrderDetailVC new];
+//                    detailVC.modelOrder =self.modelOrder;
+//                    return detailVC;
+//                }()];
+//
+//            }else{
                 [self reconfigView];
                 WEAKSELF
                 [[LocationRecordInstance sharedInstance]upLocation:^{
                     [weakSelf requestGoodsInfo];
                 }];
-            }
+//            }
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];

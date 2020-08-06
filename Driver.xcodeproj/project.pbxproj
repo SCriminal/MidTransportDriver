@@ -293,6 +293,7 @@
 		D2E46D7821D4A1A1007B04A1 /* DriverDetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E46D7721D4A1A1007B04A1 /* DriverDetailTopView.m */; };
 		D2E4837B1E5ABCF100D91AAD /* UINavigationController+EndEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E4837A1E5ABCF100D91AAD /* UINavigationController+EndEditing.m */; };
 		D2E50D0A1E319E650045AD3F /* BaseVC+KeyboardObserve.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E50D091E319E650045AD3F /* BaseVC+KeyboardObserve.m */; };
+		D2F09E9024DB899900CE85C3 /* SelectGenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F09E8F24DB899900CE85C3 /* SelectGenderView.m */; };
 		D2F11C6D2097103600F18CBD /* UITextField+Text.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F11C6C2097103600F18CBD /* UITextField+Text.m */; };
 		D2F733B41E8642EE0008E561 /* LocalData.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F733B31E8642EE0008E561 /* LocalData.json */; };
 		D2F8473D21B1101E00833C56 /* LeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F8473C21B1101E00833C56 /* LeftMenuCell.m */; };
@@ -922,6 +923,8 @@
 		D2E4837A1E5ABCF100D91AAD /* UINavigationController+EndEditing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+EndEditing.m"; sourceTree = "<group>"; };
 		D2E50D081E319E650045AD3F /* BaseVC+KeyboardObserve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BaseVC+KeyboardObserve.h"; sourceTree = "<group>"; };
 		D2E50D091E319E650045AD3F /* BaseVC+KeyboardObserve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseVC+KeyboardObserve.m"; sourceTree = "<group>"; };
+		D2F09E8E24DB899900CE85C3 /* SelectGenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectGenderView.h; sourceTree = "<group>"; };
+		D2F09E8F24DB899900CE85C3 /* SelectGenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectGenderView.m; sourceTree = "<group>"; };
 		D2F11C6B2097103600F18CBD /* UITextField+Text.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+Text.h"; sourceTree = "<group>"; };
 		D2F11C6C2097103600F18CBD /* UITextField+Text.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Text.m"; sourceTree = "<group>"; };
 		D2F733B31E8642EE0008E561 /* LocalData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocalData.json; sourceTree = "<group>"; };
@@ -1462,6 +1465,8 @@
 				D22A412D21803C550057C3B4 /* PerfectSelectCell.m */,
 				D22A412F21803C650057C3B4 /* PerfectTextCell.h */,
 				D22A413021803C650057C3B4 /* PerfectTextCell.m */,
+				D2F09E8E24DB899900CE85C3 /* SelectGenderView.h */,
+				D2F09E8F24DB899900CE85C3 /* SelectGenderView.m */,
 				D2A300312266BF9500AE2EC3 /* EditInfoVC.h */,
 				D2A300322266BF9500AE2EC3 /* EditInfoVC.m */,
 			);
@@ -3299,6 +3304,7 @@
 				D2BC9ABC1DFFE16D00B0468E /* RequestApi.m in Sources */,
 				D293B67F219AFC220073F316 /* BottomBtnView.m in Sources */,
 				D25EB6BC20EA230C0082AD73 /* EditVC_Title.m in Sources */,
+				D2F09E9024DB899900CE85C3 /* SelectGenderView.m in Sources */,
 				D2A300372266D21800AE2EC3 /* GuideView.m in Sources */,
 				D22B1D502383942000BC00F0 /* QRCoderVC.m in Sources */,
 				D2037600210718870054F8A6 /* AutoScView.m in Sources */,

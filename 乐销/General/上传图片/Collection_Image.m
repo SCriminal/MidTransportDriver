@@ -9,7 +9,8 @@
 #import "Collection_Image.h"
 #import "CollectionImageCell.h"//cell
 #import "ImageDetailBigView.h"//detail
-
+#import "CustomTabBarController.h"
+#import "BulkCargoListManageVC.h"
 @interface Collection_Image()
 
 @end
@@ -134,21 +135,22 @@
     }
 }
 - (void)showSelectImage{
-    [(BaseVC *)GB_Nav.lastVC showImageVC:NUM_IMAGE];
-}
-- (UpImageWithTextVC *)fetchTextImageVC{
-    UpImageWithTextVC * vcImage = [UpImageWithTextVC new];
-    vcImage.aryInit = self.aryDatas;
-    WEAKSELF
-    vcImage.blockSave = ^(NSArray *ary){
-        weakSelf.aryDatas = [NSMutableArray arrayWithArray:ary];
-        [weakSelf.collectionView reloadData];
-        if (weakSelf.blockUpComplete) {
-            weakSelf.blockUpComplete();
+    BaseVC * vc = (BaseVC *)[self fetchVC];
+    if ([vc respondsToSelector:@selector(showImageVC:)]) {
+        [vc showImageVC:NUM_IMAGE];
+    }else {
+        if ([vc isKindOfClass:NSClassFromString(@"CustomTabBarController")]) {
+            BulkCargoListManageVC *manageVC = [(CustomTabBarController *)vc viewControllers].firstObject;
+            if ([manageVC isKindOfClass:BulkCargoListManageVC.class]) {
+               BaseVC * vc = manageVC.childViewControllers.firstObject;
+                 if ([vc respondsToSelector:@selector(showImageVC:)]) {
+                       [vc showImageVC:NUM_IMAGE];
+                   }
+            }
         }
-    };
-    return vcImage;
+    }
 }
+
 #pragma mark 获取请求数据
 - (NSString *)fetchRequestImgString{
     return UnPackStr(self.aryDatas.imageRequestStr);

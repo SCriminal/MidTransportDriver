@@ -139,7 +139,7 @@
         m.right = W(15);
         return m;
     }() view:self.view top:top + W(20)];
-
+    
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"提交时间";
@@ -193,13 +193,13 @@
     }() view:self.view top:top + W(20)];
     
     self.ivIdentityReverse.rightTop = XY(SCREEN_WIDTH/2.0 - W(5),top+W(15));
-
+    
     self.ivIdentity.rightCenterY = XY(self.ivIdentityReverse.left - W(10),self.ivIdentityReverse.centerY);
     
     self.ivDriver.leftCenterY = XY(self.ivIdentityReverse.right + W(10),self.ivIdentityReverse.centerY);
-
+    
     self.ivHand.leftCenterY = XY(self.ivDriver.right + W(10),self.ivIdentityReverse.centerY);
-
+    
 }
 
 #pragma mark 添加导航栏
@@ -221,24 +221,32 @@
 #pragma mark request
 - (void)reqeustInfo{
     [RequestApi requestUserAuthorityInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-         NSArray * aryRespons = [response arrayValueForKey:@"qualificationList"];
-                if (isAry(aryRespons)) {
-                    for (int i = 0; i<aryRespons.count; i++) {
-                        NSDictionary * dicItem = aryRespons[i];
-                        ModelAuthorityInfo * modelItem = [ModelAuthorityInfo modelObjectWithDictionary:dicItem];
-                        if (modelItem.status == 3) {
-                            self.modelAuditInfo = modelItem;
-                            break;
-                        }
-                    }
+        NSArray * aryRespons = [response arrayValueForKey:@"qualificationList"];
+        if (isAry(aryRespons)) {
+            for (int i = 0; i<aryRespons.count; i++) {
+                NSDictionary * dicItem = aryRespons[i];
+                ModelAuthorityInfo * modelItem = [ModelAuthorityInfo modelObjectWithDictionary:dicItem];
+                if (modelItem.status == 3) {
+                    self.modelAuditInfo = modelItem;
+                    break;
                 }
+            }
+        }
+        [self configView:response];
+
+        [self requestQualificationImages];
         
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+}
+- (void)requestQualificationImages{
+    [RequestApi requestUserAuthoritySuccessInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [self.ivIdentity sd_setImageWithURL:[NSURL URLWithString:[response stringValueForKey:@"idCardFrontUrl"]] placeholderImage:self.ivIdentity.image];
         [self.ivIdentityReverse sd_setImageWithURL:[NSURL URLWithString:[response stringValueForKey:@"idCardBackUrl"]] placeholderImage:self.ivIdentityReverse.image];
         [self.ivDriver sd_setImageWithURL:[NSURL URLWithString:[response stringValueForKey:@"driverLicenseUrl"]] placeholderImage:self.ivDriver.image];
         [self.ivHand sd_setImageWithURL:[NSURL URLWithString:[response stringValueForKey:@"idCardHandelUrl"]] placeholderImage:self.ivHand.image];
-
-
+        
         self.aryImages = @[^(){
             ModelImage * model = [ModelImage new];
             model.desc = @"身份证人像面";
@@ -265,10 +273,9 @@
             return model;
         }()].mutableCopy;
         
-        [self configView:response];
+        
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
 }
-
 @end

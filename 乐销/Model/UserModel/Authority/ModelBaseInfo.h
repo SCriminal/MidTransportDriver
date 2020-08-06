@@ -45,5 +45,5 @@
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;
-
++ (NSString *)switchGender:(double)identity;
 @end

@@ -280,6 +280,7 @@
 - (CGFloat)resetBtn:(CGFloat)top {
     self.btnRight.hidden = true;
     self.btnLeft.hidden = true;
+    return top;
     switch (self.model.operateType) {
         case ENUM_BULKCARGO_ORDER_OPERATE_WAIT_RECEIVE:
             [self.btnLeft setTitle:@"拒单" forState:UIControlStateNormal];

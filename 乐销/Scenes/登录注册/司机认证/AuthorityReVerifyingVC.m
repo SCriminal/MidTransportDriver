@@ -201,26 +201,8 @@
         NSArray * aryRespons = [response arrayValueForKey:@"qualificationList"];
         if (isAry(aryRespons)) {
             self.modelAuditInfo = [GlobalMethod exchangeDic:aryRespons toAryWithModelName:@"ModelAuthorityInfo"].firstObject;
-//            for (int i = 0; i<aryRespons.count; i++) {
-//                NSDictionary * dicItem = aryRespons[i];
-//                ModelAuthorityInfo * modelItem = [ModelAuthorityInfo modelObjectWithDictionary:dicItem];
-//                if (modelItem.status == 3) {
-//                    self.modelAuditInfo = modelItem;
-//                    break;
-//                }
-//            }
         }
-        [self requestQualificationImages];
         
-        [self configView:response];
-
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
-}
-
-- (void)requestQualificationImages{
-    [RequestApi requestUserAuthoritySuccessInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [self.ivIdentity sd_setImageWithURL:[NSURL URLWithString:[response stringValueForKey:@"idCardFrontUrl"]] placeholderImage:self.ivIdentity.image];
         [self.ivIdentityReverse sd_setImageWithURL:[NSURL URLWithString:[response stringValueForKey:@"idCardBackUrl"]] placeholderImage:self.ivIdentityReverse.image];
         [self.ivDriver sd_setImageWithURL:[NSURL URLWithString:[response stringValueForKey:@"driverLicenseUrl"]] placeholderImage:self.ivDriver.image];
@@ -251,11 +233,13 @@
             model.image = [BaseImage imageWithImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT] url:[NSURL URLWithString:model.url]];
             return model;
         }()].mutableCopy;
-        
+        [self configView:response];
 
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
 }
+
+
 
 @end

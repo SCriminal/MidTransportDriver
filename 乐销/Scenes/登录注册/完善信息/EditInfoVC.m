@@ -19,11 +19,14 @@
 #import "BaseTableVC+Authority.h"
 //nav
 #import "BaseNavView+Logical.h"
+#import "SelectGenderView.h"
 
 @interface EditInfoVC ()
 @property (nonatomic, strong) ModelBaseData *modelName;
 @property (nonatomic, strong) ModelBaseData *modelAge;
 @property (nonatomic, strong) ModelBaseData *modelPhone;
+@property (nonatomic, strong) ModelBaseData *modelGender;
+
 @property (nonatomic, strong) EditInfoTopView *topView;
 @property (nonatomic, strong) ModelBaseInfo *modelInfo;
 @property (nonatomic, strong) EditInfoBottomView *bottomView;
@@ -65,7 +68,7 @@
             ModelBaseData * model = [ModelBaseData new];
             model.enumType = ENUM_PERFECT_CELL_TEXT;
             model.imageName = @"";
-            model.string = @"手机号";
+            model.string = @"您的账号";
             model.isChangeInvalid = true;
             model.subString = [GlobalData sharedInstance].GB_UserModel.cellPhone;
             return model;
@@ -79,8 +82,8 @@
             ModelBaseData * model = [ModelBaseData new];
             model.enumType = ENUM_PERFECT_CELL_TEXT;
             model.imageName = @"";
-            model.string = @"昵称";
-            model.placeHolderString = @"请输入";
+            model.string = @"您的昵称";
+            model.placeHolderString = @"请输入您的昵称";
             return model;
         }();
     }
@@ -107,7 +110,27 @@
     }
     return _modelAge;
 }
-
+- (ModelBaseData *)modelGender{
+    if (!_modelGender) {
+        _modelGender =[ModelBaseData new];
+        _modelGender.enumType = ENUM_PERFECT_CELL_SELECT;
+        _modelGender.imageName = @"";
+        _modelGender.string = @"您的性别";
+        _modelGender.placeHolderString = @"选择您的性别";
+        WEAKSELF
+        _modelGender.blocClick = ^(ModelBaseData *model) {
+            [GlobalMethod endEditing];
+             SelectGenderView * view = [SelectGenderView new];
+                           view.blockSelect = ^(double current) {
+                               weakSelf.modelGender.identifier = NSNumber.dou(current).stringValue;
+                               weakSelf.modelGender.subString = [ModelBaseInfo switchGender:current];
+                               [weakSelf configData];
+                           };
+                           [weakSelf.view addSubview:view];
+        };
+    }
+    return _modelGender;
+}
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -140,7 +163,7 @@
 #pragma mark config data
 - (void)configData{
     
-    self.aryDatas = @[ self.modelName,self.modelPhone,self.modelAge].mutableCopy;
+    self.aryDatas = @[ self.modelPhone,self.modelName,self.modelGender,self.modelAge].mutableCopy;
     [self.tableView reloadData];
 }
 #pragma mark image select
@@ -174,7 +197,7 @@
     NSDate * dateBirthday = [GlobalMethod exchangeStringToDate:self.modelAge.subString formatter:TIME_DAY_CN];
     double timeBirthday = [dateBirthday timeIntervalSince1970];
     
-    [RequestApi requestChangeUserInfoWithNickname:self.modelName.subString headUrl:strUrl gender:@"" birthday:[NSString stringWithFormat:@"%.f",timeBirthday] contactPhone:@"" areaId:@"" address:@"" email:@"" weChat:@"" introduce:self.bottomView.textView.text delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestChangeUserInfoWithNickname:self.modelName.subString headUrl:strUrl gender:self.modelGender.identifier birthday:[NSString stringWithFormat:@"%.f",timeBirthday] contactPhone:@"" areaId:@"" address:@"" email:@"" weChat:@"" introduce:self.bottomView.textView.text delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         //notice
         [GlobalData sharedInstance].GB_UserModel.headUrl = strUrl;
         [GlobalData sharedInstance].GB_UserModel.nickname = self.modelName.subString;
@@ -193,6 +216,8 @@
         self.modelInfo = [ModelBaseInfo modelObjectWithDictionary:response];
         self.modelName.subString = self.modelInfo.nickname;
         self.modelAge.subString = [GlobalMethod exchangeTimeWithStamp:self.modelInfo.birthday andFormatter:TIME_DAY_CN];
+        self.modelGender.subString = [ModelBaseInfo switchGender:self.modelInfo.gender];
+
         self.bottomView.textView.text = self.modelInfo.introduce;
         [self configData];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

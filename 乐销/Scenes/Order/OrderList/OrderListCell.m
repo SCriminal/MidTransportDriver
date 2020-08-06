@@ -138,8 +138,13 @@
        
        [self.addressFrom fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.startProvinceName),[model.startPortName isEqualToString:model.startProvinceName]?@"":UnPackStr(model.startPortName)] variable:W(160)];
        self.addressFrom.centerXCenterY = XY((self.iconAddress.left - W(10))/2.0+W(10), self.iconAddress.centerY);
-       
-       [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.endProvinceName),[model.endPortName isEqualToString:model.endProvinceName]?@"":UnPackStr(model.endPortName)] variable:W(160)];
+    if (model.orderType == ENUM_ORDER_TYPE_INPUT) {
+               [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.placeProvinceName),[model.placeCityName isEqualToString:model.placeProvinceName]?@"":UnPackStr(model.placeCityName)] variable:W(160)];
+
+    }else {
+        [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.endProvinceName),[model.endPortName isEqualToString:model.endProvinceName]?@"":UnPackStr(model.endPortName)] variable:W(160)];
+
+    }
        self.addressTo.centerXCenterY = XY((SCREEN_WIDTH - self.iconAddress.right - W(10))/2.0 + SCREEN_WIDTH/2.0 + self.iconAddress.width/2.0, self.iconAddress.centerY);
        
     [self.import fitTitle:model.orderType== ENUM_ORDER_TYPE_INPUT?@"进口":@"出口" variable:0];
@@ -180,7 +185,7 @@
        
        top = [BulkCargoListCell addTitle:^(){
               ModelBtn * m = [ModelBtn new];
-              m.title = @"装货单位";
+              m.title = model.orderType == ENUM_ORDER_TYPE_INPUT?@"卸货单位":@"装货单位";
               m.subTitle = model.shipperName;
               m.tag = ++tag;
               return m;
@@ -196,7 +201,7 @@
        
        top = [BulkCargoListCell addTitle:^(){
               ModelBtn * m = [ModelBtn new];
-              m.title = @"装货联系人";
+              m.title = model.orderType == ENUM_ORDER_TYPE_INPUT?@"卸货联系人":@"装货联系人";
               m.subTitle = [NSString stringWithFormat:@"%@ %@",UnPackStr(model.placeContact),UnPackStr(model.placePhone)];
               m.tag = ++tag;
               return m;

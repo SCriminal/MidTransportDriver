@@ -221,5 +221,20 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
     return [NSString stringWithFormat:@"%@", [self dictionaryRepresentation]];
 }
 
-
++ (NSString *)switchGender:(double)identity{
+    switch ((int)identity) {
+        case 1:
+            return @"男";
+            break;
+            case 2:
+            return @"女";
+            break;
+            case 3:
+                       return @"未知";
+                       break;
+        default:
+            break;
+    }
+    return @"";
+}
 @end
