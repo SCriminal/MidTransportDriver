@@ -33,6 +33,9 @@
 @property (nonatomic, strong) BulkLoadImageView *unloadImageView;;
 @property (nonatomic, strong) BulkCargoOrderDetailTrackView *trackView;
 
+@property (nonatomic, strong) BulkCargoOperateLoadView *upLoadImageView;
+@property (nonatomic, strong) BulkCargoOperateLoadView *upUnLoadImageView;
+
 @end
 
 @implementation BulkCargoOrderDetailVC
@@ -99,6 +102,7 @@
                    [weakSelf requestOperate:[ary componentsJoinedByString:@","] model:model];
                };
                [upLoadImageView show];
+               weakSelf.upLoadImageView = upLoadImageView;
            };
            _statusView.blockArrive = ^(ModelBulkCargoOrder *model) {
                BulkCargoOperateLoadView *upUnLoadImageView = [BulkCargoOperateLoadView new];
@@ -109,6 +113,7 @@
                    [weakSelf requestOperate:[ary componentsJoinedByString:@","] model:model];
                };
                [upUnLoadImageView show];
+               weakSelf.upUnLoadImageView = upUnLoadImageView;
            };
            
     }
@@ -186,6 +191,31 @@
 #pragma mark refresh table header view
 - (void)reconfigTableHeaderView{
     self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,isAry(self.statusView.aryDatas)?self.statusView:[NSNull null],self.pathView,self.sendView,self.receiveView,isStr(self.modelOrder.internalBaseClassDescription)?self.remarkView:[NSNull null],self.loadImageView.aryDatas.count?self.loadImageView:[NSNull null],self.unloadImageView.aryDatas.count?self.unloadImageView:[NSNull null],self.trackView]];
+}
+
+#pragma mark 选择图片
+- (void)imagesSelect:(NSArray *)aryImages
+{
+    [[AliClient sharedInstance]updateImageAry:aryImages  storageSuccess:nil upSuccess:nil upHighQualitySuccess:nil fail:nil];
+    for (BaseImage *image in aryImages) {
+        ModelImage * modelImageInfo = [ModelImage new];
+        modelImageInfo.url = image.imageURL;
+        modelImageInfo.image = image;
+        modelImageInfo.width = image.size.width;
+        modelImageInfo.height = image.size.height;
+        if (self.modelOrder.operateType == ENUM_BULKCARGO_ORDER_OPERATE_WAIT_LOAD) {
+            [self.upLoadImageView.collection_Image.aryDatas insertObject:modelImageInfo atIndex:0];
+        }
+        if (self.modelOrder.operateType == ENUM_BULKCARGO_ORDER_OPERATE_WAIT_UNLOAD) {
+            [self.upUnLoadImageView.collection_Image.aryDatas insertObject:modelImageInfo atIndex:0];
+        }
+    }
+    if (self.modelOrder.operateType == ENUM_BULKCARGO_ORDER_OPERATE_WAIT_LOAD) {
+        [self.upLoadImageView.collection_Image.collectionView reloadData];
+    }
+    if (self.modelOrder.operateType == ENUM_BULKCARGO_ORDER_OPERATE_WAIT_UNLOAD) {
+        [self.upUnLoadImageView.collection_Image.collectionView reloadData];
+    }
 }
 #pragma mark request
 
