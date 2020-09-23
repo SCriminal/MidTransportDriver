@@ -261,6 +261,7 @@
 		D2C99C341E0BA42F001D5DBA /* RadioBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C99C331E0BA42F001D5DBA /* RadioBtnView.m */; };
 		D2C99C381E0BC021001D5DBA /* AddSubtractView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C99C371E0BC021001D5DBA /* AddSubtractView.m */; };
 		D2C9C7DD1EE562220020E4E3 /* AMapPOI+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C9C7DC1EE562220020E4E3 /* AMapPOI+Category.m */; };
+		D2C9EBF4251AE582000D3E00 /* SelectBankNameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C9EBF3251AE582000D3E00 /* SelectBankNameVC.m */; };
 		D2CD1B991E23391A0042182B /* UIView+SelectImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD1B981E23391A0042182B /* UIView+SelectImageView.m */; };
 		D2CD1BA41E233BBE0042182B /* BaseImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD1BA31E233BBE0042182B /* BaseImage.m */; };
 		D2CF18FB22548E9E00542AEF /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CF18FA22548E9E00542AEF /* libc++.1.tbd */; };
@@ -872,6 +873,8 @@
 		D2C99C371E0BC021001D5DBA /* AddSubtractView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSubtractView.m; sourceTree = "<group>"; };
 		D2C9C7DB1EE562220020E4E3 /* AMapPOI+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AMapPOI+Category.h"; sourceTree = "<group>"; };
 		D2C9C7DC1EE562220020E4E3 /* AMapPOI+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AMapPOI+Category.m"; sourceTree = "<group>"; };
+		D2C9EBF2251AE582000D3E00 /* SelectBankNameVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectBankNameVC.h; sourceTree = "<group>"; };
+		D2C9EBF3251AE582000D3E00 /* SelectBankNameVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectBankNameVC.m; sourceTree = "<group>"; };
 		D2CD1B971E23391A0042182B /* UIView+SelectImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SelectImageView.h"; sourceTree = "<group>"; };
 		D2CD1B981E23391A0042182B /* UIView+SelectImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SelectImageView.m"; sourceTree = "<group>"; };
 		D2CD1BA21E233BBE0042182B /* BaseImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseImage.h; sourceTree = "<group>"; };
@@ -2617,6 +2620,8 @@
 				D2DDCFB52334C0FA002A24C4 /* CardListCell.m */,
 				D2DDCFB1233380CD002A24C4 /* AddCardVC.h */,
 				D2DDCFB2233380CD002A24C4 /* AddCardVC.m */,
+				D2C9EBF2251AE582000D3E00 /* SelectBankNameVC.h */,
+				D2C9EBF3251AE582000D3E00 /* SelectBankNameVC.m */,
 			);
 			path = BankCard;
 			sourceTree = "<group>";
@@ -3197,6 +3202,7 @@
 				D22431A21E10C08A00C9F10A /* AliClient.m in Sources */,
 				D26B88CF225C48D50051FA78 /* LoginTextField.m in Sources */,
 				D2821CBD218AD9B90057688B /* UIButton+EnlargeTouchArea.m in Sources */,
+				D2C9EBF4251AE582000D3E00 /* SelectBankNameVC.m in Sources */,
 				D2CD1B991E23391A0042182B /* UIView+SelectImageView.m in Sources */,
 				D2BC9AB81DFFE0B100B0468E /* NoticeView.m in Sources */,
 				D24992D11E05140C001A32DF /* BaseNavController.m in Sources */,

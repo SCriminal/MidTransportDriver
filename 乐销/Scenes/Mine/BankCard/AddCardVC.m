@@ -25,6 +25,7 @@
 #import "BankCardListVC.h"
 //ListAlertView
 #import "ListAlertView.h"
+#import "SelectBankNameVC.h"
 
 @interface AddCardVC ()<UITextFieldDelegate>
 @property (nonatomic, strong) ModelBaseData *modelName;
@@ -73,19 +74,20 @@
 - (ModelBaseData *)modelBankName{
     if (!_modelBankName) {
         _modelBankName =[ModelBaseData new];
-        _modelBankName.enumType = ENUM_PERFECT_CELL_TEXT;
+        _modelBankName.enumType = ENUM_PERFECT_CELL_SELECT;
         _modelBankName.string = @"开户行";
         _modelBankName.subString = self.model.bankName;
         _modelBankName.placeHolderString = @"开户行名称(必选)";
         WEAKSELF
         _modelBankName.blocClick = ^(ModelBaseData *model) {
-            [weakSelf.listView showWithPoint:[weakSelf.tableView convertPoint:CGPointMake(W(10), weakSelf.selectBankCell.bottom) toView:[UIApplication sharedApplication].keyWindow]  width:SCREEN_WIDTH - W(20) ary:[weakSelf filterBanks:model.subString]];
-
+            SelectBankNameVC * vc = [SelectBankNameVC new ];
+            vc.blockSearch = ^(NSString *name) {
+                weakSelf.modelBankName.subString  = name;
+                [weakSelf.tableView reloadData];
+            };
+            [GB_Nav pushViewController:vc animated:true];
         };
-        _modelBankName.blockValueChange = ^(ModelBaseData *model) {
-            [weakSelf.listView showWithPoint:[weakSelf.tableView convertPoint:CGPointMake(W(10), weakSelf.selectBankCell.bottom) toView:[UIApplication sharedApplication].keyWindow]  width:SCREEN_WIDTH - W(20) ary:[weakSelf filterBanks:model.subString]];
-
-        };
+        
         
     }
     return _modelBankName;
