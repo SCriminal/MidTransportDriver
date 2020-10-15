@@ -35,6 +35,7 @@
 @property (nonatomic, strong) NSString *iDPropertyDescription;
 @property (nonatomic, assign) double reserveVolume;
 @property (nonatomic, assign) double isOpen;
+@property (nonatomic, assign) double isPlanNoEnd;
 
 //logical
 @property (nonatomic, readonly) NSString *addressFromShow;

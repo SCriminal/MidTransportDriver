@@ -40,10 +40,17 @@ NS_ASSUME_NONNULL_BEGIN
  司机扫码下单
  */
 +(void)requestScheduleConfirmWithPlannumber:(NSString *)planNumber
-                                  vehicleId:(double)vehicleId
-                                driverPhone:(NSString *)driverPhone
-                                   delegate:(id <RequestDelegate>)delegate
-                                    success:(void (^)(NSDictionary * response, id mark))success
+vehicleId:(double)vehicleId
+driverPhone:(NSString *)driverPhone
+endAddrId:(double)endAddrId
+endAddr:(NSString *)endAddr
+endLng:(NSString *)endLng
+endLat:(NSString *)endLat
+endContact:(NSString *)endContact
+endPhone:(NSString *)endPhone
+endEntName:(NSString *)endEntName
+delegate:(id <RequestDelegate>)delegate
+success:(void (^)(NSDictionary * response, id mark))success
                                     failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 

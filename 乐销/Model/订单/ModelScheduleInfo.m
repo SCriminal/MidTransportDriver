@@ -109,7 +109,7 @@ NSString *const kModelScheduleInfoIsOpen = @"isOpen";
         self.iDPropertyDescription = [dict stringValueForKey:kModelScheduleInfoDescription];
         self.reserveVolume = [dict doubleValueForKey:kModelScheduleInfoReserveVolume];
         self.isOpen = [dict doubleValueForKey:kModelScheduleInfoIsOpen];
-
+        self.isPlanNoEnd = [dict doubleValueForKey:@"isPlanNoEnd"];
     }
     
     return self;
@@ -142,6 +142,7 @@ NSString *const kModelScheduleInfoIsOpen = @"isOpen";
     [mutableDict setValue:self.iDPropertyDescription forKey:kModelScheduleInfoDescription];
     [mutableDict setValue:[NSNumber numberWithDouble:self.reserveVolume] forKey:kModelScheduleInfoReserveVolume];
     [mutableDict setValue:[NSNumber numberWithDouble:self.isOpen] forKey:kModelScheduleInfoIsOpen];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.isPlanNoEnd] forKey:@"isPlanNoEnd"];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

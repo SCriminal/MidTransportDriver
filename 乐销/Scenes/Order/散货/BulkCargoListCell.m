@@ -314,7 +314,7 @@
         labelSubtitle.rightCenterY = XY(SCREEN_WIDTH - (modelBtn.right?modelBtn.right:W(25)), labelTitle.centerY);
     }else{
         labelSubtitle.numberOfLines = modelBtn.numOfLines?modelBtn.numOfLines:1;
-        [labelSubtitle fitTitle:UnPackStr(modelBtn.subTitle) variable:W(250)];
+        [labelSubtitle fitTitle:isStr(modelBtn.subTitle)?modelBtn.subTitle:@"暂无" variable:W(250)];
         labelSubtitle.textColor = modelBtn.colorSelect?modelBtn.colorSelect:COLOR_333;
         labelSubtitle.rightTop = XY(SCREEN_WIDTH - (modelBtn.right?modelBtn.right:W(25)), top);
     }

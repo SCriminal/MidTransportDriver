@@ -10,9 +10,13 @@
 //list view
 #import "ListAlertView.h"
 #import "UITextField+Text.h"
+#import "SelectDistrictView.h"
 
 @interface ScheduleConfirmView ()<UITextFieldDelegate>
 @property (nonatomic, assign) NSInteger indexSelect;
+@property (nonatomic, assign) BOOL isShowAll;
+@property (nonatomic, strong) SelectDistrictView *selectDistrictView;
+
 @end
 
 @implementation ScheduleConfirmView
@@ -45,7 +49,19 @@
     }
     return _ivClose;
 }
-
+- (SelectDistrictView *)selectDistrictView{
+    if (!_selectDistrictView) {
+        _selectDistrictView = [SelectDistrictView new];
+        WEAKSELF
+        _selectDistrictView.blockCitySeleted = ^(ModelProvince *p, ModelProvince *c, ModelProvince *d) {
+            weakSelf.modelProvince = p;
+            weakSelf.modelCity = c;
+            weakSelf.modelDistrict = d;
+            [weakSelf.labelReceiveAddress fitTitle:[NSString stringWithFormat:@"%@%@%@",p.name,c.name,d.name] variable:W(200)];
+        };
+    }
+    return _selectDistrictView;
+}
 - (UIView *)viewNameBorder{
     if (_viewNameBorder == nil) {
         _viewNameBorder = [UIView new];
@@ -64,6 +80,61 @@
         [_labelName fitTitle:UnPackStr([GlobalData sharedInstance].GB_UserModel.realName) variable:0];
     }
     return _labelName;
+}
+- (UIView *)viewReceiveAddressBorder{
+    if (_viewReceiveAddressBorder == nil) {
+        _viewReceiveAddressBorder = [UIView new];
+        _viewReceiveAddressBorder.backgroundColor = [UIColor clearColor];
+        [GlobalMethod setRoundView:_viewReceiveAddressBorder color:COLOR_LINE numRound:5 width:1];
+        _viewReceiveAddressBorder.widthHeight = XY(W(275), W(45));
+        _viewReceiveAddressBorder.userInteractionEnabled = true;
+        [_viewReceiveAddressBorder addTarget:self action:@selector(selectAddressClick)];
+    }
+    return _viewReceiveAddressBorder;
+}
+- (UIView *)viewReceiverPhoneBorder{
+    if (_viewReceiverPhoneBorder == nil) {
+        _viewReceiverPhoneBorder = [UIView new];
+        _viewReceiverPhoneBorder.backgroundColor = [UIColor clearColor];
+        [GlobalMethod setRoundView:_viewReceiverPhoneBorder color:COLOR_LINE numRound:5 width:1];
+        _viewReceiverPhoneBorder.widthHeight = XY(W(275), W(45));
+        _viewReceiverPhoneBorder.userInteractionEnabled = true;
+        [_viewReceiverPhoneBorder addTarget:self action:@selector(downClick)];
+    }
+    return _viewReceiverPhoneBorder;
+}
+- (UIView *)viewReceiverNameBorder{
+    if (_viewReceiverNameBorder == nil) {
+        _viewReceiverNameBorder = [UIView new];
+        _viewReceiverNameBorder.backgroundColor = [UIColor clearColor];
+        [GlobalMethod setRoundView:_viewReceiverNameBorder color:COLOR_LINE numRound:5 width:1];
+        _viewReceiverNameBorder.widthHeight = XY(W(275), W(45));
+        _viewReceiverNameBorder.userInteractionEnabled = true;
+        [_viewReceiverNameBorder addTarget:self action:@selector(downClick)];
+    }
+    return _viewReceiverNameBorder;
+}
+- (UIView *)viewAddressDetailBorder{
+    if (_viewAddressDetailBorder == nil) {
+        _viewAddressDetailBorder = [UIView new];
+        _viewAddressDetailBorder.backgroundColor = [UIColor clearColor];
+        [GlobalMethod setRoundView:_viewAddressDetailBorder color:COLOR_LINE numRound:5 width:1];
+        _viewAddressDetailBorder.widthHeight = XY(W(275), W(45));
+        _viewAddressDetailBorder.userInteractionEnabled = true;
+        [_viewAddressDetailBorder addTarget:self action:@selector(downClick)];
+    }
+    return _viewAddressDetailBorder;
+}
+- (UIView *)viewReceiveCompanyNameBorder{
+    if (_viewReceiveCompanyNameBorder == nil) {
+        _viewReceiveCompanyNameBorder = [UIView new];
+        _viewReceiveCompanyNameBorder.backgroundColor = [UIColor clearColor];
+        [GlobalMethod setRoundView:_viewReceiveCompanyNameBorder color:COLOR_LINE numRound:5 width:1];
+        _viewReceiveCompanyNameBorder.widthHeight = XY(W(275), W(45));
+        _viewReceiveCompanyNameBorder.userInteractionEnabled = true;
+        [_viewReceiveCompanyNameBorder addTarget:self action:@selector(downClick)];
+    }
+    return _viewReceiveCompanyNameBorder;
 }
 - (UIView *)viewBorder{
     if (_viewBorder == nil) {
@@ -94,6 +165,14 @@
     }
     return _ivDown;
 }
+- (UIImageView *)ivDown1{
+    if (_ivDown1 == nil) {
+        _ivDown1 = [UIImageView new];
+        _ivDown1.image = [UIImage imageNamed:@"accountDown"];
+        _ivDown1.widthHeight = XY(W(25),W(25));
+    }
+    return _ivDown1;
+}
 - (UIView *)viewPhoneBorder{
     if (_viewPhoneBorder == nil) {
         _viewPhoneBorder = [UIView new];
@@ -114,12 +193,72 @@
         _tfPhone.delegate = self;
         _tfPhone.placeholder = @"输入手机号";
         _tfPhone.text = [GlobalData sharedInstance].GB_UserModel.cellPhone;
-        
     }
     return _tfPhone;
 }
-
--(UIButton *)btnSubmit{
+- (UITextField *)tfReceiveCompanyName{
+    if (_tfReceiveCompanyName == nil) {
+        _tfReceiveCompanyName = [UITextField new];
+        _tfReceiveCompanyName.font = [UIFont systemFontOfSize:F(15)];
+        _tfReceiveCompanyName.textAlignment = NSTextAlignmentLeft;
+        _tfReceiveCompanyName.textColor = COLOR_333;
+        _tfReceiveCompanyName.borderStyle = UITextBorderStyleNone;
+        _tfReceiveCompanyName.backgroundColor = [UIColor clearColor];
+        _tfReceiveCompanyName.delegate = self;
+        _tfReceiveCompanyName.placeholder = @"收货企业名称(必填)";
+    }
+    return _tfReceiveCompanyName;
+}
+- (UITextField *)tfAddressDetail{
+    if (_tfAddressDetail == nil) {
+        _tfAddressDetail = [UITextField new];
+        _tfAddressDetail.font = [UIFont systemFontOfSize:F(15)];
+        _tfAddressDetail.textAlignment = NSTextAlignmentLeft;
+        _tfAddressDetail.textColor = COLOR_333;
+        _tfAddressDetail.borderStyle = UITextBorderStyleNone;
+        _tfAddressDetail.backgroundColor = [UIColor clearColor];
+        _tfAddressDetail.delegate = self;
+        _tfAddressDetail.placeholder = @"收货详细地址(必填)";
+    }
+    return _tfAddressDetail;
+}
+- (UITextField *)tfReceiverName{
+    if (_tfReceiverName == nil) {
+        _tfReceiverName = [UITextField new];
+        _tfReceiverName.font = [UIFont systemFontOfSize:F(15)];
+        _tfReceiverName.textAlignment = NSTextAlignmentLeft;
+        _tfReceiverName.textColor = COLOR_333;
+        _tfReceiverName.borderStyle = UITextBorderStyleNone;
+        _tfReceiverName.backgroundColor = [UIColor clearColor];
+        _tfReceiverName.delegate = self;
+        _tfReceiverName.placeholder = @"收货联系人";
+    }
+    return _tfReceiverName;
+}
+- (UITextField *)tfReceiverPhone{
+    if (_tfReceiverPhone == nil) {
+        _tfReceiverPhone = [UITextField new];
+        _tfReceiverPhone.font = [UIFont systemFontOfSize:F(15)];
+        _tfReceiverPhone.textAlignment = NSTextAlignmentLeft;
+        _tfReceiverPhone.textColor = COLOR_333;
+        _tfReceiverPhone.borderStyle = UITextBorderStyleNone;
+        _tfReceiverPhone.backgroundColor = [UIColor clearColor];
+        _tfReceiverPhone.delegate = self;
+        _tfReceiverPhone.placeholder = @"收货联系电话";
+    }
+    return _tfReceiverPhone;
+}
+- (UILabel *)labelReceiveAddress{
+    if (_labelReceiveAddress == nil) {
+        _labelReceiveAddress = [UILabel new];
+        _labelReceiveAddress.font = [UIFont systemFontOfSize:F(15)];
+        _labelReceiveAddress.textColor = COLOR_333;
+        _labelReceiveAddress.backgroundColor = [UIColor clearColor];
+        [_labelReceiveAddress fitTitle:@"选择收货地(必填)" variable:0];
+    }
+    return _labelReceiveAddress;
+}
+- (UIButton *)btnSubmit{
     if (_btnSubmit == nil) {
         _btnSubmit = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnSubmit.backgroundColor = [UIColor clearColor];
@@ -170,17 +309,28 @@
     [self.viewBG addSubview:self.viewPhoneBorder];
     [self.viewBG addSubview:self.tfPhone];
     [self.viewBG addSubview:self.btnSubmit];
+    [self.viewBG addSubview:self.viewReceiveCompanyNameBorder];
+    [self.viewBG addSubview:self.viewAddressDetailBorder];
+    [self.viewBG addSubview:self.viewReceiverNameBorder];
+    [self.viewBG addSubview:self.viewReceiverPhoneBorder];
+    [self.viewBG addSubview:self.viewReceiveAddressBorder];
+    [self.viewBG addSubview:self.tfReceiveCompanyName];
+    [self.viewBG addSubview:self.tfAddressDetail];
+    [self.viewBG addSubview:self.tfReceiverName];
+    [self.viewBG addSubview:self.tfReceiverPhone];
+    [self.viewBG addSubview:self.labelReceiveAddress];
+    [self.viewBG addSubview:self.ivDown1];
     
     //初始化页面
-    [self resetViewWithModel:nil];
+    [self resetViewWithModel:true];
 }
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model{
+- (void)resetViewWithModel:(BOOL)showAll{
+    self.isShowAll = showAll;
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
     self.viewBG.widthHeight = XY(W(315), W(333));
-    self.viewBG.centerXTop = XY(SCREEN_WIDTH/2.0,MIN(SCREEN_HEIGHT/2.0-W(203)/2.0, W(167)));
     
     self.labelTitle.centerXTop = XY(self.viewBG.width/2.0,W(25));
     
@@ -200,21 +350,67 @@
     self.tfPhone.widthHeight = XY(self.viewPhoneBorder.width - W(30),self.viewPhoneBorder.height);
     self.tfPhone.leftCenterY = XY(self.viewBorder.left + W(15),self.viewPhoneBorder.centerY);
     
+    NSArray * ary = @[self.tfReceiveCompanyName,self.labelReceiveAddress,self.tfAddressDetail,self.tfReceiverName,self.tfReceiverPhone];
+    NSArray * arySub = @[self.viewReceiveCompanyNameBorder,self.viewReceiveAddressBorder,self.viewAddressDetailBorder,self.viewReceiverNameBorder,self.viewReceiverPhoneBorder];
+    for (int i = 0; i<ary.count; i++) {
+        UIView * vMain = ary[i];
+        UIView * vSub = arySub[i];
+        vMain.hidden = !showAll;
+        vSub.hidden = !showAll;
+    }
+    self.ivDown.hidden = !showAll;
+    CGFloat top = self.viewPhoneBorder.bottom;
+    if (showAll) {
+        self.viewBG.height +=  W(65)*5;
+        for (int i = 0; i<ary.count; i++) {
+            UIView * vMain = ary[i];
+            UIView * vSub = arySub[i];
+            vSub.centerXTop =  XY(self.viewBG.width/2.0,top+W(20));
+            top = vSub.bottom;
+            if ([vMain isKindOfClass:[UILabel class]]) {
+                vMain.leftCenterY = XY(vSub.left + W(15),vSub.centerY);
+            }else{
+                vMain.widthHeight = XY(vSub.width - W(30),vSub.height);
+                vMain.leftCenterY = XY(vSub.left + W(15),vSub.centerY);
+            }
+        }
+    }
+    self.ivDown1.rightCenterY = XY(self.viewReceiveAddressBorder.right - W(15),self.viewReceiveAddressBorder.centerY);
     [self.viewBG addLineFrame:CGRectMake(0, self.viewBG.height - W(55), self.viewBG.width, 1)];
     
     self.btnSubmit.widthHeight = XY(self.viewBG.width,W(55));
     self.btnSubmit.centerXBottom = XY(self.viewBG.width/2.0,self.viewBG.height);
+    
+    if (showAll) {
+        self.viewBG.centerXCenterY = XY(SCREEN_WIDTH/2.0,SCREEN_HEIGHT/2.0);
+    }else{
+        self.viewBG.centerXTop = XY(SCREEN_WIDTH/2.0,MIN(SCREEN_HEIGHT/2.0-W(203)/2.0, W(167)));
+        
+    }
+    
 }
 #pragma mark keyboard
 - (void)keyboardShow:(NSNotification *)notice{
+    //    键盘的frame
+    CGRect frame = [notice.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    //    键盘的实时Y
+    CGFloat keyHeight = SCREEN_HEIGHT -  frame.origin.y;
     [UIView animateWithDuration:0.3 animations:^{
-        self.viewBG.top = MIN(SCREEN_HEIGHT/2.0-W(203)/2.0, W(107));
+        if (self.isShowAll) {
+            self.viewBG.bottom = SCREEN_HEIGHT - keyHeight;
+        }else{
+            self.viewBG.top = MIN(SCREEN_HEIGHT/2.0-W(203)/2.0, W(107));
+        }
     }];
 }
 
 - (void)keyboardHide:(NSNotification *)notice{
     [UIView animateWithDuration:0.3 animations:^{
-        self.viewBG.top = MIN(SCREEN_HEIGHT/2.0-W(203)/2.0, W(167));
+        if (self.isShowAll) {
+            self.viewBG.centerY = SCREEN_HEIGHT/2.0;
+        }else{
+            self.viewBG.top = MIN(SCREEN_HEIGHT/2.0-W(203)/2.0, W(167));
+        }
     }];
 }
 #pragma mark text delegate
@@ -237,6 +433,7 @@
     }];
 }
 - (void)show{
+    [GlobalMethod endEditing];
     self.alpha = 1;
     [GB_Nav.lastVC.view addSubview:self];
 }
@@ -252,24 +449,46 @@
         [weakSelf.labelCarNumber fitTitle:model.nameShow variable:W(200)];
     };
 }
-
+- (void)selectAddressClick{
+    [GlobalMethod endEditing];
+    [GB_Nav.lastVC.view addSubview:self.selectDistrictView];
+}
 - (void)btnSubmitClick{
-    if (self.blockComplete) {
-        ModelValidCar * model = (self.indexSelect<=self.aryDatas.count-1)?self.aryDatas[self.indexSelect]:nil;
-        if (!self.aryDatas.count) {
-            [GlobalMethod showAlert:@"当前无可运输车辆"];
-            return;
-        }
-        if (!model) {
-            [GlobalMethod showAlert:@"请先选择车辆"];
-            return;
-        }
-        if (!self.tfPhone.text.length) {
-            [GlobalMethod showAlert:@"请填写手机号"];
-            return;
-        }
-        self.blockComplete(model,self.tfPhone.text);
+    ModelValidCar * model = (self.indexSelect<=self.aryDatas.count-1)?self.aryDatas[self.indexSelect]:nil;
+    if (!self.aryDatas.count) {
+        [GlobalMethod showAlert:@"当前无可运输车辆"];
+        return;
     }
+    if (!model) {
+        [GlobalMethod showAlert:@"请先选择车辆"];
+        return;
+    }
+    if (!self.tfPhone.text.length) {
+        [GlobalMethod showAlert:@"请填写手机号"];
+        return;
+    }
+    if (self.isShowAll) {
+        if (!self.tfReceiveCompanyName.text.length) {
+            [GlobalMethod showAlert:@"请填写收货企业名称"];
+            return;
+        }
+        if (!self.modelDistrict.iDProperty) {
+            [GlobalMethod showAlert:@"请选择收货地"];
+            return;
+        }
+        if (!self.tfAddressDetail.text.length) {
+            [GlobalMethod showAlert:@"请填写详细收货地址"];
+            return;
+        }
+        if (self.blockAllComplete ) {
+            self.blockAllComplete(model, self.tfPhone.text, self.tfReceiveCompanyName.text, self.modelDistrict.iDProperty, self.tfAddressDetail.text, self.tfReceiverName.text, self.tfReceiverPhone.text);
+        }
+    }else{
+        if (self.blockComplete) {
+            self.blockComplete(model,self.tfPhone.text);
+        }
+    }
+    
     [GlobalMethod endEditing];
     [self removeFromSuperview];
 }

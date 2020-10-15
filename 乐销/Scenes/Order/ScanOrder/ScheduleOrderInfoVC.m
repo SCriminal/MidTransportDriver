@@ -35,6 +35,7 @@
 #pragma mark lazy init
 - (BaseNavView *)nav{
     if (!_nav) {
+        WEAKSELF
         _nav = [BaseNavView initNavBackTitle:@"运单确认" rightTitle:nil rightBlock:nil];
     }
     return _nav;
@@ -49,6 +50,7 @@
                 [GlobalMethod showAlert:@"当前无可运输车辆"];
                 return ;
             }
+            [weakSelf.confirmView resetViewWithModel:weakSelf.modelOrder.isPlanNoEnd];
             [weakSelf.confirmView show];
         };
     }
@@ -92,7 +94,10 @@
         _confirmView = [ScheduleConfirmView new];
         WEAKSELF
         _confirmView.blockComplete = ^(ModelValidCar *model, NSString *phone) {
-            [weakSelf requestConfirm:model phone:phone];
+            [weakSelf requestConfirm:model phone:phone endAddrId:0 endAddr:nil endContact:nil endPhone:nil endEntName:nil];
+        };
+        _confirmView.blockAllComplete = ^(ModelValidCar *model, NSString *phone, NSString *companyName, double addressId, NSString *addressDetail, NSString *receiverName, NSString *receiverPhone) {
+            [weakSelf requestConfirm:model phone:phone endAddrId:addressId endAddr:addressDetail endContact:receiverName endPhone:receiverPhone endEntName:companyName];
         };
     }
     return _confirmView;
@@ -145,12 +150,14 @@
     }];
 }
 
-- (void)requestConfirm:(ModelValidCar *)model phone:(NSString *)phone{
-    [RequestApi requestScheduleConfirmWithPlannumber:self.modelOrder.number vehicleId:model.iDProperty driverPhone:phone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+- (void)requestConfirm:(ModelValidCar *)model phone:(NSString *)phone endAddrId:(double)endAddrId endAddr:(NSString *)endAddr endContact:(NSString *)endContact endPhone:(NSString *)endPhone endEntName:(NSString *)endEntName{
+    [RequestApi requestScheduleConfirmWithPlannumber:self.modelOrder.number vehicleId:model.iDProperty driverPhone:phone endAddrId:endAddrId endAddr:endAddr endLng:nil endLat:nil endContact:endContact endPhone:endPhone endEntName:endEntName delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"下单成功"];
-        BaseTableVC * tableVC =  (BaseTableVC *)GB_Nav.lastSecondVC;
-        if ([tableVC isKindOfClass:BaseTableVC.class]) {
-            [tableVC refreshHeaderAll];
+        NSMutableArray * ary = [NSMutableArray arrayWithArray:GB_Nav.viewControllers];
+        for (BaseTableVC * vc in ary) {
+            if ([vc isKindOfClass:NSClassFromString(@"ScanOrderListVC")]) {
+                [vc refreshHeaderAll];
+            }
         }
         [GB_Nav popViewControllerAnimated:true];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

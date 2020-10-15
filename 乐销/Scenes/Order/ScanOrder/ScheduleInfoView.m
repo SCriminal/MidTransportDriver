@@ -215,7 +215,7 @@
     [self.labelAddressFrom fitTitle:model.addressFromShow variable:SCREEN_WIDTH/2.0 -W(60)];
     self.labelAddressFrom.centerXCenterY = XY((self.iconArrow.left + W(25))/2.0,self.iconArrow.centerY);
     
-    [self.labelAddressTo fitTitle:model.addressToShow variable:SCREEN_WIDTH/2.0 -W(60)];
+    [self.labelAddressTo fitTitle:isStr(model.addressToShow)?model.addressToShow:@"暂无" variable:SCREEN_WIDTH/2.0 -W(60)];
     self.labelAddressTo.centerXCenterY = XY(self.iconArrow.right + (self.iconArrow.left - W(25))/2.0,self.iconArrow.centerY);
     
     self.labelFrom.centerXBottom = XY(self.labelAddressFrom.centerX, self.labelAddressFrom.top - W(10));
@@ -233,7 +233,7 @@
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"收  货  地";
-        m.subTitle = model.addressToDetailShow;
+        m.subTitle = isStr(model.addressToDetailShow)?model.addressToDetailShow:@"暂无";
         m.numOfLines = 10;
         m.tag = ++tag;
         return m;

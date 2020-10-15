@@ -50,18 +50,30 @@
     [self getUrl:@"/zhongcheyun/bulkcargotempwaybill/1_0_65/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 
-/**
- 司机扫码下单
- */
+
 +(void)requestScheduleConfirmWithPlannumber:(NSString *)planNumber
-                                  vehicleId:(double)vehicleId
-                                driverPhone:(NSString *)driverPhone
-                                   delegate:(id <RequestDelegate>)delegate
-                                    success:(void (^)(NSDictionary * response, id mark))success
-                                    failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"planNumber":RequestStrKey(planNumber),
-                          @"vehicleId":NSNumber.dou(vehicleId),
-                          @"driverPhone":RequestStrKey(driverPhone)};
-    [self postUrl:@"/zhongcheyun/bulkcargotempwaybill/1_0_65" delegate:delegate parameters:dic success:success failure:failure];
+                vehicleId:(double)vehicleId
+                driverPhone:(NSString *)driverPhone
+                endAddrId:(double)endAddrId
+                endAddr:(NSString *)endAddr
+                endLng:(NSString *)endLng
+                endLat:(NSString *)endLat
+                endContact:(NSString *)endContact
+                endPhone:(NSString *)endPhone
+                endEntName:(NSString *)endEntName
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"planNumber":RequestStrKey(planNumber),
+                           @"vehicleId":NSNumber.dou(vehicleId),
+                           @"driverPhone":RequestStrKey(driverPhone),
+                           @"endAddrId":NSNumber.dou(endAddrId),
+                           @"endAddr":RequestStrKey(endAddr),
+                           @"endLng":RequestStrKey(endLng),
+                           @"endLat":RequestStrKey(endLat),
+                           @"endContact":RequestStrKey(endContact),
+                           @"endPhone":RequestStrKey(endPhone),
+                           @"endEntName":RequestStrKey(endEntName)};
+        [self postUrl:@"/zhongcheyun/bulkcargotempwaybill/1_0_65" delegate:delegate parameters:dic success:success failure:failure];
 }
 @end
