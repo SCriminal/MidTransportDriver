@@ -156,6 +156,7 @@
 		D28A8688225F1E78001E3372 /* CarTeamListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A8687225F1E78001E3372 /* CarTeamListVC.m */; };
 		D28A868B225F1E8E001E3372 /* CarTeamListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A868A225F1E8E001E3372 /* CarTeamListCell.m */; };
 		D28B6FE71E794589001CC3A8 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28B6FE61E794589001CC3A8 /* BaseCell.m */; };
+		D28F186F2551264E0020BF65 /* PrivateAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D28F186E2551264E0020BF65 /* PrivateAlertView.m */; };
 		D290DB28226EF586004B18B4 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = D290DB27226EF586004B18B4 /* ShareView.m */; };
 		D290DB2C226F01F0004B18B4 /* HotLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = D290DB2B226F01F0004B18B4 /* HotLineView.m */; };
 		D29191FE21E0A6F6001B2F9E /* ModelOrderList.m in Sources */ = {isa = PBXBuildFile; fileRef = D29191FC21E0A6F6001B2F9E /* ModelOrderList.m */; };
@@ -661,6 +662,8 @@
 		D28A868A225F1E8E001E3372 /* CarTeamListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarTeamListCell.m; sourceTree = "<group>"; };
 		D28B6FE51E794589001CC3A8 /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
 		D28B6FE61E794589001CC3A8 /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
+		D28F186D2551264E0020BF65 /* PrivateAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateAlertView.h; sourceTree = "<group>"; };
+		D28F186E2551264E0020BF65 /* PrivateAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrivateAlertView.m; sourceTree = "<group>"; };
 		D29072CC1F20919B00726EBB /* MacroLocalKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroLocalKey.h; sourceTree = "<group>"; };
 		D290DB26226EF586004B18B4 /* ShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
 		D290DB27226EF586004B18B4 /* ShareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
@@ -1603,6 +1606,7 @@
 		D275DB181DFFA2E800670A40 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				D28F186C255125FC0020BF65 /* PrivateAlertView */,
 				D2B9FF332490B5770082E8D2 /* SelectCarTypeVC */,
 				D2B9FF29248F68E70082E8D2 /* 自定义车牌键盘View */,
 				D2B9FF25248F2D3D0082E8D2 /* 拍名片 */,
@@ -1884,6 +1888,15 @@
 				D28B6FE61E794589001CC3A8 /* BaseCell.m */,
 			);
 			path = BaseCell;
+			sourceTree = "<group>";
+		};
+		D28F186C255125FC0020BF65 /* PrivateAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				D28F186D2551264E0020BF65 /* PrivateAlertView.h */,
+				D28F186E2551264E0020BF65 /* PrivateAlertView.m */,
+			);
+			path = PrivateAlertView;
 			sourceTree = "<group>";
 		};
 		D290DB25226EF579004B18B4 /* ShareView */ = {
@@ -3391,6 +3404,7 @@
 				D21B3008239F9DE4005B43D0 /* CarTeamListManagementVC.m in Sources */,
 				D2A3003A2266F75A00AE2EC3 /* InputNumView.m in Sources */,
 				D22499EE219A95C300608246 /* SettingVC.m in Sources */,
+				D28F186F2551264E0020BF65 /* PrivateAlertView.m in Sources */,
 				D2C9C7DD1EE562220020E4E3 /* AMapPOI+Category.m in Sources */,
 				D26510651E2880FB0084C9E2 /* UIView+Size.m in Sources */,
 				D22BA9D01E5EB8CA00C5B391 /* FSCalendar+Deprecated.m in Sources */,

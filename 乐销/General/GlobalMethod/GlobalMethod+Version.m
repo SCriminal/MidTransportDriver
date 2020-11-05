@@ -25,6 +25,7 @@
 #import "OrderListManagementVC.h"
 //guide view
 #import "GuideView.h"
+#import "PrivateAlertView.h"
 
 @implementation GlobalMethod (Version)
 
@@ -105,6 +106,10 @@
         [guideView show];
         //第一次
         [GlobalMethod writeBool:true local:LOCAL_SHOWED_GUIDE_BEFORE exchangeKey:false];
+    }
+    if (![GlobalMethod readBoolLocal:LOCAL_PRIVATE_ALERT exchangeKey:false]) {
+        PrivateAlertView * privateView = [PrivateAlertView new];
+        [privateView show];
     }
 //    [window addSubview:[NSClassFromString(@"AdvertiesementView") new]];
     //欢迎页
