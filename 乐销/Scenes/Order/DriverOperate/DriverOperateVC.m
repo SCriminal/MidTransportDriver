@@ -311,7 +311,6 @@
 //                    detailVC.modelOrder =self.modelOrder;
 //                    return detailVC;
 //                }()];
-//
 //            }else{
                 [self reconfigView];
                 WEAKSELF
