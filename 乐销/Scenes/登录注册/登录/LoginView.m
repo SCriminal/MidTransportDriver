@@ -29,17 +29,17 @@
 - (UILabel *)labelCode{
     if (_labelCode == nil) {
         _labelCode = [UILabel new];
-        _labelCode.textColor = COLOR_666;
-        _labelCode.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
-        [_labelCode fitTitle:@"注册/验证码登录" variable:0];
+        _labelCode.textColor = COLOR_BLUE;
+        _labelCode.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        [_labelCode fitTitle:@"短信验证码登录" variable:0];
     }
     return _labelCode;
 }
 - (UILabel *)labelForget{
     if (_labelForget == nil) {
         _labelForget = [UILabel new];
-        _labelForget.textColor = COLOR_666;
-        _labelForget.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
+        _labelForget.textColor = COLOR_BLUE;
+        _labelForget.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         [_labelForget fitTitle:@"忘记密码" variable:0];
     }
     return _labelForget;
@@ -85,7 +85,7 @@
     self.btnLogin.widthHeight = XY(SCREEN_WIDTH - W(50), W(45));
     self.btnLogin.centerXTop = XY(SCREEN_WIDTH/2.0,0);
     
-    self.labelCode.leftTop = XY(self.btnLogin.left,self.btnLogin.bottom+W(22));
+    self.labelCode.leftTop = XY(self.btnLogin.left,self.btnLogin.bottom+W(40));
     
     self.labelForget.rightTop = XY(self.btnLogin.right,self.labelCode.top);
     
@@ -142,7 +142,7 @@
     {
         UILabel * label = [UILabel new];
         label.fontNum = F(12);
-        label.textColor = COLOR_333;
+        label.textColor = COLOR_999;
         [label fitTitle:@"已阅并同意" variable:0];
         label.left = left;
         left = label.right;
@@ -151,7 +151,7 @@
     {
         UILabel * label = [UILabel new];
         label.fontNum = F(12);
-        label.textColor = COLOR_666;
+        label.textColor = COLOR_BLUE;
         [label fitTitle:@"《用户协议》" variable:0];
         label.left = left;
         left = label.right;
@@ -162,7 +162,7 @@
     {
         UILabel * label = [UILabel new];
         label.fontNum = F(12);
-        label.textColor = COLOR_333;
+        label.textColor = COLOR_999;
         [label fitTitle:@"&" variable:0];
         label.left = left;
         left = label.right;
@@ -171,7 +171,7 @@
     {
         UILabel * label = [UILabel new];
         label.fontNum = F(12);
-        label.textColor = COLOR_666;
+        label.textColor = COLOR_BLUE;
         [label fitTitle:@"《隐私政策》" variable:0];
         label.left = left;
         left = label.right;

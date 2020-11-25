@@ -182,8 +182,8 @@
 #pragma mark login
 - (void)switchPwdLogin{
     self.pwdLogin = !self.pwdLogin;
-    [self.btnView.btnLogin setTitle:self.pwdLogin?@"登录":@"下一步" forState:UIControlStateNormal];
-    [self.btnView.labelCode fitTitle:self.pwdLogin?@"注册/验证码登录":@"账号密码登录" variable:0];
+    [self.btnView.btnLogin setTitle:self.pwdLogin?@"登录":@"获取验证码" forState:UIControlStateNormal];
+    [self.btnView.labelCode fitTitle:self.pwdLogin?@"短信验证码登录":@"账号密码登录" variable:0];
     [UIView animateWithDuration:0.3 animations:^{
         self.tfPwd.hidden = !self.pwdLogin;
         self.btnView.top = (self.pwdLogin?self.tfPwd.bottom:self.tfPhone.bottom)+ W(44);
