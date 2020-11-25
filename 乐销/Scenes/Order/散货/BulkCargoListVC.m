@@ -19,6 +19,8 @@
 //up iamgeview
 #import "BulkCargoOperateLoadView.h"
 #import "RejectOrderReason.h"
+#import "LocationRecordInstance.h"
+
 @interface BulkCargoListVC ()
 @property (nonatomic, strong) ModelBulkCargoOrder *modelOrder;
 @property (nonatomic, strong) BulkCargoOperateLoadView *upLoadImageView;

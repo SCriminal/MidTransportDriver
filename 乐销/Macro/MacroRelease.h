@@ -17,10 +17,13 @@
 //#define URL_HEAD  @"https://api.zhongcheyun.cn"//外网
 //#define URL_IMAGE @"https://img.zhongcheyun.cn"//阿里云
 //#define URL_SHARE @"https://www.zhongcheyun.cn"//
+#define TRANSPORT_AGENCY_ENV  @"release"//@"release"
+
 #else
 #define URL_HEAD  @"https://api.zhongcheyun.cn"//外网
 #define URL_IMAGE @"https://img.zhongcheyun.cn"//阿里云
 #define URL_SHARE @"https://www.zhongcheyun.cn"//
+#define TRANSPORT_AGENCY_ENV  @"release"//@"release"  debug
 
 #endif
 
@@ -30,7 +33,6 @@
 
 //交通部
 #define UP_TRANSPORT
-#define TRANSPORT_AGENCY_ENV  @"release"//@"release"  debug
 #define TRANSPORT_AGENCY_APP_ID @"tlanx.midCarrierTransport.dirver"
 #define TRANSPORT_AGENCY_APP_SEC @"afa843f62b9a42d2b41d91e0d9df41085984f8dcbb904bd6a3b1a2a8340be303"
 #define TRANSPORT_AGENCY_CODE @"37100820"

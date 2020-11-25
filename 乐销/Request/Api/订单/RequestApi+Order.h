@@ -259,6 +259,14 @@ typedef NS_ENUM(NSUInteger, ENUM_ORDER_OPERATE_TYPE) {
                      delegate:(id <RequestDelegate>)delegate
                       success:(void (^)(NSDictionary * response, id mark))success
                       failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+ 详情
+ */
++(void)requestTransportDeptlWithId:(double)identity
+                       delegate:(id <RequestDelegate>)delegate
+                        success:(void (^)(NSDictionary * response, id mark))success
+                           failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

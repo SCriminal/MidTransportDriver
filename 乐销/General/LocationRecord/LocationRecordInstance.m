@@ -33,8 +33,8 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
     self = [super init];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noticeSelfModelChange) name:NOTICE_SELFMODEL_CHANGE object:nil];
-//
-//        @"com.wabob.ntocc.driver"
+        //
+        //        @"com.wabob.ntocc.driver"
 #ifdef UP_TRANSPORT
         [self.mapTransport openServiceWithAppId:@"tlanx.midCarrierTransport.dirver" appSecurity:TRANSPORT_AGENCY_APP_SEC enterpriseSenderCode:TRANSPORT_AGENCY_CODE environment:TRANSPORT_AGENCY_ENV listener:^(id  _Nonnull model, NSError * _Nonnull error) {
             NSLog([NSString stringWithFormat:@"%@ %@",model,error]);
@@ -81,7 +81,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
             _locationManager.allowsBackgroundLocationUpdates = YES;
         }
         _locationManager.locationTimeout = 5;
-
+        
     }
     return _locationManager;
 }
@@ -89,7 +89,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
 #pragma mark start record
 - (void)startRecord{
     [self.locationManager startUpdatingLocation];
-   
+    
 }
 
 #pragma mark 交通部
@@ -97,25 +97,79 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
     NSMutableArray * aryDatas = [NSMutableArray new];
     for (ModelOrderList * modelItem in shippingNoteInfos) {
         if ([modelItem isKindOfClass:[ModelOrderList class]]) {
-            [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":@"110116",@"endCountrySubdivisionCode":@"150424"}];
+            [RequestApi requestTransportDeptlWithId:modelItem.startAreaId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                NSString * startCode = [response stringValueForKey:@"code"];
+                [RequestApi requestTransportDeptlWithId:modelItem.endAreaId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                    NSString * endCode = [response stringValueForKey:@"code"];
+                    if (isStr(startCode)&& isStr(endCode)) {
+                        [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":startCode,@"endCountrySubdivisionCode":endCode}];
+                        [self.mapTransport startLocationWithShippingNoteInfos:aryDatas listener:listener];
+                        return;
+                    }
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                    
+                }];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
         }else if ([modelItem isKindOfClass:[ModelBulkCargoOrder class]]){
             ModelBulkCargoOrder * modelBulkItem = (ModelBulkCargoOrder *)modelItem;
-            [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelBulkItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":@"110116",@"endCountrySubdivisionCode":@"150424"}];
+            [RequestApi requestTransportDeptlWithId:modelBulkItem.startTownId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                NSString * startCode = [response stringValueForKey:@"code"];
+                [RequestApi requestTransportDeptlWithId:modelBulkItem.endTownId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                    NSString * endCode = [response stringValueForKey:@"code"];
+                    if (isStr(startCode)&& isStr(endCode)) {
+                        [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelBulkItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":startCode,@"endCountrySubdivisionCode":endCode}];
+                        [self.mapTransport startLocationWithShippingNoteInfos:aryDatas listener:listener];
+                        return;
+                    }
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                    
+                }];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
         }
     }
-    [self.mapTransport startLocationWithShippingNoteInfos:aryDatas listener:listener];
 }
 -(void)stopLocationWithShippingNoteInfos:(NSArray *)shippingNoteInfos listener:(void(^)(id model, NSError *error))listener{
     NSMutableArray * aryDatas = [NSMutableArray new];
     for (ModelOrderList * modelItem in shippingNoteInfos) {
         if ([modelItem isKindOfClass:[ModelOrderList class]]) {
-            [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":@"370705",@"endCountrySubdivisionCode":@"370705"}];
+            [RequestApi requestTransportDeptlWithId:modelItem.startAreaId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                NSString * startCode = [response stringValueForKey:@"code"];
+                [RequestApi requestTransportDeptlWithId:modelItem.endAreaId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                    NSString * endCode = [response stringValueForKey:@"code"];
+                    if (isStr(startCode)&& isStr(endCode)) {
+                        [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":startCode,@"endCountrySubdivisionCode":endCode}];
+                        [self.mapTransport stopLocationWithShippingNoteInfos:aryDatas listener:listener];
+                        return;
+                    }
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                    
+                }];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+            
         }else if ([modelItem isKindOfClass:[ModelBulkCargoOrder class]]){
-            ModelBulkCargoOrder * modelBulkItem = (ModelBulkCargoOrder *)modelItem;
-            [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelBulkItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":@"370705",@"endCountrySubdivisionCode":@"370705"}];
-        }
+                ModelBulkCargoOrder * modelBulkItem = (ModelBulkCargoOrder *)modelItem;
+                [RequestApi requestTransportDeptlWithId:modelBulkItem.startTownId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                    NSString * startCode = [response stringValueForKey:@"code"];
+                    [RequestApi requestTransportDeptlWithId:modelBulkItem.endTownId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                        NSString * endCode = [response stringValueForKey:@"code"];
+                        if (isStr(startCode)&& isStr(endCode)) {
+                            [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelBulkItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":startCode,@"endCountrySubdivisionCode":endCode}];
+                            [self.mapTransport stopLocationWithShippingNoteInfos:aryDatas listener:listener];
+                            return;
+                        }
+                    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                        
+                    }];
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                    
+                }];        }
     }
-    [self.mapTransport stopLocationWithShippingNoteInfos:aryDatas listener:listener];
 }
 #pragma mark delegate
 - (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location reGeocode:(AMapLocationReGeocode *)reGeocode{
@@ -124,7 +178,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
         return;
     }
     [ModelAddress saveLastLocation:modelAddress];
-
+    
     NSLog(@"sld %f,%f,speed:%f",modelAddress.lat,modelAddress.lng,location.speed);
     //本地记录
     {
@@ -151,7 +205,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
             return;
         }
     }
-   
+    
     [ary addObject:modelAddress];
     [GlobalMethod writeAry:ary key:LOCAL_LOCATION_RECORD];
     //请求
@@ -194,7 +248,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
                              @"addr":UnPackStr(modelItem.desc),
                              @"lat":NSNumber.dou(modelItem.lat),
                              @"spd":NSNumber.lon(modelItem.spd)
-                             }];
+        }];
     }
     NSString * strJson = [GlobalMethod exchangeDicToJson:aryJson];
     [RequestApi requestAddLocationsWithData:strJson delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {

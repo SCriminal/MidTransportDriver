@@ -537,4 +537,16 @@
                           @"entId":NSNumber.dou(entId)};
     [self deleteUrl:@"/zhongcheyun/vehicle/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
+
+/**
+ 详情
+ */
++(void)requestTransportDeptlWithId:(double)identity
+                       delegate:(id <RequestDelegate>)delegate
+                        success:(void (^)(NSDictionary * response, id mark))success
+                        failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"id":NSNumber.dou(identity)};
+    [self getUrl:@"/zhongcheyun/dict/containerarea/1_0_151/{id}" delegate:delegate parameters:dic success:success failure:failure];
+}
+
 @end

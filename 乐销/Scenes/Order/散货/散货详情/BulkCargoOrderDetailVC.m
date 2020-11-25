@@ -19,6 +19,7 @@
 #import "BulkCargoOperateLoadView.h"
 #import "RejectOrderReason.h"
 #import "BulkCargoOrderDetailTrackView.h"
+#import "LocationRecordInstance.h"
 
 @interface BulkCargoOrderDetailVC ()
 @property (nonatomic, strong) BaseNavView *nav;
