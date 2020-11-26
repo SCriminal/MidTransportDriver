@@ -45,7 +45,7 @@
         _labelHello.textColor = [UIColor blackColor];
         _labelHello.font =  [UIFont systemFontOfSize:F(25)];
         [_labelHello fitTitle:@"你好，" variable:0];
-        _labelHello.leftTop = XY(W(25), STATUSBAR_HEIGHT+ W(75));
+        _labelHello.leftTop = XY(W(30), STATUSBAR_HEIGHT+ W(75));
     }
     return _labelHello;
 }
@@ -55,7 +55,7 @@
         _labelWelcome.textColor = [UIColor blackColor];
         _labelWelcome.font =  [UIFont systemFontOfSize:F(25)];
         [_labelWelcome fitTitle:@"欢迎来到中车运" variable:0];
-        _labelWelcome.leftTop = XY(W(25), self.labelHello.bottom + W(20));
+        _labelWelcome.leftTop = XY(W(30), self.labelHello.bottom + W(20));
     }
     return _labelWelcome;
 }

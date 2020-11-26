@@ -5,6 +5,16 @@
 //  Created by 隋林栋 on 2016/12/22.
 //  Copyright © 2016年 ping. All rights reserved.
 //
+/*
+ 1.明确调查目的，首先要参加自己这边的活动，记录相关流程和效果，然后去该组织进行调查
+ 2.认真学习和记录对方的志愿者服务流程，时间，频次，如何调动志愿者积极性，开展哪些志愿者活动，如何宣传
+ 3.根据对方的志愿者记录，对本单位的志愿者服务进行整改和记录。
+*/
+/*
+ 1.本市志愿者，本市市民，与对方取得联系
+ 2.真实的参加；召开座谈会；能否把对方请到
+ 3.做好记录；长期联系；
+ */
 
 #import "TestVC.h"
 #import "BaseNavView+Logical.h"
@@ -177,18 +187,6 @@
     });
     [GlobalMethod showAlert:@"用户使用其他方式进行注册登录"];
 }
-/*
-hail hell hall prejudice intrigue retrospect therapy selection negligible optimistic pessimistic
- negative positive infrastruction capsule toll intensity supervise slave cheese grain gramme toll
- intrigue humanity retrospect statesman long lawn thick oral amend volleybal passport rather in
- infrastruction lavatory aboard assignment comedy impair meet accessary extinct prospect perspective subjective objective agnoy tumble overcoat augment pretty creative coincide chase
- scratch percentage discharge persecute crawl chase commend enable occasion ocean lavatory panel
- quote quart tongue cotton breed assignment quart cloak unfortunately extinct perspective proceeding doctorate trap chemist feburary pretty prosecute early biscuit scratch violin exception attorney circle stop enthusiastic valve empirical snack chase snack quart ridge bonus
- descendant test refrain moral contrast should those patron patrol eternal deceive parcel dog
- inlet and evident biscuit empirical avert cicle accident hostile painting enrish language  equip canteen stocking  crucial cruel medieval comparable combat array capitalism critic dissipate nor drawer immerse distract snack patron quart avert inlet crucial nor ingredient scar malignant absurd valid organ fortnight maiden zeal virgin futile income judicial poisonous xray
- suffice transport precede manifest arbitrary practitioner melt bias previous crowd conflict rein pneumonia gorgeous ingredient malignant prevail creep conscience gracious
-
- */
 
 
 

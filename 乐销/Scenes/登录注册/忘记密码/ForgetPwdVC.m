@@ -68,8 +68,8 @@
         _btnNext.backgroundColor = COLOR_BLUE;
         _btnNext.titleLabel.font = [UIFont systemFontOfSize:F(15)];
         [GlobalMethod setRoundView:_btnNext color:[UIColor clearColor] numRound:5 width:0];
-        [_btnNext setTitle:@"下一步" forState:(UIControlStateNormal)];
-        _btnNext.widthHeight = XY(SCREEN_WIDTH - W(30),W(40));
+        [_btnNext setTitle:@"获取验证码" forState:(UIControlStateNormal)];
+        _btnNext.widthHeight = XY(SCREEN_WIDTH - W(60),W(40));
         [_btnNext setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _btnNext.centerXTop = XY(SCREEN_WIDTH/2.0,self.tfPhone.bottom + W(49));
     }

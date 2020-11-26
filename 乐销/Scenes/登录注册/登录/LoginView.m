@@ -21,7 +21,7 @@
         _btnLogin.titleLabel.font = [UIFont systemFontOfSize:F(15)];
         [GlobalMethod setRoundView:_btnLogin color:[UIColor clearColor] numRound:5 width:0];
         [_btnLogin setTitle:@"登录" forState:(UIControlStateNormal)];
-        _btnLogin.widthHeight = XY(SCREEN_WIDTH - W(30),W(40));
+        _btnLogin.widthHeight = XY(SCREEN_WIDTH - W(60),W(40));
         [_btnLogin setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }
     return _btnLogin;
@@ -82,7 +82,7 @@
 - (void)resetViewWithModel:(id)model{
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-    self.btnLogin.widthHeight = XY(SCREEN_WIDTH - W(50), W(45));
+    self.btnLogin.widthHeight = XY(SCREEN_WIDTH - W(60), W(40));
     self.btnLogin.centerXTop = XY(SCREEN_WIDTH/2.0,0);
     
     self.labelCode.leftTop = XY(self.btnLogin.left,self.btnLogin.bottom+W(40));

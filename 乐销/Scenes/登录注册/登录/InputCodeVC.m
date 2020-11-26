@@ -34,7 +34,7 @@
         _labelCode.textColor = [UIColor blackColor];
         _labelCode.font =  [UIFont systemFontOfSize:F(25)];
         [_labelCode fitTitle:@"请输入短信验证码" variable:0];
-        _labelCode.leftTop = XY(W(25), NAVIGATIONBAR_HEIGHT+ W(35));
+        _labelCode.leftTop = XY(W(30), NAVIGATIONBAR_HEIGHT+ W(35));
     }
     return _labelCode;
 }
@@ -42,46 +42,28 @@
     if (_labelSend == nil) {
         _labelSend = [UILabel new];
         _labelSend.textColor = COLOR_666;
-        _labelSend.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
-        [_labelSend fitTitle:@"验证码已发送到您的手机" variable:0];
-        _labelSend.leftTop = XY(W(25), self.labelCode.bottom + W(20));
+        _labelSend.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        [_labelSend fitTitle:[NSString stringWithFormat:@"验证码已发送至%@",self.strPhone]  variable:0];
+        _labelSend.leftTop = XY(W(30), self.labelCode.bottom + W(20));
     }
     return _labelSend;
 }
-- (UILabel *)labelPhone{
-    if (_labelPhone == nil) {
-        _labelPhone = [UILabel new];
-        _labelPhone.textColor = COLOR_666;
-        _labelPhone.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
-        [_labelPhone fitTitle:UnPackStr(self.strPhone) variable:0];
-        _labelPhone.leftTop = XY(W(25), self.labelSend.bottom + W(12));
-    }
-    return _labelPhone;
-}
-- (UILabel *)labelSix{
-    if (_labelSix == nil) {
-        _labelSix = [UILabel new];
-        _labelSix.textColor = COLOR_666;
-        _labelSix.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
-        [_labelSix fitTitle:@"6位数字验证码" variable:0];
-        _labelSix.leftTop = XY(W(25), self.labelPhone.bottom + W(50));
-    }
-    return _labelSix;
-}
+
+
 - (UILabel *)labelResend{
     if (_labelResend == nil) {
         _labelResend = [UILabel new];
         _labelResend.textColor = COLOR_666;
-        _labelResend.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
+        _labelResend.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         [_labelResend fitTitle:@"重新获取" variable:0];
-        _labelResend.rightCenterY = XY(SCREEN_WIDTH - W(25), self.labelSix.centerY);
+        _labelResend.rightCenterY = XY(W(30), self.codeView.bottom + W(40));
     }
     return _labelResend;
 }
 - (CodeView *)codeView{
     if (!_codeView) {
         _codeView = [CodeView new];
-        _codeView.leftTop = XY(0, self.labelSix.bottom + W(25));
+        _codeView.leftTop = XY(0, self.labelSend.bottom + W(68));
         WEAKSELF
         _codeView.blockComplete = ^(NSString *code) {
             switch (weakSelf.typeFrom) {
@@ -120,8 +102,8 @@
     [self addNav];
     [self.view addSubview:self.labelCode];
     [self.view addSubview:self.labelSend];
-    [self.view addSubview:self.labelPhone];
-    [self.view addSubview:self.labelSix];
+//    [self.view addSubview:self.labelPhone];
+//    [self.view addSubview:self.labelSix];
     [self.view addSubview:self.labelResend];
     [self.view addSubview:self.controlResendCode];
     [self.view addSubview:self.codeView];
@@ -153,16 +135,16 @@
     if (_numTime <=0) {
         //刷新按钮 开始
         [self timerStop];
-        [self.labelResend fitTitle:@"重新发送" variable:0];
+        [self.labelResend fitTitle:@"重新获取" variable:0];
         self.labelResend.textColor = COLOR_BLUE;
         self.controlResendCode.userInteractionEnabled = true;
-        self.labelResend.right = SCREEN_WIDTH - W(25);
+        self.labelResend.left =  W(30);
         return;
     }
     _numTime --;
     [self.labelResend fitTitle:[NSString stringWithFormat:@"%.lf秒以后重新获取",_numTime] variable:0];
-    self.labelResend.textColor = COLOR_666;
-    self.labelResend.right = SCREEN_WIDTH - W(25);
+    self.labelResend.textColor = [UIColor colorWithHexString:@"#9EBAEB"];
+    self.labelResend.left =  W(30);
     self.controlResendCode.userInteractionEnabled = false;
 }
 
@@ -251,25 +233,30 @@
 - (void)resetViewWithModel:(id)model{
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-    CGFloat left = W(25);
-    CGFloat width = (SCREEN_WIDTH - W(50) - 5*W(5))/6.0;
+    CGFloat left = W(30);
+    CGFloat width = W(40);
     for (int i = 0; i<6; i++) {
-        UIView * viewLine = [[UIView alloc]initWithFrame:CGRectMake(left, 0, width, width)];
-        [GlobalMethod setRoundView:viewLine color:COLOR_LINE numRound:5 width:1];
-        viewLine.tag = 10+i;
-        [self addSubview:viewLine];
-        left = viewLine.right+W(5);
+       
         
-        UILabel * labelShow = [[UILabel alloc]initWithFrame:viewLine.frame];
+        UILabel * labelShow = [[UILabel alloc]initWithFrame:CGRectMake(left, 0, width, width)];
         labelShow.backgroundColor = [UIColor clearColor];
-        labelShow.textColor = COLOR_BLUE;
-        labelShow.font = [UIFont systemFontOfSize:F(25) weight:UIFontWeightBold];
+        labelShow.textColor = COLOR_333;
+        labelShow.font = [UIFont systemFontOfSize:F(30) weight:UIFontWeightBold];
         labelShow.tag = 20+i;
         labelShow.textAlignment = NSTextAlignmentCenter;
         [self addSubview:labelShow];
+        
+        UIView * viewLine = [UIView new];
+        viewLine.widthHeight = XY(W(40), W(2));
+        viewLine.backgroundColor = [UIColor colorWithHexString:@"#D9D9D9"];
+        viewLine.tag = 10+i;
+        viewLine.centerXBottom = XY(labelShow.centerX, labelShow.bottom+ W(20));
+        [self addSubview:viewLine];
+        
+        left = viewLine.right+W(15);
+        self.height = viewLine.bottom;
     }
-    //设置总高度
-    self.height = width;
+    
 }
 
 #pragma mark text change
@@ -283,8 +270,8 @@
         }else{
             label.text = @"";
         }
-        UIView * viewLine = [self viewWithTag:10+i];
-        [GlobalMethod setRoundView:viewLine color:str.length >= i+1?COLOR_BLUE:COLOR_LINE numRound:5 width:1];
+//        UIView * viewLine = [self viewWithTag:10+i];
+//        [GlobalMethod setRoundView:viewLine color:str.length >= i+1?COLOR_BLUE:COLOR_LINE numRound:5 width:1];
     }
     if (self.tf.text.length >=6 && self.blockComplete) {
         self.blockComplete([self.tf.text substringToIndex:6]);
