@@ -80,6 +80,8 @@
 #import "GlobalData.h"
 //自定义navvie
 #import "BaseNavView.h"
+#import "BaseNavView+Logical.h"
+
 //view category
 #import "UIView+Size.h"
 //base table view

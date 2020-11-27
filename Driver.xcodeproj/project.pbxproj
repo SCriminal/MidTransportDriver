@@ -297,6 +297,8 @@
 		D2E50D0A1E319E650045AD3F /* BaseVC+KeyboardObserve.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E50D091E319E650045AD3F /* BaseVC+KeyboardObserve.m */; };
 		D2F09E9024DB899900CE85C3 /* SelectGenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F09E8F24DB899900CE85C3 /* SelectGenderView.m */; };
 		D2F11C6D2097103600F18CBD /* UITextField+Text.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F11C6C2097103600F18CBD /* UITextField+Text.m */; };
+		D2F3A4FC2570EA11009EBF3F /* AutoConfigOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A4FB2570EA11009EBF3F /* AutoConfigOrderListVC.m */; };
+		D2F3A4FF2570EA2D009EBF3F /* AutoConfigOrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A4FE2570EA2D009EBF3F /* AutoConfigOrderListCell.m */; };
 		D2F733B41E8642EE0008E561 /* LocalData.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F733B31E8642EE0008E561 /* LocalData.json */; };
 		D2F8473D21B1101E00833C56 /* LeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F8473C21B1101E00833C56 /* LeftMenuCell.m */; };
 		D2F926AC24CFC62900FB256D /* tab_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F926AB24CFC62900FB256D /* tab_shadow@2x.png */; };
@@ -933,6 +935,10 @@
 		D2F09E8F24DB899900CE85C3 /* SelectGenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectGenderView.m; sourceTree = "<group>"; };
 		D2F11C6B2097103600F18CBD /* UITextField+Text.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+Text.h"; sourceTree = "<group>"; };
 		D2F11C6C2097103600F18CBD /* UITextField+Text.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Text.m"; sourceTree = "<group>"; };
+		D2F3A4FA2570EA11009EBF3F /* AutoConfigOrderListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoConfigOrderListVC.h; sourceTree = "<group>"; };
+		D2F3A4FB2570EA11009EBF3F /* AutoConfigOrderListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoConfigOrderListVC.m; sourceTree = "<group>"; };
+		D2F3A4FD2570EA2D009EBF3F /* AutoConfigOrderListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoConfigOrderListCell.h; sourceTree = "<group>"; };
+		D2F3A4FE2570EA2D009EBF3F /* AutoConfigOrderListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoConfigOrderListCell.m; sourceTree = "<group>"; };
 		D2F733B31E8642EE0008E561 /* LocalData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocalData.json; sourceTree = "<group>"; };
 		D2F8473B21B1101E00833C56 /* LeftMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuCell.h; sourceTree = "<group>"; };
 		D2F8473C21B1101E00833C56 /* LeftMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuCell.m; sourceTree = "<group>"; };
@@ -2694,6 +2700,17 @@
 			path = TextViewCategory;
 			sourceTree = "<group>";
 		};
+		D2F3A4F92570E8AA009EBF3F /* 智能配货 */ = {
+			isa = PBXGroup;
+			children = (
+				D2F3A4FA2570EA11009EBF3F /* AutoConfigOrderListVC.h */,
+				D2F3A4FB2570EA11009EBF3F /* AutoConfigOrderListVC.m */,
+				D2F3A4FD2570EA2D009EBF3F /* AutoConfigOrderListCell.h */,
+				D2F3A4FE2570EA2D009EBF3F /* AutoConfigOrderListCell.m */,
+			);
+			path = "智能配货";
+			sourceTree = "<group>";
+		};
 		D2FC339A247F56D4000DE338 /* AddCar */ = {
 			isa = PBXGroup;
 			children = (
@@ -2890,6 +2907,7 @@
 		DAC5CF551DFFC3C20032E76F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D2F3A4F92570E8AA009EBF3F /* 智能配货 */,
 				D2152F5D21815DBE0085437D /* CustomView */,
 				D25F55C92178767600FD4898 /* Order */,
 				D28466912160A81B002A8650 /* Main */,
@@ -3260,6 +3278,7 @@
 				D20FFB6E1E0D18B900ACA896 /* DownListViewBG.m in Sources */,
 				D290DB2C226F01F0004B18B4 /* HotLineView.m in Sources */,
 				D28A8684225F1B0F001E3372 /* IntegralRecordCell.m in Sources */,
+				D2F3A4FC2570EA11009EBF3F /* AutoConfigOrderListVC.m in Sources */,
 				D2C99C381E0BC021001D5DBA /* AddSubtractView.m in Sources */,
 				D22A413121803C650057C3B4 /* PerfectTextCell.m in Sources */,
 				D21CA0611F064D0C00FAE8B3 /* NSURL+Category.m in Sources */,
@@ -3309,6 +3328,7 @@
 				D2C55812238CC9D50050694F /* ModelValidCar.m in Sources */,
 				D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */,
 				D21F19441E1A46390094B90F /* BaseVC+BaseImageSelectVC.m in Sources */,
+				D2F3A4FF2570EA2D009EBF3F /* AutoConfigOrderListCell.m in Sources */,
 				D27470B022A798DA009B645D /* RequestApi+Location.m in Sources */,
 				D22B1D542383E34400BC00F0 /* ScanOrderListVC.m in Sources */,
 				D23327CE2185A6CB00495488 /* OrderListManagementVC.m in Sources */,

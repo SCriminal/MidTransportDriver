@@ -254,6 +254,48 @@ static const char topToUpViewBGColorKey = '\0';
     }
     return true;
 }
+- (void)addRoundCorner:(UIRectCorner)corner radius:(CGFloat )radius{
+    
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:corner cornerRadii:CGSizeMake(radius, radius)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
+    maskLayer.frame = self.bounds;
+    maskLayer.path = maskPath.CGPath;
+    
+    
+    self.layer.mask = maskLayer;
+    
+}
+
+- (void)addRoundCorner:(UIRectCorner)corner radius:(CGFloat )radius lineWidth:(CGFloat)lineWidth lineColor:(UIColor *)lineColor{
+    
+    self.layer.masksToBounds = YES;
+    
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:corner cornerRadii:CGSizeMake(radius, radius)];
+    
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
+    maskLayer.frame = self.bounds;
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
+    
+    if (lineWidth) {
+        CAShapeLayer *borderLayer=[CAShapeLayer layer];
+        borderLayer.path= maskPath.CGPath;
+        borderLayer.fillColor = [UIColor clearColor].CGColor;
+        borderLayer.strokeColor= lineColor.CGColor;
+        borderLayer.lineWidth= lineWidth;
+        borderLayer.frame=self.bounds;
+        [self.layer addSublayer:borderLayer];
+    }
+}
+- (void)removeCorner{
+    [self.layer.mask removeFromSuperlayer];
+    for (int i = 0; i< self.layer.sublayers.count; i++) {
+        CALayer * layer = self.layer.sublayers[i];
+        if ([layer isKindOfClass:CAShapeLayer.class]) {
+            [layer removeFromSuperlayer];
+        }
+    }
+}
 @end
 
 

@@ -40,7 +40,7 @@
     self.delegate = self;
     [self.view setBackgroundColor:COLOR_BACKGROUND];
     // 添加子控制器
-    [self setUpChildVC:[NSClassFromString(@"BulkCargoListManageVC") new] title:@"智能配货" image:@"tab_indent_default" selectedImage:@"tab_indent_selected"];
+    [self setUpChildVC:[NSClassFromString(@"AutoConfigOrderListVC") new] title:@"智能配货" image:@"tab_indent_default" selectedImage:@"tab_indent_selected"];
     [self setUpChildVC:[NSClassFromString(@"ScanOrderListVC") new] title:@"最新货源" image:@"tab_scanning_default" selectedImage:@"tab_scanning_selected"];
     
     [self setUpChildVC:[NSClassFromString(@"OrderListManagementVC") new] title:@"运单中心" image:@"tab_waybill_default" selectedImage:@"tab_waybill_selected"];

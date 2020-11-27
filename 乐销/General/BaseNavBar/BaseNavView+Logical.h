@@ -11,12 +11,8 @@
 @interface BaseNavView (Logical)
 
 //设置蓝色模式
+- (void)configBackBlueStyle;
+//设置蓝色模式
 - (void)configBlueStyle;
 
-//设置红色模式
-- (void)configRedStyle;
-
-//设置黑色模式
-- (void)configBlackBackStyle;
-- (void)configBlackStyle;
 @end

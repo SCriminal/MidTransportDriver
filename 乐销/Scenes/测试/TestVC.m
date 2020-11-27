@@ -5,16 +5,6 @@
 //  Created by 隋林栋 on 2016/12/22.
 //  Copyright © 2016年 ping. All rights reserved.
 //
-/*
- 1.明确调查目的，首先要参加自己这边的活动，记录相关流程和效果，然后去该组织进行调查
- 2.认真学习和记录对方的志愿者服务流程，时间，频次，如何调动志愿者积极性，开展哪些志愿者活动，如何宣传
- 3.根据对方的志愿者记录，对本单位的志愿者服务进行整改和记录。
-*/
-/*
- 1.本市志愿者，本市市民，与对方取得联系
- 2.真实的参加；召开座谈会；能否把对方请到
- 3.做好记录；长期联系；
- */
 
 #import "TestVC.h"
 #import "BaseNavView+Logical.h"
@@ -72,7 +62,6 @@
         [weakSelf.view endEditing:true];
         [weakSelf jump];
     }];
-    [nav configRedStyle];
     [self.view addSubview:nav];
     [self.view addSubview:self.labelShow];
     self.labelShow.leftTop = XY(0, NAVIGATIONBAR_HEIGHT);

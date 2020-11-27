@@ -40,4 +40,8 @@
 - (void)resetWithViews:(NSArray *)ary;
 //灰色背景
 + (instancetype)initGrayBgWithViews:(NSArray *)ary;
+//config corner
+- (void)addRoundCorner:(UIRectCorner)corner radius:(CGFloat )radius;
+- (void)addRoundCorner:(UIRectCorner)corner radius:(CGFloat )radius lineWidth:(CGFloat)lineWidth lineColor:(UIColor *)lineColor;
+- (void)removeCorner;
 @end
