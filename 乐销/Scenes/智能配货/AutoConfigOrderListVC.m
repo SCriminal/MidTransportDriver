@@ -31,8 +31,51 @@
 - (NoResultView *)noResultView{
     if (!_noResultView) {
         _noResultView = [NoResultView new];
-        _noResultView.verticalModify = -HEIGHT_ORDERMANAGEMENTBOTTOMVIEW/2.0;
-        [_noResultView resetWithImageName:@"empty_waybill_default" title:@"暂无运单信息"];
+        [_noResultView removeAllSubViews];
+        {
+            UIImageView * iv = [UIImageView new];
+            iv.backgroundColor = [UIColor clearColor];
+            iv.contentMode = UIViewContentModeScaleAspectFill;
+            iv.clipsToBounds = true;
+            iv.image = [UIImage imageNamed:@"empty_auto"];
+            iv.widthHeight = XY(W(162),W(120));
+            iv.centerXTop = XY(SCREEN_WIDTH/2.0,W(90));
+            [_noResultView addSubview:iv];
+        }
+        {
+            UILabel * l = [UILabel new];
+            l.font = [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
+            l.textColor = COLOR_666;
+            l.backgroundColor = [UIColor clearColor];
+            l.numberOfLines = 0;
+            l.lineSpace = W(0);
+            [l fitTitle:@"您还未添加常运路线！" variable:SCREEN_WIDTH];
+            l.centerXTop = XY(SCREEN_WIDTH/2.0, W(260));
+            [_noResultView addSubview:l];
+        }
+        {
+            UILabel * l = [UILabel new];
+            l.font = [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
+            l.textColor = COLOR_666;
+            l.backgroundColor = [UIColor clearColor];
+            l.numberOfLines = 0;
+            l.lineSpace = W(0);
+            [l fitTitle:@"添加后平台自动为您推送匹配路线资源" variable:SCREEN_WIDTH];
+            l.centerXTop = XY(SCREEN_WIDTH/2.0, W(284));
+            [_noResultView addSubview:l];
+        }
+        {
+            UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            btn.widthHeight = XY(W(315), W(39));
+            btn.backgroundColor = [UIColor whiteColor];
+            [btn setTitle:@"+ 添加常用路线" forState:UIControlStateNormal];
+            btn.titleLabel.fontNum = F(15);
+            [btn setTitleColor:[UIColor colorWithHexString:@"#FF0000"] forState:UIControlStateNormal];
+            [btn addTarget:self action:@selector(btnAddClick) forControlEvents:UIControlEventTouchUpInside];
+            [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:1 lineColor:[UIColor colorWithHexString:@"FF0000"]];
+            btn.centerXTop = XY(SCREEN_WIDTH/2.0, W(348));
+            [_noResultView addSubview:btn];
+        }
     }
     return _noResultView;
 }
@@ -134,7 +177,7 @@
         if (!isAry(aryRequest)) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
-        [self.aryDatas addObjectsFromArray:aryRequest];
+//        [self.aryDatas addObjectsFromArray:aryRequest];
         [self.tableView reloadData];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
@@ -142,6 +185,12 @@
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
+}
+
+
+//btn click
+- (void)btnAddClick{
+    
 }
 
 @end
