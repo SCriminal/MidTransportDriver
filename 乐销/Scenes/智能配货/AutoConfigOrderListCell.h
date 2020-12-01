@@ -7,18 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AutoConfigTimeView.h"
 
 @interface AutoConfigOrderListCell : UITableViewCell
 @property (strong, nonatomic) UILabel *addressFrom;
 @property (strong, nonatomic) UILabel *addressTo;
-@property (strong, nonatomic) UIView *iconAddress;
-@property (strong, nonatomic) UILabel *packageAddress;
-@property (strong, nonatomic) UILabel *import;
-@property (strong, nonatomic) UILabel *loadAddress;
-@property (strong, nonatomic) UIImageView *ivBg;
+@property (strong, nonatomic) UIImageView *iconAddress;
+@property (strong, nonatomic) UIView *viewBG;
+@property (strong, nonatomic) UILabel *goodsInfo;
+@property (strong, nonatomic) UILabel *goodsName;
+@property (strong, nonatomic) UILabel *time;
+@property (strong, nonatomic) UILabel *price;
+@property (strong, nonatomic) UILabel *distance;
+@property (nonatomic, strong) AutoConfigTimeView *timeView;
 
-@property (strong, nonatomic) UIButton *btnLeft;
-@property (strong, nonatomic) UIButton *btnRight;
 @property (nonatomic, strong) void (^blockDetail)(ModelOrderList *);
 
 @property (nonatomic, strong) ModelOrderList *model;

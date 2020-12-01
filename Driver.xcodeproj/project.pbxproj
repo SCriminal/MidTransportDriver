@@ -299,6 +299,7 @@
 		D2F11C6D2097103600F18CBD /* UITextField+Text.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F11C6C2097103600F18CBD /* UITextField+Text.m */; };
 		D2F3A4FC2570EA11009EBF3F /* AutoConfigOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A4FB2570EA11009EBF3F /* AutoConfigOrderListVC.m */; };
 		D2F3A4FF2570EA2D009EBF3F /* AutoConfigOrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A4FE2570EA2D009EBF3F /* AutoConfigOrderListCell.m */; };
+		D2F3A5022574EDE1009EBF3F /* AutoConfigTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A5012574EDE1009EBF3F /* AutoConfigTimeView.m */; };
 		D2F733B41E8642EE0008E561 /* LocalData.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F733B31E8642EE0008E561 /* LocalData.json */; };
 		D2F8473D21B1101E00833C56 /* LeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F8473C21B1101E00833C56 /* LeftMenuCell.m */; };
 		D2F926AC24CFC62900FB256D /* tab_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F926AB24CFC62900FB256D /* tab_shadow@2x.png */; };
@@ -939,6 +940,8 @@
 		D2F3A4FB2570EA11009EBF3F /* AutoConfigOrderListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoConfigOrderListVC.m; sourceTree = "<group>"; };
 		D2F3A4FD2570EA2D009EBF3F /* AutoConfigOrderListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoConfigOrderListCell.h; sourceTree = "<group>"; };
 		D2F3A4FE2570EA2D009EBF3F /* AutoConfigOrderListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoConfigOrderListCell.m; sourceTree = "<group>"; };
+		D2F3A5002574EDE1009EBF3F /* AutoConfigTimeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoConfigTimeView.h; sourceTree = "<group>"; };
+		D2F3A5012574EDE1009EBF3F /* AutoConfigTimeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoConfigTimeView.m; sourceTree = "<group>"; };
 		D2F733B31E8642EE0008E561 /* LocalData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocalData.json; sourceTree = "<group>"; };
 		D2F8473B21B1101E00833C56 /* LeftMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuCell.h; sourceTree = "<group>"; };
 		D2F8473C21B1101E00833C56 /* LeftMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuCell.m; sourceTree = "<group>"; };
@@ -2707,6 +2710,8 @@
 				D2F3A4FB2570EA11009EBF3F /* AutoConfigOrderListVC.m */,
 				D2F3A4FD2570EA2D009EBF3F /* AutoConfigOrderListCell.h */,
 				D2F3A4FE2570EA2D009EBF3F /* AutoConfigOrderListCell.m */,
+				D2F3A5002574EDE1009EBF3F /* AutoConfigTimeView.h */,
+				D2F3A5012574EDE1009EBF3F /* AutoConfigTimeView.m */,
 			);
 			path = "智能配货";
 			sourceTree = "<group>";
@@ -3318,6 +3323,7 @@
 				D22BA9D61E5EB8CA00C5B391 /* FSCalendarCollectionViewLayout.m in Sources */,
 				D29191FE21E0A6F6001B2F9E /* ModelOrderList.m in Sources */,
 				D25145D21E33055300E8107F /* NSArray+Category.m in Sources */,
+				D2F3A5022574EDE1009EBF3F /* AutoConfigTimeView.m in Sources */,
 				D2043B4B1F42CDAC0032AFB0 /* UIScrollView+Category.m in Sources */,
 				D21B2FBF23960AF2005B43D0 /* AttachedCarTeamListVC.m in Sources */,
 				D2BCE9162269653A00E8C4E2 /* ListAlertView.m in Sources */,

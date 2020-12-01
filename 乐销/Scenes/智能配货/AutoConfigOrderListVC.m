@@ -177,7 +177,7 @@
         if (!isAry(aryRequest)) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
-//        [self.aryDatas addObjectsFromArray:aryRequest];
+        [self.aryDatas addObjectsFromArray:aryRequest];
         [self.tableView reloadData];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
