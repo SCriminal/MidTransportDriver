@@ -19,6 +19,7 @@
 
 @interface AutoConfigOrderListVC ()
 @property (nonatomic, strong) AutoConfigOrderListFilterView *filterView;
+@property (nonatomic, strong) NSTimer *timer;
 
 @end
 
@@ -110,7 +111,6 @@
     [self requestList];
 }
 
-
 #pragma mark UITableViewDelegate
 //row num
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -193,4 +193,38 @@
     
 }
 
+#pragma mark 定时器相关
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self timerRun];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self timerStop];
+}
+
+- (void)timerStart{
+    //开启定时器
+    if (_timer == nil) {
+        _timer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
+    }
+    
+}
+
+- (void)timerRun{
+    if (self.aryDatas.count) {
+        for (AutoConfigOrderListCell * cell in self.tableView.visibleCells) {
+            [cell.timeView resetTime:[NSDate date]];
+        }
+        
+    }
+}
+
+- (void)timerStop{
+    //停止定时器
+    if (_timer != nil) {
+        [_timer invalidate];
+        self.timer = nil;
+    }
+}
 @end

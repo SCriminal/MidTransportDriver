@@ -12,7 +12,7 @@
 //request
 #import "RequestApi+Order.h"
 #import "BulkCargoListCell.h"
-
+#import "NSDate+YYAdd.h"
 @interface AutoConfigOrderListCell ()
 
 @end
@@ -177,7 +177,9 @@
       self.distance.rightTop = XY(SCREEN_WIDTH - W(15),top+ W(20));
     top = self.distance.bottom;
       
+    self.timeView.date = [[NSDate date] dateByAddingDays:2];
     self.timeView.centerXTop = XY(SCREEN_WIDTH/2.0, top + W(20));
+    [self.timeView resetTime:[NSDate date]];
     self.viewBG.height = self.timeView.bottom + W(15);
          //设置总高度
     self.height = self.viewBG.bottom + W(12);

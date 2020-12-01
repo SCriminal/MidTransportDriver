@@ -26,8 +26,8 @@
     if (_labelTitle == nil) {
         _labelTitle = [UILabel new];
         _labelTitle.textColor = [UIColor whiteColor];
-        _labelTitle.textAlignment = NSTextAlignmentCenter;
-        _labelTitle.font =  [UIFont systemFontOfSize:F(17) weight:UIFontWeightRegular];
+        _labelTitle.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
+
     }
     return _labelTitle;
 }
@@ -35,7 +35,9 @@
     if (_time == nil) {
         _time = [UILabel new];
         _time.textColor = [UIColor whiteColor];
-        _time.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        _time.textAlignment = NSTextAlignmentCenter;
+        _time.font =  [UIFont systemFontOfSize:F(17) weight:UIFontWeightRegular];
+
     }
     return _time;
 }
@@ -68,7 +70,7 @@
        self.labelTitle.rightCenterY = XY(self.width - W(30),self.height/2.0);
 }
 - (void)resetTime:(NSDate *)date{
-   int interval = (int)[date timeIntervalSinceNow];
+    int interval = (int)[self.date timeIntervalSinceNow];
         if(interval>0){
             int sec = interval % 60;
             int min = (interval/60)%60;
@@ -78,10 +80,10 @@
             NSString * strMin = NSNumber.dou(min).stringValue;
             NSString * strHou = NSNumber.dou(hou).stringValue;
             NSString * strDay = NSNumber.dou(day).stringValue;
-            NSString * miao = @"秒";
-            NSString * fen = @"分";
-            NSString * shi = @"时";
-            NSString * tian = @"天";
+            NSString * miao = @" 秒 ";
+            NSString * fen = @" 分 ";
+            NSString * shi = @" 时 ";
+            NSString * tian = @" 天 ";
 
             NSArray * ary0 = @[strDay,tian,strHou,shi,strMin,fen,strSec,miao];
             NSMutableString * muStr = [NSMutableString new];
@@ -98,11 +100,11 @@
                 }else{
                     [strAttribute setAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor],        NSFontAttributeName : [UIFont systemFontOfSize:F(17) weight:UIFontWeightMedium]} range:[muStr rangeOfString:str]];
                 }
+                isJ = !isJ;
 
             }
-            self.labelTitle.attributedText = strAttribute;
-            self.labelTitle.widthHeight = XY(W(228), [UIFont fetchHeight:F(17)]);
-            [self.time fitTitle:[NSString stringWithFormat:@"%d天%d时%d分%d秒",sec,min,hou,day] variable:0];
+            self.time.attributedText = strAttribute;
+            self.time.widthHeight = XY(W(228), [UIFont fetchHeight:F(17)]);
             self.time.centerXCenterY = XY(W(114),self.height/2.0);
         }
 }

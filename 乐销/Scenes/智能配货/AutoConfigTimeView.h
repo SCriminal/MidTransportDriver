@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UILabel *time;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) void (^blockClick)(void);
+@property (nonatomic, strong) NSDate *date;
 
 #pragma mark 刷新view
 - (void)resetView;
