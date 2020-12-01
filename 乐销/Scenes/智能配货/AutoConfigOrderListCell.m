@@ -13,13 +13,22 @@
 #import "RequestApi+Order.h"
 #import "BulkCargoListCell.h"
 #import "NSDate+YYAdd.h"
+#import "AutoNewsView.h"
+
 @interface AutoConfigOrderListCell ()
+@property (nonatomic, strong) AutoNewsView *newsView;
 
 @end
 
 @implementation AutoConfigOrderListCell
 
 #pragma mark 懒加载
+- (AutoNewsView *)newsView{
+    if (!_newsView) {
+        _newsView = [AutoNewsView new];
+    }
+    return _newsView;
+}
 - (UIView *)viewBG{
     if (_viewBG == nil) {
         _viewBG = [UIView new];
@@ -117,6 +126,7 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.clipsToBounds = false;
         [self.contentView addSubview:self.viewBG];
+        [self.contentView addSubview:self.newsView];
         [self.contentView addSubview:self.addressFrom];
         [self.contentView addSubview:self.addressTo];
         [self.contentView addSubview:self.iconAddress];
@@ -145,8 +155,12 @@
     }
        self.addressTo.centerXCenterY = XY((SCREEN_WIDTH - self.iconAddress.right - W(10))/2.0 + SCREEN_WIDTH/2.0 + self.iconAddress.width/2.0, self.iconAddress.centerY);
        
-  
     CGFloat top = self.addressTo.bottom + W(20);
+    self.newsView.centerXTop = XY(SCREEN_WIDTH/2.0, top);
+    [self.newsView resetWithAry:@[@"156****0983      成交量：100      好评率：90%",@"156****0983      成交量：101      好评率：90%"]];
+    [self.newsView timerStart];
+    top = self.newsView.bottom + W(20);
+  
     {
         [self.goodsInfo fitTitle:@"2000吨（剩1800吨）/高栏/13-17.5米" variable:SCREEN_WIDTH - W(30)];
         NSMutableAttributedString * strAttribute = [[NSMutableAttributedString alloc]initWithString:self.goodsInfo.text];
@@ -179,7 +193,7 @@
       
     self.timeView.date = [[NSDate date] dateByAddingDays:2];
     self.timeView.centerXTop = XY(SCREEN_WIDTH/2.0, top + W(20));
-    [self.timeView resetTime:[NSDate date]];
+    [self.timeView resetTime];
     self.viewBG.height = self.timeView.bottom + W(15);
          //设置总高度
     self.height = self.viewBG.bottom + W(12);

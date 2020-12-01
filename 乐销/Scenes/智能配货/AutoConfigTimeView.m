@@ -69,13 +69,13 @@
        [self.labelTitle fitTitle:self.title variable:0];
        self.labelTitle.rightCenterY = XY(self.width - W(30),self.height/2.0);
 }
-- (void)resetTime:(NSDate *)date{
+- (void)resetTime{
     int interval = (int)[self.date timeIntervalSinceNow];
         if(interval>0){
             int sec = interval % 60;
             int min = (interval/60)%60;
-            int hou = (interval/3600)%60;
-            int day = (interval/(3600*24))%60;
+            int hou = (interval/3600)%24;
+            int day = (interval/(3600*24));
             NSString * strSec = NSNumber.dou(sec).stringValue;
             NSString * strMin = NSNumber.dou(min).stringValue;
             NSString * strHou = NSNumber.dou(hou).stringValue;

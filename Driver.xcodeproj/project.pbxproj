@@ -300,6 +300,8 @@
 		D2F3A4FC2570EA11009EBF3F /* AutoConfigOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A4FB2570EA11009EBF3F /* AutoConfigOrderListVC.m */; };
 		D2F3A4FF2570EA2D009EBF3F /* AutoConfigOrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A4FE2570EA2D009EBF3F /* AutoConfigOrderListCell.m */; };
 		D2F3A5022574EDE1009EBF3F /* AutoConfigTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A5012574EDE1009EBF3F /* AutoConfigTimeView.m */; };
+		D2F3A50625762702009EBF3F /* AutoConfigDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A50525762702009EBF3F /* AutoConfigDetailVC.m */; };
+		D2F3A509257642B3009EBF3F /* AutoNewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A508257642B3009EBF3F /* AutoNewsView.m */; };
 		D2F733B41E8642EE0008E561 /* LocalData.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F733B31E8642EE0008E561 /* LocalData.json */; };
 		D2F8473D21B1101E00833C56 /* LeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F8473C21B1101E00833C56 /* LeftMenuCell.m */; };
 		D2F926AC24CFC62900FB256D /* tab_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F926AB24CFC62900FB256D /* tab_shadow@2x.png */; };
@@ -942,6 +944,10 @@
 		D2F3A4FE2570EA2D009EBF3F /* AutoConfigOrderListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoConfigOrderListCell.m; sourceTree = "<group>"; };
 		D2F3A5002574EDE1009EBF3F /* AutoConfigTimeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoConfigTimeView.h; sourceTree = "<group>"; };
 		D2F3A5012574EDE1009EBF3F /* AutoConfigTimeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoConfigTimeView.m; sourceTree = "<group>"; };
+		D2F3A50425762702009EBF3F /* AutoConfigDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoConfigDetailVC.h; sourceTree = "<group>"; };
+		D2F3A50525762702009EBF3F /* AutoConfigDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoConfigDetailVC.m; sourceTree = "<group>"; };
+		D2F3A507257642B2009EBF3F /* AutoNewsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoNewsView.h; sourceTree = "<group>"; };
+		D2F3A508257642B3009EBF3F /* AutoNewsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoNewsView.m; sourceTree = "<group>"; };
 		D2F733B31E8642EE0008E561 /* LocalData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocalData.json; sourceTree = "<group>"; };
 		D2F8473B21B1101E00833C56 /* LeftMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuCell.h; sourceTree = "<group>"; };
 		D2F8473C21B1101E00833C56 /* LeftMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuCell.m; sourceTree = "<group>"; };
@@ -2706,6 +2712,7 @@
 		D2F3A4F92570E8AA009EBF3F /* 智能配货 */ = {
 			isa = PBXGroup;
 			children = (
+				D2F3A503257626ED009EBF3F /* 配货详情 */,
 				D2F3A4FA2570EA11009EBF3F /* AutoConfigOrderListVC.h */,
 				D2F3A4FB2570EA11009EBF3F /* AutoConfigOrderListVC.m */,
 				D2F3A4FD2570EA2D009EBF3F /* AutoConfigOrderListCell.h */,
@@ -2714,6 +2721,17 @@
 				D2F3A5012574EDE1009EBF3F /* AutoConfigTimeView.m */,
 			);
 			path = "智能配货";
+			sourceTree = "<group>";
+		};
+		D2F3A503257626ED009EBF3F /* 配货详情 */ = {
+			isa = PBXGroup;
+			children = (
+				D2F3A507257642B2009EBF3F /* AutoNewsView.h */,
+				D2F3A508257642B3009EBF3F /* AutoNewsView.m */,
+				D2F3A50425762702009EBF3F /* AutoConfigDetailVC.h */,
+				D2F3A50525762702009EBF3F /* AutoConfigDetailVC.m */,
+			);
+			path = "配货详情";
 			sourceTree = "<group>";
 		};
 		D2FC339A247F56D4000DE338 /* AddCar */ = {
@@ -3195,6 +3213,7 @@
 				DAB576881E305E5C006626BC /* NoResultView.m in Sources */,
 				D267E69A234C9A62005735B0 /* OrderManagementBottomView.m in Sources */,
 				D27470AD22A787DA009B645D /* LocationRecordInstance.m in Sources */,
+				D2F3A509257642B3009EBF3F /* AutoNewsView.m in Sources */,
 				D2164ED21F05CFC1005120C3 /* UIButton+countDown.m in Sources */,
 				D2DFD7902296A58F00363142 /* ModelAuthorityInfo.m in Sources */,
 				D22B1D572383E40700BC00F0 /* ScanListCell.m in Sources */,
@@ -3344,6 +3363,7 @@
 				D2B1040E22ED94CC002D9BFF /* LocationEagleInstance.m in Sources */,
 				D23327C421855EDC00495488 /* DriverOperateView.m in Sources */,
 				D2BE30DA210713760059929D /* LinkScrollView.m in Sources */,
+				D2F3A50625762702009EBF3F /* AutoConfigDetailVC.m in Sources */,
 				D285E2961E6D472F00DE9A6D /* NSDateFormatter+Category.m in Sources */,
 				D2996A4521E6E3AA00562587 /* Collection_Image.m in Sources */,
 				D2BC9ABC1DFFE16D00B0468E /* RequestApi.m in Sources */,

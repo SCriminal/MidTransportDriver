@@ -18,6 +18,6 @@
 
 #pragma mark 刷新view
 - (void)resetView;
-- (void)resetTime:(NSDate *)date;
+- (void)resetTime;
 
 @end

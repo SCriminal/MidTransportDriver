@@ -11,11 +11,9 @@
 @implementation BaseNavView (Logical)
 //设置蓝色模式
 - (void)configBackBlueStyle{
-    for (UIImageView * iv in self.leftView.subviews) {
-        if ([iv isKindOfClass:[UIImageView class]]) {
-            iv.image = [UIImage imageNamed:@"back_white"];
-        }
-    }
+ 
+    [BaseNavView resetControl:self.backBtn imageName:@"back_white" imageSize:CGSizeMake(W(10), W(16)) isLeft:true];
+
     [self configBlueStyle];
 }
 //设置蓝色模式

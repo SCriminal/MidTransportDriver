@@ -16,6 +16,7 @@
 #import "DriverOperateVC.h"
 //bottom view
 #import "OrderManagementBottomView.h"
+#import "AutoConfigDetailVC.h"
 
 @interface AutoConfigOrderListVC ()
 @property (nonatomic, strong) AutoConfigOrderListFilterView *filterView;
@@ -135,8 +136,8 @@
     [self jumpToDetail:model];
 }
 - (void)jumpToDetail:(ModelOrderList *)model{
-    DriverOperateVC * operateVC = [DriverOperateVC new];
-    operateVC.modelOrder = model;
+    AutoConfigDetailVC * operateVC = [AutoConfigDetailVC new];
+    operateVC.modelList = model;
     WEAKSELF
     operateVC.blockBack = ^(UIViewController *vc) {
         [weakSelf refreshHeaderAll];
@@ -196,30 +197,25 @@
 #pragma mark 定时器相关
 - (void)viewDidAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self timerRun];
+    [self timerStart];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self timerStop];
 }
-
 - (void)timerStart{
     //开启定时器
     if (_timer == nil) {
         _timer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
     }
-    
 }
-
 - (void)timerRun{
     if (self.aryDatas.count) {
         for (AutoConfigOrderListCell * cell in self.tableView.visibleCells) {
-            [cell.timeView resetTime:[NSDate date]];
+            [cell.timeView resetTime];
         }
-        
     }
 }
-
 - (void)timerStop{
     //停止定时器
     if (_timer != nil) {
