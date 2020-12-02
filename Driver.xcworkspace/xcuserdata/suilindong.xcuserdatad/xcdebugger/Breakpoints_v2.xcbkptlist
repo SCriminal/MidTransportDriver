@@ -117,8 +117,8 @@
             timestampString = "600691505.983978"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
             landmarkName = "-requestOperate"
             landmarkType = "7">
          </BreakpointContent>
@@ -389,8 +389,8 @@
             timestampString = "600691505.984331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "-bottomView"
             landmarkType = "7">
          </BreakpointContent>
@@ -592,8 +592,8 @@
             timestampString = "600691505.985931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -609,8 +609,8 @@
             timestampString = "600691505.986017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "564"
-            endingLineNumber = "564"
+            startingLineNumber = "563"
+            endingLineNumber = "563"
             landmarkName = "-orc:"
             landmarkType = "7">
          </BreakpointContent>
@@ -626,8 +626,8 @@
             timestampString = "600691505.986078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "552"
-            endingLineNumber = "552"
+            startingLineNumber = "551"
+            endingLineNumber = "551"
             landmarkName = "-orc:"
             landmarkType = "7">
             <Locations>
@@ -779,8 +779,8 @@
             timestampString = "600691505.9862601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "556"
-            endingLineNumber = "556"
+            startingLineNumber = "555"
+            endingLineNumber = "555"
             landmarkName = "-orc:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1454,8 +1454,8 @@
             timestampString = "600691505.9870369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "389"
-            endingLineNumber = "389"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
             landmarkName = "-drawLine:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1471,8 +1471,8 @@
             timestampString = "600691505.9870991"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "385"
-            endingLineNumber = "385"
+            startingLineNumber = "384"
+            endingLineNumber = "384"
             landmarkName = "-drawLine:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1488,8 +1488,8 @@
             timestampString = "600691505.987179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "533"
-            endingLineNumber = "533"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
             landmarkName = "-orc:"
             landmarkType = "7">
             <Locations>
@@ -1539,8 +1539,8 @@
             timestampString = "600691505.987232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "536"
-            endingLineNumber = "536"
+            startingLineNumber = "535"
+            endingLineNumber = "535"
             landmarkName = "-orc:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1607,10 +1607,10 @@
             timestampString = "600691505.987332"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
-            landmarkName = "DriverOperateVC"
-            landmarkType = "3">
+            startingLineNumber = "343"
+            endingLineNumber = "343"
+            landmarkName = "-reqeustInputPackageNum:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1624,8 +1624,8 @@
             timestampString = "600691505.9874099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "-resignActive"
             landmarkType = "7">
          </BreakpointContent>
@@ -1641,9 +1641,9 @@
             timestampString = "600691505.98746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "-becomeActive"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "-resignActive"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1709,8 +1709,8 @@
             timestampString = "600691505.9875571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
+            startingLineNumber = "395"
+            endingLineNumber = "395"
             landmarkName = "-drawLine:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1810,8 +1810,8 @@
             timestampString = "600691505.987752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
             landmarkName = "-drawLine:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1827,10 +1827,10 @@
             timestampString = "600691505.987807"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
-            landmarkName = "DriverOperateVC"
-            landmarkType = "3">
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "-locationChange"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2116,8 +2116,8 @@
             timestampString = "600691505.98841"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "381"
-            endingLineNumber = "381"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
             landmarkName = "-drawLine:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2133,10 +2133,10 @@
             timestampString = "600691505.988465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
-            landmarkName = "-drawLine:"
-            landmarkType = "7">
+            startingLineNumber = "363"
+            endingLineNumber = "363"
+            landmarkName = "DriverOperateVC"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2150,8 +2150,8 @@
             timestampString = "600691505.988515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
             landmarkName = "-requestTrick"
             landmarkType = "7">
          </BreakpointContent>
@@ -2167,8 +2167,8 @@
             timestampString = "600691505.988588"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "478"
-            endingLineNumber = "478"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
             landmarkName = "-mapView:mapWillMoveByUser:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2184,8 +2184,8 @@
             timestampString = "600691505.988641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "483"
-            endingLineNumber = "483"
+            startingLineNumber = "482"
+            endingLineNumber = "482"
             landmarkName = "-mapView:mapWillZoomByUser:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2524,8 +2524,8 @@
             timestampString = "600691505.989135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
             landmarkName = "-requestTrick"
             landmarkType = "7">
          </BreakpointContent>
@@ -3064,8 +3064,8 @@
             filePath = "&#x4e50;&#x9500;/General/GlobalMethod/GlobalMethod+Version.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "+requestLoginResponse:mark:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3931,38 +3931,6 @@
             startingLineNumber = "142"
             endingLineNumber = "142"
             landmarkName = "-showSelectImage"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "303A22C1-51BD-4CA6-BCC9-AE5B83850D93"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderList/OrderListCell.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "-resetCellWithModel:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5E7688BB-9B5E-4FAE-9746-2D0839DEC97E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderList/OrderListCell.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "-resetCellWithModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

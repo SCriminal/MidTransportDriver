@@ -43,7 +43,7 @@
     [self setUpChildVC:[NSClassFromString(@"AutoConfigOrderListVC") new] title:@"智能配货" image:@"tab_indent_default" selectedImage:@"tab_indent_selected"];
     [self setUpChildVC:[NSClassFromString(@"ScanOrderListVC") new] title:@"最新货源" image:@"tab_scanning_default" selectedImage:@"tab_scanning_selected"];
     
-    [self setUpChildVC:[NSClassFromString(@"OrderListManagementVC") new] title:@"运单中心" image:@"tab_waybill_default" selectedImage:@"tab_waybill_selected"];
+    [self setUpChildVC:[NSClassFromString(@"OrderListVC") new] title:@"运单中心" image:@"tab_waybill_default" selectedImage:@"tab_waybill_selected"];
     [self setUpChildVC:[NSClassFromString(@"PersonalCenterVC") new] title:@"我的" image:@"tab_personal_default" selectedImage:@"tab_personal_selected"];
     
     

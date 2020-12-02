@@ -16,7 +16,5 @@ typedef NS_ENUM(NSUInteger, ENUM_ORDER_LIST_SORT) {
 };
 
 @interface OrderListVC : BaseTableVC
-@property (nonatomic, assign) ENUM_ORDER_LIST_SORT sortType;
-@property (nonatomic, strong) void (^blockTotal)(ENUM_ORDER_LIST_SORT,int);
 
 @end

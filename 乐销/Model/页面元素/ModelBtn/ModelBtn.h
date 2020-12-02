@@ -26,6 +26,7 @@
 @property int tag;//tag
 @property (nonatomic, assign) BOOL isSelected;//isselected
 @property (strong, nonatomic) NSString * vcName;
+@property (strong, nonatomic) NSString * thirdTitle;
 
 //data
 @property (nonatomic, strong) NSString * subTitle;//subtitle

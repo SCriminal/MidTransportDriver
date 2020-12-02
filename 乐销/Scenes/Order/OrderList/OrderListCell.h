@@ -7,18 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OrderListCellBtnView.h"
 
 @interface OrderListCell : UITableViewCell
 @property (strong, nonatomic) UILabel *addressFrom;
 @property (strong, nonatomic) UILabel *addressTo;
-@property (strong, nonatomic) UIView *iconAddress;
-@property (strong, nonatomic) UILabel *packageAddress;
-@property (strong, nonatomic) UILabel *import;
-@property (strong, nonatomic) UILabel *loadAddress;
-@property (strong, nonatomic) UIImageView *ivBg;
+@property (strong, nonatomic) UIImageView *iconAddress;
+@property (strong, nonatomic) UIView *viewBG;
+@property (nonatomic, strong) OrderListCellBtnView *btnView;
 
-@property (strong, nonatomic) UIButton *btnLeft;
-@property (strong, nonatomic) UIButton *btnRight;
+
 @property (nonatomic, strong) void (^blockDetail)(ModelOrderList *);
 
 @property (nonatomic, strong) ModelOrderList *model;

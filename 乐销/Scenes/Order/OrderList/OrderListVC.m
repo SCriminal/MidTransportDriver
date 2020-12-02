@@ -41,16 +41,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //table
-    
+    BaseNavView * nav = [BaseNavView initNavTitle:@"运单中心" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(23), W(23)) leftBlock:^{
+        
+    } rightImageName:@"nav_filter_white" rightImageSize:CGSizeMake(W(23), W(23)) righBlock:^{
+        
+    }];
+    [nav configBlueStyle];
+    [self.view addSubview:nav];
     [self.tableView registerClass:[OrderListCell class] forCellReuseIdentifier:@"OrderListCell"];
-    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    //    self.tableView.tableHeaderView = ^(){
-    //        UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, W(3))];
-    //        view.backgroundColor = [UIColor clearColor];
-    //        return view;
-    //    }();
-    self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, W(10), 0);
+    self.tableView.frame = CGRectMake(0, NAVIGATIONBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT);
+
+    self.tableView.backgroundColor = COLOR_BACKGROUND;
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, W(12), 0);
     [self addRefreshHeader];
     [self addRefreshFooter];
     //request
@@ -96,22 +98,9 @@
     int sortCreateTime = 1;
     int sortAcceptTime = 1;
     int sortFinishTime = 1;
-    switch (self.sortType) {
-        case ENUM_ORDER_LIST_SORT_WAIT_RECEIVE:
-            strOrderType = @"601";
-            sortCreateTime = 3;
-            break;
-        case ENUM_ORDER_LIST_SORT_GOING:
-            strOrderType = @"602,603,604,605";
-            sortAcceptTime = 3;
-            break;
-        case ENUM_ORDER_LIST_SORT_COMPLETE:
-            strOrderType = @"610";
-            sortFinishTime = 3;
-            break;
-        default:
-            break;
-    }
+    strOrderType = @"601,610,602,603,604,605";
+              sortFinishTime = 3;
+   
     [RequestApi requestOrderListWithWaybillnumber:nil
                                        categoryId:0
                                             state:strOrderType
@@ -131,9 +120,7 @@
                                          delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.pageNum ++;
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelOrderList"];
-        if (self.blockTotal) {
-            self.blockTotal(self.sortType , [response intValueForKey:@"total"]);
-        }
+      
         if (self.isRemoveAll) {
             [self.aryDatas removeAllObjects];
         }
@@ -146,5 +133,7 @@
         
     }];
 }
-
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 @end

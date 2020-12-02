@@ -302,6 +302,7 @@
 		D2F3A5022574EDE1009EBF3F /* AutoConfigTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A5012574EDE1009EBF3F /* AutoConfigTimeView.m */; };
 		D2F3A50625762702009EBF3F /* AutoConfigDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A50525762702009EBF3F /* AutoConfigDetailVC.m */; };
 		D2F3A509257642B3009EBF3F /* AutoNewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A508257642B3009EBF3F /* AutoNewsView.m */; };
+		D2F3A50C25779B6F009EBF3F /* OrderListCellBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A50B25779B6F009EBF3F /* OrderListCellBtnView.m */; };
 		D2F733B41E8642EE0008E561 /* LocalData.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F733B31E8642EE0008E561 /* LocalData.json */; };
 		D2F8473D21B1101E00833C56 /* LeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F8473C21B1101E00833C56 /* LeftMenuCell.m */; };
 		D2F926AC24CFC62900FB256D /* tab_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F926AB24CFC62900FB256D /* tab_shadow@2x.png */; };
@@ -948,6 +949,8 @@
 		D2F3A50525762702009EBF3F /* AutoConfigDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoConfigDetailVC.m; sourceTree = "<group>"; };
 		D2F3A507257642B2009EBF3F /* AutoNewsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoNewsView.h; sourceTree = "<group>"; };
 		D2F3A508257642B3009EBF3F /* AutoNewsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoNewsView.m; sourceTree = "<group>"; };
+		D2F3A50A25779B6F009EBF3F /* OrderListCellBtnView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderListCellBtnView.h; sourceTree = "<group>"; };
+		D2F3A50B25779B6F009EBF3F /* OrderListCellBtnView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderListCellBtnView.m; sourceTree = "<group>"; };
 		D2F733B31E8642EE0008E561 /* LocalData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocalData.json; sourceTree = "<group>"; };
 		D2F8473B21B1101E00833C56 /* LeftMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuCell.h; sourceTree = "<group>"; };
 		D2F8473C21B1101E00833C56 /* LeftMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuCell.m; sourceTree = "<group>"; };
@@ -1392,6 +1395,8 @@
 				D23327C72185A23900495488 /* OrderListVC.m */,
 				D23327C92185A27900495488 /* OrderListCell.h */,
 				D23327CA2185A27900495488 /* OrderListCell.m */,
+				D2F3A50A25779B6F009EBF3F /* OrderListCellBtnView.h */,
+				D2F3A50B25779B6F009EBF3F /* OrderListCellBtnView.m */,
 				D23327CC2185A6CB00495488 /* OrderListManagementVC.h */,
 				D23327CD2185A6CB00495488 /* OrderListManagementVC.m */,
 				D267E698234C9A62005735B0 /* OrderManagementBottomView.h */,
@@ -3211,6 +3216,7 @@
 				D28642EB1E484A350041B64C /* UITapGestureRecognizer+Base.m in Sources */,
 				D26A14A21E49C25700126F7A /* NSMutableDictionary+Category.m in Sources */,
 				DAB576881E305E5C006626BC /* NoResultView.m in Sources */,
+				D2F3A50C25779B6F009EBF3F /* OrderListCellBtnView.m in Sources */,
 				D267E69A234C9A62005735B0 /* OrderManagementBottomView.m in Sources */,
 				D27470AD22A787DA009B645D /* LocationRecordInstance.m in Sources */,
 				D2F3A509257642B3009EBF3F /* AutoNewsView.m in Sources */,
