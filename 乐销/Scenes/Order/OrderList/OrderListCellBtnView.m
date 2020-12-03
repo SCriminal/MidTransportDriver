@@ -42,18 +42,31 @@
     for (ModelBtn * m in ary) {
         UIColor * colorBackground = [UIColor whiteColor];
         BOOL isColor = false;
+        NSString * title = @"";
         switch (m.tag) {
             case ENUM_ORDER_LIST_BTN_RECEIVE:
                 colorBackground = COLOR_BLUE;
                 isColor = true;
+                title = @"接单";
                 break;
             case ENUM_ORDER_LIST_BTN_LOAD_CAR:
                 colorBackground = COLOR_ORANGE;
                 isColor = true;
+                title = @"装车";
                 break;
             case ENUM_ORDER_LIST_BTN_ARRIVE:
                 colorBackground = COLOR_GREEN;
                 isColor = true;
+                title = @"到达";
+                break;
+            case ENUM_ORDER_LIST_BTN_DISMISS:
+                title = @"取消";
+                break;
+            case ENUM_ORDER_LIST_BTN_REJECT:
+                title = @"拒单";
+                break;
+            case ENUM_ORDER_LIST_BTN_NAVIGATION:
+                title = @"路线导航";
                 break;
             default:
                 break;
@@ -61,7 +74,7 @@
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.widthHeight = XY(width, self.height);
         btn.backgroundColor = colorBackground;
-        [btn setTitle:m.title forState:UIControlStateNormal];
+        [btn setTitle:title forState:UIControlStateNormal];
         btn.titleLabel.fontNum = F(15);
         [btn setTitleColor:isColor?[UIColor whiteColor]:COLOR_666 forState:UIControlStateNormal];
         btn.tag = m.tag;

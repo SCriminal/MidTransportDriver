@@ -18,8 +18,10 @@
 #import "DriverOperateVC.h"
 //bottom view
 #import "OrderManagementBottomView.h"
+#import "OrderFilterView.h"
 
 @interface OrderListVC ()
+@property (nonatomic, strong) OrderFilterView *filterView;
 
 @end
 
@@ -37,14 +39,27 @@
     }
     return _noResultView;
 }
+- (OrderFilterView *)filterView{
+    if (!_filterView) {
+        _filterView = [OrderFilterView new];
+        WEAKSELF
+        _filterView.blockSearchClick = ^(NSInteger index, NSString *billNo, NSDate *dateStart, NSDate *dateEnd) {
+            [weakSelf refreshHeaderAll];
+        };
+    }
+    return _filterView;
+}
+
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
     //table
+    WEAKSELF
     BaseNavView * nav = [BaseNavView initNavTitle:@"运单中心" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(23), W(23)) leftBlock:^{
         
     } rightImageName:@"nav_filter_white" rightImageSize:CGSizeMake(W(23), W(23)) righBlock:^{
-        
+        [weakSelf.filterView show];
+
     }];
     [nav configBlueStyle];
     [self.view addSubview:nav];

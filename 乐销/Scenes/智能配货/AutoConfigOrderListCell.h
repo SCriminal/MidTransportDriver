@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AutoConfigTimeView.h"
+#import "AutoNewsView.h"
 
 @interface AutoConfigOrderListCell : UITableViewCell
 @property (strong, nonatomic) UILabel *addressFrom;
@@ -20,6 +21,7 @@
 @property (strong, nonatomic) UILabel *price;
 @property (strong, nonatomic) UILabel *distance;
 @property (nonatomic, strong) AutoConfigTimeView *timeView;
+@property (nonatomic, strong) AutoNewsView *newsView;
 
 @property (nonatomic, strong) void (^blockDetail)(ModelOrderList *);
 

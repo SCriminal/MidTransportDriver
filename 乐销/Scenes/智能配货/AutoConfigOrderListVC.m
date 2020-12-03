@@ -121,6 +121,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     AutoConfigOrderListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"AutoConfigOrderListCell"];
     [cell resetCellWithModel: self.aryDatas[indexPath.row]];
+    [cell.newsView timerStart];
     WEAKSELF
     cell.blockDetail = ^(ModelOrderList *model) {
         [weakSelf jumpToDetail:model];
