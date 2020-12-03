@@ -99,7 +99,7 @@
     [self jumpToDetail:model];
 }
 - (void)jumpToDetail:(ModelOrderList *)model{
-    DriverOperateVC * operateVC = [DriverOperateVC new];
+    OrderDetailVC * operateVC = [OrderDetailVC new];
     operateVC.modelOrder = model;
     WEAKSELF
     operateVC.blockBack = ^(UIViewController *vc) {
@@ -151,4 +151,5 @@
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
+
 @end

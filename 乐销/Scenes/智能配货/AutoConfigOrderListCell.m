@@ -162,7 +162,7 @@
         [self.goodsInfo fitTitle:@"2000吨（剩1800吨）/高栏/13-17.5米" variable:SCREEN_WIDTH - W(30)];
         NSMutableAttributedString * strAttribute = [[NSMutableAttributedString alloc]initWithString:self.goodsInfo.text];
         [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_333,        NSFontAttributeName :  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular]} range:NSMakeRange(0, strAttribute.length)];
-        [strAttribute setAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"#FF0000"],        NSFontAttributeName :  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular]} range:[self.goodsInfo.text rangeOfString:@"（剩1800吨）"]];
+        [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_RED,        NSFontAttributeName :  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular]} range:[self.goodsInfo.text rangeOfString:@"（剩1800吨）"]];
         self.goodsInfo.attributedText = strAttribute;
         self.goodsInfo.leftTop = XY(W(15), top);
         top = self.goodsInfo.bottom;
@@ -180,7 +180,7 @@
         [self.price fitTitle:[NSString stringWithFormat:@"%@%@",str1,str2] variable:SCREEN_WIDTH/2.0 -W(15)];
         NSMutableAttributedString * strAttribute = [[NSMutableAttributedString alloc]initWithString:self.price.text];
                [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_666,        NSFontAttributeName :  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular]} range:NSMakeRange(0, strAttribute.length)];
-               [strAttribute setAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"#FF0000"],        NSFontAttributeName :  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular]} range:[self.price.text rangeOfString:str2]];
+               [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_RED,        NSFontAttributeName :  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular]} range:[self.price.text rangeOfString:str2]];
                self.price.attributedText = strAttribute;
                self.price.leftTop = XY(W(15), top+ W(20));
     }

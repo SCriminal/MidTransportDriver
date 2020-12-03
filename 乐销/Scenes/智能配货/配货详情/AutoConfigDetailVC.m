@@ -309,7 +309,7 @@
             {
                 UILabel * l = [UILabel new];
                 l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-                l.textColor = modelB.isSelected?[UIColor colorWithHexString:@"#FF0000"]:COLOR_333;
+                l.textColor = modelB.isSelected?COLOR_RED:COLOR_333;
                 l.backgroundColor = [UIColor clearColor];
                 l.numberOfLines = 0;
                 l.lineSpace = W(0);

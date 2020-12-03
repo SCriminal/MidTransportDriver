@@ -72,9 +72,9 @@
             btn.backgroundColor = [UIColor whiteColor];
             [btn setTitle:@"+ 添加常用路线" forState:UIControlStateNormal];
             btn.titleLabel.fontNum = F(15);
-            [btn setTitleColor:[UIColor colorWithHexString:@"#FF0000"] forState:UIControlStateNormal];
+            [btn setTitleColor:COLOR_RED forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(btnAddClick) forControlEvents:UIControlEventTouchUpInside];
-            [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:1 lineColor:[UIColor colorWithHexString:@"FF0000"]];
+            [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:1 lineColor:COLOR_RED];
             btn.centerXTop = XY(SCREEN_WIDTH/2.0, W(348));
             [_noResultView addSubview:btn];
         }
