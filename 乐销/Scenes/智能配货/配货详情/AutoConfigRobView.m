@@ -348,7 +348,7 @@
         btn.titleLabel.fontNum = F(15);
         [btn setTitleColor:COLOR_666 forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnDismissClick) forControlEvents:UIControlEventTouchUpInside];
-        btn.leftTop = XY(W(20), W(269));
+        btn.leftTop = XY(W(20), W(252));
         [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:1 lineColor:COLOR_BORDER];
         [viewWhiteBG addSubview:btn];
     }
@@ -360,12 +360,12 @@
         btn.titleLabel.fontNum = F(15);
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnConfirmClick) forControlEvents:UIControlEventTouchUpInside];
-        btn.rightTop = XY(SCREEN_WIDTH - W(20), W(269));
+        btn.rightTop = XY(SCREEN_WIDTH - W(20), W(252));
         [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:0 lineColor:COLOR_BORDER];
         [viewWhiteBG addSubview:btn];
     }
     
-    [viewWhiteBG addLineFrame:CGRectMake(W(20), W(333), SCREEN_WIDTH - W(40), 1)];
+    [viewWhiteBG addLineFrame:CGRectMake(W(20), W(316), SCREEN_WIDTH - W(40), 1)];
     
     {
         UILabel * l = [UILabel new];
