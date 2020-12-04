@@ -35,7 +35,7 @@
 - (CGFloat)addLineFrame:(CGRect)rect tag:(NSInteger)tag;
 - (CGFloat)addLineFrame:(CGRect)rect color:(UIColor *)color;
 - (CGFloat)addLineWithHeight:(CGFloat)height;
-
+- (UIView *)generateBorder:(CGRect)frame;
 //获取线视图
 + (UIView *)lineWithFrame:(CGRect)rect color:(UIColor *)color;
 + (UIView *)lineWithHeight:(CGFloat)height;

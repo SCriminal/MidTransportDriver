@@ -11,6 +11,7 @@
 
 //颜色
 #define COLOR_LINE [UIColor colorWithHexString:@"f1f1f1"]//229
+#define COLOR_BORDER [UIColor colorWithHexString:@"D7DBDA"]//229
 //#define COLOR_LINE [UIColor colorWithHexString:@"#FBFBFC"]
 #define COLOR_DARK [UIColor colorWithHexString:@"485572"]
 #define COLOR_MAIN [UIColor colorWithHexString:@"1F4BA5"]

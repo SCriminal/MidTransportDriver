@@ -170,6 +170,13 @@
     }
     return true;
 }
-
+- (UIView *)generateBorder:(CGRect)frame{
+    UIView * viewBorder = [UIView new];
+    viewBorder.backgroundColor = [UIColor clearColor];
+    [GlobalMethod setRoundView:viewBorder color:COLOR_LINE numRound:5 width:1];
+    viewBorder.frame = frame;
+    [self addSubview:viewBorder];
+    return viewBorder;
+}
 
 @end

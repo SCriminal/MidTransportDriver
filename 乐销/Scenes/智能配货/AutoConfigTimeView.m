@@ -49,6 +49,7 @@
         self.backgroundColor = [UIColor whiteColor];
         self.widthHeight = XY(W(345), W(39));
         [self addSubView];
+        [self addTarget:self action:@selector(click)];
     }
     return self;
 }
@@ -108,5 +109,9 @@
             self.time.centerXCenterY = XY(W(114),self.height/2.0);
         }
 }
-
+- (void)click{
+    if (self.blockClick) {
+        self.blockClick();
+    }
+}
 @end

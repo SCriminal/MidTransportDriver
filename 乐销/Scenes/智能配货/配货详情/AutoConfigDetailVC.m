@@ -9,6 +9,7 @@
 #import "AutoConfigDetailVC.h"
 #import "AutoConfigTimeView.h"
 #import "NSDate+YYAdd.h"
+#import "AutoConfigRobView.h"
 
 @interface AutoConfigDetailVC ()
 @property (nonatomic, strong) AutoConfigTimeView *timeView;
@@ -23,6 +24,12 @@
         _timeView = [AutoConfigTimeView new];
         _timeView.title = @"立即报价";
         _timeView.ivBG.image = [UIImage imageNamed:@"autoBtn_bao"];
+        WEAKSELF
+        _timeView.blockClick = ^{
+            AutoConfigOfferPriceView * robView = [AutoConfigOfferPriceView new];
+            [robView resetViewWithModel:nil];
+            [weakSelf.view addSubview:robView];
+        };
         [_timeView resetView];
     }
     return _timeView;
