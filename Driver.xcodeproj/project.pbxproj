@@ -25,6 +25,7 @@
 		D2037605210719190054F8A6 /* ModelAliClient_Base.m in Sources */ = {isa = PBXBuildFile; fileRef = D2037604210719180054F8A6 /* ModelAliClient_Base.m */; };
 		D203760921071F260054F8A6 /* ModelVersionUp.m in Sources */ = {isa = PBXBuildFile; fileRef = D203760821071F260054F8A6 /* ModelVersionUp.m */; };
 		D2043B4B1F42CDAC0032AFB0 /* UIScrollView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2043B4A1F42CDAC0032AFB0 /* UIScrollView+Category.m */; };
+		D20DCA0C257E1A64003B89B5 /* MapManage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20DCA0B257E1A64003B89B5 /* MapManage.framework */; };
 		D20FFB6B1E0D0A7700ACA896 /* DownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6A1E0D0A7700ACA896 /* DownListView.m */; };
 		D20FFB6E1E0D18B900ACA896 /* DownListViewBG.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6D1E0D18B900ACA896 /* DownListViewBG.m */; };
 		D21014FA1EB81A010096C9CF /* MultiRadioBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D21014F91EB81A010096C9CF /* MultiRadioBtnView.m */; };
@@ -303,7 +304,6 @@
 		D2FC339D247F5776000DE338 /* AddCarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC339B247F5776000DE338 /* AddCarVC.m */; };
 		D2FC33A0247F57AE000DE338 /* AuthorityImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC339F247F57AE000DE338 /* AuthorityImageView.m */; };
 		D2FC33A4247F5A56000DE338 /* ModelCar.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC33A2247F5A56000DE338 /* ModelCar.m */; };
-		D2FD414223C302B800CC90E7 /* MapManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2FD414123C302B800CC90E7 /* MapManager.framework */; };
 		D2FD667620D254930048D351 /* module.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2FD667520D254920048D351 /* module.plist */; };
 		D2FF933D20D1118D00B198EB /* UIFont+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FF933C20D1118D00B198EB /* UIFont+Category.m */; };
 		D2FF9D581E5E5F2F001067B8 /* RequestApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BC9ABB1DFFE16D00B0468E /* RequestApi.m */; };
@@ -408,6 +408,7 @@
 		D203760821071F260054F8A6 /* ModelVersionUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelVersionUp.m; sourceTree = "<group>"; };
 		D2043B491F42CDAC0032AFB0 /* UIScrollView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Category.h"; sourceTree = "<group>"; };
 		D2043B4A1F42CDAC0032AFB0 /* UIScrollView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Category.m"; sourceTree = "<group>"; };
+		D20DCA0B257E1A64003B89B5 /* MapManage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapManage.framework; sourceTree = "<group>"; };
 		D20FFB691E0D0A7700ACA896 /* DownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListView.h; sourceTree = "<group>"; };
 		D20FFB6A1E0D0A7700ACA896 /* DownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownListView.m; sourceTree = "<group>"; };
 		D20FFB6C1E0D18B900ACA896 /* DownListViewBG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListViewBG.h; sourceTree = "<group>"; };
@@ -555,6 +556,8 @@
 		D24A93CC2360470B00CB672C /* AuthorityReVerifyingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthorityReVerifyingVC.h; sourceTree = "<group>"; };
 		D24A93CD2360470B00CB672C /* AuthorityReVerifyingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthorityReVerifyingVC.m; sourceTree = "<group>"; };
 		D24ABE071E52FB8100ED2C65 /* 乐销.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "乐销.entitlements"; sourceTree = "<group>"; };
+		D24CBB67257E270500F6AB3E /* UpTransportShareInstance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpTransportShareInstance.h; sourceTree = "<group>"; };
+		D24CBB68257E270500F6AB3E /* UpTransportShareInstance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpTransportShareInstance.m; sourceTree = "<group>"; };
 		D24D0741248A353F0029FCEC /* CarType.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CarType.json; sourceTree = "<group>"; };
 		D24DFE9A22F122EA0072B607 /* LDMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDMacro.h; sourceTree = "<group>"; };
 		D2512BC81E8CDA0F005F9B54 /* CustomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPickerView.h; sourceTree = "<group>"; };
@@ -943,7 +946,6 @@
 		D2FC339F247F57AE000DE338 /* AuthorityImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorityImageView.m; sourceTree = "<group>"; };
 		D2FC33A2247F5A56000DE338 /* ModelCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelCar.m; sourceTree = "<group>"; };
 		D2FC33A3247F5A56000DE338 /* ModelCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelCar.h; sourceTree = "<group>"; };
-		D2FD414123C302B800CC90E7 /* MapManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapManager.framework; sourceTree = "<group>"; };
 		D2FD667520D254920048D351 /* module.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = module.plist; sourceTree = "<group>"; };
 		D2FF933B20D1118D00B198EB /* UIFont+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+Category.h"; sourceTree = "<group>"; };
 		D2FF933C20D1118D00B198EB /* UIFont+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Category.m"; sourceTree = "<group>"; };
@@ -1009,8 +1011,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2CF18FB22548E9E00542AEF /* libc++.1.tbd in Frameworks */,
-				D2FD414223C302B800CC90E7 /* MapManager.framework in Frameworks */,
 				D2CF190E22548EF800542AEF /* EAccountApiSDK.framework in Frameworks */,
+				D20DCA0C257E1A64003B89B5 /* MapManage.framework in Frameworks */,
 				DA852DBF1D65B9C500AB04CC /* libstdc++.tbd in Frameworks */,
 				DA7FCE181D7FC0FA0002C5CB /* libstdc++.6.0.9.tbd in Frameworks */,
 				DA4BDFD91DB0C5880080ABAE /* AVFoundation.framework in Frameworks */,
@@ -1550,6 +1552,8 @@
 			children = (
 				D27470AB22A787DA009B645D /* LocationRecordInstance.h */,
 				D27470AC22A787DA009B645D /* LocationRecordInstance.m */,
+				D24CBB67257E270500F6AB3E /* UpTransportShareInstance.h */,
+				D24CBB68257E270500F6AB3E /* UpTransportShareInstance.m */,
 				D2B1040C22ED94CC002D9BFF /* LocationEagleInstance.h */,
 				D2B1040D22ED94CC002D9BFF /* LocationEagleInstance.m */,
 			);
@@ -2727,7 +2731,7 @@
 		D2FD414023C3026800CC90E7 /* 交通部上报 */ = {
 			isa = PBXGroup;
 			children = (
-				D2FD414123C302B800CC90E7 /* MapManager.framework */,
+				D20DCA0B257E1A64003B89B5 /* MapManage.framework */,
 			);
 			path = "交通部上报";
 			sourceTree = "<group>";

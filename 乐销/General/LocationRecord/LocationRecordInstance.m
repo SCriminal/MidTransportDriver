@@ -15,13 +15,14 @@
 #import <CloudPushSDK/CloudPushSDK.h>
 #import <MAMapKit/MAGeometry.h>
 //交通部
-#import <MapManager/MapManager.h>
+#import <MapManage/MapManage.h>
 
-
+//#ifdef UP_TRANSPORT
 @interface LocationRecordInstance ()<AMapLocationManagerDelegate>
 @property (nonatomic, strong) MapService *mapTransport;
 
 @end
+//#endif
 
 @implementation LocationRecordInstance
 
@@ -35,11 +36,12 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noticeSelfModelChange) name:NOTICE_SELFMODEL_CHANGE object:nil];
         //
         //        @"com.wabob.ntocc.driver"
-#ifdef UP_TRANSPORT
+//#ifdef UP_TRANSPORT
+        self.mapTransport = [[NSClassFromString(@"MapService") alloc]init];
         [self.mapTransport openServiceWithAppId:@"tlanx.midCarrierTransport.dirver" appSecurity:TRANSPORT_AGENCY_APP_SEC enterpriseSenderCode:TRANSPORT_AGENCY_CODE environment:TRANSPORT_AGENCY_ENV listener:^(id  _Nonnull model, NSError * _Nonnull error) {
             NSLog([NSString stringWithFormat:@"%@ %@",model,error]);
         }];
-#endif
+//#endif
     }
     return self;
 }
@@ -56,13 +58,14 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
     [self request:ary blockSuccess:successBlock];
 }
 #pragma mark lazy init
-
-- (MapService *)mapTransport{
-    if (!_mapTransport) {
-        _mapTransport = [[MapService alloc]init];
-    }
-    return _mapTransport;
-}
+#ifdef UP_TRANSPORT
+//- (MapService *)mapTransport{
+//    if (!_mapTransport) {
+//        _mapTransport = [[MapService alloc]init];
+//    }
+//    return _mapTransport;
+//}
+#endif
 - (AMapLocationManager *)locationManager{
     if (!_locationManager) {
         _locationManager = [[AMapLocationManager alloc]init];
@@ -103,7 +106,9 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
                     NSString * endCode = [response stringValueForKey:@"code"];
                     if (isStr(startCode)&& isStr(endCode)) {
                         [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":startCode,@"endCountrySubdivisionCode":endCode}];
+//                        #ifdef UP_TRANSPORT
                         [self.mapTransport startLocationWithShippingNoteInfos:aryDatas listener:listener];
+//#endif
                         return;
                     }
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -120,7 +125,10 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
                     NSString * endCode = [response stringValueForKey:@"code"];
                     if (isStr(startCode)&& isStr(endCode)) {
                         [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelBulkItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":startCode,@"endCountrySubdivisionCode":endCode}];
+                        #ifdef UP_TRANSPORT
+
                         [self.mapTransport startLocationWithShippingNoteInfos:aryDatas listener:listener];
+#endif
                         return;
                     }
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -142,7 +150,10 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
                     NSString * endCode = [response stringValueForKey:@"code"];
                     if (isStr(startCode)&& isStr(endCode)) {
                         [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":startCode,@"endCountrySubdivisionCode":endCode}];
+                        #ifdef UP_TRANSPORT
+
                         [self.mapTransport stopLocationWithShippingNoteInfos:aryDatas listener:listener];
+#endif
                         return;
                     }
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -160,7 +171,10 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
                         NSString * endCode = [response stringValueForKey:@"code"];
                         if (isStr(startCode)&& isStr(endCode)) {
                             [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelBulkItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":startCode,@"endCountrySubdivisionCode":endCode}];
+                            #ifdef UP_TRANSPORT
+
                             [self.mapTransport stopLocationWithShippingNoteInfos:aryDatas listener:listener];
+#endif
                             return;
                         }
                     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
