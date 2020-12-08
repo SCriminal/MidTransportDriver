@@ -9,6 +9,7 @@
 #import "DriverDetailTopView.h"
 //request
 #import "RequestApi+UserApi.h"
+#import "UIButton+Creat.h"
 
 @interface DriverDetailTopView ()
 
@@ -45,7 +46,7 @@
                iv.contentMode = UIViewContentModeScaleAspectFill;
                iv.clipsToBounds = true;
                iv.image = [UIImage imageNamed:@"arrow_white"];
-               iv.widthHeight = XY(W(25),W(25));
+               iv.widthHeight = XY(W(12),W(12));
         _arrow = iv;
     }
     return _arrow;
@@ -59,14 +60,37 @@
     }
     return _name;
 }
-- (UILabel *)brief{
-    if (!_brief) {
-        _brief = [UILabel new];
-        _brief.textColor = [UIColor whiteColor];
-        _brief.numberOfLines = 1;
-        _brief.font =  [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
+- (UILabel *)loginTime{
+    if (!_loginTime) {
+        _loginTime = [UILabel new];
+        _loginTime.textColor = [UIColor whiteColor];
+        _loginTime.numberOfLines = 1;
+        _loginTime.font =  [UIFont systemFontOfSize:F(11) weight:UIFontWeightRegular];
     }
-    return _brief;
+    return _loginTime;
+}
+- (UILabel *)sign{
+    if (!_sign) {
+        _sign = [UILabel new];
+        _sign.textColor = [UIColor whiteColor];
+        _sign.numberOfLines = 1;
+        _sign.font =  [UIFont systemFontOfSize:F(14) weight:UIFontWeightMedium];
+        [_sign fitTitle:@"签到领积分" variable:0];
+    }
+    return _sign;
+}
+- (UILabel *)auth{
+    if (!_auth) {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
+        l.textColor = [UIColor whiteColor];
+        l.backgroundColor = [UIColor clearColor];
+        l.numberOfLines = 0;
+        l.lineSpace = W(0);
+        [l fitTitle:@"去认证赚钱" variable:SCREEN_WIDTH - W(30)];
+        _auth = l;
+    }
+    return _auth;
 }
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -87,30 +111,51 @@
     [self addSubview:self.bg];
     [self addSubview:self.head];
     [self addSubview:self.name];
-    [self addSubview:self.brief];
+    [self addSubview:self.loginTime];
     [self addSubview:self.arrow];
+    [self addSubview:self.sign];
+    [self addSubview:self.auth];
+
+    self.head.leftBottom = XY(W(20), self.height - W(47));
+
+
+    self.sign.rightCenterY = XY(SCREEN_WIDTH - W(15), self.head.centerY);
+    [self addControlFrame:CGRectInset(self.sign.frame, -W(20), -W(20)) belowView:self.sign target:self action:@selector(signClick)];
+    [self addControlFrame:CGRectMake(self.head.right+W(10), self.head.bottom - W(30), W(70), W(30)) belowView:self.sign target:self action:@selector(authClick)];
+
+    [self addSubview:^(){
+        UIImageView * iv = [UIImageView new];
+        iv.backgroundColor = [UIColor clearColor];
+        iv.contentMode = UIViewContentModeScaleAspectFill;
+        iv.clipsToBounds = true;
+        iv.image = [UIImage imageNamed:@"认证"];
+        iv.widthHeight = XY(W(18),W(18));
+        iv.leftBottom = XY(self.head.right + W(12),self.head.bottom - W(5));
+        return iv;
+    }()];
     //初始化页面
     [self userInfoChange];
 }
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelBaseInfo *)model{
-    [self removeSubViewWithTag:TAG_LINE];//移除线
     
     //刷新view
     [self.head sd_setImageWithURL:[NSURL URLWithString:UnPackStr(model.headUrl.smallImage)] placeholderImage:[UIImage imageNamed:IMAGE_HEAD_DEFAULT]];
-    self.head.leftBottom = XY(W(15), self.height - W(40));
     
-    self.arrow.rightCenterY = XY(SCREEN_WIDTH - W(10), self.head.centerY);
     
     NSString * strShow = UnPackStr(model.nickname);
 
     [self.name fitTitle:strShow variable:0];
-    self.name.leftTop = XY(self.head.right + W(15), self.head.top + W(6));
+    self.name.leftTop = XY(self.head.right + W(10), self.head.top + W(8));
 
-    NSString * strBrief = isStr([GlobalData sharedInstance].GB_UserModel.introduce)?[GlobalData sharedInstance].GB_UserModel.introduce:@"还未填写个性签名，介绍一下自己吧";
-    [self.brief fitTitle:strBrief variable:W(240)];
-    self.brief.leftBottom = XY(self.name.left, self.head.bottom - W(6));
+    NSString * strloginTime = [GlobalMethod readStrFromUser:LOCAL_LOGIN_TIME];
+    [self.loginTime fitTitle:[NSString stringWithFormat:@"上次登录时间：%@",strloginTime] variable:0];
+    self.loginTime.leftBottom = XY(W(20), self.height - W(16));
+    
+//    [self.auth fitTitle:@"" variable:0];
+    self.auth.leftBottom = XY(self.head.right + W(36), self.head.bottom - W(8));
+    self.arrow.rightCenterY = XY(self.auth.right + W(36), self.auth.centerY);
 }
 
 
@@ -124,14 +169,98 @@
         self.blockClick();
     }
 }
-
-
+- (void)signClick{
+}
+- (void)authClick{
+    
+}
 #pragma mark dealloc
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end
 
+
+@implementation DriverDetailModelView
+
+#pragma mark 初始化
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor whiteColor];
+        self.width = SCREEN_WIDTH;
+    }
+    return self;
+}
+
+#pragma mark 刷新view
+- (void)resetWithAry:(NSArray *)aryModels{
+    [self removeAllSubViews];//移除线
+    //刷新view
+    CGFloat top = 0;
+    for (ModelBaseData *m in aryModels) {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
+        l.textColor = COLOR_333;
+        l.backgroundColor = [UIColor clearColor];
+        [l fitTitle:m.string variable:SCREEN_WIDTH - W(30)];
+        l.leftTop = XY(W(15), W(20) + top);
+        [self addSubview:l];
+        CGFloat left= W(27);
+        CGFloat btnTop = top + W(52);
+        for (int i = 0; i<m.aryDatas.count; i++) {
+            ModelBtn * mBtn = m.aryDatas[i];
+            UIImageView * iv = [UIImageView new];
+            iv.backgroundColor = [UIColor clearColor];
+            iv.contentMode = UIViewContentModeScaleAspectFill;
+            iv.clipsToBounds = true;
+            iv.image = [UIImage imageNamed:mBtn.imageName];
+            iv.widthHeight = XY(W(45),W(45));
+            iv.leftTop = XY(left,btnTop);
+            [self addSubview:iv];
+
+            UILabel * l = [UILabel new];
+            l.font = [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
+            l.textColor = [UIColor colorWithHexString:@"#717273"];
+            l.backgroundColor = [UIColor clearColor];
+            [l fitTitle:mBtn.title variable:SCREEN_WIDTH - W(30)];
+            l.centerXTop = XY(iv.centerX, iv.bottom + W(6));
+            [self addSubview:l];
+
+            UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            btn.frame = CGRectMake(iv.left - W(20), iv.top - W(5), iv.width + W(40), l.bottom + W(10) - iv.top);
+            btn.backgroundColor = [UIColor clearColor];
+            [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+            btn.modelBtn = mBtn;
+            left = iv.right + W(47);
+
+            if ((i+1)%4==0) {
+                left = W(27);
+                btnTop = iv.bottom + W(35);
+            }
+            top = iv.bottom + W(38);
+
+        }
+        [self addSubview:^(){
+            UIView * v = [UIView new];
+            v.frame = CGRectMake(0, top, SCREEN_WIDTH, W(12));
+            v.backgroundColor = COLOR_BACKGROUND;
+            return v;
+        }()];
+        top = top +W(12);
+        
+    }
+    //设置总高度
+    self.height = top;
+}
+
+#pragma mark 点击事件
+- (void)btnClick:(UIButton *)sender{
+    if (sender.modelBtn.blockClick) {
+        sender.modelBtn.blockClick();
+    }
+}
+@end
 
 
 

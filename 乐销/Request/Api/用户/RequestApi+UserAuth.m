@@ -53,7 +53,8 @@
             return ;
         }
         [GlobalData sharedInstance].GB_Key = [response stringValueForKey:@"token"];
-        
+        [GlobalMethod writeStr:[GlobalMethod exchangeDate:[NSDate date] formatter:TIME_SEC_SHOW] forKey:LOCAL_LOGIN_TIME];
+
         [RequestApi requestUserInfoWithDelegate:delegate success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             [GlobalMethod requestLoginResponse:response  mark:mark success:success failure:failure];
         }  failure:failure];

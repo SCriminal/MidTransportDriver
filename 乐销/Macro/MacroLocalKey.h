@@ -86,6 +86,7 @@ return [UIColor colorWithRed:((float)((hexNumber & 0xFF0000) >> 16))/255.0 green
 
 #define LOCAL_PROVINCE_LIST @"LOCAL_PROVINCE_LIST"//获取省
 #define LOCAL_PACKAGE_TYPE @"LOCAL_PACKAGE_TYPE"//箱型
+#define LOCAL_LOGIN_TIME @"LOCAL_LOGIN_TIME"//
 
 #define LOCAL_KEY_HEAD @"LOCAL_LD_"
 

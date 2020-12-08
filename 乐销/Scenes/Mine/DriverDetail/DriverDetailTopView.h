@@ -16,12 +16,18 @@
 @property (strong, nonatomic) UIImageView *arrow;
 
 @property (strong, nonatomic) UILabel *name;
-@property (strong, nonatomic) UILabel *brief;
+@property (strong, nonatomic) UILabel *loginTime;
+@property (strong, nonatomic) UILabel *sign;
+@property (strong, nonatomic) UILabel *auth;
 @property (nonatomic, strong) void (^blockClick)(void);
 
 @end
 
+@interface DriverDetailModelView : UIView
 
+- (void)resetWithAry:(NSArray *)aryModels;
+
+@end
 
 @interface DriverDetailCell : UITableViewCell
 

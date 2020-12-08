@@ -29,7 +29,7 @@
 
 @interface PersonalCenterVC ()
 @property (nonatomic, strong) DriverDetailTopView *topView;
-@property (nonatomic, assign) int numMotorCade;
+@property (nonatomic, strong) DriverDetailModelView *modelView;
 
 @end
 
@@ -45,7 +45,135 @@
     }
     return _topView;
 }
-
+- (DriverDetailModelView *)modelView{
+    if (!_modelView) {
+        _modelView = [DriverDetailModelView new];
+        [_modelView resetWithAry:@[^(){
+            ModelBaseData * m = [ModelBaseData new];
+            m.string = @"我的服务";
+            m.aryDatas = @[^(){
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = @"我的钱包";
+                mB.imageName = @"personal_钱包";
+                mB.blockClick = ^{
+                    
+                };
+                return mB;
+            }(),^(){
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = @"认证中心";
+                               mB.imageName = @"personal_车辆";
+                               mB.blockClick = ^{
+                                   
+                               };
+                return mB;
+            }(),^(){
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = @"扫一扫";
+                               mB.imageName = @"personal_扫一扫";
+                               mB.blockClick = ^{
+                                   
+                               };
+                return mB;
+            }(),^(){
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = @"我的消息";
+                               mB.imageName = @"personal_消息";
+                               mB.blockClick = ^{
+                                   
+                               };
+                return mB;
+            }(),^(){
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = @"信用中心";
+                               mB.imageName = @"personal_信用";
+                               mB.blockClick = ^{
+                                   
+                               };
+                return mB;
+            }(),^(){
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = @"积分商城";
+                               mB.imageName = @"personal_积分";
+                               mB.blockClick = ^{
+                                   
+                               };
+                return mB;
+            }(),^(){
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = @"我的路线";
+                               mB.imageName = @"personal_法律";
+                               mB.blockClick = ^{
+                                   
+                               };
+                return mB;
+            }(),^(){
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = @"系统设置";
+                               mB.imageName = @"personal_设置";
+                               mB.blockClick = ^{
+                                   
+                               };
+                return mB;
+            }()].mutableCopy;
+            return m;
+        }(),^(){
+            ModelBaseData * m = [ModelBaseData new];
+            m.string = @"其他服务";
+            m.aryDatas = @[^(){
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = @"查违章";
+                mB.imageName = @"personal_违章";
+                mB.blockClick = ^{
+                    
+                };
+                return mB;
+            }(),^(){
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = @"货车导航";
+                               mB.imageName = @"personal_导航";
+                               mB.blockClick = ^{
+                                   
+                               };
+                return mB;
+            }(),^(){
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = @"附近服务";
+                               mB.imageName = @"personal_附近";
+                               mB.blockClick = ^{
+                                   
+                               };
+                return mB;
+            }(),^(){
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = @"我要加油";
+                               mB.imageName = @"personal_加油";
+                               mB.blockClick = ^{
+                                   
+                               };
+                return mB;
+            }(),^(){
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = @"行业资讯";
+                               mB.imageName = @"personal_资讯";
+                               mB.blockClick = ^{
+                                   
+                               };
+                return mB;
+            }(),^(){
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = @"司机专栏";
+                               mB.imageName = @"personal_司机";
+                               mB.blockClick = ^{
+                                   
+                               };
+                return mB;
+            }()].mutableCopy;
+            return m;
+        }()]];
+    }
+    return _modelView;
+}
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,12 +182,11 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     [self.tableBackgroundView removeFromSuperview];
     self.tableView.tableHeaderView = self.topView;
+    self.tableView.tableFooterView = self.modelView;
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBAR_HEIGHT);
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userInfoChange) name:NOTICE_SELFMODEL_CHANGE  object:nil];
 
     //table
-    [self.tableView registerClass:[SettingCell class] forCellReuseIdentifier:@"SettingCell"];
-    [self.tableView registerClass:[SettingEmptyCell class] forCellReuseIdentifier:@"SettingEmptyCell"];
     //request
     [self reconfigData];
 }
@@ -69,102 +196,13 @@
     [self request];
 }
 
-
-#pragma mark UITableViewDelegate
-//row num
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.aryDatas.count;
-}
-//cell
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ModelBtn * model = self.aryDatas[indexPath.row];
-    if (!isStr(model.title)) {
-        SettingEmptyCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SettingEmptyCell"];
-        [cell resetCellWithModel:nil];
-        return cell;
-    }
-    SettingCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCell"];
-    [cell resetCellWithModel:model];
-
-    return cell;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ModelBtn * model = self.aryDatas[indexPath.row];
-    if (!isStr(model.title)) {
-        return [SettingEmptyCell fetchHeight:model];
-    }
-    return [SettingCell fetchHeight:model];
-}
-
 #pragma mark user detail change
 - (void)userInfoChange{
     [self reconfigData];
 }
 #pragma mark request
 - (void)reconfigData{
-    WEAKSELF
-    ModelBaseInfo * modelUser = [GlobalData sharedInstance].GB_UserModel;
-    self.aryDatas = @[
-                     /* ^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"当前积分";
-        model.subTitle = @"0分";
-        model.imageName = @"driverDetail_integral";
-        model.blockClick = ^{
-            [GB_Nav pushVCName:@"IntegralRecordVC" animated:true];
-        };
-        return model;
-    }(),*/
-        ^(){
-               ModelBtn * model = [ModelBtn new];
-               return model;
-           }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"司机认证";
-        model.subTitle = modelUser.authStatusShow;
-        model.imageName = @"personalCenter_driver";
-        model.blockClick = ^{
-            [ModelBaseInfo jumpToAuthorityStateVCSuccessBlock:nil];
-        };
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"车辆认证";
-        model.imageName = @"personalCenter_car";
-        model.blockClick = ^{
-            [GB_Nav pushVCName:@"CarListVC" animated:true];
-        };
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"我的车队";
-        model.subTitle = [NSString stringWithFormat:@"绑定%d家",weakSelf.numMotorCade];
-        model.imageName = @"personalCenter_motorcade";
-        model.blockClick = ^{
-            CarTeamListManagementVC * vc = [CarTeamListManagementVC new];
-            [GB_Nav pushViewController:vc animated:true];
-        };
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"我的银行卡";
-        model.imageName = @"personalCenter_card";
-        model.blockClick = ^{
-            [weakSelf requestBank];
-        };
-        return model;
-    }(), ^(){
-                  ModelBtn * model = [ModelBtn new];
-                  return model;
-              }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"设置";
-        model.imageName = @"personalCenter_set";
-        model.blockClick = ^{
-            [GB_Nav pushVCName:@"SettingVC" animated:true];
-        };
-        return model;
-    }()].mutableCopy;
+   
     [self.tableView reloadData];
 }
 
@@ -177,37 +215,9 @@
             GlobalData.sharedInstance.GB_UserModel = modelUserNew;
         }
         [self reconfigData];
-        [self requestMotorcadeList];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
-}
-- (void)requestMotorcadeList{
-    [RequestApi requestMotorcadeListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        NSArray * aryMotorCade = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelMotrocadeList"];
-        self.numMotorCade = (int)aryMotorCade.count;
-        [self reconfigData];
-        
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
-}
-- (void)requestBank{
-    [RequestApi requestBankCardWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        ModelBank * model = [ModelBank modelObjectWithDictionary:response];
-        
-        if (!model.iDProperty) {
-            AddCardVC * addVC = [AddCardVC new];
-            [GB_Nav pushViewController:addVC animated:true];
-        }else{
-            BankCardListVC * vc = [BankCardListVC new];
-            vc.modelBank = model;
-            [GB_Nav pushViewController:vc animated:true];
-        }
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    } ];
-  
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
