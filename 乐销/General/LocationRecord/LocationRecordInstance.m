@@ -15,7 +15,7 @@
 #import <CloudPushSDK/CloudPushSDK.h>
 #import <MAMapKit/MAGeometry.h>
 //交通部
-#import <MapManager/MapManager.h>
+#import <MapManage/MapManage.h>
 
 
 @interface LocationRecordInstance ()<AMapLocationManagerDelegate>
@@ -36,6 +36,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
         //
         //        @"com.wabob.ntocc.driver"
 #ifdef UP_TRANSPORT
+        self.mapTransport = [[NSClassFromString(@"MapService") alloc]init];
         [self.mapTransport openServiceWithAppId:@"tlanx.midCarrierTransport.dirver" appSecurity:TRANSPORT_AGENCY_APP_SEC enterpriseSenderCode:TRANSPORT_AGENCY_CODE environment:TRANSPORT_AGENCY_ENV listener:^(id  _Nonnull model, NSError * _Nonnull error) {
             NSLog([NSString stringWithFormat:@"%@ %@",model,error]);
         }];
@@ -57,12 +58,12 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
 }
 #pragma mark lazy init
 
-- (MapService *)mapTransport{
-    if (!_mapTransport) {
-        _mapTransport = [[MapService alloc]init];
-    }
-    return _mapTransport;
-}
+//- (MapService *)mapTransport{
+//    if (!_mapTransport) {
+//        _mapTransport = [[MapService alloc]init];
+//    }
+//    return _mapTransport;
+//}
 - (AMapLocationManager *)locationManager{
     if (!_locationManager) {
         _locationManager = [[AMapLocationManager alloc]init];

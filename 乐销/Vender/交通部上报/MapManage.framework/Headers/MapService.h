@@ -32,6 +32,16 @@ typedef void(^MapServiceBlock)(NSObject *object);
 /// @param listener 返回结果回调函数
 -(void)stopLocationWithShippingNoteInfos:(NSArray *)shippingNoteInfos listener:(void(^)(id model, NSError *error))listener;
 
+/// 暂停上传定位
+/// @param shippingNoteInfos 运单信息数组
+/// @param listener 返回结果回调函数
+-(void)pauseLocationWithShippingNoteInfos:(NSArray *)shippingNoteInfos listener:(void(^)(id model, NSError *error))listener;
+
+/// 重启上传定位
+/// @param shippingNoteInfos 运单信息数组
+/// @param listener 返回结果回调函数
+-(void)restartLocationWithShippingNoteInfos:(NSArray *)shippingNoteInfos listener:(void(^)(id model, NSError *error))listener;
+
 /// 清除本地存储
 -(void)clearLocalStorage;
 @end

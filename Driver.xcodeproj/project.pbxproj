@@ -100,6 +100,7 @@
 		D24992D11E05140C001A32DF /* BaseNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = D24992D01E05140C001A32DF /* BaseNavController.m */; };
 		D24A93CB2360449400CB672C /* AuthorityReFailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A93CA2360449400CB672C /* AuthorityReFailVC.m */; };
 		D24A93CE2360470B00CB672C /* AuthorityReVerifyingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A93CD2360470B00CB672C /* AuthorityReVerifyingVC.m */; };
+		D24CBB6B257EFFB600F6AB3E /* MapManage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D24CBB6A257EFFB500F6AB3E /* MapManage.framework */; };
 		D24D0742248A353F0029FCEC /* CarType.json in Sources */ = {isa = PBXBuildFile; fileRef = D24D0741248A353F0029FCEC /* CarType.json */; };
 		D24D0743248A40260029FCEC /* CarType.json in Resources */ = {isa = PBXBuildFile; fileRef = D24D0741248A353F0029FCEC /* CarType.json */; };
 		D2512BCA1E8CDA0F005F9B54 /* CustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2512BC91E8CDA0F005F9B54 /* CustomPickerView.m */; };
@@ -311,7 +312,6 @@
 		D2FC339D247F5776000DE338 /* AddCarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC339B247F5776000DE338 /* AddCarVC.m */; };
 		D2FC33A0247F57AE000DE338 /* AuthorityImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC339F247F57AE000DE338 /* AuthorityImageView.m */; };
 		D2FC33A4247F5A56000DE338 /* ModelCar.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC33A2247F5A56000DE338 /* ModelCar.m */; };
-		D2FD414223C302B800CC90E7 /* MapManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2FD414123C302B800CC90E7 /* MapManager.framework */; };
 		D2FD667620D254930048D351 /* module.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2FD667520D254920048D351 /* module.plist */; };
 		D2FF933D20D1118D00B198EB /* UIFont+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FF933C20D1118D00B198EB /* UIFont+Category.m */; };
 		D2FF9D581E5E5F2F001067B8 /* RequestApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BC9ABB1DFFE16D00B0468E /* RequestApi.m */; };
@@ -567,6 +567,7 @@
 		D24A93CC2360470B00CB672C /* AuthorityReVerifyingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthorityReVerifyingVC.h; sourceTree = "<group>"; };
 		D24A93CD2360470B00CB672C /* AuthorityReVerifyingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthorityReVerifyingVC.m; sourceTree = "<group>"; };
 		D24ABE071E52FB8100ED2C65 /* 乐销.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "乐销.entitlements"; sourceTree = "<group>"; };
+		D24CBB6A257EFFB500F6AB3E /* MapManage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapManage.framework; sourceTree = "<group>"; };
 		D24D0741248A353F0029FCEC /* CarType.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CarType.json; sourceTree = "<group>"; };
 		D24DFE9A22F122EA0072B607 /* LDMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDMacro.h; sourceTree = "<group>"; };
 		D2512BC81E8CDA0F005F9B54 /* CustomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPickerView.h; sourceTree = "<group>"; };
@@ -967,7 +968,6 @@
 		D2FC339F247F57AE000DE338 /* AuthorityImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorityImageView.m; sourceTree = "<group>"; };
 		D2FC33A2247F5A56000DE338 /* ModelCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelCar.m; sourceTree = "<group>"; };
 		D2FC33A3247F5A56000DE338 /* ModelCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelCar.h; sourceTree = "<group>"; };
-		D2FD414123C302B800CC90E7 /* MapManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapManager.framework; sourceTree = "<group>"; };
 		D2FD667520D254920048D351 /* module.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = module.plist; sourceTree = "<group>"; };
 		D2FF933B20D1118D00B198EB /* UIFont+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+Category.h"; sourceTree = "<group>"; };
 		D2FF933C20D1118D00B198EB /* UIFont+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Category.m"; sourceTree = "<group>"; };
@@ -1033,7 +1033,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2CF18FB22548E9E00542AEF /* libc++.1.tbd in Frameworks */,
-				D2FD414223C302B800CC90E7 /* MapManager.framework in Frameworks */,
 				D2CF190E22548EF800542AEF /* EAccountApiSDK.framework in Frameworks */,
 				DA852DBF1D65B9C500AB04CC /* libstdc++.tbd in Frameworks */,
 				DA7FCE181D7FC0FA0002C5CB /* libstdc++.6.0.9.tbd in Frameworks */,
@@ -1065,6 +1064,7 @@
 				DA852DA31D65B8E300AB04CC /* libicucore.tbd in Frameworks */,
 				DA852D9F1D65B8CB00AB04CC /* libsqlite3.tbd in Frameworks */,
 				D2CF190A22548EF800542AEF /* CL_ShanYanSDK.framework in Frameworks */,
+				D24CBB6B257EFFB600F6AB3E /* MapManage.framework in Frameworks */,
 				BDFF566B82B6874C375BA379 /* libPods-Driver.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2782,7 +2782,7 @@
 		D2FD414023C3026800CC90E7 /* 交通部上报 */ = {
 			isa = PBXGroup;
 			children = (
-				D2FD414123C302B800CC90E7 /* MapManager.framework */,
+				D24CBB6A257EFFB500F6AB3E /* MapManage.framework */,
 			);
 			path = "交通部上报";
 			sourceTree = "<group>";
