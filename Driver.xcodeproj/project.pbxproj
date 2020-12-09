@@ -101,6 +101,7 @@
 		D24A93CB2360449400CB672C /* AuthorityReFailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A93CA2360449400CB672C /* AuthorityReFailVC.m */; };
 		D24A93CE2360470B00CB672C /* AuthorityReVerifyingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A93CD2360470B00CB672C /* AuthorityReVerifyingVC.m */; };
 		D24CBB6B257EFFB600F6AB3E /* MapManage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D24CBB6A257EFFB500F6AB3E /* MapManage.framework */; };
+		D24CBB712580782500F6AB3E /* RejectOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D24CBB6F2580782500F6AB3E /* RejectOrderView.m */; };
 		D24D0742248A353F0029FCEC /* CarType.json in Sources */ = {isa = PBXBuildFile; fileRef = D24D0741248A353F0029FCEC /* CarType.json */; };
 		D24D0743248A40260029FCEC /* CarType.json in Resources */ = {isa = PBXBuildFile; fileRef = D24D0741248A353F0029FCEC /* CarType.json */; };
 		D2512BCA1E8CDA0F005F9B54 /* CustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2512BC91E8CDA0F005F9B54 /* CustomPickerView.m */; };
@@ -568,6 +569,8 @@
 		D24A93CD2360470B00CB672C /* AuthorityReVerifyingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthorityReVerifyingVC.m; sourceTree = "<group>"; };
 		D24ABE071E52FB8100ED2C65 /* 乐销.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "乐销.entitlements"; sourceTree = "<group>"; };
 		D24CBB6A257EFFB500F6AB3E /* MapManage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapManage.framework; sourceTree = "<group>"; };
+		D24CBB6F2580782500F6AB3E /* RejectOrderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RejectOrderView.m; sourceTree = "<group>"; };
+		D24CBB702580782500F6AB3E /* RejectOrderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RejectOrderView.h; sourceTree = "<group>"; };
 		D24D0741248A353F0029FCEC /* CarType.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CarType.json; sourceTree = "<group>"; };
 		D24DFE9A22F122EA0072B607 /* LDMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDMacro.h; sourceTree = "<group>"; };
 		D2512BC81E8CDA0F005F9B54 /* CustomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPickerView.h; sourceTree = "<group>"; };
@@ -1587,6 +1590,8 @@
 		D275D9E521796FA20060BB0E /* OrderDetail */ = {
 			isa = PBXGroup;
 			children = (
+				D24CBB702580782500F6AB3E /* RejectOrderView.h */,
+				D24CBB6F2580782500F6AB3E /* RejectOrderView.m */,
 				D2CF118221B8F88D001475B3 /* OrderDetailTopView.h */,
 				D2DFD7932297C28800363142 /* OrderDetailTopView.m */,
 				D2B9374422D862830005B5D2 /* OrderDetailAccessoryView.h */,
@@ -3426,6 +3431,7 @@
 				D2996A4321E6E3AA00562587 /* ImageInfoDetailView.m in Sources */,
 				D265F8AB207C52DF00CB11DD /* BaseTableVC+Select.m in Sources */,
 				D2996A4421E6E3AA00562587 /* ImageDetailBigView.m in Sources */,
+				D24CBB712580782500F6AB3E /* RejectOrderView.m in Sources */,
 				D21B2FC223960C48005B43D0 /* AttachedCarTeamListCell.m in Sources */,
 				D2E50D0A1E319E650045AD3F /* BaseVC+KeyboardObserve.m in Sources */,
 				D2789B4B22E187E100F2E6E1 /* BulkCargoOperateLoadView.m in Sources */,

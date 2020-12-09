@@ -17,6 +17,7 @@
 //share
 #import "ShareView.h"
 #import "OrderListCellBtnView.h"
+#import "RejectOrderView.h"
 
 @interface OrderDetailVC ()
 @property (nonatomic, strong) BaseNavView *nav;
@@ -43,6 +44,12 @@
     if (!_btnView) {
         _btnView = [OrderListCellBtnView new];
         [_btnView resetViewWithModel:self.modelOrder];
+        WEAKSELF
+        _btnView.blockClick = ^(ENUM_ORDER_LIST_BTN tag) {
+            RejectOrderView * view = [RejectOrderView new];
+            [view resetViewWithModel:weakSelf.modelOrder];
+            [weakSelf.view addSubview:view];
+        };
     }
     return _btnView;
 }

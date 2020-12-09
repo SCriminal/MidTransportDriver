@@ -3616,8 +3616,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderDetail/OrderDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-requestList"
             landmarkType = "7">
          </BreakpointContent>
@@ -3632,8 +3632,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderDetail/OrderDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "-reconfigTableHeaderView"
             landmarkType = "7">
          </BreakpointContent>
@@ -4480,8 +4480,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/&#x914d;&#x8d27;&#x8be6;&#x60c5;/AutoConfigDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "-timeView"
             landmarkType = "7">
          </BreakpointContent>

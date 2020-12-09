@@ -19,6 +19,7 @@ typedef NS_ENUM(NSUInteger, ENUM_ORDER_LIST_BTN) {
 
 
 @interface OrderListCellBtnView : UIView
+@property (nonatomic, strong) void (^blockClick)(ENUM_ORDER_LIST_BTN);
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelOrderList *)model;

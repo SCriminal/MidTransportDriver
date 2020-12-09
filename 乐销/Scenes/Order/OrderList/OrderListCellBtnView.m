@@ -90,6 +90,8 @@
 
 #pragma mark 点击事件
 - (void)btnClick:(UIButton *)sender{
-    
+    if (self.blockClick) {
+        self.blockClick(sender.tag);
+    }
 }
 @end
