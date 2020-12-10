@@ -21,7 +21,7 @@
 #import "RequestApi+UserApi.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
-
+#import "WithdrawInputView.h"
 
 @interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate> 
 
@@ -281,8 +281,9 @@
     NSLog(@"true");
 }
 - (void)jump{
-    [GB_Nav pushVCName:@"ScheduleOrderInfoVC" animated:true];
-//    d dateFromString:<#(nonnull NSString *)#>
+    WithdrawInputView * view = [WithdrawInputView new];
+    [view resetViewWithModel:nil];
+    [self.view addSubview:view];
 }
 
 - (void)addVersion{

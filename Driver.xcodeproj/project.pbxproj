@@ -27,6 +27,7 @@
 		D2043B4B1F42CDAC0032AFB0 /* UIScrollView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2043B4A1F42CDAC0032AFB0 /* UIScrollView+Category.m */; };
 		D20DCA052578CA69003B89B5 /* OrderFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20DCA032578CA68003B89B5 /* OrderFilterView.m */; };
 		D20DCA082579E429003B89B5 /* AutoConfigRobView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20DCA072579E429003B89B5 /* AutoConfigRobView.m */; };
+		D20E85EA2580D49100C9EE4C /* WithdrawInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E85E92580D49100C9EE4C /* WithdrawInputView.m */; };
 		D20FFB6B1E0D0A7700ACA896 /* DownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6A1E0D0A7700ACA896 /* DownListView.m */; };
 		D20FFB6E1E0D18B900ACA896 /* DownListViewBG.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6D1E0D18B900ACA896 /* DownListViewBG.m */; };
 		D21014FA1EB81A010096C9CF /* MultiRadioBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D21014F91EB81A010096C9CF /* MultiRadioBtnView.m */; };
@@ -421,6 +422,8 @@
 		D20DCA042578CA68003B89B5 /* OrderFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFilterView.h; sourceTree = "<group>"; };
 		D20DCA062579E429003B89B5 /* AutoConfigRobView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoConfigRobView.h; sourceTree = "<group>"; };
 		D20DCA072579E429003B89B5 /* AutoConfigRobView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoConfigRobView.m; sourceTree = "<group>"; };
+		D20E85E82580D49100C9EE4C /* WithdrawInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawInputView.h; sourceTree = "<group>"; };
+		D20E85E92580D49100C9EE4C /* WithdrawInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawInputView.m; sourceTree = "<group>"; };
 		D20FFB691E0D0A7700ACA896 /* DownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListView.h; sourceTree = "<group>"; };
 		D20FFB6A1E0D0A7700ACA896 /* DownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownListView.m; sourceTree = "<group>"; };
 		D20FFB6C1E0D18B900ACA896 /* DownListViewBG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListViewBG.h; sourceTree = "<group>"; };
@@ -2668,6 +2671,8 @@
 				D2DDCFB2233380CD002A24C4 /* AddCardVC.m */,
 				D2C9EBF2251AE582000D3E00 /* SelectBankNameVC.h */,
 				D2C9EBF3251AE582000D3E00 /* SelectBankNameVC.m */,
+				D20E85E82580D49100C9EE4C /* WithdrawInputView.h */,
+				D20E85E92580D49100C9EE4C /* WithdrawInputView.m */,
 			);
 			path = BankCard;
 			sourceTree = "<group>";
@@ -3083,10 +3088,9 @@
 			};
 			buildConfigurationList = DA8524611D65B5AE00AB04CC /* Build configuration list for PBXProject "Driver" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				"zh-Hans",
@@ -3347,6 +3351,7 @@
 				C699DAFA1EEA8857005DC71C /* NSString+LHP.m in Sources */,
 				D2B6B9CB1E960C97005F00C6 /* ImagePickerVC.m in Sources */,
 				D2DFD79A2297D69D00363142 /* ModelOrderOperateTimeItem.m in Sources */,
+				D20E85EA2580D49100C9EE4C /* WithdrawInputView.m in Sources */,
 				D216F53F1E56AB9800E11ED2 /* NSArray+Safe.m in Sources */,
 				D2512BCA1E8CDA0F005F9B54 /* CustomPickerView.m in Sources */,
 				D22BA9D41E5EB8CA00C5B391 /* FSCalendarCell.m in Sources */,
