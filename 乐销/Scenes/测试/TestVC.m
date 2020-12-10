@@ -21,7 +21,7 @@
 #import "RequestApi+UserApi.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
-#import "WithdrawInputView.h"
+#import "RechargeInputView.h"
 
 @interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate> 
 
@@ -281,9 +281,10 @@
     NSLog(@"true");
 }
 - (void)jump{
-    WithdrawInputView * view = [WithdrawInputView new];
-    [view resetViewWithModel:nil];
-    [self.view addSubview:view];
+    [GB_Nav pushVCName:@"BankCardListVC" animated:true];
+//    RechargeInputView * view = [RechargeInputView new];
+//    [view resetViewWithModel:nil];
+//    [self.view addSubview:view];
 }
 
 - (void)addVersion{

@@ -51,7 +51,7 @@ void sld_textDidChange(id<TextPropertyDelegate> target) {
         return;
     }
     //内容适配
-    NSLog(@"%ld",target.maxLength);
+//    NSLog(@"%ld",target.maxLength);
     
     if (target.maxLength != 0 && target.markedTextRange == nil) {
         NSString *resultText = target.text;

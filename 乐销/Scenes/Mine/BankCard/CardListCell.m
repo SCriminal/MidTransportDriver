@@ -18,7 +18,7 @@
     if (_labelBankName == nil) {
         _labelBankName = [UILabel new];
         _labelBankName.textColor = [UIColor whiteColor];
-        _labelBankName.font =  [UIFont systemFontOfSize:F(18) weight:UIFontWeightRegular];
+        _labelBankName.font =  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
     }
     return _labelBankName;
 }
@@ -34,7 +34,7 @@
     if (_labelName == nil) {
         _labelName = [UILabel new];
         _labelName.textColor = [UIColor whiteColor];
-        _labelName.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
+        _labelName.font =  [UIFont systemFontOfSize:F(17) weight:UIFontWeightMedium];
     }
     return _labelName;
 }
@@ -42,7 +42,7 @@
     if (_iconEdit == nil) {
         _iconEdit = [UIImageView new];
         _iconEdit.image = [UIImage imageNamed:@"card_edit"];
-        _iconEdit.widthHeight = XY(W(25),W(25));
+        _iconEdit.widthHeight = XY(W(23),W(23));
     }
     return _iconEdit;
 }
@@ -50,7 +50,7 @@
     if (_labelEdit == nil) {
         _labelEdit = [UILabel new];
         _labelEdit.textColor = [UIColor whiteColor];
-        _labelEdit.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
+        _labelEdit.font =  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
     }
     return _labelEdit;
 }
@@ -58,7 +58,7 @@
     if (_iconDelete == nil) {
         _iconDelete = [UIImageView new];
         _iconDelete.image = [UIImage imageNamed:@"card_del"];
-        _iconDelete.widthHeight = XY(W(25),W(25));
+        _iconDelete.widthHeight = XY(W(23),W(23));
     }
     return _iconDelete;
 }
@@ -66,7 +66,7 @@
     if (_labelDelete == nil) {
         _labelDelete = [UILabel new];
         _labelDelete.textColor = [UIColor whiteColor];
-        _labelDelete.font =  [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
+        _labelDelete.font =  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
     }
     return _labelDelete;
 }
@@ -74,7 +74,7 @@
     if (!_ivBG) {
         _ivBG = [UIImageView new];
         _ivBG.image = [UIImage imageNamed:@"card_bg"];
-        _ivBG.widthHeight = XY(W(375),W(240));
+        _ivBG.widthHeight = XY(W(335),W(130));
     }
     return _ivBG;
 }
@@ -82,8 +82,8 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.contentView.backgroundColor = [UIColor whiteColor];
-        self.backgroundColor = [UIColor whiteColor];
+        self.contentView.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.ivBG];
         [self.contentView addSubview:self.labelBankName];
@@ -102,13 +102,16 @@
     self.model = model;
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
+    self.ivBG.left = W(20);
     
-    [self.labelBankName fitTitle:UnPackStr(model.bankName) variable:SCREEN_WIDTH - W(80)];
-    self.labelBankName.leftTop = XY(W(40),W(50));
-    [self.labelCardNum fitTitle:[self fetchBankNum] variable:SCREEN_WIDTH - W(80)];
-    self.labelCardNum.leftTop = XY(self.labelBankName.left,W(101));
     [self.labelName fitTitle:UnPackStr(model.accountName) variable:W(120)];
-    self.labelName.leftTop = XY(self.labelBankName.left,W(166));
+    self.labelName.leftTop = XY(W(40),W(18));
+
+    [self.labelBankName fitTitle:UnPackStr(model.bankName) variable:SCREEN_WIDTH - W(80)];
+    self.labelBankName.leftTop = XY(W(40),W(46));
+    
+    [self.labelCardNum fitTitle:[self fetchBankNum] variable:SCREEN_WIDTH - W(80)];
+    self.labelCardNum.leftTop = XY(self.labelBankName.left,W(83));
     
     [self.labelDelete fitTitle:@"删除" variable:0];
     self.labelDelete.rightCenterY = XY(SCREEN_WIDTH - W(40),self.labelName.centerY);

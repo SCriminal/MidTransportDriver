@@ -27,7 +27,7 @@
 #define COLOR_BLUE [UIColor colorWithHexString:@"#006CFF"]
 #define COLOR_RED [UIColor colorWithHexString:@"FF0000"]
 
-#define COLOR_ORANGE [UIColor colorWithHexString:@"F5A623"]
+#define COLOR_ORANGE [UIColor colorWithHexString:@"#FF9523"]
 #define COLOR_GREEN [UIColor colorWithHexString:@"#66CC00"]
 
 

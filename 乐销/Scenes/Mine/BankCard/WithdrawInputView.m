@@ -25,7 +25,7 @@
         _tfPrice.textColor = COLOR_333;
         _tfPrice.borderStyle = UITextBorderStyleNone;
         _tfPrice.backgroundColor = [UIColor clearColor];
-        _tfPrice.delegate = self;
+//        _tfPrice.delegate = self;
         _tfPrice.contentType = ENUM_TEXT_CONTENT_TYPE_PRICE;
 //        _tfPrice.placeholder = @"";
     }
@@ -68,8 +68,24 @@
         [l fitTitle:@"¥" variable:SCREEN_WIDTH - W(30)];
         l.leftTop = XY(W(20), W(67));
         [viewWhiteBG addSubview:l];
+        [viewWhiteBG addSubview:self.tfPrice];
         self.tfPrice.widthHeight = XY(W(200), [UIFont fetchHeight:F(35)]);
-        self.tfPrice.rightCenterY = XY(l.right + W(11), l.centerY);
+        self.tfPrice.leftCenterY = XY(l.right + W(11), l.centerY);
+        
+        [viewWhiteBG addControlFrame:CGRectMake(0, W(60), W(220), W(60)) belowView:self.tfPrice target:self action:@selector(priceClick)];
+    }
+    {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        l.textColor = COLOR_BLUE;
+        l.backgroundColor = [UIColor clearColor];
+        l.numberOfLines = 0;
+        l.lineSpace = W(0);
+        [l fitTitle:@"全部余额" variable:SCREEN_WIDTH - W(30)];
+        l.rightCenterY = XY(SCREEN_WIDTH - W(20), self.tfPrice.centerY);
+        [viewWhiteBG addSubview:l];
+
+        [viewWhiteBG addControlFrame:CGRectInset(l.frame, -W(20), -W(20)) belowView:l target:self action:@selector(yueClick)];
     }
     {
         [viewWhiteBG addLineFrame:CGRectMake(W(20), W(114), SCREEN_WIDTH - W(40), 1)];
@@ -118,8 +134,9 @@
     return self;
 }
 - (void)keyboardShow:(NSNotification *)notice{
+    CGRect frame = [notice.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     [UIView animateWithDuration:0.3 animations:^{
-        self.viewWhitBG.bottom = SCREEN_HEIGHT - W(80);
+        self.viewWhitBG.bottom = frame.origin.y;
     }];
 }
 
@@ -141,7 +158,12 @@
     [self.tfPrice becomeFirstResponder];
 }
 - (void)endClick{
-    [GlobalMethod endEditing];
+    if ([self.tfPrice isFirstResponder]) {
+            [GlobalMethod endEditing];
+
+    }else{
+        [self btnDismissClick];
+    }
 }
 - (void)btnDismissClick{
     [GlobalMethod endEditing];
@@ -152,5 +174,8 @@
         self.blockConfirm(self.tfPrice.text.doubleValue, 0);
     }
     [self btnDismissClick];
+}
+- (void)yueClick{
+    
 }
 @end

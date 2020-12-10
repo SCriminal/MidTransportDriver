@@ -28,6 +28,7 @@
 		D20DCA052578CA69003B89B5 /* OrderFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20DCA032578CA68003B89B5 /* OrderFilterView.m */; };
 		D20DCA082579E429003B89B5 /* AutoConfigRobView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20DCA072579E429003B89B5 /* AutoConfigRobView.m */; };
 		D20E85EA2580D49100C9EE4C /* WithdrawInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E85E92580D49100C9EE4C /* WithdrawInputView.m */; };
+		D20E85ED2581C4C100C9EE4C /* RechargeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E85EC2581C4C100C9EE4C /* RechargeInputView.m */; };
 		D20FFB6B1E0D0A7700ACA896 /* DownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6A1E0D0A7700ACA896 /* DownListView.m */; };
 		D20FFB6E1E0D18B900ACA896 /* DownListViewBG.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6D1E0D18B900ACA896 /* DownListViewBG.m */; };
 		D21014FA1EB81A010096C9CF /* MultiRadioBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D21014F91EB81A010096C9CF /* MultiRadioBtnView.m */; };
@@ -424,6 +425,8 @@
 		D20DCA072579E429003B89B5 /* AutoConfigRobView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoConfigRobView.m; sourceTree = "<group>"; };
 		D20E85E82580D49100C9EE4C /* WithdrawInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawInputView.h; sourceTree = "<group>"; };
 		D20E85E92580D49100C9EE4C /* WithdrawInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawInputView.m; sourceTree = "<group>"; };
+		D20E85EB2581C4C100C9EE4C /* RechargeInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RechargeInputView.h; sourceTree = "<group>"; };
+		D20E85EC2581C4C100C9EE4C /* RechargeInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RechargeInputView.m; sourceTree = "<group>"; };
 		D20FFB691E0D0A7700ACA896 /* DownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListView.h; sourceTree = "<group>"; };
 		D20FFB6A1E0D0A7700ACA896 /* DownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownListView.m; sourceTree = "<group>"; };
 		D20FFB6C1E0D18B900ACA896 /* DownListViewBG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListViewBG.h; sourceTree = "<group>"; };
@@ -2673,6 +2676,8 @@
 				D2C9EBF3251AE582000D3E00 /* SelectBankNameVC.m */,
 				D20E85E82580D49100C9EE4C /* WithdrawInputView.h */,
 				D20E85E92580D49100C9EE4C /* WithdrawInputView.m */,
+				D20E85EB2581C4C100C9EE4C /* RechargeInputView.h */,
+				D20E85EC2581C4C100C9EE4C /* RechargeInputView.m */,
 			);
 			path = BankCard;
 			sourceTree = "<group>";
@@ -3335,6 +3340,7 @@
 				D289669B226427FE006E2196 /* WelcomeVC.m in Sources */,
 				C699B62F1F3AEF380001C842 /* TextFieldLimit.m in Sources */,
 				D22A412E21803C550057C3B4 /* PerfectSelectCell.m in Sources */,
+				D20E85ED2581C4C100C9EE4C /* RechargeInputView.m in Sources */,
 				D293A39E1E01304B005B772A /* BaseTableVC.m in Sources */,
 				C6AACD181EB434FD0044C1C7 /* UILabel+Category.m in Sources */,
 				D2DDCFB0233380BA002A24C4 /* BankCardListVC.m in Sources */,

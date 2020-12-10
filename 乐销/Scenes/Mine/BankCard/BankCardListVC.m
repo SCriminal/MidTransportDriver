@@ -37,8 +37,10 @@
     [super viewDidLoad];
     //添加导航栏
     [self addNav];
+    self.tableView.backgroundColor = [UIColor clearColor];
     //table
     [self.tableView registerClass:[CardListCell class] forCellReuseIdentifier:@"CardListCell"];
+    self.tableView.contentInset = UIEdgeInsetsMake(W(20), 0, 0, 0);
     //request
     if (self.modelBank.iDProperty) {
         self.aryDatas = @[self.modelBank].mutableCopy;
@@ -50,7 +52,7 @@
 #pragma mark 添加导航栏
 - (void)addNav{
     WEAKSELF
-    [self.view addSubview:[BaseNavView initNavBackWithTitle:@"我的银行卡" rightImageName:@"nav_add" rightImageSize:CGSizeMake(W(25), W(25)) righBlock:^{
+   BaseNavView * nav = [BaseNavView initNavBackTitle:@"我的银行卡" rightTitle:@"添加" rightBlock:^{
         if (weakSelf.modelBank) {
             [GlobalMethod showAlert:@"只能添加一张银行卡"];
             return ;
@@ -62,7 +64,9 @@
             }
         };
         [GB_Nav pushViewController:addVC animated:true];
-    }]];
+    }];
+    [nav configBackBlueStyle];
+    [self.view addSubview:nav];
 }
 
 #pragma mark UITableViewDelegate
@@ -127,5 +131,8 @@
         
     }];
    
+}
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 @end
