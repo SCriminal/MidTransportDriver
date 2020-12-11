@@ -29,6 +29,7 @@
 		D20DCA082579E429003B89B5 /* AutoConfigRobView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20DCA072579E429003B89B5 /* AutoConfigRobView.m */; };
 		D20E85EA2580D49100C9EE4C /* WithdrawInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E85E92580D49100C9EE4C /* WithdrawInputView.m */; };
 		D20E85ED2581C4C100C9EE4C /* RechargeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E85EC2581C4C100C9EE4C /* RechargeInputView.m */; };
+		D20E85F525833EC600C9EE4C /* MyPocketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E85F325833EC600C9EE4C /* MyPocketVC.m */; };
 		D20FFB6B1E0D0A7700ACA896 /* DownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6A1E0D0A7700ACA896 /* DownListView.m */; };
 		D20FFB6E1E0D18B900ACA896 /* DownListViewBG.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6D1E0D18B900ACA896 /* DownListViewBG.m */; };
 		D21014FA1EB81A010096C9CF /* MultiRadioBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D21014F91EB81A010096C9CF /* MultiRadioBtnView.m */; };
@@ -427,6 +428,8 @@
 		D20E85E92580D49100C9EE4C /* WithdrawInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawInputView.m; sourceTree = "<group>"; };
 		D20E85EB2581C4C100C9EE4C /* RechargeInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RechargeInputView.h; sourceTree = "<group>"; };
 		D20E85EC2581C4C100C9EE4C /* RechargeInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RechargeInputView.m; sourceTree = "<group>"; };
+		D20E85F325833EC600C9EE4C /* MyPocketVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPocketVC.m; sourceTree = "<group>"; };
+		D20E85F425833EC600C9EE4C /* MyPocketVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPocketVC.h; sourceTree = "<group>"; };
 		D20FFB691E0D0A7700ACA896 /* DownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListView.h; sourceTree = "<group>"; };
 		D20FFB6A1E0D0A7700ACA896 /* DownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownListView.m; sourceTree = "<group>"; };
 		D20FFB6C1E0D18B900ACA896 /* DownListViewBG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListViewBG.h; sourceTree = "<group>"; };
@@ -1226,6 +1229,15 @@
 			path = LocalData;
 			sourceTree = "<group>";
 		};
+		D20E85F225833EC600C9EE4C /* 我的钱包 */ = {
+			isa = PBXGroup;
+			children = (
+				D20E85F325833EC600C9EE4C /* MyPocketVC.m */,
+				D20E85F425833EC600C9EE4C /* MyPocketVC.h */,
+			);
+			path = "我的钱包";
+			sourceTree = "<group>";
+		};
 		D20FFB681E0D0A6500ACA896 /* DownListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1843,6 +1855,7 @@
 		D28466922160A81B002A8650 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				D20E85F225833EC600C9EE4C /* 我的钱包 */,
 				D2DDCFAD233380AB002A24C4 /* BankCard */,
 				D290DB29226F0180004B18B4 /* HotLineView */,
 				D290DB25226EF579004B18B4 /* ShareView */,
@@ -3270,6 +3283,7 @@
 				D275D9EB2179707C0060BB0E /* OrderDetailVC.m in Sources */,
 				D22BA9D11E5EB8CA00C5B391 /* FSCalendar.m in Sources */,
 				D20DCA082579E429003B89B5 /* AutoConfigRobView.m in Sources */,
+				D20E85F525833EC600C9EE4C /* MyPocketVC.m in Sources */,
 				D2C6D14322DEBBFA00A22EA6 /* BulkCargoListManageVC.m in Sources */,
 				D20375FA210717B10054F8A6 /* ModelBaseData.m in Sources */,
 				D2B9FF362490B5890082E8D2 /* SelectCarTypeVC.m in Sources */,

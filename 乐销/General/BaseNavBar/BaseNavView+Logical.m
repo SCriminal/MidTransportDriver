@@ -12,7 +12,7 @@
 //设置蓝色模式
 - (void)configBackBlueStyle{
  
-    [BaseNavView resetControl:self.backBtn imageName:@"back_white" imageSize:CGSizeMake(W(10), W(16)) isLeft:true];
+    [BaseNavView resetControl:self.backBtn imageName:@"back_white" imageSize:CGSizeMake(W(25), W(25)) isLeft:true];
 
     [self configBlueStyle];
 }

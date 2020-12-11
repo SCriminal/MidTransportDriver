@@ -281,7 +281,7 @@
     NSLog(@"true");
 }
 - (void)jump{
-    [GB_Nav pushVCName:@"BankCardListVC" animated:true];
+    [GB_Nav pushVCName:@"MyPocketVC" animated:true];
 //    RechargeInputView * view = [RechargeInputView new];
 //    [view resetViewWithModel:nil];
 //    [self.view addSubview:view];
