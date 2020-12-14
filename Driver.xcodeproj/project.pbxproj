@@ -31,6 +31,7 @@
 		D20E85ED2581C4C100C9EE4C /* RechargeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E85EC2581C4C100C9EE4C /* RechargeInputView.m */; };
 		D20E85F525833EC600C9EE4C /* MyPocketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E85F325833EC600C9EE4C /* MyPocketVC.m */; };
 		D20E85F925875D2E00C9EE4C /* DealHistoryListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E85F825875D2E00C9EE4C /* DealHistoryListVC.m */; };
+		D20E85FC258763DA00C9EE4C /* DealHistoryFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E85FB258763DA00C9EE4C /* DealHistoryFilterView.m */; };
 		D20FFB6B1E0D0A7700ACA896 /* DownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6A1E0D0A7700ACA896 /* DownListView.m */; };
 		D20FFB6E1E0D18B900ACA896 /* DownListViewBG.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6D1E0D18B900ACA896 /* DownListViewBG.m */; };
 		D21014FA1EB81A010096C9CF /* MultiRadioBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D21014F91EB81A010096C9CF /* MultiRadioBtnView.m */; };
@@ -433,6 +434,8 @@
 		D20E85F425833EC600C9EE4C /* MyPocketVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPocketVC.h; sourceTree = "<group>"; };
 		D20E85F725875D2E00C9EE4C /* DealHistoryListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DealHistoryListVC.h; sourceTree = "<group>"; };
 		D20E85F825875D2E00C9EE4C /* DealHistoryListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DealHistoryListVC.m; sourceTree = "<group>"; };
+		D20E85FA258763DA00C9EE4C /* DealHistoryFilterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DealHistoryFilterView.h; sourceTree = "<group>"; };
+		D20E85FB258763DA00C9EE4C /* DealHistoryFilterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DealHistoryFilterView.m; sourceTree = "<group>"; };
 		D20FFB691E0D0A7700ACA896 /* DownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListView.h; sourceTree = "<group>"; };
 		D20FFB6A1E0D0A7700ACA896 /* DownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownListView.m; sourceTree = "<group>"; };
 		D20FFB6C1E0D18B900ACA896 /* DownListViewBG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListViewBG.h; sourceTree = "<group>"; };
@@ -1246,6 +1249,8 @@
 			children = (
 				D20E85F725875D2E00C9EE4C /* DealHistoryListVC.h */,
 				D20E85F825875D2E00C9EE4C /* DealHistoryListVC.m */,
+				D20E85FA258763DA00C9EE4C /* DealHistoryFilterView.h */,
+				D20E85FB258763DA00C9EE4C /* DealHistoryFilterView.m */,
 			);
 			path = "交易明细";
 			sourceTree = "<group>";
@@ -3467,6 +3472,7 @@
 				D25E8AE922B0EE960091CF4D /* ModelMotrocadeList.m in Sources */,
 				D2B9374622D862830005B5D2 /* OrderDetailAccessoryView.m in Sources */,
 				D22BA9D51E5EB8CA00C5B391 /* FSCalendarCollectionView.m in Sources */,
+				D20E85FC258763DA00C9EE4C /* DealHistoryFilterView.m in Sources */,
 				D2996A4321E6E3AA00562587 /* ImageInfoDetailView.m in Sources */,
 				D265F8AB207C52DF00CB11DD /* BaseTableVC+Select.m in Sources */,
 				D2996A4421E6E3AA00562587 /* ImageDetailBigView.m in Sources */,

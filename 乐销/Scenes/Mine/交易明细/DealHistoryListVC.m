@@ -7,12 +7,24 @@
 //
 
 #import "DealHistoryListVC.h"
+#import "DealHistoryFilterView.h"
 
 @interface DealHistoryListVC ()
+@property (nonatomic, strong) DealHistoryFilterView *filterView;
 
 @end
 
 @implementation DealHistoryListVC
+- (DealHistoryFilterView *)filterView{
+    if (!_filterView) {
+        _filterView = [DealHistoryFilterView new];
+        WEAKSELF
+        _filterView.blockSearchClick = ^(NSInteger index, NSString *billNo, NSDate *dateStart, NSDate *dateEnd) {
+            [weakSelf refreshHeaderAll];
+        };
+    }
+    return _filterView;
+}
 
 #pragma mark view did load
 - (void)viewDidLoad {
@@ -27,7 +39,12 @@
 
 #pragma mark 添加导航栏
 - (void)addNav{
-    BaseNavView * nav = [BaseNavView initNavBackTitle:@"我的钱包" rightView:nil];
+    WEAKSELF
+    BaseNavView * nav = [BaseNavView initNavBackWithTitle:@"交易明细" rightImageName:@"nav_filter_white" rightImageSize:CGSizeMake(W(23), W(23)) righBlock:^{
+        [weakSelf.filterView show];
+
+    }];
+   
     [nav configBackBlueStyle];
     [self.view addSubview:nav];
 }
