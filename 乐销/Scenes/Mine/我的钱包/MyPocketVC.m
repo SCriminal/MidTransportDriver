@@ -119,7 +119,7 @@
         m.title = @"交易明细";
         m.imageName = @"card_money";
         m.blockClick = ^{
-            
+            [GB_Nav pushVCName:@"DealHistoryListVC" animated:true];
         };
         return m;
     }()];

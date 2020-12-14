@@ -23,6 +23,7 @@
 @property (nonatomic, assign) BOOL isChangeInvalid;//change invalid
 @property (nonatomic, assign) BOOL isRequired;//isselelcted defatult no
 @property (nonatomic, assign) BOOL isArrowHide;//isselelcted defatult no
+@property (nonatomic, assign) double subLeft;//isselelcted defatult no
 
 
 @property (nonatomic, strong) void (^blockValueChange)(ModelBaseData *);//block value change

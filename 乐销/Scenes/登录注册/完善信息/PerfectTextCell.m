@@ -18,8 +18,8 @@
 - (UILabel *)title{
     if (_title == nil) {
         _title = [UILabel new];
-        _title.textColor = COLOR_666;
-        _title.font =  [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+        _title.textColor = COLOR_333;
+        _title.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         _title.numberOfLines = 0;
         _title.lineSpace = 0;
     }
@@ -29,7 +29,7 @@
     if (!_iconArrow) {
         _iconArrow = [UIImageView new];
         _iconArrow.backgroundColor = [UIColor clearColor];
-        _iconArrow.image = [UIImage imageNamed:@"arrow_down"];
+        _iconArrow.image = [UIImage imageNamed:@"setting_RightArrow"];
         _iconArrow.hidden = true;
         _iconArrow.widthHeight = XY(W(25), W(25));
     }
@@ -38,7 +38,7 @@
 - (UITextField *)textField{
     if (_textField == nil) {
         _textField = [UITextField new];
-        _textField.font =  [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+        _textField.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         _textField.textAlignment = NSTextAlignmentLeft;
         _textField.textColor = COLOR_333;
         _textField.borderStyle = UITextBorderStyleNone;
@@ -52,7 +52,7 @@
     if (_essential == nil) {
         _essential = [UILabel new];
         _essential.textColor = [UIColor redColor];
-        _essential.font =  [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+        _essential.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         [_essential fitTitle:@"*" variable:0];
     }
     return _essential;
@@ -81,7 +81,7 @@
     self.model = model;
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //设置总高度
-    self.height = W(65);
+    self.height = W(49);
     
     self.iconArrow.rightCenterY = XY(SCREEN_WIDTH- W(10),self.height/2.0);
 
@@ -91,8 +91,8 @@
     self.essential.rightCenterY = XY(self.title.left-W(2), self.title.centerY);
     self.essential.hidden = !model.isRequired;
     
-    self.textField.widthHeight = XY(self.iconArrow.left - W(99) - W(10), [GlobalMethod fetchHeightFromFont:self.textField.font.pointSize]);
-    self.textField.leftCenterY = XY(W(99), self.title.centerY);
+    self.textField.widthHeight = XY(self.iconArrow.left - (model.subLeft?model.subLeft:W(99)) - W(10), [GlobalMethod fetchHeightFromFont:self.textField.font.pointSize]);
+    self.textField.leftCenterY = XY(model.subLeft?model.subLeft:W(99), self.title.centerY);
     self.textField.text = model.subString;
     self.textField.textColor = model.isChangeInvalid?COLOR_999:COLOR_333;
     self.textField.userInteractionEnabled = !model.isChangeInvalid;
@@ -108,12 +108,7 @@
         [self.contentView addLineFrame:CGRectMake(W(15), self.height -1, SCREEN_WIDTH - W(15), 1)];
     }
 }
-//reconfig text field left
-- (void) reconfigTextFieldLeft:(CGFloat)left{
-    self.textField.width = SCREEN_WIDTH - left - W(15);
-    self.textField.left = left;
 
-}
 #pragma mark cell click
 - (void)cellClick{
     if (self.model.isChangeInvalid) {

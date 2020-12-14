@@ -17,8 +17,8 @@
 - (UILabel *)title{
     if (_title == nil) {
         _title = [UILabel new];
-        _title.textColor = COLOR_666;
-        _title.font =  [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+        _title.textColor = COLOR_333;
+        _title.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         _title.numberOfLines = 0;
         _title.lineSpace = 0;
     }
@@ -28,7 +28,7 @@
     if (_subTitle == nil) {
         _subTitle = [UILabel new];
         _subTitle.textColor = COLOR_333;
-        _subTitle.font =  [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+        _subTitle.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         _subTitle.numberOfLines = 0;
         _subTitle.lineSpace = 0;
     }
@@ -37,7 +37,7 @@
 - (UIImageView *)ivArrow{
     if (!_ivArrow) {
         _ivArrow = [UIImageView new];
-        _ivArrow.image = [UIImage imageNamed:@"arrow_down"];
+        _ivArrow.image = [UIImage imageNamed:@"setting_RightArrow"];
         _ivArrow.backgroundColor=[UIColor clearColor];
         _ivArrow.widthHeight = XY(W(25), W(25));
     }
@@ -47,7 +47,7 @@
     if (_essential == nil) {
         _essential = [UILabel new];
         _essential.textColor = [UIColor redColor];
-        _essential.font =  [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+        _essential.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         [_essential fitTitle:@"*" variable:0];
     }
     return _essential;
@@ -76,12 +76,12 @@
     self.model = model;
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //设置总高度
-    self.height = W(65);
+    self.height = W(49);
     
     
     [self.title fitTitle:model.string variable:0];
     self.title.leftCenterY = XY(W(15),self.height/2.0);
-    self.title.textColor = self.model.isChangeInvalid?COLOR_999:COLOR_666;
+    self.title.textColor = self.model.isChangeInvalid?COLOR_999:COLOR_333;
     
     self.essential.rightCenterY = XY(self.title.left-W(2), self.title.centerY);
     self.essential.hidden = !model.isRequired;
@@ -89,8 +89,8 @@
     self.ivArrow.rightCenterY = XY(SCREEN_WIDTH - W(15), self.height/2.0);
     self.ivArrow.hidden = model.isArrowHide;
     NSString * strPlace = self.model.isChangeInvalid?@"不可修改":model.placeHolderString;
-    [self.subTitle fitTitle:isStr(model.subString)?model.subString:strPlace variable:self.ivArrow.left - W(115)];
-    self.subTitle.leftCenterY = XY(W(99),self.height/2.0);
+    [self.subTitle fitTitle:isStr(model.subString)?model.subString:strPlace variable:self.ivArrow.left - W(5)-(model.subLeft?model.subLeft:W(99))];
+    self.subTitle.leftCenterY = XY(model.subLeft?model.subLeft:W(99),self.height/2.0);
     self.subTitle.textColor = isStr(model.subString)?COLOR_333:COLOR_999;
     if (self.model.isChangeInvalid) {
         self.subTitle.textColor = COLOR_999;

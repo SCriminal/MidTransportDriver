@@ -14,8 +14,8 @@
 - (UILabel *)title{
     if (_title == nil) {
         _title = [UILabel new];
-        _title.textColor = COLOR_666;
-        _title.font =  [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+        _title.textColor = COLOR_333;
+        _title.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         [_title fitTitle:@"个性签名" variable:0];
     }
     return _title;

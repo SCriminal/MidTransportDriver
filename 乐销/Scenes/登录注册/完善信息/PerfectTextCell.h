@@ -18,8 +18,6 @@
 
 #pragma mark 刷新cell
 - (void)resetCellWithModel:(ModelBaseData *)model;
-//reconfig text field left
-- (void) reconfigTextFieldLeft:(CGFloat)left;
 @end
 
 
