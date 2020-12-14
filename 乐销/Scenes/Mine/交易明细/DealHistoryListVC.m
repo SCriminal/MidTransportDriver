@@ -8,7 +8,7 @@
 
 #import "DealHistoryListVC.h"
 #import "DealHistoryFilterView.h"
-
+#import "DealHistoryDetailVC.h"
 @interface DealHistoryListVC ()
 @property (nonatomic, strong) DealHistoryFilterView *filterView;
 
@@ -63,6 +63,10 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [DealHistoryListCell fetchHeight:self.aryDatas[indexPath.row]];
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    DealHistoryDetailVC * vc = [DealHistoryDetailVC new];
+    [GB_Nav pushViewController:vc animated:true];
 }
 #pragma mark request
 - (void)requestList{
