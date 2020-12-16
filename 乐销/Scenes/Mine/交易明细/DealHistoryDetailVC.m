@@ -62,7 +62,7 @@
         l.numberOfLines = 0;
         l.lineSpace = W(0);
         [l fitTitle:@"+1000.00" variable:SCREEN_WIDTH - W(30)];
-        l.centerXTop = XY(SCREEN_WIDTH/2.0, W(229));
+        l.centerXTop = XY(SCREEN_WIDTH/2.0, W(165));
         [view addSubview:l];
     }
     [view addLineFrame:CGRectMake(W(30), W(240), SCREEN_WIDTH - W(60), 1)];

@@ -33,6 +33,10 @@
 		D20E85F925875D2E00C9EE4C /* DealHistoryListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E85F825875D2E00C9EE4C /* DealHistoryListVC.m */; };
 		D20E85FC258763DA00C9EE4C /* DealHistoryFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E85FB258763DA00C9EE4C /* DealHistoryFilterView.m */; };
 		D20E85FF258764CE00C9EE4C /* DealHistoryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E85FE258764CE00C9EE4C /* DealHistoryDetailVC.m */; };
+		D20E8603258845FB00C9EE4C /* AuthOneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E8602258845FB00C9EE4C /* AuthOneVC.m */; };
+		D20E86062588460700C9EE4C /* AuthTwoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E86052588460700C9EE4C /* AuthTwoVC.m */; };
+		D20E86092588461100C9EE4C /* AuthThreeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E86082588461100C9EE4C /* AuthThreeVC.m */; };
+		D20E860C2588462100C9EE4C /* AuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E860B2588462100C9EE4C /* AuthView.m */; };
 		D20FFB6B1E0D0A7700ACA896 /* DownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6A1E0D0A7700ACA896 /* DownListView.m */; };
 		D20FFB6E1E0D18B900ACA896 /* DownListViewBG.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6D1E0D18B900ACA896 /* DownListViewBG.m */; };
 		D21014FA1EB81A010096C9CF /* MultiRadioBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D21014F91EB81A010096C9CF /* MultiRadioBtnView.m */; };
@@ -439,6 +443,14 @@
 		D20E85FB258763DA00C9EE4C /* DealHistoryFilterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DealHistoryFilterView.m; sourceTree = "<group>"; };
 		D20E85FD258764CE00C9EE4C /* DealHistoryDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DealHistoryDetailVC.h; sourceTree = "<group>"; };
 		D20E85FE258764CE00C9EE4C /* DealHistoryDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DealHistoryDetailVC.m; sourceTree = "<group>"; };
+		D20E8601258845FB00C9EE4C /* AuthOneVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthOneVC.h; sourceTree = "<group>"; };
+		D20E8602258845FB00C9EE4C /* AuthOneVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthOneVC.m; sourceTree = "<group>"; };
+		D20E86042588460700C9EE4C /* AuthTwoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthTwoVC.h; sourceTree = "<group>"; };
+		D20E86052588460700C9EE4C /* AuthTwoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthTwoVC.m; sourceTree = "<group>"; };
+		D20E86072588461100C9EE4C /* AuthThreeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthThreeVC.h; sourceTree = "<group>"; };
+		D20E86082588461100C9EE4C /* AuthThreeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthThreeVC.m; sourceTree = "<group>"; };
+		D20E860A2588462100C9EE4C /* AuthView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthView.h; sourceTree = "<group>"; };
+		D20E860B2588462100C9EE4C /* AuthView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthView.m; sourceTree = "<group>"; };
 		D20FFB691E0D0A7700ACA896 /* DownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListView.h; sourceTree = "<group>"; };
 		D20FFB6A1E0D0A7700ACA896 /* DownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownListView.m; sourceTree = "<group>"; };
 		D20FFB6C1E0D18B900ACA896 /* DownListViewBG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListViewBG.h; sourceTree = "<group>"; };
@@ -1258,6 +1270,21 @@
 				D20E85FE258764CE00C9EE4C /* DealHistoryDetailVC.m */,
 			);
 			path = "交易明细";
+			sourceTree = "<group>";
+		};
+		D20E8600258845EA00C9EE4C /* 认证中心 */ = {
+			isa = PBXGroup;
+			children = (
+				D20E8601258845FB00C9EE4C /* AuthOneVC.h */,
+				D20E8602258845FB00C9EE4C /* AuthOneVC.m */,
+				D20E86042588460700C9EE4C /* AuthTwoVC.h */,
+				D20E86052588460700C9EE4C /* AuthTwoVC.m */,
+				D20E86072588461100C9EE4C /* AuthThreeVC.h */,
+				D20E86082588461100C9EE4C /* AuthThreeVC.m */,
+				D20E860A2588462100C9EE4C /* AuthView.h */,
+				D20E860B2588462100C9EE4C /* AuthView.m */,
+			);
+			path = "认证中心";
 			sourceTree = "<group>";
 		};
 		D20FFB681E0D0A6500ACA896 /* DownListView */ = {
@@ -3010,6 +3037,7 @@
 		DAC5CF561DFFC3C20032E76F /* 登录注册 */ = {
 			isa = PBXGroup;
 			children = (
+				D20E8600258845EA00C9EE4C /* 认证中心 */,
 				D2A3002A2266BF2F00AE2EC3 /* 司机认证 */,
 				D26B88D3225C9E6E0051FA78 /* 忘记密码 */,
 				D25F55B52178529700FD4898 /* 完善信息 */,
@@ -3308,6 +3336,7 @@
 				D22BA9D11E5EB8CA00C5B391 /* FSCalendar.m in Sources */,
 				D20DCA082579E429003B89B5 /* AutoConfigRobView.m in Sources */,
 				D20E85F525833EC600C9EE4C /* MyPocketVC.m in Sources */,
+				D20E860C2588462100C9EE4C /* AuthView.m in Sources */,
 				D2C6D14322DEBBFA00A22EA6 /* BulkCargoListManageVC.m in Sources */,
 				D20375FA210717B10054F8A6 /* ModelBaseData.m in Sources */,
 				D2B9FF362490B5890082E8D2 /* SelectCarTypeVC.m in Sources */,
@@ -3338,6 +3367,7 @@
 				D2FF933D20D1118D00B198EB /* UIFont+Category.m in Sources */,
 				D22BA9D21E5EB8CA00C5B391 /* FSCalendarAppearance.m in Sources */,
 				D2A946DA2192B75600AD1E5B /* SelectDistrictView.m in Sources */,
+				D20E8603258845FB00C9EE4C /* AuthOneVC.m in Sources */,
 				D2B6B9CE1E961456005F00C6 /* ImagePickerCollectionCell.m in Sources */,
 				D23458401FD4E5E100F72EF5 /* UIImageView+Category.m in Sources */,
 				D2745FAA2087442900A0AD05 /* NoticeSectionView.m in Sources */,
@@ -3384,6 +3414,7 @@
 				D2DDCFB0233380BA002A24C4 /* BankCardListVC.m in Sources */,
 				D2BE30CE210711BD0059929D /* ModelAddress.m in Sources */,
 				D2B9FF1C248DDE740082E8D2 /* ModelAuditRecord.m in Sources */,
+				D20E86092588461100C9EE4C /* AuthThreeVC.m in Sources */,
 				D2C6D16122DF245600A22EA6 /* ModelLocationItem.m in Sources */,
 				D2BE30C6210711430059929D /* ModelBtn.m in Sources */,
 				D2DFD7942297C28800363142 /* OrderDetailTopView.m in Sources */,
@@ -3430,6 +3461,7 @@
 				D22B1D542383E34400BC00F0 /* ScanOrderListVC.m in Sources */,
 				D23327CE2185A6CB00495488 /* OrderListManagementVC.m in Sources */,
 				D23398601EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m in Sources */,
+				D20E86062588460700C9EE4C /* AuthTwoVC.m in Sources */,
 				D2BE30E12107154A0059929D /* WXApiManager.m in Sources */,
 				D28B6FE71E794589001CC3A8 /* BaseCell.m in Sources */,
 				D2B1040E22ED94CC002D9BFF /* LocationEagleInstance.m in Sources */,
