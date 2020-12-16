@@ -281,7 +281,7 @@
     NSLog(@"true");
 }
 - (void)jump{
-    [GB_Nav pushVCName:@"AuthOneVC" animated:true];
+    [GB_Nav pushVCName:@"AuthThreeVC" animated:true];
 //    RechargeInputView * view = [RechargeInputView new];
 //    [view resetViewWithModel:nil];
 //    [self.view addSubview:view];

@@ -14,3 +14,17 @@
 - (void)resetViewWithModel:(int)index;
 
 @end
+
+@interface AuthTitleView : UIView
+
+#pragma mark 刷新view
+- (void)resetViewWithModel:(NSString *)title;
+
+@end
+
+@interface AuthBtnView : UIView
+@property (nonatomic, strong) void (^blockConfirmClick)(void);
+@property (nonatomic, strong) void (^blockDismissClick)(void);
+
+
+@end
