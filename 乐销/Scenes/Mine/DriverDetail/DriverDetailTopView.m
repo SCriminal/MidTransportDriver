@@ -233,6 +233,7 @@
             [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
             btn.modelBtn = mBtn;
             left = iv.right + W(47);
+            [self addSubview:btn];
 
             if ((i+1)%4==0) {
                 left = W(27);

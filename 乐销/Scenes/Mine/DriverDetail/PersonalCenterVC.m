@@ -80,7 +80,7 @@
                 mB.title = @"我的消息";
                                mB.imageName = @"personal_消息";
                                mB.blockClick = ^{
-                                   
+                                   [GB_Nav pushVCName:@"MyMsgVC" animated:true];                                   
                                };
                 return mB;
             }(),^(){

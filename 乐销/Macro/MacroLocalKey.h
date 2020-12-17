@@ -25,6 +25,8 @@
 #define COLOR_333 [UIColor colorWithHexString:@"333333"]
 
 #define COLOR_BLUE [UIColor colorWithHexString:@"#006CFF"]
+#define COLOR_BLUE_LIGHT [UIColor colorWithHexString:@"#219BFF"]
+
 #define COLOR_RED [UIColor colorWithHexString:@"FF0000"]
 
 #define COLOR_ORANGE [UIColor colorWithHexString:@"#FF9523"]

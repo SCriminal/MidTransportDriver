@@ -165,6 +165,7 @@
 		D289669B226427FE006E2196 /* WelcomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D289669A226427FE006E2196 /* WelcomeVC.m */; };
 		D289FEAF1E8F366C00C2636B /* SectionIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = D289FEAE1E8F366C00C2636B /* SectionIndexView.m */; };
 		D28A1F71225D976800F252A5 /* InputPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1F70225D976800F252A5 /* InputPwdVC.m */; };
+		D28A318B258B2E72006AC450 /* MyMsgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A318A258B2E72006AC450 /* MyMsgVC.m */; };
 		D28A867D225F1572001E3372 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A867B225F1571001E3372 /* SettingCell.m */; };
 		D28A8681225F1AEC001E3372 /* IntegralRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A8680225F1AEC001E3372 /* IntegralRecordVC.m */; };
 		D28A8684225F1B0F001E3372 /* IntegralRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A8683225F1B0F001E3372 /* IntegralRecordCell.m */; };
@@ -699,6 +700,8 @@
 		D289FEAE1E8F366C00C2636B /* SectionIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionIndexView.m; sourceTree = "<group>"; };
 		D28A1F6F225D976800F252A5 /* InputPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputPwdVC.h; sourceTree = "<group>"; };
 		D28A1F70225D976800F252A5 /* InputPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InputPwdVC.m; sourceTree = "<group>"; };
+		D28A3189258B2E72006AC450 /* MyMsgVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMsgVC.h; sourceTree = "<group>"; };
+		D28A318A258B2E72006AC450 /* MyMsgVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMsgVC.m; sourceTree = "<group>"; };
 		D28A867B225F1571001E3372 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		D28A867C225F1571001E3372 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		D28A867F225F1AEC001E3372 /* IntegralRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralRecordVC.h; sourceTree = "<group>"; };
@@ -1909,6 +1912,7 @@
 		D28466922160A81B002A8650 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				D28A3188258B2E51006AC450 /* 我的消息 */,
 				D20E85F625875D1F00C9EE4C /* 交易明细 */,
 				D20E85F225833EC600C9EE4C /* 我的钱包 */,
 				D2DDCFAD233380AB002A24C4 /* BankCard */,
@@ -1958,6 +1962,15 @@
 				D289FEAE1E8F366C00C2636B /* SectionIndexView.m */,
 			);
 			path = SectionIndexView;
+			sourceTree = "<group>";
+		};
+		D28A3188258B2E51006AC450 /* 我的消息 */ = {
+			isa = PBXGroup;
+			children = (
+				D28A3189258B2E72006AC450 /* MyMsgVC.h */,
+				D28A318A258B2E72006AC450 /* MyMsgVC.m */,
+			);
+			path = "我的消息";
 			sourceTree = "<group>";
 		};
 		D28A867E225F1ADB001E3372 /* IntegralRecord */ = {
@@ -3535,6 +3548,7 @@
 				D23327C121855BBE00495488 /* DriverOperateVC.m in Sources */,
 				D2996A4221E6E3AA00562587 /* UpImageWithTextCell.m in Sources */,
 				D2C6D15722DEE7D700A22EA6 /* BulkCargoOperateView.m in Sources */,
+				D28A318B258B2E72006AC450 /* MyMsgVC.m in Sources */,
 				D22BA9D31E5EB8CA00C5B391 /* FSCalendarCalculator.m in Sources */,
 				D217D8C61E1B8B8B0094FD55 /* BaseAlertView.m in Sources */,
 				D2DFD7A122991BE200363142 /* ModelPackageInfo.m in Sources */,
