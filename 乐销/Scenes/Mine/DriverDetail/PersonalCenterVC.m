@@ -64,7 +64,7 @@
                 mB.title = @"认证中心";
                                mB.imageName = @"personal_车辆";
                                mB.blockClick = ^{
-                                   
+                                   [GB_Nav pushVCName:@"AuthListVC" animated:true];
                                };
                 return mB;
             }(),^(){

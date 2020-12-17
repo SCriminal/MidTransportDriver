@@ -37,6 +37,7 @@
 		D20E86062588460700C9EE4C /* AuthTwoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E86052588460700C9EE4C /* AuthTwoVC.m */; };
 		D20E86092588461100C9EE4C /* AuthThreeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E86082588461100C9EE4C /* AuthThreeVC.m */; };
 		D20E860C2588462100C9EE4C /* AuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E860B2588462100C9EE4C /* AuthView.m */; };
+		D20E8612258AF7ED00C9EE4C /* AuthListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E8611258AF7EC00C9EE4C /* AuthListVC.m */; };
 		D20FFB6B1E0D0A7700ACA896 /* DownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6A1E0D0A7700ACA896 /* DownListView.m */; };
 		D20FFB6E1E0D18B900ACA896 /* DownListViewBG.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6D1E0D18B900ACA896 /* DownListViewBG.m */; };
 		D21014FA1EB81A010096C9CF /* MultiRadioBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D21014F91EB81A010096C9CF /* MultiRadioBtnView.m */; };
@@ -451,6 +452,8 @@
 		D20E86082588461100C9EE4C /* AuthThreeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthThreeVC.m; sourceTree = "<group>"; };
 		D20E860A2588462100C9EE4C /* AuthView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthView.h; sourceTree = "<group>"; };
 		D20E860B2588462100C9EE4C /* AuthView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthView.m; sourceTree = "<group>"; };
+		D20E8610258AF7EC00C9EE4C /* AuthListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthListVC.h; sourceTree = "<group>"; };
+		D20E8611258AF7EC00C9EE4C /* AuthListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthListVC.m; sourceTree = "<group>"; };
 		D20FFB691E0D0A7700ACA896 /* DownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListView.h; sourceTree = "<group>"; };
 		D20FFB6A1E0D0A7700ACA896 /* DownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownListView.m; sourceTree = "<group>"; };
 		D20FFB6C1E0D18B900ACA896 /* DownListViewBG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListViewBG.h; sourceTree = "<group>"; };
@@ -1283,6 +1286,8 @@
 				D20E86082588461100C9EE4C /* AuthThreeVC.m */,
 				D20E860A2588462100C9EE4C /* AuthView.h */,
 				D20E860B2588462100C9EE4C /* AuthView.m */,
+				D20E8610258AF7EC00C9EE4C /* AuthListVC.h */,
+				D20E8611258AF7EC00C9EE4C /* AuthListVC.m */,
 			);
 			path = "认证中心";
 			sourceTree = "<group>";
@@ -3451,6 +3456,7 @@
 				D2BCE9162269653A00E8C4E2 /* ListAlertView.m in Sources */,
 				D24D0742248A353F0029FCEC /* CarType.json in Sources */,
 				D2136CEA1E13AAE9003B4B92 /* GlobalMethod+Data.m in Sources */,
+				D20E8612258AF7ED00C9EE4C /* AuthListVC.m in Sources */,
 				D2A797612488C8470062B4F6 /* CarDetailView.m in Sources */,
 				D2D6D9AD21AFD623005A4F5B /* LeftMenuVC.m in Sources */,
 				D2C55812238CC9D50050694F /* ModelValidCar.m in Sources */,
