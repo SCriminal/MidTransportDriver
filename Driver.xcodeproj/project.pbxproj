@@ -166,6 +166,8 @@
 		D289FEAF1E8F366C00C2636B /* SectionIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = D289FEAE1E8F366C00C2636B /* SectionIndexView.m */; };
 		D28A1F71225D976800F252A5 /* InputPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A1F70225D976800F252A5 /* InputPwdVC.m */; };
 		D28A318B258B2E72006AC450 /* MyMsgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A318A258B2E72006AC450 /* MyMsgVC.m */; };
+		D28A318E258C88BC006AC450 /* MyMsgManagementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A318D258C88BC006AC450 /* MyMsgManagementVC.m */; };
+		D28A3191258C88C8006AC450 /* MyMsgListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A3190258C88C8006AC450 /* MyMsgListVC.m */; };
 		D28A867D225F1572001E3372 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A867B225F1571001E3372 /* SettingCell.m */; };
 		D28A8681225F1AEC001E3372 /* IntegralRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A8680225F1AEC001E3372 /* IntegralRecordVC.m */; };
 		D28A8684225F1B0F001E3372 /* IntegralRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A8683225F1B0F001E3372 /* IntegralRecordCell.m */; };
@@ -702,6 +704,10 @@
 		D28A1F70225D976800F252A5 /* InputPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InputPwdVC.m; sourceTree = "<group>"; };
 		D28A3189258B2E72006AC450 /* MyMsgVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMsgVC.h; sourceTree = "<group>"; };
 		D28A318A258B2E72006AC450 /* MyMsgVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMsgVC.m; sourceTree = "<group>"; };
+		D28A318C258C88BC006AC450 /* MyMsgManagementVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMsgManagementVC.h; sourceTree = "<group>"; };
+		D28A318D258C88BC006AC450 /* MyMsgManagementVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMsgManagementVC.m; sourceTree = "<group>"; };
+		D28A318F258C88C8006AC450 /* MyMsgListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMsgListVC.h; sourceTree = "<group>"; };
+		D28A3190258C88C8006AC450 /* MyMsgListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMsgListVC.m; sourceTree = "<group>"; };
 		D28A867B225F1571001E3372 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		D28A867C225F1571001E3372 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		D28A867F225F1AEC001E3372 /* IntegralRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralRecordVC.h; sourceTree = "<group>"; };
@@ -1969,6 +1975,10 @@
 			children = (
 				D28A3189258B2E72006AC450 /* MyMsgVC.h */,
 				D28A318A258B2E72006AC450 /* MyMsgVC.m */,
+				D28A318C258C88BC006AC450 /* MyMsgManagementVC.h */,
+				D28A318D258C88BC006AC450 /* MyMsgManagementVC.m */,
+				D28A318F258C88C8006AC450 /* MyMsgListVC.h */,
+				D28A3190258C88C8006AC450 /* MyMsgListVC.m */,
 			);
 			path = "我的消息";
 			sourceTree = "<group>";
@@ -3364,6 +3374,7 @@
 				D2A3004722671E1000AE2EC3 /* InputAccountView.m in Sources */,
 				D285E2991E6D49E100DE9A6D /* NSDate+CategorySld.m in Sources */,
 				D293A39A1E011987005B772A /* LoadingView.m in Sources */,
+				D28A3191258C88C8006AC450 /* MyMsgListVC.m in Sources */,
 				D28A1F71225D976800F252A5 /* InputPwdVC.m in Sources */,
 				D259D54B228E4B2F00CE2632 /* RequestApi+UserApi.m in Sources */,
 				C6A031171F0CC7AA00C90032 /* ReturnAttributeStr.m in Sources */,
@@ -3427,6 +3438,7 @@
 				C699B62F1F3AEF380001C842 /* TextFieldLimit.m in Sources */,
 				D22A412E21803C550057C3B4 /* PerfectSelectCell.m in Sources */,
 				D20E85ED2581C4C100C9EE4C /* RechargeInputView.m in Sources */,
+				D28A318E258C88BC006AC450 /* MyMsgManagementVC.m in Sources */,
 				D293A39E1E01304B005B772A /* BaseTableVC.m in Sources */,
 				C6AACD181EB434FD0044C1C7 /* UILabel+Category.m in Sources */,
 				D2DDCFB0233380BA002A24C4 /* BankCardListVC.m in Sources */,
