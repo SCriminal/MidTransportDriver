@@ -114,6 +114,9 @@
     }
     return _modelAddressDetail;
 }
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -129,7 +132,7 @@
         return footer;
     }();
     [self registAuthorityCell];
-    
+    self.tableView.backgroundColor = COLOR_BACKGROUND;
     //config data
     [self configData];
     //add keyboard observe
@@ -148,12 +151,12 @@
 //            } view:weakSelf.view];
 //        }
     }];
+    [nav configBackBlueStyle];
     [self.view addSubview:nav];
 }
 
 #pragma mark config data
 - (void)configData{
-    
     self.aryDatas = @[ self.modelName,self.modelPhone,self.modelDistrict,self.modelAddressDetail].mutableCopy;
     [self.tableView reloadData];
 }

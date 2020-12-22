@@ -72,9 +72,12 @@
     self.model = model;
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-    self.title.leftTop = XY(W(15),  W(25));
-    
-    self.textView.leftTop = XY(W(99),self.title.top);
+    [self.title fitTitle:model.string variable:0];
+
+    self.title.leftTop = XY(W(15),  W(17));
+    [self.textView.placeHolder fitTitle:model.placeHolderString variable:0];
+
+    self.textView.leftTop = XY(model.subLeft?model.subLeft:W(99),self.title.top);
     self.textView.text = model.subString;
     [self resetCellWithoutTextView];
 }
@@ -82,12 +85,12 @@
 - (void)resetCellWithoutTextView{
     
     self.textView.leftTop = XY(W(99),self.title.top);
-    self.textView.width = SCREEN_WIDTH - W(99) - W(15);
+    self.textView.width = SCREEN_WIDTH - (self.model.subLeft?self.model.subLeft:W(99)) - W(15);
     [self.textView changeLinesCallBlock:false];
     self.textView.height = MAX(self.textView.font.lineHeight , self.textView.numTextHeight);
     [self.textView changeLinesCallBlock:false];
     
-    self.height = self.textView.bottom + W(25);
+    self.height = self.textView.bottom + W(17);
 }
 
 @end
