@@ -26,6 +26,8 @@
 @property (nonatomic, strong) ModelBaseData *modelAge;
 @property (nonatomic, strong) ModelBaseData *modelPhone;
 @property (nonatomic, strong) ModelBaseData *modelGender;
+@property (nonatomic, strong) ModelBaseData *modelEmail;
+@property (nonatomic, strong) ModelBaseData *modelAddress;
 
 @property (nonatomic, strong) EditInfoTopView *topView;
 @property (nonatomic, strong) ModelBaseInfo *modelInfo;
@@ -82,8 +84,8 @@
             ModelBaseData * model = [ModelBaseData new];
             model.enumType = ENUM_PERFECT_CELL_TEXT;
             model.imageName = @"";
-            model.string = @"您的昵称";
-            model.placeHolderString = @"请输入您的昵称";
+            model.string = @"昵称";
+            model.placeHolderString = @"填写您的昵称";
             return model;
         }();
     }
@@ -96,7 +98,6 @@
         _modelAge.imageName = @"";
         _modelAge.string = @"出生年月";
         _modelAge.placeHolderString = @"选择您的出生年月";
-        _modelAge.hideState = true;
         WEAKSELF
         _modelAge.blocClick = ^(ModelBaseData *model) {
             [GlobalMethod endEditing];
@@ -110,12 +111,22 @@
     }
     return _modelAge;
 }
+- (ModelBaseData *)modelEmail{
+    if (!_modelEmail) {
+        _modelEmail =[ModelBaseData new];
+        _modelEmail.enumType = ENUM_PERFECT_CELL_TEXT;
+        _modelEmail.imageName = @"";
+        _modelEmail.string = @"电子邮箱";
+        _modelEmail.placeHolderString = @"填写您的电子邮箱";
+    }
+    return _modelEmail;
+}
 - (ModelBaseData *)modelGender{
     if (!_modelGender) {
         _modelGender =[ModelBaseData new];
         _modelGender.enumType = ENUM_PERFECT_CELL_SELECT;
         _modelGender.imageName = @"";
-        _modelGender.string = @"您的性别";
+        _modelGender.string = @"性别";
         _modelGender.placeHolderString = @"选择您的性别";
         WEAKSELF
         _modelGender.blocClick = ^(ModelBaseData *model) {
@@ -131,6 +142,23 @@
     }
     return _modelGender;
 }
+- (ModelBaseData *)modelAddress{
+    if (!_modelAddress) {
+        _modelAddress =[ModelBaseData new];
+        _modelAddress.enumType = ENUM_PERFECT_CELL_SELECT;
+        _modelAddress.imageName = @"";
+        _modelAddress.string = @"收货地址";
+        _modelAddress.placeHolderString = @"选择您的收货地址";
+                _modelAddress.hideState = true;
+
+        WEAKSELF
+        _modelAddress.blocClick = ^(ModelBaseData *model) {
+            [GlobalMethod endEditing];
+                    
+        };
+    }
+    return _modelAddress;
+}
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -140,7 +168,7 @@
     self.tableView.backgroundColor = COLOR_BACKGROUND;
     [self registAuthorityCell];
     self.tableView.tableHeaderView = self.topView;
-    self.tableView.tableFooterView = self.bottomView;
+//    self.tableView.tableFooterView = self.bottomView;
 
 //    self.tableView.contentInset = UIEdgeInsetsMake(W(10), 0, 0, 0);
     //config data
@@ -154,16 +182,18 @@
 #pragma mark 添加导航栏
 - (void)addNav{
     WEAKSELF
-    BaseNavView *nav = [BaseNavView initNavBackTitle:@"编辑资料" rightTitle:@"完成" rightBlock:^{
+    BaseNavView *nav = [BaseNavView initNavBackTitle:@"个人信息" rightTitle:@"保存" rightBlock:^{
         [weakSelf completeClick];
     }];
+    [nav configBackBlueStyle];
     [self.view addSubview:nav];
 }
-
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 #pragma mark config data
 - (void)configData{
-    
-    self.aryDatas = @[ self.modelPhone,self.modelName,self.modelGender,self.modelAge].mutableCopy;
+    self.aryDatas = @[self.modelName,self.modelGender,self.modelAge,self.modelEmail,self.modelAddress].mutableCopy;
     [self.tableView reloadData];
 }
 #pragma mark image select
@@ -225,9 +255,6 @@
     }];
 }
 
--(UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleDefault;
-}
 @end
 
 
@@ -238,7 +265,7 @@
     if (_labelInfo == nil) {
         _labelInfo = [UILabel new];
         _labelInfo.textColor = COLOR_999;
-        _labelInfo.font =  [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+        _labelInfo.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         _labelInfo.numberOfLines = 0;
         _labelInfo.lineSpace = 0;
     }
@@ -248,7 +275,7 @@
     if (_ivHead == nil) {
         _ivHead = [UIImageView new];
         [_ivHead sd_setImageWithURL:[NSURL URLWithString:[GlobalData sharedInstance].GB_UserModel.headUrl] placeholderImage:[UIImage imageNamed:IMAGE_HEAD_DEFAULT]];
-        _ivHead.widthHeight = XY(W(50),W(50));
+        _ivHead.widthHeight = XY(W(55),W(55));
         [GlobalMethod setRoundView:_ivHead color:[UIColor clearColor] numRound:_ivHead.width/2.0 width:0];
     }
     return _ivHead;
@@ -285,8 +312,8 @@
 - (void)addSubView{
     [self addSubview:self.labelInfo];
     [self addSubview:self.ivHead];
-    [self addSubview:self.BG];
-    [self addSubview:self.baseInfo];
+//    [self addSubview:self.BG];
+//    [self addSubview:self.baseInfo];
     
     //初始化页面
     [self resetViewWithModel:nil];
@@ -295,18 +322,28 @@
 #pragma mark 刷新view
 - (void)resetViewWithModel:(id)model{
     [self removeSubViewWithTag:TAG_LINE];//移除线
-    self.baseInfo.leftTop = XY(W(15),W(15));
-    self.BG.widthHeight = XY(SCREEN_WIDTH, self.baseInfo.bottom + W(15));
+//    self.baseInfo.leftTop = XY(W(15),W(15));
+//    self.BG.widthHeight = XY(SCREEN_WIDTH, self.baseInfo.bottom + W(15));
     
     //刷新view
-    self.ivHead.leftTop = XY(W(15),self.BG.bottom + W(20));
+    self.ivHead.leftTop = XY(W(15),W(15));
     
-    [self.labelInfo fitTitle:@"更换头像" variable:0];
-    self.labelInfo.leftCenterY = XY(W(99),self.ivHead.centerY);
+    [self.labelInfo fitTitle:@"点击上传头像" variable:0];
+    self.labelInfo.leftCenterY = XY(W(90),self.ivHead.centerY);
     
+    {
+        UIImageView * iv = [UIImageView new];
+        iv.backgroundColor = [UIColor clearColor];
+        iv.contentMode = UIViewContentModeScaleAspectFill;
+        iv.clipsToBounds = true;
+        iv.image = [UIImage imageNamed:@"setting_RightArrow"];
+        iv.widthHeight = XY(W(25),W(25));
+        iv.rightCenterY = XY(SCREEN_WIDTH - W(15), self.ivHead.centerY);
+        [self addSubview:iv];
+    }
     //设置总高度
-    self.height = self.ivHead.bottom + W(20);
-    [self addLineFrame:CGRectMake(W(15), self.height -1, SCREEN_WIDTH - W(15), 1)];
+    self.height = self.ivHead.bottom + W(15);
+    [self addLineFrame:CGRectMake(W(15), self.height -1, SCREEN_WIDTH - W(30), 1)];
 }
 
 #pragma mark click

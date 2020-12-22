@@ -7,6 +7,7 @@
 //
 
 #import "MyMsgVC.h"
+#import "MyMsgManagementVC.h"
 
 @interface MyMsgVC ()
 
@@ -48,6 +49,11 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [MyMsgCell fetchHeight:self.aryDatas[indexPath.row]];
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+                 MyMsgManagementVC* vc = [MyMsgManagementVC new];
+    [GB_Nav pushViewController:vc animated:true];
+
 }
 #pragma mark request
 - (void)requestList{

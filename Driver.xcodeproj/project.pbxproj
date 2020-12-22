@@ -168,6 +168,10 @@
 		D28A318B258B2E72006AC450 /* MyMsgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A318A258B2E72006AC450 /* MyMsgVC.m */; };
 		D28A318E258C88BC006AC450 /* MyMsgManagementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A318D258C88BC006AC450 /* MyMsgManagementVC.m */; };
 		D28A3191258C88C8006AC450 /* MyMsgListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A3190258C88C8006AC450 /* MyMsgListVC.m */; };
+		D28A319925908D79006AC450 /* CreateAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A319425908D78006AC450 /* CreateAddressVC.m */; };
+		D28A319A25908D79006AC450 /* AddressListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A319625908D79006AC450 /* AddressListCell.m */; };
+		D28A319B25908D79006AC450 /* AddressListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A319825908D79006AC450 /* AddressListVC.m */; };
+		D28A319E2590A457006AC450 /* ModelShopAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A319C2590A457006AC450 /* ModelShopAddress.m */; };
 		D28A867D225F1572001E3372 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A867B225F1571001E3372 /* SettingCell.m */; };
 		D28A8681225F1AEC001E3372 /* IntegralRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A8680225F1AEC001E3372 /* IntegralRecordVC.m */; };
 		D28A8684225F1B0F001E3372 /* IntegralRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A8683225F1B0F001E3372 /* IntegralRecordCell.m */; };
@@ -708,6 +712,14 @@
 		D28A318D258C88BC006AC450 /* MyMsgManagementVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMsgManagementVC.m; sourceTree = "<group>"; };
 		D28A318F258C88C8006AC450 /* MyMsgListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMsgListVC.h; sourceTree = "<group>"; };
 		D28A3190258C88C8006AC450 /* MyMsgListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMsgListVC.m; sourceTree = "<group>"; };
+		D28A319325908D78006AC450 /* AddressListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressListCell.h; sourceTree = "<group>"; };
+		D28A319425908D78006AC450 /* CreateAddressVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAddressVC.m; sourceTree = "<group>"; };
+		D28A319525908D79006AC450 /* AddressListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressListVC.h; sourceTree = "<group>"; };
+		D28A319625908D79006AC450 /* AddressListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressListCell.m; sourceTree = "<group>"; };
+		D28A319725908D79006AC450 /* CreateAddressVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAddressVC.h; sourceTree = "<group>"; };
+		D28A319825908D79006AC450 /* AddressListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressListVC.m; sourceTree = "<group>"; };
+		D28A319C2590A457006AC450 /* ModelShopAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelShopAddress.m; sourceTree = "<group>"; };
+		D28A319D2590A457006AC450 /* ModelShopAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelShopAddress.h; sourceTree = "<group>"; };
 		D28A867B225F1571001E3372 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		D28A867C225F1571001E3372 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		D28A867F225F1AEC001E3372 /* IntegralRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralRecordVC.h; sourceTree = "<group>"; };
@@ -1918,6 +1930,7 @@
 		D28466922160A81B002A8650 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				D28A319225908D78006AC450 /* 收货地址 */,
 				D28A3188258B2E51006AC450 /* 我的消息 */,
 				D20E85F625875D1F00C9EE4C /* 交易明细 */,
 				D20E85F225833EC600C9EE4C /* 我的钱包 */,
@@ -1981,6 +1994,19 @@
 				D28A3190258C88C8006AC450 /* MyMsgListVC.m */,
 			);
 			path = "我的消息";
+			sourceTree = "<group>";
+		};
+		D28A319225908D78006AC450 /* 收货地址 */ = {
+			isa = PBXGroup;
+			children = (
+				D28A319325908D78006AC450 /* AddressListCell.h */,
+				D28A319625908D79006AC450 /* AddressListCell.m */,
+				D28A319525908D79006AC450 /* AddressListVC.h */,
+				D28A319825908D79006AC450 /* AddressListVC.m */,
+				D28A319725908D79006AC450 /* CreateAddressVC.h */,
+				D28A319425908D78006AC450 /* CreateAddressVC.m */,
+			);
+			path = "收货地址";
 			sourceTree = "<group>";
 		};
 		D28A867E225F1ADB001E3372 /* IntegralRecord */ = {
@@ -2567,6 +2593,8 @@
 		D2BE30CB210711BD0059929D /* 地址 */ = {
 			isa = PBXGroup;
 			children = (
+				D28A319D2590A457006AC450 /* ModelShopAddress.h */,
+				D28A319C2590A457006AC450 /* ModelShopAddress.m */,
 				D2C6D16022DF245600A22EA6 /* ModelLocationItem.h */,
 				D2C6D15F22DF245500A22EA6 /* ModelLocationItem.m */,
 				D2BE30CC210711BD0059929D /* ModelAddress.m */,
@@ -3491,6 +3519,7 @@
 				D27470B022A798DA009B645D /* RequestApi+Location.m in Sources */,
 				D22B1D542383E34400BC00F0 /* ScanOrderListVC.m in Sources */,
 				D23327CE2185A6CB00495488 /* OrderListManagementVC.m in Sources */,
+				D28A319925908D79006AC450 /* CreateAddressVC.m in Sources */,
 				D23398601EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m in Sources */,
 				D20E86062588460700C9EE4C /* AuthTwoVC.m in Sources */,
 				D2BE30E12107154A0059929D /* WXApiManager.m in Sources */,
@@ -3525,7 +3554,9 @@
 				D2BC9ABF1DFFE32400B0468E /* RequestInstance.m in Sources */,
 				C6B343F31F2099BB005FE308 /* UIColor+Category.m in Sources */,
 				D2C55809238BE7710050694F /* ScheduleInfoView.m in Sources */,
+				D28A319A25908D79006AC450 /* AddressListCell.m in Sources */,
 				D2FC33A4247F5A56000DE338 /* ModelCar.m in Sources */,
+				D28A319B25908D79006AC450 /* AddressListVC.m in Sources */,
 				D20FFB6B1E0D0A7700ACA896 /* DownListView.m in Sources */,
 				D2A30041226706CE00AE2EC3 /* OrderAccountListVC.m in Sources */,
 				D21014FA1EB81A010096C9CF /* MultiRadioBtnView.m in Sources */,
@@ -3533,6 +3564,7 @@
 				D2FC33A0247F57AE000DE338 /* AuthorityImageView.m in Sources */,
 				D2DDCFB3233380CD002A24C4 /* AddCardVC.m in Sources */,
 				D23327AC21854FE000495488 /* MapView.m in Sources */,
+				D28A319E2590A457006AC450 /* ModelShopAddress.m in Sources */,
 				D2ACCC2121DC8E4600F39E28 /* ModelAps.m in Sources */,
 				D216F5401E56AB9800E11ED2 /* NSMutableArray+Safe.m in Sources */,
 				D23D90C71F8B245A00489F95 /* UIViewController+Category.m in Sources */,

@@ -59,3 +59,5 @@
 
 //身份识别
 #import "ModelOCR.h"
+
+#import "ModelShopAddress.h"
