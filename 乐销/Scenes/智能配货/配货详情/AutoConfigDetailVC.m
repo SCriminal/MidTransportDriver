@@ -213,7 +213,7 @@
     CGFloat top = self.iconAddress.bottom + W(20);
     self.newsView.centerXTop = XY(SCREEN_WIDTH/2.0, top);
     [self.newsView resetWithAry:@[@"156****0983      成交量：100      好评率：90%",@"156****0983      成交量：101      好评率：90%"]];
-    [self.newsView timerStart];
+//    [self.newsView timerStart];
     top = self.newsView.bottom + W(20);
     
     NSMutableArray * ary = [NSMutableArray new];

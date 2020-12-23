@@ -66,6 +66,8 @@
 		D22431A21E10C08A00C9F10A /* AliClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D22431A11E10C08A00C9F10A /* AliClient.m */; };
 		D22499E8219A74FF00608246 /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D22499E7219A74FF00608246 /* WebVC.m */; };
 		D22499EE219A95C300608246 /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D22499ED219A95C300608246 /* SettingVC.m */; };
+		D22851A12591E4D800100231 /* IntegralCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D22851A02591E4D800100231 /* IntegralCenterVC.m */; };
+		D22851A42591E4E400100231 /* IntegralCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D22851A32591E4E400100231 /* IntegralCenterView.m */; };
 		D22A412E21803C550057C3B4 /* PerfectSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D22A412D21803C550057C3B4 /* PerfectSelectCell.m */; };
 		D22A413121803C650057C3B4 /* PerfectTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D22A413021803C650057C3B4 /* PerfectTextCell.m */; };
 		D22A413721805B220057C3B4 /* PerfectAddressDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D22A413621805B220057C3B4 /* PerfectAddressDetailCell.m */; };
@@ -172,6 +174,8 @@
 		D28A319A25908D79006AC450 /* AddressListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A319625908D79006AC450 /* AddressListCell.m */; };
 		D28A319B25908D79006AC450 /* AddressListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A319825908D79006AC450 /* AddressListVC.m */; };
 		D28A319E2590A457006AC450 /* ModelShopAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A319C2590A457006AC450 /* ModelShopAddress.m */; };
+		D28A31A2259193CF006AC450 /* CreditCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A31A1259193CE006AC450 /* CreditCenterVC.m */; };
+		D28A31A52591BD83006AC450 /* CreditListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A31A42591BD83006AC450 /* CreditListVC.m */; };
 		D28A867D225F1572001E3372 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A867B225F1571001E3372 /* SettingCell.m */; };
 		D28A8681225F1AEC001E3372 /* IntegralRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A8680225F1AEC001E3372 /* IntegralRecordVC.m */; };
 		D28A8684225F1B0F001E3372 /* IntegralRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A8683225F1B0F001E3372 /* IntegralRecordCell.m */; };
@@ -517,6 +521,10 @@
 		D22499E7219A74FF00608246 /* WebVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebVC.m; sourceTree = "<group>"; };
 		D22499EC219A95C300608246 /* SettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingVC.h; sourceTree = "<group>"; };
 		D22499ED219A95C300608246 /* SettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingVC.m; sourceTree = "<group>"; };
+		D228519F2591E4D800100231 /* IntegralCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralCenterVC.h; sourceTree = "<group>"; };
+		D22851A02591E4D800100231 /* IntegralCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegralCenterVC.m; sourceTree = "<group>"; };
+		D22851A22591E4E400100231 /* IntegralCenterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralCenterView.h; sourceTree = "<group>"; };
+		D22851A32591E4E400100231 /* IntegralCenterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegralCenterView.m; sourceTree = "<group>"; };
 		D22A412C21803C550057C3B4 /* PerfectSelectCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PerfectSelectCell.h; sourceTree = "<group>"; };
 		D22A412D21803C550057C3B4 /* PerfectSelectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PerfectSelectCell.m; sourceTree = "<group>"; };
 		D22A412F21803C650057C3B4 /* PerfectTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PerfectTextCell.h; sourceTree = "<group>"; };
@@ -720,6 +728,10 @@
 		D28A319825908D79006AC450 /* AddressListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressListVC.m; sourceTree = "<group>"; };
 		D28A319C2590A457006AC450 /* ModelShopAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelShopAddress.m; sourceTree = "<group>"; };
 		D28A319D2590A457006AC450 /* ModelShopAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelShopAddress.h; sourceTree = "<group>"; };
+		D28A31A0259193CE006AC450 /* CreditCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreditCenterVC.h; sourceTree = "<group>"; };
+		D28A31A1259193CE006AC450 /* CreditCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreditCenterVC.m; sourceTree = "<group>"; };
+		D28A31A32591BD83006AC450 /* CreditListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreditListVC.h; sourceTree = "<group>"; };
+		D28A31A42591BD83006AC450 /* CreditListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreditListVC.m; sourceTree = "<group>"; };
 		D28A867B225F1571001E3372 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		D28A867C225F1571001E3372 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		D28A867F225F1AEC001E3372 /* IntegralRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralRecordVC.h; sourceTree = "<group>"; };
@@ -1398,6 +1410,17 @@
 			path = "网页VC";
 			sourceTree = "<group>";
 		};
+		D228519E2591E4C000100231 /* 积分中心 */ = {
+			isa = PBXGroup;
+			children = (
+				D228519F2591E4D800100231 /* IntegralCenterVC.h */,
+				D22851A02591E4D800100231 /* IntegralCenterVC.m */,
+				D22851A22591E4E400100231 /* IntegralCenterView.h */,
+				D22851A32591E4E400100231 /* IntegralCenterView.m */,
+			);
+			path = "积分中心";
+			sourceTree = "<group>";
+		};
 		D22B1D4D2383942000BC00F0 /* 扫描二维码页面 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1930,6 +1953,8 @@
 		D28466922160A81B002A8650 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				D228519E2591E4C000100231 /* 积分中心 */,
+				D28A319F2591939C006AC450 /* 信用中心 */,
 				D28A319225908D78006AC450 /* 收货地址 */,
 				D28A3188258B2E51006AC450 /* 我的消息 */,
 				D20E85F625875D1F00C9EE4C /* 交易明细 */,
@@ -2007,6 +2032,17 @@
 				D28A319425908D78006AC450 /* CreateAddressVC.m */,
 			);
 			path = "收货地址";
+			sourceTree = "<group>";
+		};
+		D28A319F2591939C006AC450 /* 信用中心 */ = {
+			isa = PBXGroup;
+			children = (
+				D28A31A0259193CE006AC450 /* CreditCenterVC.h */,
+				D28A31A1259193CE006AC450 /* CreditCenterVC.m */,
+				D28A31A32591BD83006AC450 /* CreditListVC.h */,
+				D28A31A42591BD83006AC450 /* CreditListVC.m */,
+			);
+			path = "信用中心";
 			sourceTree = "<group>";
 		};
 		D28A867E225F1ADB001E3372 /* IntegralRecord */ = {
@@ -3497,6 +3533,7 @@
 				D2B9374022D828390005B5D2 /* ModelAccessoryItem.m in Sources */,
 				D2C5580C238CB7DB0050694F /* ModelScheduleInfo.m in Sources */,
 				D2A6670D230F7BF00064F94B /* AuthortiyExampleVC.m in Sources */,
+				D28A31A52591BD83006AC450 /* CreditListVC.m in Sources */,
 				D20DCA052578CA69003B89B5 /* OrderFilterView.m in Sources */,
 				D257759824D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m in Sources */,
 				D28A8688225F1E78001E3372 /* CarTeamListVC.m in Sources */,
@@ -3523,6 +3560,7 @@
 				D23398601EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m in Sources */,
 				D20E86062588460700C9EE4C /* AuthTwoVC.m in Sources */,
 				D2BE30E12107154A0059929D /* WXApiManager.m in Sources */,
+				D22851A12591E4D800100231 /* IntegralCenterVC.m in Sources */,
 				D28B6FE71E794589001CC3A8 /* BaseCell.m in Sources */,
 				D2B1040E22ED94CC002D9BFF /* LocationEagleInstance.m in Sources */,
 				D23327C421855EDC00495488 /* DriverOperateView.m in Sources */,
@@ -3579,6 +3617,7 @@
 				D2996A4421E6E3AA00562587 /* ImageDetailBigView.m in Sources */,
 				D24CBB712580782500F6AB3E /* RejectOrderView.m in Sources */,
 				D21B2FC223960C48005B43D0 /* AttachedCarTeamListCell.m in Sources */,
+				D28A31A2259193CF006AC450 /* CreditCenterVC.m in Sources */,
 				D2E50D0A1E319E650045AD3F /* BaseVC+KeyboardObserve.m in Sources */,
 				D2789B4B22E187E100F2E6E1 /* BulkCargoOperateLoadView.m in Sources */,
 				D2F11C6D2097103600F18CBD /* UITextField+Text.m in Sources */,
@@ -3640,6 +3679,7 @@
 				D22499E8219A74FF00608246 /* WebVC.m in Sources */,
 				D216F5371E569C1200E11ED2 /* NSObject+Catrgory.m in Sources */,
 				D2478143218C35A1005747FC /* DVPieCenterView.m in Sources */,
+				D22851A42591E4E400100231 /* IntegralCenterView.m in Sources */,
 				D22BA9DD1E5EB8CA00C5B391 /* FSCalendarStickyHeader.m in Sources */,
 				D2996A4021E6E3AA00562587 /* CollectionImageCell.m in Sources */,
 				D2A3003D226704D100AE2EC3 /* InputPlumbumNumView.m in Sources */,
