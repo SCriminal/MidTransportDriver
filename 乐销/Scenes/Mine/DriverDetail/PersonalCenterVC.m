@@ -96,7 +96,7 @@
                 mB.title = @"积分商城";
                                mB.imageName = @"personal_积分";
                                mB.blockClick = ^{
-                                   
+                                   [GB_Nav pushVCName:@"IntegralCenterVC" animated:true];
                                };
                 return mB;
             }(),^(){

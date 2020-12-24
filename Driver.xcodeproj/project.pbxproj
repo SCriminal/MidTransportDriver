@@ -68,6 +68,8 @@
 		D22499EE219A95C300608246 /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D22499ED219A95C300608246 /* SettingVC.m */; };
 		D22851A12591E4D800100231 /* IntegralCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D22851A02591E4D800100231 /* IntegralCenterVC.m */; };
 		D22851A42591E4E400100231 /* IntegralCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D22851A32591E4E400100231 /* IntegralCenterView.m */; };
+		D22851A7259345AC00100231 /* IntegralCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D22851A6259345AC00100231 /* IntegralCollectionCell.m */; };
+		D22851AA25934AE300100231 /* UICollectionWaterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D22851A925934AE300100231 /* UICollectionWaterLayout.m */; };
 		D22A412E21803C550057C3B4 /* PerfectSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D22A412D21803C550057C3B4 /* PerfectSelectCell.m */; };
 		D22A413121803C650057C3B4 /* PerfectTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D22A413021803C650057C3B4 /* PerfectTextCell.m */; };
 		D22A413721805B220057C3B4 /* PerfectAddressDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D22A413621805B220057C3B4 /* PerfectAddressDetailCell.m */; };
@@ -525,6 +527,10 @@
 		D22851A02591E4D800100231 /* IntegralCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegralCenterVC.m; sourceTree = "<group>"; };
 		D22851A22591E4E400100231 /* IntegralCenterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralCenterView.h; sourceTree = "<group>"; };
 		D22851A32591E4E400100231 /* IntegralCenterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegralCenterView.m; sourceTree = "<group>"; };
+		D22851A5259345AC00100231 /* IntegralCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegralCollectionCell.h; sourceTree = "<group>"; };
+		D22851A6259345AC00100231 /* IntegralCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegralCollectionCell.m; sourceTree = "<group>"; };
+		D22851A825934AE200100231 /* UICollectionWaterLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionWaterLayout.h; sourceTree = "<group>"; };
+		D22851A925934AE300100231 /* UICollectionWaterLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionWaterLayout.m; sourceTree = "<group>"; };
 		D22A412C21803C550057C3B4 /* PerfectSelectCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PerfectSelectCell.h; sourceTree = "<group>"; };
 		D22A412D21803C550057C3B4 /* PerfectSelectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PerfectSelectCell.m; sourceTree = "<group>"; };
 		D22A412F21803C650057C3B4 /* PerfectTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PerfectTextCell.h; sourceTree = "<group>"; };
@@ -1413,6 +1419,10 @@
 		D228519E2591E4C000100231 /* 积分中心 */ = {
 			isa = PBXGroup;
 			children = (
+				D22851A825934AE200100231 /* UICollectionWaterLayout.h */,
+				D22851A925934AE300100231 /* UICollectionWaterLayout.m */,
+				D22851A5259345AC00100231 /* IntegralCollectionCell.h */,
+				D22851A6259345AC00100231 /* IntegralCollectionCell.m */,
 				D228519F2591E4D800100231 /* IntegralCenterVC.h */,
 				D22851A02591E4D800100231 /* IntegralCenterVC.m */,
 				D22851A22591E4E400100231 /* IntegralCenterView.h */,
@@ -3443,6 +3453,7 @@
 				D259D54B228E4B2F00CE2632 /* RequestApi+UserApi.m in Sources */,
 				C6A031171F0CC7AA00C90032 /* ReturnAttributeStr.m in Sources */,
 				D2478141218C35A1005747FC /* DVFoodPieModel.m in Sources */,
+				D22851AA25934AE300100231 /* UICollectionWaterLayout.m in Sources */,
 				D2C6D14622DEBC3100A22EA6 /* BulkCargoListVC.m in Sources */,
 				D2545A5D1E72AD2500DEC7CE /* UIControl+Category.m in Sources */,
 				D22431A21E10C08A00C9F10A /* AliClient.m in Sources */,
@@ -3533,6 +3544,7 @@
 				D2B9374022D828390005B5D2 /* ModelAccessoryItem.m in Sources */,
 				D2C5580C238CB7DB0050694F /* ModelScheduleInfo.m in Sources */,
 				D2A6670D230F7BF00064F94B /* AuthortiyExampleVC.m in Sources */,
+				D22851A7259345AC00100231 /* IntegralCollectionCell.m in Sources */,
 				D28A31A52591BD83006AC450 /* CreditListVC.m in Sources */,
 				D20DCA052578CA69003B89B5 /* OrderFilterView.m in Sources */,
 				D257759824D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m in Sources */,
