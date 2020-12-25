@@ -10,6 +10,27 @@
 
 @implementation NSString (LHP)
 
+//适配html图片宽度
+-(NSString *)fitWebImage{
+    return [NSString stringWithFormat:@"<html> \n"
+    "<head> \n"
+    "<style type=\"text/css\"> \n"
+    "body {font-size:15px;}\n"
+    "</style> \n"
+    "</head> \n"
+    "<body>"
+    "<script type='text/javascript'>"
+    "window.onload = function(){\n"
+    "var $img = document.getElementsByTagName('img');\n"
+    "for(var p in  $img){\n"
+    " $img[p].style.width = '100%%';\n"
+    "$img[p].style.height ='auto'\n"
+    "}\n"
+    "}"
+    "</script>%@"
+    "</body>"
+    "</html>", self];
+}
 
 //拼接url
 -(NSString *)appendUrl:(NSString *)value key:(NSString *)key{

@@ -10,7 +10,7 @@
 #import "IntegralCenterView.h"
 #import "IntegralCollectionCell.h"
 #import "UICollectionWaterLayout.h"
-
+#import "IntegralProductDetailVC.h"
 @interface IntegralCenterVC ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UICollectionView *myCollectionView;
 @property (nonatomic, strong) NSMutableArray *aryDatas;
@@ -83,7 +83,7 @@
 {
     
     // 1.获得cell
-    IntegralCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"IntegralCollectionCell" forIndexPath:indexPath];
+    IntegralCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"InteggbralCollectionCell" forIndexPath:indexPath];
     [cell resetCellWithModel:self.aryDatas[indexPath.row]];
     return cell;
 }
@@ -91,6 +91,8 @@
 #pragma mark - 代理方法
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    IntegralProductDetailVC * vc =[IntegralProductDetailVC new];
+    [GB_Nav pushViewController:vc animated:true];
 }
 
 

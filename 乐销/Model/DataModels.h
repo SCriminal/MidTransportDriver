@@ -61,3 +61,4 @@
 #import "ModelOCR.h"
 
 #import "ModelShopAddress.h"
+#import "ModelIntegralProduct.h"

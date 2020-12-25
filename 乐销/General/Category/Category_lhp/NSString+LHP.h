@@ -10,6 +10,8 @@
 
 @interface NSString (LHP)
 
+//适配html图片宽度
+-(NSString *)fitWebImage;
 
 
 //拼接url

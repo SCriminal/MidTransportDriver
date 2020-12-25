@@ -70,6 +70,9 @@
 		D22851A42591E4E400100231 /* IntegralCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D22851A32591E4E400100231 /* IntegralCenterView.m */; };
 		D22851A7259345AC00100231 /* IntegralCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D22851A6259345AC00100231 /* IntegralCollectionCell.m */; };
 		D22851AA25934AE300100231 /* UICollectionWaterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D22851A925934AE300100231 /* UICollectionWaterLayout.m */; };
+		D22851AF25942CAF00100231 /* IntegralProductDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D22851AB25942CAF00100231 /* IntegralProductDetailVC.m */; };
+		D22851B025942CAF00100231 /* IntegralProductDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D22851AC25942CAF00100231 /* IntegralProductDetailView.m */; };
+		D22851B425942CED00100231 /* ModelIntegralProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = D22851B225942CED00100231 /* ModelIntegralProduct.m */; };
 		D22A412E21803C550057C3B4 /* PerfectSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D22A412D21803C550057C3B4 /* PerfectSelectCell.m */; };
 		D22A413121803C650057C3B4 /* PerfectTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D22A413021803C650057C3B4 /* PerfectTextCell.m */; };
 		D22A413721805B220057C3B4 /* PerfectAddressDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D22A413621805B220057C3B4 /* PerfectAddressDetailCell.m */; };
@@ -140,7 +143,7 @@
 		D26B88CF225C48D50051FA78 /* LoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D26B88CE225C48D50051FA78 /* LoginTextField.m */; };
 		D26B88D2225C7C030051FA78 /* InputCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D26B88D1225C7C030051FA78 /* InputCodeVC.m */; };
 		D26B88D6225C9E7F0051FA78 /* ForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D26B88D5225C9E7F0051FA78 /* ForgetPwdVC.m */; };
-		D26F088820D7442B00B258B0 /* LocalData_OrderDetail_WaitSend.json in Resources */ = {isa = PBXBuildFile; fileRef = D26F088720D7442B00B258B0 /* LocalData_OrderDetail_WaitSend.json */; };
+		D26F088820D7442B00B258B0 /* LocalData_Model.json in Resources */ = {isa = PBXBuildFile; fileRef = D26F088720D7442B00B258B0 /* LocalData_Model.json */; };
 		D26F088E20D7A5D200B258B0 /* MarQueueView.m in Sources */ = {isa = PBXBuildFile; fileRef = D26F088D20D7A5D200B258B0 /* MarQueueView.m */; };
 		D2726BA721BE04DA006B626F /* AliyunEmasServices-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2726BA621BE04DA006B626F /* AliyunEmasServices-Info.plist */; };
 		D2745FAA2087442900A0AD05 /* NoticeSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2745FA92087442900A0AD05 /* NoticeSectionView.m */; };
@@ -531,6 +534,12 @@
 		D22851A6259345AC00100231 /* IntegralCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegralCollectionCell.m; sourceTree = "<group>"; };
 		D22851A825934AE200100231 /* UICollectionWaterLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionWaterLayout.h; sourceTree = "<group>"; };
 		D22851A925934AE300100231 /* UICollectionWaterLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionWaterLayout.m; sourceTree = "<group>"; };
+		D22851AB25942CAF00100231 /* IntegralProductDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegralProductDetailVC.m; sourceTree = "<group>"; };
+		D22851AC25942CAF00100231 /* IntegralProductDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegralProductDetailView.m; sourceTree = "<group>"; };
+		D22851AD25942CAF00100231 /* IntegralProductDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegralProductDetailVC.h; sourceTree = "<group>"; };
+		D22851AE25942CAF00100231 /* IntegralProductDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegralProductDetailView.h; sourceTree = "<group>"; };
+		D22851B225942CED00100231 /* ModelIntegralProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelIntegralProduct.m; sourceTree = "<group>"; };
+		D22851B325942CED00100231 /* ModelIntegralProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelIntegralProduct.h; sourceTree = "<group>"; };
 		D22A412C21803C550057C3B4 /* PerfectSelectCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PerfectSelectCell.h; sourceTree = "<group>"; };
 		D22A412D21803C550057C3B4 /* PerfectSelectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PerfectSelectCell.m; sourceTree = "<group>"; };
 		D22A412F21803C650057C3B4 /* PerfectTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PerfectTextCell.h; sourceTree = "<group>"; };
@@ -668,7 +677,7 @@
 		D26B88D1225C7C030051FA78 /* InputCodeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InputCodeVC.m; sourceTree = "<group>"; };
 		D26B88D4225C9E7F0051FA78 /* ForgetPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetPwdVC.h; sourceTree = "<group>"; };
 		D26B88D5225C9E7F0051FA78 /* ForgetPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdVC.m; sourceTree = "<group>"; };
-		D26F088720D7442B00B258B0 /* LocalData_OrderDetail_WaitSend.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocalData_OrderDetail_WaitSend.json; sourceTree = "<group>"; };
+		D26F088720D7442B00B258B0 /* LocalData_Model.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocalData_Model.json; sourceTree = "<group>"; };
 		D26F088C20D7A5D200B258B0 /* MarQueueView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarQueueView.h; sourceTree = "<group>"; };
 		D26F088D20D7A5D200B258B0 /* MarQueueView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarQueueView.m; sourceTree = "<group>"; };
 		D2726BA621BE04DA006B626F /* AliyunEmasServices-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AliyunEmasServices-Info.plist"; sourceTree = "<group>"; };
@@ -1287,7 +1296,7 @@
 		D20C7F7F1FBA8808009278C0 /* LocalData */ = {
 			isa = PBXGroup;
 			children = (
-				D26F088720D7442B00B258B0 /* LocalData_OrderDetail_WaitSend.json */,
+				D26F088720D7442B00B258B0 /* LocalData_Model.json */,
 			);
 			path = LocalData;
 			sourceTree = "<group>";
@@ -1419,6 +1428,10 @@
 		D228519E2591E4C000100231 /* 积分中心 */ = {
 			isa = PBXGroup;
 			children = (
+				D22851AD25942CAF00100231 /* IntegralProductDetailVC.h */,
+				D22851AB25942CAF00100231 /* IntegralProductDetailVC.m */,
+				D22851AE25942CAF00100231 /* IntegralProductDetailView.h */,
+				D22851AC25942CAF00100231 /* IntegralProductDetailView.m */,
 				D22851A825934AE200100231 /* UICollectionWaterLayout.h */,
 				D22851A925934AE300100231 /* UICollectionWaterLayout.m */,
 				D22851A5259345AC00100231 /* IntegralCollectionCell.h */,
@@ -1429,6 +1442,15 @@
 				D22851A32591E4E400100231 /* IntegralCenterView.m */,
 			);
 			path = "积分中心";
+			sourceTree = "<group>";
+		};
+		D22851B125942CED00100231 /* 积分 */ = {
+			isa = PBXGroup;
+			children = (
+				D22851B225942CED00100231 /* ModelIntegralProduct.m */,
+				D22851B325942CED00100231 /* ModelIntegralProduct.h */,
+			);
+			path = "积分";
 			sourceTree = "<group>";
 		};
 		D22B1D4D2383942000BC00F0 /* 扫描二维码页面 */ = {
@@ -1732,6 +1754,7 @@
 			isa = PBXGroup;
 			children = (
 				D293A3911E00F340005B772A /* DataModels.h */,
+				D22851B125942CED00100231 /* 积分 */,
 				D284B2C824936B4100E2605A /* OCR */,
 				D2FC33A1247F5A56000DE338 /* 车辆 */,
 				D2D871042338C8D700F79173 /* 银行卡 */,
@@ -3308,7 +3331,7 @@
 				D2726BA721BE04DA006B626F /* AliyunEmasServices-Info.plist in Resources */,
 				DAAEC65E1E5E900E0034AED0 /* area.plist in Resources */,
 				D2BC9A871DFFA75600B0468E /* allCities.plist in Resources */,
-				D26F088820D7442B00B258B0 /* LocalData_OrderDetail_WaitSend.json in Resources */,
+				D26F088820D7442B00B258B0 /* LocalData_Model.json in Resources */,
 				D2CF190B22548EF800542AEF /* uni_account_login_sdk_res.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3624,6 +3647,7 @@
 				D2B9374622D862830005B5D2 /* OrderDetailAccessoryView.m in Sources */,
 				D22BA9D51E5EB8CA00C5B391 /* FSCalendarCollectionView.m in Sources */,
 				D20E85FC258763DA00C9EE4C /* DealHistoryFilterView.m in Sources */,
+				D22851AF25942CAF00100231 /* IntegralProductDetailVC.m in Sources */,
 				D2996A4321E6E3AA00562587 /* ImageInfoDetailView.m in Sources */,
 				D265F8AB207C52DF00CB11DD /* BaseTableVC+Select.m in Sources */,
 				D2996A4421E6E3AA00562587 /* ImageDetailBigView.m in Sources */,
@@ -3632,6 +3656,7 @@
 				D28A31A2259193CF006AC450 /* CreditCenterVC.m in Sources */,
 				D2E50D0A1E319E650045AD3F /* BaseVC+KeyboardObserve.m in Sources */,
 				D2789B4B22E187E100F2E6E1 /* BulkCargoOperateLoadView.m in Sources */,
+				D22851B025942CAF00100231 /* IntegralProductDetailView.m in Sources */,
 				D2F11C6D2097103600F18CBD /* UITextField+Text.m in Sources */,
 				D23F02FA1E037F34004E768F /* GlobalMethod+UI.m in Sources */,
 				D2BE30D6210712200059929D /* ModelCompany.m in Sources */,
@@ -3649,6 +3674,7 @@
 				D2DFD7A122991BE200363142 /* ModelPackageInfo.m in Sources */,
 				D25FA2AD216B2B9D00E2B8AF /* AdvertiesementView.m in Sources */,
 				DAB62BA91E73AC30002AE835 /* NSNumber+Category.m in Sources */,
+				D22851B425942CED00100231 /* ModelIntegralProduct.m in Sources */,
 				D2FC339D247F5776000DE338 /* AddCarVC.m in Sources */,
 				D2C6D15422DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.m in Sources */,
 				D22BA9D71E5EB8CA00C5B391 /* FSCalendarConstants.m in Sources */,

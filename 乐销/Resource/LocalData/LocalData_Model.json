@@ -1,0 +1,14 @@
+{
+    "ModelIntegralProduct": {
+        "body": "<p>测试积分订单商品详情显示</p><p><img class=\"wscnph\" src=\"http://112.253.1.72:10299/score_sku/html/MTU4OTkzOTg1ODY4NTExMA.jpeg\" /><img class=\"wscnph\" src=\"http://112.253.1.72:10299/score_sku/html/MTU5MDAyMjUwMTMxNTExMA.jpeg\" /></p>",
+        "coverUrl": "http://112.253.1.72:10299/score_sku/cover/MTU4OTkzOTgwMTE0MDExMA.png",
+        "displayMode": 1,
+        "id": 7,
+        "name": "测试积分订单",
+        "price": 999,
+        "score": 1,
+        "stockAmount": 9999948,
+        "urls": ["http://112.253.1.72:10299/score_sku/images/MTYwODA5MDA3MjIzMDkz.jpg", "http://112.253.1.72:10299/score_sku/images/MTYwODA5MDA3NzY2Njkz.jpg", "http://112.253.1.72:10299/score_sku/images/MTYwODA5MDAwOTYwNjkz.jpg", "http://112.253.1.72:10299/score_sku/images/MTYwODA5MDU5Mzk5MDkz.jpg", "http://112.253.1.72:10299/score_sku/images/MTYwODA5MDYwMTczODkz.jpg", "http://112.253.1.72:10299/score_sku/images/MTYwODE4NDU3ODA4Mjkz.jpg"]
+    },
+   
+}
