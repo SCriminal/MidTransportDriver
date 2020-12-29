@@ -17,6 +17,7 @@
 @property (nonatomic, assign) BOOL isClickValid;//is can click show big image
 @property (nonatomic, assign) BOOL isShowProductImageStyle;//show product image style
 @property (nonatomic, strong) NSMutableArray * aryImage;
+@property (nonatomic, assign) UIViewContentMode imageConteMode;
 @property int numNow;
 //定时器
 @property (nonatomic, strong) NSTimer * timer;

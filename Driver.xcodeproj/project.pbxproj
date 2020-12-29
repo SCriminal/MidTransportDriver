@@ -195,7 +195,6 @@
 		D29316901EF3BD980034E6FB /* GlobalMethod+Authority.m in Sources */ = {isa = PBXBuildFile; fileRef = D293168F1EF3BD980034E6FB /* GlobalMethod+Authority.m */; };
 		D293A39A1E011987005B772A /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D293A3981E011987005B772A /* LoadingView.m */; };
 		D293A39E1E01304B005B772A /* BaseTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D293A39D1E01304B005B772A /* BaseTableVC.m */; };
-		D293B67F219AFC220073F316 /* BottomBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D293B67D219AFC220073F316 /* BottomBtnView.m */; };
 		D2996A2B21E6E2D800562587 /* CustomAttributeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2996A2A21E6E2D800562587 /* CustomAttributeTextView.m */; };
 		D2996A4021E6E3AA00562587 /* CollectionImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2996A2F21E6E3AA00562587 /* CollectionImageCell.m */; };
 		D2996A4121E6E3AA00562587 /* UpImageWithTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2996A3321E6E3AA00562587 /* UpImageWithTextVC.m */; };
@@ -310,6 +309,8 @@
 		D2D6D9AD21AFD623005A4F5B /* LeftMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D6D9AC21AFD623005A4F5B /* LeftMenuVC.m */; };
 		D2D871072338C8D700F79173 /* ModelBank.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D871052338C8D700F79173 /* ModelBank.m */; };
 		D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D9A4192015D2170025963B /* AppDelegate.m */; };
+		D2DDC4262595D68A00C810B5 /* ExchangeIntegraProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC4252595D68A00C810B5 /* ExchangeIntegraProductVC.m */; };
+		D2DDC4292599C0B200C810B5 /* ExchangeIntegraProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC4282599C0B200C810B5 /* ExchangeIntegraProductView.m */; };
 		D2DDCFB0233380BA002A24C4 /* BankCardListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDCFAF233380BA002A24C4 /* BankCardListVC.m */; };
 		D2DDCFB3233380CD002A24C4 /* AddCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDCFB2233380CD002A24C4 /* AddCardVC.m */; };
 		D2DDCFB62334C0FA002A24C4 /* CardListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDCFB52334C0FA002A24C4 /* CardListCell.m */; };
@@ -778,8 +779,6 @@
 		D293A3981E011987005B772A /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		D293A39C1E01304B005B772A /* BaseTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableVC.h; sourceTree = "<group>"; };
 		D293A39D1E01304B005B772A /* BaseTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableVC.m; sourceTree = "<group>"; };
-		D293B67D219AFC220073F316 /* BottomBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomBtnView.m; sourceTree = "<group>"; };
-		D293B67E219AFC220073F316 /* BottomBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomBtnView.h; sourceTree = "<group>"; };
 		D2996A2921E6E2D800562587 /* CustomAttributeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAttributeTextView.h; sourceTree = "<group>"; };
 		D2996A2A21E6E2D800562587 /* CustomAttributeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAttributeTextView.m; sourceTree = "<group>"; };
 		D2996A2F21E6E3AA00562587 /* CollectionImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionImageCell.m; sourceTree = "<group>"; };
@@ -997,6 +996,10 @@
 		D2D871052338C8D700F79173 /* ModelBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBank.m; sourceTree = "<group>"; };
 		D2D871062338C8D700F79173 /* ModelBank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBank.h; sourceTree = "<group>"; };
 		D2D9A4192015D2170025963B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D2DDC4242595D68A00C810B5 /* ExchangeIntegraProductVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeIntegraProductVC.h; sourceTree = "<group>"; };
+		D2DDC4252595D68A00C810B5 /* ExchangeIntegraProductVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeIntegraProductVC.m; sourceTree = "<group>"; };
+		D2DDC4272599C0B200C810B5 /* ExchangeIntegraProductView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeIntegraProductView.h; sourceTree = "<group>"; };
+		D2DDC4282599C0B200C810B5 /* ExchangeIntegraProductView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeIntegraProductView.m; sourceTree = "<group>"; };
 		D2DDCFAE233380BA002A24C4 /* BankCardListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankCardListVC.h; sourceTree = "<group>"; };
 		D2DDCFAF233380BA002A24C4 /* BankCardListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardListVC.m; sourceTree = "<group>"; };
 		D2DDCFB1233380CD002A24C4 /* AddCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddCardVC.h; sourceTree = "<group>"; };
@@ -1428,6 +1431,7 @@
 		D228519E2591E4C000100231 /* 积分中心 */ = {
 			isa = PBXGroup;
 			children = (
+				D2DDC4232595D67600C810B5 /* 立即兑换 */,
 				D22851AD25942CAF00100231 /* IntegralProductDetailVC.h */,
 				D22851AB25942CAF00100231 /* IntegralProductDetailVC.m */,
 				D22851AE25942CAF00100231 /* IntegralProductDetailView.h */,
@@ -1797,7 +1801,6 @@
 				D2996A2C21E6E3AA00562587 /* 上传图片 */,
 				D2996A2821E6E2D800562587 /* CustomAttributeTextView */,
 				D2ACCC1821DC8DFD00F39E28 /* TopAlertView */,
-				D293B67C219AFC220073F316 /* BottomView */,
 				D22499E5219A74F000608246 /* 网页VC */,
 				D2A946D02192B0B600AD1E5B /* SelectAddress */,
 				D23327A921854FD300495488 /* MapView */,
@@ -2173,15 +2176,6 @@
 				D293A3981E011987005B772A /* LoadingView.m */,
 			);
 			path = LoadingView;
-			sourceTree = "<group>";
-		};
-		D293B67C219AFC220073F316 /* BottomView */ = {
-			isa = PBXGroup;
-			children = (
-				D293B67D219AFC220073F316 /* BottomBtnView.m */,
-				D293B67E219AFC220073F316 /* BottomBtnView.h */,
-			);
-			path = BottomView;
 			sourceTree = "<group>";
 		};
 		D2996A2821E6E2D800562587 /* CustomAttributeTextView */ = {
@@ -2851,6 +2845,17 @@
 			path = "银行卡";
 			sourceTree = "<group>";
 		};
+		D2DDC4232595D67600C810B5 /* 立即兑换 */ = {
+			isa = PBXGroup;
+			children = (
+				D2DDC4242595D68A00C810B5 /* ExchangeIntegraProductVC.h */,
+				D2DDC4252595D68A00C810B5 /* ExchangeIntegraProductVC.m */,
+				D2DDC4272599C0B200C810B5 /* ExchangeIntegraProductView.h */,
+				D2DDC4282599C0B200C810B5 /* ExchangeIntegraProductView.m */,
+			);
+			path = "立即兑换";
+			sourceTree = "<group>";
+		};
 		D2DDCFAD233380AB002A24C4 /* BankCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -3513,6 +3518,7 @@
 				D275DB381DFFA43B00670A40 /* NSData+transformData.m in Sources */,
 				D2A076E71E10EBC700CDCA0A /* DatePicker.m in Sources */,
 				D2BC9A8F1DFFA7C400B0468E /* CustomTabBar.m in Sources */,
+				D2DDC4262595D68A00C810B5 /* ExchangeIntegraProductVC.m in Sources */,
 				D284B2CB24936B4100E2605A /* ModelOCR.m in Sources */,
 				D2ACCC2221DC8E4600F39E28 /* ModelApns.m in Sources */,
 				D2C6D15122DEC99300A22EA6 /* BulkCargoOperateVC.m in Sources */,
@@ -3604,7 +3610,6 @@
 				D285E2961E6D472F00DE9A6D /* NSDateFormatter+Category.m in Sources */,
 				D2996A4521E6E3AA00562587 /* Collection_Image.m in Sources */,
 				D2BC9ABC1DFFE16D00B0468E /* RequestApi.m in Sources */,
-				D293B67F219AFC220073F316 /* BottomBtnView.m in Sources */,
 				D25EB6BC20EA230C0082AD73 /* EditVC_Title.m in Sources */,
 				D2F09E9024DB899900CE85C3 /* SelectGenderView.m in Sources */,
 				D2A300372266D21800AE2EC3 /* GuideView.m in Sources */,
@@ -3612,6 +3617,7 @@
 				D2037600210718870054F8A6 /* AutoScView.m in Sources */,
 				D2996A4821E6E3EE00562587 /* ModelCell_TextView.m in Sources */,
 				D293168C1EF3B62F0034E6FB /* LoginViewController.m in Sources */,
+				D2DDC4292599C0B200C810B5 /* ExchangeIntegraProductView.m in Sources */,
 				D2BF1DA41EB0719300957348 /* BaseTableVC+KeyboardObserve.m in Sources */,
 				D2BE30DD2107141D0059929D /* ImageControl.m in Sources */,
 				D2C582712480F2C800121039 /* CarListVC.m in Sources */,

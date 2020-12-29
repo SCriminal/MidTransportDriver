@@ -144,7 +144,7 @@
         return;
     }
     iv.image = [UIImage imageNamed:self.aryImage[num]];
-    iv.contentMode = UIViewContentModeScaleAspectFit;
+    iv.contentMode = self.imageConteMode?self.imageConteMode:UIViewContentModeScaleAspectFit;
     if (iv.image == nil) {
         if (self.isShowProductImageStyle) {
             [iv sd_setProductImageWithURL:[NSURL URLWithString:self.aryImage[num]] placeholderImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT]];

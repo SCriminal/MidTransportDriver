@@ -281,7 +281,7 @@
     NSLog(@"true");
 }
 - (void)jump{
-    [GB_Nav pushVCName:@"IntegralCenterVC" animated:true];
+    [GB_Nav pushVCName:@"ExchangeIntegraProductVC" animated:true];
 //    RechargeInputView * view = [RechargeInputView new];
 //    [view resetViewWithModel:nil];
 //    [self.view addSubview:view];

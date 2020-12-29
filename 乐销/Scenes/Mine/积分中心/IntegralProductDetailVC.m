@@ -11,6 +11,7 @@
 #import "IntegralProductDetailView.h"
 #import "AutoScView.h"
 //request
+#import "ExchangeIntegraProductVC.h"
 
 @interface IntegralProductDetailVC ()<UIWebViewDelegate>
 @property (nonatomic, strong) BaseNavView *nav;
@@ -74,10 +75,11 @@
 
 - (AutoScView *)autoSCView{
     if (!_autoSCView) {
-        _autoSCView = [[AutoScView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, W(323)) image:@[]];
+        _autoSCView = [[AutoScView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, W(300)) image:@[]];
         _autoSCView.pageCurrentColor = [UIColor whiteColor];
         _autoSCView.pageDefaultColor = [UIColor colorWithHexString:@"ffffff" alpha:0.5];
         _autoSCView.pageControlToBottom = W(30);
+        _autoSCView.imageConteMode = UIViewContentModeScaleAspectFill;
 //        _autoSCView.isClickValid = true;
         [_autoSCView timerStart];
     }
@@ -90,6 +92,7 @@
             [GB_Nav popViewControllerAnimated:true];
         } rightImageName:nil rightImageSize:CGSizeZero righBlock:nil];
         _nav.backgroundColor = [UIColor clearColor];
+        _nav.line.hidden = true;
     }
     return _nav;
 }
@@ -150,7 +153,8 @@
     
 }
 - (void)btnChangeClick{
-    
+    ExchangeIntegraProductVC * vc = [ExchangeIntegraProductVC new];
+    [GB_Nav pushViewController:vc animated:true];
 }
 
 

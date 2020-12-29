@@ -17,7 +17,7 @@
 - (UILabel *)scoreNum{
     if (_scoreNum == nil) {
         _scoreNum = [UILabel new];
-        _scoreNum.textColor = COLOR_ORANGE;
+        _scoreNum.textColor = COLOR_RED;
         _scoreNum.font =  [UIFont systemFontOfSize:F(25) weight:UIFontWeightMedium];
         _scoreNum.numberOfLines = 1;
         _scoreNum.lineSpace = 0;
@@ -27,7 +27,7 @@
 - (UILabel *)score{
     if (_score == nil) {
         _score = [UILabel new];
-        _score.textColor = COLOR_ORANGE;
+        _score.textColor = COLOR_RED;
         _score.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
         _score.numberOfLines = 1;
         _score.lineSpace = 0;
@@ -48,7 +48,7 @@
     if (_remain == nil) {
         _remain = [UILabel new];
         _remain.textColor = COLOR_999;
-        _remain.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        _remain.font =  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
         _remain.numberOfLines = 1;
         _remain.lineSpace = 0;
     }
@@ -96,7 +96,7 @@
 - (void)addSubView{
     [self addSubview:self.scoreNum];
     [self addSubview:self.score];
-    [self addSubview:self.price];
+//    [self addSubview:self.price];
     [self addSubview:self.remain];
     [self addSubview:self.title];
     [self addSubview:self.grayBG];
@@ -111,19 +111,20 @@
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
     [self.scoreNum fitTitle:[NSString stringWithFormat:@"%.f",model.score] variable:0];
-    self.scoreNum.leftTop = XY(W(20),W(5));
+    self.scoreNum.leftTop = XY(W(15),W(17));
     [self.score fitTitle:@"积分" variable:0];
-    self.score.leftBottom = XY(self.scoreNum.right + W(4),self.scoreNum.bottom);
-    [self.price fitTitle:[NSString stringWithFormat:@"%.2f元",model.price/100.0] variable:0];
-    self.price.leftBottom = XY(self.score.right + W(15),self.score.bottom);
-    [self.remain fitTitle:[NSString stringWithFormat:@"剩%.f份",model.stockAmount]  variable:0];
-    self.remain.rightBottom = XY(SCREEN_WIDTH - W(20),self.price.bottom);
+    self.score.leftBottom = XY(self.scoreNum.right + W(2),self.scoreNum.bottom-W(2));
+
+    [self.remain fitTitle:[NSString stringWithFormat:@"%.f件已兑换",model.stockAmount]  variable:0];
+    self.remain.rightCenterY = XY(SCREEN_WIDTH - W(15),self.scoreNum.centerY);
+    
     [self.title fitTitle:UnPackStr(model.name) variable:0];
-    self.title.leftTop = XY(W(20),self.scoreNum.bottom+W(17));
+    self.title.leftTop = XY(W(15),self.scoreNum.bottom+W(15));
+    
     self.grayBG.widthHeight = XY(SCREEN_WIDTH, W(10));
-    self.grayBG.leftTop = XY(0,self.title.bottom+W(23));
-    [self.detail fitTitle:@"商品详情" variable:0];
-    self.detail.leftTop = XY(W(20),self.grayBG.bottom+W(17));
+    self.grayBG.leftTop = XY(0,self.title.bottom+W(17));
+    [self.detail fitTitle:@"商品说明" variable:0];
+    self.detail.leftTop = XY(W(15),self.grayBG.bottom+W(17));
     
     //设置总高度
     self.height = self.detail.bottom+ W(17);

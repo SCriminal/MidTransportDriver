@@ -83,7 +83,7 @@
 {
     
     // 1.获得cell
-    IntegralCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"InteggbralCollectionCell" forIndexPath:indexPath];
+    IntegralCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"IntegralCollectionCell" forIndexPath:indexPath];
     [cell resetCellWithModel:self.aryDatas[indexPath.row]];
     return cell;
 }

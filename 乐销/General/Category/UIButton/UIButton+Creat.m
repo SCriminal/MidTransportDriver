@@ -36,10 +36,10 @@ static const char modelBtnKey = '\0';
 + (UIButton *)createBottomBtn:(NSString *)title{
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.backgroundColor = COLOR_BLUE;
-    btn.titleLabel.font = [UIFont systemFontOfSize:F(14)];
-    [GlobalMethod setRoundView:btn color:[UIColor clearColor] numRound:W(5) width:0];
+    btn.titleLabel.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
+    [GlobalMethod setRoundView:btn color:[UIColor clearColor] numRound:4 width:0];
     [btn setTitle:title forState:(UIControlStateNormal)];
-    btn.widthHeight = XY(SCREEN_WIDTH - W(30), W(75)/2.0);
+    btn.widthHeight = XY(SCREEN_WIDTH - W(30), W(39));
     return btn;
 }
 @end

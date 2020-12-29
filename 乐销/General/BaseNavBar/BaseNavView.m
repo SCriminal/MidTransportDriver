@@ -159,7 +159,7 @@
     //reset right view
     [self resetNavRightView:rightView];
     //add line
-    [self addSubview:self.line];
+//    [self addSubview:self.line];
 }
 - (void)resetNavRightView:(UIView *)rightView{
     //right view
