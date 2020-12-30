@@ -311,6 +311,9 @@
 		D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D9A4192015D2170025963B /* AppDelegate.m */; };
 		D2DDC4262595D68A00C810B5 /* ExchangeIntegraProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC4252595D68A00C810B5 /* ExchangeIntegraProductVC.m */; };
 		D2DDC4292599C0B200C810B5 /* ExchangeIntegraProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC4282599C0B200C810B5 /* ExchangeIntegraProductView.m */; };
+		D2DDC42C259C4D6300C810B5 /* ExchangeIntegraOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC42B259C4D6300C810B5 /* ExchangeIntegraOrderListVC.m */; };
+		D2DDC42F259C4F4700C810B5 /* ExchangeIntegraOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC42E259C4F4700C810B5 /* ExchangeIntegraOrderDetailVC.m */; };
+		D2DDC433259C532C00C810B5 /* MyPathListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC432259C532C00C810B5 /* MyPathListVC.m */; };
 		D2DDCFB0233380BA002A24C4 /* BankCardListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDCFAF233380BA002A24C4 /* BankCardListVC.m */; };
 		D2DDCFB3233380CD002A24C4 /* AddCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDCFB2233380CD002A24C4 /* AddCardVC.m */; };
 		D2DDCFB62334C0FA002A24C4 /* CardListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDCFB52334C0FA002A24C4 /* CardListCell.m */; };
@@ -1000,6 +1003,12 @@
 		D2DDC4252595D68A00C810B5 /* ExchangeIntegraProductVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeIntegraProductVC.m; sourceTree = "<group>"; };
 		D2DDC4272599C0B200C810B5 /* ExchangeIntegraProductView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeIntegraProductView.h; sourceTree = "<group>"; };
 		D2DDC4282599C0B200C810B5 /* ExchangeIntegraProductView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeIntegraProductView.m; sourceTree = "<group>"; };
+		D2DDC42A259C4D6300C810B5 /* ExchangeIntegraOrderListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeIntegraOrderListVC.h; sourceTree = "<group>"; };
+		D2DDC42B259C4D6300C810B5 /* ExchangeIntegraOrderListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeIntegraOrderListVC.m; sourceTree = "<group>"; };
+		D2DDC42D259C4F4700C810B5 /* ExchangeIntegraOrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeIntegraOrderDetailVC.h; sourceTree = "<group>"; };
+		D2DDC42E259C4F4700C810B5 /* ExchangeIntegraOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeIntegraOrderDetailVC.m; sourceTree = "<group>"; };
+		D2DDC431259C532C00C810B5 /* MyPathListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPathListVC.h; sourceTree = "<group>"; };
+		D2DDC432259C532C00C810B5 /* MyPathListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPathListVC.m; sourceTree = "<group>"; };
 		D2DDCFAE233380BA002A24C4 /* BankCardListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankCardListVC.h; sourceTree = "<group>"; };
 		D2DDCFAF233380BA002A24C4 /* BankCardListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardListVC.m; sourceTree = "<group>"; };
 		D2DDCFB1233380CD002A24C4 /* AddCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddCardVC.h; sourceTree = "<group>"; };
@@ -1989,6 +1998,7 @@
 		D28466922160A81B002A8650 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				D2DDC430259C531E00C810B5 /* 我的路线 */,
 				D228519E2591E4C000100231 /* 积分中心 */,
 				D28A319F2591939C006AC450 /* 信用中心 */,
 				D28A319225908D78006AC450 /* 收货地址 */,
@@ -2852,8 +2862,21 @@
 				D2DDC4252595D68A00C810B5 /* ExchangeIntegraProductVC.m */,
 				D2DDC4272599C0B200C810B5 /* ExchangeIntegraProductView.h */,
 				D2DDC4282599C0B200C810B5 /* ExchangeIntegraProductView.m */,
+				D2DDC42A259C4D6300C810B5 /* ExchangeIntegraOrderListVC.h */,
+				D2DDC42B259C4D6300C810B5 /* ExchangeIntegraOrderListVC.m */,
+				D2DDC42D259C4F4700C810B5 /* ExchangeIntegraOrderDetailVC.h */,
+				D2DDC42E259C4F4700C810B5 /* ExchangeIntegraOrderDetailVC.m */,
 			);
 			path = "立即兑换";
+			sourceTree = "<group>";
+		};
+		D2DDC430259C531E00C810B5 /* 我的路线 */ = {
+			isa = PBXGroup;
+			children = (
+				D2DDC431259C532C00C810B5 /* MyPathListVC.h */,
+				D2DDC432259C532C00C810B5 /* MyPathListVC.m */,
+			);
+			path = "我的路线";
 			sourceTree = "<group>";
 		};
 		D2DDCFAD233380AB002A24C4 /* BankCard */ = {
@@ -3426,6 +3449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2DDC42F259C4F4700C810B5 /* ExchangeIntegraOrderDetailVC.m in Sources */,
 				D05D438520B6DF2A00E59862 /* SimpleProgressView.m in Sources */,
 				C6BAD7051EDBCBF300954439 /* UIView+Category.m in Sources */,
 				D2C55800238BCADC0050694F /* RequestApi+Schedule.m in Sources */,
@@ -3448,6 +3472,7 @@
 				D20E85F925875D2E00C9EE4C /* DealHistoryListVC.m in Sources */,
 				D2BE30BD21070C170059929D /* ModelLabel.m in Sources */,
 				D2164ED11F05CFC1005120C3 /* UIButton+Creat.m in Sources */,
+				D2DDC42C259C4D6300C810B5 /* ExchangeIntegraOrderListVC.m in Sources */,
 				D28A867D225F1572001E3372 /* SettingCell.m in Sources */,
 				D2C6D14922DEBDE600A22EA6 /* BulkCargoListCell.m in Sources */,
 				D22A413721805B220057C3B4 /* PerfectAddressDetailCell.m in Sources */,
@@ -3645,6 +3670,7 @@
 				D23327AC21854FE000495488 /* MapView.m in Sources */,
 				D28A319E2590A457006AC450 /* ModelShopAddress.m in Sources */,
 				D2ACCC2121DC8E4600F39E28 /* ModelAps.m in Sources */,
+				D2DDC433259C532C00C810B5 /* MyPathListVC.m in Sources */,
 				D216F5401E56AB9800E11ED2 /* NSMutableArray+Safe.m in Sources */,
 				D23D90C71F8B245A00489F95 /* UIViewController+Category.m in Sources */,
 				D22A85BF1E2A16AF003CEB0A /* GlobalMethod+LocalDatas.m in Sources */,

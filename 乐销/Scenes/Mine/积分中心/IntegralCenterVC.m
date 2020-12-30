@@ -11,6 +11,8 @@
 #import "IntegralCollectionCell.h"
 #import "UICollectionWaterLayout.h"
 #import "IntegralProductDetailVC.h"
+#import "ExchangeIntegraOrderListVC.h"
+
 @interface IntegralCenterVC ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UICollectionView *myCollectionView;
 @property (nonatomic, strong) NSMutableArray *aryDatas;
@@ -170,7 +172,8 @@
 #pragma mark 添加导航栏
 - (void)addNav{
     BaseNavView * nav = [BaseNavView initNavBackTitle:@"积分商城" rightTitle:@"订单" rightBlock:^{
-        
+        ExchangeIntegraOrderListVC * vc = [ExchangeIntegraOrderListVC new];
+        [GB_Nav pushViewController:vc animated:true];
     }];
     [nav configBackBlueStyle];
     [self.view addSubview:nav];

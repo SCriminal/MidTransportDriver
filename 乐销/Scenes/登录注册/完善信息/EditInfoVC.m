@@ -20,6 +20,7 @@
 //nav
 #import "BaseNavView+Logical.h"
 #import "SelectGenderView.h"
+#import "AddressListVC.h"
 
 @interface EditInfoVC ()
 @property (nonatomic, strong) ModelBaseData *modelName;
@@ -154,7 +155,8 @@
         WEAKSELF
         _modelAddress.blocClick = ^(ModelBaseData *model) {
             [GlobalMethod endEditing];
-                    
+            AddressListVC * vc = [AddressListVC new];
+            [GB_Nav pushViewController:vc animated:true];
         };
     }
     return _modelAddress;

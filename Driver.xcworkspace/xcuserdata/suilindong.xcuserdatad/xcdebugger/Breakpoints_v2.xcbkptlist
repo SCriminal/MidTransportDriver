@@ -4816,8 +4816,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/&#x79ef;&#x5206;&#x4e2d;&#x5fc3;/IntegralCenterVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "-myCollectionView"
             landmarkType = "7">
          </BreakpointContent>
@@ -4832,8 +4832,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/&#x79ef;&#x5206;&#x4e2d;&#x5fc3;/IntegralCenterVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "-requestList"
             landmarkType = "7">
          </BreakpointContent>
