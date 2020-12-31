@@ -11,3 +11,15 @@
 @interface MyPathListVC : BaseTableVC
 
 @end
+
+@interface MyPathListCell : UITableViewCell
+
+@property (strong, nonatomic) UIButton *btnEdit;
+@property (strong, nonatomic) UIButton *btnDelete;
+@property (nonatomic, strong) void (^blockEditClick)(ModelShopAddress *);
+@property (nonatomic, strong) void (^blockDeleteClick)(ModelShopAddress *);
+@property (nonatomic, strong) ModelShopAddress *model;
+#pragma mark 刷新cell
+- (void)resetCellWithModel:(ModelShopAddress *)model;
+
+@end

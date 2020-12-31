@@ -104,7 +104,7 @@
                 mB.title = @"我的路线";
                                mB.imageName = @"personal_法律";
                                mB.blockClick = ^{
-                                   
+                                   [GB_Nav pushVCName:@"MyPathListVC" animated:true];
                                };
                 return mB;
             }(),^(){

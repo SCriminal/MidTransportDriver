@@ -28,5 +28,6 @@
 
 @property (nonatomic, strong) void (^blockValueChange)(ModelBaseData *);//block value change
 @property (nonatomic, strong) void (^blocClick)(ModelBaseData *);//block value change
+@property (nonatomic, strong) void (^blockDeleteClick)(ModelBaseData *);//block value change
 
 @end

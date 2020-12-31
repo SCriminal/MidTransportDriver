@@ -63,6 +63,7 @@
         [self.contentView addSubview:self.subTitle];
         [self.contentView addSubview:self.ivArrow];
         [self.contentView addSubview:self.essential];
+
         [self.contentView addTarget:self action:@selector(cellClick)];
     }
     return self;
@@ -99,7 +100,7 @@
     if (!model.hideState) {
         [self.contentView addLineFrame:CGRectMake(W(15), self.height -1, SCREEN_WIDTH - W(15), 1)];
     }
-    
+   
 }
 #pragma mark click
 - (void)cellClick{
@@ -112,4 +113,53 @@
     }
 }
 
+@end
+
+
+@implementation PerfectSelectCell_Path
+- (UIButton *)btnDelete{
+    if (_btnDelete == nil) {
+        _btnDelete = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_btnDelete addTarget:self action:@selector(btnDeleteClick) forControlEvents:UIControlEventTouchUpInside];
+        _btnDelete.backgroundColor = [UIColor clearColor];
+        _btnDelete.widthHeight = XY(W(23+30),W(30+23));
+        [_btnDelete addSubview:^(){
+            UIImageView *icon = [UIImageView new];
+            icon.image = [UIImage imageNamed:@"address_delete"];
+            icon.widthHeight = XY(W(23),W(23));
+            icon.rightCenterY = XY(W(23+30 -15), W(30+23)/2.0);
+            return icon;
+        }()];
+        _btnDelete.hidden = true;
+    }
+    return _btnDelete;
+}
+#pragma mark 初始化
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        [self.contentView addSubview:self.btnDelete];
+    }
+    return self;
+}
+#pragma mark 刷新cell
+    
+/*
+ isSelected 是否必填
+ isHide 是否隐藏右箭头
+ */
+- (void)resetCellWithModel:(ModelBaseData *)model{
+    [super resetCellWithModel:model];
+    {
+           self.btnDelete.hidden = false;
+           self.btnDelete.rightCenterY = XY(SCREEN_WIDTH - W(59)+ W(15), self.height/2.0);
+    }
+}
+    
+#pragma mark click
+- (void)btnDeleteClick{
+    if (self.model.blockDeleteClick) {
+        self.model.blockDeleteClick(self.model);
+    }
+}
 @end

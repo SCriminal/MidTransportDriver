@@ -14,7 +14,7 @@
 
 @implementation AddressListCell
 #pragma mark 懒加载
--(UIButton *)btnEdit{
+- (UIButton *)btnEdit{
     if (_btnEdit == nil) {
         _btnEdit = [UIButton buttonWithType:UIButtonTypeCustom];
         [_btnEdit addTarget:self action:@selector(btnEditClick) forControlEvents:UIControlEventTouchUpInside];
@@ -30,7 +30,7 @@
     }
     return _btnEdit;
 }
--(UIButton *)btnDelete{
+- (UIButton *)btnDelete{
     if (_btnDelete == nil) {
         _btnDelete = [UIButton buttonWithType:UIButtonTypeCustom];
         [_btnDelete addTarget:self action:@selector(btnDeleteClick) forControlEvents:UIControlEventTouchUpInside];

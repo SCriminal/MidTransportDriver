@@ -21,3 +21,11 @@
 
 
 @end
+
+@interface PerfectSelectCell_Path : PerfectSelectCell
+@property (strong, nonatomic) UIButton *btnDelete;
+#pragma mark 刷新cell
+- (void)resetCellWithModel:(ModelBaseData *)model;
+
+
+@end

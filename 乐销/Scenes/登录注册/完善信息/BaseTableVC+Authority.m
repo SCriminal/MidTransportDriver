@@ -15,6 +15,7 @@
     [self.tableView registerClass:[PerfectTextCell class] forCellReuseIdentifier:@"PerfectTextCell"];
     [self.tableView registerClass:[PerfectAddressDetailCell class] forCellReuseIdentifier:@"PerfectAddressDetailCell"];
     [self.tableView registerClass:[PerfectEmptyCell class] forCellReuseIdentifier:@"PerfectEmptyCell"];
+    [self.tableView registerClass:[PerfectSelectCell_Path class] forCellReuseIdentifier:@"PerfectSelectCell_Path"];
 
 }
 - (UITableViewCell *)dequeueAuthorityCell:(NSIndexPath *)indexPath{
@@ -34,6 +35,13 @@
             return selectCell;
         }
             break;
+            case ENUM_PERFECT_CELL_SELECT_DELETE:
+            {
+                PerfectSelectCell_Path * selectCell = [self.tableView dequeueReusableCellWithIdentifier:@"PerfectSelectCell_Path"];
+                [selectCell resetCellWithModel:model];
+                return selectCell;
+            }
+                break;
         case ENUM_PERFECT_CELL_ADDRESS:
         {
             PerfectAddressDetailCell * addressCell = [self.tableView dequeueReusableCellWithIdentifier:@"PerfectAddressDetailCell"];
@@ -66,6 +74,11 @@
             return [PerfectSelectCell fetchHeight:model];
         }
             break;
+            case ENUM_PERFECT_CELL_SELECT_DELETE:
+                   {
+                       return [PerfectSelectCell_Path fetchHeight:model];
+                   }
+                       break;
         case ENUM_PERFECT_CELL_ADDRESS:
         {
             CGFloat height = [PerfectAddressDetailCell fetchHeight:model];

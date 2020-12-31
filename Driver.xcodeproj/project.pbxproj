@@ -314,6 +314,7 @@
 		D2DDC42C259C4D6300C810B5 /* ExchangeIntegraOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC42B259C4D6300C810B5 /* ExchangeIntegraOrderListVC.m */; };
 		D2DDC42F259C4F4700C810B5 /* ExchangeIntegraOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC42E259C4F4700C810B5 /* ExchangeIntegraOrderDetailVC.m */; };
 		D2DDC433259C532C00C810B5 /* MyPathListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC432259C532C00C810B5 /* MyPathListVC.m */; };
+		D2DDC436259D66D400C810B5 /* AddPathVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC435259D66D400C810B5 /* AddPathVC.m */; };
 		D2DDCFB0233380BA002A24C4 /* BankCardListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDCFAF233380BA002A24C4 /* BankCardListVC.m */; };
 		D2DDCFB3233380CD002A24C4 /* AddCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDCFB2233380CD002A24C4 /* AddCardVC.m */; };
 		D2DDCFB62334C0FA002A24C4 /* CardListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDCFB52334C0FA002A24C4 /* CardListCell.m */; };
@@ -1009,6 +1010,8 @@
 		D2DDC42E259C4F4700C810B5 /* ExchangeIntegraOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeIntegraOrderDetailVC.m; sourceTree = "<group>"; };
 		D2DDC431259C532C00C810B5 /* MyPathListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPathListVC.h; sourceTree = "<group>"; };
 		D2DDC432259C532C00C810B5 /* MyPathListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPathListVC.m; sourceTree = "<group>"; };
+		D2DDC434259D66D400C810B5 /* AddPathVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPathVC.h; sourceTree = "<group>"; };
+		D2DDC435259D66D400C810B5 /* AddPathVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPathVC.m; sourceTree = "<group>"; };
 		D2DDCFAE233380BA002A24C4 /* BankCardListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankCardListVC.h; sourceTree = "<group>"; };
 		D2DDCFAF233380BA002A24C4 /* BankCardListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardListVC.m; sourceTree = "<group>"; };
 		D2DDCFB1233380CD002A24C4 /* AddCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddCardVC.h; sourceTree = "<group>"; };
@@ -2875,6 +2878,8 @@
 			children = (
 				D2DDC431259C532C00C810B5 /* MyPathListVC.h */,
 				D2DDC432259C532C00C810B5 /* MyPathListVC.m */,
+				D2DDC434259D66D400C810B5 /* AddPathVC.h */,
+				D2DDC435259D66D400C810B5 /* AddPathVC.m */,
 			);
 			path = "我的路线";
 			sourceTree = "<group>";
@@ -3698,6 +3703,7 @@
 				D22BA9DE1E5EB8CA00C5B391 /* FSCalendarTransitionCoordinator.m in Sources */,
 				D2996A2B21E6E2D800562587 /* CustomAttributeTextView.m in Sources */,
 				D23327C121855BBE00495488 /* DriverOperateVC.m in Sources */,
+				D2DDC436259D66D400C810B5 /* AddPathVC.m in Sources */,
 				D2996A4221E6E3AA00562587 /* UpImageWithTextCell.m in Sources */,
 				D2C6D15722DEE7D700A22EA6 /* BulkCargoOperateView.m in Sources */,
 				D28A318B258B2E72006AC450 /* MyMsgVC.m in Sources */,
