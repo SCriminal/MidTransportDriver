@@ -13,6 +13,7 @@
 @end
 
 @implementation AddressListCell
+
 #pragma mark 懒加载
 - (UIButton *)btnEdit{
     if (_btnEdit == nil) {
@@ -82,6 +83,7 @@
     }
     return self;
 }
+
 #pragma mark 刷新cell
 - (void)resetCellWithModel:(ModelShopAddress *)model{
     self.model = model;
@@ -100,6 +102,7 @@
     self.height = MAX(self.address.bottom + W(18), self.btnEdit.height);
     [self.contentView addLineFrame:CGRectMake(W(15), self.height - 1, SCREEN_WIDTH - W(30), 1)];
 }
+
 #pragma mark 点击事件
 - (void)btnEditClick{
     if (self.blockEditClick) {
@@ -111,6 +114,4 @@
         self.blockDeleteClick(self.model);
     }
 }
-
-
 @end

@@ -112,7 +112,8 @@
                 mB.title = @"系统设置";
                                mB.imageName = @"personal_设置";
                                mB.blockClick = ^{
-                                   
+                                   [GB_Nav pushVCName:@"SettingVC" animated:true];
+
                                };
                 return mB;
             }()].mutableCopy;

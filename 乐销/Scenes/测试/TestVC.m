@@ -22,6 +22,7 @@
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
 #import "RechargeInputView.h"
+#import "GuideView.h"
 
 @interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate> 
 
@@ -281,7 +282,10 @@
     NSLog(@"true");
 }
 - (void)jump{
-    [GB_Nav pushVCName:@"ExchangeIntegraProductVC" animated:true];
+    GuideView * guideView = [GuideView new];
+    [guideView show];
+
+//    [GB_Nav pushVCName:@"SettingVC" animated:true];
 //    RechargeInputView * view = [RechargeInputView new];
 //    [view resetViewWithModel:nil];
 //    [self.view addSubview:view];

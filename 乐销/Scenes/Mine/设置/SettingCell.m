@@ -21,15 +21,15 @@
     if (_labelTitle == nil) {
         _labelTitle = [UILabel new];
         _labelTitle.textColor = COLOR_333;
-        _labelTitle.font =  [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+        _labelTitle.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
     }
     return _labelTitle;
 }
 - (UILabel *)subTitle{
     if (_subTitle == nil) {
         _subTitle = [UILabel new];
-        _subTitle.textColor = COLOR_666;
-        _subTitle.font =  [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+        _subTitle.textColor = COLOR_999;
+        _subTitle.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         _subTitle.numberOfLines = 0;
         _subTitle.lineSpace = 0;
     }
@@ -80,7 +80,7 @@
 - (void)resetCellWithModel:(ModelBtn *)model{
     self.model = model;
     //设置总高度
-    self.height = W(65);
+    self.height = W(50);
 
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view

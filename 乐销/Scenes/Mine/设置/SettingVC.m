@@ -28,14 +28,14 @@
     if (!_loginoutView) {
         _loginoutView = [UIView new];
         _loginoutView.backgroundColor = [UIColor clearColor];
-        _loginoutView.widthHeight = XY(SCREEN_WIDTH, W(57)+ W(10));
+        _loginoutView.widthHeight = XY(SCREEN_WIDTH, W(45)+ W(10));
         [_loginoutView addSubview:^(){
             UILabel * label = [UILabel new];
-            label.frame = CGRectMake(0, W(10), SCREEN_WIDTH, W(57));
+            label.frame = CGRectMake(0, W(10), SCREEN_WIDTH, W(45));
             label.backgroundColor = [UIColor whiteColor];
             label.textAlignment = NSTextAlignmentCenter;
-            label.font = [UIFont systemFontOfSize:F(17) weight:UIFontWeightBold];
-            label.textColor = [UIColor redColor];
+            label.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
+            label.textColor = COLOR_333;
             label.text = @"退出登录";
             return label;
         }()];
@@ -63,13 +63,13 @@
 
 #pragma mark 添加导航栏
 - (void)addNav{
-    [self.view addSubview:^(){
-        BaseNavView * nav = [BaseNavView initNavBackTitle:@"系统设置" rightView:nil];
-        nav.line.hidden = true;
-        return nav;
-    }()];
+    BaseNavView * nav = [BaseNavView initNavBackTitle:@"系统设置" rightView:nil];
+    [nav configBackBlueStyle];
+    [self.view addSubview:nav];
 }
-
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 #pragma mark UITableViewDelegate
 //row num
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -101,15 +101,7 @@
     WEAKSELF
     self.aryDatas = @[^(){
         ModelBtn * model = [ModelBtn new];
-        model.title = @"";
-        model.subTitle = @"";
-        model.isHide = true;
-        model.blockClick = ^{
-        };
-        return model;
-    }(),^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"意见反馈";
+        model.title = @"投诉建议";
         model.isLineHide = false;
         model.blockClick = ^{
             [GB_Nav pushVCName:@"FeedbackVC" animated:true];
@@ -130,7 +122,7 @@
         return model;
     }(),^(){
         ModelBtn * model = [ModelBtn new];
-        model.title = @"推送消息";
+        model.title = @"消息推送";
         model.isLineHide = false;
         UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
         model.subTitle = [NSString stringWithFormat:@"%@",UIUserNotificationTypeNone != setting.types ?@"已开启":@"未开启"];
@@ -148,7 +140,7 @@
         return model;
     }(),^(){
         ModelBtn * model = [ModelBtn new];
-        model.title = @"检测新版本";
+        model.title = @"关于版本";
         model.isLineHide = true;
         NSString * strVersion = [NSString stringWithFormat:@"当前版本%@",[GlobalMethod getVersion]];
 #ifdef DEBUG
@@ -175,10 +167,7 @@
         [GB_Nav popViewControllerAnimated:true];
     }];
 }
-#pragma mark status bar
-- (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleDefault;
-}
+
 #pragma mark 销毁
 - (void)dealloc{
     NSLog(@"%s  %@",__func__,self.class);
