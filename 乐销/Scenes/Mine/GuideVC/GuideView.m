@@ -42,91 +42,50 @@
     [self addSubview:self.scView];
     {
         UIImageView * iv = [UIImageView new];
-        iv.widthHeight = XY(W(375), W(344));
-        iv.leftTop = XY(0, STATUSBAR_HEIGHT + W(37));
+        iv.widthHeight = XY(W(375), W(512));
+        iv.leftTop = XY(0, NAVIGATIONBAR_HEIGHT);
         iv.image = [UIImage imageNamed:@"guidebg_location"];
         
-        
-        UILabel *label = [UILabel new];
-        label.font = [UIFont systemFontOfSize:F(25) weight:UIFontWeightSemibold];
-        label.textColor = COLOR_333;
-        [label fitTitle:@"实时定位" variable:0];
-        label.centerXTop = XY(iv.centerX, iv.bottom + W(85));
-        
-        UILabel *subLabel = [UILabel new];
-        subLabel.font = [UIFont systemFontOfSize:F(17) weight:UIFontWeightSemibold];
-        subLabel.textColor = COLOR_999;
-        [subLabel fitTitle:@"掌握行程，运输更高效" variable:0];
-        subLabel.centerXTop = XY(iv.centerX, label.bottom + W(20));
-        
         UIImageView * ivSlide = [UIImageView new];
-        ivSlide.widthHeight = XY(W(44), W(8));
-        ivSlide.centerXBottom = XY(iv.centerX, SCREEN_HEIGHT - iphoneXBottomInterval - W(45));
+        ivSlide.widthHeight = XY(W(29), W(5));
+        ivSlide.centerXBottom = XY(iv.centerX, iv.bottom + W(36));
         ivSlide.image = [UIImage imageNamed:@"guideSlide1"];
         
         [self.scView addSubview:iv];
-        [self.scView addSubview:label];
-        [self.scView addSubview:subLabel];
         [self.scView addSubview:ivSlide];
     }
     {
         UIImageView * iv = [UIImageView new];
-        iv.widthHeight = XY(W(375), W(344));
-        iv.leftTop = XY(SCREEN_WIDTH, STATUSBAR_HEIGHT + W(37));
+        iv.widthHeight = XY(W(375), W(512));
+        iv.leftTop = XY(SCREEN_WIDTH, NAVIGATIONBAR_HEIGHT);
         iv.image = [UIImage imageNamed:@"guidebg_indent"];
         
-        
-        UILabel *label = [UILabel new];
-        label.font = [UIFont systemFontOfSize:F(25) weight:UIFontWeightSemibold];
-        label.textColor = COLOR_333;
-        [label fitTitle:@"订单跟踪" variable:0];
-        label.centerXTop = XY(iv.centerX, iv.bottom + W(85));
-        
-        UILabel *subLabel = [UILabel new];
-        subLabel.font = [UIFont systemFontOfSize:F(17) weight:UIFontWeightSemibold];
-        subLabel.textColor = COLOR_999;
-        [subLabel fitTitle:@"实时追踪，安全又便利" variable:0];
-        subLabel.centerXTop = XY(iv.centerX, label.bottom + W(20));
-        
         UIImageView * ivSlide = [UIImageView new];
-        ivSlide.widthHeight = XY(W(44), W(8));
-        ivSlide.centerXBottom = XY(iv.centerX, SCREEN_HEIGHT - iphoneXBottomInterval - W(45));
+        ivSlide.widthHeight = XY(W(29), W(5));
+        ivSlide.centerXBottom = XY(iv.centerX, iv.bottom + W(36));
         ivSlide.image = [UIImage imageNamed:@"guideSlide2"];
         
         [self.scView addSubview:iv];
-        [self.scView addSubview:label];
-        [self.scView addSubview:subLabel];
         [self.scView addSubview:ivSlide];
     }
     {
         UIImageView * iv = [UIImageView new];
-        iv.widthHeight = XY(W(375), W(344));
-        iv.leftTop = XY(SCREEN_WIDTH*2, STATUSBAR_HEIGHT + W(37));
+        iv.widthHeight = XY(W(375), W(512));
+        iv.leftTop = XY(SCREEN_WIDTH*2, NAVIGATIONBAR_HEIGHT);
         iv.image = [UIImage imageNamed:@"guidebg_arrive"];
-        
-        
-        UILabel *label = [UILabel new];
-        label.font = [UIFont systemFontOfSize:F(25) weight:UIFontWeightSemibold];
-        label.textColor = COLOR_333;
-        [label fitTitle:@"快速抵达" variable:0];
-        label.centerXTop = XY(iv.centerX, iv.bottom + W(85));
-        
-        UILabel *subLabel = [UILabel new];
-        subLabel.font = [UIFont systemFontOfSize:F(17) weight:UIFontWeightSemibold];
-        subLabel.textColor = COLOR_999;
-        [subLabel fitTitle:@"极速送达，省时又省事" variable:0];
-        subLabel.centerXTop = XY(iv.centerX, label.bottom + W(20));
         
         UIButton * btnEnter = [UIButton buttonWithType:UIButtonTypeCustom];
         btnEnter.backgroundColor = [UIColor clearColor];
-        btnEnter.widthHeight = XY(W(130), W(49));
-        btnEnter.centerXBottom = XY(iv.centerX, SCREEN_HEIGHT - iphoneXBottomInterval - W(35));
-        [btnEnter setBackgroundImage:[UIImage imageNamed:@"guideEnter"] forState:UIControlStateNormal];
+        btnEnter.widthHeight = XY(W(173), W(39));
+        btnEnter.centerXTop = XY(iv.centerX, iv.bottom + W(7));
+        btnEnter.backgroundColor = COLOR_BLUE;
+        [btnEnter setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [btnEnter setTitle:@"立即进入" forState:UIControlStateNormal];
+        btnEnter.titleLabel.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
         [btnEnter addTarget:self action:@selector(enterClick) forControlEvents:UIControlEventTouchUpInside];
+        [btnEnter addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:W(39)/2.0 lineWidth:0 lineColor:[UIColor clearColor]];
         
         [self.scView addSubview:iv];
-        [self.scView addSubview:label];
-        [self.scView addSubview:subLabel];
         [self.scView addSubview:btnEnter];
     }
   

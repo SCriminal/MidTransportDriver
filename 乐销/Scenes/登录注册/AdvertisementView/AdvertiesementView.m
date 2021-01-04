@@ -25,13 +25,14 @@
     if (_labelAlert == nil) {
         _labelAlert = [UILabel new];
         _labelAlert.textColor = [UIColor whiteColor];
-        _labelAlert.font = [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
+        _labelAlert.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
+        _labelAlert.backgroundColor = COLOR_BLACK_ALPHA_PER60;
         _labelAlert.textAlignment = NSTextAlignmentCenter;
         _labelAlert.text = [NSString stringWithFormat:@"跳过(%.f)",self.numTime];
-        _labelAlert.width = [UILabel fetchWidthFontNum:_labelAlert.font.pointSize text:_labelAlert.text] + W(24);
-        _labelAlert.height = _labelAlert.font.lineHeight + W(8);
-        [GlobalMethod setRoundView:_labelAlert color:[UIColor whiteColor] numRound:_labelAlert.height/2.0 width:1];
-        _labelAlert.rightBottom = XY(SCREEN_WIDTH - W(15), SCREEN_HEIGHT - W(25)-iphoneXBottomInterval);
+        _labelAlert.width = [UILabel fetchWidthFontNum:_labelAlert.font.pointSize text:_labelAlert.text] + W(32);
+        _labelAlert.height = _labelAlert.font.lineHeight + W(20);
+        [GlobalMethod setRoundView:_labelAlert color:[UIColor clearColor] numRound:_labelAlert.height/2.0 width:0];
+        _labelAlert.rightTop = XY(SCREEN_WIDTH - W(13), W(40)+iphoneXBottomInterval);
     }
     return _labelAlert;
 }
@@ -49,12 +50,32 @@
 - (UIImageView *)ivAD{
     if (_ivAD == nil) {
         _ivAD = [UIImageView new];
-        _ivAD.image = [UIImage imageNamed:@"advertisement"];
+        _ivAD.image = [self getLaunchImage];
         _ivAD.widthHeight = XY(SCREEN_WIDTH, SCREEN_HEIGHT);
-        _ivAD.contentMode = UIViewContentModeScaleAspectFill;
+//        _ivAD.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _ivAD;
 }
+- (UIImage *)getLaunchImage {
+    UIImage *launchImg = [[UIImage alloc] init];
+    NSString *orientation = @"";
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    UIInterfaceOrientation statusBarOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    if (statusBarOrientation == UIInterfaceOrientationLandscapeLeft || statusBarOrientation == UIInterfaceOrientationLandscapeRight) {
+        orientation = @"Landscape";
+    } else {
+        orientation = @"Portrait";
+    }
+    NSArray *imgsInfoArr = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"UILaunchImages"];
+    for (NSDictionary *info in imgsInfoArr) {
+        CGSize imgSize = CGSizeFromString(info[@"UILaunchImageSize"]);
+        if (CGSizeEqualToSize(imgSize, screenSize) && [orientation isEqualToString:info[@"UILaunchImageOrientation"]] ) {
+            launchImg = [UIImage imageNamed:info[@"UILaunchImageName"]];
+        }
+    }
+    return launchImg;
+}
+
 
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -62,9 +83,9 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];//背景色
         self.widthHeight = XY(SCREEN_WIDTH, SCREEN_HEIGHT);//默认宽度
-        self.numTime = 0;
+        self.numTime = 5;
         [self addSubView];//添加子视图
-        [self playVideo:@""];
+//        [self playVideo:@""];
     }
     return self;
 }
@@ -96,7 +117,7 @@
         return;
     }
     _numTime --;
-    self.labelAlert.text = [NSString stringWithFormat:@"跳过(%.f)",self.numTime];
+    self.labelAlert.text = [NSString stringWithFormat:@"%.f 跳过",self.numTime];
     self.controlSkip.userInteractionEnabled = false;
 }
 
