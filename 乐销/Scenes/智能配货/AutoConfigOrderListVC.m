@@ -91,15 +91,8 @@
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //table
-    BaseNavView * nav = [BaseNavView initNavTitle:@"智能配货" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(23), W(23)) leftBlock:^{
-        
-    } rightTitle:@"我的报价" righBlock:^{
-        
-    }];
-    [nav configBlueStyle];
-    [self.view addSubview:nav];
-    
+   
+    [self addNav];
     [self.view addSubview:self.filterView];
     [self.tableView registerClass:[AutoConfigOrderListCell class] forCellReuseIdentifier:@"AutoConfigOrderListCell"];
     self.tableView.frame = CGRectMake(0, self.filterView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.filterView.bottom - TABBAR_HEIGHT);
@@ -111,7 +104,16 @@
     //request
     [self requestList];
 }
-
+- (void)addNav{
+    //table
+    BaseNavView * nav = [BaseNavView initNavTitle:@"智能配货" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(23), W(23)) leftBlock:^{
+        
+    } rightTitle:@"我的报价" righBlock:^{
+        
+    }];
+    [nav configBlueStyle];
+    [self.view addSubview:nav];
+}
 #pragma mark UITableViewDelegate
 //row num
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -225,3 +227,18 @@
     }
 }
 @end
+
+@implementation NewAutoConfigOrderListVC
+- (void)addNav{
+    //table
+    BaseNavView * nav = [BaseNavView initNavTitle:@"最新货源" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(23), W(23)) leftBlock:^{
+        
+    } rightTitle:@"我的报价" righBlock:^{
+        
+    }];
+    [nav configBlueStyle];
+    [self.view addSubview:nav];
+}
+
+@end
+

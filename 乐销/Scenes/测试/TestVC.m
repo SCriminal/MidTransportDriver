@@ -282,10 +282,10 @@
     NSLog(@"true");
 }
 - (void)jump{
-    GuideView * guideView = [GuideView new];
-    [guideView show];
+//    GuideView * guideView = [GuideView new];
+//    [guideView show];
 
-//    [GB_Nav pushVCName:@"SettingVC" animated:true];
+    [GB_Nav pushVCName:@"FeedBackManagementVC" animated:true];
 //    RechargeInputView * view = [RechargeInputView new];
 //    [view resetViewWithModel:nil];
 //    [self.view addSubview:view];

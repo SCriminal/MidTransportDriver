@@ -11,3 +11,7 @@
 @interface AutoConfigOrderListVC : BaseTableVC
 
 @end
+
+@interface NewAutoConfigOrderListVC : AutoConfigOrderListVC
+
+@end

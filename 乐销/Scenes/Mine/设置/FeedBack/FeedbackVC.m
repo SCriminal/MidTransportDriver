@@ -11,118 +11,153 @@
 #import "PlaceHolderTextView.h"
 //request
 #import "RequestApi+Dictionary.h"
+//图片选择collection
+#import "Collection_Image.h"
 
 @interface FeedbackVC ()
-@property (nonatomic, strong) UILabel *labelOpinion;
-@property (nonatomic, strong) UILabel *labelAdvice;
+@property (nonatomic, strong) UILabel *labelNum;
 @property (nonatomic,strong) PlaceHolderTextView *textView;
-@property (nonatomic,strong) PlaceHolderTextView *textView2;
+@property (nonatomic, strong) Collection_Image *collection_Image;
 
 @end
 
 @implementation FeedbackVC
+- (Collection_Image *)collection_Image{
+    if (!_collection_Image) {
+        _collection_Image = [Collection_Image new];
+        _collection_Image.isEditing = true;
+        _collection_Image.width =  SCREEN_WIDTH - W(30);
+        [_collection_Image resetWithAry:nil];
+    }
+    return _collection_Image;
+}
+
 - (PlaceHolderTextView *)textView{
     if (_textView == nil) {
         _textView = [PlaceHolderTextView new];
         _textView.backgroundColor = [UIColor clearColor];
 //        _textView.delegate = self;
-        [GlobalMethod setLabel:_textView.placeHolder widthLimit:0 numLines:0 fontNum:F(15) textColor:COLOR_999 text:@"请输入您的具体描述"];
+        [GlobalMethod setLabel:_textView.placeHolder widthLimit:0 numLines:0 fontNum:F(14) textColor:COLOR_999 text:@"请输入您的具体描述"];
+        _textView.placeHolder.leftTop = XY(0, W(4));
         [_textView setTextColor:COLOR_333];
-        _textView.font = [UIFont systemFontOfSize:F(15)];
+        _textView.font = [UIFont systemFontOfSize:F(14)];
+        _textView.widthHeight = XY(W(321), W(100));
+        
     }
     return _textView;
 }
-- (UILabel *)labelOpinion{
-    if (_labelOpinion == nil) {
-        _labelOpinion = [UILabel new];
-        _labelOpinion.textColor = COLOR_666;
-        _labelOpinion.font =  [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
-        [_labelOpinion fitTitle:@"您觉得哪个功能体验不好？" variable:0];
-        
+- (UILabel *)labelNum{
+    if (_labelNum == nil) {
+        _labelNum = [UILabel new];
+        _labelNum.textColor = COLOR_999;
+        _labelNum.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        [_labelNum fitTitle:@"选择投诉运单编号" variable:0];
+        _labelNum.numberOfLines = 1;
     }
-    return _labelOpinion;
-}
-- (UILabel *)labelAdvice{
-    if (_labelAdvice == nil) {
-        _labelAdvice = [UILabel new];
-        _labelAdvice.textColor = COLOR_666;
-        _labelAdvice.font =  [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
-        [_labelAdvice fitTitle:@"您希望改进和增加的功能" variable:0];
-
-    }
-    return _labelAdvice;
-}
-
-- (PlaceHolderTextView *)textView2{
-    if (_textView2 == nil) {
-        _textView2 = [PlaceHolderTextView new];
-        _textView2.backgroundColor = [UIColor clearColor];
-//        _textView2.delegate = self;
-        [GlobalMethod setLabel:_textView2.placeHolder widthLimit:0 numLines:0 fontNum:F(15) textColor:COLOR_999 text:@"请输入您的具体描述"];
-        [_textView2 setTextColor:COLOR_333];
-        _textView2.font = [UIFont systemFontOfSize:F(15)];
-    }
-    return _textView2;
+    return _labelNum;
 }
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
     //添加导航栏
-    [self addNav];
     [self configView];
 }
 - (void)configView{
-    [self.view addSubview:self.labelAdvice];
-    [self.view addSubview:self.labelOpinion];
-    [self.view addSubview:self.textView2];
-    self.labelOpinion.leftTop = XY(W(15), W(20)+NAVIGATIONBAR_HEIGHT);
     {
-        UIView * viewWhite = [UIView new];
-        viewWhite.widthHeight = XY(SCREEN_WIDTH, W(160));
-        viewWhite.top = self.labelOpinion.bottom + W(10);
-        viewWhite.backgroundColor = [UIColor whiteColor];
-        [self.view addSubview:viewWhite];
-        
-        self.textView.widthHeight = XY(viewWhite.width- W(30), viewWhite.height - W(30));
-        self.textView.leftTop = XY(W(15), viewWhite.top + W(15));
-        [self.view addSubview:self.textView];
-        
-        self.labelAdvice.leftTop = XY(W(15), W(20)+viewWhite.bottom);
+        UIView * view = [UIView new];
+        view.backgroundColor = [UIColor whiteColor];
+        view.widthHeight = XY(SCREEN_WIDTH, W(237));
+        view.leftTop = XY(W(0), W(10));
+        [self.view addSubview:view];
     }
     {
-        UIView * viewWhite = [UIView new];
-        viewWhite.widthHeight = XY(SCREEN_WIDTH, W(160));
-        viewWhite.top = self.labelAdvice.bottom + W(10);
-        viewWhite.backgroundColor = [UIColor whiteColor];
-        [self.view addSubview:viewWhite];
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        l.textColor = COLOR_333;
+        l.backgroundColor = [UIColor clearColor];
+        [l fitTitle:@"投诉运单" variable:SCREEN_WIDTH - W(30)];
+        l.leftTop = XY(W(15), W(27));
+        [self.view addSubview:l];
         
-        self.textView2.widthHeight = XY(viewWhite.width- W(30), viewWhite.height - W(30));
-        self.textView2.leftTop = XY(W(15), viewWhite.top + W(15));
-        [self.view addSubview:self.textView2];
+        [self.view addSubview:self.labelNum];
+        self.labelNum.leftCenterY = XY(W(90), l.centerY);
+        [self.view addControlFrame:CGRectInset(self.labelNum.frame, -W(30), -W(20)) belowView:self.labelNum target:self action:@selector(numClick)];
+        
+        UIImageView * iv = [UIImageView new];
+        iv.backgroundColor = [UIColor clearColor];
+        iv.contentMode = UIViewContentModeScaleAspectFill;
+        iv.clipsToBounds = true;
+        iv.image = [UIImage imageNamed:@"setting_RightArrow"];
+        iv.widthHeight = XY(W(25),W(25));
+        iv.rightCenterY = XY(SCREEN_WIDTH - W(10),l.centerY);
+        [self.view addSubview:iv];
+    }
+    [self.view addLineFrame:CGRectMake(W(15), W(59), SCREEN_WIDTH - W(30), 1)];
+
+    {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        l.textColor = COLOR_333;
+        l.backgroundColor = [UIColor clearColor];
+        [l fitTitle:@"投诉内容" variable:SCREEN_WIDTH - W(30)];
+        l.leftTop = XY(W(15), W(78));
+        [self.view addSubview:l];
+    }
+    {
+        UIView * view = [UIView new];
+        view.backgroundColor = [UIColor whiteColor];
+        view.widthHeight = XY(W(345), W(120));
+        view.centerXTop = XY(SCREEN_WIDTH/2.0, W(110));
+        [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:5 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+        [self.view addSubview:view];
+    }
+    [self.view addSubview:self.textView];
+    self.textView.centerXTop = XY(SCREEN_WIDTH/2.0, W(125));
+    
+    [self.view addLineFrame:CGRectMake(W(0 ), W(247), SCREEN_WIDTH , W(10)) color:COLOR_BACKGROUND];
+
+    {
+        UIView * view = [UIView new];
+        view.backgroundColor = [UIColor whiteColor];
+        view.widthHeight = XY(SCREEN_WIDTH, W(138));
+        view.leftTop = XY(W(0), W(257));
+        [self.view addSubview:view];
+    }
+    {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        l.textColor = COLOR_333;
+        l.backgroundColor = [UIColor clearColor];
+        [l fitTitle:@"附件（可多张）" variable:SCREEN_WIDTH - W(30)];
+        l.leftTop = XY(W(15), W(272));
+        [self.view addSubview:l];
+    }
+    [self.view addSubview:self.collection_Image];
+    self.collection_Image.leftTop = XY(W(15), W(302));
+    
+    {
+        UIButton * btn = [UIButton createBottomBtn:@"保存"];
+        btn.centerXTop = XY(SCREEN_WIDTH/2.0, W(410));
+        [self.view addSubview:btn];
+        [btn addTarget:self action:@selector(saveClick)];
     }
 }
-#pragma mark 添加导航栏
-- (void)addNav{
-    WEAKSELF
-    BaseNavView * nav = [BaseNavView initNavBackTitle:@"意见反馈" rightTitle:@"提交" rightBlock:^{
-        [weakSelf request];
-    }];
-    nav.line.hidden = true;
-    [self.view addSubview:nav];
+
+- (void)numClick{
+    [self.labelNum fitTitle:@"" variable:W(220)];
+    self.labelNum.textColor = COLOR_333;
 }
-
-
+- (void)saveClick{
+    
+}
 #pragma mark request
 - (void)request{
-    if (self.textView2.text.length <=0&&self.textView.text.length <=0) {
-        [GlobalMethod showAlert:@"请输入内容"];
-        return;
-    }
-    if (self.textView2.text.length <5&&self.textView.text.length <=5) {
+   
+    if (self.textView.text.length <5&&self.textView.text.length <=5) {
         [GlobalMethod showAlert:@"请输入更多内容"];
         return;
     }
-    [RequestApi requestAddFeedbackWithBetter:self.textView2.text bad:self.textView.text app:@"1" teminalType:1 userId:[GlobalData sharedInstance].GB_UserModel.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestAddFeedbackWithBetter:self.textView.text bad:self.textView.text app:@"1" teminalType:1 userId:[GlobalData sharedInstance].GB_UserModel.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"提交成功"];
         [GB_Nav popViewControllerAnimated:true];
 
@@ -130,4 +165,20 @@
         
     }];
 }
+
+- (void)imagesSelect:(NSArray *)aryImages
+{
+    [[AliClient sharedInstance]updateImageAry:aryImages  storageSuccess:nil upSuccess:nil upHighQualitySuccess:nil fail:nil];
+    for (BaseImage *image in aryImages) {
+        ModelImage * modelImageInfo = [ModelImage new];
+        modelImageInfo.url = image.imageURL;
+        modelImageInfo.image = image;
+        modelImageInfo.width = image.size.width;
+        modelImageInfo.height = image.size.height;
+        [self.collection_Image.aryDatas insertObject:modelImageInfo atIndex:0];
+    }
+    [self.collection_Image.collectionView reloadData];
+
+}
+
 @end

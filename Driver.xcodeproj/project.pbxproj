@@ -306,6 +306,8 @@
 		D2CF190D22548EF800542AEF /* OAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CF190422548EF800542AEF /* OAuth.framework */; };
 		D2CF190E22548EF800542AEF /* EAccountApiSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CF190522548EF800542AEF /* EAccountApiSDK.framework */; };
 		D2D089111E0E22D900BE1E4C /* PlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D089101E0E22D900BE1E4C /* PlaceHolderTextView.m */; };
+		D2D5265525A44E1A00F99306 /* FeedBackManagementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5265425A44E1A00F99306 /* FeedBackManagementVC.m */; };
+		D2D5265825A44E8800F99306 /* SuggestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5265725A44E8800F99306 /* SuggestVC.m */; };
 		D2D6D9AD21AFD623005A4F5B /* LeftMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D6D9AC21AFD623005A4F5B /* LeftMenuVC.m */; };
 		D2D871072338C8D700F79173 /* ModelBank.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D871052338C8D700F79173 /* ModelBank.m */; };
 		D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D9A4192015D2170025963B /* AppDelegate.m */; };
@@ -994,6 +996,10 @@
 		D2CF190522548EF800542AEF /* EAccountApiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EAccountApiSDK.framework; sourceTree = "<group>"; };
 		D2D0890F1E0E22D900BE1E4C /* PlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceHolderTextView.h; sourceTree = "<group>"; };
 		D2D089101E0E22D900BE1E4C /* PlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceHolderTextView.m; sourceTree = "<group>"; };
+		D2D5265325A44E1A00F99306 /* FeedBackManagementVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedBackManagementVC.h; sourceTree = "<group>"; };
+		D2D5265425A44E1A00F99306 /* FeedBackManagementVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBackManagementVC.m; sourceTree = "<group>"; };
+		D2D5265625A44E8800F99306 /* SuggestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuggestVC.h; sourceTree = "<group>"; };
+		D2D5265725A44E8800F99306 /* SuggestVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuggestVC.m; sourceTree = "<group>"; };
 		D2D6D9AB21AFD623005A4F5B /* LeftMenuVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuVC.h; sourceTree = "<group>"; };
 		D2D6D9AC21AFD623005A4F5B /* LeftMenuVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuVC.m; sourceTree = "<group>"; };
 		D2D871052338C8D700F79173 /* ModelBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBank.m; sourceTree = "<group>"; };
@@ -2614,6 +2620,10 @@
 			children = (
 				D2BCE91122695F0F00E8C4E2 /* FeedbackVC.h */,
 				D2BCE91222695F0F00E8C4E2 /* FeedbackVC.m */,
+				D2D5265625A44E8800F99306 /* SuggestVC.h */,
+				D2D5265725A44E8800F99306 /* SuggestVC.m */,
+				D2D5265325A44E1A00F99306 /* FeedBackManagementVC.h */,
+				D2D5265425A44E1A00F99306 /* FeedBackManagementVC.m */,
 			);
 			path = FeedBack;
 			sourceTree = "<group>";
@@ -3605,6 +3615,7 @@
 				D28A31A52591BD83006AC450 /* CreditListVC.m in Sources */,
 				D20DCA052578CA69003B89B5 /* OrderFilterView.m in Sources */,
 				D257759824D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m in Sources */,
+				D2D5265825A44E8800F99306 /* SuggestVC.m in Sources */,
 				D28A8688225F1E78001E3372 /* CarTeamListVC.m in Sources */,
 				D22BA9D61E5EB8CA00C5B391 /* FSCalendarCollectionViewLayout.m in Sources */,
 				D29191FE21E0A6F6001B2F9E /* ModelOrderList.m in Sources */,
@@ -3693,6 +3704,7 @@
 				D2789B4B22E187E100F2E6E1 /* BulkCargoOperateLoadView.m in Sources */,
 				D22851B025942CAF00100231 /* IntegralProductDetailView.m in Sources */,
 				D2F11C6D2097103600F18CBD /* UITextField+Text.m in Sources */,
+				D2D5265525A44E1A00F99306 /* FeedBackManagementVC.m in Sources */,
 				D23F02FA1E037F34004E768F /* GlobalMethod+UI.m in Sources */,
 				D2BE30D6210712200059929D /* ModelCompany.m in Sources */,
 				D2152F6121815DBF0085437D /* CommentStarView.m in Sources */,
