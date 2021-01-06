@@ -1,19 +1,18 @@
 //
-//  FeedBackManagementVC.m
+//  FeedBackListManagementVC.m
 //  Driver
 //
 //  Created by 隋林栋 on 2021/1/5.
 //Copyright © 2021 ping. All rights reserved.
 //
 
-#import "FeedBackManagementVC.h"
+#import "FeedBackListManagementVC.h"
 //滑动view
 #import "SliderView.h"
 //list vc
-#import "FeedbackVC.h"
-#import "SuggestVC.h"
+#import "FeedBackHistoryListVC.h"
 
-@interface FeedBackManagementVC ()<SliderViewDelegate,UIScrollViewDelegate>
+@interface FeedBackListManagementVC ()<SliderViewDelegate,UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSArray *arySliderDatas;
 @property (nonatomic, strong) BaseNavView *nav;
@@ -22,7 +21,7 @@
 
 @end
 
-@implementation FeedBackManagementVC
+@implementation FeedBackListManagementVC
 #pragma mark lazy init
 - (UIScrollView *)scAll{
     if (_scAll == nil) {
@@ -59,14 +58,16 @@
 - (void)setupChildVC
 {
     {
-        FeedbackVC * feedVC =  [FeedbackVC new];
+        FeedBackHistoryListVC * feedVC =  [FeedBackHistoryListVC new];
         feedVC.view.frame = CGRectMake(SCREEN_WIDTH*0, 0, self.scAll.width, self.scAll.height);
+        feedVC.tableView.height = feedVC.view.height;
         [self addChildViewController:feedVC];
         [self.scAll addSubview:feedVC.view];
     }
     {
-        SuggestVC * feedVC =  [SuggestVC new];
+        SuggestHistoryListVC * feedVC =  [SuggestHistoryListVC new];
         feedVC.view.frame = CGRectMake(SCREEN_WIDTH*1, 0, self.scAll.width, self.scAll.height);
+        feedVC.tableView.height = feedVC.view.height;
         [self addChildViewController:feedVC];
         [self.scAll addSubview:feedVC.view];
     }
@@ -91,8 +92,8 @@
 }
 - (BaseNavView *)nav{
     if (!_nav) {
-        _nav = [BaseNavView initNavBackTitle:@"投诉建议" rightTitle:@"历史" rightBlock:^{
-            [GB_Nav pushVCName:@"FeedBackListManagementVC" animated:true];
+        _nav = [BaseNavView initNavBackTitle:@"历史投诉建议" rightTitle:@"" rightBlock:^{
+            
         }];
         [_nav configBackBlueStyle];
     }

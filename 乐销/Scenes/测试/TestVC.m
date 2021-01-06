@@ -285,7 +285,7 @@
 //    GuideView * guideView = [GuideView new];
 //    [guideView show];
 
-    [GB_Nav pushVCName:@"FeedBackManagementVC" animated:true];
+    [GB_Nav pushVCName:@"FeedBackListManagementVC" animated:true];
 //    RechargeInputView * view = [RechargeInputView new];
 //    [view resetViewWithModel:nil];
 //    [self.view addSubview:view];

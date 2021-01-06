@@ -94,8 +94,8 @@
     {
         UIView * view = [UIView new];
         view.backgroundColor = [UIColor whiteColor];
-        view.widthHeight = XY(W(345), W(161));
-        view.centerXTop = XY(SCREEN_WIDTH/2.0, W(120));
+        view.widthHeight = XY(W(345), W(120));
+        view.centerXTop = XY(SCREEN_WIDTH/2.0, W(161));
         [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:5 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
         [self.view addSubview:view];
     }

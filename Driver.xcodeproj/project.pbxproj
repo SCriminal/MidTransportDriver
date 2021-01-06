@@ -308,6 +308,8 @@
 		D2D089111E0E22D900BE1E4C /* PlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D089101E0E22D900BE1E4C /* PlaceHolderTextView.m */; };
 		D2D5265525A44E1A00F99306 /* FeedBackManagementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5265425A44E1A00F99306 /* FeedBackManagementVC.m */; };
 		D2D5265825A44E8800F99306 /* SuggestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5265725A44E8800F99306 /* SuggestVC.m */; };
+		D2D5265B25A5462300F99306 /* FeedBackListManagementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5265A25A5462300F99306 /* FeedBackListManagementVC.m */; };
+		D2D5265E25A5463500F99306 /* FeedBackHistoryListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5265D25A5463400F99306 /* FeedBackHistoryListVC.m */; };
 		D2D6D9AD21AFD623005A4F5B /* LeftMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D6D9AC21AFD623005A4F5B /* LeftMenuVC.m */; };
 		D2D871072338C8D700F79173 /* ModelBank.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D871052338C8D700F79173 /* ModelBank.m */; };
 		D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D9A4192015D2170025963B /* AppDelegate.m */; };
@@ -1000,6 +1002,10 @@
 		D2D5265425A44E1A00F99306 /* FeedBackManagementVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBackManagementVC.m; sourceTree = "<group>"; };
 		D2D5265625A44E8800F99306 /* SuggestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuggestVC.h; sourceTree = "<group>"; };
 		D2D5265725A44E8800F99306 /* SuggestVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuggestVC.m; sourceTree = "<group>"; };
+		D2D5265925A5462300F99306 /* FeedBackListManagementVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedBackListManagementVC.h; sourceTree = "<group>"; };
+		D2D5265A25A5462300F99306 /* FeedBackListManagementVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBackListManagementVC.m; sourceTree = "<group>"; };
+		D2D5265C25A5463400F99306 /* FeedBackHistoryListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedBackHistoryListVC.h; sourceTree = "<group>"; };
+		D2D5265D25A5463400F99306 /* FeedBackHistoryListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBackHistoryListVC.m; sourceTree = "<group>"; };
 		D2D6D9AB21AFD623005A4F5B /* LeftMenuVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuVC.h; sourceTree = "<group>"; };
 		D2D6D9AC21AFD623005A4F5B /* LeftMenuVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuVC.m; sourceTree = "<group>"; };
 		D2D871052338C8D700F79173 /* ModelBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBank.m; sourceTree = "<group>"; };
@@ -2624,6 +2630,10 @@
 				D2D5265725A44E8800F99306 /* SuggestVC.m */,
 				D2D5265325A44E1A00F99306 /* FeedBackManagementVC.h */,
 				D2D5265425A44E1A00F99306 /* FeedBackManagementVC.m */,
+				D2D5265925A5462300F99306 /* FeedBackListManagementVC.h */,
+				D2D5265A25A5462300F99306 /* FeedBackListManagementVC.m */,
+				D2D5265C25A5463400F99306 /* FeedBackHistoryListVC.h */,
+				D2D5265D25A5463400F99306 /* FeedBackHistoryListVC.m */,
 			);
 			path = FeedBack;
 			sourceTree = "<group>";
@@ -3468,6 +3478,7 @@
 				D2C55800238BCADC0050694F /* RequestApi+Schedule.m in Sources */,
 				D21B58D81FA6A5BF00B2A788 /* UIImage+info.m in Sources */,
 				D2B9FF32248F900C0082E8D2 /* SelectCarNumberView.m in Sources */,
+				D2D5265B25A5462300F99306 /* FeedBackListManagementVC.m in Sources */,
 				D28642EB1E484A350041B64C /* UITapGestureRecognizer+Base.m in Sources */,
 				D26A14A21E49C25700126F7A /* NSMutableDictionary+Category.m in Sources */,
 				DAB576881E305E5C006626BC /* NoResultView.m in Sources */,
@@ -3635,6 +3646,7 @@
 				D2F3A4FF2570EA2D009EBF3F /* AutoConfigOrderListCell.m in Sources */,
 				D27470B022A798DA009B645D /* RequestApi+Location.m in Sources */,
 				D22B1D542383E34400BC00F0 /* ScanOrderListVC.m in Sources */,
+				D2D5265E25A5463500F99306 /* FeedBackHistoryListVC.m in Sources */,
 				D23327CE2185A6CB00495488 /* OrderListManagementVC.m in Sources */,
 				D28A319925908D79006AC450 /* CreateAddressVC.m in Sources */,
 				D23398601EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m in Sources */,
