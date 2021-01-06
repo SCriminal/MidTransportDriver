@@ -313,7 +313,6 @@
 		DA4BDFE11DB0CE120080ABAE /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4BDFE01DB0CE120080ABAE /* AVKit.framework */; };
 		DA4BDFFD1DB0E4D90080ABAE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4BDFFC1DB0E4D90080ABAE /* AssetsLibrary.framework */; };
 		DA7FCE141D7FC0960002C5CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA3CB551D66994C009CFDF7 /* QuartzCore.framework */; };
-		DA7FCE181D7FC0FA0002C5CB /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7FCE171D7FC0FA0002C5CB /* libstdc++.6.0.9.tbd */; };
 		DA85246B1D65B5AE00AB04CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA85246A1D65B5AE00AB04CC /* main.m */; };
 		DA8524871D65B5AE00AB04CC /* __Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8524861D65B5AE00AB04CC /* __Tests.m */; };
 		DA8524921D65B5AE00AB04CC /* __UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8524911D65B5AE00AB04CC /* __UITests.m */; };
@@ -1014,7 +1013,6 @@
 				D2CF190E22548EF800542AEF /* EAccountApiSDK.framework in Frameworks */,
 				D20DCA0C257E1A64003B89B5 /* MapManage.framework in Frameworks */,
 				DA852DBF1D65B9C500AB04CC /* libstdc++.tbd in Frameworks */,
-				DA7FCE181D7FC0FA0002C5CB /* libstdc++.6.0.9.tbd in Frameworks */,
 				DA4BDFD91DB0C5880080ABAE /* AVFoundation.framework in Frameworks */,
 				D2CF190722548EF800542AEF /* account_login_sdk_core.framework in Frameworks */,
 				D29F6F611E4C0AB600B6F20B /* UserNotifications.framework in Frameworks */,

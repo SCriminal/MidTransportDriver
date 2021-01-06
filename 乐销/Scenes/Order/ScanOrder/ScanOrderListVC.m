@@ -109,20 +109,21 @@
 
 #pragma mark click
 - (void)scanClick{
-    if ([GlobalData sharedInstance].GB_UserModel.reviewStatus != 1) {
-        [self requestCarList];
-    }else{
-        [RequestApi requestUserInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            ModelBaseInfo * model = [ModelBaseInfo modelObjectWithDictionary:response];
-            if (model.reviewStatus != 1) {
-                [self requestCarList];
-            }else{
-                [GlobalMethod showBigAlert:@"审核通过才可以扫码下单"];
-            }
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
-        }];
-    }
+    [self requestCarList];
+//    if ([GlobalData sharedInstance].GB_UserModel.reviewStatus != 1) {
+//        [self requestCarList];
+//    }else{
+//        [RequestApi requestUserInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//            ModelBaseInfo * model = [ModelBaseInfo modelObjectWithDictionary:response];
+//            if (model.reviewStatus != 1) {
+//                [self requestCarList];
+//            }else{
+//                [GlobalMethod showBigAlert:@"审核通过才可以扫码下单"];
+//            }
+//        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//
+//        }];
+//    }
 }
 
 - (void)requestCarList{
