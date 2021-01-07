@@ -374,7 +374,7 @@
                               success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/zhongcheyun/vehicle/1_0_100/all/list" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/zhongcheyun/vehicle/1_0_100/list/all" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  车辆列表（司机）
