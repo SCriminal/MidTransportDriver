@@ -7,7 +7,7 @@
 //
 
 #import "FeedBackHistoryListVC.h"
-
+#import "SuggestDetailVC.h"
 @interface FeedBackHistoryListVC ()
 
 @end
@@ -41,7 +41,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [FeedBackHistoryListCell fetchHeight:self.aryDatas[indexPath.row]];
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    SuggestDetailVC * vc = [SuggestDetailVC new];
+    [GB_Nav pushViewController:vc animated:true];
+}
 #pragma mark request
 - (void)requestList{
     self.aryDatas = @[@"",@"",@""].mutableCopy;
@@ -139,7 +142,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [FeedBackHistoryListCell fetchHeight:self.aryDatas[indexPath.row]];
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    SuggestDetailVC * vc = [SuggestDetailVC new];
+    [GB_Nav pushViewController:vc animated:true];
+}
 #pragma mark request
 - (void)requestList{
     self.aryDatas = @[@"",@"",@""].mutableCopy;

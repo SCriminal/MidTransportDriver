@@ -310,6 +310,7 @@
 		D2D5265825A44E8800F99306 /* SuggestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5265725A44E8800F99306 /* SuggestVC.m */; };
 		D2D5265B25A5462300F99306 /* FeedBackListManagementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5265A25A5462300F99306 /* FeedBackListManagementVC.m */; };
 		D2D5265E25A5463500F99306 /* FeedBackHistoryListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5265D25A5463400F99306 /* FeedBackHistoryListVC.m */; };
+		D2D5266425A5956500F99306 /* SuggestDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5266325A5956500F99306 /* SuggestDetailVC.m */; };
 		D2D6D9AD21AFD623005A4F5B /* LeftMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D6D9AC21AFD623005A4F5B /* LeftMenuVC.m */; };
 		D2D871072338C8D700F79173 /* ModelBank.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D871052338C8D700F79173 /* ModelBank.m */; };
 		D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D9A4192015D2170025963B /* AppDelegate.m */; };
@@ -1006,6 +1007,8 @@
 		D2D5265A25A5462300F99306 /* FeedBackListManagementVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBackListManagementVC.m; sourceTree = "<group>"; };
 		D2D5265C25A5463400F99306 /* FeedBackHistoryListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedBackHistoryListVC.h; sourceTree = "<group>"; };
 		D2D5265D25A5463400F99306 /* FeedBackHistoryListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBackHistoryListVC.m; sourceTree = "<group>"; };
+		D2D5266225A5956500F99306 /* SuggestDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuggestDetailVC.h; sourceTree = "<group>"; };
+		D2D5266325A5956500F99306 /* SuggestDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuggestDetailVC.m; sourceTree = "<group>"; };
 		D2D6D9AB21AFD623005A4F5B /* LeftMenuVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuVC.h; sourceTree = "<group>"; };
 		D2D6D9AC21AFD623005A4F5B /* LeftMenuVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuVC.m; sourceTree = "<group>"; };
 		D2D871052338C8D700F79173 /* ModelBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBank.m; sourceTree = "<group>"; };
@@ -2628,6 +2631,8 @@
 				D2BCE91222695F0F00E8C4E2 /* FeedbackVC.m */,
 				D2D5265625A44E8800F99306 /* SuggestVC.h */,
 				D2D5265725A44E8800F99306 /* SuggestVC.m */,
+				D2D5266225A5956500F99306 /* SuggestDetailVC.h */,
+				D2D5266325A5956500F99306 /* SuggestDetailVC.m */,
 				D2D5265325A44E1A00F99306 /* FeedBackManagementVC.h */,
 				D2D5265425A44E1A00F99306 /* FeedBackManagementVC.m */,
 				D2D5265925A5462300F99306 /* FeedBackListManagementVC.h */,
@@ -3502,6 +3507,7 @@
 				D22A413721805B220057C3B4 /* PerfectAddressDetailCell.m in Sources */,
 				D22BA9DF1E5EB8CA00C5B391 /* FSCalendarWeekdayView.m in Sources */,
 				D24A93CE2360470B00CB672C /* AuthorityReVerifyingVC.m in Sources */,
+				D2D5266425A5956500F99306 /* SuggestDetailVC.m in Sources */,
 				D216F5341E56966200E11ED2 /* NSDictionary+Category.m in Sources */,
 				D2D871072338C8D700F79173 /* ModelBank.m in Sources */,
 				D2BC9AAF1DFFDF0400B0468E /* GlobalData.m in Sources */,

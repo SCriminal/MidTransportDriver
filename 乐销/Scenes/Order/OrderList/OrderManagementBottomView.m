@@ -115,7 +115,6 @@
         self.backgroundColor = [UIColor clearColor];
         self.clipsToBounds = false;
         [self addSubView];
-    
     }
     return self;
 }
