@@ -16,17 +16,15 @@
 //share
 #import "ShareView.h"
 //confirm view
-#import "ScheduleConfirmView.h"
+//#import "ScheConfirmView.h"
 
 @interface ScheduleOrderInfoVC ()
 @property (nonatomic, strong) BaseNavView *nav;
 @property (nonatomic, strong) ScheduleInfoTopView *topView;
 @property (nonatomic, strong) ScheduleInfoPathView *pathView;
-@property (nonatomic, strong) ScheduleInfoSendView *sendView;
-@property (nonatomic, strong) ScheduleInfoReceiveView *receiveView;
+
 @property (nonatomic, strong) ScheduleBottomView *bottomView;
-@property (nonatomic, strong) ScheduleConfirmView *confirmView;
-@property (nonatomic, strong) ScheduleRemarkView *remarkView;
+@property (nonatomic, strong) ScheConfirmView *confirmView;
 
 @end
 
@@ -36,9 +34,14 @@
 - (BaseNavView *)nav{
     if (!_nav) {
         WEAKSELF
-        _nav = [BaseNavView initNavBackTitle:@"运单确认" rightTitle:nil rightBlock:nil];
+        BaseNavView * nav = [BaseNavView initNavBackTitle:@"扫码运单" rightView:nil];
+        [nav configBackBlueStyle];
+        _nav = nav;
     }
     return _nav;
+}
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 - (ScheduleBottomView *)bottomView{
     if (!_bottomView) {
@@ -46,11 +49,11 @@
         _bottomView.topToUpView = W(10);
         WEAKSELF
         _bottomView.blockClick = ^{
-            if (weakSelf.confirmView.aryDatas.count == 0) {
-                [GlobalMethod showAlert:@"当前无可运输车辆"];
-                return ;
-            }
-            [weakSelf.confirmView resetViewWithModel:weakSelf.modelOrder.isPlanNoEnd];
+//            if (weakSelf.confirmView.aryDatas.count == 0) {
+//                [GlobalMethod showAlert:@"当前无可运输车辆"];
+//                return ;
+//            }
+//            [weakSelf.confirmView resetViewWithModel:weakSelf.modelOrder.isPlanNoEnd];
             [weakSelf.confirmView show];
         };
     }
@@ -73,43 +76,21 @@
     }
     return _pathView;
 }
-- (ScheduleInfoSendView *)sendView{
-    if (!_sendView) {
-        _sendView = [ScheduleInfoSendView new];
-        _sendView.topToUpView = W(10);
-        [_sendView resetViewWithModel:self.modelOrder];
-    }
-    return _sendView;
-}
-- (ScheduleInfoReceiveView *)receiveView{
-    if (!_receiveView) {
-        _receiveView = [ScheduleInfoReceiveView new];
-        _receiveView.topToUpView = W(10);
-        [_receiveView resetViewWithModel:self.modelOrder];
-    }
-    return _receiveView;
-}
-- (ScheduleConfirmView *)confirmView{
+
+- (ScheConfirmView *)confirmView{
     if (!_confirmView) {
-        _confirmView = [ScheduleConfirmView new];
+        _confirmView = [ScheConfirmView new];
         WEAKSELF
-        _confirmView.blockComplete = ^(ModelValidCar *model, NSString *phone) {
-            [weakSelf requestConfirm:model phone:phone endAddrId:0 endAddr:nil endContact:nil endPhone:nil endEntName:nil];
-        };
-        _confirmView.blockAllComplete = ^(ModelValidCar *model, NSString *phone, NSString *companyName, double addressId, NSString *addressDetail, NSString *receiverName, NSString *receiverPhone) {
-            [weakSelf requestConfirm:model phone:phone endAddrId:addressId endAddr:addressDetail endContact:receiverName endPhone:receiverPhone endEntName:companyName];
-        };
+//        _confirmView.blockComplete = ^(ModelValidCar *model, NSString *phone) {
+//            [weakSelf requestConfirm:model phone:phone endAddrId:0 endAddr:nil endContact:nil endPhone:nil endEntName:nil];
+//        };
+//        _confirmView.blockAllComplete = ^(ModelValidCar *model, NSString *phone, NSString *companyName, double addressId, NSString *addressDetail, NSString *receiverName, NSString *receiverPhone) {
+//            [weakSelf requestConfirm:model phone:phone endAddrId:addressId endAddr:addressDetail endContact:receiverName endPhone:receiverPhone endEntName:companyName];
+//        };
     }
     return _confirmView;
 }
-- (ScheduleRemarkView *)remarkView{
-    if (!_remarkView) {
-        _remarkView = [ScheduleRemarkView new];
-        _remarkView.topToUpView = W(15);
-        [_remarkView resetViewWithModel:self.modelOrder];
-    }
-    return _remarkView;
-}
+
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -119,13 +100,10 @@
     self.tableBackgroundView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
     [self reconfigTableHeaderView];
+    self.bottomView.bottom = SCREEN_HEIGHT;
+    [self.view addSubview:self.bottomView];
     
-    self.tableView.tableFooterView = ^(){
-        UIView * view = [UIView new];
-        view.height = W(20);
-        view.backgroundColor = [UIColor clearColor];
-        return view;
-    }();
+    self.tableView.height = SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - self.bottomView.height;
 //    [self addRefreshHeader];
     //request
     [self reconfigTableHeaderView];
@@ -138,13 +116,13 @@
 }
 #pragma mark refresh table header view
 - (void)reconfigTableHeaderView{
-    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.pathView,self.sendView,self.receiveView,isStr(self.modelOrder.iDPropertyDescription)?self.remarkView:[NSNull null],self.bottomView]];
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.pathView]];
 }
 #pragma mark reques car
 - (void)requestCarList{
     [RequestApi requestValidCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSMutableArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelValidCar"];
-        self.confirmView.aryDatas = ary;
+//        self.confirmView.aryDatas = ary;
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];

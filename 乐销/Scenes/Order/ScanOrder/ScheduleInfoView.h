@@ -9,49 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ScheduleInfoTopView : UIView
-//属性
-@property (strong, nonatomic) UILabel *labelBill;
-@property (strong, nonatomic) UILabel *labelBillNo;
-
-@property (strong, nonatomic) UIImageView *ivBg;
-
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelScheduleInfo *)model;
 @end
-
-
-
-
 
 @interface ScheduleInfoPathView : UIView
-//属性
-@property (strong, nonatomic) UILabel *labelFrom;
-@property (strong, nonatomic) UILabel *labelTo;
-@property (strong, nonatomic) UIImageView *iconArrow;
-@property (nonatomic, strong) UILabel *labelAddressFrom;
-@property (nonatomic, strong) UILabel *labelAddressTo;
-@property (nonatomic, strong) UILabel *labelTitle;
-@property (strong, nonatomic) UIImageView *ivBg;
-#pragma mark 刷新view
-- (void)resetViewWithModel:(ModelScheduleInfo *)model;
-@end
-
-@interface ScheduleInfoSendView : UIView
-//属性
-@property (strong, nonatomic) UILabel *labelTitle;
-@property (strong, nonatomic) UIImageView *ivBg;
-@property (nonatomic, strong) ModelScheduleInfo *model;
-
-#pragma mark 刷新view
-- (void)resetViewWithModel:(ModelScheduleInfo *)model;
-@end
-
-
-@interface ScheduleInfoReceiveView : UIView
-//属性
-@property (strong, nonatomic) UILabel *labelTitle;
-@property (strong, nonatomic) UIImageView *ivBg;
-@property (nonatomic, strong) ModelScheduleInfo *model;
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelScheduleInfo *)model;
@@ -60,19 +22,18 @@
 @interface ScheduleBottomView : UIView
 //属性
 @property (strong, nonatomic) UIButton *btnConfirm;
+@property (strong, nonatomic) UIButton *btnDismiss;
+
 @property (nonatomic, strong) void (^blockClick)(void);
+@property (nonatomic, strong) void (^blockDismiss)(void);
+
 @end
 
 
+@interface ScheConfirmView : UIView<UITextFieldDelegate>
+@property (nonatomic, strong) UITextField *tfPhone;
 
-
-
-@interface ScheduleRemarkView : UIView
-//属性
-@property (strong, nonatomic) UILabel *labelTitle;
-@property (strong, nonatomic) UILabel *labelSubTitle;
-@property (strong, nonatomic) UIImageView *ivBg;
-#pragma mark 刷新view
-- (void)resetViewWithModel:(ModelScheduleInfo *)model;
-
+@property (nonatomic, strong) void (^blockClick)(void);
+@property (nonatomic, strong) void (^blockDismiss)(void);
+- (void)show;
 @end

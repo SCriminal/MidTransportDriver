@@ -19,6 +19,7 @@
 @property (nonatomic, assign) CGFloat height;//btn 高度
 @property (nonatomic, assign) CGFloat left;//btn 宽度
 @property (nonatomic, assign) CGFloat right;//btn 宽度
+@property (nonatomic, assign) CGFloat top;//btn 宽度
 @property (nonatomic, assign) int numOfLines;
 @property (nonatomic, assign) BOOL isHide;//是否隐藏
 @property (nonatomic, assign) BOOL isLineHide;//是否隐藏

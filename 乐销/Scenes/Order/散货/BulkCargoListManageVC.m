@@ -20,7 +20,6 @@
 @property (nonatomic, strong) BaseNavView *nav;
 @property (strong, nonatomic) SliderView *sliderView;
 @property (nonatomic, strong) UIScrollView *scAll;
-
 @end
 
 @implementation BulkCargoListManageVC
@@ -182,7 +181,6 @@
     } completion:^(BOOL finished) {
         
     }];
-    
 }
 #pragma mark 添加导航栏
 - (void)addNav{
