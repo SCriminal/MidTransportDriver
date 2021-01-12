@@ -12,7 +12,9 @@ typedef NS_ENUM(NSUInteger, ENUM_REQUEST_TYPE) {
     ENUM_REQUEST_GET,
     ENUM_REQUEST_POST,
     ENUM_REQUEST_PATCH,
-    ENUM_REQUEST_DELETE
+    ENUM_REQUEST_DELETE,
+    ENUM_REQUEST_PUT
+
 };
 
 @protocol RequestDelegate <NSObject>
@@ -39,6 +41,12 @@ typedef NS_ENUM(NSUInteger, ENUM_REQUEST_TYPE) {
 
 //patch
 + (void)patchUrl:(NSString *)URL
+        delegate:(_Nullable id <RequestDelegate>)delegate
+      parameters:(NSDictionary *)parameters
+         success:(void (^)(NSDictionary * response, id mark))success
+         failure:(void (^)(NSString * errorStr, id mark))failure;
+//patch
++ (void)putUrl:(NSString *)URL
         delegate:(_Nullable id <RequestDelegate>)delegate
       parameters:(NSDictionary *)parameters
          success:(void (^)(NSDictionary * response, id mark))success

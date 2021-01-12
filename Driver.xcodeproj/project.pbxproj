@@ -311,6 +311,8 @@
 		D2D5265B25A5462300F99306 /* FeedBackListManagementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5265A25A5462300F99306 /* FeedBackListManagementVC.m */; };
 		D2D5265E25A5463500F99306 /* FeedBackHistoryListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5265D25A5463400F99306 /* FeedBackHistoryListVC.m */; };
 		D2D5266425A5956500F99306 /* SuggestDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5266325A5956500F99306 /* SuggestDetailVC.m */; };
+		D2D5266C25AC23A600F99306 /* RequestApi+Ums.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5266B25AC23A600F99306 /* RequestApi+Ums.m */; };
+		D2D5266F25AC23B700F99306 /* RequestApi+Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5266E25AC23B700F99306 /* RequestApi+Auth.m */; };
 		D2D6D9AD21AFD623005A4F5B /* LeftMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D6D9AC21AFD623005A4F5B /* LeftMenuVC.m */; };
 		D2D871072338C8D700F79173 /* ModelBank.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D871052338C8D700F79173 /* ModelBank.m */; };
 		D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D9A4192015D2170025963B /* AppDelegate.m */; };
@@ -1009,6 +1011,11 @@
 		D2D5265D25A5463400F99306 /* FeedBackHistoryListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBackHistoryListVC.m; sourceTree = "<group>"; };
 		D2D5266225A5956500F99306 /* SuggestDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuggestDetailVC.h; sourceTree = "<group>"; };
 		D2D5266325A5956500F99306 /* SuggestDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuggestDetailVC.m; sourceTree = "<group>"; };
+		D2D5266525AC234600F99306 /* RequestDriver2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestDriver2.h; sourceTree = "<group>"; };
+		D2D5266A25AC23A600F99306 /* RequestApi+Ums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+Ums.h"; sourceTree = "<group>"; };
+		D2D5266B25AC23A600F99306 /* RequestApi+Ums.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Ums.m"; sourceTree = "<group>"; };
+		D2D5266D25AC23B700F99306 /* RequestApi+Auth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+Auth.h"; sourceTree = "<group>"; };
+		D2D5266E25AC23B700F99306 /* RequestApi+Auth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Auth.m"; sourceTree = "<group>"; };
 		D2D6D9AB21AFD623005A4F5B /* LeftMenuVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuVC.h; sourceTree = "<group>"; };
 		D2D6D9AC21AFD623005A4F5B /* LeftMenuVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuVC.m; sourceTree = "<group>"; };
 		D2D871052338C8D700F79173 /* ModelBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBank.m; sourceTree = "<group>"; };
@@ -1808,6 +1815,7 @@
 		D275DB171DFFA2C200670A40 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				D2D5266625AC236700F99306 /* Api2.0 */,
 				D280E53B211D8D6B003119EA /* Api */,
 				D275DB5C1DFFA4B800670A40 /* Network */,
 			);
@@ -2553,6 +2561,7 @@
 				D24DFE9A22F122EA0072B607 /* LDMacro.h */,
 				D2BC9A961DFFA9C000B0468E /* PrefixHeader.pch */,
 				D29A5860219557DC00A13E4F /* MacroLogicalData.h */,
+				D2D5266525AC234600F99306 /* RequestDriver2.h */,
 				D2BC9A931DFFA9C000B0468E /* Header.h */,
 				D2BC9A971DFFA9C000B0468E /* Singleton.h */,
 				D2BC9AC41DFFF62300B0468E /* MacroLocal.h */,
@@ -2857,6 +2866,17 @@
 				D2D089101E0E22D900BE1E4C /* PlaceHolderTextView.m */,
 			);
 			path = PlaceHolderTextView;
+			sourceTree = "<group>";
+		};
+		D2D5266625AC236700F99306 /* Api2.0 */ = {
+			isa = PBXGroup;
+			children = (
+				D2D5266A25AC23A600F99306 /* RequestApi+Ums.h */,
+				D2D5266B25AC23A600F99306 /* RequestApi+Ums.m */,
+				D2D5266D25AC23B700F99306 /* RequestApi+Auth.h */,
+				D2D5266E25AC23B700F99306 /* RequestApi+Auth.m */,
+			);
+			path = Api2.0;
 			sourceTree = "<group>";
 		};
 		D2D6D9AA21AFD619005A4F5B /* LeftMenuVC */ = {
@@ -3701,6 +3721,7 @@
 				D2DDCFB3233380CD002A24C4 /* AddCardVC.m in Sources */,
 				D23327AC21854FE000495488 /* MapView.m in Sources */,
 				D28A319E2590A457006AC450 /* ModelShopAddress.m in Sources */,
+				D2D5266C25AC23A600F99306 /* RequestApi+Ums.m in Sources */,
 				D2ACCC2121DC8E4600F39E28 /* ModelAps.m in Sources */,
 				D2DDC433259C532C00C810B5 /* MyPathListVC.m in Sources */,
 				D216F5401E56AB9800E11ED2 /* NSMutableArray+Safe.m in Sources */,
@@ -3771,6 +3792,7 @@
 				D259D54A228E4B2F00CE2632 /* RequestApi+UserAuth.m in Sources */,
 				D2AC4FA41E04BBF800385682 /* BaseNavView.m in Sources */,
 				D28A8681225F1AEC001E3372 /* IntegralRecordVC.m in Sources */,
+				D2D5266F25AC23B700F99306 /* RequestApi+Auth.m in Sources */,
 				D26F088E20D7A5D200B258B0 /* MarQueueView.m in Sources */,
 				D217A54A21C0F57800B9B2F9 /* LeftMenuTopView.m in Sources */,
 				D2E46D7821D4A1A1007B04A1 /* DriverDetailTopView.m in Sources */,

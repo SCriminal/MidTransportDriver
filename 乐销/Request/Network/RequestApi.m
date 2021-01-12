@@ -46,6 +46,14 @@
     [self postUrl:URL delegate:delegate parameters:parameters returnALL:false requestType:ENUM_REQUEST_PATCH constructingBodyWithBlock:nil success:success failure:failure];
     
 }
+//patch
++ (void)putUrl:(NSString *)URL
+        delegate:(_Nullable id <RequestDelegate>)delegate
+      parameters:(NSDictionary *)parameters
+         success:(void (^)(NSDictionary * response, id mark))success
+         failure:(void (^)(NSString * errorStr, id mark))failure{
+    [self postUrl:URL delegate:delegate parameters:parameters returnALL:false requestType:ENUM_REQUEST_PUT constructingBodyWithBlock:nil success:success failure:failure];
+}
 + (void)getUrl:(NSString *)URL
       delegate:(_Nullable id <RequestDelegate>)delegate
     parameters:(NSDictionary *)parameters
@@ -206,6 +214,10 @@ constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
         case ENUM_REQUEST_DELETE:
             task = [[RequestInstance sharedInstance] DELETE:URLString parameters:parameters  success:success failure:failure];
             break;
+        case ENUM_REQUEST_PUT:
+            task = [[RequestInstance sharedInstance] PUT:URLString parameters:parameters  success:success failure:failure];
+            break;
+            
         default:
             break;
     }
