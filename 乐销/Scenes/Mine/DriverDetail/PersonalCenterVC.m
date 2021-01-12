@@ -56,7 +56,7 @@
                 mB.title = @"我的钱包";
                 mB.imageName = @"personal_钱包";
                 mB.blockClick = ^{
-                    
+                    [GB_Nav pushVCName:@"MyPocketVC" animated:true];
                 };
                 return mB;
             }(),^(){
@@ -88,7 +88,7 @@
                 mB.title = @"信用中心";
                                mB.imageName = @"personal_信用";
                                mB.blockClick = ^{
-                                   
+                                   [GB_Nav pushVCName:@"CreditCenterVC" animated:true];
                                };
                 return mB;
             }(),^(){

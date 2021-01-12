@@ -194,7 +194,7 @@
 
 //btn click
 - (void)btnAddClick{
-    
+    [GB_Nav pushVCName:@"AddPathVC" animated:true];
 }
 
 #pragma mark 定时器相关

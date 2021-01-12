@@ -104,7 +104,7 @@
         model.title = @"投诉建议";
         model.isLineHide = false;
         model.blockClick = ^{
-            [GB_Nav pushVCName:@"FeedbackVC" animated:true];
+            [GB_Nav pushVCName:@"FeedBackManagementVC" animated:true];
         };
         return model;
     }(),^(){
