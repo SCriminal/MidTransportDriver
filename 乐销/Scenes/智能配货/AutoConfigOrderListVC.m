@@ -17,9 +17,12 @@
 //bottom view
 #import "OrderManagementBottomView.h"
 #import "AutoConfigDetailVC.h"
-
+//list view
+#import "ListAlertView.h"
+#import "AutoConfigOrderListFilterView.h"
 @interface AutoConfigOrderListVC ()
 @property (nonatomic, strong) AutoConfigOrderListFilterView *filterView;
+@property (nonatomic, strong) AutoConfigOrderListAutoFilterView *autoFilterView;
 @property (nonatomic, strong) NSTimer *timer;
 
 @end
@@ -84,18 +87,65 @@
 - (AutoConfigOrderListFilterView *)filterView{
     if (!_filterView) {
         _filterView = [AutoConfigOrderListFilterView new];
-        _filterView.top = NAVIGATIONBAR_HEIGHT;
+
     }
     return _filterView;
+}
+- (AutoConfigOrderListAutoFilterView *)autoFilterView{
+    if (!_autoFilterView) {
+        _autoFilterView = [AutoConfigOrderListAutoFilterView new];
+        _autoFilterView.top = NAVIGATIONBAR_HEIGHT;
+        WEAKSELF
+        _autoFilterView.blockStart = ^{
+            
+        };
+        _autoFilterView.blockEnd = ^{
+            
+        };
+        _autoFilterView.blockAuto = ^{
+            [GlobalMethod endEditing];
+            ListAlertView * listNew = [ListAlertView new];
+            listNew.indexSelected = weakSelf.autoFilterView.indexSelected;
+            NSMutableArray * aryTitle = @[@"智能排序",@"时间排序",@"距离排序"].mutableCopy;
+            [listNew showWithPoint:CGPointMake(0, weakSelf.autoFilterView.bottom)  width:SCREEN_WIDTH  ary:aryTitle];
+            listNew.alpha = 0;
+            [UIView animateWithDuration:0.3 animations:^{
+                listNew.alpha = 1;
+            }];
+            listNew.blockSelected = ^(NSInteger index) {
+                switch (index) {
+                    case 0:
+                        weakSelf.autoFilterView.labelAuto.text = @"智能";
+                        break;
+                    case 1:
+                        weakSelf.autoFilterView.labelAuto.text = @"时间";
+                        break;
+                    case 2:
+                        weakSelf.autoFilterView.labelAuto.text = @"距离";
+                        break;
+                    default:
+                        break;
+                }
+                weakSelf.autoFilterView.indexSelected = index;
+            };
+        };
+        _autoFilterView.blockFilter = ^{
+            [weakSelf.filterView show];
+        };
+        _autoFilterView.blockVoice = ^{
+            
+        };
+    }
+    return _autoFilterView;
 }
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
    
     [self addNav];
-    [self.view addSubview:self.filterView];
+    [self.view addSubview:self.autoFilterView];
     [self.tableView registerClass:[AutoConfigOrderListCell class] forCellReuseIdentifier:@"AutoConfigOrderListCell"];
-    self.tableView.frame = CGRectMake(0, self.filterView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.filterView.bottom - TABBAR_HEIGHT);
+    self.tableView.frame = CGRectMake(0, self.autoFilterView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.autoFilterView.bottom - TABBAR_HEIGHT);
 
     self.tableView.backgroundColor = COLOR_BACKGROUND;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, W(12), 0);
@@ -190,7 +240,6 @@
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
-
 
 //btn click
 - (void)btnAddClick{

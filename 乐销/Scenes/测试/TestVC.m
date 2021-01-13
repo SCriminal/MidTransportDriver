@@ -285,7 +285,7 @@
 //    GuideView * guideView = [GuideView new];
 //    [guideView show];
 
-    [GB_Nav pushVCName:@"ScheduleOrderInfoVC" animated:true];
+    [GB_Nav pushVCName:@"OrderDetailVC" animated:true];
 //    RechargeInputView * view = [RechargeInputView new];
 //    [view resetViewWithModel:nil];
 //    [self.view addSubview:view];

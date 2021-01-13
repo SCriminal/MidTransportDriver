@@ -91,11 +91,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ListAlertCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ListAlertCell" forIndexPath:indexPath];
     [cell resetCellWithModel:self.aryDatas[indexPath.row]];
-    [cell.labelTitle fitTitle:self.aryDatas[indexPath.row] variable:self.tableView.width - W(30)];
+    [cell.labelTitle fitTitle:self.aryDatas[indexPath.row] variable:self.tableView.width - W(40)];
 
     cell.labelTitle.textColor = COLOR_333;
     cell.line.hidden = indexPath.row == self.aryDatas.count -1;
-    cell.line.width = self.tableView.width - W(30);
+    cell.line.width = self.tableView.width - W(40);
+    
+    cell.iconSelected.hidden = self.indexSelected != indexPath.row;
+    cell.iconSelected.right = self.tableView.width- W(20);
+
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -139,7 +143,7 @@
 - (UILabel *)labelTitle{
     if (_labelTitle == nil) {
         _labelTitle = [UILabel new];
-        _labelTitle.textColor = COLOR_333;
+        _labelTitle.textColor = COLOR_666;
         _labelTitle.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         _labelTitle.numberOfLines = 1;
         _labelTitle.lineSpace = 0;
@@ -151,11 +155,22 @@
         _line = [UIView new];
         _line.backgroundColor = COLOR_LINE;
         _line.height = 1;
-        _line.left = W(15);
+        _line.left = W(20);
     }
     return _line;
 }
-
+- (UIImageView *)iconSelected{
+    if (!_iconSelected) {
+        UIImageView * iv = [UIImageView new];
+        iv.backgroundColor = [UIColor clearColor];
+        iv.contentMode = UIViewContentModeScaleAspectFill;
+        iv.clipsToBounds = true;
+        iv.image = [UIImage imageNamed:@"auto_selected"];
+        iv.widthHeight = XY(W(12),W(12));
+        _iconSelected = iv;
+    }
+    return _iconSelected;
+}
 #pragma mark 初始化
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -165,6 +180,8 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.labelTitle];
         [self.contentView addSubview:self.line];
+        [self.contentView addSubview:self.iconSelected];
+
 //        [self.contentView addTarget:self action:@selector(click)];
     }
     return self;
@@ -174,10 +191,11 @@
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
     [self.labelTitle fitTitle:model variable:0];
-    self.labelTitle.leftTop = XY(W(15),W(30));
+    self.labelTitle.leftTop = XY(W(20),W(20));
     
+    self.iconSelected.centerY = self.labelTitle.centerY;
     //设置总高度
-    self.height = self.labelTitle.bottom + W(30);
+    self.height = self.labelTitle.bottom + W(20);
     self.line.top = self.height -1;
 }
 

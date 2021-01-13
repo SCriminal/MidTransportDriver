@@ -15,3 +15,8 @@
 @end
 
 
+@interface OrderDetailTrailView : UIView
+@property (nonatomic, strong) ModelOrderList *model;
+
+- (void)resetViewWithModel:(ModelOrderList *)model;
+@end

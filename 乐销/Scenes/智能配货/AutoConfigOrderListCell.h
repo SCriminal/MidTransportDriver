@@ -34,13 +34,18 @@
 @end
 
 
-@interface AutoConfigOrderListFilterView : UIView
+@interface AutoConfigOrderListAutoFilterView : UIView
 //属性
 @property (strong, nonatomic) UILabel *addressFrom;
 @property (strong, nonatomic) UILabel *addressTo;
 @property (strong, nonatomic) UILabel *labelAuto;
 @property (strong, nonatomic) UILabel *filter;
-
+@property (nonatomic, strong) void (^blockAuto)(void);
+@property (nonatomic, strong) void (^blockFilter)(void);
+@property (nonatomic, strong) void (^blockStart)(void);
+@property (nonatomic, strong) void (^blockEnd)(void);
+@property (nonatomic, strong) void (^blockVoice)(void);
+@property (nonatomic, assign) int indexSelected;
 #pragma mark 刷新view
 - (void)resetViewWithModel:(id)model;
 

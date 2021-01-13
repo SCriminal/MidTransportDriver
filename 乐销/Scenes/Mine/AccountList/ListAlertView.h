@@ -13,7 +13,7 @@
 @property (nonatomic, strong) UIImageView *ivBG;
 @property (nonatomic, strong) NSMutableArray *aryDatas;
 @property (nonatomic, strong) void (^blockSelected)(NSInteger);
-
+@property (nonatomic, assign) int indexSelected;
 #pragma mark 刷新view
 - (void)resetViewWithModel:(id)model;
 - (void)showWithPoint:(CGPoint)point width:(CGFloat)width ary:(NSArray *)ary;
@@ -26,6 +26,7 @@
 
 @property (strong, nonatomic) UILabel *labelTitle;
 @property (strong, nonatomic) UIView *line;
+@property (strong, nonatomic) UIImageView *iconSelected;
 
 #pragma mark 刷新cell
 - (void)resetCellWithModel:(id)model;

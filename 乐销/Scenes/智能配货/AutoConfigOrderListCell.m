@@ -201,7 +201,7 @@
 
 
 
-@implementation AutoConfigOrderListFilterView
+@implementation AutoConfigOrderListAutoFilterView
 #pragma mark 懒加载
 - (UILabel *)addressFrom{
     if (_addressFrom == nil) {
@@ -242,6 +242,8 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         self.width = SCREEN_WIDTH;
+        self.height = W(50);
+
         [self addSubView];
     }
     return self;
@@ -382,18 +384,28 @@
 }
 
 - (void)fromClick{
-    
+    if (self.blockStart) {
+        self.blockStart();
+    }
 }
 - (void)toClick{
-    
+    if (self.blockEnd) {
+        self.blockEnd();
+    }
 }
 - (void)autoClick{
-    
+    if (self.blockAuto) {
+        self.blockAuto();
+    }
 }
 - (void)filterClick{
-    
+    if (self.blockFilter) {
+        self.blockFilter();
+    }
 }
 - (void)voiceClick{
-    
+    if (self.blockVoice) {
+        self.blockVoice();
+    }
 }
 @end

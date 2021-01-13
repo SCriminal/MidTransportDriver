@@ -220,7 +220,7 @@
     }()].mutableCopy;
     NSMutableArray * aryAll = [NSMutableArray arrayWithArray:ary0];
     [aryAll addObjectsFromArray:ary1];
-    [aryAll addObjectsFromArray:ary2];
+//    [aryAll addObjectsFromArray:ary2];
     
     CGFloat top =  [self addLabel:aryAll top:W(72)];
     self.height = top;
@@ -283,6 +283,125 @@
                     con.tag = m.tag;
                 }
             }
+        }
+    }
+    return top;
+}
+#pragma mark click
+- (void)phoneClick:(UIControl *)con{
+    if (con.tag == 1) {
+        NSLog(@"1");
+    }
+    if (con.tag == 2) {
+           NSLog(@"2");
+       }
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel://%@",UnPackStr(self.model.startPhone)];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    
+}
+@end
+
+@implementation OrderDetailTrailView
+#pragma mark 初始化
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor whiteColor];
+        self.width = SCREEN_WIDTH;
+        self.clipsToBounds = false;
+        [self resetViewWithModel:nil];
+    }
+    return self;
+}
+#pragma mark 刷新view
+- (void)resetViewWithModel:(ModelOrderList *)model{
+    [self removeAllSubViews];//移除线
+    self.model = model;
+    
+   
+    NSArray * ary2 = @[^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"路线轨迹";
+        m.subTitle = nil;
+        m.colorSelect = nil;
+        m.isSelected = true;
+        return m;
+    }()].mutableCopy;
+    CGFloat top =  [self addLabel:ary2 top:W(0)];
+
+    NSArray * ary = @[^(){
+        ModelBaseData * m = [ModelBaseData new];
+        m.string = @"2020-11-19 12:10:20";
+        m.subString = @"山东省潍坊市奎文区世博国际商务大厦";
+        return m;
+    }(),^(){
+        ModelBaseData * m = [ModelBaseData new];
+        m.string = @"2020-11-12 12:23:22";
+        m.subString = @"山东省潍坊市奎文区世博国际商务大厦";
+        return m;
+    }()];
+    CGFloat centerY = 0;
+    for (int i = 0; i<ary.count; i++) {
+        ModelBaseData *m = ary[i];
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        l.textColor = COLOR_333;
+        l.backgroundColor = [UIColor clearColor];
+        l.numberOfLines = 0;
+        [l fitTitle:m.string variable:W(315)];
+        l.leftTop = XY(W(44), top);
+        [self addSubview:l];
+        
+        UILabel * time = [UILabel new];
+        time.font = [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
+        time.textColor = COLOR_333;
+        time.numberOfLines = 0;
+        time.lineSpace = W(3);
+        time.backgroundColor = [UIColor clearColor];
+        [time fitTitle:m.subString variable:W(315)];
+        time.leftTop = XY(W(44), l.bottom + W(10));
+        [self addSubview:time];
+        
+        top = time.bottom + W(20);
+        
+        //add dot
+        UIView * view = [UIView new];
+        view.backgroundColor = [UIColor colorWithHexString:@"#D8D8D8"];
+        view.widthHeight = XY(W(5), W(5));
+        view.leftTop = XY(W(22), l.top + ([UIFont fetchHeight:F(15)]/2.0)-W(2.5));
+        [GlobalMethod setRoundView:view color:[UIColor clearColor] numRound:view.width/2.0 width:0];
+        [self addSubview:view];
+        if (i !=0) {
+            UIView * line = [UIView new];
+            line.backgroundColor = [UIColor colorWithHexString:@"#D8D8D8"];
+            line.widthHeight = XY(1, view.centerY - centerY);
+            line.centerXBottom = XY(view.centerX, view.top);
+            [self addSubview:line];
+        }
+        centerY = view.centerY;
+    }
+    self.height = top;
+}
+-(CGFloat)addLabel:(NSArray *)ary top:(CGFloat)top{
+    for (ModelBtn *m in ary) {
+        if (m.isSelected) {
+            UIView * view = [UIView new];
+            view.backgroundColor = COLOR_BACKGROUND;
+            view.widthHeight = XY(SCREEN_WIDTH, W(10));
+            view.top = top+W(5);
+            [self addSubview:view];
+            
+            UILabel * l = [UILabel new];
+            l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+            l.textColor = COLOR_333;
+            l.backgroundColor = [UIColor clearColor];
+            l.numberOfLines = 0;
+            l.lineSpace = W(0);
+            [l fitTitle:m.title variable:SCREEN_WIDTH - W(30)];
+            l.leftTop = XY(W(15),view.bottom + W(15));
+            [self addSubview:l];
+            
+            top = [self addLineFrame:CGRectMake(W(15), l.bottom + W(15), SCREEN_WIDTH - W(30), 1)] + W(15);
         }
     }
     return top;

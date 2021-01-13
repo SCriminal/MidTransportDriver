@@ -313,6 +313,7 @@
 		D2D5266425A5956500F99306 /* SuggestDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5266325A5956500F99306 /* SuggestDetailVC.m */; };
 		D2D5266C25AC23A600F99306 /* RequestApi+Ums.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5266B25AC23A600F99306 /* RequestApi+Ums.m */; };
 		D2D5266F25AC23B700F99306 /* RequestApi+Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5266E25AC23B700F99306 /* RequestApi+Auth.m */; };
+		D2D5267225AEF48100F99306 /* AutoConfigOrderListFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5267125AEF48100F99306 /* AutoConfigOrderListFilterView.m */; };
 		D2D6D9AD21AFD623005A4F5B /* LeftMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D6D9AC21AFD623005A4F5B /* LeftMenuVC.m */; };
 		D2D871072338C8D700F79173 /* ModelBank.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D871052338C8D700F79173 /* ModelBank.m */; };
 		D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D9A4192015D2170025963B /* AppDelegate.m */; };
@@ -1016,6 +1017,8 @@
 		D2D5266B25AC23A600F99306 /* RequestApi+Ums.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Ums.m"; sourceTree = "<group>"; };
 		D2D5266D25AC23B700F99306 /* RequestApi+Auth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+Auth.h"; sourceTree = "<group>"; };
 		D2D5266E25AC23B700F99306 /* RequestApi+Auth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Auth.m"; sourceTree = "<group>"; };
+		D2D5267025AEF48100F99306 /* AutoConfigOrderListFilterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoConfigOrderListFilterView.h; sourceTree = "<group>"; };
+		D2D5267125AEF48100F99306 /* AutoConfigOrderListFilterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoConfigOrderListFilterView.m; sourceTree = "<group>"; };
 		D2D6D9AB21AFD623005A4F5B /* LeftMenuVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuVC.h; sourceTree = "<group>"; };
 		D2D6D9AC21AFD623005A4F5B /* LeftMenuVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuVC.m; sourceTree = "<group>"; };
 		D2D871052338C8D700F79173 /* ModelBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBank.m; sourceTree = "<group>"; };
@@ -3009,6 +3012,8 @@
 				D2F3A4FB2570EA11009EBF3F /* AutoConfigOrderListVC.m */,
 				D2F3A4FD2570EA2D009EBF3F /* AutoConfigOrderListCell.h */,
 				D2F3A4FE2570EA2D009EBF3F /* AutoConfigOrderListCell.m */,
+				D2D5267025AEF48100F99306 /* AutoConfigOrderListFilterView.h */,
+				D2D5267125AEF48100F99306 /* AutoConfigOrderListFilterView.m */,
 				D2F3A5002574EDE1009EBF3F /* AutoConfigTimeView.h */,
 				D2F3A5012574EDE1009EBF3F /* AutoConfigTimeView.m */,
 			);
@@ -3703,6 +3708,7 @@
 				D20E85FF258764CE00C9EE4C /* DealHistoryDetailVC.m in Sources */,
 				D2A3002F2266BF2F00AE2EC3 /* PerfectAuthorityInfoSuccessVC.m in Sources */,
 				D25145CF1E32ECA700E8107F /* UITableView+Category.m in Sources */,
+				D2D5267225AEF48100F99306 /* AutoConfigOrderListFilterView.m in Sources */,
 				D239D115218822E3009D7D45 /* PersonalCenterVC.m in Sources */,
 				D2A3FD651F0B1EDB000A5C1B /* BaseVC+Location.m in Sources */,
 				D2A0901D1E077DA20021B96C /* SliderView.m in Sources */,

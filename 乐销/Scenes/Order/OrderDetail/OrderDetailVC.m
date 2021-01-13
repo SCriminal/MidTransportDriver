@@ -23,6 +23,8 @@
 @property (nonatomic, strong) BaseNavView *nav;
 @property (nonatomic, strong) OrderDetailView *topView;
 @property (nonatomic, strong) OrderListCellBtnView *btnView;
+@property (nonatomic, strong) OrderDetailTrailView *trailView;
+
 @property (nonatomic, strong) UIView *bottomView;
 
 
@@ -61,6 +63,12 @@
     }
     return _topView;
 }
+- (OrderDetailTrailView *)trailView{
+    if (!_trailView) {
+        _trailView = [OrderDetailTrailView new];
+    }
+    return _trailView;
+}
 - (UIView *)bottomView{
     if (!_bottomView) {
         _bottomView = [UIView new];
@@ -83,7 +91,7 @@
     //table
     self.tableBackgroundView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.tableHeaderView = self.topView;
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.trailView]];
     self.tableView.height = SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - self.bottomView.height;
     [self.view addSubview:self.bottomView];
     [self addRefreshHeader];
