@@ -163,3 +163,42 @@
     }
 }
 @end
+
+
+@implementation PerfectSelectCell_Logo
+- (UIImageView *)iconLogo{
+    if (!_iconLogo) {
+        UIImageView * iv = [UIImageView new];
+        iv.backgroundColor = [UIColor clearColor];
+        iv.contentMode = UIViewContentModeScaleAspectFill;
+        iv.clipsToBounds = true;
+        iv.widthHeight = XY(W(49),W(31));
+        _iconLogo = iv;
+    }
+    return _iconLogo;
+}
+#pragma mark 初始化
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        [self.contentView addSubview:self.iconLogo];
+    }
+    return self;
+}
+#pragma mark 刷新cell
+    
+/*
+ isSelected 是否必填
+ isHide 是否隐藏右箭头
+ */
+- (void)resetCellWithModel:(ModelBaseData *)model{
+    [super resetCellWithModel:model];
+    if (isStr(model.identifier)) {
+        [self.subTitle fitTitle:@"上传成功" variable:0];
+    }
+    self.iconLogo.hidden = !isStr(model.identifier);
+    self.iconLogo.rightCenterY = XY(SCREEN_WIDTH - W(44), self.height/2.0);
+    
+}
+    
+@end

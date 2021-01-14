@@ -19,6 +19,7 @@ typedef NS_ENUM(NSUInteger, ENUM_PERFECT_CELL_TYPE) {
     ENUM_PERFECT_CELL_SELECT,
     ENUM_PERFECT_CELL_ADDRESS,
     ENUM_PERFECT_CELL_SELECT_DELETE,
+    ENUM_PERFECT_CELL_SELECT_LOGO,
     ENUM_PERFECT_CELL_EMPTY
 };
 
@@ -27,7 +28,8 @@ typedef NS_ENUM(NSUInteger, ENUM_PERFECT_CELL_TYPE) {
 - (void)registAuthorityCell;
 - (UITableViewCell *)dequeueAuthorityCell:(NSIndexPath *)indexPath;
 - (CGFloat)fetchAuthorityCellHeight:(NSIndexPath *)indexPath;
-
+- (void)saveAllProperty;
+- (void)fetchAllProperty;
 @end
 
 NS_ASSUME_NONNULL_END

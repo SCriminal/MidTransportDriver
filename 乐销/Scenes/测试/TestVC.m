@@ -23,6 +23,7 @@
 #import <CoreTelephony/CTCarrier.h>
 #import "RechargeInputView.h"
 #import "GuideView.h"
+#import "AuthOneVC.h"
 
 @interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate> 
 
@@ -284,8 +285,15 @@
 - (void)jump{
 //    GuideView * guideView = [GuideView new];
 //    [guideView show];
-
-    [GB_Nav pushVCName:@"OrderDetailVC" animated:true];
+    static BOOL isfirst = false;
+    AuthOneVC * vc = [AuthOneVC new];
+    vc.isFirst = isfirst;
+    [GB_Nav pushViewController:vc animated:true];
+    if (!isfirst) {
+        isfirst = true;
+    }
+    
+//    [GB_Nav pushVCName:@"AuthOneVC" animated:true];
 //    RechargeInputView * view = [RechargeInputView new];
 //    [view resetViewWithModel:nil];
 //    [self.view addSubview:view];

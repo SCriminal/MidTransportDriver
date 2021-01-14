@@ -30,4 +30,8 @@
 @property (nonatomic, strong) void (^blocClick)(ModelBaseData *);//block value change
 @property (nonatomic, strong) void (^blockDeleteClick)(ModelBaseData *);//block value change
 
++ (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
+- (NSDictionary *)dictionaryRepresentation;
+
 @end

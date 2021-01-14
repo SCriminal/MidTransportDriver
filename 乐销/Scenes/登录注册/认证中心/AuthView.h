@@ -25,6 +25,6 @@
 @interface AuthBtnView : UIView
 @property (nonatomic, strong) void (^blockConfirmClick)(void);
 @property (nonatomic, strong) void (^blockDismissClick)(void);
-
+- (void)resetViewWithModel:(BOOL)isFirst;
 
 @end

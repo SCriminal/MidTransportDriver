@@ -45,7 +45,7 @@
 //猎鹰
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <AMapTrackKit/AMapTrackKit.h>
-
+#import "OrcHelper.h"
 @interface DriverOperateVC ()<MAMapViewDelegate,AMapTrackManagerDelegate,NSURLSessionDelegate>
 //地图
 @property (nonatomic,strong) MAMapView *mapView;
@@ -519,70 +519,47 @@
     [[AliClient sharedInstance]updateImageAry:@[image] storageSuccess:^{
         
     } upSuccess:nil upHighQualitySuccess:^{
-        [self orc:image.imageURL];
+        [OrcHelper orc:image.imageURL delegate:self block:^(NSData * _Nullable body, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                
+                NSLog(@"Response object: %@" , response);
+                NSString *bodyString = [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding];
+                NSDictionary * dic = [GlobalMethod exchangeStringToDic:bodyString];
+                NSArray * aryAll = [dic arrayValueForKey:@"prism_wordsInfo"];
+                NSMutableArray * aryStrings = [NSMutableArray array];
+                NSString * strReturn = nil;
+                for (NSDictionary * dicWord in aryAll) {
+                   NSString * strWord = [dicWord stringValueForKey:@"word"];
+                    if (isStr(strWord)&& strWord.length > 3) {
+                        strReturn = strWord;
+                        break;
+                    }
+                    if ([aryAll indexOfObject:dicWord]<5) {
+                        [aryStrings addObject:strWord];
+                    }
+                }
+                if (!isStr(strReturn)) {
+                    strReturn = [aryStrings componentsJoinedByString:@""];
+                }
+                if (isStr(strReturn)) {
+                    [GlobalMethod mainQueueBlock:^{
+                        if (self.isInputSealNum) {
+                            self.inputPlumbumNumView.tfNum.text = strReturn;
+                        }else{
+                            self.inputPackageNoView.tfNum.text = strReturn;
+                        }
+                    }];
+                }else{
+                    [GlobalMethod mainQueueBlock:^{
+                        [GlobalMethod showAlert:@"图片解析失败"];
+                    }];
+                }
+        }];
     } fail:^{
         
     }];
 }
 
-- (void)orc:(NSString *)imageurl{
-    //    [GB_Nav pushVCName:@"MainBlackVC" animated:true];
-    NSString *appcode = @"e5125b82866442b8ab5ecaa2a6caa89f";
-    NSString *host = @"https://ocrapi-advanced.taobao.com";
-    NSString *path = @"/ocrservice/advanced";
-    NSString *method = @"POST";
-    NSString *querys = @"";
-    NSString *url = [NSString stringWithFormat:@"%@%@%@",  host,  path , querys];
-    NSString *bodys = [NSString stringWithFormat:@"{\"url\":\"%@\",\"prob\":false,\"charInfo\":false,\"rotate\":false,\"table\":false}",imageurl];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: url]  cachePolicy:1  timeoutInterval:  5];
-    request.HTTPMethod  =  method;
-    [request addValue:  [NSString  stringWithFormat:@"APPCODE %@" ,  appcode]  forHTTPHeaderField:  @"Authorization"];
-    //根据API的要求，定义相对应的Content-Type
-    [request addValue: @"application/json; charset=UTF-8" forHTTPHeaderField: @"Content-Type"];
-    NSData *data = [bodys dataUsingEncoding: NSUTF8StringEncoding];
-    [request setHTTPBody: data];
-    NSURLSession *requestSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[[NSOperationQueue alloc] init]];
 
-    NSURLSessionDataTask *task = [requestSession dataTaskWithRequest:request
-                                                   completionHandler:^(NSData * _Nullable body , NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                                                       
-                                                       NSLog(@"Response object: %@" , response);
-                                                       NSString *bodyString = [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding];
-                                                       NSDictionary * dic = [GlobalMethod exchangeStringToDic:bodyString];
-                                                       NSArray * aryAll = [dic arrayValueForKey:@"prism_wordsInfo"];
-                                                       NSMutableArray * aryStrings = [NSMutableArray array];
-                                                       NSString * strReturn = nil;
-                                                       for (NSDictionary * dicWord in aryAll) {
-                                                          NSString * strWord = [dicWord stringValueForKey:@"word"];
-                                                           if (isStr(strWord)&& strWord.length > 3) {
-                                                               strReturn = strWord;
-                                                               break;
-                                                           }
-                                                           if ([aryAll indexOfObject:dicWord]<5) {
-                                                               [aryStrings addObject:strWord];
-                                                           }
-                                                       }
-                                                       if (!isStr(strReturn)) {
-                                                           strReturn = [aryStrings componentsJoinedByString:@""];
-                                                       }
-                                                       if (isStr(strReturn)) {
-                                                           [GlobalMethod mainQueueBlock:^{
-                                                               if (self.isInputSealNum) {
-                                                                   self.inputPlumbumNumView.tfNum.text = strReturn;
-                                                               }else{
-                                                                   self.inputPackageNoView.tfNum.text = strReturn;
-                                                               }
-                                                           }];
-                                                       }else{
-                                                           [GlobalMethod mainQueueBlock:^{
-                                                               [GlobalMethod showAlert:@"图片解析失败"];
-                                                           }];
-                                                       }
-                                                   }];
-    [task resume];
-    
-}
 
 - (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler{
     NSURLCredential *card = [[NSURLCredential alloc] initWithTrust:challenge.protectionSpace.serverTrust];

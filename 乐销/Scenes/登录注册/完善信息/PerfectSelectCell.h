@@ -29,3 +29,11 @@
 
 
 @end
+
+@interface PerfectSelectCell_Logo : PerfectSelectCell
+@property (strong, nonatomic) UIImageView *iconLogo;
+#pragma mark 刷新cell
+- (void)resetCellWithModel:(ModelBaseData *)model;
+
+
+@end

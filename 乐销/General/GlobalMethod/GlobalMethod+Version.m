@@ -113,7 +113,7 @@
 //    [window addSubview:[NSClassFromString(@"AdvertiesementView") new]];
     //欢迎页
     if (![GlobalMethod isLoginSuccess]) {
-//        [GB_Nav pushVCName:@"LoginViewController" animated:false];
+        [GB_Nav pushVCName:@"LoginViewController" animated:false];
     }
     //请求版本
     [GlobalMethod requestVersion:nil];

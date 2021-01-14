@@ -155,7 +155,7 @@
 @implementation AuthBtnView
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(int)index{
+- (void)resetViewWithModel:(BOOL)isFirst{
     [self removeAllSubViews];//移除线
     
     {
@@ -163,13 +163,14 @@
         btn.widthHeight = XY(W(345), W(40));
         btn.centerXTop = XY(SCREEN_WIDTH/2.0, W(15));
         btn.backgroundColor = COLOR_BLUE;
-        [btn setTitle:@"下一步" forState:UIControlStateNormal];
+        [btn setTitle:isFirst?@"下一步":@"提交" forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnConfirmClick) forControlEvents:UIControlEventTouchUpInside];
         [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:0 lineColor:[UIColor clearColor]];
         [self addSubview:btn];
     }
+    if (isFirst)
     {
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.widthHeight = XY(W(345), W(40));
@@ -190,7 +191,6 @@
         self.backgroundColor = [UIColor clearColor];//背景色
         self.width = SCREEN_WIDTH;//默认宽度
         self.height = W(120);
-        [self resetViewWithModel:0];
     }
     return self;
 }

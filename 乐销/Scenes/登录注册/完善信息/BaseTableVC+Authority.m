@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableVC+Authority.h"
+#import "NSObject+Catrgory.h"
 
 @implementation BaseTableVC (Authority)
 
@@ -16,6 +17,8 @@
     [self.tableView registerClass:[PerfectAddressDetailCell class] forCellReuseIdentifier:@"PerfectAddressDetailCell"];
     [self.tableView registerClass:[PerfectEmptyCell class] forCellReuseIdentifier:@"PerfectEmptyCell"];
     [self.tableView registerClass:[PerfectSelectCell_Path class] forCellReuseIdentifier:@"PerfectSelectCell_Path"];
+    [self.tableView registerClass:[PerfectSelectCell_Logo class] forCellReuseIdentifier:@"PerfectSelectCell_Logo"];
+
 
 }
 - (UITableViewCell *)dequeueAuthorityCell:(NSIndexPath *)indexPath{
@@ -42,6 +45,13 @@
                 return selectCell;
             }
                 break;
+        case ENUM_PERFECT_CELL_SELECT_LOGO:
+        {
+            PerfectSelectCell_Logo * selectCell = [self.tableView dequeueReusableCellWithIdentifier:@"PerfectSelectCell_Logo"];
+            [selectCell resetCellWithModel:model];
+            return selectCell;
+        }
+            break;
         case ENUM_PERFECT_CELL_ADDRESS:
         {
             PerfectAddressDetailCell * addressCell = [self.tableView dequeueReusableCellWithIdentifier:@"PerfectAddressDetailCell"];
@@ -79,6 +89,11 @@
                        return [PerfectSelectCell_Path fetchHeight:model];
                    }
                        break;
+        case ENUM_PERFECT_CELL_SELECT_LOGO:
+               {
+                   return [PerfectSelectCell_Logo fetchHeight:model];
+               }
+                   break;
         case ENUM_PERFECT_CELL_ADDRESS:
         {
             CGFloat height = [PerfectAddressDetailCell fetchHeight:model];
@@ -95,5 +110,28 @@
     }
     return 0.00;
 }
-
+- (void)saveAllProperty{
+    NSArray * ary = [self getAllProperties];
+    for (NSString * proName in ary) {
+       ModelBaseData * model =  (ModelBaseData *)[self valueForKey:proName];
+        if ([model isKindOfClass:[ModelBaseData class]]) {
+            [GlobalMethod writeModel:model key:[NSString stringWithFormat:@"%@_%@",self.class,proName]];
+        }
+    }
+}
+- (void)fetchAllProperty{
+    NSArray * ary = [self getAllProperties];
+    for (NSString * proName in ary) {
+        ModelBaseData * model =  (ModelBaseData *)[self valueForKey:proName];
+         if ([model isKindOfClass:[ModelBaseData class]]) {
+             ModelBaseData * modelLocal = [GlobalMethod readModelForKey:[NSString stringWithFormat:@"%@_%@",self.class,proName] modelName:@"ModelBaseData"];
+             if (modelLocal) {
+                 modelLocal.blockValueChange = model.blockValueChange;
+                 modelLocal.blocClick = model.blocClick;
+                 modelLocal.blockDeleteClick = model.blockDeleteClick;
+                 [self setValue:modelLocal forKey:proName];
+             }
+         }
+    }
+}
 @end

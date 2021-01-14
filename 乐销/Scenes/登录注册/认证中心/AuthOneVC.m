@@ -9,7 +9,10 @@
 #import "AuthOneVC.h"
 #import "AuthView.h"
 #import "BaseTableVC+Authority.h"
-@interface AuthOneVC ()
+#import "BaseVC+BaseImageSelectVC.h"
+#import "AliClient.h"
+#import "OrcHelper.h"
+@interface AuthOneVC ()<NSURLSessionDelegate>
 @property (nonatomic, strong) AuthView *authTopView;
 @property (nonatomic, strong) AuthTitleView *authTitleView;
 @property (nonatomic, strong) AuthBtnView *authBtnView;
@@ -19,6 +22,7 @@
 @property (nonatomic, strong) ModelBaseData *modelId;
 @property (nonatomic, strong) ModelBaseData *modelDriver;
 @property (nonatomic, strong) ModelBaseData *modelCar;
+@property (nonatomic, strong) ModelBaseData *modelImageSelected;
 
 @end
 
@@ -40,8 +44,10 @@
 - (AuthBtnView *)authBtnView{
     if (!_authBtnView) {
         _authBtnView = [AuthBtnView new];
+        [_authBtnView resetViewWithModel:self.isFirst];
+        WEAKSELF
         _authBtnView.blockDismissClick = ^{
-            
+            [weakSelf saveAllProperty];
         };
         _authBtnView.blockConfirmClick  = ^{
             
@@ -52,12 +58,14 @@
 - (ModelBaseData *)modelHead{
     if (!_modelHead) {
         _modelHead =[ModelBaseData new];
-        _modelHead.enumType = ENUM_PERFECT_CELL_SELECT;
+        _modelHead.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelHead.string = @"身份证人像面";
 //        _modelHead.subString = self.model.bankName;
         _modelHead.placeHolderString = @"点击上传";
         WEAKSELF
         _modelHead.blocClick = ^(ModelBaseData *model) {
+            weakSelf.modelImageSelected = model;
+            [weakSelf showImageVC:1];
         };
     }
     return _modelHead;
@@ -65,7 +73,7 @@
 - (ModelBaseData *)modelCountry{
     if (!_modelCountry) {
         _modelCountry =[ModelBaseData new];
-        _modelCountry.enumType = ENUM_PERFECT_CELL_SELECT;
+        _modelCountry.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelCountry.string = @"身份证国徽面";
 //        _modelCountry.subString = self.model.bankName;
         _modelCountry.placeHolderString = @"点击上传";
@@ -103,7 +111,7 @@
 - (ModelBaseData *)modelDriver{
     if (!_modelDriver) {
         _modelDriver =[ModelBaseData new];
-        _modelDriver.enumType = ENUM_PERFECT_CELL_SELECT;
+        _modelDriver.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelDriver.string = @"驾驶证照片";
 //        _modelDriver.subString = self.model.bankName;
         _modelDriver.placeHolderString = @"点击上传";
@@ -116,7 +124,7 @@
 - (ModelBaseData *)modelCar{
     if (!_modelCar) {
         _modelCar =[ModelBaseData new];
-        _modelCar.enumType = ENUM_PERFECT_CELL_SELECT;
+        _modelCar.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelCar.string = @"人车合照";
 //        _modelCar.subString = self.model.bankName;
         _modelCar.placeHolderString = @"点击上传";
@@ -130,10 +138,12 @@
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self fetchAllProperty];
     //添加导航栏
     [self addNav];
     //table
-    self.tableView.tableHeaderView = [UIView initWithViews:@[self.authTopView,self.authTitleView]];
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.isFirst?self.authTopView:[NSNull null],self.authTitleView]];
+
     self.tableView.tableFooterView = [UIView initWithViews:@[self.authBtnView]];
     self.tableView.backgroundColor = COLOR_BACKGROUND;
     [self registAuthorityCell];
@@ -174,5 +184,18 @@
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
+}
+- (void)imageSelect:(BaseImage *)image{
+    [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_USER_AUTHORITY;
+    [[AliClient sharedInstance]updateImageAry:@[image] storageSuccess:^{
+        
+    } upSuccess:nil upHighQualitySuccess:^{
+        [OrcHelper orc:image.imageURL delegate:self block:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            
+        }];
+    } fail:^{
+        
+    }];
+    
 }
 @end

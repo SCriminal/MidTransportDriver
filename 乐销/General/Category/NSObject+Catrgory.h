@@ -28,4 +28,6 @@
  @return 是否替换
  */
 + (BOOL)swizzingInstanceMethod:(SEL)originalSelector  replaceMethod:(SEL)replaceSelector;
+
+- (NSArray *)getAllProperties;
 @end

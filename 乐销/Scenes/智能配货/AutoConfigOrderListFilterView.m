@@ -243,6 +243,7 @@
 - (void)btnResetClick{
 
     [self resetBtn:100];
+    [self resetSubBtn:200];
 
     [self btnSearchClick];
     
