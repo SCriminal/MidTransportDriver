@@ -194,11 +194,13 @@
 - (void)resetCellWithModel:(ModelBaseData *)model{
     [super resetCellWithModel:model];
     if (isStr(model.identifier)) {
+        NSLog(@"sldcell_%@,",model.identifier);
         [self.subTitle fitTitle:@"上传成功" variable:0];
+        self.subTitle.textColor =COLOR_333;
     }
     self.iconLogo.hidden = !isStr(model.identifier);
     self.iconLogo.rightCenterY = XY(SCREEN_WIDTH - W(44), self.height/2.0);
-    
+    [self.iconLogo sd_setImageWithURL:[NSURL URLWithString:model.identifier] placeholderImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT ]];
 }
     
 @end

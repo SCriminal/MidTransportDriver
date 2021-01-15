@@ -7,6 +7,8 @@
 //
 
 #import "RequestApi+Auth.h"
+#import <CloudPushSDK/CloudPushSDK.h>
+#import "RequestApi+Ums.h"
 
 @implementation RequestApi (Auth)
 /**
@@ -35,11 +37,27 @@
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"app":RequestStrKey(app),
                            @"client":RequestStrKey(client),
-                           @"password":RequestStrKey(password),
+                           @"password":RequestStrKey([password base64Encode]),
                            @"account":RequestStrKey(account),
                            @"terminalType":NSNumber.dou(terminalType),
-                           @"terminalNumber":RequestStrKey(terminalNumber)};
-        [self postUrl:@"/auth/user/login/1" delegate:delegate parameters:dic success:success failure:failure];
+                           @"terminalNumber":RequestStrKey([CloudPushSDK getDeviceId])
+                              
+        };
+        [self postUrl:@"/auth/user/login/1" delegate:delegate parameters:dic success:^(NSDictionary * response, id mark){
+            if (!isDic(dic) || !isStr([response stringValueForKey:@"token"])) {
+                if (failure) {
+                    failure(nil,@"获取token失败");
+                }
+                return ;
+            }
+            [GlobalData sharedInstance].GB_Key = [response stringValueForKey:@"token"];
+            [GlobalMethod writeStr:[GlobalMethod exchangeDate:[NSDate date] formatter:TIME_SEC_SHOW] forKey:LOCAL_LOGIN_TIME];
+
+            [RequestApi requestUserInfo2WithDelegate:delegate success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [GlobalMethod requestLoginResponse:response  mark:mark success:success failure:failure];
+            }  failure:failure];
+        } failure:failure];
+    
 }
 
 

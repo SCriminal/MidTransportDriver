@@ -50,6 +50,10 @@
 
 
 #define TIME_REQUEST_OUT 8
+#define REQUEST_APP @"2"
+#define REQUEST_CLIENT @"1"
+#define REQUEST_TERMINALTYPE @"1"
+
 //选取照片数量
 #define NUM_IMAGE 20
 //Tag

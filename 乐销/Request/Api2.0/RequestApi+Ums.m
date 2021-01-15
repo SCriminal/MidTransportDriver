@@ -7,7 +7,6 @@
 //
 
 #import "RequestApi+Ums.h"
-
 @implementation RequestApi (Ums)
 /**
 获取更换手机号[^/ums/sms/code/4$]
@@ -80,12 +79,12 @@
 /**
 获取[^/ums/user$]
 */
-//+(void)requestUserInfoWithDelegate:(id <RequestDelegate>)delegate
-//                success:(void (^)(NSDictionary * response, id mark))success
-//                failure:(void (^)(NSString * errorStr, id mark))failure{
-//        NSDictionary *dic = @{};
-//        [self getUrl:@"/ums/user" delegate:delegate parameters:dic success:success failure:failure];
-//}
++(void)requestUserInfo2WithDelegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{};
+        [self getUrl:@"/ums/user" delegate:delegate parameters:dic success:success failure:failure];
+}
 /**
 验证码登录（个人）[^/ums/login/1$]
 */

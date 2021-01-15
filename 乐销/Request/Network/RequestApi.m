@@ -237,6 +237,8 @@ constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
         }
     }
     [muDic setObject:[GlobalData sharedInstance].GB_Key forKey:@"token"];
+    [muDic setObject:@"1" forKey:@"scope"];
+
     [self fetchSystem:muDic];
     return muDic;
 }

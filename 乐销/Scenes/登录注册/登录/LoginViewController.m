@@ -25,6 +25,9 @@
 #import "RequestApi+UserApi.h"
 //forget vc
 #import "ForgetPwdVC.h"
+//request
+//request
+#import "RequestDriver2.h"
 
 @interface LoginViewController ()
 @property (nonatomic, strong) UILabel *labelHello;
@@ -158,26 +161,28 @@
 #pragma mark request
 - (void)requestWithPwd{
     NSString * strPhone = [self.tfPhone.tf.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [RequestApi requestLoginPwdWithPassword:self.tfPwd.tf.text account:strPhone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestLoginWithApp:@"2" client:@"1" password:self.tfPwd.tf.text account:strPhone terminalType:1 terminalNumber:@"1" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [ModelBaseInfo jumpToAuthorityStateVCSuccessBlock:^{
             [GB_Nav popToRootViewControllerAnimated:true];
         }];
         [GlobalMethod showAlert:@"登录成功"];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+ 
 }
 
 - (void)requestSendCode{
     NSString * strPhone = [self.tfPhone.tf.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [RequestApi requestFetchCodeWithApp:@"" cellPhone:strPhone smsType:@"3" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestLoginCodeWithAppid:@"1" phone:strPhone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         InputCodeVC * codeVC = [InputCodeVC new];
         codeVC.strPhone = strPhone;
         [GB_Nav pushViewController:codeVC animated:true];
-        
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    } ];
+
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+   
 }
 #pragma mark login
 - (void)switchPwdLogin{

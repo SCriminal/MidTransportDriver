@@ -47,6 +47,7 @@
         [_authBtnView resetViewWithModel:self.isFirst];
         WEAKSELF
         _authBtnView.blockDismissClick = ^{
+            NSLog(@"save %@",weakSelf.modelHead.identifier);
             [weakSelf saveAllProperty];
         };
         _authBtnView.blockConfirmClick  = ^{
@@ -138,7 +139,6 @@
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self fetchAllProperty];
     //添加导航栏
     [self addNav];
     //table
@@ -150,7 +150,13 @@
     [self addObserveOfKeyboard];
 
     //request
+
     [self requestList];
+    [self fetchAllProperty];
+    [self requestList];
+    NSLog(@"sld_%@,",self.modelHead.identifier);
+
+    [self.tableView reloadData];
 }
 
 #pragma mark 添加导航栏
@@ -188,10 +194,10 @@
 - (void)imageSelect:(BaseImage *)image{
     [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_USER_AUTHORITY;
     [[AliClient sharedInstance]updateImageAry:@[image] storageSuccess:^{
-        
+        self.modelImageSelected.identifier = image.imageURL;
+        [self.tableView reloadData];
     } upSuccess:nil upHighQualitySuccess:^{
         [OrcHelper orc:image.imageURL delegate:self block:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            
         }];
     } fail:^{
         
