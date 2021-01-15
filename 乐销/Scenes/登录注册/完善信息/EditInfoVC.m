@@ -239,7 +239,6 @@
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
-    
 }
 
 #pragma mark request

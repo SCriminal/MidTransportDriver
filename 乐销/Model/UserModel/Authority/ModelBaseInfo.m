@@ -113,7 +113,6 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
     ModelBaseInfo *modelUser = [GlobalData sharedInstance].GB_UserModel;
     //因为有已经认证
     BOOL isQuantity  = modelUser.isIdentity == 1&& modelUser.isDriver == 1;
-
     if (modelUser.reviewStatus!=1 && successBlock) {
         successBlock();
         return;
@@ -147,7 +146,6 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     self = [super init];
-    
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
@@ -176,10 +174,7 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
             self.address = [dict stringValueForKey:kModelBaseInfoAddress];
             self.introduce = [dict stringValueForKey:kModelBaseInfoIntroduce];
         self.reviewStatus = [dict doubleValueForKey:kModelBaseInfoReviewStatus];
-       
-
     }
-    
     return self;
     
 }
@@ -211,7 +206,6 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
     [mutableDict setValue:self.address forKey:kModelBaseInfoAddress];
     [mutableDict setValue:self.introduce forKey:kModelBaseInfoIntroduce];
     [mutableDict setValue:[NSNumber numberWithDouble:self.reviewStatus] forKey:kModelBaseInfoReviewStatus];
-
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 

@@ -12,11 +12,11 @@
 //请求URL
 #if DEBUG
 #define URL_HEAD  @"http://172.16.1.102:10000"
-//#define URL_IMAGE @"http://112.253.1.72:10499"//image
+#define URL_IMAGE @"http://172.16.1.102:10000"//image
 //#define URL_SHARE @"http://112.253.1.72:10201"
 
 //#define URL_HEAD  @"https://api.zhongcheyun.cn"//外网
-#define URL_IMAGE @"https://img.zhongcheyun.cn"//阿里云
+//#define URL_IMAGE @"https://img.zhongcheyun.cn"//阿里云
 #define URL_SHARE @"https://www.zhongcheyun.cn"//
 
 #define TRANSPORT_AGENCY_ENV  @"release"//@"release"

@@ -20,9 +20,8 @@
         [GB_Nav pushVCName:@"LoginViewController" animated:true];
     }
 }
+
 + (BOOL)isLoginSuccess{
-    return [GlobalData sharedInstance].GB_UserModel.iDProperty ;
+    return isStr( [GlobalData sharedInstance].GB_UserModel.cellPhone);
 }
-
-
 @end

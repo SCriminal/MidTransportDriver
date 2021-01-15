@@ -592,8 +592,8 @@
             timestampString = "594266547.068817"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "-upImageData:urlSuffix:blockSuccess:blockFailure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2282,8 +2282,8 @@
             timestampString = "597805667.27797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "+jumpToAuthorityStateVCSuccessBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2299,8 +2299,8 @@
             timestampString = "594266547.072386"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "-upImageHeigh:urlSuffix:blockSuccess:blockFailure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2748,7 +2748,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "04BB5DA5-BD74-44DF-936C-83C64982A26E"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/General/GlobalMethod/GlobalMethod+Version.m"
@@ -5046,6 +5046,38 @@
                   offsetFromSymbolStart = "12">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "93A067C2-2DEE-4A61-8F4A-0D9A161DB606"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x5b8c;&#x5584;&#x4fe1;&#x606f;/EditInfoVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "-completeClick"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3747B7AF-750E-42EA-A291-4B58E6BEC528"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/General/GlobalData/GlobalData.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-setGB_UserModel:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

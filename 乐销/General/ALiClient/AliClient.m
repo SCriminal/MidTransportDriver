@@ -24,27 +24,27 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
 -(NSString *)imagePath{
     switch (self.imageType) {
         case ENUM_UP_IMAGE_TYPE_USER_LOGO:
-            return @"/ums/head/";
+            return @"ums/user/head/";
             break;
         case ENUM_UP_IMAGE_TYPE_USER_AUTHORITY:
-            return @"/ums/qualification/";
+            return @"ums/person/review/";
             break;
         case ENUM_UP_IMAGE_TYPE_COMPANY_LOGO:
-            return @"/zhongcheyun/ent/logo/";
+            return @"ums/ent/logo";
             break;
         case ENUM_UP_IMAGE_TYPE_COMPANY_AUTHORITY:
-            return @"/zhongcheyun/ent/qualification/";
+            return @"ums/ent/review/";
             break;
         case ENUM_UP_IMAGE_TYPE_COMPANY_CAR:
         {
-            return @"/zhongcheyun/ent/vehicle/";
+            return @"ums/vehicle/review";
         }
             break;
         case ENUM_UP_IMAGE_TYPE_ORDER:
-            return @"/zhongcheyun/waybill/";
+            return @"loms/agreement/";
             break;
-        case ENUM_UP_IMAGE_TYPE_DOWNLOAD:
-            return @"/zhongcheyun/version/";
+        case ENUM_UP_IMAGE_TYPE_FEEDBACK:
+            return @"app/feedback/";
             break;
         default:
             break;
@@ -64,7 +64,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
             NSString * imageId = [[NSString stringWithFormat:@"%lf",[[NSDate date] timeIntervalSince1970]] md5String];
             NSString *imageNameID = [NSString stringWithFormat:@"%@.jpeg",imageId];
             image.identity = imageNameID;
-            image.imageURL = [NSString stringWithFormat:@"%@%@%@",URL_IMAGE,self.imagePath,image.identity];
+            image.imageURL = [NSString stringWithFormat:@"%@/oss/zhongcheyun/display/%@%@",URL_IMAGE,self.imagePath,image.identity];
         }
     }
     //write data to Local
@@ -77,7 +77,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
             if (isStr(image.imageURL) && image.upHightQualityComplete) {
                 continue;
             }
-            image.imageURL = [NSString stringWithFormat:@"%@%@%@",URL_IMAGE,self.imagePath,image.identity];
+            image.imageURL = [NSString stringWithFormat:@"%@/oss/zhongcheyun/display/%@%@",URL_IMAGE,self.imagePath,image.identity];
             [self upImageData:UIImageJPEGRepresentation(image,1) urlSuffix:image.identity blockSuccess:^{
                 image.upComplete = true;
                 [self removeKeyInSDWebImageBlackList:image.imageURL];
@@ -104,9 +104,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
                         }
                     });
                 }
-                
                 [self upHighQualifySuccess:aryDatas block:upHighQualitySuccess];
-                
             } blockFailure:^{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (fail) {
@@ -150,15 +148,12 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
             if (image.asset) {
                 [imageManager requestImageForAsset:image.asset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeAspectFit options:opt resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
                     NSData * imageData = UIImageJPEGRepresentation(result, 1);
-                    
                     [[SDWebImageManager sharedManager].imageCache storeImageDataToDisk:imageData forKey:strPathURL];
                 }];
             }else{
                 NSData * imageData = UIImageJPEGRepresentation(image, 1);
-                
                 [[SDWebImageManager sharedManager].imageCache storeImageDataToDisk:imageData forKey:strPathURL];
             }
-            
         }
     }
     if (storageSuccess) {
@@ -166,11 +161,8 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
             storageSuccess();
         }];
     }
-    
-    
 }
 - (void)upImageHeigh:(PHAsset *)asset urlSuffix:(NSString *)imageIdentity blockSuccess:(void (^)(void))blockSuccess blockFailure:(void (^)(void))blockFailure{
-    
     PHImageManager *imageManager = [[PHImageManager alloc] init];
     PHImageRequestOptions *opt = [[PHImageRequestOptions alloc]init];
     opt.resizeMode = PHImageRequestOptionsResizeModeNone;
@@ -190,7 +182,6 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
         }
         [self upImageData:imageData urlSuffix:imageIdentity blockSuccess:blockSuccess blockFailure:blockFailure];
     }];
-    
 }
 
 - (void)upImageData:(NSData *)imageData urlSuffix:(NSString *)imageIdentity blockSuccess:(void (^)(void))blockSuccess blockFailure:(void (^)(void))blockFailure{
@@ -208,18 +199,13 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
     manager.securityPolicy.allowInvalidCertificates=YES;
     //是否在证书域字段中验证域名
     [manager.securityPolicy setValidatesDomainName:NO];
-    
     [manager.requestSerializer setValue:@"multipart/form-data;" forHTTPHeaderField:@"Content-Type"];
-
-    NSDictionary *dic = @{@"path":RequestStrKey(self.imagePath),
-                          @"file":RequestStrKey(imageIdentity)};
-    
+    NSDictionary *dic = @{@"object":[NSString stringWithFormat:@"%@%@",RequestStrKey(self.imagePath),RequestStrKey(imageIdentity)],
+                         };
     //设置请求头
     dic = [RequestApi setInitHead:dic];
-    
     //拼接参数
-    NSString * urlNew = [RequestApi replaceParameter:dic url:@"/zhongcheyun/file/app"];
-    
+    NSString * urlNew = [RequestApi replaceParameter:dic url:@"/oss/zhongcheyun/upload"];
     [manager POST:urlNew parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileData:imageData name:@"file" fileName:imageIdentity mimeType:@"image/jpeg"];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
