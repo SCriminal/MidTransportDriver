@@ -23,7 +23,7 @@ NSString *const kModelBaseInfoCountyName = @"countyName";
 NSString *const kModelBaseInfoIdNumber = @"idNumber";
 NSString *const kModelBaseInfoIsDriver = @"isDriver";
 NSString *const kModelBaseInfoProvinceName = @"provinceName";
-NSString *const kModelBaseInfoCellPhone = @"cellPhone";
+NSString *const kModelBaseInfoCellPhone = @"cellphone";
 NSString *const kModelBaseInfoIsIdentity = @"isIdentity";
 NSString *const kModelBaseInfoProvinceId = @"provinceId";
 NSString *const kModelBaseInfoCityId = @"cityId";
@@ -34,12 +34,12 @@ NSString *const kModelBaseInfoAddress = @"address";
 NSString *const kModelBaseInfoIntroduce = @"introduce";
 NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
 
-
 @interface ModelBaseInfo ()
+@property (nonatomic, strong) NSString *contactPhone;
+
 @end
 
 @implementation ModelBaseInfo
-
 @synthesize birthday = _birthday;
 @synthesize driverStartTime = _driverStartTime;
 @synthesize userStatus = _userStatus;
@@ -64,7 +64,6 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
 @synthesize cityName = _cityName;
 @synthesize address = _address;
 @synthesize introduce = _introduce;
-
 
 #pragma mark logical show
 - (NSString *)nickname{
@@ -108,7 +107,6 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
         default:
             break;
     }
-    
     return @"";
 }
 + (void)jumpToAuthorityStateVCSuccessBlock:(void (^)(void))successBlock{

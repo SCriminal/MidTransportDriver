@@ -13,6 +13,8 @@ UINavigationController *GB_Nav = nil;
 @implementation GlobalData
 @synthesize GB_UserModel = _GB_UserModel;
 @synthesize GB_Key = _GB_Key;
+@synthesize GB_REFRESH_TOKEN = _GB_REFRESH_TOKEN;
+
 #pragma mark 实现单例
 SYNTHESIZE_SINGLETONE_FOR_CLASS(GlobalData);
 
@@ -63,6 +65,15 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(GlobalData);
         _GB_Key = [GlobalMethod readStrFromUser:LOCAL_KEY];
     }
     return _GB_Key;
+}
+- (void)setGB_REFRESH_TOKEN:(NSString *)GB_REFRESH_TOKEN{
+    _GB_REFRESH_TOKEN = GB_REFRESH_TOKEN;
+}
+-(NSString *)GB_REFRESH_TOKEN{
+    if (!isStr(_GB_REFRESH_TOKEN)) {
+        _GB_REFRESH_TOKEN = [GlobalMethod readStrFromUser:LOCAL_REFRESHKEY];
+    }
+    return _GB_REFRESH_TOKEN;
 }
 #pragma mark lazy init
 //set Notice View

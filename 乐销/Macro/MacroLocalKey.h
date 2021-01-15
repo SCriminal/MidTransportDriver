@@ -77,7 +77,9 @@ return [UIColor colorWithRed:((float)((hexNumber & 0xFF0000) >> 16))/255.0 green
 #define TIME_HOUR_MIN_CN @"HH:mm"
 
 
-#define LOCAL_KEY @"LOCAL_KEY"//本地存储用户key值
+#define LOCAL_KEY @"LOCAL_KEY"//token
+#define LOCAL_REFRESHKEY @"LOCAL_REFRESHKEY"
+
 #define LOCAL_USERMODEL @"LOCAL_USERMODEL"//本地存储用户信息
 #define LOCAL_ENTER_BACK_GROUND @"LOCAL_ENTER_BACK_GROUND"//进入后台时间
 #define LOCAL_PHONE @"LOCAL_PHONE"//本地存储最后一个手机号

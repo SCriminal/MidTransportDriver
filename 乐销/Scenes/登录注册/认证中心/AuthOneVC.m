@@ -150,7 +150,6 @@
     [self addObserveOfKeyboard];
 
     //request
-
     [self requestList];
     [self fetchAllProperty];
     [self requestList];

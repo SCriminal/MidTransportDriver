@@ -30,6 +30,8 @@ extern UINavigationController *GB_Nav;//全局导航条
 
 @property (nonatomic, strong) ModelBaseInfo * GB_UserModel;//用户模型
 @property (nonatomic, strong) NSString * GB_Key;//登陆成功key
+@property (nonatomic, strong) NSString * GB_REFRESH_TOKEN;
+
 @property (nonatomic, strong) NoticeView * GB_NoticeView;//global notice view
 @property (nonatomic, assign) UIStatusBarStyle statusBarStyle;//状态栏类型
 @property (nonatomic, assign) BOOL statusHidden;//状态栏隐藏状态

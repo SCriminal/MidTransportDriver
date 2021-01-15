@@ -40,8 +40,8 @@
                            @"password":RequestStrKey([password base64Encode]),
                            @"account":RequestStrKey(account),
                            @"terminalType":NSNumber.dou(terminalType),
-                           @"terminalNumber":RequestStrKey([CloudPushSDK getDeviceId])
-                              
+                           @"terminalNumber":RequestStrKey([CloudPushSDK getDeviceId]),
+                              @"scope":@"1"
         };
         [self postUrl:@"/auth/user/login/1" delegate:delegate parameters:dic success:^(NSDictionary * response, id mark){
             if (!isDic(dic) || !isStr([response stringValueForKey:@"token"])) {
@@ -51,6 +51,7 @@
                 return ;
             }
             [GlobalData sharedInstance].GB_Key = [response stringValueForKey:@"token"];
+            [GlobalData sharedInstance].GB_REFRESH_TOKEN = [response stringValueForKey:@"refreshToken"];
             [GlobalMethod writeStr:[GlobalMethod exchangeDate:[NSDate date] formatter:TIME_SEC_SHOW] forKey:LOCAL_LOGIN_TIME];
 
             [RequestApi requestUserInfo2WithDelegate:delegate success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
@@ -119,6 +120,7 @@
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"app":RequestStrKey(app),
                            @"account":RequestStrKey(account),
+                              @"scope":@"1",
                            @"userType":NSNumber.dou(userType)};
         [self postUrl:@"/auth/smscode" delegate:delegate parameters:dic success:success failure:failure];
 }

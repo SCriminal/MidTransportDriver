@@ -48,6 +48,7 @@
     GlobalData * gbData = [GlobalData sharedInstance];
     gbData.GB_UserModel = nil;
     gbData.GB_Key = nil;
+    gbData.GB_REFRESH_TOKEN = nil;
 }
 
 

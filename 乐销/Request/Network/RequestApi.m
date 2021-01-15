@@ -15,16 +15,12 @@
 //登陆页面
 #import "LoginViewController.h"
 
-
 @implementation RequestApi
-
 + (void)postUrl:(NSString *)URL
        delegate:(_Nullable id <RequestDelegate>)delegate
      parameters:(NSDictionary *)parameters
         success:(void (^)(NSDictionary * response, id mark))success
-        failure:(void (^)(NSString * errorStr, id mark))failure
-
-{
+        failure:(void (^)(NSString * errorStr, id mark))failure{
     [self postUrl:URL delegate:delegate parameters:parameters returnALL:false requestType:ENUM_REQUEST_POST constructingBodyWithBlock:nil success:success failure:failure];
 }
 
@@ -35,7 +31,6 @@
           success:(void (^)(NSDictionary * response, id mark))success
           failure:(void (^)(NSString * errorStr, id mark))failure{
     [self postUrl:URL delegate:delegate parameters:parameters returnALL:false requestType:ENUM_REQUEST_DELETE constructingBodyWithBlock:nil success:success failure:failure];
-    
 }
 //patch
 + (void)patchUrl:(NSString *)URL
@@ -44,7 +39,6 @@
          success:(void (^)(NSDictionary * response, id mark))success
          failure:(void (^)(NSString * errorStr, id mark))failure{
     [self postUrl:URL delegate:delegate parameters:parameters returnALL:false requestType:ENUM_REQUEST_PATCH constructingBodyWithBlock:nil success:success failure:failure];
-    
 }
 //patch
 + (void)putUrl:(NSString *)URL
@@ -54,16 +48,14 @@
          failure:(void (^)(NSString * errorStr, id mark))failure{
     [self postUrl:URL delegate:delegate parameters:parameters returnALL:false requestType:ENUM_REQUEST_PUT constructingBodyWithBlock:nil success:success failure:failure];
 }
+
 + (void)getUrl:(NSString *)URL
       delegate:(_Nullable id <RequestDelegate>)delegate
     parameters:(NSDictionary *)parameters
        success:(void (^)(NSDictionary * response, id mark))success
-       failure:(void (^)(NSString * errorStr, id mark))failure
-
-{
+       failure:(void (^)(NSString * errorStr, id mark))failure{
     [self postUrl:URL delegate:delegate parameters:parameters returnALL:false requestType:ENUM_REQUEST_GET constructingBodyWithBlock:nil success:success failure:failure];
 }
-
 
 //上传图片
 + (void)postUrl:(NSString *)URL
@@ -71,8 +63,7 @@
      parameters:(NSDictionary *)parameters
 constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
         success:(void (^)(NSDictionary * response, id mark))success
-        failure:(void (^)(NSString * errorStr, id mark))failure
-{
+        failure:(void (^)(NSString * errorStr, id mark))failure{
     [self postUrl:URL delegate:delegate parameters:parameters returnALL:true requestType:ENUM_REQUEST_POST constructingBodyWithBlock:block success:success failure:failure];
 }
 
@@ -115,8 +106,7 @@ constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
     requestType:(ENUM_REQUEST_TYPE)requestType
 constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
         success:(void (^)(NSDictionary * response, id mark))success
-        failure:(void (^)(NSString * errorStr, id mark))failure
-{
+        failure:(void (^)(NSString * errorStr, id mark))failure{
     //设置请求头
     parameters = [self setInitHead:parameters];
     
@@ -217,13 +207,10 @@ constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
         case ENUM_REQUEST_PUT:
             task = [[RequestInstance sharedInstance] PUT:URLString parameters:parameters  success:success failure:failure];
             break;
-            
         default:
             break;
     }
-    
 }
-
 
 #pragma mark 拼接基础头字符串
 + (NSMutableDictionary *)setInitHead:(NSDictionary *)dicParameters  {
@@ -237,8 +224,6 @@ constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
         }
     }
     [muDic setObject:[GlobalData sharedInstance].GB_Key forKey:@"token"];
-    [muDic setObject:@"1" forKey:@"scope"];
-
     [self fetchSystem:muDic];
     return muDic;
 }
@@ -247,6 +232,11 @@ constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
 + (NSString *)replaceParameter:(NSDictionary *)dicParameter url:(NSString *)URL{
     NSString * strReturn = [URL hasPrefix:@"http"]?URL:[NSString stringWithFormat:@"%@%@",URL_HEAD,URL];
     strReturn = [strReturn appendUrl:[GlobalData sharedInstance].GB_Key key:@"token"];
+    if (isStr([dicParameter stringValueForKey:@"scope"])) {
+        strReturn = [strReturn appendUrl:dicParameter[@"scope"] key:@"scope"];
+    }else{
+        strReturn = [strReturn appendUrl:@"2" key:@"scope"];
+    }
     for (NSString * strKey in dicParameter.allKeys) {
         if ([strReturn rangeOfString:[NSString stringWithFormat:@"{%@}",strKey]].location != NSNotFound) {
            strReturn = [strReturn stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"{%@}",strKey] withString:[NSString stringWithFormat:@"%@",dicParameter[strKey]]];

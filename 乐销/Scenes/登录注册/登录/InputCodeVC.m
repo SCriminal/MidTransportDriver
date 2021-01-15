@@ -12,6 +12,8 @@
 #import "RequestApi+UserAuth.h"
 //
 #import "InputPwdVC.h"
+//request
+#import "RequestDriver2.h"
 
 @interface InputCodeVC ()
 @property (nonatomic, strong) UILabel *labelCode;
@@ -91,7 +93,8 @@
         _controlResendCode = [UIControl new];
         _controlResendCode.backgroundColor = [UIColor clearColor];
         [_controlResendCode addTarget:self action:@selector(requestSend) forControlEvents:UIControlEventTouchUpInside];
-        _controlResendCode.frame = CGRectInset(self.labelResend.frame, -W(20), -W(10));
+        _controlResendCode.widthHeight = XY(W(350), W(35));
+        _controlResendCode.center = self.labelResend.center;
     }
     return _controlResendCode;
 }
@@ -158,24 +161,27 @@
 
 #pragma mark request
 - (void)requestSend{
-    [RequestApi requestFetchCodeWithApp:@"" cellPhone:self.strPhone smsType:@"3" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestLoginCodeWithAppid:@"1" phone:self.strPhone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [self timerStart];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+  
 }
 - (void)requestLogin:(NSString *)code{
-    [RequestApi requestLoginCodeWithApp:@"" scene:@"" cellPhone:self.strPhone code:code delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestLoginWithAppid:@"1" clientId:@"1" phone:self.strPhone code:code delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [ModelBaseInfo jumpToAuthorityStateVCSuccessBlock:^{
             [GB_Nav popToRootViewControllerAnimated:true];
         }];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        [self.codeView clearCode];
-    }];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            [self.codeView clearCode];
+
+        }];
+  
 }
 - (void)requestMatchCode:(NSString *)code{
     NSString * strPhone = [self.strPhone stringByReplacingOccurrencesOfString:@" " withString:@""];
-
     [RequestApi requestMatchCodeWithApp:@"" phone:strPhone code:code  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         if ([response isKindOfClass:[NSDictionary class]]&&[response boolValueForKey:@"status"]) {
             InputPwdVC * inputPwdVC = [ InputPwdVC new];

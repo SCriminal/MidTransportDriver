@@ -15,7 +15,6 @@
 @property (nonatomic, assign) double driverStartTime;
 @property (nonatomic, assign) double userStatus;
 @property (nonatomic, strong) NSString *nickname;
-@property (nonatomic, strong) NSString *contactPhone;
 @property (nonatomic, strong) NSString *realName;
 @property (nonatomic, assign) double countyId;
 @property (nonatomic, assign) double driverEndTime;
@@ -41,7 +40,6 @@
 @property (nonatomic, readonly) NSString *authStatusShow;
 
 + (void)jumpToAuthorityStateVCSuccessBlock:(void (^)(void))successBlock;
-
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;
