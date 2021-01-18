@@ -32,6 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure;
 
++(void)requestMatchCodeAccount:(NSString *)account
+                          code:(NSString *)code
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                       failure:(void (^)(NSString * errorStr, id mark))failure;
 
 /**
 修改密码[^/auth/password/1$]

@@ -50,7 +50,7 @@
 
 
 #define TIME_REQUEST_OUT 8
-#define REQUEST_APP @"2"
+#define REQUEST_APP @"1"
 #define REQUEST_CLIENT @"1"
 #define REQUEST_TERMINALTYPE @"1"
 

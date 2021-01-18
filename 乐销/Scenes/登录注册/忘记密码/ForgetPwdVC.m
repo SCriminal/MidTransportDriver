@@ -14,8 +14,8 @@
 //next code
 #import "InputCodeVC.h"
 //request
-#import "RequestApi+UserAuth.h"
-#import "RequestApi+UserApi.h"
+#import "RequestDriver2.h"
+
 @interface ForgetPwdVC ()
 
 @property (strong, nonatomic) UILabel *labelForget;
@@ -94,15 +94,17 @@
 #pragma mark 点击事件
 - (void)nextClick{
     NSString * strPhone = [self.tfPhone.tf.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [RequestApi requestFetchCodeWithApp:@"" cellPhone:strPhone smsType:@"2" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+
+    [RequestApi requestSmsForgetPwdWithApp:REQUEST_APP account:strPhone userType:1 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         InputCodeVC * codeVC = [InputCodeVC new];
         codeVC.strPhone = strPhone;
         codeVC.typeFrom = ENUM_CODE_PWD;
         [GB_Nav pushViewController:codeVC animated:true];
-        
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    } ];
+
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+   
 }
 
 @end

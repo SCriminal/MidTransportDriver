@@ -60,7 +60,20 @@
         } failure:failure];
     
 }
-
+/**
+*/
++(void)requestMatchCodeAccount:(NSString *)account
+                          code:(NSString *)code
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"app":REQUEST_APP,
+                       @"account":RequestStrKey(account),
+                       @"code":RequestStrKey(code),
+                          @"scope":@"1"
+    };
+    [self getUrl:@"/auth/sms/code" delegate:delegate parameters:dic success:success failure:failure];
+}
 
 /**
 修改密码[^/auth/password/1$]
@@ -71,7 +84,9 @@
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"old":RequestStrKey(old),
-                           @"new":RequestStrKey(new)};
+                           @"new":RequestStrKey(new),
+                              @"scope":@"1"
+        };
         [self putUrl:@"/auth/password/1" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
@@ -88,8 +103,10 @@
         NSDictionary *dic = @{@"app":RequestStrKey(app),
                            @"account":RequestStrKey(account),
                            @"smsCode":RequestStrKey(smsCode),
-                           @"password":RequestStrKey(password),
-                           @"userType":NSNumber.dou(userType)};
+                           @"password":RequestStrKey([password base64Encode]),
+                           @"userType":NSNumber.dou(userType),
+                              @"scope":@"1",
+        };
         [self putUrl:@"/auth/password/0" delegate:delegate parameters:dic success:success failure:failure];
 }
 
@@ -122,7 +139,7 @@
                            @"account":RequestStrKey(account),
                               @"scope":@"1",
                            @"userType":NSNumber.dou(userType)};
-        [self postUrl:@"/auth/smscode" delegate:delegate parameters:dic success:success failure:failure];
+        [self getUrl:@"/auth/sms/code/2" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
 修改用户信息

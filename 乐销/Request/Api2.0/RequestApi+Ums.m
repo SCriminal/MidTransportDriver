@@ -18,7 +18,7 @@
                              delegate:(id <RequestDelegate>)delegate
                               success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"appId":RequestStrKey(appId),
+    NSDictionary *dic = @{@"app":RequestStrKey(appId),
                           @"phone":RequestStrKey(phone)};
     [self getUrl:@"/ums/sms/code/4" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -30,7 +30,7 @@
                          delegate:(id <RequestDelegate>)delegate
                           success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"appId":RequestStrKey(appId),
+    NSDictionary *dic = @{@"app":RequestStrKey(appId),
                           @"phone":RequestStrKey(phone)};
     [self getUrl:@"/ums/sms/code/1" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -42,7 +42,7 @@
                         delegate:(id <RequestDelegate>)delegate
                          success:(void (^)(NSDictionary * response, id mark))success
                          failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"appId":RequestStrKey(appId),
+    NSDictionary *dic = @{@"app":RequestStrKey(appId),
                           @"phone":RequestStrKey(phone)};
     [self getUrl:@"/ums/sms/code/3" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -72,7 +72,7 @@
                          delegate:(id <RequestDelegate>)delegate
                           success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"appId":RequestStrKey(appId),
+    NSDictionary *dic = @{@"app":RequestStrKey(appId),
                           @"oldCellphone":RequestStrKey(oldCellphone),
                           @"newCellphone":RequestStrKey(newCellphone),
                           @"code":RequestStrKey(code)};
@@ -97,7 +97,7 @@
                     delegate:(id <RequestDelegate>)delegate
                      success:(void (^)(NSDictionary * response, id mark))success
                      failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"appId":RequestStrKey(appId),
+    NSDictionary *dic = @{@"app":RequestStrKey(appId),
                           @"clientId":RequestStrKey(clientId),
                           @"phone":RequestStrKey(phone),
                           @"code":RequestStrKey(code),

@@ -161,7 +161,7 @@
 
 #pragma mark request
 - (void)requestSend{
-    [RequestApi requestLoginCodeWithAppid:@"1" phone:self.strPhone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestSmsForgetPwdWithApp:REQUEST_APP account:self.strPhone userType:1 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [self timerStart];
 
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -181,8 +181,9 @@
   
 }
 - (void)requestMatchCode:(NSString *)code{
+    NSLog(@"sld code %@",code);
     NSString * strPhone = [self.strPhone stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [RequestApi requestMatchCodeWithApp:@"" phone:strPhone code:code  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestMatchCodeAccount:strPhone code:code delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         if ([response isKindOfClass:[NSDictionary class]]&&[response boolValueForKey:@"status"]) {
             InputPwdVC * inputPwdVC = [ InputPwdVC new];
             inputPwdVC.strPhone = self.strPhone;
@@ -192,11 +193,10 @@
             [self.codeView clearCode];
             [GlobalMethod showAlert:@"验证码输入错误"];
         }
-      
-
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    } ];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+   
 }
 @end
 

@@ -13,7 +13,8 @@
 #import "BaseVC+KeyboardObserve.h"
 //next code
 #import "InputCodeVC.h"
-#import "RequestApi+UserAuth.h"
+//request
+#import "RequestDriver2.h"
 
 @interface InputPwdVC ()
 
@@ -109,18 +110,16 @@
         [GlobalMethod showAlert:@"两次密码不一致"];
         return;
     }
-    [RequestApi requestForgetPwdWithApp:nil account:self.strPhone code:self.code password:self.tfPwd.tf.text delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestForgetPwdWithApp:REQUEST_APP account:self.strPhone smsCode:self.code password:self.tfPwd.tf.text userType:1 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         if ([GB_Nav hasClass:@"LoginViewController"]) {
             [GB_Nav popToClass:@"LoginViewController"];
         }else{
             [GlobalMethod clearUserInfo];
             [GlobalMethod createRootNav];
         }
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
-    
-
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 
 @end
