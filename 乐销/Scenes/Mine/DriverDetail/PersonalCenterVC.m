@@ -18,7 +18,8 @@
 //request
 #import "RequestApi+UserApi.h"
 #import "RequestApi+Dictionary.h"
-
+//request
+#import "RequestDriver2.h"
 //car team vc
 #import "CarTeamListManagementVC.h"
 //car list
@@ -185,9 +186,7 @@
     self.tableView.tableHeaderView = self.topView;
     self.tableView.tableFooterView = self.modelView;
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBAR_HEIGHT);
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userInfoChange) name:NOTICE_SELFMODEL_CHANGE  object:nil];
 
-    //table
     //request
     [self reconfigData];
 }
@@ -197,19 +196,15 @@
     [self request];
 }
 
-#pragma mark user detail change
-- (void)userInfoChange{
-    [self reconfigData];
-}
 #pragma mark request
 - (void)reconfigData{
-   
+    
     [self.tableView reloadData];
 }
 
 #pragma mark request
 - (void)request{
-    [RequestApi requestUserInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestUserInfo2WithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelBaseInfo *modelUser = GlobalData.sharedInstance.GB_UserModel;
         ModelBaseInfo * modelUserNew = [ModelBaseInfo modelObjectWithDictionary:response];
         if (![modelUser.description isEqualToString:modelUserNew.description]) {

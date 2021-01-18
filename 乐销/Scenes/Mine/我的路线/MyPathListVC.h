@@ -16,10 +16,10 @@
 
 @property (strong, nonatomic) UIButton *btnEdit;
 @property (strong, nonatomic) UIButton *btnDelete;
-@property (nonatomic, strong) void (^blockEditClick)(ModelShopAddress *);
-@property (nonatomic, strong) void (^blockDeleteClick)(ModelShopAddress *);
-@property (nonatomic, strong) ModelShopAddress *model;
+@property (nonatomic, strong) void (^blockEditClick)(ModelPathListItem *);
+@property (nonatomic, strong) void (^blockDeleteClick)(ModelPathListItem *);
+@property (nonatomic, strong) ModelPathListItem *model;
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(ModelShopAddress *)model;
+- (void)resetCellWithModel:(ModelPathListItem *)model;
 
 @end

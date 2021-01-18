@@ -154,6 +154,9 @@
            self.btnDelete.hidden = false;
            self.btnDelete.rightCenterY = XY(SCREEN_WIDTH - W(59)+ W(15), self.height/2.0);
     }
+    NSString * strPlace = self.model.isChangeInvalid?@"不可修改":model.placeHolderString;
+    [self.subTitle fitTitle:isStr(model.subString)?model.subString:strPlace variable:self.ivArrow.left - W(45)-(model.subLeft?model.subLeft:W(99))];
+
 }
     
 #pragma mark click

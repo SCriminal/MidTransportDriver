@@ -9,5 +9,6 @@
 #import "BaseTableVC.h"
 
 @interface AddPathVC : BaseTableVC
+@property (nonatomic, strong) ModelPathListItem *modelList;
 
 @end

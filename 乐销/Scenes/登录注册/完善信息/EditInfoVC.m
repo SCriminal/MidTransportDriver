@@ -13,7 +13,8 @@
 #import "DatePicker.h"
 #import "BaseVC+BaseImageSelectVC.h"
 //request
-#import "RequestApi+UserApi.h"
+//request
+#import "RequestDriver2.h"
 //上传图片
 #import "AliClient.h"
 #import "BaseTableVC+Authority.h"
@@ -87,6 +88,7 @@
             model.imageName = @"";
             model.string = @"昵称";
             model.placeHolderString = @"填写您的昵称";
+            model.subString = [GlobalData sharedInstance].GB_UserModel.nickname;
             return model;
         }();
     }
@@ -109,6 +111,7 @@
             [datePickerView.datePicker selectDate:isStr(weakSelf.modelAge.subString)?[GlobalMethod exchangeStringToDate:weakSelf.modelAge.subString formatter:TIME_DAY_CN]:[NSDate date]];
             [weakSelf.view addSubview:datePickerView];
         };
+
     }
     return _modelAge;
 }
@@ -228,36 +231,35 @@
     NSString * strUrl = isStr([BaseImage fetchUrl:self.topView.ivHead.image])?[BaseImage fetchUrl:self.topView.ivHead.image]:[GlobalData sharedInstance].GB_UserModel.headUrl;
     NSDate * dateBirthday = [GlobalMethod exchangeStringToDate:self.modelAge.subString formatter:TIME_DAY_CN];
     double timeBirthday = [dateBirthday timeIntervalSince1970];
-    
-    [RequestApi requestChangeUserInfoWithNickname:self.modelName.subString headUrl:strUrl gender:self.modelGender.identifier birthday:[NSString stringWithFormat:@"%.f",timeBirthday] contactPhone:@"" areaId:@"" address:@"" email:@"" weChat:@"" introduce:self.bottomView.textView.text delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        //notice
+    [RequestApi requestResetUserInfoWithNickname:self.modelName.subString headUrl:strUrl email:self.modelEmail.subString birthday:timeBirthday                                  gender:self.modelGender.identifier
+ delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalData sharedInstance].GB_UserModel.headUrl = strUrl;
         [GlobalData sharedInstance].GB_UserModel.nickname = self.modelName.subString;
         [GlobalData sharedInstance].GB_UserModel.introduce = self.bottomView.textView.text;
         [GlobalData saveUserModel];
         [GB_Nav popViewControllerAnimated:true];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 
 #pragma mark request
 - (void)requestData{
-    [RequestApi requestUserInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestUserInfo2WithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.modelInfo = [ModelBaseInfo modelObjectWithDictionary:response];
         self.modelName.subString = self.modelInfo.nickname;
         self.modelAge.subString = [GlobalMethod exchangeTimeWithStamp:self.modelInfo.birthday andFormatter:TIME_DAY_CN];
         self.modelGender.subString = [ModelBaseInfo switchGender:self.modelInfo.gender];
-
-        self.bottomView.textView.text = self.modelInfo.introduce;
+        self.modelGender.identifier = NSNumber.dou(self.modelInfo.gender).stringValue;
+        self.modelEmail.subString = self.modelInfo.email;
+        [self.topView.ivHead sd_setImageWithURL:[NSURL URLWithString:self.modelInfo.headUrl] placeholderImage:[UIImage imageNamed:IMAGE_HEAD_DEFAULT]];
         [self configData];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
-    }];
+        }];
 }
 
 @end
-
 
 
 @implementation EditInfoTopView

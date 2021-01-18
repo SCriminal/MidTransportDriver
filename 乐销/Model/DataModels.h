@@ -62,3 +62,5 @@
 
 #import "ModelShopAddress.h"
 #import "ModelIntegralProduct.h"
+//path
+#import "ModelPathListItem.h"

@@ -12,7 +12,7 @@
 //请求URL
 #if DEBUG
 #define URL_HEAD  @"http://112.253.1.72:10231"
-#define URL_IMAGE @"http://172.16.1.102:10000"//image
+#define URL_IMAGE @"http://112.253.1.72:10231"//image
 //#define URL_SHARE @"http://112.253.1.72:10201"
 
 //#define URL_HEAD  @"https://api.zhongcheyun.cn"//外网

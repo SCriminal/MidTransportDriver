@@ -194,7 +194,7 @@
             [GlobalMethod showAlert:@"验证码输入错误"];
         }
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
+                
         }];
    
 }

@@ -4385,8 +4385,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/DriverDetail/PersonalCenterVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "-modelView"
             landmarkType = "7">
          </BreakpointContent>
@@ -4433,8 +4433,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/&#x6536;&#x8d27;&#x5730;&#x5740;/AddressListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "-requestList"
             landmarkType = "7">
             <Locations>
@@ -4481,9 +4481,9 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/&#x6536;&#x8d27;&#x5730;&#x5740;/AddressListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "-requestEdit:"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-requestDelete:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4801,8 +4801,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api2.0/RequestApi+Ums.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "+requestUserInfo2WithDelegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4833,8 +4833,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x5b8c;&#x5584;&#x4fe1;&#x606f;/PerfectSelectCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "-resetCellWithModel:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5041,8 +5041,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x5b8c;&#x5584;&#x4fe1;&#x606f;/EditInfoVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "-completeClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -5060,22 +5060,6 @@
             startingLineNumber = "35"
             endingLineNumber = "35"
             landmarkName = "-setGB_UserModel:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "882D651B-3F5D-411B-85FB-774595358496"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x767b;&#x5f55;/InputCodeVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "-requestMatchCode:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

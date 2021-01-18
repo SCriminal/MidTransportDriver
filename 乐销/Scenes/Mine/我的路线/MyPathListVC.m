@@ -8,6 +8,8 @@
 
 #import "MyPathListVC.h"
 #import "AddPathVC.h"
+//request
+#import "RequestDriver2.h"
 @interface MyPathListVC ()
 
 @end
@@ -24,17 +26,21 @@
     [self.tableView registerClass:[MyPathListCell class] forCellReuseIdentifier:@"MyPathListCell"];
     //request
     [self requestList];
+    [self addRefreshHeader];
 }
 
 #pragma mark 添加导航栏
 - (void)addNav{
+    WEAKSELF
     BaseNavView * nav = [BaseNavView initNavBackTitle:@"我的路线" rightTitle:@"添加" rightBlock:^{
         AddPathVC * vc = [AddPathVC new];
+        vc.blockBack = ^(UIViewController *vc) {
+            [weakSelf refreshHeaderAll];
+        };
         [GB_Nav pushViewController:vc animated:true];
     }];
     [nav configBackBlueStyle];
     [self.view addSubview:nav];
-//    [self.view addSubview:[BaseNavView initNavBackTitle:<#导航栏标题#> rightView:nil]];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
@@ -49,6 +55,23 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MyPathListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MyPathListCell"];
     [cell resetCellWithModel:self.aryDatas[indexPath.row]];
+    WEAKSELF
+    cell.blockEditClick = ^(ModelPathListItem *item) {
+        AddPathVC * pathVC  = [AddPathVC new];
+        pathVC.modelList = item;
+        pathVC.blockBack = ^(UIViewController *vc) {
+            [weakSelf requestList];
+        };
+        [GB_Nav pushViewController:pathVC animated:true];
+    };
+    cell.blockDeleteClick  = ^(ModelPathListItem *item) {
+        ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+        ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+        modelConfirm.blockClick = ^(void){
+            [weakSelf requestDelete:item];
+        };
+        [BaseAlertView initWithTitle:@"确认删除？" content:@"确认删除此路线" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
+    };
     return cell;
     
 }
@@ -59,8 +82,20 @@
 
 #pragma mark request
 - (void)requestList{
-    self.aryDatas = @[@"",@"",@""].mutableCopy;
-    [self.tableView reloadData];
+    [RequestApi requestPathListDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.aryDatas = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelPathListItem"];        
+        [self.tableView reloadData];
+
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+}
+- (void)requestDelete:(ModelPathListItem *)item{
+    [RequestApi requestDeletePathWithId:item.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [self requestList];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 @end
 
@@ -113,7 +148,7 @@
     return self;
 }
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(ModelShopAddress *)model{
+- (void)resetCellWithModel:(ModelPathListItem *)model{
     self.model = model;
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
@@ -122,22 +157,43 @@
     self.btnEdit.rightTop = XY(self.btnDelete.left,0);
 
     CGFloat top = W(18);
-    NSArray * ary = @[^(){
+    NSMutableArray * ary = @[^(){
         ModelBaseData * m = [ModelBaseData new];
         m.string = @"始发地：";
-        m.subString = @"山东省潍坊市青州市";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"途径1：";
-               m.subString = @"安徽省合肥市肥东区";
+        m.subString = model.startShow;
         return m;
     }(),^(){
         ModelBaseData * m = [ModelBaseData new];
         m.string = @"目的地：";
-               m.subString = @"广东省广州市天河区";
+               m.subString = model.endShow;
         return m;
-    }()];
+    }()].mutableCopy;
+    
+    if (isStr(model.routePass3)) {
+        [ary insertObject:^(){
+            ModelBaseData * m = [ModelBaseData new];
+            m.string = @"途径3：";
+            m.subString = model.routePass3;
+            return m;
+        }() atIndex:1];
+    }
+    if (isStr(model.routePass2)) {
+        [ary insertObject:^(){
+            ModelBaseData * m = [ModelBaseData new];
+            m.string = @"途径2：";
+            m.subString = model.routePass2;
+            return m;
+        }() atIndex:1];
+    }
+    if (isStr(model.routePass1)) {
+        [ary insertObject:^(){
+            ModelBaseData * m = [ModelBaseData new];
+            m.string = @"途径1：";
+            m.subString = model.routePass1;
+            return m;
+        }() atIndex:1];
+    }
+    
     for (ModelBaseData * m in ary) {
         {
             UILabel * l = [UILabel new];

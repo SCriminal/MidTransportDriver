@@ -12,6 +12,8 @@
 //request
 //create
 #import "CreateAddressVC.h"
+//request
+#import "RequestDriver2.h"
 
 @interface AddressListVC ()
 
@@ -48,7 +50,7 @@
 #pragma mark 添加导航栏
 - (void)addNav{
     WEAKSELF
-    BaseNavView * nav = [BaseNavView initNavBackTitle:@"收货地址" rightTitle:@"" rightBlock:^{
+    BaseNavView * nav = [BaseNavView initNavBackTitle:@"收货地址" rightTitle:@"添加" rightBlock:^{
         CreateAddressVC * vc = [CreateAddressVC new];
         vc.blockBack = ^(UIViewController *vc) {
             [weakSelf refreshHeaderAll];
@@ -91,49 +93,25 @@
 
 #pragma mark request
 - (void)requestList{
-    self.aryDatas = @[^(){
-        ModelShopAddress * m = [ModelShopAddress new];
-        m.contact = @"李林";
-        m.phone = @"15634834990";
-        m.provinceName = @"山东省潍坊市奎文区梨园街道世博国";
-        return m;
-    }(),^(){
-        ModelShopAddress * m = [ModelShopAddress new];
-              m.contact = @"李林";
-              m.phone = @"15634834990";
-              m.provinceName = @"山东省潍坊市奎文区梨园街道世博国";
-              return m;
-    }(),^(){
-         ModelShopAddress * m = [ModelShopAddress new];
-              m.contact = @"李林";
-              m.phone = @"15634834990";
-              m.provinceName = @"山东省潍坊市奎文区梨园街道世博国";
-              return m;
-    }()].mutableCopy;
-    [self.tableView reloadData];
-//    [RequestApi requestAddressListWithPage:self.pageNum count:50 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-//        self.pageNum ++;
-//        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelShopAddress"];
-//        if (self.isRemoveAll) {
-//            [self.aryDatas removeAllObjects];
-//        }
-//        if (!isAry(aryRequest)) {
-//            [self.tableView.mj_footer endRefreshingWithNoMoreData];
-//        }
-//        [self.aryDatas addObjectsFromArray:aryRequest];
-//        [self.tableView reloadData];
-//    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-//
-//    }];
+    [RequestApi requestAddressListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.aryDatas = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelShopAddress"];
+       
+        [self.tableView reloadData];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+    
 }
 - (void)requestDelete:(ModelShopAddress *)model{
     WEAKSELF
-//    [RequestApi requestDeleteAddressWithId:model.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-//        [GlobalMethod showAlert:@"删除成功"];
-//        [weakSelf refreshHeaderAll];
-//    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-//
-//    }];
+    [RequestApi requestDeleteAddressWithId:NSNumber.dou(model.iDProperty).stringValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"删除成功"];
+        [weakSelf refreshHeaderAll];
+
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+
 }
 - (void)requestEdit:(ModelShopAddress *)model{
     WEAKSELF

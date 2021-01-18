@@ -42,6 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
                 headUrl:(NSString *)headUrl
                 email:(NSString *)email
                 birthday:(double)birthday
+                                 gender:(NSString *)gender
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure;
@@ -196,7 +197,9 @@ NS_ASSUME_NONNULL_BEGIN
 */
 +(void)requestAddPathWithStartareaid:(NSString *)startAreaId
                 endAreaId:(NSString *)endAreaId
-                passAreaIds:(NSString *)passAreaIds
+                        routePass1Id:(NSString *)routePass1Id
+                        routePass2Id:(NSString *)routePass2Id
+                        routePass3Id:(NSString *)routePass3Id
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure;
@@ -205,7 +208,9 @@ NS_ASSUME_NONNULL_BEGIN
 */
 +(void)requestEditPathWithStartareaid:(NSString *)startAreaId
                 endAreaId:(NSString *)endAreaId
-                passAreaIds:(NSString *)passAreaIds
+                         routePass1Id:(NSString *)routePass1Id
+                         routePass2Id:(NSString *)routePass2Id
+                         routePass3Id:(NSString *)routePass3Id
                 id:(NSString *)id
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
@@ -224,6 +229,10 @@ NS_ASSUME_NONNULL_BEGIN
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure;
+
++(void)requestPathListDelegate:(id <RequestDelegate>)delegate
+success:(void (^)(NSDictionary * response, id mark))success
+                       failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
 新增
 */

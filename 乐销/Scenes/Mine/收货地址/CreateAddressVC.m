@@ -12,10 +12,12 @@
 #import "BaseVC+BaseImageSelectVC.h"
 //上传图片
 #import "AliClient.h"
-#import "BaseTableVC+Authority.h"
 
 //add
 #import "SelectDistrictView.h"
+//request
+#import "RequestDriver2.h"
+#import "BaseTableVC+Authority.h"
 
 @interface CreateAddressVC ()
 @property (nonatomic, strong) ModelBaseData *modelName;
@@ -37,7 +39,7 @@
         [_btnBottom addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:0 lineColor:[UIColor clearColor]];
         [_btnBottom setTitle:@"保存" forState:UIControlStateNormal];
         _btnBottom.titleLabel.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
-        [_btnBottom addTarget:self action:@selector(saveCick) forControlEvents:UIControlEventTouchUpInside];
+        [_btnBottom addTarget:self action:@selector(requestAdd) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnBottom;
 }
@@ -188,33 +190,31 @@
         [GlobalMethod showAlert:@"请输入有效手机号"];
         return;
     }
-//    if (self.model.iDProperty) {
-//        [RequestApi requestEditAddressWithCountyid:self.modelDistrict.identifier.doubleValue detail:self.modelAddressDetail.subString contact:self.modelName.subString contactPhone:self.modelPhone.subString lng:nil lat:nil id:self.model.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-//            [GlobalMethod showAlert:@"编辑成功"];
-//            [GB_Nav popViewControllerAnimated:true];
-//        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-//
-//        }];
-//
-//        return;
-//    }
-//    [RequestApi requestAddAddressWithCountyid:self.modelDistrict.identifier.doubleValue detail:self.modelAddressDetail.subString contact:self.modelName.subString contactPhone:self.modelPhone.subString lng:nil lat:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-//        [GlobalMethod showAlert:@"添加成功"];
-//        [GB_Nav popViewControllerAnimated:true];
-//    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-//
-//    }];
-}
+    ModelAddress * modelAddressItem = [ModelAddress lastLocation];
+    double lng = modelAddressItem.lng;
+    double lat = modelAddressItem.lat;
 
-- (void)requestDelete{
-//    [RequestApi requestDeleteAddressWithId:self.model.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-//        [GlobalMethod showAlert:@"删除成功"];
-//        [GB_Nav popViewControllerAnimated:true];
-//    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-//
-//    }];
-}
-- (void)saveCick{
+    if (self.model.iDProperty) {
+        [RequestApi requestEditAddressWithLng:NSNumber.dou(lng).stringValue lat:NSNumber.dou(lat).stringValue areaId:self.modelDistrict.identifier.doubleValue addr:self.modelAddressDetail.subString contactPhone:self.modelPhone.subString contacter:self.modelName.subString isDefault:@"0" id:NSNumber.dou(self.model.iDProperty).stringValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [GlobalMethod showAlert:@"编辑成功"];
+            [GB_Nav popViewControllerAnimated:true];
+
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+        return;
+    }
+    
+
+    [RequestApi requestAddAddressWithLng:NSNumber.dou(lng).stringValue lat:NSNumber.dou(lat).stringValue areaId:self.modelDistrict.identifier.doubleValue addr:self.modelAddressDetail.subString contactPhone:self.modelPhone.subString contacter:self.modelName.subString isDefault:@"0" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"添加成功"];
+        [GB_Nav popViewControllerAnimated:true];
+
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
     
 }
+
+
 @end

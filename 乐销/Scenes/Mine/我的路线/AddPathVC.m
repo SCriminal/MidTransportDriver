@@ -8,6 +8,10 @@
 
 #import "AddPathVC.h"
 #import "BaseTableVC+Authority.h"
+#import "SelectDistrictView.h"
+//request
+#import "RequestDriver2.h"
+
 @interface AddPathVC ()
 @property (nonatomic, strong) ModelBaseData *modelAddressStart;
 @property (nonatomic, strong) ModelBaseData *modelAddressEnd;
@@ -36,10 +40,19 @@
             model.imageName = @"";
             model.string = @"始发地";
             model.placeHolderString = @"选择始发地";
+            if (self.modelList) {
+                model.subString = self.modelList.startShow;
+                model.identifier = NSNumber.dou(self.modelList.startCountyId).stringValue;
+            }
             WEAKSELF
-            model.blocClick = ^(ModelBaseData *item) {
-                
-                
+            model.blocClick = ^(ModelBaseData *modelClick) {
+                SelectDistrictView * selectView = [SelectDistrictView new];
+                selectView.blockCitySeleted = ^(ModelProvince *pro, ModelProvince *city, ModelProvince *area) {
+                    modelClick.subString = [NSString stringWithFormat:@"%@%@%@",pro.name,[pro.name isEqualToString:city.name]?@"":city.name,area.name];
+                    modelClick.identifier = strDotF(area.iDProperty);
+                    [weakSelf.tableView reloadData];
+                };
+                [weakSelf.view addSubview:selectView];
             };
             return model;
         }();
@@ -56,9 +69,19 @@
             model.imageName = @"";
             model.string = @"目的地";
             model.placeHolderString = @"选择目的地";
+            if (self.modelList) {
+                model.subString = self.modelList.endShow;
+                model.identifier = NSNumber.dou(self.modelList.endCountyId).stringValue;
+            }
             model.blocClick = ^(ModelBaseData *modelClick) {
                 [GlobalMethod endEditing];
-                
+                SelectDistrictView * selectView = [SelectDistrictView new];
+                selectView.blockCitySeleted = ^(ModelProvince *pro, ModelProvince *city, ModelProvince *area) {
+                    modelClick.subString = [NSString stringWithFormat:@"%@%@%@",pro.name,[pro.name isEqualToString:city.name]?@"":city.name,area.name];
+                    modelClick.identifier = strDotF(area.iDProperty);
+                    [weakSelf.tableView reloadData];
+                };
+                [weakSelf.view addSubview:selectView];
             };
             return model;
         }();
@@ -74,13 +97,18 @@
     [self registAuthorityCell];
     self.tableView.tableFooterView = self.bottomView;
     //request
-    [self requestList];
+    self.aryDatas = @[self.modelAddressStart,self.modelAddressEnd].mutableCopy;
+    [self.tableView reloadData];
+    if (self.modelList) {
+        [self requestDetail];
+    }
 }
 
 #pragma mark 添加导航栏
 - (void)addNav{
-    BaseNavView * nav = [BaseNavView initNavBackTitle:@"添加路线" rightTitle:@"保存" rightBlock:^{
-        
+    WEAKSELF
+    BaseNavView * nav = [BaseNavView initNavBackTitle:self.modelList?@"修改路线":@"添加路线" rightTitle:@"保存" rightBlock:^{
+        [weakSelf requestSave];
     }];
     [nav configBackBlueStyle];
     [self.view addSubview:nav];
@@ -102,17 +130,22 @@
 }
 
 
-#pragma mark request
-- (void)requestList{
-    self.aryDatas = @[self.modelAddressStart,self.modelAddressEnd].mutableCopy;
-    [self.tableView reloadData];
-}
 - (void)addClick{
+    [self addPathName:nil identity:0];
+}
+- (void)addPathName:(NSString *)name identity:(double)identity{
+    if (self.aryDatas.count>=5) {
+        [GlobalMethod showAlert:@"最多添加3个途径地"];
+        return;
+    }
+    
     ModelBaseData * model = [ModelBaseData new];
     model.enumType = ENUM_PERFECT_CELL_SELECT_DELETE;
     model.imageName = @"";
     model.string = [NSString stringWithFormat:@"途径%ld",self.aryDatas.count - 1];
     model.placeHolderString = @"选择途径地";
+    model.subString = name;
+    model.identifier = identity?NSNumber.dou(identity).stringValue:nil;
     WEAKSELF
     model.blockDeleteClick = ^(ModelBaseData *modelClick) {
         [GlobalMethod endEditing];
@@ -123,7 +156,68 @@
         }
         [weakSelf.tableView reloadData];
     };
+    model.blocClick = ^(ModelBaseData *modelClick) {
+        SelectDistrictView * selectView = [SelectDistrictView new];
+        selectView.blockCitySeleted = ^(ModelProvince *pro, ModelProvince *city, ModelProvince *area) {
+            modelClick.subString = [NSString stringWithFormat:@"%@%@%@",pro.name,[pro.name isEqualToString:city.name]?@"":city.name,area.name];
+            modelClick.identifier = strDotF(area.iDProperty);
+            [weakSelf.tableView reloadData];
+        };
+        [weakSelf.view addSubview:selectView];
+    };
+   
     [self.aryDatas insertObject:model atIndex:self.aryDatas.count - 1];
     [self.tableView reloadData];
+}
+- (void)requestSave{
+    NSString * startID = nil;
+    NSString * endID = nil;
+    NSString * path0 = nil;
+    NSString * path1 = nil;
+    NSString * path2 = @"";
+    {
+        ModelBaseData * m = self.aryDatas[0];
+        startID = m.identifier;
+    }
+    {
+        ModelBaseData * m = self.aryDatas.lastObject;
+        endID = m.identifier;
+    }
+    if (self.aryDatas.count>=3) {
+        ModelBaseData * m = self.aryDatas[1];
+        path0 = m.identifier;
+    }
+    if (self.aryDatas.count>=4) {
+        ModelBaseData * m = self.aryDatas[2];
+        path1 = m.identifier;
+    }
+    if (self.aryDatas.count>=5) {
+        ModelBaseData * m = self.aryDatas[3];
+        path2 = m.identifier;
+    }
+    
+    [RequestApi requestAddPathWithStartareaid:startID endAreaId:endID routePass1Id:path0 routePass2Id:path1 routePass3Id:path2 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"添加成功"];
+        [GB_Nav popViewControllerAnimated:true];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+    
+}
+- (void)requestDetail{
+    [RequestApi requestPathDetailWithId:self.modelList.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.modelList = [ModelPathListItem modelObjectWithDictionary:response];
+        if (self.modelList.routePass1Id) {
+            [self addPathName:self.modelList.routePass1 identity:self.modelList.routePass1Id];
+        }
+        if (self.modelList.routePass2Id) {
+            [self addPathName:self.modelList.routePass2 identity:self.modelList.routePass2Id];
+        }
+        if (self.modelList.routePass3Id) {
+            [self addPathName:self.modelList.routePass3 identity:self.modelList.routePass3Id];
+        }
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 @end

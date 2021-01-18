@@ -53,12 +53,14 @@
                                 headUrl:(NSString *)headUrl
                                   email:(NSString *)email
                                birthday:(double)birthday
+                                 gender:(NSString *)gender
                                delegate:(id <RequestDelegate>)delegate
                                 success:(void (^)(NSDictionary * response, id mark))success
                                 failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"nickname":RequestStrKey(nickname),
                           @"headUrl":RequestStrKey(headUrl),
                           @"email":RequestStrKey(email),
+                          @"gender":RequestStrKey(gender),
                           @"birthday":NSNumber.dou(birthday)};
     [self putUrl:@"/ums/user" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -322,13 +324,24 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
  */
 +(void)requestAddPathWithStartareaid:(NSString *)startAreaId
                            endAreaId:(NSString *)endAreaId
-                         passAreaIds:(NSString *)passAreaIds
+                        routePass1Id:(NSString *)routePass1Id
+                        routePass2Id:(NSString *)routePass2Id
+                        routePass3Id:(NSString *)routePass3Id
                             delegate:(id <RequestDelegate>)delegate
                              success:(void (^)(NSDictionary * response, id mark))success
                              failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"startAreaId":RequestStrKey(startAreaId),
+    NSMutableDictionary *dic = @{@"startAreaId":RequestStrKey(startAreaId),
                           @"endAreaId":RequestStrKey(endAreaId),
-                          @"passAreaIds":RequestStrKey(passAreaIds)};
+    }.mutableCopy;
+    if (isStr(routePass1Id)) {
+        [dic setObject:routePass1Id forKey:@"routePass1Id"];
+    }
+    if (isStr(routePass2Id)) {
+        [dic setObject:routePass1Id forKey:@"routePass2Id"];
+    }
+    if (isStr(routePass3Id)) {
+        [dic setObject:routePass1Id forKey:@"routePass3Id"];
+    }
     [self postUrl:@"/ums/route" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
@@ -336,15 +349,25 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
  */
 +(void)requestEditPathWithStartareaid:(NSString *)startAreaId
                             endAreaId:(NSString *)endAreaId
-                          passAreaIds:(NSString *)passAreaIds
+                         routePass1Id:(NSString *)routePass1Id
+                         routePass2Id:(NSString *)routePass2Id
+                         routePass3Id:(NSString *)routePass3Id
 id:(NSString *)id
 delegate:(id <RequestDelegate>)delegate
 success:(void (^)(NSDictionary * response, id mark))success
 failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"startAreaId":RequestStrKey(startAreaId),
+    NSMutableDictionary *dic = @{@"startAreaId":RequestStrKey(startAreaId),
                           @"endAreaId":RequestStrKey(endAreaId),
-                          @"passAreaIds":RequestStrKey(passAreaIds),
-                          @"id":RequestStrKey(id)};
+                          @"id":RequestStrKey(id)}.mutableCopy;
+    if (isStr(routePass1Id)) {
+        [dic setObject:routePass1Id forKey:@"routePass1Id"];
+    }
+    if (isStr(routePass2Id)) {
+        [dic setObject:routePass1Id forKey:@"routePass2Id"];
+    }
+    if (isStr(routePass3Id)) {
+        [dic setObject:routePass1Id forKey:@"routePass3Id"];
+    }
     [self putUrl:@"/ums/route/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
@@ -366,6 +389,15 @@ success:(void (^)(NSDictionary * response, id mark))success
 failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"id":NSNumber.dou(id)};
     [self getUrl:@"/ums/route/{id}" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
+list
+ */
++(void)requestPathListDelegate:(id <RequestDelegate>)delegate
+success:(void (^)(NSDictionary * response, id mark))success
+failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{};
+    [self getUrl:@"/ums/route/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  新增

@@ -51,7 +51,6 @@
 		D216F5371E569C1200E11ED2 /* NSObject+Catrgory.m in Sources */ = {isa = PBXBuildFile; fileRef = D216F5361E569C1200E11ED2 /* NSObject+Catrgory.m */; };
 		D216F53F1E56AB9800E11ED2 /* NSArray+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = D216F53C1E56AB9800E11ED2 /* NSArray+Safe.m */; };
 		D216F5401E56AB9800E11ED2 /* NSMutableArray+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = D216F53E1E56AB9800E11ED2 /* NSMutableArray+Safe.m */; };
-		D217A54A21C0F57800B9B2F9 /* LeftMenuTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D217A54921C0F57800B9B2F9 /* LeftMenuTopView.m */; };
 		D217D8C61E1B8B8B0094FD55 /* BaseAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D217D8C51E1B8B8B0094FD55 /* BaseAlertView.m */; };
 		D21B2FBF23960AF2005B43D0 /* AttachedCarTeamListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B2FBE23960AF2005B43D0 /* AttachedCarTeamListVC.m */; };
 		D21B2FC223960C48005B43D0 /* AttachedCarTeamListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B2FC123960C48005B43D0 /* AttachedCarTeamListCell.m */; };
@@ -245,6 +244,7 @@
 		D2B9FF28248F2D3E0082E8D2 /* TakeAPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF27248F2D3D0082E8D2 /* TakeAPictureView.m */; };
 		D2B9FF32248F900C0082E8D2 /* SelectCarNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF31248F900C0082E8D2 /* SelectCarNumberView.m */; };
 		D2B9FF362490B5890082E8D2 /* SelectCarTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B9FF352490B5890082E8D2 /* SelectCarTypeVC.m */; };
+		D2BC0C9925B573DB0030599D /* ModelPathListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BC0C9825B573DB0030599D /* ModelPathListItem.m */; };
 		D2BC9A871DFFA75600B0468E /* allCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A831DFFA75600B0468E /* allCities.plist */; };
 		D2BC9A881DFFA75600B0468E /* allCitiesDics.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */; };
 		D2BC9A891DFFA75600B0468E /* hotCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2BC9A851DFFA75600B0468E /* hotCities.plist */; };
@@ -315,7 +315,6 @@
 		D2D5266F25AC23B700F99306 /* RequestApi+Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5266E25AC23B700F99306 /* RequestApi+Auth.m */; };
 		D2D5267225AEF48100F99306 /* AutoConfigOrderListFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5267125AEF48100F99306 /* AutoConfigOrderListFilterView.m */; };
 		D2D5267525B0450C00F99306 /* OrcHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5267425B0450B00F99306 /* OrcHelper.m */; };
-		D2D6D9AD21AFD623005A4F5B /* LeftMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D6D9AC21AFD623005A4F5B /* LeftMenuVC.m */; };
 		D2D871072338C8D700F79173 /* ModelBank.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D871052338C8D700F79173 /* ModelBank.m */; };
 		D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D9A4192015D2170025963B /* AppDelegate.m */; };
 		D2DDC4262595D68A00C810B5 /* ExchangeIntegraProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC4252595D68A00C810B5 /* ExchangeIntegraProductVC.m */; };
@@ -349,7 +348,6 @@
 		D2F3A509257642B3009EBF3F /* AutoNewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A508257642B3009EBF3F /* AutoNewsView.m */; };
 		D2F3A50C25779B6F009EBF3F /* OrderListCellBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A50B25779B6F009EBF3F /* OrderListCellBtnView.m */; };
 		D2F733B41E8642EE0008E561 /* LocalData.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F733B31E8642EE0008E561 /* LocalData.json */; };
-		D2F8473D21B1101E00833C56 /* LeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F8473C21B1101E00833C56 /* LeftMenuCell.m */; };
 		D2F926AC24CFC62900FB256D /* tab_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F926AB24CFC62900FB256D /* tab_shadow@2x.png */; };
 		D2FC339D247F5776000DE338 /* AddCarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC339B247F5776000DE338 /* AddCarVC.m */; };
 		D2FC33A0247F57AE000DE338 /* AuthorityImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC339F247F57AE000DE338 /* AuthorityImageView.m */; };
@@ -509,8 +507,6 @@
 		D216F53C1E56AB9800E11ED2 /* NSArray+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Safe.m"; sourceTree = "<group>"; };
 		D216F53D1E56AB9800E11ED2 /* NSMutableArray+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Safe.h"; sourceTree = "<group>"; };
 		D216F53E1E56AB9800E11ED2 /* NSMutableArray+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Safe.m"; sourceTree = "<group>"; };
-		D217A54821C0F57800B9B2F9 /* LeftMenuTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuTopView.h; sourceTree = "<group>"; };
-		D217A54921C0F57800B9B2F9 /* LeftMenuTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuTopView.m; sourceTree = "<group>"; };
 		D217D8C41E1B8B8B0094FD55 /* BaseAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseAlertView.h; sourceTree = "<group>"; };
 		D217D8C51E1B8B8B0094FD55 /* BaseAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseAlertView.m; sourceTree = "<group>"; };
 		D21B2FBD23960AF2005B43D0 /* AttachedCarTeamListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttachedCarTeamListVC.h; sourceTree = "<group>"; };
@@ -889,6 +885,8 @@
 		D2B9FF31248F900C0082E8D2 /* SelectCarNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCarNumberView.m; sourceTree = "<group>"; };
 		D2B9FF342490B5890082E8D2 /* SelectCarTypeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectCarTypeVC.h; sourceTree = "<group>"; };
 		D2B9FF352490B5890082E8D2 /* SelectCarTypeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectCarTypeVC.m; sourceTree = "<group>"; };
+		D2BC0C9725B573DB0030599D /* ModelPathListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelPathListItem.h; sourceTree = "<group>"; };
+		D2BC0C9825B573DB0030599D /* ModelPathListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelPathListItem.m; sourceTree = "<group>"; };
 		D2BC9A831DFFA75600B0468E /* allCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = allCities.plist; sourceTree = "<group>"; };
 		D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = allCitiesDics.plist; sourceTree = "<group>"; };
 		D2BC9A851DFFA75600B0468E /* hotCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotCities.plist; sourceTree = "<group>"; };
@@ -1022,8 +1020,6 @@
 		D2D5267125AEF48100F99306 /* AutoConfigOrderListFilterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoConfigOrderListFilterView.m; sourceTree = "<group>"; };
 		D2D5267325B0450B00F99306 /* OrcHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrcHelper.h; sourceTree = "<group>"; };
 		D2D5267425B0450B00F99306 /* OrcHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrcHelper.m; sourceTree = "<group>"; };
-		D2D6D9AB21AFD623005A4F5B /* LeftMenuVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuVC.h; sourceTree = "<group>"; };
-		D2D6D9AC21AFD623005A4F5B /* LeftMenuVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuVC.m; sourceTree = "<group>"; };
 		D2D871052338C8D700F79173 /* ModelBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBank.m; sourceTree = "<group>"; };
 		D2D871062338C8D700F79173 /* ModelBank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBank.h; sourceTree = "<group>"; };
 		D2D9A4192015D2170025963B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1085,8 +1081,6 @@
 		D2F3A50A25779B6F009EBF3F /* OrderListCellBtnView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderListCellBtnView.h; sourceTree = "<group>"; };
 		D2F3A50B25779B6F009EBF3F /* OrderListCellBtnView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderListCellBtnView.m; sourceTree = "<group>"; };
 		D2F733B31E8642EE0008E561 /* LocalData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocalData.json; sourceTree = "<group>"; };
-		D2F8473B21B1101E00833C56 /* LeftMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuCell.h; sourceTree = "<group>"; };
-		D2F8473C21B1101E00833C56 /* LeftMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuCell.m; sourceTree = "<group>"; };
 		D2F926AB24CFC62900FB256D /* tab_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_shadow@2x.png"; sourceTree = "<group>"; };
 		D2FC339B247F5776000DE338 /* AddCarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCarVC.m; sourceTree = "<group>"; };
 		D2FC339C247F5776000DE338 /* AddCarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCarVC.h; sourceTree = "<group>"; };
@@ -1797,6 +1791,7 @@
 		D275DB161DFFA2C200670A40 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D2BC0C9625B573DB0030599D /* 路线 */,
 				D293A3911E00F340005B772A /* DataModels.h */,
 				D22851B125942CED00100231 /* 积分 */,
 				D284B2C824936B4100E2605A /* OCR */,
@@ -2022,7 +2017,6 @@
 			isa = PBXGroup;
 			children = (
 				D2896698226427E4006E2196 /* WelcomVC */,
-				D2D6D9AA21AFD619005A4F5B /* LeftMenuVC */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -2518,6 +2512,15 @@
 			path = SelectCarTypeVC;
 			sourceTree = "<group>";
 		};
+		D2BC0C9625B573DB0030599D /* 路线 */ = {
+			isa = PBXGroup;
+			children = (
+				D2BC0C9725B573DB0030599D /* ModelPathListItem.h */,
+				D2BC0C9825B573DB0030599D /* ModelPathListItem.m */,
+			);
+			path = "路线";
+			sourceTree = "<group>";
+		};
 		D2BC9A7E1DFFA75600B0468E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -2885,19 +2888,6 @@
 				D2D5266E25AC23B700F99306 /* RequestApi+Auth.m */,
 			);
 			path = Api2.0;
-			sourceTree = "<group>";
-		};
-		D2D6D9AA21AFD619005A4F5B /* LeftMenuVC */ = {
-			isa = PBXGroup;
-			children = (
-				D2D6D9AB21AFD623005A4F5B /* LeftMenuVC.h */,
-				D2D6D9AC21AFD623005A4F5B /* LeftMenuVC.m */,
-				D217A54821C0F57800B9B2F9 /* LeftMenuTopView.h */,
-				D217A54921C0F57800B9B2F9 /* LeftMenuTopView.m */,
-				D2F8473B21B1101E00833C56 /* LeftMenuCell.h */,
-				D2F8473C21B1101E00833C56 /* LeftMenuCell.m */,
-			);
-			path = LeftMenuVC;
 			sourceTree = "<group>";
 		};
 		D2D871042338C8D700F79173 /* 银行卡 */ = {
@@ -3589,7 +3579,6 @@
 				D23458401FD4E5E100F72EF5 /* UIImageView+Category.m in Sources */,
 				D2745FAA2087442900A0AD05 /* NoticeSectionView.m in Sources */,
 				D2A300302266BF2F00AE2EC3 /* PerfectAuthorityInfoVC.m in Sources */,
-				D2F8473D21B1101E00833C56 /* LeftMenuCell.m in Sources */,
 				D2D089111E0E22D900BE1E4C /* PlaceHolderTextView.m in Sources */,
 				D2BC9A901DFFA7C400B0468E /* CustomTabBarController.m in Sources */,
 				D22F7DA21F666A3B000DB837 /* VideoPickerVC.m in Sources */,
@@ -3639,6 +3628,7 @@
 				D2DFD7942297C28800363142 /* OrderDetailTopView.m in Sources */,
 				D2AADB592191627800E2173E /* RequestApi+TransportPrice.m in Sources */,
 				D2136CED1E13C142003B4B92 /* NSMutableArray+Insert.m in Sources */,
+				D2BC0C9925B573DB0030599D /* ModelPathListItem.m in Sources */,
 				D24A93CB2360449400CB672C /* AuthorityReFailVC.m in Sources */,
 				D28A868B225F1E8E001E3372 /* CarTeamListCell.m in Sources */,
 				D289FEAF1E8F366C00C2636B /* SectionIndexView.m in Sources */,
@@ -3675,7 +3665,6 @@
 				D2136CEA1E13AAE9003B4B92 /* GlobalMethod+Data.m in Sources */,
 				D20E8612258AF7ED00C9EE4C /* AuthListVC.m in Sources */,
 				D2A797612488C8470062B4F6 /* CarDetailView.m in Sources */,
-				D2D6D9AD21AFD623005A4F5B /* LeftMenuVC.m in Sources */,
 				D2C55812238CC9D50050694F /* ModelValidCar.m in Sources */,
 				D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */,
 				D21F19441E1A46390094B90F /* BaseVC+BaseImageSelectVC.m in Sources */,
@@ -3806,7 +3795,6 @@
 				D28A8681225F1AEC001E3372 /* IntegralRecordVC.m in Sources */,
 				D2D5266F25AC23B700F99306 /* RequestApi+Auth.m in Sources */,
 				D26F088E20D7A5D200B258B0 /* MarQueueView.m in Sources */,
-				D217A54A21C0F57800B9B2F9 /* LeftMenuTopView.m in Sources */,
 				D2E46D7821D4A1A1007B04A1 /* DriverDetailTopView.m in Sources */,
 				D2BE30B621070BD40059929D /* ModelImage.m in Sources */,
 				D21015081EB879BF0096C9CF /* NSDate+Format.m in Sources */,
