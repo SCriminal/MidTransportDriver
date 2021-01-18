@@ -395,8 +395,6 @@
     NSDictionary *dic = @{@"id":NSNumber.dou(identity)};
     [self getUrl:@"/zhongcheyun/vehicle/1_0_10/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
-//
-
 /**
 提交我的车辆
 */
