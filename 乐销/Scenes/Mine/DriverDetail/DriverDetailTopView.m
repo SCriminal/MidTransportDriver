@@ -10,7 +10,7 @@
 //request
 #import "RequestApi+UserApi.h"
 #import "UIButton+Creat.h"
-
+#import "AuthOneVC.h"
 @interface DriverDetailTopView ()
 
 @end
@@ -18,6 +18,7 @@
 @implementation DriverDetailTopView
 
 #pragma mark 懒加载
+
 - (UIImageView *)head{
     if (_head == nil) {
         _head = [UIImageView new];
@@ -172,7 +173,8 @@
 - (void)signClick{
 }
 - (void)authClick{
-    
+    AuthOneVC * vc = [AuthOneVC new];
+    [GB_Nav pushViewController:vc animated:true];
 }
 #pragma mark dealloc
 - (void)dealloc{

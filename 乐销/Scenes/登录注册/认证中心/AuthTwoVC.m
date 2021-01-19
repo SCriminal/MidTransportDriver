@@ -9,6 +9,10 @@
 #import "AuthTwoVC.h"
 #import "AuthView.h"
 #import "BaseTableVC+Authority.h"
+//request
+#import "RequestDriver2.h"
+#import "BaseVC+BaseImageSelectVC.h"
+#import "AuthThreeVC.h"
 @interface AuthTwoVC ()
 @property (nonatomic, strong) AuthView *authTopView;
 @property (nonatomic, strong) AuthTitleView *authTitleView;
@@ -18,10 +22,10 @@
 @property (nonatomic, strong) ModelBaseData *modelCarNo;
 @property (nonatomic, strong) ModelBaseData *modelCarType;
 @property (nonatomic, strong) ModelBaseData *modelCarOwner;
-@property (nonatomic, strong) ModelBaseData *modelCarWeight;
 @property (nonatomic, strong) ModelBaseData *modelCarLong;
 @property (nonatomic, strong) ModelBaseData *modelCarWidth;
 @property (nonatomic, strong) ModelBaseData *modelCarHeight;
+@property (nonatomic, strong) ModelBaseData *modelImageSelected;
 
 
 @end
@@ -44,11 +48,13 @@
 - (AuthBtnView *)authBtnView{
     if (!_authBtnView) {
         _authBtnView = [AuthBtnView new];
+        [_authBtnView resetViewWithModel:self.isFirst];
+        WEAKSELF
         _authBtnView.blockDismissClick = ^{
             
         };
         _authBtnView.blockConfirmClick  = ^{
-            
+            [weakSelf requestUP];
         };
     }
     return _authBtnView;
@@ -62,6 +68,9 @@
         _modelMain.placeHolderString = @"点击上传";
         WEAKSELF
         _modelMain.blocClick = ^(ModelBaseData *model) {
+            weakSelf.modelImageSelected = model;
+            [weakSelf showImageVC:1];
+
         };
     }
     return _modelMain;
@@ -75,6 +84,9 @@
         _modelSub.placeHolderString = @"点击上传";
         WEAKSELF
         _modelSub.blocClick = ^(ModelBaseData *model) {
+            weakSelf.modelImageSelected = model;
+            [weakSelf showImageVC:1];
+
         };
     }
     return _modelSub;
@@ -117,18 +129,7 @@
     return _modelCarOwner;
 }
 
-- (ModelBaseData *)modelCarWeight{
-    if (!_modelCarWeight) {
-        _modelCarWeight =[ModelBaseData new];
-        _modelCarWeight.enumType = ENUM_PERFECT_CELL_TEXT;
-        _modelCarWeight.string = @"最大载重量";
-        _modelCarWeight.isChangeInvalid = false;
-//        _modelCarWeight.subString = self.model.idNumber;
-        _modelCarWeight.placeHolderString = @"填写最大载重量（kg）";
-      
-    }
-    return _modelCarWeight;
-}
+
 - (ModelBaseData *)modelCarLong{
     if (!_modelCarLong) {
         _modelCarLong =[ModelBaseData new];
@@ -171,7 +172,8 @@
     //添加导航栏
     [self addNav];
     //table
-    self.tableView.tableHeaderView = [UIView initWithViews:@[self.authTopView,self.authTitleView]];
+    
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.isFirst?self.authTopView:[NSNull null],self.authTitleView]];
     self.tableView.tableFooterView = [UIView initWithViews:@[self.authBtnView]];
     self.tableView.backgroundColor = COLOR_BACKGROUND;
     [self registAuthorityCell];
@@ -203,7 +205,7 @@
 }
 #pragma mark request
 - (void)requestList{
-    self.aryDatas = @[self.modelMain,self.modelSub,self.modelCarNo,self.modelCarType,self.modelCarOwner,self.modelCarWeight,self.modelCarLong,self.modelCarWidth,self.modelCarHeight].mutableCopy;
+    self.aryDatas = @[self.modelMain,self.modelSub,self.modelCarNo,self.modelCarType,self.modelCarOwner,self.modelCarLong,self.modelCarWidth,self.modelCarHeight].mutableCopy;
     for (ModelBaseData *m in self.aryDatas) {
         m.subLeft = W(120);
     }
@@ -211,5 +213,56 @@
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
+}
+- (void)imageSelect:(BaseImage *)image{
+    [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_USER_AUTHORITY;
+    [[AliClient sharedInstance]updateImageAry:@[image] storageSuccess:^{
+        self.modelImageSelected.identifier = image.imageURL;
+        [self.tableView reloadData];
+    } upSuccess:nil upHighQualitySuccess:^{
+//        if (self.modelImageSelected == self.modelHead) {
+//            [RequestApi requestOCRIdentityWithurl:image.imageURL delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"frontResult"]];
+//                if (isStr(model.name)) {
+//                    self.modelName.subString = model.name;
+//                }
+//                if (isStr(model.iDNumber)) {
+//                    self.modelId.subString = model.iDNumber;
+//                }
+//                [self.tableView reloadData];
+//            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//
+//            }];
+//        }
+        
+    } fail:^{
+        
+    }];
+    
+}
+#pragma mark request
+- (void)requestUP{
+    if (self.isFirst) {
+        AuthThreeVC * vc = [AuthThreeVC new];
+        vc.isFirst = self.isFirst;
+        [GB_Nav pushViewController:vc animated:true];
+    }else{
+//        [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString vehicleType:self.modelCarType.subString owner:self.modelCarOwner.subString grossMass:<#(nonnull NSString *)#> approvedLoad:<#(nonnull NSString *)#> vehicleLength:<#(nonnull NSString *)#> vehicleWidth:<#(nonnull NSString *)#> vehicleHeight:<#(nonnull NSString *)#> driving1Url:<#(nonnull NSString *)#> driving2Url:<#(nonnull NSString *)#> driving3Url:<#(nonnull NSString *)#> plateColor:<#(double)#> energyType:<#(double)#> tractionMass:<#(nonnull NSString *)#> drivingEndTime:<#(nonnull NSString *)#> useCharacter:<#(nonnull NSString *)#> unladenMass:<#(nonnull NSString *)#> vin:<#(nonnull NSString *)#> drivingRegisterDate:<#(nonnull NSString *)#> engineNumber:<#(nonnull NSString *)#> drivingIssueDate:<#(nonnull NSString *)#> model:<#(nonnull NSString *)#> rtbpNumber:<#(nonnull NSString *)#> delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//            [GlobalMethod showAlert:@"上传成功"];
+//            [GB_Nav popViewControllerAnimated:true];
+//
+//        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//            
+//        }];
+      
+    }
+   
+}
+- (void)requestDetail{
+    [RequestApi requestDriverAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 @end

@@ -112,7 +112,7 @@
                      success:(void (^)(NSDictionary * response, id mark))success
                      failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"app":RequestStrKey(appId),
-                          @"clientId":RequestStrKey(clientId),
+                          @"client":RequestStrKey(clientId),
                           @"phone":RequestStrKey(phone),
                           @"code":RequestStrKey(code),
                           @"terminalType":@1,
@@ -145,109 +145,154 @@
     [self getUrl:@"/ums/evaluate" delegate:delegate parameters:dic success:success failure:failure];
 }
 
-/**
- 提交司机信息[^/ums/identification/driver$]
- */
-+(void)requestAuthDriverWithIdcardnationalemblemurl:(NSString *)idCardNationalEmblemUrl
-                                      idCardFaceUrl:(NSString *)idCardFaceUrl
-                                          driverUrl:(NSString *)driverUrl
-                                   personVehicleUrl:(NSString *)personVehicleUrl
-                                               name:(NSString *)name
-                                           idNumber:(NSString *)idNumber
-                                         idBirthday:(NSString *)idBirthday
-                                           idGender:(NSString *)idGender
-                                           idNation:(NSString *)idNation
-                                              idOrg:(NSString *)idOrg
-                                             idAddr:(NSString *)idAddr
-                                  driverNationality:(NSString *)driverNationality
-                                       driverGender:(NSString *)driverGender
-                                     driverBirthday:(NSString *)driverBirthday
-                                        driverClass:(NSString *)driverClass
-                               driverArchivesNumber:(NSString *)driverArchivesNumber
-                               driverFirstIssueDate:(NSString *)driverFirstIssueDate
-                                           delegate:(id <RequestDelegate>)delegate
-                                            success:(void (^)(NSDictionary * response, id mark))success
-                                            failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"idCardNationalEmblemUrl":RequestStrKey(idCardNationalEmblemUrl),
-                          @"idCardFaceUrl":RequestStrKey(idCardFaceUrl),
-                          @"driverUrl":RequestStrKey(driverUrl),
-                          @"personVehicleUrl":RequestStrKey(personVehicleUrl),
-                          @"name":RequestStrKey(name),
-                          @"idNumber":RequestStrKey(idNumber),
-                          @"idBirthday":RequestStrKey(idBirthday),
-                          @"idGender":RequestStrKey(idGender),
-                          @"idNation":RequestStrKey(idNation),
-                          @"idOrg":RequestStrKey(idOrg),
-                          @"idAddr":RequestStrKey(idAddr),
-                          @"driverNationality":RequestStrKey(driverNationality),
-                          @"driverGender":RequestStrKey(driverGender),
-                          @"driverBirthday":RequestStrKey(driverBirthday),
-                          @"driverClass":RequestStrKey(driverClass),
-                          @"driverArchivesNumber":RequestStrKey(driverArchivesNumber),
-                          @"driverFirstIssueDate":RequestStrKey(driverFirstIssueDate)};
-    [self postUrl:@"/ums/identification/driver" delegate:delegate parameters:dic success:success failure:failure];
-}
-/**
- 提交车辆认证信息
- */
-+(void)requestAuthCarWithPlatenumber:(NSString *)plateNumber
-                         vehicleType:(double)vehicleType
-                               owner:(NSString *)owner
-                           grossMass:(NSString *)grossMass
-                        approvedLoad:(NSString *)approvedLoad
-                       vehicleLength:(NSString *)vehicleLength
-                        vehicleWidth:(NSString *)vehicleWidth
-                       vehicleHeight:(NSString *)vehicleHeight
-                drivingLicenseOneUrl:(NSString *)drivingLicenseOneUrl
-                drivingLicenseTwoUrl:(NSString *)drivingLicenseTwoUrl
-              drivingLicenseThreeUrl:(NSString *)drivingLicenseThreeUrl
-                          plateColor:(double)plateColor
-                          energyType:(double)energyType
-                        tractionMass:(NSString *)tractionMass
-                      drivingEndTime:(NSString *)drivingEndTime
-                        useCharacter:(NSString *)useCharacter
-                         unladenMass:(NSString *)unladenMass
-                                 vin:(NSString *)vin
-                 drivingRegisterDate:(NSString *)drivingRegisterDate
-                        engineNumber:(NSString *)engineNumber
-                    drivingIssueDate:(NSString *)drivingIssueDate
-                               model:(NSString *)model
-                            delegate:(id <RequestDelegate>)delegate
-                             success:(void (^)(NSDictionary * response, id mark))success
-                             failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"plateNumber":RequestStrKey(plateNumber),
-                          @"vehicleType":NSNumber.dou(vehicleType),
-                          @"owner":RequestStrKey(owner),
-                          @"grossMass":RequestStrKey(grossMass),
-                          @"approvedLoad":RequestStrKey(approvedLoad),
-                          @"vehicleLength":RequestStrKey(vehicleLength),
-                          @"vehicleWidth":RequestStrKey(vehicleWidth),
-                          @"vehicleHeight":RequestStrKey(vehicleHeight),
-                          @"drivingLicenseOneUrl":RequestStrKey(drivingLicenseOneUrl),
-                          @"drivingLicenseTwoUrl":RequestStrKey(drivingLicenseTwoUrl),
-                          @"drivingLicenseThreeUrl":RequestStrKey(drivingLicenseThreeUrl),
-                          @"plateColor":NSNumber.dou(plateColor),
-                          @"energyType":NSNumber.dou(energyType),
-                          @"tractionMass":RequestStrKey(tractionMass),
-                          @"drivingEndTime":RequestStrKey(drivingEndTime),
-                          @"useCharacter":RequestStrKey(useCharacter),
-                          @"unladenMass":RequestStrKey(unladenMass),
-                          @"vin":RequestStrKey(vin),
-                          @"drivingRegisterDate":RequestStrKey(drivingRegisterDate),
-                          @"engineNumber":RequestStrKey(engineNumber),
-                          @"drivingIssueDate":RequestStrKey(drivingIssueDate),
-                          @"model":RequestStrKey(model)};
-    [self postUrl:@"/ums/identification/vehicle" delegate:delegate parameters:dic success:success failure:failure];
-}
+
 
 /**
- 司机认证详情（用户）[^/ums/identification/driver$]
+提交司机信息[^/ums/driver$]
+*/
++(void)requestAuthDriverWithIdcardnationalemblemurl:(NSString *)idEmblemUrl
+                idFaceUrl:(NSString *)idFaceUrl
+                driverUrl:(NSString *)driverUrl
+                vehicleUrl:(NSString *)vehicleUrl
+                name:(NSString *)name
+                idNumber:(NSString *)idNumber
+                idBirthday:(NSString *)idBirthday
+                idGender:(NSString *)idGender
+                idNation:(NSString *)idNation
+                idOrg:(NSString *)idOrg
+                idAddr:(NSString *)idAddr
+                driverNationality:(NSString *)driverNationality
+                driverGender:(NSString *)driverGender
+                driverBirthday:(NSString *)driverBirthday
+                driverClass:(NSString *)driverClass
+                driverArchivesNumber:(NSString *)driverArchivesNumber
+                driverFirstIssueDate:(NSString *)driverFirstIssueDate
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"idEmblemUrl":RequestStrKey(idEmblemUrl),
+                           @"idFaceUrl":RequestStrKey(idFaceUrl),
+                           @"driverUrl":RequestStrKey(driverUrl),
+                           @"vehicleUrl":RequestStrKey(vehicleUrl),
+                           @"name":RequestStrKey(name),
+                           @"idNumber":RequestStrKey(idNumber),
+                           @"idBirthday":RequestStrKey(idBirthday),
+                           @"idGender":RequestStrKey(idGender),
+                           @"idNation":RequestStrKey(idNation),
+                           @"idOrg":RequestStrKey(idOrg),
+                           @"idAddr":RequestStrKey(idAddr),
+                           @"driverNationality":RequestStrKey(driverNationality),
+                           @"driverGender":RequestStrKey(driverGender),
+                           @"driverBirthday":RequestStrKey(driverBirthday),
+                           @"driverClass":RequestStrKey(driverClass),
+                           @"driverArchivesNumber":RequestStrKey(driverArchivesNumber),
+                           @"driverFirstIssueDate":RequestStrKey(driverFirstIssueDate)};
+        [self postUrl:@"/ums/driver" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
+提交车辆认证信息
+*/
++(void)requestAuthCarWithPlatenumber:(NSString *)plateNumber
+                vehicleType:(double)vehicleType
+                owner:(NSString *)owner
+                grossMass:(NSString *)grossMass
+                approvedLoad:(NSString *)approvedLoad
+                vehicleLength:(NSString *)vehicleLength
+                vehicleWidth:(NSString *)vehicleWidth
+                vehicleHeight:(NSString *)vehicleHeight
+                driving1Url:(NSString *)driving1Url
+                driving2Url:(NSString *)driving2Url
+                driving3Url:(NSString *)driving3Url
+                plateColor:(double)plateColor
+                energyType:(double)energyType
+                tractionMass:(NSString *)tractionMass
+                drivingEndTime:(NSString *)drivingEndTime
+                useCharacter:(NSString *)useCharacter
+                unladenMass:(NSString *)unladenMass
+                vin:(NSString *)vin
+                drivingRegisterDate:(NSString *)drivingRegisterDate
+                engineNumber:(NSString *)engineNumber
+                drivingIssueDate:(NSString *)drivingIssueDate
+                model:(NSString *)model
+                rtbpNumber:(NSString *)rtbpNumber
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"plateNumber":RequestStrKey(plateNumber),
+                           @"vehicleType":NSNumber.dou(vehicleType),
+                           @"owner":RequestStrKey(owner),
+                           @"grossMass":RequestStrKey(grossMass),
+                           @"approvedLoad":RequestStrKey(approvedLoad),
+                           @"vehicleLength":RequestStrKey(vehicleLength),
+                           @"vehicleWidth":RequestStrKey(vehicleWidth),
+                           @"vehicleHeight":RequestStrKey(vehicleHeight),
+                           @"driving1Url":RequestStrKey(driving1Url),
+                           @"driving2Url":RequestStrKey(driving2Url),
+                           @"driving3Url":RequestStrKey(driving3Url),
+                           @"plateColor":NSNumber.dou(plateColor),
+                           @"energyType":NSNumber.dou(energyType),
+                           @"tractionMass":RequestStrKey(tractionMass),
+                           @"drivingEndTime":RequestStrKey(drivingEndTime),
+                           @"useCharacter":RequestStrKey(useCharacter),
+                           @"unladenMass":RequestStrKey(unladenMass),
+                           @"vin":RequestStrKey(vin),
+                           @"drivingRegisterDate":RequestStrKey(drivingRegisterDate),
+                           @"engineNumber":RequestStrKey(engineNumber),
+                           @"drivingIssueDate":RequestStrKey(drivingIssueDate),
+                           @"model":RequestStrKey(model),
+                           @"rtbpNumber":RequestStrKey(rtbpNumber)};
+        [self postUrl:@"/ums/vehicle" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
+提交营运认证信息[^/ums/service$]
+*/
++(void)requestAuthBusinessWithQualificationurl:(NSString *)qualificationUrl
+                roadUrl:(NSString *)roadUrl
+                qualificationNumber:(NSString *)qualificationNumber
+                roadNumber:(NSString *)roadNumber
+                qcAddr:(NSString *)qcAddr
+                qcIssueDate:(NSString *)qcIssueDate
+                qcAgency:(NSString *)qcAgency
+                qcNationality:(NSString *)qcNationality
+                qcCategory:(NSString *)qcCategory
+                qcName:(NSString *)qcName
+                qcDriverClass:(NSString *)qcDriverClass
+                qcGender:(NSString *)qcGender
+                qcBirthday:(NSString *)qcBirthday
+                rtpWord:(NSString *)rtpWord
+                rtbpNumber:(NSString *)rtbpNumber
+                qcEndDate:(double)qcEndDate
+                rtpEndDate:(double)rtpEndDate
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"qualificationUrl":RequestStrKey(qualificationUrl),
+                           @"roadUrl":RequestStrKey(roadUrl),
+                           @"qualificationNumber":RequestStrKey(qualificationNumber),
+                           @"roadNumber":RequestStrKey(roadNumber),
+                           @"qcAddr":RequestStrKey(qcAddr),
+                           @"qcIssueDate":RequestStrKey(qcIssueDate),
+                           @"qcAgency":RequestStrKey(qcAgency),
+                           @"qcNationality":RequestStrKey(qcNationality),
+                           @"qcCategory":RequestStrKey(qcCategory),
+                           @"qcName":RequestStrKey(qcName),
+                           @"qcDriverClass":RequestStrKey(qcDriverClass),
+                           @"qcGender":RequestStrKey(qcGender),
+                           @"qcBirthday":RequestStrKey(qcBirthday),
+                           @"rtpWord":RequestStrKey(rtpWord),
+                           @"rtbpNumber":RequestStrKey(rtbpNumber),
+                           @"qcEndDate":NSNumber.dou(qcEndDate),
+                           @"rtpEndDate":NSNumber.dou(rtpEndDate)};
+        [self postUrl:@"/ums/service" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
+ 司机认证详情（用户）[^/ums/driver$]
  */
 +(void)requestDriverAuthDetailWithDelegate:(id <RequestDelegate>)delegate
                                    success:(void (^)(NSDictionary * response, id mark))success
                                    failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/identification/driver" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/driver" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  车辆认证详情（用户）
@@ -256,17 +301,17 @@
                                 success:(void (^)(NSDictionary * response, id mark))success
                                 failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/identification/vehicle" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/vehicle" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 /**
- 用户认证详情（用户）[^/ums/identification/user$]
+ 用户认证详情（用户）[^/ums/user$]
  */
 +(void)requestUserAuthAllInfoWithDelegate:(id <RequestDelegate>)delegate
                                   success:(void (^)(NSDictionary * response, id mark))success
                                   failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/identification/user" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/user" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  司机审核记录列表
@@ -275,7 +320,7 @@
                                  success:(void (^)(NSDictionary * response, id mark))success
                                  failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/identification/review/driver/log/list/total" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/review/driver/log/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  营运审核记录列表
@@ -284,7 +329,7 @@
                                    success:(void (^)(NSDictionary * response, id mark))success
                                    failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/identification/review/service/log/list/total" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/review/service/log/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  认证列表
@@ -308,7 +353,7 @@
                           @"bizStatus":RequestStrKey(bizStatus),
                           @"page":RequestStrKey(page),
                           @"count":RequestStrKey(count)};
-    [self getUrl:@"/ums/identification/list/total" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  车辆审核记录列表
@@ -317,7 +362,7 @@
                               success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/identification/vehicle/review/list/total" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/vehicle/review/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 /**

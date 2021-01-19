@@ -201,6 +201,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
     [manager.securityPolicy setValidatesDomainName:NO];
     [manager.requestSerializer setValue:@"multipart/form-data;" forHTTPHeaderField:@"Content-Type"];
     NSDictionary *dic = @{@"object":[NSString stringWithFormat:@"%@%@",RequestStrKey(self.imagePath),RequestStrKey(imageIdentity)],
+                          @"isCover":@1
                          };
     //设置请求头
     dic = [RequestApi setInitHead:dic];

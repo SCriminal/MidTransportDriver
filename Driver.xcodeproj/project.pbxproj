@@ -116,8 +116,6 @@
 		D2478142218C35A1005747FC /* DVPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = D247813C218C35A1005747FC /* DVPieChart.m */; };
 		D2478143218C35A1005747FC /* DVPieCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D247813D218C35A1005747FC /* DVPieCenterView.m */; };
 		D24992D11E05140C001A32DF /* BaseNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = D24992D01E05140C001A32DF /* BaseNavController.m */; };
-		D24A93CB2360449400CB672C /* AuthorityReFailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A93CA2360449400CB672C /* AuthorityReFailVC.m */; };
-		D24A93CE2360470B00CB672C /* AuthorityReVerifyingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D24A93CD2360470B00CB672C /* AuthorityReVerifyingVC.m */; };
 		D24CBB6B257EFFB600F6AB3E /* MapManage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D24CBB6A257EFFB500F6AB3E /* MapManage.framework */; };
 		D24CBB712580782500F6AB3E /* RejectOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D24CBB6F2580782500F6AB3E /* RejectOrderView.m */; };
 		D24D0742248A353F0029FCEC /* CarType.json in Sources */ = {isa = PBXBuildFile; fileRef = D24D0741248A353F0029FCEC /* CarType.json */; };
@@ -210,8 +208,6 @@
 		D2A0901D1E077DA20021B96C /* SliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A0901C1E077DA20021B96C /* SliderView.m */; };
 		D2A300202265B7CD00AE2EC3 /* AccountListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */; };
 		D2A300232265B7DF00AE2EC3 /* AccountListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300222265B7DF00AE2EC3 /* AccountListCell.m */; };
-		D2A3002F2266BF2F00AE2EC3 /* PerfectAuthorityInfoSuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3002C2266BF2F00AE2EC3 /* PerfectAuthorityInfoSuccessVC.m */; };
-		D2A300302266BF2F00AE2EC3 /* PerfectAuthorityInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3002D2266BF2F00AE2EC3 /* PerfectAuthorityInfoVC.m */; };
 		D2A300332266BF9500AE2EC3 /* EditInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300322266BF9500AE2EC3 /* EditInfoVC.m */; };
 		D2A300372266D21800AE2EC3 /* GuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300362266D21800AE2EC3 /* GuideView.m */; };
 		D2A3003A2266F75A00AE2EC3 /* InputNumView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300392266F75A00AE2EC3 /* InputNumView.m */; };
@@ -221,7 +217,6 @@
 		D2A3004722671E1000AE2EC3 /* InputAccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3004622671E1000AE2EC3 /* InputAccountView.m */; };
 		D2A3004A2267248E00AE2EC3 /* AccountFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300492267248E00AE2EC3 /* AccountFilterView.m */; };
 		D2A3FD651F0B1EDB000A5C1B /* BaseVC+Location.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3FD641F0B1EDB000A5C1B /* BaseVC+Location.m */; };
-		D2A6670D230F7BF00064F94B /* AuthortiyExampleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A6670C230F7BF00064F94B /* AuthortiyExampleVC.m */; };
 		D2A797612488C8470062B4F6 /* CarDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A7975D2488C8470062B4F6 /* CarDetailView.m */; };
 		D2A797622488C8470062B4F6 /* CarDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A797602488C8470062B4F6 /* CarDetailVC.m */; };
 		D2A946D72192B69C00AD1E5B /* ModelProvince.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946D52192B69B00AD1E5B /* ModelProvince.m */; };
@@ -638,10 +633,6 @@
 		D2478140218C35A1005747FC /* DVPieCenterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVPieCenterView.h; sourceTree = "<group>"; };
 		D24992CF1E05140C001A32DF /* BaseNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavController.h; sourceTree = "<group>"; };
 		D24992D01E05140C001A32DF /* BaseNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavController.m; sourceTree = "<group>"; };
-		D24A93C92360449400CB672C /* AuthorityReFailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthorityReFailVC.h; sourceTree = "<group>"; };
-		D24A93CA2360449400CB672C /* AuthorityReFailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthorityReFailVC.m; sourceTree = "<group>"; };
-		D24A93CC2360470B00CB672C /* AuthorityReVerifyingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthorityReVerifyingVC.h; sourceTree = "<group>"; };
-		D24A93CD2360470B00CB672C /* AuthorityReVerifyingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthorityReVerifyingVC.m; sourceTree = "<group>"; };
 		D24ABE071E52FB8100ED2C65 /* 乐销.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "乐销.entitlements"; sourceTree = "<group>"; };
 		D24CBB6A257EFFB500F6AB3E /* MapManage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapManage.framework; sourceTree = "<group>"; };
 		D24CBB6F2580782500F6AB3E /* RejectOrderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RejectOrderView.m; sourceTree = "<group>"; };
@@ -820,10 +811,6 @@
 		D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountListVC.m; sourceTree = "<group>"; };
 		D2A300212265B7DF00AE2EC3 /* AccountListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountListCell.h; sourceTree = "<group>"; };
 		D2A300222265B7DF00AE2EC3 /* AccountListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountListCell.m; sourceTree = "<group>"; };
-		D2A3002B2266BF2F00AE2EC3 /* PerfectAuthorityInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerfectAuthorityInfoVC.h; sourceTree = "<group>"; };
-		D2A3002C2266BF2F00AE2EC3 /* PerfectAuthorityInfoSuccessVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfectAuthorityInfoSuccessVC.m; sourceTree = "<group>"; };
-		D2A3002D2266BF2F00AE2EC3 /* PerfectAuthorityInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfectAuthorityInfoVC.m; sourceTree = "<group>"; };
-		D2A3002E2266BF2F00AE2EC3 /* PerfectAuthorityInfoSuccessVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerfectAuthorityInfoSuccessVC.h; sourceTree = "<group>"; };
 		D2A300312266BF9500AE2EC3 /* EditInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditInfoVC.h; sourceTree = "<group>"; };
 		D2A300322266BF9500AE2EC3 /* EditInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditInfoVC.m; sourceTree = "<group>"; };
 		D2A300352266D21800AE2EC3 /* GuideView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuideView.h; sourceTree = "<group>"; };
@@ -842,8 +829,6 @@
 		D2A300492267248E00AE2EC3 /* AccountFilterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountFilterView.m; sourceTree = "<group>"; };
 		D2A3FD631F0B1EDB000A5C1B /* BaseVC+Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BaseVC+Location.h"; sourceTree = "<group>"; };
 		D2A3FD641F0B1EDB000A5C1B /* BaseVC+Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseVC+Location.m"; sourceTree = "<group>"; };
-		D2A6670B230F7BF00064F94B /* AuthortiyExampleVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthortiyExampleVC.h; sourceTree = "<group>"; };
-		D2A6670C230F7BF00064F94B /* AuthortiyExampleVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthortiyExampleVC.m; sourceTree = "<group>"; };
 		D2A7975D2488C8470062B4F6 /* CarDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarDetailView.m; sourceTree = "<group>"; };
 		D2A7975E2488C8470062B4F6 /* CarDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarDetailVC.h; sourceTree = "<group>"; };
 		D2A7975F2488C8470062B4F6 /* CarDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarDetailView.h; sourceTree = "<group>"; };
@@ -2319,23 +2304,6 @@
 			path = AccountList;
 			sourceTree = "<group>";
 		};
-		D2A3002A2266BF2F00AE2EC3 /* 司机认证 */ = {
-			isa = PBXGroup;
-			children = (
-				D24A93C92360449400CB672C /* AuthorityReFailVC.h */,
-				D24A93CA2360449400CB672C /* AuthorityReFailVC.m */,
-				D24A93CC2360470B00CB672C /* AuthorityReVerifyingVC.h */,
-				D24A93CD2360470B00CB672C /* AuthorityReVerifyingVC.m */,
-				D2A3002E2266BF2F00AE2EC3 /* PerfectAuthorityInfoSuccessVC.h */,
-				D2A3002C2266BF2F00AE2EC3 /* PerfectAuthorityInfoSuccessVC.m */,
-				D2A3002B2266BF2F00AE2EC3 /* PerfectAuthorityInfoVC.h */,
-				D2A3002D2266BF2F00AE2EC3 /* PerfectAuthorityInfoVC.m */,
-				D2A6670B230F7BF00064F94B /* AuthortiyExampleVC.h */,
-				D2A6670C230F7BF00064F94B /* AuthortiyExampleVC.m */,
-			);
-			path = "司机认证";
-			sourceTree = "<group>";
-		};
 		D2A300342266D20900AE2EC3 /* GuideVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -3244,7 +3212,6 @@
 			isa = PBXGroup;
 			children = (
 				D20E8600258845EA00C9EE4C /* 认证中心 */,
-				D2A3002A2266BF2F00AE2EC3 /* 司机认证 */,
 				D26B88D3225C9E6E0051FA78 /* 忘记密码 */,
 				D25F55B52178529700FD4898 /* 完善信息 */,
 				D25FA2AA216B2B8A00E2B8AF /* AdvertisementView */,
@@ -3532,7 +3499,6 @@
 				D2C6D14922DEBDE600A22EA6 /* BulkCargoListCell.m in Sources */,
 				D22A413721805B220057C3B4 /* PerfectAddressDetailCell.m in Sources */,
 				D22BA9DF1E5EB8CA00C5B391 /* FSCalendarWeekdayView.m in Sources */,
-				D24A93CE2360470B00CB672C /* AuthorityReVerifyingVC.m in Sources */,
 				D2D5266425A5956500F99306 /* SuggestDetailVC.m in Sources */,
 				D216F5341E56966200E11ED2 /* NSDictionary+Category.m in Sources */,
 				D2D871072338C8D700F79173 /* ModelBank.m in Sources */,
@@ -3584,7 +3550,6 @@
 				D2B6B9CE1E961456005F00C6 /* ImagePickerCollectionCell.m in Sources */,
 				D23458401FD4E5E100F72EF5 /* UIImageView+Category.m in Sources */,
 				D2745FAA2087442900A0AD05 /* NoticeSectionView.m in Sources */,
-				D2A300302266BF2F00AE2EC3 /* PerfectAuthorityInfoVC.m in Sources */,
 				D2D089111E0E22D900BE1E4C /* PlaceHolderTextView.m in Sources */,
 				D2BC9A901DFFA7C400B0468E /* CustomTabBarController.m in Sources */,
 				D22F7DA21F666A3B000DB837 /* VideoPickerVC.m in Sources */,
@@ -3635,7 +3600,6 @@
 				D2AADB592191627800E2173E /* RequestApi+TransportPrice.m in Sources */,
 				D2136CED1E13C142003B4B92 /* NSMutableArray+Insert.m in Sources */,
 				D2BC0C9925B573DB0030599D /* ModelPathListItem.m in Sources */,
-				D24A93CB2360449400CB672C /* AuthorityReFailVC.m in Sources */,
 				D28A868B225F1E8E001E3372 /* CarTeamListCell.m in Sources */,
 				D289FEAF1E8F366C00C2636B /* SectionIndexView.m in Sources */,
 				C699DAFA1EEA8857005DC71C /* NSString+LHP.m in Sources */,
@@ -3653,7 +3617,6 @@
 				D2B9FF28248F2D3E0082E8D2 /* TakeAPictureView.m in Sources */,
 				D2B9374022D828390005B5D2 /* ModelAccessoryItem.m in Sources */,
 				D2C5580C238CB7DB0050694F /* ModelScheduleInfo.m in Sources */,
-				D2A6670D230F7BF00064F94B /* AuthortiyExampleVC.m in Sources */,
 				D22851A7259345AC00100231 /* IntegralCollectionCell.m in Sources */,
 				D28A31A52591BD83006AC450 /* CreditListVC.m in Sources */,
 				D20DCA052578CA69003B89B5 /* OrderFilterView.m in Sources */,
@@ -3706,7 +3669,6 @@
 				D224319A1E10AC0300C9F10A /* TestVC.m in Sources */,
 				D2478142218C35A1005747FC /* DVPieChart.m in Sources */,
 				D20E85FF258764CE00C9EE4C /* DealHistoryDetailVC.m in Sources */,
-				D2A3002F2266BF2F00AE2EC3 /* PerfectAuthorityInfoSuccessVC.m in Sources */,
 				D25145CF1E32ECA700E8107F /* UITableView+Category.m in Sources */,
 				D2D5267225AEF48100F99306 /* AutoConfigOrderListFilterView.m in Sources */,
 				D239D115218822E3009D7D45 /* PersonalCenterVC.m in Sources */,

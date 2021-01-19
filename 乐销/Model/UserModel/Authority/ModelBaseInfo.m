@@ -6,7 +6,7 @@
 //
 
 #import "ModelBaseInfo.h"
-
+#import "AuthOneVC.h"
 
 NSString *const kModelBaseInfoBirthday = @"birthday";
 NSString *const kModelBaseInfoDriverStartTime = @"driverStartTime";
@@ -111,32 +111,39 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
 }
 + (void)jumpToAuthorityStateVCSuccessBlock:(void (^)(void))successBlock{
     ModelBaseInfo *modelUser = [GlobalData sharedInstance].GB_UserModel;
-    //因为有已经认证
-    BOOL isQuantity  = modelUser.isIdentity == 1&& modelUser.isDriver == 1;
-    if (modelUser.reviewStatus!=1 && successBlock) {
+    if (successBlock) {
         successBlock();
-        return;
     }
-    switch ((int)modelUser.reviewStatus) {
-        case 1:
-            [GB_Nav pushVCName:@"PerfectAuthorityInfoVC" animated:true];
-            break;
-        case 2:
-            if (isQuantity) {
-                [GB_Nav pushVCName:@"PerfectAuthorityInfoSuccessVC" animated:true];
-            }else{
-                [GB_Nav pushVCName:@"AuthorityReVerifyingVC" animated:true];
-            }
-            break;
-        case 3:
-            [GB_Nav pushVCName:@"PerfectAuthorityInfoSuccessVC" animated:true];
-            break;
-        case 10:
-            [GB_Nav pushVCName:@"PerfectAuthorityInfoVC" animated:true];
-            break;
-        default:
-            break;
-    }
+
+//    AuthOneVC * vc = [AuthOneVC new];
+//    vc.isFirst = true;
+//    [GB_Nav pushViewController:vc animated:true];
+    //因为有已经认证
+//    BOOL isQuantity  = modelUser.isIdentity == 1&& modelUser.isDriver == 1;
+//    if (modelUser.reviewStatus!=1 && successBlock) {
+//        successBlock();
+//        return;
+//    }
+//    switch ((int)modelUser.reviewStatus) {
+//        case 1:
+//            [GB_Nav pushVCName:@"PerfectAuthorityInfoVC" animated:true];
+//            break;
+//        case 2:
+//            if (isQuantity) {
+//                [GB_Nav pushVCName:@"PerfectAuthorityInfoSuccessVC" animated:true];
+//            }else{
+//                [GB_Nav pushVCName:@"AuthorityReVerifyingVC" animated:true];
+//            }
+//            break;
+//        case 3:
+//            [GB_Nav pushVCName:@"PerfectAuthorityInfoSuccessVC" animated:true];
+//            break;
+//        case 10:
+//            [GB_Nav pushVCName:@"PerfectAuthorityInfoVC" animated:true];
+//            break;
+//        default:
+//            break;
+//    }
     
 }
 #pragma mark init

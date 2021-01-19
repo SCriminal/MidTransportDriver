@@ -83,10 +83,10 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 提交司机信息[^/ums/identification/driver$]
 */
-+(void)requestAuthDriverWithIdcardnationalemblemurl:(NSString *)idCardNationalEmblemUrl
-                idCardFaceUrl:(NSString *)idCardFaceUrl
++(void)requestAuthDriverWithIdcardnationalemblemurl:(NSString *)idEmblemUrl
+                idFaceUrl:(NSString *)idFaceUrl
                 driverUrl:(NSString *)driverUrl
-                personVehicleUrl:(NSString *)personVehicleUrl
+                vehicleUrl:(NSString *)vehicleUrl
                 name:(NSString *)name
                 idNumber:(NSString *)idNumber
                 idBirthday:(NSString *)idBirthday
@@ -102,7 +102,7 @@ NS_ASSUME_NONNULL_BEGIN
                 driverFirstIssueDate:(NSString *)driverFirstIssueDate
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
-                failure:(void (^)(NSString * errorStr, id mark))failure;
+                                            failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
 提交车辆认证信息
 */
@@ -114,9 +114,9 @@ NS_ASSUME_NONNULL_BEGIN
                 vehicleLength:(NSString *)vehicleLength
                 vehicleWidth:(NSString *)vehicleWidth
                 vehicleHeight:(NSString *)vehicleHeight
-                drivingLicenseOneUrl:(NSString *)drivingLicenseOneUrl
-                drivingLicenseTwoUrl:(NSString *)drivingLicenseTwoUrl
-                drivingLicenseThreeUrl:(NSString *)drivingLicenseThreeUrl
+                driving1Url:(NSString *)driving1Url
+                driving2Url:(NSString *)driving2Url
+                driving3Url:(NSString *)driving3Url
                 plateColor:(double)plateColor
                 energyType:(double)energyType
                 tractionMass:(NSString *)tractionMass
@@ -128,9 +128,33 @@ NS_ASSUME_NONNULL_BEGIN
                 engineNumber:(NSString *)engineNumber
                 drivingIssueDate:(NSString *)drivingIssueDate
                 model:(NSString *)model
+                rtbpNumber:(NSString *)rtbpNumber
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
-                failure:(void (^)(NSString * errorStr, id mark))failure;
+                             failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+提交营运认证信息[^/ums/identification/service$]
+*/
++(void)requestAuthBusinessWithQualificationurl:(NSString *)qualificationUrl
+                roadUrl:(NSString *)roadUrl
+                qualificationNumber:(NSString *)qualificationNumber
+                roadNumber:(NSString *)roadNumber
+                qcAddr:(NSString *)qcAddr
+                qcIssueDate:(NSString *)qcIssueDate
+                qcAgency:(NSString *)qcAgency
+                qcNationality:(NSString *)qcNationality
+                qcCategory:(NSString *)qcCategory
+                qcName:(NSString *)qcName
+                qcDriverClass:(NSString *)qcDriverClass
+                qcGender:(NSString *)qcGender
+                qcBirthday:(NSString *)qcBirthday
+                rtpWord:(NSString *)rtpWord
+                rtbpNumber:(NSString *)rtbpNumber
+                qcEndDate:(double)qcEndDate
+                rtpEndDate:(double)rtpEndDate
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                       failure:(void (^)(NSString * errorStr, id mark))failure;
 
 /**
  司机认证详情（用户）[^/ums/identification/driver$]

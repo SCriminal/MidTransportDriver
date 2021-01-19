@@ -9,9 +9,13 @@
 #import "AuthOneVC.h"
 #import "AuthView.h"
 #import "BaseTableVC+Authority.h"
-#import "BaseVC+BaseImageSelectVC.h"
 #import "AliClient.h"
 #import "OrcHelper.h"
+#import "AuthTwoVC.h"
+//request
+#import "RequestDriver2.h"
+#import "BaseVC+BaseImageSelectVC.h"
+
 @interface AuthOneVC ()<NSURLSessionDelegate>
 @property (nonatomic, strong) AuthView *authTopView;
 @property (nonatomic, strong) AuthTitleView *authTitleView;
@@ -23,6 +27,8 @@
 @property (nonatomic, strong) ModelBaseData *modelDriver;
 @property (nonatomic, strong) ModelBaseData *modelCar;
 @property (nonatomic, strong) ModelBaseData *modelImageSelected;
+@property (nonatomic, strong) ModelOCR *modelOCRDriverFace;
+@property (nonatomic, strong) ModelOCR *modelOCRDriverBack;
 
 @end
 
@@ -51,7 +57,7 @@
             [weakSelf saveAllProperty];
         };
         _authBtnView.blockConfirmClick  = ^{
-            
+            [weakSelf requestUP];
         };
     }
     return _authBtnView;
@@ -61,7 +67,6 @@
         _modelHead =[ModelBaseData new];
         _modelHead.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelHead.string = @"身份证人像面";
-//        _modelHead.subString = self.model.bankName;
         _modelHead.placeHolderString = @"点击上传";
         WEAKSELF
         _modelHead.blocClick = ^(ModelBaseData *model) {
@@ -76,10 +81,12 @@
         _modelCountry =[ModelBaseData new];
         _modelCountry.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelCountry.string = @"身份证国徽面";
-//        _modelCountry.subString = self.model.bankName;
+        //        _modelCountry.subString = self.model.bankName;
         _modelCountry.placeHolderString = @"点击上传";
         WEAKSELF
         _modelCountry.blocClick = ^(ModelBaseData *model) {
+            weakSelf.modelImageSelected = model;
+            [weakSelf showImageVC:1];
         };
     }
     return _modelCountry;
@@ -90,9 +97,9 @@
         _modelName.enumType = ENUM_PERFECT_CELL_TEXT;
         _modelName.string = @"姓名";
         _modelName.isChangeInvalid = false;
-//        _modelName.subString = self.model.idNumber;
+        //        _modelName.subString = self.model.idNumber;
         _modelName.placeHolderString = @"填写真实姓名";
-      
+        
     }
     return _modelName;
 }
@@ -103,9 +110,9 @@
         _modelId.enumType = ENUM_PERFECT_CELL_TEXT;
         _modelId.string = @"身份证号";
         _modelId.isChangeInvalid = false;
-//        _modelId.subString = self.model.idNumber;
+        //        _modelId.subString = self.model.idNumber;
         _modelId.placeHolderString = @"填写身份证号";
-      
+        
     }
     return _modelId;
 }
@@ -114,10 +121,12 @@
         _modelDriver =[ModelBaseData new];
         _modelDriver.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelDriver.string = @"驾驶证照片";
-//        _modelDriver.subString = self.model.bankName;
+        //        _modelDriver.subString = self.model.bankName;
         _modelDriver.placeHolderString = @"点击上传";
         WEAKSELF
         _modelDriver.blocClick = ^(ModelBaseData *model) {
+            weakSelf.modelImageSelected = model;
+            [weakSelf showImageVC:1];
         };
     }
     return _modelDriver;
@@ -127,11 +136,13 @@
         _modelCar =[ModelBaseData new];
         _modelCar.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelCar.string = @"人车合照";
-//        _modelCar.subString = self.model.bankName;
+        //        _modelCar.subString = self.model.bankName;
         _modelCar.placeHolderString = @"点击上传";
         _modelCar.hideState = true;
         WEAKSELF
         _modelCar.blocClick = ^(ModelBaseData *model) {
+            weakSelf.modelImageSelected = model;
+            [weakSelf showImageVC:1];
         };
     }
     return _modelCar;
@@ -143,19 +154,21 @@
     [self addNav];
     //table
     self.tableView.tableHeaderView = [UIView initWithViews:@[self.isFirst?self.authTopView:[NSNull null],self.authTitleView]];
-
+    
     self.tableView.tableFooterView = [UIView initWithViews:@[self.authBtnView]];
     self.tableView.backgroundColor = COLOR_BACKGROUND;
     [self registAuthorityCell];
     [self addObserveOfKeyboard];
-
+    
     //request
-    [self requestList];
+    self.aryDatas = @[self.modelCountry,self.modelHead,self.modelName,self.modelId,self.modelDriver,self.modelCar].mutableCopy;
     [self fetchAllProperty];
-    [self requestList];
-    NSLog(@"sld_%@,",self.modelHead.identifier);
-
+    self.aryDatas = @[self.modelCountry,self.modelHead,self.modelName,self.modelId,self.modelDriver,self.modelCar].mutableCopy;
+    for (ModelBaseData *m in self.aryDatas) {
+        m.subLeft = W(120);
+    }
     [self.tableView reloadData];
+    [self requestDetail];
 }
 
 #pragma mark 添加导航栏
@@ -180,12 +193,27 @@
     return  [self fetchAuthorityCellHeight:indexPath];
 }
 #pragma mark request
-- (void)requestList{
-    self.aryDatas = @[self.modelCountry,self.modelHead,self.modelName,self.modelId,self.modelDriver,self.modelCar].mutableCopy;
-    for (ModelBaseData *m in self.aryDatas) {
-        m.subLeft = W(120);
+- (void)requestUP{
+    if (self.isFirst) {
+        AuthTwoVC * vc = [AuthTwoVC new];
+        vc.isFirst = self.isFirst;
+        [GB_Nav pushViewController:vc animated:true];
+    }else{
+        [RequestApi requestAuthDriverWithIdcardnationalemblemurl:self.modelCountry.identifier idFaceUrl:self.modelHead.identifier driverUrl:self.modelDriver.identifier vehicleUrl:self.modelCar.identifier name:self.modelName.subString idNumber:self.modelId.subString idBirthday:nil idGender:nil idNation:nil idOrg:nil idAddr:nil driverNationality:nil driverGender:nil driverBirthday:nil driverClass:nil driverArchivesNumber:nil driverFirstIssueDate:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [GlobalMethod showAlert:@"上传成功"];
+            [GB_Nav popViewControllerAnimated:true];
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                    
+                }];
     }
-    [self.tableView reloadData];
+   
+}
+- (void)requestDetail{
+    [RequestApi requestDriverAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
@@ -196,8 +224,29 @@
         self.modelImageSelected.identifier = image.imageURL;
         [self.tableView reloadData];
     } upSuccess:nil upHighQualitySuccess:^{
-        [OrcHelper orc:image.imageURL delegate:self block:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        }];
+        if (self.modelImageSelected == self.modelHead) {
+            [RequestApi requestOCRIdentityWithurl:image.imageURL delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"frontResult"]];
+                if (isStr(model.name)) {
+                    self.modelName.subString = model.name;
+                }
+                if (isStr(model.iDNumber)) {
+                    self.modelId.subString = model.iDNumber;
+                }
+                [self.tableView reloadData];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+        }
+        if (self.modelImageSelected == self.modelDriver) {
+            [RequestApi requestOCRDriverWithurl:image.imageURL side:@"face" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"faceResult"]];
+                
+                self.modelOCRDriverFace = model;
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+        }
     } fail:^{
         
     }];

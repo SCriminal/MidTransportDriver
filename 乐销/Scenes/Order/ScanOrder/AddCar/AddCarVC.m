@@ -22,8 +22,6 @@
 #import "ListAlertView.h"
 //up image
 #import "AliClient.h"
-//example vc
-#import "AuthortiyExampleVC.h"
 //车牌汉字选择
 #import "SelectCarNumberView.h"
 #import "SelectCarTypeVC.h"

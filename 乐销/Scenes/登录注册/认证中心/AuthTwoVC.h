@@ -9,5 +9,6 @@
 #import "BaseTableVC.h"
 
 @interface AuthTwoVC : BaseTableVC
+@property (nonatomic, assign) BOOL isFirst;
 
 @end
