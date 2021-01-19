@@ -7,6 +7,8 @@
 
 #import "SelectDistrictView.h"
 #import "RequestApi+Dictionary.h"
+//request
+#import "RequestDriver2.h"
 @interface SelectDistrictView ()<UIPickerViewDelegate,UIPickerViewDataSource>
 @property (strong, nonatomic) NSMutableArray *provinceArray;
 @property (strong, nonatomic) NSMutableArray *cityArray;

@@ -108,6 +108,7 @@
 		D239D115218822E3009D7D45 /* PersonalCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D239D114218822E3009D7D45 /* PersonalCenterVC.m */; };
 		D239EACA1E2E0EB000E803F6 /* MJChiBaoZiHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D239EAC91E2E0EB000E803F6 /* MJChiBaoZiHeader.m */; };
 		D239EACD1E2E175100E803F6 /* CutomFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = D239EACC1E2E175100E803F6 /* CutomFooter.m */; };
+		D23B6EF025B675D00044E28C /* RequestApi+Dic.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B6EEF25B675D00044E28C /* RequestApi+Dic.m */; };
 		D23D90C71F8B245A00489F95 /* UIViewController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D23D90C61F8B245A00489F95 /* UIViewController+Category.m */; };
 		D23F02FA1E037F34004E768F /* GlobalMethod+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = D23F02F91E037F34004E768F /* GlobalMethod+UI.m */; };
 		D24091D61E5C2FE10049D41D /* GlobalMethod+Request.m in Sources */ = {isa = PBXBuildFile; fileRef = D24091D51E5C2FE10049D41D /* GlobalMethod+Request.m */; };
@@ -621,6 +622,8 @@
 		D239EAC91E2E0EB000E803F6 /* MJChiBaoZiHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJChiBaoZiHeader.m; sourceTree = "<group>"; };
 		D239EACB1E2E175100E803F6 /* CutomFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutomFooter.h; sourceTree = "<group>"; };
 		D239EACC1E2E175100E803F6 /* CutomFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutomFooter.m; sourceTree = "<group>"; };
+		D23B6EEE25B675D00044E28C /* RequestApi+Dic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+Dic.h"; sourceTree = "<group>"; };
+		D23B6EEF25B675D00044E28C /* RequestApi+Dic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Dic.m"; sourceTree = "<group>"; };
 		D23D90C51F8B245A00489F95 /* UIViewController+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Category.h"; sourceTree = "<group>"; };
 		D23D90C61F8B245A00489F95 /* UIViewController+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Category.m"; sourceTree = "<group>"; };
 		D23F02F81E037F34004E768F /* GlobalMethod+UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GlobalMethod+UI.h"; sourceTree = "<group>"; };
@@ -2886,6 +2889,8 @@
 				D2D5266B25AC23A600F99306 /* RequestApi+Ums.m */,
 				D2D5266D25AC23B700F99306 /* RequestApi+Auth.h */,
 				D2D5266E25AC23B700F99306 /* RequestApi+Auth.m */,
+				D23B6EEE25B675D00044E28C /* RequestApi+Dic.h */,
+				D23B6EEF25B675D00044E28C /* RequestApi+Dic.m */,
 			);
 			path = Api2.0;
 			sourceTree = "<group>";
@@ -3502,6 +3507,7 @@
 				C6BAD7051EDBCBF300954439 /* UIView+Category.m in Sources */,
 				D2C55800238BCADC0050694F /* RequestApi+Schedule.m in Sources */,
 				D21B58D81FA6A5BF00B2A788 /* UIImage+info.m in Sources */,
+				D23B6EF025B675D00044E28C /* RequestApi+Dic.m in Sources */,
 				D2B9FF32248F900C0082E8D2 /* SelectCarNumberView.m in Sources */,
 				D2D5265B25A5462300F99306 /* FeedBackListManagementVC.m in Sources */,
 				D28642EB1E484A350041B64C /* UITapGestureRecognizer+Base.m in Sources */,
