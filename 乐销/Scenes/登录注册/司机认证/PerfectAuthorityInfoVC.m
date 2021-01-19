@@ -18,6 +18,8 @@
 #import "BaseTableVC+Authority.h"
 #import "AuthorityImageView.h"
 #import "RequestApi+Dictionary.h"
+//request
+#import "RequestDriver2.h"
 
 @interface PerfectAuthorityInfoVC ()
 @property (nonatomic, strong) UIView *viewReason;

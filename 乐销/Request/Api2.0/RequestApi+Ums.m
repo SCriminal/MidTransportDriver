@@ -19,7 +19,10 @@
                               success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"app":RequestStrKey(appId),
-                          @"phone":RequestStrKey(phone)};
+                          @"phone":RequestStrKey(phone),
+                          @"scope":@"1",
+
+    };
     [self getUrl:@"/ums/sms/code/4" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
@@ -31,7 +34,10 @@
                           success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"app":RequestStrKey(appId),
-                          @"phone":RequestStrKey(phone)};
+                          @"phone":RequestStrKey(phone),
+                          @"scope":@"1",
+
+    };
     [self getUrl:@"/ums/sms/code/1" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
@@ -43,7 +49,10 @@
                          success:(void (^)(NSDictionary * response, id mark))success
                          failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"app":RequestStrKey(appId),
-                          @"phone":RequestStrKey(phone)};
+                          @"phone":RequestStrKey(phone),
+                          @"scope":@"1",
+
+    };
     [self getUrl:@"/ums/sms/code/3" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
@@ -77,7 +86,10 @@
     NSDictionary *dic = @{@"app":RequestStrKey(appId),
                           @"oldCellphone":RequestStrKey(oldCellphone),
                           @"newCellphone":RequestStrKey(newCellphone),
-                          @"code":RequestStrKey(code)};
+                          @"code":RequestStrKey(code),
+                          @"scope":@"1",
+
+    };
     [self putUrl:@"/ums/user/cellphone/3" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**

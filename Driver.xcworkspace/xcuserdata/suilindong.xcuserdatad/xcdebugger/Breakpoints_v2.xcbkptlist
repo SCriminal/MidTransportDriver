@@ -2785,8 +2785,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "-requestAdd"
             landmarkType = "7">
          </BreakpointContent>
@@ -2801,8 +2801,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "-addNav"
             landmarkType = "7">
          </BreakpointContent>
@@ -2817,8 +2817,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "-requestAdd"
             landmarkType = "7">
          </BreakpointContent>
@@ -2833,8 +2833,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x53f8;&#x673a;&#x8ba4;&#x8bc1;/PerfectAuthorityInfoVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-requestSubmit"
             landmarkType = "7">
          </BreakpointContent>
@@ -2849,8 +2849,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x53f8;&#x673a;&#x8ba4;&#x8bc1;/PerfectAuthorityInfoVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "-requestSubmit"
             landmarkType = "7">
             <Locations>
@@ -3025,8 +3025,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "-modelCarNum"
             landmarkType = "7">
          </BreakpointContent>
@@ -3073,8 +3073,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x53f8;&#x673a;&#x8ba4;&#x8bc1;/PerfectAuthorityInfoVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "-refreshBottomView:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3089,8 +3089,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "-refreshBottomView:"
             landmarkType = "7">
             <Locations>
@@ -3409,8 +3409,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x53f8;&#x673a;&#x8ba4;&#x8bc1;/PerfectAuthorityInfoVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "-requestInfo"
             landmarkType = "7">
          </BreakpointContent>
@@ -4801,8 +4801,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api2.0/RequestApi+Ums.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "+requestUserInfo2WithDelegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5105,8 +5105,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api2.0/RequestApi+Ums.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "362"
-            endingLineNumber = "362"
+            startingLineNumber = "374"
+            endingLineNumber = "374"
             landmarkName = "RequestApi(Ums)"
             landmarkType = "3">
          </BreakpointContent>

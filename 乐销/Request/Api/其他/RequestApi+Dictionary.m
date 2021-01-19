@@ -101,27 +101,6 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
     [self getUrl:@"/zhongcheyun/bankaccount/user/1_0_25" delegate:delegate parameters:dic success:success failure:failure];
 }
-/**
- ocr
- */
-+(void)requestOCRIdentityWithurl:(NSString *)url
-                        delegate:(id <RequestDelegate>)delegate
-                         success:(void (^)(NSDictionary * response, id mark))success
-                         failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"url":UnPackStr(url),
-                          @"side":@"face"
-    };
-    [self getUrl:@"/zhongcheyun/file/ocr/id/file" delegate:delegate parameters:dic success:success failure:failure];
-}
-+(void)requestOCRDriverWithurl:(NSString *)url
-                          side:(NSString *)side
-                      delegate:(id <RequestDelegate>)delegate
-                       success:(void (^)(NSDictionary * response, id mark))success
-                       failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"url":UnPackStr(url),
-                          @"side":UnPackStr(side)
-    };
-    [self getUrl:@"/zhongcheyun/file/ocr/driving/file" delegate:delegate parameters:dic success:success failure:failure];
-}
+
 
 @end

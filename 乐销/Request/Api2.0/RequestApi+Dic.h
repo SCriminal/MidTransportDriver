@@ -34,6 +34,30 @@ NS_ASSUME_NONNULL_BEGIN
                  failure:(void (^)(NSString * errorStr, id mark))failure;
 
 
+/**
+ ocr
+ */
++(void)requestOCRIdentityWithurl:(NSString *)url
+                        delegate:(id <RequestDelegate>)delegate
+                         success:(void (^)(NSDictionary * response, id mark))success
+                         failure:(void (^)(NSString * errorStr, id mark))failure;
+
++(void)requestOCRDriverWithurl:(NSString *)url
+                          side:(NSString *)side
+                      delegate:(id <RequestDelegate>)delegate
+                       success:(void (^)(NSDictionary * response, id mark))success
+                       failure:(void (^)(NSString * errorStr, id mark))failure;
+
++(void)requestOCRBusinessWithurl:(NSString *)url
+                        delegate:(id <RequestDelegate>)delegate
+                         success:(void (^)(NSDictionary * response, id mark))success
+                         failure:(void (^)(NSString * errorStr, id mark))failure;
+
++(void)requestOCRRunWithurl:(NSString *)url
+                          side:(NSString *)side
+                      delegate:(id <RequestDelegate>)delegate
+                       success:(void (^)(NSDictionary * response, id mark))success
+                       failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END
