@@ -337,10 +337,10 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
         [dic setObject:routePass1Id forKey:@"routePass1Id"];
     }
     if (isStr(routePass2Id)) {
-        [dic setObject:routePass1Id forKey:@"routePass2Id"];
+        [dic setObject:routePass2Id forKey:@"routePass2Id"];
     }
     if (isStr(routePass3Id)) {
-        [dic setObject:routePass1Id forKey:@"routePass3Id"];
+        [dic setObject:routePass3Id forKey:@"routePass3Id"];
     }
     [self postUrl:@"/ums/route" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -363,10 +363,10 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
         [dic setObject:routePass1Id forKey:@"routePass1Id"];
     }
     if (isStr(routePass2Id)) {
-        [dic setObject:routePass1Id forKey:@"routePass2Id"];
+        [dic setObject:routePass2Id forKey:@"routePass2Id"];
     }
     if (isStr(routePass3Id)) {
-        [dic setObject:routePass1Id forKey:@"routePass3Id"];
+        [dic setObject:routePass3Id forKey:@"routePass3Id"];
     }
     [self putUrl:@"/ums/route/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }

@@ -196,12 +196,23 @@
         path2 = m.identifier;
     }
     
-    [RequestApi requestAddPathWithStartareaid:startID endAreaId:endID routePass1Id:path0 routePass2Id:path1 routePass3Id:path2 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        [GlobalMethod showAlert:@"添加成功"];
-        [GB_Nav popViewControllerAnimated:true];
+    if (self.modelList.iDProperty) {
+        [RequestApi requestEditPathWithStartareaid:startID endAreaId:endID routePass1Id:path0 routePass2Id:path1 routePass3Id:path2 id:NSNumber.dou(self.modelList.iDProperty).stringValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [GlobalMethod showAlert:@"编辑成功"];
+            [GB_Nav popViewControllerAnimated:true];
+
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
+    }else{
+        [RequestApi requestAddPathWithStartareaid:startID endAreaId:endID routePass1Id:path0 routePass2Id:path1 routePass3Id:path2 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [GlobalMethod showAlert:@"添加成功"];
+            [GB_Nav popViewControllerAnimated:true];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+    }
+  
     
 }
 - (void)requestDetail{

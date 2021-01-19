@@ -152,7 +152,7 @@
         _modelAddress.enumType = ENUM_PERFECT_CELL_SELECT;
         _modelAddress.imageName = @"";
         _modelAddress.string = @"收货地址";
-        _modelAddress.placeHolderString = @"选择您的收货地址";
+        _modelAddress.placeHolderString = @" ";
                 _modelAddress.hideState = true;
 
         WEAKSELF

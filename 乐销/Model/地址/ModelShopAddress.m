@@ -8,13 +8,13 @@
 #import "ModelShopAddress.h"
 
 
-NSString *const kModelShopAddressDetail = @"detail";
+NSString *const kModelShopAddressDetail = @"addr";
 NSString *const kModelShopAddressId = @"id";
-NSString *const kModelShopAddressPhone = @"phone";
-NSString *const kModelShopAddressContact = @"contact";
+NSString *const kModelShopAddressPhone = @"contactPhone";
+NSString *const kModelShopAddressContact = @"contacter";
 NSString *const kModelShopAddressCountyName = @"countyName";
 NSString *const kModelShopAddressCityName = @"cityName";
-NSString *const kModelShopAddressCountyId = @"countyId";
+NSString *const kModelShopAddressCountyId = @"areaId";
 NSString *const kModelShopAddressUserId = @"userId";
 NSString *const kModelShopAddressLat = @"lat";
 NSString *const kModelShopAddressCreateTime = @"createTime";
@@ -23,8 +23,6 @@ NSString *const kModelShopAddressLng = @"lng";
 NSString *const kModelShopAddressProvinceId = @"provinceId";
 NSString *const kModelShopAddressCityId = @"cityId";
 NSString *const kModelShopAddressHailuoId = @"addressId";
-
-
 
 @interface ModelShopAddress ()
 @end
