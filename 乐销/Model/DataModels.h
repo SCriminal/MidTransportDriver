@@ -66,3 +66,4 @@
 #import "ModelPathListItem.h"
 #import "ModelAuthDriver.h"
 #import "ModelAuthBusiness.h"
+#import "ModelAuthCar.h"

@@ -111,6 +111,7 @@
 		D23B6EF025B675D00044E28C /* RequestApi+Dic.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B6EEF25B675D00044E28C /* RequestApi+Dic.m */; };
 		D23B6EF325B8127C0044E28C /* ModelAuthDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B6EF125B8127B0044E28C /* ModelAuthDriver.m */; };
 		D23B6EF625B81C470044E28C /* ModelAuthBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B6EF525B81C470044E28C /* ModelAuthBusiness.m */; };
+		D23B6EF925B8229C0044E28C /* ModelAuthCar.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B6EF725B8229C0044E28C /* ModelAuthCar.m */; };
 		D23D90C71F8B245A00489F95 /* UIViewController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D23D90C61F8B245A00489F95 /* UIViewController+Category.m */; };
 		D23F02FA1E037F34004E768F /* GlobalMethod+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = D23F02F91E037F34004E768F /* GlobalMethod+UI.m */; };
 		D24091D61E5C2FE10049D41D /* GlobalMethod+Request.m in Sources */ = {isa = PBXBuildFile; fileRef = D24091D51E5C2FE10049D41D /* GlobalMethod+Request.m */; };
@@ -625,6 +626,8 @@
 		D23B6EF225B8127B0044E28C /* ModelAuthDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAuthDriver.h; sourceTree = "<group>"; };
 		D23B6EF425B81C470044E28C /* ModelAuthBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAuthBusiness.h; sourceTree = "<group>"; };
 		D23B6EF525B81C470044E28C /* ModelAuthBusiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAuthBusiness.m; sourceTree = "<group>"; };
+		D23B6EF725B8229C0044E28C /* ModelAuthCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAuthCar.m; sourceTree = "<group>"; };
+		D23B6EF825B8229C0044E28C /* ModelAuthCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAuthCar.h; sourceTree = "<group>"; };
 		D23D90C51F8B245A00489F95 /* UIViewController+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Category.h"; sourceTree = "<group>"; };
 		D23D90C61F8B245A00489F95 /* UIViewController+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Category.m"; sourceTree = "<group>"; };
 		D23F02F81E037F34004E768F /* GlobalMethod+UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GlobalMethod+UI.h"; sourceTree = "<group>"; };
@@ -2926,6 +2929,8 @@
 		D2DFD7892296A58E00363142 /* Authority */ = {
 			isa = PBXGroup;
 			children = (
+				D23B6EF825B8229C0044E28C /* ModelAuthCar.h */,
+				D23B6EF725B8229C0044E28C /* ModelAuthCar.m */,
 				D23B6EF425B81C470044E28C /* ModelAuthBusiness.h */,
 				D23B6EF525B81C470044E28C /* ModelAuthBusiness.m */,
 				D2DFD78F2296A58E00363142 /* ModelAuthorityImage.h */,
@@ -3593,6 +3598,7 @@
 				D2F3A4FC2570EA11009EBF3F /* AutoConfigOrderListVC.m in Sources */,
 				D2C99C381E0BC021001D5DBA /* AddSubtractView.m in Sources */,
 				D22A413121803C650057C3B4 /* PerfectTextCell.m in Sources */,
+				D23B6EF925B8229C0044E28C /* ModelAuthCar.m in Sources */,
 				D21CA0611F064D0C00FAE8B3 /* NSURL+Category.m in Sources */,
 				D289669B226427FE006E2196 /* WelcomeVC.m in Sources */,
 				C699B62F1F3AEF380001C842 /* TextFieldLimit.m in Sources */,

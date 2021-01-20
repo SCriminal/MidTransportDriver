@@ -23,7 +23,6 @@
 @property (nonatomic, strong) ModelBaseData *modelMain;
 @property (nonatomic, strong) ModelBaseData *modelSub;
 @property (nonatomic, strong) ModelBaseData *modelThree;
-
 @property (nonatomic, strong) ModelBaseData *modelCarNo;
 @property (nonatomic, strong) ModelBaseData *modelCarType;
 @property (nonatomic, strong) ModelBaseData *modelCarOwner;
@@ -398,7 +397,24 @@
 
 - (void)requestDetail{
     [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        ModelAuthDriver * model = [ModelAuthDriver modelObjectWithDictionary:response];
+        ModelAuthCar * model = [ModelAuthCar modelObjectWithDictionary:response];
+        self.modelOCRDrivingBack = [ModelOCR new];
+        self.modelOCRDrivingBack.approvedLoad = NSNumber.dou(model.approvedLoad).stringValue;
+        self.modelOCRDrivingBack.energyType = NSNumber.dou(model.energyType).stringValue;
+        self.modelOCRDrivingBack.grossMass = NSNumber.dou(model.grossMass).stringValue;
+        self.modelCarOwner.subString = model.owner;
+        self.modelCarNo.subString = model.plateNumber;
+        self.modelOCRDrivingBack.tractionMass = NSNumber.dou(model.tractionMass).stringValue;
+        self.modelCarHeight.subString = NSNumber.dou(model.vehicleHeight).stringValue;
+        self.modelCarLong.subString = NSNumber.dou(model.vehicleLength).stringValue;
+        self.modelCarType.identifier = NSNumber.dou(model.vehicleType).stringValue;
+        
+        self.modelCarType.subString = model.vehicleType?[AddCarVC exchangeVehicleType:self.modelCarType.identifier]:nil;
+        self.modelCarWidth.subString = NSNumber.dou(model.vehicleWidth).stringValue;
+        self.modelMain.identifier = model.driving1Url;
+        self.modelSub.identifier = model.driving2Url;
+        self.modelThree.identifier = model.driving3Url;
+        
         if (model.reviewStatus == 2 || model.reviewStatus == 10) {
             for (ModelBaseData * m in self.aryDatas) {
                 m.isChangeInvalid = true;

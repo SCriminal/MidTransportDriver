@@ -22,6 +22,8 @@
 @property (nonatomic, strong) ModelBaseData *modelLoad;
 @property (nonatomic, strong) ModelBaseData *modelBusiness;
 @property (nonatomic, strong) ModelBaseData *modelImageSelected;
+@property (nonatomic, strong) ModelAuthCar *modelAuthCar;
+
 //@property (nonatomic, strong) ModelOCR *modelOCRLoad;
 //@property (nonatomic, strong) ModelOCR *modelOCRBusiness;
 
@@ -148,7 +150,9 @@ WEAKSELF
             needAuth = false;
         }
     }else{
-        
+        if (self.modelAuthCar.grossMass>4500) {
+            needAuth = false;
+        }
     }
     if (needAuth) {
         for (ModelBaseData *model  in self.aryDatas) {
@@ -205,20 +209,26 @@ WEAKSELF
     return [GlobalMethod exchangeDicToJson:dic];
 }
 - (void)requestDetail{
-    [RequestApi requestBusinessAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        ModelAuthBusiness * model = [ModelAuthBusiness modelObjectWithDictionary:response];
-        self.modelLoad.identifier = model.roadUrl;
-        self.modelBusiness.identifier = model.qualificationUrl;
-        if (model.reviewStatus == 2 || model.reviewStatus == 10) {
-            for (ModelBaseData * m in self.aryDatas) {
-                m.isChangeInvalid = true;
+    [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.modelAuthCar = [ModelAuthCar modelObjectWithDictionary:response];
+        [RequestApi requestBusinessAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            ModelAuthBusiness * model = [ModelAuthBusiness modelObjectWithDictionary:response];
+            self.modelLoad.identifier = model.roadUrl;
+            self.modelBusiness.identifier = model.qualificationUrl;
+            if (model.reviewStatus == 2 || model.reviewStatus == 10) {
+                for (ModelBaseData * m in self.aryDatas) {
+                    m.isChangeInvalid = true;
+                }
+                self.authBtnView.hidden = true;
             }
-            self.authBtnView.hidden = true;
-        }
-        [self.tableView reloadData];
+            [self.tableView reloadData];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
+  
 }
 - (void)imageSelect:(BaseImage *)image{
     [self showLoadingView];

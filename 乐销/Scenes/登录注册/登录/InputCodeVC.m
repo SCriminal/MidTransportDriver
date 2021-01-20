@@ -36,7 +36,7 @@
         _labelCode = [UILabel new];
         _labelCode.textColor = [UIColor blackColor];
         _labelCode.font =  [UIFont systemFontOfSize:F(25)];
-        [_labelCode fitTitle:@"请输入短信验证码" variable:0];
+        [_labelCode fitTitle:@"输入短信验证码" variable:0];
         _labelCode.leftTop = XY(W(30), NAVIGATIONBAR_HEIGHT+ W(35));
     }
     return _labelCode;
@@ -146,7 +146,7 @@
         return;
     }
     _numTime --;
-    [self.labelResend fitTitle:[NSString stringWithFormat:@"%.lf秒以后重新获取",_numTime] variable:0];
+    [self.labelResend fitTitle:[NSString stringWithFormat:@"%.lf秒后重新获取",_numTime] variable:0];
     self.labelResend.textColor = [UIColor colorWithHexString:@"#9EBAEB"];
     self.labelResend.left =  W(30);
     self.controlResendCode.userInteractionEnabled = false;
