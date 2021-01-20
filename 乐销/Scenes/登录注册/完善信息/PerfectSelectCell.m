@@ -82,7 +82,6 @@
     
     [self.title fitTitle:model.string variable:0];
     self.title.leftCenterY = XY(W(15),self.height/2.0);
-    self.title.textColor = self.model.isChangeInvalid?COLOR_999:COLOR_333;
     
     self.essential.rightCenterY = XY(self.title.left-W(2), self.title.centerY);
     self.essential.hidden = !model.isRequired;
@@ -204,6 +203,8 @@
     self.iconLogo.hidden = !isStr(model.identifier);
     self.iconLogo.rightCenterY = XY(SCREEN_WIDTH - W(44), self.height/2.0);
     [self.iconLogo sd_setImageWithURL:[NSURL URLWithString:model.identifier] placeholderImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT ]];
+    
+    self.subTitle.hidden = self.model.isChangeInvalid;
 }
 #pragma mark click
 - (void)cellClick{

@@ -111,7 +111,9 @@
         PrivateAlertView * privateView = [PrivateAlertView new];
         [privateView show];
     }
-//    [window addSubview:[NSClassFromString(@"AdvertiesementView") new]];
+#ifdef SLD_TEST
+    [window addSubview:[NSClassFromString(@"AdvertiesementView") new]];
+#endif
     //欢迎页
     if (![GlobalMethod isLoginSuccess]) {
         [GB_Nav pushVCName:@"LoginViewController" animated:false];
@@ -120,7 +122,7 @@
     [GlobalMethod requestVersion:nil];
     //sld_test
 #ifdef SLD_TEST
-    [GB_Nav pushVCName:@"TestVC" animated:false];
+//    [GB_Nav pushVCName:@"TestVC" animated:false];
 #endif
 }
 

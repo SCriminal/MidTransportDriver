@@ -241,9 +241,9 @@
                            @"owner":RequestStrKey(owner),
                            @"grossMass":NSNumber.dou(grossMass/1000.0),
                            @"approvedLoad":NSNumber.dou(approvedLoad),
-                           @"vehicleLength":NSNumber.dou(vehicleLength/10.0),
-                           @"vehicleWidth":NSNumber.dou(vehicleWidth/10.0),
-                           @"vehicleHeight":NSNumber.dou(vehicleHeight/10.0),
+                           @"vehicleLength":NSNumber.lon(vehicleLength),
+                           @"vehicleWidth":NSNumber.lon(vehicleWidth),
+                           @"vehicleHeight":NSNumber.lon(vehicleHeight),
                            @"driving1Url":RequestStrKey(driving1Url),
                            @"driving2Url":RequestStrKey(driving2Url),
                            @"driving3Url":RequestStrKey(driving3Url),
@@ -260,7 +260,7 @@
                            @"model":RequestStrKey(model),
                            @"rtbpNumber":RequestStrKey(rtbpNumber)};
     if (isRequest) {
-        [self postUrl:@"/ums/vehicle" delegate:delegate parameters:dic success:success failure:failure];
+        [self postUrl:@"http://192.168.20.27:10000/ums/vehicle" delegate:delegate parameters:dic success:success failure:failure];
     }
     return dic;
 }
@@ -327,9 +327,15 @@
                                 success:(void (^)(NSDictionary * response, id mark))success
                                 failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/vehicle" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"http://192.168.20.27:10000/ums/vehicle" delegate:delegate parameters:dic success:success failure:failure];
 }
 
++(void)requestBusinessAuthDetailWithDelegate:(id <RequestDelegate>)delegate
+                                   success:(void (^)(NSDictionary * response, id mark))success
+                                   failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{};
+    [self getUrl:@"/ums/service" delegate:delegate parameters:dic success:success failure:failure];
+}
 /**
  用户认证详情（用户）[^/ums/user$]
  */

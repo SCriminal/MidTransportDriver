@@ -340,9 +340,9 @@
                                             owner:self.modelCarOwner.subString
                                         grossMass:self.modelOCRDrivingBack.grossMass.doubleValue
                                      approvedLoad:self.modelOCRDrivingBack.approvedLoad.doubleValue
-                                    vehicleLength:self.modelCarLong.subString.doubleValue
-                                     vehicleWidth:self.modelCarWidth.subString.doubleValue
-                                    vehicleHeight:self.modelCarHeight.subString.doubleValue
+                                    vehicleLength:self.modelCarLong.subString.intValue
+                                     vehicleWidth:self.modelCarWidth.subString.intValue
+                                    vehicleHeight:self.modelCarHeight.subString.intValue
                                       driving1Url:self.modelMain.identifier
                                       driving2Url:self.modelSub.identifier
                                       driving3Url:self.modelThree.identifier
@@ -375,9 +375,9 @@
                                                                   owner:self.modelCarOwner.subString
                                                               grossMass:self.modelOCRDrivingBack.grossMass.doubleValue
                                                            approvedLoad:self.modelOCRDrivingBack.approvedLoad.doubleValue
-                                                          vehicleLength:self.modelCarLong.subString.doubleValue
-                                                           vehicleWidth:self.modelCarWidth.subString.doubleValue
-                                                          vehicleHeight:self.modelCarHeight.subString.doubleValue
+                                                          vehicleLength:self.modelCarLong.subString.intValue
+                                                           vehicleWidth:self.modelCarWidth.subString.intValue
+                                                          vehicleHeight:self.modelCarHeight.subString.intValue
                                                             driving1Url:self.modelMain.identifier
                                                             driving2Url:self.modelSub.identifier
                                                             driving3Url:self.modelThree.identifier

@@ -101,7 +101,6 @@ WEAKSELF
     self.tableView.backgroundColor = COLOR_BACKGROUND;
     [self registAuthorityCell];
     [self addObserveOfKeyboard];
-    [self requestDetail];
     
     //request
     self.aryDatas = @[self.modelLoad,self.modelBusiness,].mutableCopy;
@@ -111,6 +110,8 @@ WEAKSELF
         m.subLeft = W(135);
     }
     [self.tableView reloadData];
+    [self requestDetail];
+
 }
 
 #pragma mark 添加导航栏
@@ -204,8 +205,17 @@ WEAKSELF
     return [GlobalMethod exchangeDicToJson:dic];
 }
 - (void)requestDetail{
-    [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            
+    [RequestApi requestBusinessAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        ModelAuthBusiness * model = [ModelAuthBusiness modelObjectWithDictionary:response];
+        self.modelLoad.identifier = model.roadUrl;
+        self.modelBusiness.identifier = model.qualificationUrl;
+        if (model.reviewStatus == 2 || model.reviewStatus == 10) {
+            for (ModelBaseData * m in self.aryDatas) {
+                m.isChangeInvalid = true;
+            }
+            self.authBtnView.hidden = true;
+        }
+        [self.tableView reloadData];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];

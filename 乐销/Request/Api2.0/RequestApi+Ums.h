@@ -180,6 +180,9 @@ NS_ASSUME_NONNULL_BEGIN
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure;
 
++(void)requestBusinessAuthDetailWithDelegate:(id <RequestDelegate>)delegate
+                                   success:(void (^)(NSDictionary * response, id mark))success
+                                     failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
 用户认证详情（用户）[^/ums/identification/user$]
 */
