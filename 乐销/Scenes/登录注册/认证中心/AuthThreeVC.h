@@ -10,5 +10,6 @@
 
 @interface AuthThreeVC : BaseTableVC
 @property (nonatomic, assign) BOOL isFirst;
+@property (nonatomic, assign) double grossMass;
 - (NSString *)fetchRequestJson;
 @end

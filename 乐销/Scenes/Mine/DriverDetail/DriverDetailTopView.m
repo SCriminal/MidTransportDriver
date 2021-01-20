@@ -158,6 +158,12 @@
     self.auth.leftBottom = XY(self.head.right + W(36), self.head.bottom - W(8));
     self.arrow.rightCenterY = XY(self.auth.right + W(16), self.auth.centerY);
 }
+-(void)resetAuth:(BOOL)authed{
+    [self.auth fitTitle:authed?@"查看认证信息":@"去认证赚钱" variable:0];
+        self.auth.leftBottom = XY(self.head.right + W(36), self.head.bottom - W(8));
+        self.arrow.rightCenterY = XY(self.auth.right + W(16), self.auth.centerY);
+
+}
 
 
 #pragma mark notice

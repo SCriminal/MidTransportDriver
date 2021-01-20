@@ -56,9 +56,32 @@
     [RequestApi requestUserAuthAllInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelAuthorityInfo * modelAuth = [ModelAuthorityInfo modelObjectWithDictionary:response];
         ModelBtn *mDriver = [ModelBtn new];
-        ModelBtn *mCar = [ModelBtn new];
-        ModelBtn *mBiz = [ModelBtn new];
+        WEAKSELF
+        mDriver.blockClick = ^{
+            UIViewController * vc= [NSClassFromString(@"AuthOneVC") new];
+            vc.blockBack  = ^(UIViewController *v) {
+                [weakSelf requestList];
+            };
+            [GB_Nav pushViewController:vc animated:true];
 
+        };
+        ModelBtn *mCar = [ModelBtn new];
+        mCar.blockClick = ^{
+            UIViewController * vc= [NSClassFromString(@"AuthTwoVC") new];
+            vc.blockBack = ^(UIViewController *v) {
+                [weakSelf requestList];
+            };
+            [GB_Nav pushViewController:vc animated:true];
+
+        };
+        ModelBtn *mBiz = [ModelBtn new];
+        mBiz.blockClick = ^{
+            UIViewController * vc= [NSClassFromString(@"AuthThreeVC") new];
+            vc.blockBack = ^(UIViewController *v) {
+                [weakSelf requestList];
+            };
+            [GB_Nav pushViewController:vc animated:true];
+        };
         mDriver.title = @"司机信息";
         mCar.title = @"车辆信息";
         mBiz.title = @"运营信息";
@@ -208,8 +231,8 @@
 }
 #pragma mark 点击事件
 - (void)btnClick:(UIButton *)sender{
-    if (self.blockClick) {
-        self.blockClick();
+    if (self.model.blockClick) {
+        self.model.blockClick();
     }
 }
 

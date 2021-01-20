@@ -20,7 +20,8 @@
 @property (strong, nonatomic) UILabel *auth;
 @property (nonatomic, strong) void (^blockClick)(void);
 @property (nonatomic, strong) void (^blockAuthClick)(void);
-
+- (void)userInfoChange;
+-(void)resetAuth:(BOOL)authed;
 @end
 
 @interface DriverDetailModelView : UIView

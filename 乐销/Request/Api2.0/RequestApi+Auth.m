@@ -38,12 +38,12 @@
         NSDictionary *dic = @{@"app":RequestStrKey(app),
                            @"client":RequestStrKey(client),
                            @"password":RequestStrKey([password base64Encode]),
-                           @"account":RequestStrKey(account),
+                           @"phone":RequestStrKey(account),
                            @"terminalType":NSNumber.dou(terminalType),
                            @"terminalNumber":RequestStrKey([CloudPushSDK getDeviceId]),
                               @"scope":@"1"
         };
-        [self postUrl:@"/auth/user/login/1" delegate:delegate parameters:dic success:^(NSDictionary * response, id mark){
+        [self postUrl:@"/ums/user/login/1" delegate:delegate parameters:dic success:^(NSDictionary * response, id mark){
             if (!isDic(dic) || !isStr([response stringValueForKey:@"token"])) {
                 if (failure) {
                     failure(nil,@"获取token失败");

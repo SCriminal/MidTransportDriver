@@ -32,6 +32,7 @@
 @interface PersonalCenterVC ()
 @property (nonatomic, strong) DriverDetailTopView *topView;
 @property (nonatomic, strong) DriverDetailModelView *modelView;
+@property (nonatomic, strong) ModelAuthorityInfo *modelAuthInfo;
 
 @end
 
@@ -46,7 +47,7 @@
         };
         WEAKSELF
         _topView.blockAuthClick = ^{
-            [weakSelf reuqestAuth];
+            [weakSelf jumpAuth];
         };
     }
     return _topView;
@@ -203,23 +204,20 @@
 
 #pragma mark request
 - (void)reconfigData{
+    [self.topView userInfoChange];
     [self.tableView reloadData];
 }
 
 #pragma mark request
-- (void)reuqestAuth{
-    [RequestApi requestUserAuthAllInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        ModelAuthorityInfo * modelAuth = [ModelAuthorityInfo modelObjectWithDictionary:response];
-        if (modelAuth.isAuthed) {
-            [GB_Nav pushVCName:@"AuthListVC" animated:true];
-        }else{
-            AuthOneVC * vc = [AuthOneVC new];
-            vc.isFirst = true;
-            [GB_Nav popToRootAry:@[vc] animate:true];
-        }
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+- (void)jumpAuth{
+    if (self.modelAuthInfo.isAuthed) {
+        [GB_Nav pushVCName:@"AuthListVC" animated:true];
+    }else{
+        AuthOneVC * vc = [AuthOneVC new];
+        vc.isFirst = true;
+        [GB_Nav popToRootAry:@[vc] animate:true];
+    }
+   
 }
 - (void)request{
     [RequestApi requestUserInfo2WithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
@@ -229,6 +227,12 @@
             GlobalData.sharedInstance.GB_UserModel = modelUserNew;
         }
         [self reconfigData];
+        [RequestApi requestUserAuthAllInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            self.modelAuthInfo = [ModelAuthorityInfo modelObjectWithDictionary:response];
+            [self.topView resetAuth:self.modelAuthInfo.isAuthed];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];

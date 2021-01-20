@@ -54,8 +54,8 @@
         [_authBtnView resetViewWithModel:self.isFirst];
         WEAKSELF
         _authBtnView.blockDismissClick = ^{
-            NSLog(@"save %@",weakSelf.modelHead.identifier);
             [weakSelf saveAllProperty];
+            [GB_Nav popToRootViewControllerAnimated:true];
         };
         _authBtnView.blockConfirmClick  = ^{
             [weakSelf requestUP];
@@ -208,6 +208,12 @@
                 return;
             }
         }
+    }
+    [self saveAllProperty];
+
+    if (!isIdentityNum(self.modelId.subString)) {
+        [GlobalMethod showAlert:@"请输入正确的身份证号"];
+        return;
     }
     
     if (self.isFirst) {

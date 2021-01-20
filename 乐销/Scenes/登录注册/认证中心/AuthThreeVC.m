@@ -22,8 +22,8 @@
 @property (nonatomic, strong) ModelBaseData *modelLoad;
 @property (nonatomic, strong) ModelBaseData *modelBusiness;
 @property (nonatomic, strong) ModelBaseData *modelImageSelected;
-@property (nonatomic, strong) ModelOCR *modelOCRLoad;
-@property (nonatomic, strong) ModelOCR *modelOCRBusiness;
+//@property (nonatomic, strong) ModelOCR *modelOCRLoad;
+//@property (nonatomic, strong) ModelOCR *modelOCRBusiness;
 
 @end
 
@@ -45,10 +45,12 @@
 - (AuthBtnView *)authBtnView{
     if (!_authBtnView) {
         _authBtnView = [AuthBtnView new];
-        [_authBtnView resetViewWithModel:self.isFirst];
+        [_authBtnView resetViewWithModel:false];
 WEAKSELF
         _authBtnView.blockDismissClick = ^{
-            
+            [weakSelf saveAllProperty];
+            [GB_Nav popToRootViewControllerAnimated:true];
+
         };
         _authBtnView.blockConfirmClick  = ^{
             [weakSelf requestUP];
@@ -102,6 +104,15 @@ WEAKSELF
 
     //request
     [self requestList];
+    
+    //request
+    self.aryDatas = @[self.modelLoad,self.modelBusiness,].mutableCopy;
+    [self fetchAllProperty];
+    self.aryDatas = @[self.modelLoad,self.modelBusiness,].mutableCopy;
+    for (ModelBaseData *m in self.aryDatas) {
+        m.subLeft = W(135);
+    }
+    [self.tableView reloadData];
 }
 
 #pragma mark 添加导航栏
@@ -127,11 +138,7 @@ WEAKSELF
 }
 #pragma mark request
 - (void)requestList{
-    self.aryDatas = @[self.modelLoad,self.modelBusiness,].mutableCopy;
-    for (ModelBaseData *m in self.aryDatas) {
-        m.subLeft = W(135);
-    }
-    [self.tableView reloadData];
+   
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
@@ -139,20 +146,31 @@ WEAKSELF
 #pragma mark request
 - (void)requestUP{
     [GlobalMethod endEditing];
-    for (ModelBaseData *model  in self.aryDatas) {
-        if (model.enumType == ENUM_PERFECT_CELL_TEXT||model.enumType == ENUM_PERFECT_CELL_SELECT||model.enumType == ENUM_PERFECT_CELL_ADDRESS) {
-            if (!isStr(model.subString)) {
-                [GlobalMethod showAlert:model.placeHolderString];
-                return;
-            }
+    BOOL needAuth = true;
+    if (self.isFirst) {
+        if (self.grossMass > 4500) {
+            needAuth = false;
         }
-        if (model.enumType == ENUM_PERFECT_CELL_SELECT_LOGO) {
-            if (!isStr(model.identifier)) {
-                [GlobalMethod showAlert:[NSString stringWithFormat:@"请上传%@",model.string]];
-                return;
+    }else{
+        
+    }
+    if (needAuth) {
+        for (ModelBaseData *model  in self.aryDatas) {
+            if (model.enumType == ENUM_PERFECT_CELL_TEXT||model.enumType == ENUM_PERFECT_CELL_SELECT||model.enumType == ENUM_PERFECT_CELL_ADDRESS) {
+                if (!isStr(model.subString)) {
+                    [GlobalMethod showAlert:model.placeHolderString];
+                    return;
+                }
+            }
+            if (model.enumType == ENUM_PERFECT_CELL_SELECT_LOGO) {
+                if (!isStr(model.identifier)) {
+                    [GlobalMethod showAlert:[NSString stringWithFormat:@"请上传%@",model.string]];
+                    return;
+                }
             }
         }
     }
+    [self saveAllProperty];
     if (self.isFirst) {
         NSString * jsonOne = nil;
         NSString * jsonTwo = nil;
@@ -187,11 +205,11 @@ WEAKSELF
    
 }
 - (NSString *)fetchRequestJson{
-   NSDictionary * dic =     [RequestApi requestAuthBusinessWithQualificationurl:self.modelBusiness.identifier roadUrl:self.modelLoad.identifier qualificationNumber:self.modelOCRBusiness.registerNumber roadNumber:nil qcAddr:self.modelOCRBusiness.address qcIssueDate:self.modelOCRBusiness.establishDate qcAgency:nil qcNationality:nil qcCategory:self.modelOCRBusiness.type qcName:self.modelOCRBusiness.name qcDriverClass:nil qcGender:nil qcBirthday:nil rtpWord:nil rtbpNumber:nil qcEndDate:0 rtpEndDate:0 isRequest:false delegate:nil success:nil failure:nil];
+   NSDictionary * dic =     [RequestApi requestAuthBusinessWithQualificationurl:self.modelBusiness.identifier roadUrl:self.modelLoad.identifier qualificationNumber:nil roadNumber:nil qcAddr:nil qcIssueDate:nil qcAgency:nil qcNationality:nil qcCategory:nil qcName:nil qcDriverClass:nil qcGender:nil qcBirthday:nil rtpWord:nil rtbpNumber:nil qcEndDate:0 rtpEndDate:0 isRequest:false delegate:nil success:nil failure:nil];
     return [GlobalMethod exchangeDicToJson:dic];
 }
 - (void)requestDetail{
-    [RequestApi requestDriverAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
@@ -208,14 +226,14 @@ WEAKSELF
         self.modelImageSelected.identifier = image.imageURL;
         [self.tableView reloadData];
         if (self.modelImageSelected == self.modelBusiness) {
-            [RequestApi requestOCRBusinessWithurl:image.imageURL side:@"face" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"backResult"]];
-                
-                self.modelOCRBusiness = model;
-                
-            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                
-            }];
+//            [RequestApi requestOCRBusinessWithurl:image.imageURL side:@"face" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"backResult"]];
+//
+//                self.modelOCRBusiness = model;
+//
+//            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//
+//            }];
          
         }
         

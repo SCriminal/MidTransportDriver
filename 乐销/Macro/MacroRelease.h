@@ -11,6 +11,9 @@
 
 //请求URL
 #if DEBUG
+
+//#define URL_HEAD  @"http://192.168.20.27:10000"//刘炳晨
+
 #define URL_HEAD  @"http://112.253.1.72:10231"
 #define URL_IMAGE @"http://112.253.1.72:10231"//image
 //#define URL_SHARE @"http://112.253.1.72:10201"

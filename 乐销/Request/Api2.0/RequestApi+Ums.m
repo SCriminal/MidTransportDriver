@@ -119,7 +119,7 @@
                           @"scope":@"1",
                           @"terminalNumber":RequestStrKey( [CloudPushSDK getDeviceId])
     };
-    [self postUrl:@"/ums/user/login/1" delegate:delegate parameters:dic success:^(NSDictionary * response, id mark){
+    [self postUrl:@"/ums/login/1" delegate:delegate parameters:dic success:^(NSDictionary * response, id mark){
         if (!isDic(dic) || !isStr([response stringValueForKey:@"token"])) {
             if (failure) {
                 failure(nil,@"获取token失败");
@@ -155,9 +155,9 @@
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"driverJson":RequestStrKey(driverJson),
-                           @"serviceJson":RequestStrKey(serviceJson),
-                           @"vehicleJson":RequestStrKey(vehicleJson)};
+        NSDictionary *dic = @{@"driver":RequestStrKey(driverJson),
+                           @"service":RequestStrKey(serviceJson),
+                           @"vehicle":RequestStrKey(vehicleJson)};
         [self postUrl:@"/ums/all" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
@@ -212,24 +212,24 @@
 +(NSDictionary *)requestAuthCarWithPlatenumber:(NSString *)plateNumber
                 vehicleType:(double)vehicleType
                 owner:(NSString *)owner
-                grossMass:(NSString *)grossMass
-                approvedLoad:(NSString *)approvedLoad
-                vehicleLength:(NSString *)vehicleLength
-                vehicleWidth:(NSString *)vehicleWidth
-                vehicleHeight:(NSString *)vehicleHeight
+                grossMass:(double)grossMass
+                approvedLoad:(double)approvedLoad
+                vehicleLength:(double)vehicleLength
+                vehicleWidth:(double)vehicleWidth
+                vehicleHeight:(double)vehicleHeight
                 driving1Url:(NSString *)driving1Url
                 driving2Url:(NSString *)driving2Url
                 driving3Url:(NSString *)driving3Url
                 plateColor:(double)plateColor
                 energyType:(double)energyType
-                tractionMass:(NSString *)tractionMass
-                drivingEndTime:(NSString *)drivingEndTime
+                tractionMass:(double)tractionMass
+                drivingEndTime:(double)drivingEndTime
                 useCharacter:(NSString *)useCharacter
-                unladenMass:(NSString *)unladenMass
+                unladenMass:(double)unladenMass
                 vin:(NSString *)vin
-                drivingRegisterDate:(NSString *)drivingRegisterDate
+                drivingRegisterDate:(double)drivingRegisterDate
                 engineNumber:(NSString *)engineNumber
-                drivingIssueDate:(NSString *)drivingIssueDate
+                drivingIssueDate:(double)drivingIssueDate
                 model:(NSString *)model
                 rtbpNumber:(NSString *)rtbpNumber
                                      isRequest:(BOOL)isRequest
@@ -239,24 +239,24 @@
         NSDictionary *dic = @{@"plateNumber":RequestStrKey(plateNumber),
                            @"vehicleType":NSNumber.dou(vehicleType),
                            @"owner":RequestStrKey(owner),
-                           @"grossMass":RequestStrKey(grossMass),
-                           @"approvedLoad":RequestStrKey(approvedLoad),
-                           @"vehicleLength":NSNumber.dou(vehicleLength.doubleValue/10.0).stringValue,
-                           @"vehicleWidth":NSNumber.dou(vehicleWidth.doubleValue/10.0).stringValue,
-                           @"vehicleHeight":NSNumber.dou(vehicleHeight.doubleValue/10.0).stringValue,
+                           @"grossMass":NSNumber.dou(grossMass/1000.0),
+                           @"approvedLoad":NSNumber.dou(approvedLoad),
+                           @"vehicleLength":NSNumber.dou(vehicleLength/10.0),
+                           @"vehicleWidth":NSNumber.dou(vehicleWidth/10.0),
+                           @"vehicleHeight":NSNumber.dou(vehicleHeight/10.0),
                            @"driving1Url":RequestStrKey(driving1Url),
                            @"driving2Url":RequestStrKey(driving2Url),
                            @"driving3Url":RequestStrKey(driving3Url),
                            @"plateColor":NSNumber.dou(plateColor),
                            @"energyType":NSNumber.dou(energyType),
-                           @"tractionMass":RequestStrKey(tractionMass),
-                           @"drivingEndTime":RequestStrKey(drivingEndTime),
+                           @"tractionMass":NSNumber.dou(tractionMass),
+                           @"drivingEndTime":NSNumber.dou(drivingEndTime),
                            @"useCharacter":RequestStrKey(useCharacter),
-                           @"unladenMass":RequestStrKey(unladenMass),
+                           @"unladenMass":NSNumber.dou(unladenMass),
                            @"vin":RequestStrKey(vin),
-                           @"drivingRegisterDate":RequestStrKey(drivingRegisterDate),
+                           @"drivingRegisterDate":NSNumber.dou(drivingRegisterDate),
                            @"engineNumber":RequestStrKey(engineNumber),
-                           @"drivingIssueDate":RequestStrKey(drivingIssueDate),
+                           @"drivingIssueDate":NSNumber.dou(drivingIssueDate),
                            @"model":RequestStrKey(model),
                            @"rtbpNumber":RequestStrKey(rtbpNumber)};
     if (isRequest) {

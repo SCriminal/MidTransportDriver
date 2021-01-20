@@ -114,7 +114,7 @@
     NSArray * ary = [self getAllProperties];
     for (NSString * proName in ary) {
        ModelBaseData * model =  (ModelBaseData *)[self valueForKey:proName];
-        if ([model isKindOfClass:[ModelBaseData class]]) {
+        if ([model isKindOfClass:[ModelBaseData class]]||[model isKindOfClass:[ModelOCR class]]) {
             [GlobalMethod writeModel:model key:[NSString stringWithFormat:@"%@_%@",self.class,proName]];
         }
     }
@@ -129,6 +129,11 @@
                  modelLocal.blockValueChange = model.blockValueChange;
                  modelLocal.blocClick = model.blocClick;
                  modelLocal.blockDeleteClick = model.blockDeleteClick;
+                 [self setValue:modelLocal forKey:proName];
+             }
+         }else if ([model isKindOfClass:[ModelOCR class]]) {
+             ModelBaseData * modelLocal = [GlobalMethod readModelForKey:[NSString stringWithFormat:@"%@_%@",self.class,proName] modelName:@"ModelOCR"];
+             if (modelLocal) {
                  [self setValue:modelLocal forKey:proName];
              }
          }

@@ -118,30 +118,30 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSDictionary *)requestAuthCarWithPlatenumber:(NSString *)plateNumber
                 vehicleType:(double)vehicleType
                 owner:(NSString *)owner
-                grossMass:(NSString *)grossMass
-                approvedLoad:(NSString *)approvedLoad
-                vehicleLength:(NSString *)vehicleLength
-                vehicleWidth:(NSString *)vehicleWidth
-                vehicleHeight:(NSString *)vehicleHeight
+                grossMass:(double)grossMass
+                approvedLoad:(double)approvedLoad
+                vehicleLength:(double)vehicleLength
+                vehicleWidth:(double)vehicleWidth
+                vehicleHeight:(double)vehicleHeight
                 driving1Url:(NSString *)driving1Url
                 driving2Url:(NSString *)driving2Url
                 driving3Url:(NSString *)driving3Url
                 plateColor:(double)plateColor
                 energyType:(double)energyType
-                tractionMass:(NSString *)tractionMass
-                drivingEndTime:(NSString *)drivingEndTime
+                tractionMass:(double)tractionMass
+                drivingEndTime:(double)drivingEndTime
                 useCharacter:(NSString *)useCharacter
-                unladenMass:(NSString *)unladenMass
+                unladenMass:(double)unladenMass
                 vin:(NSString *)vin
-                drivingRegisterDate:(NSString *)drivingRegisterDate
+                drivingRegisterDate:(double)drivingRegisterDate
                 engineNumber:(NSString *)engineNumber
-                drivingIssueDate:(NSString *)drivingIssueDate
+                drivingIssueDate:(double)drivingIssueDate
                 model:(NSString *)model
                 rtbpNumber:(NSString *)rtbpNumber
                                      isRequest:(BOOL)isRequest
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
-                             failure:(void (^)(NSString * errorStr, id mark))failure;
+                                       failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
 提交营运认证信息[^/ums/identification/service$]
 */
