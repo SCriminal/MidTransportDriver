@@ -10,4 +10,5 @@
 
 @interface AuthOneVC : BaseTableVC
 @property (nonatomic, assign) BOOL isFirst;
+- (NSString *)fetchRequestJson;
 @end

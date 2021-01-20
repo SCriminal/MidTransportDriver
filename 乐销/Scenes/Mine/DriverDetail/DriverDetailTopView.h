@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DriverDetailTopView : UIView
-
 //属性
 @property (strong, nonatomic) UIImageView *bg;
 @property (strong, nonatomic) UIImageView *head;
@@ -20,7 +19,6 @@
 @property (strong, nonatomic) UILabel *sign;
 @property (strong, nonatomic) UILabel *auth;
 @property (nonatomic, strong) void (^blockClick)(void);
-
 @end
 
 @interface DriverDetailModelView : UIView

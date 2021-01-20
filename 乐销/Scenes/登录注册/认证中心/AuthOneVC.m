@@ -200,7 +200,25 @@
         vc.isFirst = self.isFirst;
         [GB_Nav pushViewController:vc animated:true];
     }else{
-        [RequestApi requestAuthDriverWithIdcardnationalemblemurl:self.modelCountry.identifier idFaceUrl:self.modelHead.identifier driverUrl:self.modelDriver.identifier vehicleUrl:self.modelCar.identifier name:self.modelName.subString idNumber:self.modelId.subString idBirthday:self.modelOCRIDFace.birthDate idGender:self.modelOCRIDFace.gender idNation:self.modelOCRIDFace.nationality idOrg:self.modelOCRIDCounty.issue idAddr:self.modelOCRIDFace.address driverNationality:self.modelOCRDriver.nationality driverGender:self.modelOCRDriver.gender driverBirthday:self.modelOCRDriver.birthDate driverClass:self.modelOCRDriver.vehicleType driverArchivesNumber:self.modelOCRDriver.licenseNumber driverFirstIssueDate:self.modelOCRDriver.startDate delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [RequestApi requestAuthDriverWithIdcardnationalemblemurl:self.modelCountry.identifier
+                                                       idFaceUrl:self.modelHead.identifier
+                                                       driverUrl:self.modelDriver.identifier
+                                                      vehicleUrl:self.modelCar.identifier
+                                                            name:self.modelName.subString
+                                                        idNumber:self.modelId.subString
+                                                      idBirthday:self.modelOCRIDFace.birthDate
+                                                        idGender:self.modelOCRIDFace.gender
+                                                        idNation:self.modelOCRIDFace.nationality
+                                                           idOrg:self.modelOCRIDCounty.issue
+                                                          idAddr:self.modelOCRIDFace.address
+                                               driverNationality:self.modelOCRDriver.nationality
+                                                    driverGender:self.modelOCRDriver.gender
+                                                  driverBirthday:self.modelOCRDriver.birthDate
+                                                     driverClass:self.modelOCRDriver.vehicleType
+                                            driverArchivesNumber:self.modelOCRDriver.licenseNumber
+                                            driverFirstIssueDate:self.modelOCRDriver.startDate
+                                                       isRequest:true
+                                                        delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             [GlobalMethod showAlert:@"上传成功"];
             [GB_Nav popViewControllerAnimated:true];
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -208,6 +226,28 @@
                 }];
     }
    
+}
+- (NSString *)fetchRequestJson{
+   NSDictionary * dic =[RequestApi requestAuthDriverWithIdcardnationalemblemurl:self.modelCountry.identifier
+                                                   idFaceUrl:self.modelHead.identifier
+                                                   driverUrl:self.modelDriver.identifier
+                                                  vehicleUrl:self.modelCar.identifier
+                                                        name:self.modelName.subString
+                                                    idNumber:self.modelId.subString
+                                                  idBirthday:self.modelOCRIDFace.birthDate
+                                                    idGender:self.modelOCRIDFace.gender
+                                                    idNation:self.modelOCRIDFace.nationality
+                                                       idOrg:self.modelOCRIDCounty.issue
+                                                      idAddr:self.modelOCRIDFace.address
+                                           driverNationality:self.modelOCRDriver.nationality
+                                                driverGender:self.modelOCRDriver.gender
+                                              driverBirthday:self.modelOCRDriver.birthDate
+                                                 driverClass:self.modelOCRDriver.vehicleType
+                                        driverArchivesNumber:self.modelOCRDriver.licenseNumber
+                                        driverFirstIssueDate:self.modelOCRDriver.startDate
+                                                   isRequest:false
+                                                    delegate:nil success:nil failure:nil];
+    return [GlobalMethod exchangeDicToJson:dic];
 }
 - (void)requestDetail{
     [RequestApi requestDriverAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {

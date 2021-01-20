@@ -49,6 +49,7 @@
                          success:(void (^)(NSDictionary * response, id mark))success
                          failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"url":UnPackStr(url),
+                          @"scope":@"1",
                           @"side":UnPackStr(side)
     };
     [self getUrl:@"/oss/ocr/id" delegate:delegate parameters:dic success:success failure:failure];
@@ -59,16 +60,20 @@
                        success:(void (^)(NSDictionary * response, id mark))success
                        failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"url":UnPackStr(url),
+                          @"scope":@"1",
                           @"side":UnPackStr(side)
     };
     [self getUrl:@"/oss/ocr/driver" delegate:delegate parameters:dic success:success failure:failure];
 }
 +(void)requestOCRBusinessWithurl:(NSString *)url
+                            side:(NSString *)side
                         delegate:(id <RequestDelegate>)delegate
                          success:(void (^)(NSDictionary * response, id mark))success
                          failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"url":UnPackStr(url),
-                          @"side":@"face"
+                          @"side":UnPackStr(side),
+                          @"scope":@"1",
+
     };
     [self getUrl:@"/oss/ocr/biz" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -78,6 +83,7 @@
                        success:(void (^)(NSDictionary * response, id mark))success
                        failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"url":UnPackStr(url),
+                          @"scope":@"1",
                           @"side":UnPackStr(side)
     };
     [self getUrl:@"/oss/ocr/driving" delegate:delegate parameters:dic success:success failure:failure];

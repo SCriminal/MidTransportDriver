@@ -180,11 +180,13 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
             result = [UIImage imageWithData:imageData];
             imageData = UIImageJPEGRepresentation(result,0.4);
         }
+
         [self upImageData:imageData urlSuffix:imageIdentity blockSuccess:blockSuccess blockFailure:blockFailure];
     }];
 }
 
 - (void)upImageData:(NSData *)imageData urlSuffix:(NSString *)imageIdentity blockSuccess:(void (^)(void))blockSuccess blockFailure:(void (^)(void))blockFailure{
+    [UIImage saveImageDataToLocal:imageData imageName:@"0931"];
     if (!isStr(imageIdentity)) {
         return;
     }
@@ -201,7 +203,8 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
     [manager.securityPolicy setValidatesDomainName:NO];
     [manager.requestSerializer setValue:@"multipart/form-data;" forHTTPHeaderField:@"Content-Type"];
     NSDictionary *dic = @{@"object":[NSString stringWithFormat:@"%@%@",RequestStrKey(self.imagePath),RequestStrKey(imageIdentity)],
-                          @"isCover":@1
+                          @"isCover":@1,
+                          @"scope":@"1",
                          };
     //设置请求头
     dic = [RequestApi setInitHead:dic];

@@ -315,7 +315,7 @@
         vc.isFirst = self.isFirst;
         [GB_Nav pushViewController:vc animated:true];
     }else{
-        [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString vehicleType:self.modelCarType.identifier.doubleValue owner:self.modelCarOwner.subString grossMass:NSNumber.dou(self.modelOCRDrivingBack.grossMass.doubleValue).stringValue approvedLoad:NSNumber.dou(self.modelOCRDrivingBack.approvedLoad.doubleValue).stringValue vehicleLength:self.modelCarLong.subString vehicleWidth:self.modelCarWidth.subString vehicleHeight:self.modelCarHeight.subString driving1Url:self.modelMain.identifier driving2Url:self.modelSub.identifier driving3Url:self.modelThree.identifier plateColor:0 energyType:isStr(self.modelOCRDrivingBack.energyType)?[AddCarVC exchangeEnergeyTypeWithName:self.modelOCRDrivingBack.energyType].doubleValue:0 tractionMass:self.modelOCRDrivingBack.tractionMass drivingEndTime:nil useCharacter:nil unladenMass:nil vin:nil drivingRegisterDate:nil engineNumber:nil drivingIssueDate:nil model:nil rtbpNumber:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString vehicleType:self.modelCarType.identifier.doubleValue owner:self.modelCarOwner.subString grossMass:NSNumber.dou(self.modelOCRDrivingBack.grossMass.doubleValue).stringValue approvedLoad:NSNumber.dou(self.modelOCRDrivingBack.approvedLoad.doubleValue).stringValue vehicleLength:self.modelCarLong.subString vehicleWidth:self.modelCarWidth.subString vehicleHeight:self.modelCarHeight.subString driving1Url:self.modelMain.identifier driving2Url:self.modelSub.identifier driving3Url:self.modelThree.identifier plateColor:0 energyType:isStr(self.modelOCRDrivingBack.energyType)?[AddCarVC exchangeEnergeyTypeWithName:self.modelOCRDrivingBack.energyType].doubleValue:0 tractionMass:self.modelOCRDrivingBack.tractionMass drivingEndTime:nil useCharacter:nil unladenMass:nil vin:nil drivingRegisterDate:nil engineNumber:nil drivingIssueDate:nil model:nil rtbpNumber:nil isRequest:true delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             [GlobalMethod showAlert:@"上传成功"];
             [GB_Nav popViewControllerAnimated:true];
 
@@ -325,6 +325,10 @@
       
     }
    
+}
+- (NSString *)fetchRequestJson{
+   NSDictionary * dic =      [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString vehicleType:self.modelCarType.identifier.doubleValue owner:self.modelCarOwner.subString grossMass:NSNumber.dou(self.modelOCRDrivingBack.grossMass.doubleValue).stringValue approvedLoad:NSNumber.dou(self.modelOCRDrivingBack.approvedLoad.doubleValue).stringValue vehicleLength:self.modelCarLong.subString vehicleWidth:self.modelCarWidth.subString vehicleHeight:self.modelCarHeight.subString driving1Url:self.modelMain.identifier driving2Url:self.modelSub.identifier driving3Url:self.modelThree.identifier plateColor:0 energyType:isStr(self.modelOCRDrivingBack.energyType)?[AddCarVC exchangeEnergeyTypeWithName:self.modelOCRDrivingBack.energyType].doubleValue:0 tractionMass:self.modelOCRDrivingBack.tractionMass drivingEndTime:nil useCharacter:nil unladenMass:nil vin:nil drivingRegisterDate:nil engineNumber:nil drivingIssueDate:nil model:nil rtbpNumber:nil isRequest:false delegate:self success:nil failure:nil];
+    return [GlobalMethod exchangeDicToJson:dic];
 }
 - (void)requestDetail{
     [RequestApi requestDriverAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {

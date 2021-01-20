@@ -12,6 +12,8 @@
 //request
 #import "RequestDriver2.h"
 #import "BaseVC+BaseImageSelectVC.h"
+#import "AuthOneVC.h"
+#import "AuthTwoVC.h"
 
 @interface AuthThreeVC ()
 @property (nonatomic, strong) AuthView *authTopView;
@@ -20,6 +22,8 @@
 @property (nonatomic, strong) ModelBaseData *modelLoad;
 @property (nonatomic, strong) ModelBaseData *modelBusiness;
 @property (nonatomic, strong) ModelBaseData *modelImageSelected;
+@property (nonatomic, strong) ModelOCR *modelOCRLoad;
+@property (nonatomic, strong) ModelOCR *modelOCRBusiness;
 
 @end
 
@@ -55,7 +59,7 @@ WEAKSELF
 - (ModelBaseData *)modelLoad{
     if (!_modelLoad) {
         _modelLoad =[ModelBaseData new];
-        _modelLoad.enumType = ENUM_PERFECT_CELL_SELECT;
+        _modelLoad.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelLoad.string = @"道路运输许可证";
 //        _modelLoad.subString = self.model.bankName;
         _modelLoad.placeHolderString = @"点击上传";
@@ -71,7 +75,7 @@ WEAKSELF
 - (ModelBaseData *)modelBusiness{
     if (!_modelBusiness) {
         _modelBusiness =[ModelBaseData new];
-        _modelBusiness.enumType = ENUM_PERFECT_CELL_SELECT;
+        _modelBusiness.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelBusiness.string = @"从业资格证";
 //        _modelBusiness.subString = self.model.bankName;
         _modelBusiness.placeHolderString = @"点击上传";
@@ -135,12 +139,41 @@ WEAKSELF
 #pragma mark request
 - (void)requestUP{
     if (self.isFirst) {
-       
+        NSString * jsonOne = nil;
+        NSString * jsonTwo = nil;
+        NSString * jsonThree = nil;
+        for (UIViewController * vc in GB_Nav.viewControllers) {
+            if ([vc isKindOfClass:NSClassFromString(@"AuthOneVC")]) {
+                jsonOne = [(AuthOneVC *)vc fetchRequestJson];
+            }
+            if ([vc isKindOfClass:NSClassFromString(@"AuthTwoVC")]) {
+                jsonTwo = [(AuthTwoVC *)vc fetchRequestJson];
+            }
+            if ([vc isKindOfClass:NSClassFromString(@"AuthThreeVC")]) {
+                jsonThree = [(AuthThreeVC *)vc fetchRequestJson];
+            }
+        }
+        [RequestApi requestAuthUpAllWithDriverjson:jsonOne serviceJson:jsonThree vehicleJson:jsonTwo delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [GlobalMethod showAlert:@"提交成功"];
+            [GB_Nav popToRootViewControllerAnimated:true];
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                    
+                }];
         
     }else{
+        [RequestApi requestAuthBusinessWithQualificationurl:self.modelBusiness.identifier roadUrl:self.modelLoad.identifier qualificationNumber:nil roadNumber:nil qcAddr:nil qcIssueDate:nil qcAgency:nil qcNationality:nil qcCategory:nil qcName:nil qcDriverClass:nil qcGender:nil qcBirthday:nil rtpWord:nil rtbpNumber:nil qcEndDate:0 rtpEndDate:0 isRequest:true delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [GlobalMethod showAlert:@"上传成功"];
+            [GB_Nav popViewControllerAnimated:true];
 
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                    
+                }];
     }
    
+}
+- (NSString *)fetchRequestJson{
+   NSDictionary * dic =     [RequestApi requestAuthBusinessWithQualificationurl:self.modelBusiness.identifier roadUrl:self.modelLoad.identifier qualificationNumber:self.modelOCRBusiness.registerNumber roadNumber:nil qcAddr:self.modelOCRBusiness.address qcIssueDate:self.modelOCRBusiness.establishDate qcAgency:nil qcNationality:nil qcCategory:self.modelOCRBusiness.type qcName:self.modelOCRBusiness.name qcDriverClass:nil qcGender:nil qcBirthday:nil rtpWord:nil rtbpNumber:nil qcEndDate:0 rtpEndDate:0 isRequest:false delegate:nil success:nil failure:nil];
+    return [GlobalMethod exchangeDicToJson:dic];
 }
 - (void)requestDetail{
     [RequestApi requestDriverAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
@@ -159,21 +192,17 @@ WEAKSELF
         [self.loadingView hideLoading];
         self.modelImageSelected.identifier = image.imageURL;
         [self.tableView reloadData];
-
-//        if (self.modelImageSelected == self.modelHead) {
-//            [RequestApi requestOCRIdentityWithurl:image.imageURL delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-//                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"frontResult"]];
-//                if (isStr(model.name)) {
-//                    self.modelName.subString = model.name;
-//                }
-//                if (isStr(model.iDNumber)) {
-//                    self.modelId.subString = model.iDNumber;
-//                }
-//                [self.tableView reloadData];
-//            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-//
-//            }];
-//        }
+        if (self.modelImageSelected == self.modelBusiness) {
+            [RequestApi requestOCRBusinessWithurl:image.imageURL side:@"face" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"backResult"]];
+                
+                self.modelOCRBusiness = model;
+                
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+         
+        }
         
     } fail:^{
         

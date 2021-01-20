@@ -50,4 +50,7 @@
 + (UIImage*)imageBlackToTransparent:(UIImage*)image withRed:(CGFloat)red andGreen:(CGFloat)green andBlue:(CGFloat)blue;
 + (UIImage *)createNonInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat) size;
 
+- (void)saveToLocal:(NSString *)name;
++ (void)saveImageDataToLocal:(NSData *)data imageName:(NSString *)name;
+
 @end

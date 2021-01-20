@@ -35,7 +35,14 @@ NSString *const kModelOCRBirthDate = @"birthDate";
 NSString *const kModelOCRIssue = @"issue";
 NSString *const kModelOCRStartDate = @"startDate";
 NSString *const kModelOCRLicenseNumber = @"licenseNumber";
-
+NSString *const kModelOCRAngle = @"angle";
+NSString *const kModelOCRLegalPerson = @"legalPerson";
+NSString *const kModelOCREstablishDate = @"establishDate";
+NSString *const kModelOCRCapital = @"capital";
+NSString *const kModelOCRType = @"type";
+NSString *const kModelOCRValidPeriod = @"validPeriod";
+NSString *const kModelOCRBusiness = @"business";
+NSString *const kModelOCRRegisterNumber = @"registerNumber";
 @interface ModelOCR ()
 @end
 
@@ -95,6 +102,14 @@ NSString *const kModelOCRLicenseNumber = @"licenseNumber";
         self.issue = [dict stringValueForKey:kModelOCRIssue];
         self.startDate = [dict stringValueForKey:kModelOCRStartDate];
         self.licenseNumber = [dict stringValueForKey:kModelOCRLicenseNumber];
+        self.angle = [dict stringValueForKey:kModelOCRAngle];
+        self.legalPerson = [dict stringValueForKey:kModelOCRLegalPerson];
+        self.establishDate = [dict stringValueForKey:kModelOCREstablishDate];
+        self.capital = [dict stringValueForKey:kModelOCRCapital];
+        self.type = [dict stringValueForKey:kModelOCRType];
+        self.validPeriod = [dict stringValueForKey:kModelOCRValidPeriod];
+        self.business = [dict stringValueForKey:kModelOCRBusiness];
+        self.registerNumber = [dict stringValueForKey:kModelOCRRegisterNumber];
 
         if (!isStr(self.iDNumber)) {
             self.iDNumber = [dict stringValueForKey:@"iDNumber"];
@@ -144,6 +159,14 @@ NSString *const kModelOCRLicenseNumber = @"licenseNumber";
     [mutableDict setValue:self.issue forKey:kModelOCRIssue];
     [mutableDict setValue:self.startDate forKey:kModelOCRStartDate];
     [mutableDict setValue:self.licenseNumber forKey:kModelOCRLicenseNumber];
+    [mutableDict setValue:self.angle forKey:kModelOCRAngle];
+    [mutableDict setValue:self.legalPerson forKey:kModelOCRLegalPerson];
+    [mutableDict setValue:self.establishDate forKey:kModelOCREstablishDate];
+    [mutableDict setValue:self.capital forKey:kModelOCRCapital];
+    [mutableDict setValue:self.type forKey:kModelOCRType];
+    [mutableDict setValue:self.validPeriod forKey:kModelOCRValidPeriod];
+    [mutableDict setValue:self.business forKey:kModelOCRBusiness];
+    [mutableDict setValue:self.registerNumber forKey:kModelOCRRegisterNumber];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

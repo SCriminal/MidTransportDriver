@@ -50,6 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
                        failure:(void (^)(NSString * errorStr, id mark))failure;
 
 +(void)requestOCRBusinessWithurl:(NSString *)url
+                            side:(NSString *)side
                         delegate:(id <RequestDelegate>)delegate
                          success:(void (^)(NSDictionary * response, id mark))success
                          failure:(void (^)(NSString * errorStr, id mark))failure;

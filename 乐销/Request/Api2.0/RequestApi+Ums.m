@@ -119,7 +119,7 @@
                           @"scope":@"1",
                           @"terminalNumber":RequestStrKey( [CloudPushSDK getDeviceId])
     };
-    [self postUrl:@"/ums/login/1" delegate:delegate parameters:dic success:^(NSDictionary * response, id mark){
+    [self postUrl:@"/ums/user/login/1" delegate:delegate parameters:dic success:^(NSDictionary * response, id mark){
         if (!isDic(dic) || !isStr([response stringValueForKey:@"token"])) {
             if (failure) {
                 failure(nil,@"获取token失败");
@@ -146,11 +146,24 @@
 }
 
 
-
+/**
+提交认证信息（整合）
+*/
++(void)requestAuthUpAllWithDriverjson:(NSString *)driverJson
+                serviceJson:(NSString *)serviceJson
+                vehicleJson:(NSString *)vehicleJson
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"driverJson":RequestStrKey(driverJson),
+                           @"serviceJson":RequestStrKey(serviceJson),
+                           @"vehicleJson":RequestStrKey(vehicleJson)};
+        [self postUrl:@"/ums/all" delegate:delegate parameters:dic success:success failure:failure];
+}
 /**
 提交司机信息[^/ums/driver$]
 */
-+(void)requestAuthDriverWithIdcardnationalemblemurl:(NSString *)idEmblemUrl
++(NSDictionary *)requestAuthDriverWithIdcardnationalemblemurl:(NSString *)idEmblemUrl
                 idFaceUrl:(NSString *)idFaceUrl
                 driverUrl:(NSString *)driverUrl
                 vehicleUrl:(NSString *)vehicleUrl
@@ -167,6 +180,7 @@
                 driverClass:(NSString *)driverClass
                 driverArchivesNumber:(NSString *)driverArchivesNumber
                 driverFirstIssueDate:(NSString *)driverFirstIssueDate
+                                                    isRequest:(BOOL)isRequest
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
@@ -187,12 +201,15 @@
                            @"driverClass":RequestStrKey(driverClass),
                            @"driverArchivesNumber":RequestStrKey(driverArchivesNumber),
                            @"driverFirstIssueDate":RequestStrKey(driverFirstIssueDate)};
+    if (isRequest) {
         [self postUrl:@"/ums/driver" delegate:delegate parameters:dic success:success failure:failure];
+    }
+    return dic;
 }
 /**
 提交车辆认证信息
 */
-+(void)requestAuthCarWithPlatenumber:(NSString *)plateNumber
++(NSDictionary *)requestAuthCarWithPlatenumber:(NSString *)plateNumber
                 vehicleType:(double)vehicleType
                 owner:(NSString *)owner
                 grossMass:(NSString *)grossMass
@@ -215,6 +232,7 @@
                 drivingIssueDate:(NSString *)drivingIssueDate
                 model:(NSString *)model
                 rtbpNumber:(NSString *)rtbpNumber
+                                     isRequest:(BOOL)isRequest
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
@@ -241,12 +259,15 @@
                            @"drivingIssueDate":RequestStrKey(drivingIssueDate),
                            @"model":RequestStrKey(model),
                            @"rtbpNumber":RequestStrKey(rtbpNumber)};
+    if (isRequest) {
         [self postUrl:@"/ums/vehicle" delegate:delegate parameters:dic success:success failure:failure];
+    }
+    return dic;
 }
 /**
 提交营运认证信息[^/ums/service$]
 */
-+(void)requestAuthBusinessWithQualificationurl:(NSString *)qualificationUrl
++(NSDictionary *)requestAuthBusinessWithQualificationurl:(NSString *)qualificationUrl
                 roadUrl:(NSString *)roadUrl
                 qualificationNumber:(NSString *)qualificationNumber
                 roadNumber:(NSString *)roadNumber
@@ -263,6 +284,7 @@
                 rtbpNumber:(NSString *)rtbpNumber
                 qcEndDate:(double)qcEndDate
                 rtpEndDate:(double)rtpEndDate
+                                               isRequest:(BOOL)isRequest
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
@@ -283,7 +305,11 @@
                            @"rtbpNumber":RequestStrKey(rtbpNumber),
                            @"qcEndDate":NSNumber.dou(qcEndDate),
                            @"rtpEndDate":NSNumber.dou(rtpEndDate)};
+    if (isRequest) {
         [self postUrl:@"/ums/service" delegate:delegate parameters:dic success:success failure:failure];
+    }
+    return dic;
+
 }
 /**
  司机认证详情（用户）[^/ums/driver$]

@@ -49,6 +49,14 @@
 @property (nonatomic, assign) double birthDateStamp;
 @property (nonatomic, strong) NSString *startDate;
 @property (nonatomic, strong) NSString *licenseNumber;
+@property (nonatomic, strong) NSString *angle;
+@property (nonatomic, strong) NSString *legalPerson;
+@property (nonatomic, strong) NSString *establishDate;
+@property (nonatomic, strong) NSString *capital;
+@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *validPeriod;
+@property (nonatomic, strong) NSString *business;
+@property (nonatomic, strong) NSString *registerNumber;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

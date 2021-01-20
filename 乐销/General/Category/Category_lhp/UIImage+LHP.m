@@ -252,4 +252,41 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
     
 }
 
+- (void)saveToLocal:(NSString *)ImageName{
+    NSData *imageData = UIImageJPEGRepresentation(self, 1.0f);
+    [UIImage saveImageDataToLocal:imageData imageName:ImageName];
+}
++ (void)saveImageDataToLocal:(NSData *)imageData imageName:(NSString *)ImageName{
+      if (imageData && ImageName.length > 0 && ImageName) {
+        
+        NSFileManager *fileManage=[NSFileManager defaultManager];
+        
+                                    //把图片存储在沙盒中，首先获取沙盒路径
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        
+        NSString *documentsDirectory=[paths objectAtIndex:0];//Documents目录
+        
+                                    //在Documents下面创建一个Image的文件夹的路径
+        
+        NSString *createPath=[NSString stringWithFormat:@"%@/Images",documentsDirectory];
+        
+                                    //没有这个文件夹的话就创建这个文件夹
+        
+        if(![fileManage fileExistsAtPath:createPath]){
+            
+            [fileManage createDirectoryAtPath:createPath withIntermediateDirectories:YES attributes:nil error:nil];
+            
+                                           NSLog(@"已创建文件夹");
+            
+                                }
+        
+                    //把数据以.png的形式存储在沙盒中，路径为可变路径
+        
+                    NSString *filePath = [NSString stringWithFormat:@"%@/%@.png",createPath,ImageName];
+        NSLog(@"sld image path:%@",filePath);
+                    [[NSFileManager defaultManager] createFileAtPath:filePath contents:imageData attributes:nil];
+        
+                }
+}
 @end
