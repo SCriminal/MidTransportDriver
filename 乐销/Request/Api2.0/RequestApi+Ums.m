@@ -260,7 +260,7 @@
                            @"model":RequestStrKey(model),
                            @"rtbpNumber":RequestStrKey(rtbpNumber)};
     if (isRequest) {
-        [self postUrl:@"http://192.168.20.27:10000/ums/vehicle" delegate:delegate parameters:dic success:success failure:failure];
+        [self postUrl:@"/ums/vehicle" delegate:delegate parameters:dic success:success failure:failure];
     }
     return dic;
 }
@@ -327,7 +327,7 @@
                                 success:(void (^)(NSDictionary * response, id mark))success
                                 failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"http://192.168.20.27:10000/ums/vehicle" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/vehicle" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 +(void)requestBusinessAuthDetailWithDelegate:(id <RequestDelegate>)delegate
