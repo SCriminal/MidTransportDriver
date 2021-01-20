@@ -213,6 +213,9 @@ WEAKSELF
         self.modelAuthCar = [ModelAuthCar modelObjectWithDictionary:response];
         [RequestApi requestBusinessAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             ModelAuthBusiness * model = [ModelAuthBusiness modelObjectWithDictionary:response];
+            if (model.reviewStatus <= 1) {
+                return;
+            }
             self.modelLoad.identifier = model.roadUrl;
             self.modelBusiness.identifier = model.qualificationUrl;
             if (model.reviewStatus == 2 || model.reviewStatus == 10) {

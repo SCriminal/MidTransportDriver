@@ -273,6 +273,9 @@
 - (void)requestDetail{
     [RequestApi requestDriverAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelAuthDriver * model = [ModelAuthDriver modelObjectWithDictionary:response];
+        if (model.reviewStatus <= 1) {
+            return;
+        }
         self.modelHead.identifier = model.idFaceUrl;
         self.modelCountry.identifier = model.idEmblemUrl;
         self.modelName.subString = model.name;

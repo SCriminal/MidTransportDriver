@@ -398,6 +398,9 @@
 - (void)requestDetail{
     [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelAuthCar * model = [ModelAuthCar modelObjectWithDictionary:response];
+        if (model.reviewStatus <= 1) {
+            return;
+        }
         self.modelOCRDrivingBack = [ModelOCR new];
         self.modelOCRDrivingBack.approvedLoad = NSNumber.dou(model.approvedLoad).stringValue;
         self.modelOCRDrivingBack.energyType = NSNumber.dou(model.energyType).stringValue;
