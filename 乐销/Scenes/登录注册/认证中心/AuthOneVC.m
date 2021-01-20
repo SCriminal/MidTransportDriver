@@ -272,10 +272,23 @@
 }
 - (void)requestDetail{
     [RequestApi requestDriverAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
-        }];
+        ModelAuthDriver * model = [ModelAuthDriver modelObjectWithDictionary:response];
+        self.modelHead.identifier = model.idFaceUrl;
+        self.modelCountry.identifier = model.idEmblemUrl;
+        self.modelName.subString = model.name;
+        self.modelId.subString = model.idNumber;
+        self.modelDriver.identifier = model.driverUrl;
+        self.modelCar.identifier = model.vehicleUrl;
+        if (model.reviewStatus == 2 || model.reviewStatus == 10) {
+            for (ModelBaseData * m in self.aryDatas) {
+                m.isChangeInvalid = true;
+            }
+            self.authBtnView.hidden = true;
+        }
+        [self.tableView reloadData];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;

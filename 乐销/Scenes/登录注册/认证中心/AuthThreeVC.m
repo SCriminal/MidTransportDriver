@@ -101,9 +101,7 @@ WEAKSELF
     self.tableView.backgroundColor = COLOR_BACKGROUND;
     [self registAuthorityCell];
     [self addObserveOfKeyboard];
-
-    //request
-    [self requestList];
+    [self requestDetail];
     
     //request
     self.aryDatas = @[self.modelLoad,self.modelBusiness,].mutableCopy;
@@ -136,10 +134,7 @@ WEAKSELF
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return  [self fetchAuthorityCellHeight:indexPath];
 }
-#pragma mark request
-- (void)requestList{
-   
-}
+
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }

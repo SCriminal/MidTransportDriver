@@ -220,6 +220,7 @@
         m.subLeft = W(120);
     }
     [self.tableView reloadData];
+    [self requestDetail];
 }
 
 #pragma mark 添加导航栏
@@ -394,11 +395,19 @@
                                                              rtbpNumber:nil isRequest:false delegate:self success:nil failure:nil];
     return [GlobalMethod exchangeDicToJson:dic];
 }
+
 - (void)requestDetail{
-    [RequestApi requestDriverAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
-        }];
+    [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        ModelAuthDriver * model = [ModelAuthDriver modelObjectWithDictionary:response];
+        if (model.reviewStatus == 2 || model.reviewStatus == 10) {
+            for (ModelBaseData * m in self.aryDatas) {
+                m.isChangeInvalid = true;
+            }
+            self.authBtnView.hidden = true;
+        }
+        [self.tableView reloadData];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
 }
 @end

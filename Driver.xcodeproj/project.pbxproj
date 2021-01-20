@@ -109,6 +109,7 @@
 		D239EACA1E2E0EB000E803F6 /* MJChiBaoZiHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D239EAC91E2E0EB000E803F6 /* MJChiBaoZiHeader.m */; };
 		D239EACD1E2E175100E803F6 /* CutomFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = D239EACC1E2E175100E803F6 /* CutomFooter.m */; };
 		D23B6EF025B675D00044E28C /* RequestApi+Dic.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B6EEF25B675D00044E28C /* RequestApi+Dic.m */; };
+		D23B6EF325B8127C0044E28C /* ModelAuthDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B6EF125B8127B0044E28C /* ModelAuthDriver.m */; };
 		D23D90C71F8B245A00489F95 /* UIViewController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D23D90C61F8B245A00489F95 /* UIViewController+Category.m */; };
 		D23F02FA1E037F34004E768F /* GlobalMethod+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = D23F02F91E037F34004E768F /* GlobalMethod+UI.m */; };
 		D24091D61E5C2FE10049D41D /* GlobalMethod+Request.m in Sources */ = {isa = PBXBuildFile; fileRef = D24091D51E5C2FE10049D41D /* GlobalMethod+Request.m */; };
@@ -619,6 +620,8 @@
 		D239EACC1E2E175100E803F6 /* CutomFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutomFooter.m; sourceTree = "<group>"; };
 		D23B6EEE25B675D00044E28C /* RequestApi+Dic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+Dic.h"; sourceTree = "<group>"; };
 		D23B6EEF25B675D00044E28C /* RequestApi+Dic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Dic.m"; sourceTree = "<group>"; };
+		D23B6EF125B8127B0044E28C /* ModelAuthDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAuthDriver.m; sourceTree = "<group>"; };
+		D23B6EF225B8127B0044E28C /* ModelAuthDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAuthDriver.h; sourceTree = "<group>"; };
 		D23D90C51F8B245A00489F95 /* UIViewController+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Category.h"; sourceTree = "<group>"; };
 		D23D90C61F8B245A00489F95 /* UIViewController+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Category.m"; sourceTree = "<group>"; };
 		D23F02F81E037F34004E768F /* GlobalMethod+UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GlobalMethod+UI.h"; sourceTree = "<group>"; };
@@ -2922,6 +2925,8 @@
 			children = (
 				D2DFD78F2296A58E00363142 /* ModelAuthorityImage.h */,
 				D2DFD78C2296A58E00363142 /* ModelAuthorityImage.m */,
+				D23B6EF225B8127B0044E28C /* ModelAuthDriver.h */,
+				D23B6EF125B8127B0044E28C /* ModelAuthDriver.m */,
 				D2DFD78D2296A58E00363142 /* ModelAuthorityInfo.h */,
 				D2DFD78A2296A58E00363142 /* ModelAuthorityInfo.m */,
 				D2DFD78E2296A58E00363142 /* ModelBaseInfo.h */,
@@ -3568,6 +3573,7 @@
 				D2ACCC2221DC8E4600F39E28 /* ModelApns.m in Sources */,
 				D2C6D15122DEC99300A22EA6 /* BulkCargoOperateVC.m in Sources */,
 				D279C0141E29D77800D0FF94 /* CustomPicker.m in Sources */,
+				D23B6EF325B8127C0044E28C /* ModelAuthDriver.m in Sources */,
 				C69570561E861A7000ABB2ED /* NSString+Category.m in Sources */,
 				D2C99C341E0BA42F001D5DBA /* RadioBtnView.m in Sources */,
 				D2037605210719190054F8A6 /* ModelAliClient_Base.m in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import "PerfectSelectCell.h"
-
+#import "ImageDetailBigView.h"
 @interface PerfectSelectCell ()
 
 @end
@@ -205,5 +205,22 @@
     self.iconLogo.rightCenterY = XY(SCREEN_WIDTH - W(44), self.height/2.0);
     [self.iconLogo sd_setImageWithURL:[NSURL URLWithString:model.identifier] placeholderImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT ]];
 }
-    
+#pragma mark click
+- (void)cellClick{
+    if (self.model.isChangeInvalid) {
+        ImageDetailBigView * detailView = [ImageDetailBigView new];
+        [detailView resetView:^(){
+            NSMutableArray * aryImages = [NSMutableArray new];
+            ModelImage * model = [ModelImage new];
+            model.url = self.model.identifier;
+            [aryImages addObject:model];
+            return aryImages;
+        }() isEdit:false index:0];
+        [detailView showInView:[GB_Nav.lastVC view] imageViewShow:self.iconLogo];
+        return;
+    }
+    if (self.model.blocClick) {
+        self.model.blocClick(self.model);
+    }
+}
 @end
