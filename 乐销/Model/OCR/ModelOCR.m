@@ -29,6 +29,12 @@ NSString *const kModelOCRPlateNumber = @"plateNumber";
 NSString *const kModelOCREngineNumber = @"engineNumber";
 NSString *const kModelOCRName = @"name";
 NSString *const kModelOCRIDNumber = @"IDNumber";
+NSString *const kModelOCRNationality = @"nationality";
+NSString *const kModelOCRGender = @"gender";
+NSString *const kModelOCRBirthDate = @"birthDate";
+NSString *const kModelOCRIssue = @"issue";
+NSString *const kModelOCRStartDate = @"startDate";
+NSString *const kModelOCRLicenseNumber = @"licenseNumber";
 
 @interface ModelOCR ()
 @end
@@ -83,7 +89,16 @@ NSString *const kModelOCRIDNumber = @"IDNumber";
         self.engineNumber = [dict stringValueForKey:kModelOCREngineNumber];
         self.name = [dict stringValueForKey:kModelOCRName];
         self.iDNumber = [dict stringValueForKey:kModelOCRIDNumber];
+        self.nationality = [dict stringValueForKey:kModelOCRNationality];
+        self.gender = [dict stringValueForKey:kModelOCRGender];
+        self.birthDate = [dict stringValueForKey:kModelOCRBirthDate];
+        self.issue = [dict stringValueForKey:kModelOCRIssue];
+        self.startDate = [dict stringValueForKey:kModelOCRStartDate];
+        self.licenseNumber = [dict stringValueForKey:kModelOCRLicenseNumber];
 
+        if (!isStr(self.iDNumber)) {
+            self.iDNumber = [dict stringValueForKey:@"iDNumber"];
+        }
         NSArray * aryDimension = [self.overallDimension componentsSeparatedByString:@"X"];
         if (aryDimension.count>2) {
             self.length = [aryDimension.firstObject doubleValue];
@@ -92,6 +107,7 @@ NSString *const kModelOCRIDNumber = @"IDNumber";
         }
         self.issueDateStamp = [GlobalMethod exchangeStringToDate:self.issueDate formatter:@"YYYYMMDD"].timeIntervalSince1970;
         self.registerDateStamp  = [GlobalMethod exchangeStringToDate:self.registerDate formatter:@"YYYYMMDD"].timeIntervalSince1970;
+        self.birthDateStamp  = [GlobalMethod exchangeStringToDate:self.birthDate formatter:@"YYYYMMDD"].timeIntervalSince1970;
 
     }
     
@@ -122,6 +138,12 @@ NSString *const kModelOCRIDNumber = @"IDNumber";
     [mutableDict setValue:self.engineNumber forKey:kModelOCREngineNumber];
     [mutableDict setValue:self.name forKey:kModelOCRName];
     [mutableDict setValue:self.iDNumber forKey:kModelOCRIDNumber];
+    [mutableDict setValue:self.nationality forKey:kModelOCRNationality];
+    [mutableDict setValue:self.gender forKey:kModelOCRGender];
+    [mutableDict setValue:self.birthDate forKey:kModelOCRBirthDate];
+    [mutableDict setValue:self.issue forKey:kModelOCRIssue];
+    [mutableDict setValue:self.startDate forKey:kModelOCRStartDate];
+    [mutableDict setValue:self.licenseNumber forKey:kModelOCRLicenseNumber];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

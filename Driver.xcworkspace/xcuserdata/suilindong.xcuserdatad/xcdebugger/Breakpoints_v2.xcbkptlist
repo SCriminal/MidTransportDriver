@@ -4832,8 +4832,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthOneVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4864,8 +4864,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthOneVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4880,8 +4880,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthOneVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "-imageSelect:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4896,8 +4896,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthOneVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -4928,8 +4928,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthOneVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "-authBtnView"
             landmarkType = "7">
          </BreakpointContent>
@@ -5136,28 +5136,13 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthOneVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "-imageSelect:"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "D48165C1-B323-4CD0-B41E-62A3D1E51609 - 9aea957df0882dcf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__25-[AuthOneVC imageSelect:]_block_invoke.172"
-                  moduleName = "Driver"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/suilindong/Desktop/%E4%B8%AD%E8%BD%A6%E8%BF%90%E5%8F%B8%E6%9C%BA%E7%AB%AF/%E4%B9%90%E9%94%80/Scenes/%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C/%E8%AE%A4%E8%AF%81%E4%B8%AD%E5%BF%83/AuthOneVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "220"
-                  endingLineNumber = "220"
-                  offsetFromSymbolStart = "140">
-               </Location>
-               <Location
-                  uuid = "D48165C1-B323-4CD0-B41E-62A3D1E51609 - 5c96848b9f07757"
+                  uuid = "D48165C1-B323-4CD0-B41E-62A3D1E51609 - 5c96848b9f07678"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -5167,11 +5152,74 @@
                   urlString = "file:///Users/suilindong/Desktop/%E4%B8%AD%E8%BD%A6%E8%BF%90%E5%8F%B8%E6%9C%BA%E7%AB%AF/%E4%B9%90%E9%94%80/Scenes/%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C/%E8%AE%A4%E8%AF%81%E4%B8%AD%E5%BF%83/AuthOneVC.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "221"
-                  endingLineNumber = "221"
-                  offsetFromSymbolStart = "79">
+                  startingLineNumber = "230"
+                  endingLineNumber = "230"
+                  offsetFromSymbolStart = "383">
+               </Location>
+               <Location
+                  uuid = "D48165C1-B323-4CD0-B41E-62A3D1E51609 - 5c96848b9f18679"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__25-[AuthOneVC imageSelect:]_block_invoke_3"
+                  moduleName = "Driver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E4%B8%AD%E8%BD%A6%E8%BF%90%E5%8F%B8%E6%9C%BA%E7%AB%AF/%E4%B9%90%E9%94%80/Scenes/%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C/%E8%AE%A4%E8%AF%81%E4%B8%AD%E5%BF%83/AuthOneVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "230"
+                  endingLineNumber = "230"
+                  offsetFromSymbolStart = "15">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E8056BAC-5FFB-4868-A2C8-16E466B9F353"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthOneVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "-imageSelect:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "02AF7FD9-06DF-4411-8E41-5C3734B075F3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthOneVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "-imageSelect:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "515A198D-D30C-4344-964E-56FAD6ECB79F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthTwoVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "-imageSelect:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -13,12 +13,17 @@
 #import "RequestDriver2.h"
 #import "BaseVC+BaseImageSelectVC.h"
 #import "AuthThreeVC.h"
+#import "SelectCarTypeVC.h"
+#import "AddCarVC.h"
+
 @interface AuthTwoVC ()
 @property (nonatomic, strong) AuthView *authTopView;
 @property (nonatomic, strong) AuthTitleView *authTitleView;
 @property (nonatomic, strong) AuthBtnView *authBtnView;
 @property (nonatomic, strong) ModelBaseData *modelMain;
 @property (nonatomic, strong) ModelBaseData *modelSub;
+@property (nonatomic, strong) ModelBaseData *modelThree;
+
 @property (nonatomic, strong) ModelBaseData *modelCarNo;
 @property (nonatomic, strong) ModelBaseData *modelCarType;
 @property (nonatomic, strong) ModelBaseData *modelCarOwner;
@@ -26,6 +31,8 @@
 @property (nonatomic, strong) ModelBaseData *modelCarWidth;
 @property (nonatomic, strong) ModelBaseData *modelCarHeight;
 @property (nonatomic, strong) ModelBaseData *modelImageSelected;
+@property (nonatomic, strong) ModelOCR *modelOCRDribingFace;
+@property (nonatomic, strong) ModelOCR *modelOCRDrivingBack;
 
 
 @end
@@ -62,7 +69,7 @@
 - (ModelBaseData *)modelMain{
     if (!_modelMain) {
         _modelMain =[ModelBaseData new];
-        _modelMain.enumType = ENUM_PERFECT_CELL_SELECT;
+        _modelMain.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelMain.string = @"行驶证主页";
 //        _modelMain.subString = self.model.bankName;
         _modelMain.placeHolderString = @"点击上传";
@@ -78,7 +85,7 @@
 - (ModelBaseData *)modelSub{
     if (!_modelSub) {
         _modelSub =[ModelBaseData new];
-        _modelSub.enumType = ENUM_PERFECT_CELL_SELECT;
+        _modelSub.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelSub.string = @"行驶证副页";
 //        _modelSub.subString = self.model.bankName;
         _modelSub.placeHolderString = @"点击上传";
@@ -90,6 +97,22 @@
         };
     }
     return _modelSub;
+}
+- (ModelBaseData *)modelThree{
+    if (!_modelThree) {
+        _modelThree =[ModelBaseData new];
+        _modelThree.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
+        _modelThree.string = @"行驶证检验页";
+//        _modelThree.subString = self.model.bankName;
+        _modelThree.placeHolderString = @"点击上传";
+        WEAKSELF
+        _modelThree.blocClick = ^(ModelBaseData *model) {
+            weakSelf.modelImageSelected = model;
+            [weakSelf showImageVC:1];
+
+        };
+    }
+    return _modelThree;
 }
 - (ModelBaseData *)modelCarNo{
     if (!_modelCarNo) {
@@ -112,6 +135,14 @@
         _modelCarType.placeHolderString = @"选择车辆类型";
         WEAKSELF
         _modelCarType.blocClick = ^(ModelBaseData *model) {
+            [GlobalMethod endEditing];
+            SelectCarTypeVC * selectVC = [SelectCarTypeVC new];
+            selectVC.blockSelected = ^(NSString *type, NSNumber *idNumber) {
+                weakSelf.modelCarType.subString = type;
+                weakSelf.modelCarType.identifier = idNumber.stringValue;
+                [weakSelf.tableView reloadData];
+            };
+            [GB_Nav pushViewController:selectVC animated:true];
         };
     }
     return _modelCarType;
@@ -179,7 +210,14 @@
     [self registAuthorityCell];
     [self addObserveOfKeyboard];
     //request
-    [self requestList];
+    self.aryDatas = @[self.modelMain,self.modelSub,self.modelThree,self.modelCarNo,self.modelCarType,self.modelCarOwner,self.modelCarLong,self.modelCarWidth,self.modelCarHeight].mutableCopy;
+    [self fetchAllProperty];
+    self.aryDatas = @[self.modelMain,self.modelSub,self.modelThree,self.modelCarNo,self.modelCarType,self.modelCarOwner,self.modelCarLong,self.modelCarWidth,self.modelCarHeight].mutableCopy;
+
+    for (ModelBaseData *m in self.aryDatas) {
+        m.subLeft = W(120);
+    }
+    [self.tableView reloadData];
 }
 
 #pragma mark 添加导航栏
@@ -205,35 +243,65 @@
 }
 #pragma mark request
 - (void)requestList{
-    self.aryDatas = @[self.modelMain,self.modelSub,self.modelCarNo,self.modelCarType,self.modelCarOwner,self.modelCarLong,self.modelCarWidth,self.modelCarHeight].mutableCopy;
-    for (ModelBaseData *m in self.aryDatas) {
-        m.subLeft = W(120);
-    }
-    [self.tableView reloadData];
+   
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
 - (void)imageSelect:(BaseImage *)image{
+    [self showLoadingView];
+
     [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_USER_AUTHORITY;
     [[AliClient sharedInstance]updateImageAry:@[image] storageSuccess:^{
+       
+    } upSuccess:nil upHighQualitySuccess:^{
+        [self.loadingView hideLoading];
         self.modelImageSelected.identifier = image.imageURL;
         [self.tableView reloadData];
-    } upSuccess:nil upHighQualitySuccess:^{
-//        if (self.modelImageSelected == self.modelHead) {
-//            [RequestApi requestOCRIdentityWithurl:image.imageURL delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-//                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"frontResult"]];
-//                if (isStr(model.name)) {
-//                    self.modelName.subString = model.name;
-//                }
-//                if (isStr(model.iDNumber)) {
-//                    self.modelId.subString = model.iDNumber;
-//                }
-//                [self.tableView reloadData];
-//            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-//
-//            }];
-//        }
+
+        if (self.modelImageSelected == self.modelMain) {
+            [RequestApi requestOCRDrivingWithurl:image.imageURL side:@"face" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"faceResult"]];
+                self.modelOCRDribingFace = model;
+                if (isStr(model.plateNumber)) {
+                    self.modelCarNo.subString = model.plateNumber;
+                }
+                if (isStr(model.vehicleType)) {
+                    self.modelCarType.subString = model.vehicleType;
+                    NSNumber * typeID = [AddCarVC exchangeVehicleTypeWithName:model.vehicleType];
+                    if (typeID) {
+                        self.modelCarType.subString = model.vehicleType;
+                        self.modelCarType.identifier = typeID.stringValue;
+                    }
+                }
+                if (isStr(model.owner)) {
+                    self.modelCarOwner.subString = model.owner;
+                }
+                [self.tableView reloadData];
+                        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                            
+                        }];
+         
+        }
+        if (self.modelImageSelected == self.modelSub) {
+            [RequestApi requestOCRDrivingWithurl:image.imageURL side:@"back" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"backResult"]];
+                
+                self.modelOCRDrivingBack = model;
+                if (model.length) {
+                    self.modelCarLong.subString = NSNumber.dou(model.length).stringValue;
+                }
+                if (model.width) {
+                    self.modelCarWidth.subString = NSNumber.dou(model.width).stringValue;
+                }
+                if (model.height) {
+                    self.modelCarHeight.subString = NSNumber.dou(model.height).stringValue;
+                }
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+         
+        }
         
     } fail:^{
         
@@ -247,13 +315,13 @@
         vc.isFirst = self.isFirst;
         [GB_Nav pushViewController:vc animated:true];
     }else{
-//        [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString vehicleType:self.modelCarType.subString owner:self.modelCarOwner.subString grossMass:<#(nonnull NSString *)#> approvedLoad:<#(nonnull NSString *)#> vehicleLength:<#(nonnull NSString *)#> vehicleWidth:<#(nonnull NSString *)#> vehicleHeight:<#(nonnull NSString *)#> driving1Url:<#(nonnull NSString *)#> driving2Url:<#(nonnull NSString *)#> driving3Url:<#(nonnull NSString *)#> plateColor:<#(double)#> energyType:<#(double)#> tractionMass:<#(nonnull NSString *)#> drivingEndTime:<#(nonnull NSString *)#> useCharacter:<#(nonnull NSString *)#> unladenMass:<#(nonnull NSString *)#> vin:<#(nonnull NSString *)#> drivingRegisterDate:<#(nonnull NSString *)#> engineNumber:<#(nonnull NSString *)#> drivingIssueDate:<#(nonnull NSString *)#> model:<#(nonnull NSString *)#> rtbpNumber:<#(nonnull NSString *)#> delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-//            [GlobalMethod showAlert:@"上传成功"];
-//            [GB_Nav popViewControllerAnimated:true];
-//
-//        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-//            
-//        }];
+        [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString vehicleType:self.modelCarType.identifier.doubleValue owner:self.modelCarOwner.subString grossMass:NSNumber.dou(self.modelOCRDrivingBack.grossMass.doubleValue).stringValue approvedLoad:NSNumber.dou(self.modelOCRDrivingBack.approvedLoad.doubleValue).stringValue vehicleLength:self.modelCarLong.subString vehicleWidth:self.modelCarWidth.subString vehicleHeight:self.modelCarHeight.subString driving1Url:self.modelMain.identifier driving2Url:self.modelSub.identifier driving3Url:self.modelThree.identifier plateColor:0 energyType:isStr(self.modelOCRDrivingBack.energyType)?[AddCarVC exchangeEnergeyTypeWithName:self.modelOCRDrivingBack.energyType].doubleValue:0 tractionMass:self.modelOCRDrivingBack.tractionMass drivingEndTime:nil useCharacter:nil unladenMass:nil vin:nil drivingRegisterDate:nil engineNumber:nil drivingIssueDate:nil model:nil rtbpNumber:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [GlobalMethod showAlert:@"上传成功"];
+            [GB_Nav popViewControllerAnimated:true];
+
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+
+        }];
       
     }
    

@@ -44,11 +44,12 @@
  ocr
  */
 +(void)requestOCRIdentityWithurl:(NSString *)url
+                            side:(NSString *)side
                         delegate:(id <RequestDelegate>)delegate
                          success:(void (^)(NSDictionary * response, id mark))success
                          failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"url":UnPackStr(url),
-                          @"side":@"face"
+                          @"side":UnPackStr(side)
     };
     [self getUrl:@"/oss/ocr/id" delegate:delegate parameters:dic success:success failure:failure];
 }

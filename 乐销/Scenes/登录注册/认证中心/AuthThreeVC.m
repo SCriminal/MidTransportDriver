@@ -138,12 +138,7 @@ WEAKSELF
        
         
     }else{
-//        [RequestApi requestAuthDriverWithIdcardnationalemblemurl:self.modelCountry.identifier idFaceUrl:self.modelHead.identifier driverUrl:self.modelDriver.identifier vehicleUrl:self.modelCar.identifier name:self.modelName.subString idNumber:self.modelId.subString idBirthday:nil idGender:nil idNation:nil idOrg:nil idAddr:nil driverNationality:nil driverGender:nil driverBirthday:nil driverClass:nil driverArchivesNumber:nil driverFirstIssueDate:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-//            [GlobalMethod showAlert:@"上传成功"];
-//            [GB_Nav popViewControllerAnimated:true];
-//                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-//
-//                }];
+
     }
    
 }
@@ -155,11 +150,16 @@ WEAKSELF
         }];
 }
 - (void)imageSelect:(BaseImage *)image{
+    [self showLoadingView];
+
     [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_USER_AUTHORITY;
     [[AliClient sharedInstance]updateImageAry:@[image] storageSuccess:^{
+       
+    } upSuccess:nil upHighQualitySuccess:^{
+        [self.loadingView hideLoading];
         self.modelImageSelected.identifier = image.imageURL;
         [self.tableView reloadData];
-    } upSuccess:nil upHighQualitySuccess:^{
+
 //        if (self.modelImageSelected == self.modelHead) {
 //            [RequestApi requestOCRIdentityWithurl:image.imageURL delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
 //                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"frontResult"]];

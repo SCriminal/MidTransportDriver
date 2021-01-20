@@ -17,4 +17,5 @@
 + (NSString *)exchangeLicenseType:(NSString *)identity;
 + (NSString *)exchangeEnergeyType:(NSString *)identity;
 + (NSNumber *)exchangeEnergeyTypeWithName:(NSString *)name;
++ (NSNumber *)exchangeVehicleTypeWithName:(NSString *)name;
 @end

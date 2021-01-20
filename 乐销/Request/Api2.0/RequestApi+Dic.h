@@ -38,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
  ocr
  */
 +(void)requestOCRIdentityWithurl:(NSString *)url
+                            side:(NSString *)side
                         delegate:(id <RequestDelegate>)delegate
                          success:(void (^)(NSDictionary * response, id mark))success
                          failure:(void (^)(NSString * errorStr, id mark))failure;
@@ -53,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
                          success:(void (^)(NSDictionary * response, id mark))success
                          failure:(void (^)(NSString * errorStr, id mark))failure;
 
-+(void)requestOCRRunWithurl:(NSString *)url
++(void)requestOCRDrivingWithurl:(NSString *)url
                           side:(NSString *)side
                       delegate:(id <RequestDelegate>)delegate
                        success:(void (^)(NSDictionary * response, id mark))success

@@ -122,7 +122,7 @@
 
     self.sign.rightCenterY = XY(SCREEN_WIDTH - W(15), self.head.centerY);
     [self addControlFrame:CGRectInset(self.sign.frame, -W(20), -W(20)) belowView:self.sign target:self action:@selector(signClick)];
-    [self addControlFrame:CGRectMake(self.head.right+W(10), self.head.bottom - W(30), W(70), W(30)) belowView:self.sign target:self action:@selector(authClick)];
+    [self addControlFrame:CGRectMake(self.head.right+W(10), self.head.bottom - W(30), W(150), W(50)) belowView:self.sign target:self action:@selector(authClick)];
 
     [self addSubview:^(){
         UIImageView * iv = [UIImageView new];

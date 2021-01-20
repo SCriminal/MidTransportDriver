@@ -27,8 +27,9 @@
 @property (nonatomic, strong) ModelBaseData *modelDriver;
 @property (nonatomic, strong) ModelBaseData *modelCar;
 @property (nonatomic, strong) ModelBaseData *modelImageSelected;
-@property (nonatomic, strong) ModelOCR *modelOCRDriverFace;
-@property (nonatomic, strong) ModelOCR *modelOCRDriverBack;
+@property (nonatomic, strong) ModelOCR *modelOCRIDFace;
+@property (nonatomic, strong) ModelOCR *modelOCRDriver;
+@property (nonatomic, strong) ModelOCR *modelOCRIDCounty;
 
 @end
 
@@ -199,7 +200,7 @@
         vc.isFirst = self.isFirst;
         [GB_Nav pushViewController:vc animated:true];
     }else{
-        [RequestApi requestAuthDriverWithIdcardnationalemblemurl:self.modelCountry.identifier idFaceUrl:self.modelHead.identifier driverUrl:self.modelDriver.identifier vehicleUrl:self.modelCar.identifier name:self.modelName.subString idNumber:self.modelId.subString idBirthday:nil idGender:nil idNation:nil idOrg:nil idAddr:nil driverNationality:nil driverGender:nil driverBirthday:nil driverClass:nil driverArchivesNumber:nil driverFirstIssueDate:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [RequestApi requestAuthDriverWithIdcardnationalemblemurl:self.modelCountry.identifier idFaceUrl:self.modelHead.identifier driverUrl:self.modelDriver.identifier vehicleUrl:self.modelCar.identifier name:self.modelName.subString idNumber:self.modelId.subString idBirthday:self.modelOCRIDFace.birthDate idGender:self.modelOCRIDFace.gender idNation:self.modelOCRIDFace.nationality idOrg:self.modelOCRIDCounty.issue idAddr:self.modelOCRIDFace.address driverNationality:self.modelOCRDriver.nationality driverGender:self.modelOCRDriver.gender driverBirthday:self.modelOCRDriver.birthDate driverClass:self.modelOCRDriver.vehicleType driverArchivesNumber:self.modelOCRDriver.licenseNumber driverFirstIssueDate:self.modelOCRDriver.startDate delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             [GlobalMethod showAlert:@"上传成功"];
             [GB_Nav popViewControllerAnimated:true];
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -219,14 +220,20 @@
     return UIStatusBarStyleLightContent;
 }
 - (void)imageSelect:(BaseImage *)image{
+    [self showLoadingView];
+
     [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_USER_AUTHORITY;
     [[AliClient sharedInstance]updateImageAry:@[image] storageSuccess:^{
+       
+    } upSuccess:nil upHighQualitySuccess:^{
+        [self.loadingView hideLoading];
+
         self.modelImageSelected.identifier = image.imageURL;
         [self.tableView reloadData];
-    } upSuccess:nil upHighQualitySuccess:^{
         if (self.modelImageSelected == self.modelHead) {
-            [RequestApi requestOCRIdentityWithurl:image.imageURL delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [RequestApi requestOCRIdentityWithurl:image.imageURL side:@"face" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"frontResult"]];
+                self.modelOCRIDFace = model;
                 if (isStr(model.name)) {
                     self.modelName.subString = model.name;
                 }
@@ -238,11 +245,19 @@
                 
             }];
         }
+        if (self.modelImageSelected == self.modelCountry) {
+            [RequestApi requestOCRIdentityWithurl:image.imageURL side:@"back" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"backResult"]];
+                self.modelOCRIDFace = model;
+                
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+        }
         if (self.modelImageSelected == self.modelDriver) {
             [RequestApi requestOCRDriverWithurl:image.imageURL side:@"face" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"faceResult"]];
-                
-                self.modelOCRDriverFace = model;
+                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"frontResult"]];
+                self.modelOCRDriver = model;
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                 
             }];

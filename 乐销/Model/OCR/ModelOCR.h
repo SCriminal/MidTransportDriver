@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSString *grossMass;
 @property (nonatomic, strong) NSString *plateNumber;
 @property (nonatomic, strong) NSString *unladenMass;
+@property (nonatomic, strong) NSString *issue;
 
 @property (nonatomic, strong) NSString *approvedLoad;
 
@@ -42,7 +43,12 @@
 @property (nonatomic, assign) double height;
 @property (nonatomic, assign) double issueDateStamp;
 @property (nonatomic, assign) double registerDateStamp;
-
+@property (nonatomic, strong) NSString *nationality;
+@property (nonatomic, strong) NSString *gender;
+@property (nonatomic, strong) NSString *birthDate;
+@property (nonatomic, assign) double birthDateStamp;
+@property (nonatomic, strong) NSString *startDate;
+@property (nonatomic, strong) NSString *licenseNumber;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

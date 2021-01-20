@@ -292,7 +292,9 @@
 //        isfirst = true;
 //    }
     
-    [GB_Nav pushVCName:@"AuthOneVC" animated:true];
+    [GB_Nav pushVCName:@"AuthThreeVC" animated:true];
+
+//    [GB_Nav pushVCName:@"AuthOneVC" animated:true];
 //    RechargeInputView * view = [RechargeInputView new];
 //    [view resetViewWithModel:nil];
 //    [self.view addSubview:view];
