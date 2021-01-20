@@ -19,10 +19,12 @@
 @property (strong, nonatomic) UILabel *submitTime;
 @property (strong, nonatomic) UILabel *authTime;
 @property (strong, nonatomic) UILabel *reason;
+@property (strong, nonatomic) UILabel *status;
 @property (strong, nonatomic) UIButton *btn;
 @property (nonatomic, strong) void (^blockClick)(void);
+@property (nonatomic, strong) ModelBtn *model;
 
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(id)model;
+- (void)resetCellWithModel:(ModelBtn *)model;
 
 @end

@@ -241,9 +241,9 @@
                            @"owner":RequestStrKey(owner),
                            @"grossMass":RequestStrKey(grossMass),
                            @"approvedLoad":RequestStrKey(approvedLoad),
-                           @"vehicleLength":RequestStrKey(vehicleLength),
-                           @"vehicleWidth":RequestStrKey(vehicleWidth),
-                           @"vehicleHeight":RequestStrKey(vehicleHeight),
+                           @"vehicleLength":NSNumber.dou(vehicleLength.doubleValue/10.0).stringValue,
+                           @"vehicleWidth":NSNumber.dou(vehicleWidth.doubleValue/10.0).stringValue,
+                           @"vehicleHeight":NSNumber.dou(vehicleHeight.doubleValue/10.0).stringValue,
                            @"driving1Url":RequestStrKey(driving1Url),
                            @"driving2Url":RequestStrKey(driving2Url),
                            @"driving3Url":RequestStrKey(driving3Url),
@@ -337,8 +337,9 @@
                                   success:(void (^)(NSDictionary * response, id mark))success
                                   failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/user" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/review/user" delegate:delegate parameters:dic success:success failure:failure];
 }
+
 /**
  司机审核记录列表
  */

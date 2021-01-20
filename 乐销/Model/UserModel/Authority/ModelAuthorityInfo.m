@@ -1,20 +1,26 @@
 //
 //  ModelAuthorityInfo.m
 //
-//  Created by sld s on 2019/5/23
-//  Copyright (c) 2019 __MyCompanyName__. All rights reserved.
+//  Created by 林栋 隋 on 2021/1/20
+//  Copyright (c) 2021 __MyCompanyName__. All rights reserved.
 //
 
 #import "ModelAuthorityInfo.h"
 
 
-NSString *const kModelAuthorityInfoStatus = @"status";
+NSString *const kModelAuthorityInfoVehicleDescription = @"vehicleDescription";
+NSString *const kModelAuthorityInfoDriverReviewTime = @"driverReviewTime";
+NSString *const kModelAuthorityInfoDriverSubmitTime = @"driverSubmitTime";
+NSString *const kModelAuthorityInfoVehicleReviewTime = @"vehicleReviewTime";
+NSString *const kModelAuthorityInfoVehicleSubmitTime = @"vehicleSubmitTime";
+NSString *const kModelAuthorityInfoBizSubmitTime = @"bizSubmitTime";
+NSString *const kModelAuthorityInfoDriverStatus = @"driverStatus";
 NSString *const kModelAuthorityInfoUserId = @"userId";
-NSString *const kModelAuthorityInfoReviewTime = @"reviewTime";
-NSString *const kModelAuthorityInfoId = @"id";
-NSString *const kModelAuthorityInfoExplain = @"explain";
-NSString *const kModelAuthorityInfoSubmitTime = @"submitTime";
-NSString *const kModelAuthorityInfoReviewId = @"reviewId";
+NSString *const kModelAuthorityInfoVehicleStatus = @"vehicleStatus";
+NSString *const kModelAuthorityInfoBizDescription = @"bizDescription";
+NSString *const kModelAuthorityInfoDriverDescription = @"driverDescription";
+NSString *const kModelAuthorityInfoBizReviewTime = @"bizReviewTime";
+NSString *const kModelAuthorityInfoBizStatus = @"bizStatus";
 
 
 @interface ModelAuthorityInfo ()
@@ -22,13 +28,19 @@ NSString *const kModelAuthorityInfoReviewId = @"reviewId";
 
 @implementation ModelAuthorityInfo
 
-@synthesize status = _status;
+@synthesize vehicleDescription = _vehicleDescription;
+@synthesize driverReviewTime = _driverReviewTime;
+@synthesize driverSubmitTime = _driverSubmitTime;
+@synthesize vehicleReviewTime = _vehicleReviewTime;
+@synthesize vehicleSubmitTime = _vehicleSubmitTime;
+@synthesize bizSubmitTime = _bizSubmitTime;
+@synthesize driverStatus = _driverStatus;
 @synthesize userId = _userId;
-@synthesize reviewTime = _reviewTime;
-@synthesize iDProperty = _iDProperty;
-@synthesize explain = _explain;
-@synthesize submitTime = _submitTime;
-@synthesize reviewId = _reviewId;
+@synthesize vehicleStatus = _vehicleStatus;
+@synthesize bizDescription = _bizDescription;
+@synthesize driverDescription = _driverDescription;
+@synthesize bizReviewTime = _bizReviewTime;
+@synthesize bizStatus = _bizStatus;
 
 
 #pragma mark init
@@ -42,13 +54,19 @@ NSString *const kModelAuthorityInfoReviewId = @"reviewId";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.status = [dict doubleValueForKey:kModelAuthorityInfoStatus];
+            self.vehicleDescription = [dict objectForKey:kModelAuthorityInfoVehicleDescription];
+            self.driverReviewTime = [dict doubleValueForKey:kModelAuthorityInfoDriverReviewTime];
+            self.driverSubmitTime = [dict doubleValueForKey:kModelAuthorityInfoDriverSubmitTime];
+            self.vehicleReviewTime = [dict doubleValueForKey:kModelAuthorityInfoVehicleReviewTime];
+            self.vehicleSubmitTime = [dict doubleValueForKey:kModelAuthorityInfoVehicleSubmitTime];
+            self.bizSubmitTime = [dict doubleValueForKey:kModelAuthorityInfoBizSubmitTime];
+            self.driverStatus = [dict doubleValueForKey:kModelAuthorityInfoDriverStatus];
             self.userId = [dict doubleValueForKey:kModelAuthorityInfoUserId];
-            self.reviewTime = [dict doubleValueForKey:kModelAuthorityInfoReviewTime];
-            self.iDProperty = [dict doubleValueForKey:kModelAuthorityInfoId];
-            self.explain = [dict stringValueForKey:kModelAuthorityInfoExplain];
-            self.submitTime = [dict doubleValueForKey:kModelAuthorityInfoSubmitTime];
-            self.reviewId = [dict doubleValueForKey:kModelAuthorityInfoReviewId];
+            self.vehicleStatus = [dict doubleValueForKey:kModelAuthorityInfoVehicleStatus];
+            self.bizDescription = [dict objectForKey:kModelAuthorityInfoBizDescription];
+            self.driverDescription = [dict objectForKey:kModelAuthorityInfoDriverDescription];
+            self.bizReviewTime = [dict doubleValueForKey:kModelAuthorityInfoBizReviewTime];
+            self.bizStatus = [dict doubleValueForKey:kModelAuthorityInfoBizStatus];
 
     }
     
@@ -58,13 +76,19 @@ NSString *const kModelAuthorityInfoReviewId = @"reviewId";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.status] forKey:kModelAuthorityInfoStatus];
+    [mutableDict setValue:self.vehicleDescription forKey:kModelAuthorityInfoVehicleDescription];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.driverReviewTime] forKey:kModelAuthorityInfoDriverReviewTime];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.driverSubmitTime] forKey:kModelAuthorityInfoDriverSubmitTime];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.vehicleReviewTime] forKey:kModelAuthorityInfoVehicleReviewTime];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.vehicleSubmitTime] forKey:kModelAuthorityInfoVehicleSubmitTime];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.bizSubmitTime] forKey:kModelAuthorityInfoBizSubmitTime];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.driverStatus] forKey:kModelAuthorityInfoDriverStatus];
     [mutableDict setValue:[NSNumber numberWithDouble:self.userId] forKey:kModelAuthorityInfoUserId];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.reviewTime] forKey:kModelAuthorityInfoReviewTime];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.iDProperty] forKey:kModelAuthorityInfoId];
-    [mutableDict setValue:self.explain forKey:kModelAuthorityInfoExplain];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.submitTime] forKey:kModelAuthorityInfoSubmitTime];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.reviewId] forKey:kModelAuthorityInfoReviewId];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.vehicleStatus] forKey:kModelAuthorityInfoVehicleStatus];
+    [mutableDict setValue:self.bizDescription forKey:kModelAuthorityInfoBizDescription];
+    [mutableDict setValue:self.driverDescription forKey:kModelAuthorityInfoDriverDescription];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.bizReviewTime] forKey:kModelAuthorityInfoBizReviewTime];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.bizStatus] forKey:kModelAuthorityInfoBizStatus];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -73,5 +97,56 @@ NSString *const kModelAuthorityInfoReviewId = @"reviewId";
     return [NSString stringWithFormat:@"%@", [self dictionaryRepresentation]];
 }
 
+- (BOOL)isAuthed{
+    if (self.bizStatus>1) {
+        return true;
+    }
+    if (self.driverStatus>1) {
+        return true;
+    }
+    if (self.vehicleStatus>1) {
+        return true;
+    }
+    return false;
+}
+//1未提交 2审核中 10通过 11未通过
 
++(UIColor *)statusColor:(int)status{
+    switch (status) {
+        case 1:
+            return COLOR_ORANGE;
+            break;
+        case 2:
+            return COLOR_ORANGE;
+            break;
+        case 10:
+            return COLOR_GREEN;
+            break;
+        case 11:
+            return COLOR_RED;
+            break;
+        default:
+            break;
+    }
+    return COLOR_BLUE;
+}
++(NSString *)statusTitle:(int)status{
+    switch (status) {
+        case 1:
+            return @"未提交";
+            break;
+        case 2:
+            return @"审核中";
+            break;
+        case 10:
+            return @"审核通过";
+            break;
+        case 11:
+            return @"审核未通过";
+            break;
+        default:
+            break;
+    }
+    return @"未提交";
+}
 @end

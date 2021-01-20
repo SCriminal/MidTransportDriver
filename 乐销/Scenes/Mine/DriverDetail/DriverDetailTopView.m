@@ -156,7 +156,7 @@
     
 //    [self.auth fitTitle:@"" variable:0];
     self.auth.leftBottom = XY(self.head.right + W(36), self.head.bottom - W(8));
-    self.arrow.rightCenterY = XY(self.auth.right + W(36), self.auth.centerY);
+    self.arrow.rightCenterY = XY(self.auth.right + W(16), self.auth.centerY);
 }
 
 
@@ -173,8 +173,9 @@
 - (void)signClick{
 }
 - (void)authClick{
-    AuthOneVC * vc = [AuthOneVC new];
-    [GB_Nav pushViewController:vc animated:true];
+    if (self.blockAuthClick) {
+        self.blockAuthClick();
+    }
 }
 #pragma mark dealloc
 - (void)dealloc{

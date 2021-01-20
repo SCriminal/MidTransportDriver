@@ -110,14 +110,9 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
     return @"";
 }
 + (void)jumpToAuthorityStateVCSuccessBlock:(void (^)(void))successBlock{
-    ModelBaseInfo *modelUser = [GlobalData sharedInstance].GB_UserModel;
     if (successBlock) {
         successBlock();
     }
-
-//    AuthOneVC * vc = [AuthOneVC new];
-//    vc.isFirst = true;
-//    [GB_Nav pushViewController:vc animated:true];
     //因为有已经认证
 //    BOOL isQuantity  = modelUser.isIdentity == 1&& modelUser.isDriver == 1;
 //    if (modelUser.reviewStatus!=1 && successBlock) {

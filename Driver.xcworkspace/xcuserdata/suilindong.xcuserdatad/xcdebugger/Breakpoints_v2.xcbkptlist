@@ -762,8 +762,8 @@
             timestampString = "593513309.185209"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "-textChange"
             landmarkType = "7">
          </BreakpointContent>
@@ -3391,8 +3391,8 @@
             filePath = "&#x4e50;&#x9500;/Model/UserModel/Authority/ModelBaseInfo.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "+jumpToAuthorityStateVCSuccessBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4223,8 +4223,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/DriverDetail/DriverDetailTopView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "-resetWithAry:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4351,8 +4351,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/DriverDetail/PersonalCenterVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-modelView"
             landmarkType = "7">
          </BreakpointContent>
@@ -4367,8 +4367,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/DriverDetail/DriverDetailTopView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "-btnClick:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4815,8 +4815,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthOneVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4847,8 +4847,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthOneVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4863,8 +4863,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthOneVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "-imageSelect:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4927,8 +4927,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x767b;&#x5f55;/InputCodeVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "-requestSend"
             landmarkType = "7">
          </BreakpointContent>
@@ -4943,8 +4943,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x767b;&#x5f55;/InputCodeVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "-requestSend"
             landmarkType = "7">
             <Locations>
@@ -5055,8 +5055,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api2.0/RequestApi+Ums.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "445"
-            endingLineNumber = "445"
+            startingLineNumber = "446"
+            endingLineNumber = "446"
             landmarkName = "RequestApi(Ums)"
             landmarkType = "3">
          </BreakpointContent>
@@ -5071,8 +5071,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x767b;&#x5f55;/LoginViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "-requestWithPwd"
             landmarkType = "7">
             <Locations>
@@ -5119,8 +5119,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthOneVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "-imageSelect:"
             landmarkType = "7">
             <Locations>
@@ -5167,8 +5167,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthOneVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "-imageSelect:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5183,8 +5183,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthOneVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
             landmarkName = "-imageSelect:"
             landmarkType = "7">
          </BreakpointContent>

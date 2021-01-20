@@ -14,6 +14,7 @@
 #import "InputPwdVC.h"
 //request
 #import "RequestDriver2.h"
+#import "AuthOneVC.h"
 
 @interface InputCodeVC ()
 @property (nonatomic, strong) UILabel *labelCode;
@@ -171,9 +172,19 @@
 }
 - (void)requestLogin:(NSString *)code{
     [RequestApi requestLoginWithAppid:@"1" clientId:@"1" phone:self.strPhone code:code delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        [ModelBaseInfo jumpToAuthorityStateVCSuccessBlock:^{
-            [GB_Nav popToRootViewControllerAnimated:true];
+        [RequestApi requestUserAuthAllInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            ModelAuthorityInfo * modelAuth = [ModelAuthorityInfo modelObjectWithDictionary:response];
+            if (modelAuth.isAuthed) {
+                [GB_Nav popToRootViewControllerAnimated:true];
+            }else{
+                AuthOneVC * vc = [AuthOneVC new];
+                vc.isFirst = true;
+                [GB_Nav popToRootAry:@[vc] animate:true];
+            }
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
         }];
+      
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             [self.codeView clearCode];
 

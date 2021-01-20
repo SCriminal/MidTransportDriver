@@ -138,6 +138,21 @@ WEAKSELF
 }
 #pragma mark request
 - (void)requestUP{
+    [GlobalMethod endEditing];
+    for (ModelBaseData *model  in self.aryDatas) {
+        if (model.enumType == ENUM_PERFECT_CELL_TEXT||model.enumType == ENUM_PERFECT_CELL_SELECT||model.enumType == ENUM_PERFECT_CELL_ADDRESS) {
+            if (!isStr(model.subString)) {
+                [GlobalMethod showAlert:model.placeHolderString];
+                return;
+            }
+        }
+        if (model.enumType == ENUM_PERFECT_CELL_SELECT_LOGO) {
+            if (!isStr(model.identifier)) {
+                [GlobalMethod showAlert:[NSString stringWithFormat:@"请上传%@",model.string]];
+                return;
+            }
+        }
+    }
     if (self.isFirst) {
         NSString * jsonOne = nil;
         NSString * jsonTwo = nil;

@@ -27,6 +27,7 @@
 #import "BankCardListVC.h"
 //cell
 #import "SettingCell.h"
+#import "AuthOneVC.h"
 
 @interface PersonalCenterVC ()
 @property (nonatomic, strong) DriverDetailTopView *topView;
@@ -42,6 +43,10 @@
         _topView = [DriverDetailTopView new];
         _topView.blockClick = ^{
             [GB_Nav pushVCName:@"EditInfoVC" animated:true];
+        };
+        WEAKSELF
+        _topView.blockAuthClick = ^{
+            [weakSelf reuqestAuth];
         };
     }
     return _topView;
@@ -198,11 +203,24 @@
 
 #pragma mark request
 - (void)reconfigData{
-    
     [self.tableView reloadData];
 }
 
 #pragma mark request
+- (void)reuqestAuth{
+    [RequestApi requestUserAuthAllInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        ModelAuthorityInfo * modelAuth = [ModelAuthorityInfo modelObjectWithDictionary:response];
+        if (modelAuth.isAuthed) {
+            [GB_Nav pushVCName:@"AuthListVC" animated:true];
+        }else{
+            AuthOneVC * vc = [AuthOneVC new];
+            vc.isFirst = true;
+            [GB_Nav popToRootAry:@[vc] animate:true];
+        }
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+}
 - (void)request{
     [RequestApi requestUserInfo2WithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelBaseInfo *modelUser = GlobalData.sharedInstance.GB_UserModel;

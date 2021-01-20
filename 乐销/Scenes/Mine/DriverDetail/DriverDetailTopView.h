@@ -19,6 +19,8 @@
 @property (strong, nonatomic) UILabel *sign;
 @property (strong, nonatomic) UILabel *auth;
 @property (nonatomic, strong) void (^blockClick)(void);
+@property (nonatomic, strong) void (^blockAuthClick)(void);
+
 @end
 
 @interface DriverDetailModelView : UIView

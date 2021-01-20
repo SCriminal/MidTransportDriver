@@ -155,7 +155,6 @@
     [self addNav];
     //table
     self.tableView.tableHeaderView = [UIView initWithViews:@[self.isFirst?self.authTopView:[NSNull null],self.authTitleView]];
-    
     self.tableView.tableFooterView = [UIView initWithViews:@[self.authBtnView]];
     self.tableView.backgroundColor = COLOR_BACKGROUND;
     [self registAuthorityCell];
@@ -195,6 +194,22 @@
 }
 #pragma mark request
 - (void)requestUP{
+    [GlobalMethod endEditing];
+    for (ModelBaseData *model  in self.aryDatas) {
+        if (model.enumType == ENUM_PERFECT_CELL_TEXT||model.enumType == ENUM_PERFECT_CELL_SELECT||model.enumType == ENUM_PERFECT_CELL_ADDRESS) {
+            if (!isStr(model.subString)) {
+                [GlobalMethod showAlert:model.placeHolderString];
+                return;
+            }
+        }
+        if (model.enumType == ENUM_PERFECT_CELL_SELECT_LOGO) {
+            if (!isStr(model.identifier)) {
+                [GlobalMethod showAlert:[NSString stringWithFormat:@"请上传%@",model.string]];
+                return;
+            }
+        }
+    }
+    
     if (self.isFirst) {
         AuthTwoVC * vc = [AuthTwoVC new];
         vc.isFirst = self.isFirst;
