@@ -33,7 +33,6 @@
 #endif
 
 #if DEBUG
-//#define SLD_AD //sld_test
 //#define SLD_TEST //sld_test
 #endif
 

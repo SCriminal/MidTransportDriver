@@ -89,6 +89,7 @@
                           @"sortFinishTime":[NSNumber numberWithInt:sortFinishTime],
                           @"sortCreateTime":[NSNumber numberWithInt:sortCreateTime]
                           };
+    return;
     [self getUrl:@"/zhongcheyun/waybill/3/list/carrier/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 

@@ -155,6 +155,7 @@
 +(void)requestVersionWithDelegate:(_Nullable id<RequestDelegate> )delegate
                           success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure{
+    return;
     NSDictionary *dic = @{@"app":@"1",
                           @"terminalType":@1,
                           @"versionNumber":[GlobalMethod getVersion]};

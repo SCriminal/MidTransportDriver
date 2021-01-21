@@ -22,6 +22,7 @@
 - (UIImageView *)head{
     if (_head == nil) {
         _head = [UIImageView new];
+        _head.image = [UIImage imageNamed:IMAGE_HEAD_DEFAULT];
         _head.widthHeight = XY(W(65),W(65));
         [GlobalMethod setRoundView:_head color:[UIColor clearColor] numRound:_head.width/2.0 width:0];
         _head.userInteractionEnabled = true;
@@ -142,12 +143,12 @@
 - (void)resetViewWithModel:(ModelBaseInfo *)model{
     
     //刷新view
-    [self.head sd_setImageWithURL:[NSURL URLWithString:UnPackStr(model.headUrl.smallImage)] placeholderImage:[UIImage imageNamed:IMAGE_HEAD_DEFAULT]];
+    [self.head sd_setImageWithURL:[NSURL URLWithString:UnPackStr(model.headUrl)] placeholderImage:self.head.image];
     
     
     NSString * strShow = UnPackStr(model.nickname);
 
-    [self.name fitTitle:strShow variable:0];
+    [self.name fitTitle:strShow variable:W(190)];
     self.name.leftTop = XY(self.head.right + W(10), self.head.top + W(8));
 
     NSString * strloginTime = [GlobalMethod readStrFromUser:LOCAL_LOGIN_TIME];

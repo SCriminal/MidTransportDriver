@@ -19,6 +19,7 @@
                                delegate:(id <RequestDelegate>)delegate
                                 success:(void (^)(NSDictionary * response, id mark))success
                                 failure:(void (^)(NSString * errorStr, id mark))failure{
+    return;
     NSDictionary *dic = @{
                           @"lng":NSNumber.dou(lng),
                           @"addr":UnPackStr(addr),

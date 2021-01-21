@@ -153,8 +153,7 @@
         _modelAddress.imageName = @"";
         _modelAddress.string = @"收货地址";
         _modelAddress.placeHolderString = @" ";
-                _modelAddress.hideState = true;
-
+        _modelAddress.hideState = true;
         WEAKSELF
         _modelAddress.blocClick = ^(ModelBaseData *model) {
             [GlobalMethod endEditing];
@@ -236,6 +235,7 @@
         [GlobalData sharedInstance].GB_UserModel.headUrl = strUrl;
         [GlobalData sharedInstance].GB_UserModel.nickname = self.modelName.subString;
         [GlobalData sharedInstance].GB_UserModel.introduce = self.bottomView.textView.text;
+        NSLog(@"sld %@ \n %@",[GlobalData sharedInstance].GB_UserModel.headUrl,strUrl);
         [GlobalData saveUserModel];
         [GB_Nav popViewControllerAnimated:true];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

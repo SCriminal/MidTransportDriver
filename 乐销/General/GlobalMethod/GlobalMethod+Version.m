@@ -111,9 +111,7 @@
         PrivateAlertView * privateView = [PrivateAlertView new];
         [privateView show];
     }
-#ifdef SLD_AD
-    [window addSubview:[NSClassFromString(@"AdvertiesementView") new]];
-#endif
+
     //欢迎页
     if (![GlobalMethod isLoginSuccess]) {
         [GB_Nav pushVCName:@"LoginViewController" animated:false];

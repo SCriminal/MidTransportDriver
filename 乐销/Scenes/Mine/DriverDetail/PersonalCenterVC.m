@@ -186,13 +186,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //添加导航栏
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(request) name:LOCAL_USERMODEL object:nil];
     //bg
     self.tableView.backgroundColor = [UIColor clearColor];
     [self.tableBackgroundView removeFromSuperview];
     self.tableView.tableHeaderView = self.topView;
     self.tableView.tableFooterView = self.modelView;
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBAR_HEIGHT);
-
     //request
     [self reconfigData];
 }

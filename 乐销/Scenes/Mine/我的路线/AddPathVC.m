@@ -186,14 +186,26 @@
     if (self.aryDatas.count>=3) {
         ModelBaseData * m = self.aryDatas[1];
         path0 = m.identifier;
+        if (!isStr(path0)) {
+            [GlobalMethod showAlert:@"请选择途径地1"];
+            return;
+        }
     }
     if (self.aryDatas.count>=4) {
         ModelBaseData * m = self.aryDatas[2];
         path1 = m.identifier;
+        if (!isStr(path1)) {
+            [GlobalMethod showAlert:@"请选择途径地2"];
+            return;
+        }
     }
     if (self.aryDatas.count>=5) {
         ModelBaseData * m = self.aryDatas[3];
         path2 = m.identifier;
+        if (!isStr(path2)) {
+            [GlobalMethod showAlert:@"请选择途径地3"];
+            return;
+        }
     }
     if (!isStr(startID)) {
         [GlobalMethod showAlert:@"请选择始发地"];

@@ -42,7 +42,7 @@
         [_controlSkip addTarget:self action:@selector(btnSkipClick) forControlEvents:UIControlEventTouchUpInside];
         _controlSkip.backgroundColor = [UIColor clearColor];
         _controlSkip.widthHeight = XY(self.labelAlert.width+W(30),self.labelAlert.height + W(30));
-        _controlSkip.userInteractionEnabled = false;
+//        _controlSkip.userInteractionEnabled = false;
         _controlSkip.centerXCenterY = self.labelAlert.centerXCenterY;
     }
     return _controlSkip;
@@ -109,16 +109,17 @@
 
 - (void)timerRun{
     //每秒的动作
-    if (_numTime <=1) {
+    if (_numTime <=0) {
         //刷新按钮 开始
         [self timerStop];
         self.labelAlert.text = @"跳过";
-        self.controlSkip.userInteractionEnabled = true;
+//        self.controlSkip.userInteractionEnabled = true;
+        [self dismiss];
         return;
     }
     _numTime --;
     self.labelAlert.text = [NSString stringWithFormat:@"%.f 跳过",self.numTime];
-    self.controlSkip.userInteractionEnabled = false;
+//    self.controlSkip.userInteractionEnabled = false;
 }
 
 - (void)timerStop{
@@ -165,6 +166,9 @@
 #pragma mark click
 - (void)btnSkipClick{
     [self timerStop];
+    [self dismiss];
+}
+- (void)dismiss{
     [UIView animateWithDuration:0.3 animations:^{
         self.alpha = 0;
     }completion:^(BOOL finished) {
