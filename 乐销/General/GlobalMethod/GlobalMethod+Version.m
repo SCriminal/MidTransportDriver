@@ -111,7 +111,7 @@
         PrivateAlertView * privateView = [PrivateAlertView new];
         [privateView show];
     }
-#ifdef SLD_TEST
+#ifdef SLD_AD
     [window addSubview:[NSClassFromString(@"AdvertiesementView") new]];
 #endif
     //欢迎页
@@ -122,7 +122,7 @@
     [GlobalMethod requestVersion:nil];
     //sld_test
 #ifdef SLD_TEST
-//    [GB_Nav pushVCName:@"TestVC" animated:false];
+    [GB_Nav pushVCName:@"TestVC" animated:false];
 #endif
 }
 

@@ -195,7 +195,14 @@
         ModelBaseData * m = self.aryDatas[3];
         path2 = m.identifier;
     }
-    
+    if (!isStr(startID)) {
+        [GlobalMethod showAlert:@"请选择始发地"];
+        return;
+    }
+    if (!isStr(endID)) {
+        [GlobalMethod showAlert:@"请选择目的地"];
+        return;
+    }
     if (self.modelList.iDProperty) {
         [RequestApi requestEditPathWithStartareaid:startID endAreaId:endID routePass1Id:path0 routePass2Id:path1 routePass3Id:path2 id:NSNumber.dou(self.modelList.iDProperty).stringValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             [GlobalMethod showAlert:@"编辑成功"];

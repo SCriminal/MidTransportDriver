@@ -172,18 +172,8 @@
 }
 - (void)requestLogin:(NSString *)code{
     [RequestApi requestLoginWithAppid:@"1" clientId:@"1" phone:self.strPhone code:code delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        [RequestApi requestUserAuthAllInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            ModelAuthorityInfo * modelAuth = [ModelAuthorityInfo modelObjectWithDictionary:response];
-            if (modelAuth.isAuthed) {
-                [GB_Nav popToRootViewControllerAnimated:true];
-            }else{
-                AuthOneVC * vc = [AuthOneVC new];
-                vc.isFirst = true;
-                [GB_Nav popToRootAry:@[vc] animate:true];
-            }
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
-        }];
+        [GB_Nav popToRootViewControllerAnimated:true];
+
       
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             [self.codeView clearCode];

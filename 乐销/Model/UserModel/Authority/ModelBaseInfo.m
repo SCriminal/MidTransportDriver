@@ -113,33 +113,18 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
     if (successBlock) {
         successBlock();
     }
-    //因为有已经认证
-//    BOOL isQuantity  = modelUser.isIdentity == 1&& modelUser.isDriver == 1;
-//    if (modelUser.reviewStatus!=1 && successBlock) {
-//        successBlock();
-//        return;
-//    }
-//    switch ((int)modelUser.reviewStatus) {
-//        case 1:
-//            [GB_Nav pushVCName:@"PerfectAuthorityInfoVC" animated:true];
-//            break;
-//        case 2:
-//            if (isQuantity) {
-//                [GB_Nav pushVCName:@"PerfectAuthorityInfoSuccessVC" animated:true];
-//            }else{
-//                [GB_Nav pushVCName:@"AuthorityReVerifyingVC" animated:true];
-//            }
-//            break;
-//        case 3:
-//            [GB_Nav pushVCName:@"PerfectAuthorityInfoSuccessVC" animated:true];
-//            break;
-//        case 10:
-//            [GB_Nav pushVCName:@"PerfectAuthorityInfoVC" animated:true];
-//            break;
-//        default:
-//            break;
-//    }
-    
+  
+//    [RequestApi requestUserAuthAllInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//                ModelAuthorityInfo * modelAuth = [ModelAuthorityInfo modelObjectWithDictionary:response];
+//                if (modelAuth.isAuthed) {
+//                }else{
+//                    AuthOneVC * vc = [AuthOneVC new];
+//                    vc.isFirst = true;
+//                    [GB_Nav popToRootAry:@[vc] animate:true];
+//                }
+//            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//
+//            }];
 }
 #pragma mark init
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict {

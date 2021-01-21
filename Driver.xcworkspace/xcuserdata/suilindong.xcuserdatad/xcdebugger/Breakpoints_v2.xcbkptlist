@@ -762,8 +762,8 @@
             timestampString = "593513309.185209"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "-textChange"
             landmarkType = "7">
          </BreakpointContent>
@@ -3384,22 +3384,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "93938799-CBC6-41A7-83DD-A37D5C922FAD"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Model/UserModel/Authority/ModelBaseInfo.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "+jumpToAuthorityStateVCSuccessBlock:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "846A9F39-EAE0-4880-BE4C-4AA034FA785C"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -5023,8 +5007,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/&#x6211;&#x7684;&#x8def;&#x7ebf;/AddPathVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "-requestSave"
             landmarkType = "7">
          </BreakpointContent>
@@ -5055,8 +5039,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x767b;&#x5f55;/LoginViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "-requestWithPwd"
             landmarkType = "7">
             <Locations>

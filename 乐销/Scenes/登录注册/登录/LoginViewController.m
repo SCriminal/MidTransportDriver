@@ -163,18 +163,9 @@
 - (void)requestWithPwd{
     NSString * strPhone = [self.tfPhone.tf.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     [RequestApi requestLoginWithApp:@"2" client:@"1" password:self.tfPwd.tf.text account:strPhone terminalType:1 terminalNumber:@"1" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        [RequestApi requestUserAuthAllInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            ModelAuthorityInfo * modelAuth = [ModelAuthorityInfo modelObjectWithDictionary:response];
-            if (modelAuth.isAuthed) {
-                [GB_Nav popToRootViewControllerAnimated:true];
-            }else{
-                AuthOneVC * vc = [AuthOneVC new];
-                vc.isFirst = true;
-                [GB_Nav popToRootAry:@[vc] animate:true];
-            }
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
-        }];
+        [GB_Nav popToRootViewControllerAnimated:true];
+
+        
        
         [GlobalMethod showAlert:@"登录成功"];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
