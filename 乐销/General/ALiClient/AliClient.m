@@ -142,7 +142,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
     opt.synchronous = YES;
     opt.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;;
     for (BaseImage * image  in aryDatas) {
-        NSString * strPathURL = [NSString stringWithFormat:@"%@%@%@",URL_IMAGE,self.imagePath,image.identity];
+        NSString * strPathURL = [NSString stringWithFormat:@"%@/oss/zhongcheyun/display/%@%@",URL_IMAGE,self.imagePath,image.identity];
         [self removeKeyInSDWebImageBlackList:strPathURL];
         if (![[SDWebImageManager sharedManager].imageCache diskImageExistsWithKey:strPathURL] ) {
             if (image.asset) {
@@ -186,7 +186,6 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
 }
 
 - (void)upImageData:(NSData *)imageData urlSuffix:(NSString *)imageIdentity blockSuccess:(void (^)(void))blockSuccess blockFailure:(void (^)(void))blockFailure{
-    [UIImage saveImageDataToLocal:imageData imageName:@"0931"];
     if (!isStr(imageIdentity)) {
         return;
     }

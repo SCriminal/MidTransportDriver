@@ -12,4 +12,6 @@
 #import "RequestApi+Ums.h"
 #import "RequestApi+Auth.h"
 #import "RequestApi+Dic.h"
+#import "RequestApi+Plan.h"
+
 #endif /* RequestDriver2_h */

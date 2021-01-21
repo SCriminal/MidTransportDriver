@@ -45,7 +45,9 @@
 
 
 #define RESPONSE_CODE_SUCCESS 0//成功
-#define RESPONSE_CODE_RELOGIN 1011//重新登陆
+#define RESPONSE_CODE_RELOGIN 1000//重新登陆
+#define RESPONSE_CODE_RELOGIN2 1//重新登陆
+
 #define RESPONSE_CODE_SCHEDULE 10803//有待确认计划单
 
 
