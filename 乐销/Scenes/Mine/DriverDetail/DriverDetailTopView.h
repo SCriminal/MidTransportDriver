@@ -13,6 +13,7 @@
 @property (strong, nonatomic) UIImageView *bg;
 @property (strong, nonatomic) UIImageView *head;
 @property (strong, nonatomic) UIImageView *arrow;
+@property (strong, nonatomic) UIImageView *authImage;
 
 @property (strong, nonatomic) UILabel *name;
 @property (strong, nonatomic) UILabel *loginTime;

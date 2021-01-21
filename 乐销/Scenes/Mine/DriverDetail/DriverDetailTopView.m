@@ -29,6 +29,18 @@
     }
     return _head;
 }
+- (UIImageView *)authImage{
+    if (!_authImage) {
+        UIImageView * iv = [UIImageView new];
+        iv.backgroundColor = [UIColor clearColor];
+        iv.contentMode = UIViewContentModeScaleAspectFill;
+        iv.clipsToBounds = true;
+        iv.image = [UIImage imageNamed:@"认证"];
+        iv.widthHeight = XY(W(18),W(18));
+        _authImage = iv;
+    }
+    return _authImage;
+}
 - (UIImageView *)bg{
     if (_bg == nil) {
         UIImageView * iv = [UIImageView new];
@@ -117,6 +129,7 @@
     [self addSubview:self.arrow];
     [self addSubview:self.sign];
     [self addSubview:self.auth];
+    [self addSubview:self.authImage];
 
     self.head.leftBottom = XY(W(20), self.height - W(47));
 
@@ -125,16 +138,8 @@
     [self addControlFrame:CGRectInset(self.sign.frame, -W(20), -W(20)) belowView:self.sign target:self action:@selector(signClick)];
     [self addControlFrame:CGRectMake(self.head.right+W(10), self.head.bottom - W(30), W(150), W(50)) belowView:self.sign target:self action:@selector(authClick)];
 
-    [self addSubview:^(){
-        UIImageView * iv = [UIImageView new];
-        iv.backgroundColor = [UIColor clearColor];
-        iv.contentMode = UIViewContentModeScaleAspectFill;
-        iv.clipsToBounds = true;
-        iv.image = [UIImage imageNamed:@"认证"];
-        iv.widthHeight = XY(W(18),W(18));
-        iv.leftBottom = XY(self.head.right + W(12),self.head.bottom - W(5));
-        return iv;
-    }()];
+    self.authImage.leftBottom = XY(self.head.right + W(12),self.head.bottom - W(5));
+
     //初始化页面
     [self userInfoChange];
 }
@@ -156,12 +161,12 @@
     self.loginTime.leftBottom = XY(W(20), self.height - W(16));
     
 //    [self.auth fitTitle:@"" variable:0];
-    self.auth.leftBottom = XY(self.head.right + W(36), self.head.bottom - W(8));
+    self.auth.leftCenterY = XY(self.head.right + W(36), self.authImage.centerY);
     self.arrow.rightCenterY = XY(self.auth.right + W(16), self.auth.centerY);
 }
 -(void)resetAuth:(BOOL)authed{
     [self.auth fitTitle:authed?@"查看认证信息":@"去认证赚钱" variable:0];
-        self.auth.leftBottom = XY(self.head.right + W(36), self.head.bottom - W(8));
+        self.auth.leftCenterY = XY(self.head.right + W(36), self.authImage.centerY);
         self.arrow.rightCenterY = XY(self.auth.right + W(16), self.auth.centerY);
 
 }

@@ -42,7 +42,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(GlobalData);
     }
 }
 - (ModelBaseInfo *)GB_UserModel{
-    if (!_GB_UserModel) {
+    if (!isStr(_GB_UserModel.cellPhone)) {
         NSDictionary * dicItem = [GlobalMethod exchangeStringToDic:[GlobalMethod readStrFromUser:LOCAL_USERMODEL]];
         _GB_UserModel = [ModelBaseInfo modelObjectWithDictionary:dicItem];
     }

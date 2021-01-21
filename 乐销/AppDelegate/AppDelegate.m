@@ -43,7 +43,7 @@
     
     //create root nav
     [GlobalMethod createRootNav];
-    [window addSubview:[NSClassFromString(@"AdvertiesementView") new]];
+    [self.window addSubview:[NSClassFromString(@"AdvertiesementView") new]];
     //注册通知
     [self registerForRemoteNotification];
     //配置 app id
