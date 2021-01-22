@@ -24,6 +24,7 @@
 - (AutoConfigTimeView *)timeView{
     if (!_timeView) {
         _timeView = [AutoConfigTimeView new];
+        _timeView.date = [GlobalMethod exchangeTimeStampToDate:self.modelList.startTime];
         WEAKSELF
         _timeView.blockClick = ^{
             //报价
@@ -63,7 +64,6 @@
     self.tableView.tableHeaderView = self.topView;
     
     //table
-    //    [self.tableView registerClass:[<#CellName#> class] forCellReuseIdentifier:@"<#CellName#>"];
     self.tableView.backgroundColor = COLOR_BACKGROUND;
     //request
     [self requestList];
@@ -76,35 +76,7 @@
     [self.view addSubview:nav];
 }
 
-#pragma mark UITableViewDelegate
-//row num
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.aryDatas.count;
-}
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
-//cell
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return nil;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return CGFLOAT_MIN;
-}
-//table header
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    return  nil;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return CGFLOAT_MIN;
-}
-//table footer
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    return nil;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return CGFLOAT_MIN;
-}
+
 
 #pragma mark request
 - (void)requestList{
@@ -201,14 +173,14 @@
 }
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(ModelAutOrderListItem *)model{
+- (void)resetViewWithModel:(ModelAutOrderListItem *)modelPlan{
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
     self.iconAddress.centerXTop = XY(SCREEN_WIDTH/2.0, W(20));
     
-    [self.addressFrom fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.startCityName),UnPackStr(model.startCountyName)] variable:W(160)];
+    [self.addressFrom fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(modelPlan.startCityName),UnPackStr(modelPlan.startCountyName)] variable:W(160)];
     self.addressFrom.centerXCenterY = XY((self.iconAddress.left - W(10))/2.0+W(10), self.iconAddress.centerY);
-    [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.endCityName),UnPackStr(model.endCountyName)] variable:W(160)];
+    [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(modelPlan.endCityName),UnPackStr(modelPlan.endCountyName)] variable:W(160)];
     self.addressTo.centerXCenterY = XY((SCREEN_WIDTH - self.iconAddress.right - W(10))/2.0 + SCREEN_WIDTH/2.0 + self.iconAddress.width/2.0, self.iconAddress.centerY);
     
     CGFloat top = self.iconAddress.bottom + W(20);
@@ -221,42 +193,42 @@
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"配货编号：";
-        model.subTitle = @"QD338888882222239";
+        model.subTitle = modelPlan.planNumber;
         model.isSelected = false;
         return model;
     }()];
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"发货量：";
-        model.subTitle = @"2000吨";
+        model.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(modelPlan.qtyShow).stringValue,modelPlan.unitShow];
         model.isSelected = false;
         return model;
     }()];
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"剩余量：";
-        model.subTitle = @"1800吨";
+        model.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(modelPlan.remainShow).stringValue,modelPlan.unitShow];
         model.isSelected = true;
         return model;
     }()];
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"货物名称：";
-        model.subTitle = @"设备零配件";
+        model.subTitle = modelPlan.cargoName;
         model.isSelected = false;
         return model;
     }()];
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"单价：";
-        model.subTitle = @"100.00元/吨";
+        model.subTitle = [NSString stringWithFormat:@"%@元/%@",NSNumber.dou(modelPlan.priceShow).stringValue,modelPlan.unitShow];
         model.isSelected = true;
         return model;
     }()];
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"距离：";
-        model.subTitle = @"约220km装货";
+        model.subTitle = isStr(modelPlan.distanceShow)?[NSString stringWithFormat:@"约%@装货",modelPlan.distanceShow]:@"未知";
         model.isSelected = false;
         return model;
     }()];
@@ -268,35 +240,35 @@
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"车型要求：";
-        model.subTitle = @"高栏";
+        model.subTitle = modelPlan.vehicleDescription;
         model.isSelected = false;
         return model;
     }()];
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"车长要求：";
-        model.subTitle = @"13-17.5米";
+        model.subTitle = modelPlan.carLenthSHow;
         model.isSelected = false;
         return model;
     }()];
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"补充说明：";
-        model.subTitle = @"一装一卸";
+        model.subTitle = modelPlan.internalBaseClassDescription;
         model.isSelected = false;
         return model;
     }()];
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"发货时间：";
-        model.subTitle = @"2020-11-19 12:09:20";
+        model.subTitle = [GlobalMethod exchangeTimeWithStamp:modelPlan.startTime andFormatter:TIME_SEC_SHOW];
         model.isSelected = false;
         return model;
     }()];
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"发布时间：";
-        model.subTitle = @"刚刚";
+        model.subTitle = [GlobalMethod exchangeTimeStampToDate:modelPlan.createTime].timeAgoShow;;
         model.isSelected = false;
         return model;
     }()];

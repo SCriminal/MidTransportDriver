@@ -23,6 +23,6 @@
 @property (nonatomic, strong) AutoNewsView *newsView;
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(ModelOrderList *)model;
+- (void)resetViewWithModel:(ModelAutOrderListItem *)model;
 
 @end

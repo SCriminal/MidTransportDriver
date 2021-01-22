@@ -424,10 +424,10 @@
 }
 
 - (void)reconfigStart:(ModelProvince *)start{
-    self.addressFrom.text = start.name;
+    self.addressFrom.text = isStr(start.name)? start.name:@"起点";
 }
 - (void)reconfigEnd:(ModelProvince *)end{
-    self.addressTo.text = end.name;
+    self.addressTo.text = isStr(end.name)? end.name:@"终点";
 
 }
 

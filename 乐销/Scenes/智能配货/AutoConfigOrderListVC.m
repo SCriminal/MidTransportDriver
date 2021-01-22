@@ -110,6 +110,11 @@
                 [weakSelf.topView reconfigStart:area];
                 [weakSelf refreshHeaderAll];
             };
+            selectView.blockDismiss = ^{
+                weakSelf.areaStart = nil;
+                [weakSelf.topView reconfigStart:nil];
+                [weakSelf refreshHeaderAll];
+            };
             [[UIApplication sharedApplication].keyWindow addSubview:selectView];
         };
         _topView.blockEnd = ^{
@@ -117,6 +122,11 @@
             selectView.blockCitySeleted = ^(ModelProvince *pro, ModelProvince *city, ModelProvince *area) {
                 weakSelf.areaEnd = area;
                 [weakSelf.topView reconfigEnd:area];
+                [weakSelf refreshHeaderAll];
+            };
+            selectView.blockDismiss = ^{
+                weakSelf.areaEnd = nil;
+                [weakSelf.topView reconfigEnd:nil];
                 [weakSelf refreshHeaderAll];
             };
             [[UIApplication sharedApplication].keyWindow addSubview:selectView];
@@ -201,8 +211,8 @@
         [weakSelf jumpToDetail:model];
     };
     cell.blockOutTime = ^(AutoConfigOrderListCell *c) {
-        [weakSelf.aryDatas removeObject:c.model];
-        [weakSelf.tableView reloadData];
+//        [weakSelf.aryDatas removeObject:c.model];
+//        [weakSelf.tableView reloadData];
     };
     return cell;
 }

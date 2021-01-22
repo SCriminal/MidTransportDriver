@@ -172,6 +172,9 @@
 
 #pragma mark click
 - (void)cancelClick{
+    if (self.blockDismiss) {
+        self.blockDismiss();
+    }
     [self removeFromSuperview];
 }
 - (void)confirmClick{

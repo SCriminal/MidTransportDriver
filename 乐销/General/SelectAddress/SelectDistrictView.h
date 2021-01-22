@@ -9,6 +9,7 @@
 
 @interface SelectDistrictView : UIView
 @property (nonatomic, strong) void (^blockCitySeleted)(ModelProvince *,ModelProvince *,ModelProvince *);
+@property (nonatomic, strong) void (^blockDismiss)(void);
 
 
 
