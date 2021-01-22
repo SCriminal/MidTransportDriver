@@ -211,8 +211,8 @@
         [weakSelf jumpToDetail:model];
     };
     cell.blockOutTime = ^(AutoConfigOrderListCell *c) {
-//        [weakSelf.aryDatas removeObject:c.model];
-//        [weakSelf.tableView reloadData];
+        [weakSelf.aryDatas removeObject:c.model];
+        [weakSelf.tableView reloadData];
     };
     return cell;
 }

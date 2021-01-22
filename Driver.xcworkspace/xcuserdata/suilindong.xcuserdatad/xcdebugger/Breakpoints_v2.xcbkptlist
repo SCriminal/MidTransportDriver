@@ -4079,8 +4079,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/&#x914d;&#x8d27;&#x8be6;&#x60c5;/AutoConfigDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "-timerRun"
             landmarkType = "7">
          </BreakpointContent>
@@ -4159,8 +4159,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/&#x914d;&#x8d27;&#x8be6;&#x60c5;/AutoConfigDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "-timeView"
             landmarkType = "7">
          </BreakpointContent>
@@ -4175,8 +4175,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/&#x914d;&#x8d27;&#x8be6;&#x60c5;/AutoConfigDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "-timeView"
             landmarkType = "7">
          </BreakpointContent>
@@ -5567,8 +5567,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x5b8c;&#x5584;&#x4fe1;&#x606f;/EditInfoVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "-completeClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -5599,8 +5599,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x5b8c;&#x5584;&#x4fe1;&#x606f;/EditInfoVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "-completeClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -5689,7 +5689,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "08705007-F878-4CD9-A045-C873628B532D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/&#x914d;&#x8d27;&#x8be6;&#x60c5;/AutoConfigDetailVC.m"
@@ -5730,6 +5730,22 @@
             startingLineNumber = "83"
             endingLineNumber = "83"
             landmarkName = "-resetTime"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1024F6F6-65C9-4C32-8DA2-599B2E8F14F6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "-resetCellWithModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -43,7 +43,15 @@
 @property (nonatomic, strong) NSString *internalBaseClassDescription;
 @property (nonatomic, assign) double lengthMax;
 @property (nonatomic, assign) double lengthMin;
-
+@property (nonatomic, assign) double transportQty;
+@property (nonatomic, strong) NSString *endAddr;
+@property (nonatomic, strong) NSString *startAddr;
+@property (nonatomic, strong) NSString *endContacter;
+@property (nonatomic, assign) double planStatus;
+@property (nonatomic, strong) NSString *startContacter;
+@property (nonatomic, strong) NSString *endPhone;
+@property (nonatomic, strong) NSString *startPhone;
+@property (nonatomic, assign) double orderQty;
 @property (nonatomic, assign) double matchQty;
 @property (nonatomic, assign) double unitWeight;
 //logical

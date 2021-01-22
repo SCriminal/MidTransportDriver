@@ -98,4 +98,38 @@
         NSDictionary *dic = @{@"number":RequestStrKey(number)};
         [self getUrl:@"/plan/plan/driver/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
+
+/**
+扫码(抢单)
+*/
++(void)requestPlanRobWithPlannumber:(NSString *)planNumber
+                vehicleId:(double)vehicleId
+                qty:(double)qty
+                price:(double)price
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"planNumber":RequestStrKey(planNumber),
+                           @"vehicleId":NSNumber.dou(vehicleId),
+                           @"qty":NSNumber.dou(qty),
+                           @"price":NSNumber.dou(price)};
+        [self postUrl:@"/zhongcheyun/plan/match/1" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
+扫码(报价)
+*/
++(void)requestPlanPriceWithPlannumber:(NSString *)planNumber
+                vehicleId:(double)vehicleId
+                qty:(double)qty
+                price:(double)price
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"planNumber":RequestStrKey(planNumber),
+                           @"vehicleId":NSNumber.dou(vehicleId),
+                           @"qty":NSNumber.dou(qty),
+                           @"price":NSNumber.dou(price)};
+        [self postUrl:@"/zhongcheyun/plan/match/2" delegate:delegate parameters:dic success:success failure:failure];
+}
 @end

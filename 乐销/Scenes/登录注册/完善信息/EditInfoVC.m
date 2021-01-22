@@ -230,6 +230,12 @@
     NSString * strUrl = isStr([BaseImage fetchUrl:self.topView.ivHead.image])?[BaseImage fetchUrl:self.topView.ivHead.image]:[GlobalData sharedInstance].GB_UserModel.headUrl;
     NSDate * dateBirthday = [GlobalMethod exchangeStringToDate:self.modelAge.subString formatter:TIME_DAY_CN];
     double timeBirthday = [dateBirthday timeIntervalSince1970];
+    if (isStr(self.modelEmail.subString)) {
+        if (![GlobalMethod checkEmail:self.modelEmail.subString]) {
+            [GlobalMethod showAlert:@"请输入正确邮箱格式"];
+            return;
+        }
+    }
     [RequestApi requestResetUserInfoWithNickname:self.modelName.subString headUrl:strUrl email:self.modelEmail.subString birthday:timeBirthday                                  gender:self.modelGender.identifier
  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalData sharedInstance].GB_UserModel.headUrl = strUrl;

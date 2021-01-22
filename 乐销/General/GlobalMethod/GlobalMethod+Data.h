@@ -20,7 +20,7 @@
 
 //验证手机号码
 +(BOOL)isMobileNumber:(NSString *)mobileNum;
-
++ (BOOL)checkEmail:(NSString *)email;
 //从本地读取数据
 +(NSDictionary *)readDataFromeLocal;
 

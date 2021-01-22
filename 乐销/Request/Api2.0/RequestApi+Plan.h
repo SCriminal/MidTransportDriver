@@ -61,6 +61,28 @@ NS_ASSUME_NONNULL_BEGIN
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                            failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+扫码(抢单)
+*/
++(void)requestPlanRobWithPlannumber:(NSString *)planNumber
+                vehicleId:(double)vehicleId
+                qty:(double)qty
+                price:(double)price
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                            failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+扫码(报价)
+*/
++(void)requestPlanPriceWithPlannumber:(NSString *)planNumber
+                vehicleId:(double)vehicleId
+                qty:(double)qty
+                price:(double)price
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                              failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

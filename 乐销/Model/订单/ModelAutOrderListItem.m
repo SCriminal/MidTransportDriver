@@ -41,7 +41,15 @@ NSString *const kModelAutOrderListItemMode = @"mode";
 NSString *const kModelAutOrderListItemDescription = @"description";
 NSString *const kModelAutOrderListItemLengthMax = @"lengthMax";
 NSString *const kModelAutOrderListItemLengthMin = @"lengthMin";
-
+NSString *const kModelAutOrderListItemTransportQty = @"transportQty";
+NSString *const kModelAutOrderListItemEndAddr = @"endAddr";
+NSString *const kModelAutOrderListItemStartAddr = @"startAddr";
+NSString *const kModelAutOrderListItemEndContacter = @"endContacter";
+NSString *const kModelAutOrderListItemPlanStatus = @"planStatus";
+NSString *const kModelAutOrderListItemStartContacter = @"startContacter";
+NSString *const kModelAutOrderListItemEndPhone = @"endPhone";
+NSString *const kModelAutOrderListItemStartPhone = @"startPhone";
+NSString *const kModelAutOrderListItemOrderQty = @"orderQty";
 NSString *const kModelAutOrderListItemMatchQty = @"matchQty";
 NSString *const kModelAutOrderListItemUnitWeight = @"unitWeight";
 
@@ -128,6 +136,15 @@ NSString *const kModelAutOrderListItemUnitWeight = @"unitWeight";
         self.unitWeight = [dict doubleValueForKey:kModelAutOrderListItemUnitWeight];
         self.lengthMax = [dict doubleValueForKey:kModelAutOrderListItemLengthMax];
         self.lengthMin = [dict doubleValueForKey:kModelAutOrderListItemLengthMin];
+        self.transportQty = [dict doubleValueForKey:kModelAutOrderListItemTransportQty];
+        self.endAddr = [dict stringValueForKey:kModelAutOrderListItemEndAddr];
+        self.startAddr = [dict stringValueForKey:kModelAutOrderListItemStartAddr];
+        self.endContacter = [dict stringValueForKey:kModelAutOrderListItemEndContacter];
+        self.planStatus = [dict doubleValueForKey:kModelAutOrderListItemPlanStatus];
+        self.startContacter = [dict stringValueForKey:kModelAutOrderListItemStartContacter];
+        self.endPhone = [dict stringValueForKey:kModelAutOrderListItemEndPhone];
+        self.startPhone = [dict stringValueForKey:kModelAutOrderListItemStartPhone];
+        self.orderQty = [dict doubleValueForKey:kModelAutOrderListItemOrderQty];
 
         
         //logical
@@ -231,6 +248,15 @@ NSString *const kModelAutOrderListItemUnitWeight = @"unitWeight";
     [mutableDict setValue:[NSNumber numberWithDouble:self.unitWeight] forKey:kModelAutOrderListItemUnitWeight];
     [mutableDict setValue:[NSNumber numberWithDouble:self.lengthMax] forKey:kModelAutOrderListItemLengthMax];
     [mutableDict setValue:[NSNumber numberWithDouble:self.lengthMin] forKey:kModelAutOrderListItemLengthMin];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.transportQty] forKey:kModelAutOrderListItemTransportQty];
+    [mutableDict setValue:self.endAddr forKey:kModelAutOrderListItemEndAddr];
+    [mutableDict setValue:self.startAddr forKey:kModelAutOrderListItemStartAddr];
+    [mutableDict setValue:self.endContacter forKey:kModelAutOrderListItemEndContacter];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.planStatus] forKey:kModelAutOrderListItemPlanStatus];
+    [mutableDict setValue:self.startContacter forKey:kModelAutOrderListItemStartContacter];
+    [mutableDict setValue:self.endPhone forKey:kModelAutOrderListItemEndPhone];
+    [mutableDict setValue:self.startPhone forKey:kModelAutOrderListItemStartPhone];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.orderQty] forKey:kModelAutOrderListItemOrderQty];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

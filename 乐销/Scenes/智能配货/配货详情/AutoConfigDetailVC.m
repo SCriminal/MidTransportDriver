@@ -12,7 +12,7 @@
 #import "AutoConfigRobView.h"
 //request
 #import "RequestDriver2.h"
-
+#import "AuthOneVC.h"
 @interface AutoConfigDetailVC ()
 @property (nonatomic, strong) AutoConfigTimeView *timeView;
 @property (nonatomic, strong) AutoConfigDetailView *topView;
@@ -26,9 +26,16 @@
         _timeView = [AutoConfigTimeView new];
         _timeView.date = [GlobalMethod exchangeTimeStampToDate:self.modelList.startTime];
         WEAKSELF
+        _timeView.blockOutTime = ^{
+            [GlobalMethod showAlert:@"倒计时结束"];
+            [GB_Nav popViewControllerAnimated:true];
+        };
         _timeView.blockClick = ^{
             //报价
             AutoConfigOfferPriceView * robView = [AutoConfigOfferPriceView new];
+            robView.blockConfirm = ^(double weight, double price) {
+                [weakSelf requestPrice:price weight:weight];
+            };
             [robView resetViewWithModel:nil];
             [weakSelf.view addSubview:robView];
         };
@@ -58,7 +65,6 @@
         self.tableView.height = SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - view.height;
     }
     [self.topView resetViewWithModel:self.modelList];
-    self.timeView.date = [[NSDate date] dateByAddingDays:2];
     [self.timeView resetTime];
     
     self.tableView.tableHeaderView = self.topView;
@@ -86,6 +92,31 @@
             
         }];
     
+}
+- (void)requestPrice:(double)price weight:(double)weight{
+    [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        ModelAuthCar * model = [ModelAuthCar modelObjectWithDictionary:response];
+        if (!model.vehicleId) {
+            ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+            ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"立即提交" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+            modelConfirm.blockClick = ^(void){
+                AuthOneVC * vc = [AuthOneVC new];
+                vc.isFirst = true;
+                [GB_Nav pushViewController:vc animated:true];
+            };
+            [BaseAlertView initWithTitle:@"提示" content:@"请先提交车辆信息" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
+            return;
+        }
+        [RequestApi requestPlanPriceWithPlannumber:self.modelList.planNumber vehicleId:model.vehicleId qty:weight price:price delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [GlobalMethod showAlert:@"抢单成功"];
+            [GB_Nav popViewControllerAnimated:true];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+   
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;

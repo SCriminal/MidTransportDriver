@@ -28,7 +28,19 @@
         return NO;
     }
 }
-
++ (BOOL)checkEmail:(NSString *)email
+{
+    
+    //^(\\w)+(\\.\\w+)*@(\\w)+((\\.\\w{2,3}){1,3})$
+    //[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4} //2020.1.10更换
+    //^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$
+    NSString *regex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    
+    return [emailTest evaluateWithObject:email];
+    
+}
 
 
 //从本地读取数据
