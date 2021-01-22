@@ -62,7 +62,15 @@
 }
 
 #pragma mark 刷新view
-- (void)resetView{
+- (void)resetView:(int)model{
+    if (model == 1) {
+        self.title = @"马上抢单";
+        self.ivBG.image = [UIImage imageNamed:@"autoBtn_qiang"];
+    }else{
+        self.title = @"立即报价";
+        self.ivBG.image = [UIImage imageNamed:@"autoBtn_bao"];
+    }
+
     [self removeSubViewWithTag:TAG_LINE];//移除线
        //刷新view
        
@@ -107,6 +115,10 @@
             self.time.attributedText = strAttribute;
             self.time.widthHeight = XY(W(228), [UIFont fetchHeight:F(17)]);
             self.time.centerXCenterY = XY(W(114),self.height/2.0);
+        }else{
+            if (self.blockOutTime) {
+                self.blockOutTime();
+            }
         }
 }
 - (void)click{

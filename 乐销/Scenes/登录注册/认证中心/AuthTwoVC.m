@@ -26,9 +26,10 @@
 @property (nonatomic, strong) ModelBaseData *modelCarNo;
 @property (nonatomic, strong) ModelBaseData *modelCarType;
 @property (nonatomic, strong) ModelBaseData *modelCarOwner;
-@property (nonatomic, strong) ModelBaseData *modelCarLong;
-@property (nonatomic, strong) ModelBaseData *modelCarWidth;
-@property (nonatomic, strong) ModelBaseData *modelCarHeight;
+@property (nonatomic, strong) ModelBaseData *modelVin;
+//@property (nonatomic, strong) ModelBaseData *modelCarLong;
+//@property (nonatomic, strong) ModelBaseData *modelCarWidth;
+//@property (nonatomic, strong) ModelBaseData *modelCarHeight;
 @property (nonatomic, strong) ModelBaseData *modelImageSelected;
 @property (nonatomic, strong) ModelOCR *modelOCRDribingFace;
 @property (nonatomic, strong) ModelOCR *modelOCRDrivingBack;
@@ -161,43 +162,54 @@
     return _modelCarOwner;
 }
 
-
-- (ModelBaseData *)modelCarLong{
-    if (!_modelCarLong) {
-        _modelCarLong =[ModelBaseData new];
-        _modelCarLong.enumType = ENUM_PERFECT_CELL_TEXT;
-        _modelCarLong.string = @"车辆长度";
-        _modelCarLong.isChangeInvalid = false;
-//        _modelCarLong.subString = self.model.idNumber;
-        _modelCarLong.placeHolderString = @"填写车辆长度（mm）";
+- (ModelBaseData *)modelVin{
+    if (!_modelVin) {
+        _modelVin =[ModelBaseData new];
+        _modelVin.enumType = ENUM_PERFECT_CELL_TEXT;
+        _modelVin.string = @"车架号";
+        _modelVin.isChangeInvalid = false;
+//        _modelVin.subString = self.model.idNumber;
+        _modelVin.placeHolderString = @"填写车架号(VIN)";
       
     }
-    return _modelCarLong;
+    return _modelVin;
 }
-- (ModelBaseData *)modelCarWidth{
-    if (!_modelCarWidth) {
-        _modelCarWidth =[ModelBaseData new];
-        _modelCarWidth.enumType = ENUM_PERFECT_CELL_TEXT;
-        _modelCarWidth.string = @"车辆宽度";
-        _modelCarWidth.isChangeInvalid = false;
-//        _modelCarWidth.subString = self.model.idNumber;
-        _modelCarWidth.placeHolderString = @"填写车辆宽度（mm）";
-      
-    }
-    return _modelCarWidth;
-}
-- (ModelBaseData *)modelCarHeight{
-    if (!_modelCarHeight) {
-        _modelCarHeight =[ModelBaseData new];
-        _modelCarHeight.enumType = ENUM_PERFECT_CELL_TEXT;
-        _modelCarHeight.string = @"车辆高度";
-        _modelCarHeight.isChangeInvalid = false;
-//        _modelCarHeight.subString = self.model.idNumber;
-        _modelCarHeight.placeHolderString = @"填写车辆高度（mm）";
-      
-    }
-    return _modelCarHeight;
-}
+//- (ModelBaseData *)modelCarLong{
+//    if (!_modelCarLong) {
+//        _modelCarLong =[ModelBaseData new];
+//        _modelCarLong.enumType = ENUM_PERFECT_CELL_TEXT;
+//        _modelCarLong.string = @"车辆长度";
+//        _modelCarLong.isChangeInvalid = false;
+////        _modelCarLong.subString = self.model.idNumber;
+//        _modelCarLong.placeHolderString = @"填写车辆长度（mm）";
+//
+//    }
+//    return _modelCarLong;
+//}
+//- (ModelBaseData *)modelCarWidth{
+//    if (!_modelCarWidth) {
+//        _modelCarWidth =[ModelBaseData new];
+//        _modelCarWidth.enumType = ENUM_PERFECT_CELL_TEXT;
+//        _modelCarWidth.string = @"车辆宽度";
+//        _modelCarWidth.isChangeInvalid = false;
+////        _modelCarWidth.subString = self.model.idNumber;
+//        _modelCarWidth.placeHolderString = @"填写车辆宽度（mm）";
+//
+//    }
+//    return _modelCarWidth;
+//}
+//- (ModelBaseData *)modelCarHeight{
+//    if (!_modelCarHeight) {
+//        _modelCarHeight =[ModelBaseData new];
+//        _modelCarHeight.enumType = ENUM_PERFECT_CELL_TEXT;
+//        _modelCarHeight.string = @"车辆高度";
+//        _modelCarHeight.isChangeInvalid = false;
+////        _modelCarHeight.subString = self.model.idNumber;
+//        _modelCarHeight.placeHolderString = @"填写车辆高度（mm）";
+//
+//    }
+//    return _modelCarHeight;
+//}
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -211,9 +223,9 @@
     [self registAuthorityCell];
     [self addObserveOfKeyboard];
     //request
-    self.aryDatas = @[self.modelMain,self.modelSub,self.modelThree,self.modelCarNo,self.modelCarType,self.modelCarOwner,self.modelCarLong,self.modelCarWidth,self.modelCarHeight].mutableCopy;
+    self.aryDatas = @[self.modelMain,self.modelSub,self.modelThree,self.modelCarNo,self.modelCarType,self.modelCarOwner,self.modelVin].mutableCopy;
     [self fetchAllProperty];
-    self.aryDatas = @[self.modelMain,self.modelSub,self.modelThree,self.modelCarNo,self.modelCarType,self.modelCarOwner,self.modelCarLong,self.modelCarWidth,self.modelCarHeight].mutableCopy;
+    self.aryDatas = @[self.modelMain,self.modelSub,self.modelThree,self.modelCarNo,self.modelCarType,self.modelCarOwner,self.modelVin].mutableCopy;
 
     for (ModelBaseData *m in self.aryDatas) {
         m.subLeft = W(120);
@@ -290,15 +302,10 @@
                 ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"backResult"]];
                 
                 self.modelOCRDrivingBack = model;
-                if (model.length) {
-                    self.modelCarLong.subString = NSNumber.dou(model.length).stringValue;
+                if (model.vin) {
+                    self.modelVin.subString = model.vin;
                 }
-                if (model.width) {
-                    self.modelCarWidth.subString = NSNumber.dou(model.width).stringValue;
-                }
-                if (model.height) {
-                    self.modelCarHeight.subString = NSNumber.dou(model.height).stringValue;
-                }
+              
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                 
             }];
@@ -339,9 +346,9 @@
                                             owner:self.modelCarOwner.subString
                                         grossMass:self.modelOCRDrivingBack.grossMass.doubleValue
                                      approvedLoad:self.modelOCRDrivingBack.approvedLoad.doubleValue
-                                    vehicleLength:self.modelCarLong.subString.intValue
-                                     vehicleWidth:self.modelCarWidth.subString.intValue
-                                    vehicleHeight:self.modelCarHeight.subString.intValue
+                                    vehicleLength:self.modelOCRDrivingBack.length
+                                     vehicleWidth:self.modelOCRDrivingBack.width
+                                    vehicleHeight:self.modelOCRDrivingBack.height
                                       driving1Url:self.modelMain.identifier
                                       driving2Url:self.modelSub.identifier
                                       driving3Url:self.modelThree.identifier
@@ -351,7 +358,7 @@
                                    drivingEndTime:0
                                      useCharacter:nil
                                       unladenMass:0
-                                              vin:nil
+                                              vin:self.modelVin.subString
                               drivingRegisterDate:0
                                      engineNumber:nil
                                  drivingIssueDate:0
@@ -369,29 +376,30 @@
    
 }
 - (NSString *)fetchRequestJson{
-   NSDictionary * dic =       [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString
-                                                            vehicleType:self.modelCarType.identifier.doubleValue
-                                                                  owner:self.modelCarOwner.subString
-                                                              grossMass:self.modelOCRDrivingBack.grossMass.doubleValue
-                                                           approvedLoad:self.modelOCRDrivingBack.approvedLoad.doubleValue
-                                                          vehicleLength:self.modelCarLong.subString.intValue
-                                                           vehicleWidth:self.modelCarWidth.subString.intValue
-                                                          vehicleHeight:self.modelCarHeight.subString.intValue
-                                                            driving1Url:self.modelMain.identifier
-                                                            driving2Url:self.modelSub.identifier
-                                                            driving3Url:self.modelThree.identifier
-                                                             plateColor:0
-                                                             energyType:isStr(self.modelOCRDrivingBack.energyType)?[AddCarVC exchangeEnergeyTypeWithName:self.modelOCRDrivingBack.energyType].doubleValue:0
-                                                           tractionMass:self.modelOCRDrivingBack.tractionMass.doubleValue
-                                                         drivingEndTime:0
-                                                           useCharacter:nil
-                                                            unladenMass:0
-                                                                    vin:nil
-                                                    drivingRegisterDate:0
-                                                           engineNumber:nil
-                                                       drivingIssueDate:0
-                                                                  model:nil
-                                                             rtbpNumber:nil isRequest:false delegate:self success:nil failure:nil];
+   NSDictionary * dic =      [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString
+                                                           vehicleType:self.modelCarType.identifier.doubleValue
+                                                                 owner:self.modelCarOwner.subString
+                                                             grossMass:self.modelOCRDrivingBack.grossMass.doubleValue
+                                                          approvedLoad:self.modelOCRDrivingBack.approvedLoad.doubleValue
+                                                         vehicleLength:self.modelOCRDrivingBack.length
+                                                          vehicleWidth:self.modelOCRDrivingBack.width
+                                                         vehicleHeight:self.modelOCRDrivingBack.height
+                                                           driving1Url:self.modelMain.identifier
+                                                           driving2Url:self.modelSub.identifier
+                                                           driving3Url:self.modelThree.identifier
+                                                            plateColor:0
+                                                            energyType:isStr(self.modelOCRDrivingBack.energyType)?[AddCarVC exchangeEnergeyTypeWithName:self.modelOCRDrivingBack.energyType].doubleValue:0
+                                                          tractionMass:self.modelOCRDrivingBack.tractionMass.doubleValue
+                                                        drivingEndTime:0
+                                                          useCharacter:nil
+                                                           unladenMass:0
+                                                                   vin:self.modelVin.subString
+                                                   drivingRegisterDate:0
+                                                          engineNumber:nil
+                                                      drivingIssueDate:0
+                                                                 model:nil
+                                                            rtbpNumber:nil
+                                                             isRequest:false delegate:self success:nil failure:nil];
     return [GlobalMethod exchangeDicToJson:dic];
 }
 
@@ -408,15 +416,16 @@
         self.modelCarOwner.subString = model.owner;
         self.modelCarNo.subString = model.plateNumber;
         self.modelOCRDrivingBack.tractionMass = NSNumber.dou(model.tractionMass).stringValue;
-        self.modelCarHeight.subString = NSNumber.dou(model.vehicleHeight).stringValue;
-        self.modelCarLong.subString = NSNumber.dou(model.vehicleLength).stringValue;
+        self.modelOCRDrivingBack.height = model.vehicleHeight;
+        self.modelOCRDrivingBack.length = model.vehicleLength;
         self.modelCarType.identifier = NSNumber.dou(model.vehicleType).stringValue;
         
         self.modelCarType.subString = model.vehicleType?[AddCarVC exchangeVehicleType:self.modelCarType.identifier]:nil;
-        self.modelCarWidth.subString = NSNumber.dou(model.vehicleWidth).stringValue;
+        self.modelOCRDrivingBack.width = model.vehicleWidth;
         self.modelMain.identifier = model.driving1Url;
         self.modelSub.identifier = model.driving2Url;
         self.modelThree.identifier = model.driving3Url;
+        self.modelVin.subString = model.vin;
         
         if (model.reviewStatus == 2 || model.reviewStatus == 10) {
             for (ModelBaseData * m in self.aryDatas) {

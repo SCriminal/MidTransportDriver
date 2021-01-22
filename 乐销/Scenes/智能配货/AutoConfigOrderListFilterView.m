@@ -108,7 +108,7 @@
     return l.bottom;
 }
 - (void)addBtn{
-    NSArray * ary = @[@"全部",@"待接单",@"待装车",@"已装车",@"已装车",@"已支付"];
+    NSArray * ary = @[@"货车",@"货车",@"货车",@"货车",@"货车",@"货车"];
     CGFloat left = W(15);
     CGFloat top = W(40);
     for (int i = 0; i<ary.count; i++) {
@@ -258,5 +258,4 @@
 - (void)viewBgClick{
     
 }
-
 @end

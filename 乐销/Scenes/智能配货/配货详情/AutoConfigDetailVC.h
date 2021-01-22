@@ -10,7 +10,7 @@
 #import "AutoNewsView.h"
 
 @interface AutoConfigDetailVC : BaseTableVC
-@property (nonatomic, strong) ModelOrderList *modelList;
+@property (nonatomic, strong) ModelAutOrderListItem *modelList;
 
 @end
 

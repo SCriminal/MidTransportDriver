@@ -109,6 +109,7 @@ static const char reGeocodeAddressBlockKey = '\0';
             [self initLocation];
         }else{
             ModelAddress * modelAddress = [ModelAddress initWithAMapLocationReGeocode:regeocode location:location];
+            [GlobalMethod writeModel:modelAddress key:LOCAL_LOCATION_UPTODATE exchange:false];
             [self fetchLocation:location];
             [self fetchAddress:modelAddress];
         }

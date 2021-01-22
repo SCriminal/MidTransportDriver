@@ -8,8 +8,6 @@
 
 #import "AutoConfigOrderListVC.h"
 #import "AutoConfigOrderListCell.h"
-//request
-#import "RequestApi+Order.h"
 //detail
 #import "OrderDetailVC.h"
 //operate
@@ -20,11 +18,18 @@
 //list view
 #import "ListAlertView.h"
 #import "AutoConfigOrderListFilterView.h"
+//request
+#import "RequestDriver2.h"
+#import "SelectDistrictView.h"
+#import "BaseVC+Location.h"
 @interface AutoConfigOrderListVC ()
 @property (nonatomic, strong) AutoConfigOrderListFilterView *filterView;
-@property (nonatomic, strong) AutoConfigOrderListAutoFilterView *autoFilterView;
+@property (nonatomic, strong) AutoConfigOrderListAutoFilterView *topView;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) ModelProvince *areaStart;
+@property (nonatomic, strong) ModelProvince *areaEnd;
 
+@property (nonatomic, assign) BOOL isRequestSuccess;
 @end
 
 @implementation AutoConfigOrderListVC
@@ -87,27 +92,41 @@
 - (AutoConfigOrderListFilterView *)filterView{
     if (!_filterView) {
         _filterView = [AutoConfigOrderListFilterView new];
-
+        _filterView.blockSearchClick = ^(NSInteger carType, NSInteger orderType) {
+            
+        };
     }
     return _filterView;
 }
-- (AutoConfigOrderListAutoFilterView *)autoFilterView{
-    if (!_autoFilterView) {
-        _autoFilterView = [AutoConfigOrderListAutoFilterView new];
-        _autoFilterView.top = NAVIGATIONBAR_HEIGHT;
+- (AutoConfigOrderListAutoFilterView *)topView{
+    if (!_topView) {
+        _topView = [AutoConfigOrderListAutoFilterView new];
+        _topView.top = NAVIGATIONBAR_HEIGHT;
         WEAKSELF
-        _autoFilterView.blockStart = ^{
-            
+        _topView.blockStart = ^{
+            SelectDistrictView * selectView = [SelectDistrictView new];
+            selectView.blockCitySeleted = ^(ModelProvince *pro, ModelProvince *city, ModelProvince *area) {
+                weakSelf.areaStart = area;
+                [weakSelf.topView reconfigStart:area];
+                [weakSelf refreshHeaderAll];
+            };
+            [[UIApplication sharedApplication].keyWindow addSubview:selectView];
         };
-        _autoFilterView.blockEnd = ^{
-            
+        _topView.blockEnd = ^{
+            SelectDistrictView * selectView = [SelectDistrictView new];
+            selectView.blockCitySeleted = ^(ModelProvince *pro, ModelProvince *city, ModelProvince *area) {
+                weakSelf.areaEnd = area;
+                [weakSelf.topView reconfigEnd:area];
+                [weakSelf refreshHeaderAll];
+            };
+            [[UIApplication sharedApplication].keyWindow addSubview:selectView];
         };
-        _autoFilterView.blockAuto = ^{
+        _topView.blockAuto = ^{
             [GlobalMethod endEditing];
             ListAlertView * listNew = [ListAlertView new];
-            listNew.indexSelected = weakSelf.autoFilterView.indexSelected;
+            listNew.indexSelected = weakSelf.topView.indexSelected;
             NSMutableArray * aryTitle = @[@"智能排序",@"时间排序",@"距离排序"].mutableCopy;
-            [listNew showWithPoint:CGPointMake(0, weakSelf.autoFilterView.bottom)  width:SCREEN_WIDTH  ary:aryTitle];
+            [listNew showWithPoint:CGPointMake(0, weakSelf.topView.bottom)  width:SCREEN_WIDTH  ary:aryTitle];
             listNew.alpha = 0;
             [UIView animateWithDuration:0.3 animations:^{
                 listNew.alpha = 1;
@@ -115,37 +134,39 @@
             listNew.blockSelected = ^(NSInteger index) {
                 switch (index) {
                     case 0:
-                        weakSelf.autoFilterView.labelAuto.text = @"智能";
+                        weakSelf.topView.labelAuto.text = @"智能";
                         break;
                     case 1:
-                        weakSelf.autoFilterView.labelAuto.text = @"时间";
+                        weakSelf.topView.labelAuto.text = @"时间";
                         break;
                     case 2:
-                        weakSelf.autoFilterView.labelAuto.text = @"距离";
+                        weakSelf.topView.labelAuto.text = @"距离";
                         break;
                     default:
                         break;
                 }
-                weakSelf.autoFilterView.indexSelected = index;
+                weakSelf.topView.indexSelected = index;
+                [weakSelf refreshHeaderAll];
             };
         };
-        _autoFilterView.blockFilter = ^{
+        _topView.blockFilter = ^{
             [weakSelf.filterView show];
         };
-        _autoFilterView.blockVoice = ^{
+        _topView.blockVoice = ^{
             
         };
     }
-    return _autoFilterView;
+    return _topView;
 }
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+    [self initLocation];
     [self addNav];
-    [self.view addSubview:self.autoFilterView];
+    [self.view addSubview:self.topView];
     [self.tableView registerClass:[AutoConfigOrderListCell class] forCellReuseIdentifier:@"AutoConfigOrderListCell"];
-    self.tableView.frame = CGRectMake(0, self.autoFilterView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.autoFilterView.bottom - TABBAR_HEIGHT);
+    self.tableView.frame = CGRectMake(0, self.topView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.topView.bottom - TABBAR_HEIGHT);
 
     self.tableView.backgroundColor = COLOR_BACKGROUND;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, W(12), 0);
@@ -174,21 +195,26 @@
     AutoConfigOrderListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"AutoConfigOrderListCell"];
     [cell resetCellWithModel: self.aryDatas[indexPath.row]];
 //    [cell.newsView timerStart];
+    
     WEAKSELF
-    cell.blockDetail = ^(ModelOrderList *model) {
+    cell.blockDetail = ^(ModelAutOrderListItem *model) {
         [weakSelf jumpToDetail:model];
+    };
+    cell.blockOutTime = ^(AutoConfigOrderListCell *c) {
+        [weakSelf.aryDatas removeObject:c.model];
+        [weakSelf.tableView reloadData];
     };
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [AutoConfigOrderListCell fetchHeight:self.aryDatas[indexPath.row]];
+    return [AutoConfigOrderListCell fetchHeight:[self.aryDatas safe_objectAtIndex:indexPath.row]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ModelOrderList * model = self.aryDatas[indexPath.row];
+    ModelAutOrderListItem * model = self.aryDatas[indexPath.row];
     [self jumpToDetail:model];
 }
-- (void)jumpToDetail:(ModelOrderList *)model{
+- (void)jumpToDetail:(ModelAutOrderListItem *)model{
     AutoConfigDetailVC * operateVC = [AutoConfigDetailVC new];
     operateVC.modelList = model;
     WEAKSELF
@@ -199,31 +225,12 @@
 }
 #pragma mark request
 - (void)requestList{
-    NSString * strOrderType = nil;
-    int sortCreateTime = 1;
-    int sortAcceptTime = 1;
-    int sortFinishTime = 1;
-    strOrderType = @"610";
-              sortFinishTime = 3;
-    [RequestApi requestOrderListWithWaybillnumber:nil
-                                       categoryId:0
-                                            state:strOrderType
-                                         blNumber:0
-                                 shippingLineName:nil
-                                       oceanVesel:nil
-                                     voyageNumber:nil
-                                     startContact:nil
-                                       startPhone:nil
-                                       endContact:nil endPhone:nil closingStartTime:0 closingEndTime:0 placeEnvName:nil placeStartTime:0 placeEndTime:0 placeContact:nil createStartTime:0 createEndTime:0 acceptStartTime:0 acceptEndTime:0 finishStartTime:0 finishEndTime:0 stuffStartTime:0 stuffEndTime:0 toFactoryStartTime:0 toFactoryEndTime:0 handleStartTime:0 handleEndTime:0
-                                             page:self.pageNum
-                                            count:50
-                                            entId:0
-                                   sortAcceptTime:sortAcceptTime
-                                   sortFinishTime:sortFinishTime
-                                   sortCreateTime:sortCreateTime
-                                         delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    
+    ModelAddress * location = [GlobalMethod readModelForKey:LOCAL_LOCATION_UPTODATE modelName:@"ModelAddress" exchange:false];
+    [RequestApi requestAutoOrderListWithMode:nil startAreaId:NSNumber.dou(self.areaStart.iDProperty).stringValue endAreaId:NSNumber.dou(self.areaEnd.iDProperty).stringValue createStartTime:0 createEndTime:0 page:self.pageNum count:20 lat:NSNumber.dou(location.lat).stringValue lng:NSNumber.dou(location.lng).stringValue sort:self.topView.indexSelected+1 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.isRequestSuccess = true;
         self.pageNum ++;
-        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelOrderList"];
+        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelAutOrderListItem"];
         
         if (self.isRemoveAll) {
             [self.aryDatas removeAllObjects];
@@ -233,9 +240,10 @@
         }
         [self.aryDatas addObjectsFromArray:aryRequest];
         [self.tableView reloadData];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+   
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
@@ -244,6 +252,11 @@
 //btn click
 - (void)btnAddClick{
     [GB_Nav pushVCName:@"AddPathVC" animated:true];
+}
+- (void)fetchAddress{
+    if (!self.isRequestSuccess) {
+        [self refreshHeaderAll];
+    }
 }
 
 #pragma mark 定时器相关
@@ -287,6 +300,30 @@
     }];
     [nav configBlueStyle];
     [self.view addSubview:nav];
+}
+- (void)requestList{
+    
+    ModelAddress * location = [GlobalMethod readModelForKey:LOCAL_LOCATION_UPTODATE modelName:@"ModelAddress" exchange:false];
+    [RequestApi requestNewOrderListWithStartareaid:self.areaStart.iDProperty endAreaId:self.areaEnd.iDProperty page:self.pageNum count:20 vehicleTypeId:0 mode:0 lat:NSNumber.dou(location.lat).stringValue lng:NSNumber.dou(location.lng).stringValue sort:self.topView.indexSelected+1                           vehicleTypeCode:nil
+ delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.isRequestSuccess = true;
+        self.pageNum ++;
+        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelAutOrderListItem"];
+        
+        if (self.isRemoveAll) {
+            [self.aryDatas removeAllObjects];
+        }
+        if (!isAry(aryRequest)) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        [self.aryDatas addObjectsFromArray:aryRequest];
+        [self.tableView reloadData];
+
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+   
+   
 }
 
 @end

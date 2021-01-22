@@ -14,7 +14,6 @@
 //阿里云推送
 #import <CloudPushSDK/CloudPushSDK.h>
 #import <MAMapKit/MAGeometry.h>
-//交通部
 #import <MapManage/MapManage.h>
 
 

@@ -23,12 +23,13 @@
 @property (nonatomic, strong) AutoConfigTimeView *timeView;
 @property (nonatomic, strong) AutoNewsView *newsView;
 
-@property (nonatomic, strong) void (^blockDetail)(ModelOrderList *);
+@property (nonatomic, strong) void (^blockDetail)(ModelAutOrderListItem *);
+@property (nonatomic, strong) void (^blockOutTime)(AutoConfigOrderListCell *);
 
-@property (nonatomic, strong) ModelOrderList *model;
+@property (nonatomic, strong) ModelAutOrderListItem *model;
 
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(ModelOrderList *)model;
+- (void)resetCellWithModel:(ModelAutOrderListItem *)model;
 
 
 @end
@@ -48,6 +49,8 @@
 @property (nonatomic, assign) int indexSelected;
 #pragma mark 刷新view
 - (void)resetViewWithModel:(id)model;
+- (void)reconfigStart:(ModelProvince *)start;
+- (void)reconfigEnd:(ModelProvince *)end;
 
 @end
 

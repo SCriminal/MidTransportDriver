@@ -11,7 +11,8 @@
 #import "OrderListCell.h"
 
 //request
-#import "RequestApi+Order.h"
+//request
+#import "RequestDriver2.h"
 //detail
 #import "OrderDetailVC.h"
 //operate
@@ -109,30 +110,7 @@
 }
 #pragma mark request
 - (void)requestList{
-    NSString * strOrderType = nil;
-    int sortCreateTime = 1;
-    int sortAcceptTime = 1;
-    int sortFinishTime = 1;
-    strOrderType = @"601,610,602,603,604,605";
-              sortFinishTime = 3;
-   
-    [RequestApi requestOrderListWithWaybillnumber:nil
-                                       categoryId:0
-                                            state:strOrderType
-                                         blNumber:0
-                                 shippingLineName:nil
-                                       oceanVesel:nil
-                                     voyageNumber:nil
-                                     startContact:nil
-                                       startPhone:nil
-                                       endContact:nil endPhone:nil closingStartTime:0 closingEndTime:0 placeEnvName:nil placeStartTime:0 placeEndTime:0 placeContact:nil createStartTime:0 createEndTime:0 acceptStartTime:0 acceptEndTime:0 finishStartTime:0 finishEndTime:0 stuffStartTime:0 stuffEndTime:0 toFactoryStartTime:0 toFactoryEndTime:0 handleStartTime:0 handleEndTime:0
-                                             page:self.pageNum
-                                            count:50
-                                            entId:0
-                                   sortAcceptTime:sortAcceptTime
-                                   sortFinishTime:sortFinishTime
-                                   sortCreateTime:sortCreateTime
-                                         delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestOrderListWithPage:self.pageNum count:20 orderNumber:nil shipperName:nil plateNumber:nil driverName:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.pageNum ++;
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelOrderList"];
       

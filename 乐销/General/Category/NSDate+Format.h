@@ -36,7 +36,7 @@
 //- (NSString *)timeLeft;
 - (NSDate*)firstTime;
 - (NSDate*)lastTime;
-
+- (NSString *)timeAgoShow;
 //+ (NSDate*)dateWithFormat:(NSString *)format;
 
 - (NSString*)weekdayStr;

@@ -113,6 +113,7 @@
 		D23B6EF625B81C470044E28C /* ModelAuthBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B6EF525B81C470044E28C /* ModelAuthBusiness.m */; };
 		D23B6EF925B8229C0044E28C /* ModelAuthCar.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B6EF725B8229C0044E28C /* ModelAuthCar.m */; };
 		D23B6EFC25B91FF50044E28C /* RequestApi+Plan.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B6EFB25B91FF50044E28C /* RequestApi+Plan.m */; };
+		D23B6EFF25BA77E20044E28C /* ModelAutOrderListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B6EFD25BA77E20044E28C /* ModelAutOrderListItem.m */; };
 		D23D90C71F8B245A00489F95 /* UIViewController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D23D90C61F8B245A00489F95 /* UIViewController+Category.m */; };
 		D23F02FA1E037F34004E768F /* GlobalMethod+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = D23F02F91E037F34004E768F /* GlobalMethod+UI.m */; };
 		D24091D61E5C2FE10049D41D /* GlobalMethod+Request.m in Sources */ = {isa = PBXBuildFile; fileRef = D24091D51E5C2FE10049D41D /* GlobalMethod+Request.m */; };
@@ -631,6 +632,8 @@
 		D23B6EF825B8229C0044E28C /* ModelAuthCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAuthCar.h; sourceTree = "<group>"; };
 		D23B6EFA25B91FF50044E28C /* RequestApi+Plan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+Plan.h"; sourceTree = "<group>"; };
 		D23B6EFB25B91FF50044E28C /* RequestApi+Plan.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Plan.m"; sourceTree = "<group>"; };
+		D23B6EFD25BA77E20044E28C /* ModelAutOrderListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAutOrderListItem.m; sourceTree = "<group>"; };
+		D23B6EFE25BA77E20044E28C /* ModelAutOrderListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAutOrderListItem.h; sourceTree = "<group>"; };
 		D23D90C51F8B245A00489F95 /* UIViewController+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Category.h"; sourceTree = "<group>"; };
 		D23D90C61F8B245A00489F95 /* UIViewController+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Category.m"; sourceTree = "<group>"; };
 		D23F02F81E037F34004E768F /* GlobalMethod+UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GlobalMethod+UI.h"; sourceTree = "<group>"; };
@@ -2434,6 +2437,8 @@
 		D2B5F3FA2197F9D20057E525 /* 订单 */ = {
 			isa = PBXGroup;
 			children = (
+				D23B6EFE25BA77E20044E28C /* ModelAutOrderListItem.h */,
+				D23B6EFD25BA77E20044E28C /* ModelAutOrderListItem.m */,
 				D2C55811238CC9D40050694F /* ModelValidCar.h */,
 				D2C55810238CC9D40050694F /* ModelValidCar.m */,
 				D2C5580A238CB7DB0050694F /* ModelScheduleInfo.h */,
@@ -3645,6 +3650,7 @@
 				D257759824D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m in Sources */,
 				D2D5265825A44E8800F99306 /* SuggestVC.m in Sources */,
 				D28A8688225F1E78001E3372 /* CarTeamListVC.m in Sources */,
+				D23B6EFF25BA77E20044E28C /* ModelAutOrderListItem.m in Sources */,
 				D23B6EF625B81C470044E28C /* ModelAuthBusiness.m in Sources */,
 				D22BA9D61E5EB8CA00C5B391 /* FSCalendarCollectionViewLayout.m in Sources */,
 				D29191FE21E0A6F6001B2F9E /* ModelOrderList.m in Sources */,

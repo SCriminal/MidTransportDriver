@@ -133,7 +133,7 @@ constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
             return;
         }
         
-        if(codeResponse ==RESPONSE_CODE_RELOGIN ||codeResponse ==RESPONSE_CODE_RELOGIN2 ){
+        if(codeResponse ==RESPONSE_CODE_RELOGIN  ){
             //重新登陆
             [GlobalMethod performSelector:@"protocolDidRequestSuccess" delegate:delegate];
             [GlobalMethod relogin];

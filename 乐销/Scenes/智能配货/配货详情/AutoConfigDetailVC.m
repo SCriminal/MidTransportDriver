@@ -10,6 +10,9 @@
 #import "AutoConfigTimeView.h"
 #import "NSDate+YYAdd.h"
 #import "AutoConfigRobView.h"
+//request
+#import "RequestDriver2.h"
+
 @interface AutoConfigDetailVC ()
 @property (nonatomic, strong) AutoConfigTimeView *timeView;
 @property (nonatomic, strong) AutoConfigDetailView *topView;
@@ -21,8 +24,6 @@
 - (AutoConfigTimeView *)timeView{
     if (!_timeView) {
         _timeView = [AutoConfigTimeView new];
-        _timeView.title = @"立即报价";
-        _timeView.ivBG.image = [UIImage imageNamed:@"autoBtn_bao"];
         WEAKSELF
         _timeView.blockClick = ^{
             //报价
@@ -30,7 +31,7 @@
             [robView resetViewWithModel:nil];
             [weakSelf.view addSubview:robView];
         };
-        [_timeView resetView];
+        [_timeView resetView:self.modelList.mode];
     }
     return _timeView;
 }
@@ -107,6 +108,11 @@
 
 #pragma mark request
 - (void)requestList{
+    [RequestApi requestPlanDetailWithNumber:self.modelList.planNumber delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
     
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
@@ -195,19 +201,14 @@
 }
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(ModelOrderList *)model{
+- (void)resetViewWithModel:(ModelAutOrderListItem *)model{
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
     self.iconAddress.centerXTop = XY(SCREEN_WIDTH/2.0, W(20));
     
-    [self.addressFrom fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.startProvinceName),[model.startPortName isEqualToString:model.startProvinceName]?@"":UnPackStr(model.startPortName)] variable:W(160)];
+    [self.addressFrom fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.startCityName),UnPackStr(model.startCountyName)] variable:W(160)];
     self.addressFrom.centerXCenterY = XY((self.iconAddress.left - W(10))/2.0+W(10), self.iconAddress.centerY);
-    if (model.orderType == ENUM_ORDER_TYPE_INPUT) {
-        [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.placeProvinceName),[model.placeCityName isEqualToString:model.placeProvinceName]?@"":UnPackStr(model.placeCityName)] variable:W(160)];
-    }else {
-        [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.endProvinceName),[model.endPortName isEqualToString:model.endProvinceName]?@"":UnPackStr(model.endPortName)] variable:W(160)];
-        
-    }
+    [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.endCityName),UnPackStr(model.endCountyName)] variable:W(160)];
     self.addressTo.centerXCenterY = XY((SCREEN_WIDTH - self.iconAddress.right - W(10))/2.0 + SCREEN_WIDTH/2.0 + self.iconAddress.width/2.0, self.iconAddress.centerY);
     
     CGFloat top = self.iconAddress.bottom + W(20);

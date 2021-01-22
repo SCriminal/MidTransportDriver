@@ -109,9 +109,18 @@
 - (AutoConfigTimeView *)timeView{
     if (!_timeView) {
         _timeView = [AutoConfigTimeView new];
-        _timeView.title = @"马上抢单";
-        _timeView.ivBG.image = [UIImage imageNamed:@"autoBtn_qiang"];
-        [_timeView resetView];
+        WEAKSELF
+        _timeView.blockOutTime = ^{
+            if (weakSelf.blockOutTime) {
+                weakSelf.blockOutTime(weakSelf);
+            }
+        };
+        _timeView.blockClick = ^{
+            if (weakSelf.blockDetail) {
+                weakSelf.blockDetail(weakSelf.model);
+            }
+        };
+        [_timeView resetView:1];
     }
     return _timeView;
 }
@@ -138,19 +147,15 @@
     return self;
 }
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(ModelOrderList *)model{
+- (void)resetCellWithModel:(ModelAutOrderListItem *)model{
     self.model = model;
        //刷新view
        self.iconAddress.centerXTop = XY(SCREEN_WIDTH/2.0, W(20));
        
-       [self.addressFrom fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.startProvinceName),[model.startPortName isEqualToString:model.startProvinceName]?@"":UnPackStr(model.startPortName)] variable:W(160)];
+       [self.addressFrom fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.startCityName),UnPackStr(model.startCountyName)] variable:W(160)];
        self.addressFrom.centerXCenterY = XY((self.iconAddress.left - W(10))/2.0+W(10), self.iconAddress.centerY);
-    if (model.orderType == ENUM_ORDER_TYPE_INPUT) {
-               [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.placeProvinceName),[model.placeCityName isEqualToString:model.placeProvinceName]?@"":UnPackStr(model.placeCityName)] variable:W(160)];
-    }else {
-        [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.endProvinceName),[model.endPortName isEqualToString:model.endProvinceName]?@"":UnPackStr(model.endPortName)] variable:W(160)];
+    [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.endCityName),UnPackStr(model.endCountyName)] variable:W(160)];
 
-    }
        self.addressTo.centerXCenterY = XY((SCREEN_WIDTH - self.iconAddress.right - W(10))/2.0 + SCREEN_WIDTH/2.0 + self.iconAddress.width/2.0, self.iconAddress.centerY);
        
     CGFloat top = self.addressTo.bottom + W(20);
@@ -159,24 +164,26 @@
     top = self.newsView.bottom + W(20);
   
     {
-        [self.goodsInfo fitTitle:@"2000吨（剩1800吨）/高栏/13-17.5米" variable:SCREEN_WIDTH - W(30)];
+        NSString * strRemain = [NSString stringWithFormat:@"（剩%@%@）",NSNumber.dou(model.remainShow).stringValue,model.unitShow];
+        [self.goodsInfo fitTitle:[NSString stringWithFormat:@"%@%@%@%@%@%@%@",NSNumber.dou(model.qtyShow).stringValue,model.unitShow,strRemain,isStr(model.vehicleDescription)?@"/":@"",UnPackStr(model.vehicleDescription),isStr(model.carLenthSHow)?@"/":@"",UnPackStr(model.carLenthSHow)] variable:SCREEN_WIDTH - W(30)];
+        
         NSMutableAttributedString * strAttribute = [[NSMutableAttributedString alloc]initWithString:self.goodsInfo.text];
         [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_333,        NSFontAttributeName :  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular]} range:NSMakeRange(0, strAttribute.length)];
-        [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_RED,        NSFontAttributeName :  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular]} range:[self.goodsInfo.text rangeOfString:@"（剩1800吨）"]];
+        [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_RED,        NSFontAttributeName :  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular]} range:[self.goodsInfo.text rangeOfString:strRemain]];
         self.goodsInfo.attributedText = strAttribute;
         self.goodsInfo.leftTop = XY(W(15), top);
         top = self.goodsInfo.bottom;
     }
     
-    [self.goodsName fitTitle:@"设备零配件 一装一卸" variable:SCREEN_WIDTH/2.0-W(15)];
+    [self.goodsName fitTitle:[NSString stringWithFormat:@"%@%@%@",UnPackStr(model.cargoName),isStr(model.cargoName)?@" ":@"",UnPackStr(model.internalBaseClassDescription)] variable:SCREEN_WIDTH/2.0-W(15)];
       self.goodsName.leftTop = XY(W(15),top+ W(20));
-    [self.time fitTitle:@"刚刚" variable:SCREEN_WIDTH/2.0 -W(15)];
+    [self.time fitTitle:[GlobalMethod exchangeTimeStampToDate:model.createTime].timeAgoShow variable:SCREEN_WIDTH/2.0 -W(15)];
       self.time.rightTop = XY(SCREEN_WIDTH - W(15),top+ W(20));
     top = self.time.bottom;
     
     {
         NSString * str1 = @"单价：";
-        NSString * str2 = @"100.00元/吨";
+        NSString * str2 = [NSString stringWithFormat:@"%@元/%@",NSNumber.dou(model.priceShow).stringValue,model.unitShow];
         [self.price fitTitle:[NSString stringWithFormat:@"%@%@",str1,str2] variable:SCREEN_WIDTH/2.0 -W(15)];
         NSMutableAttributedString * strAttribute = [[NSMutableAttributedString alloc]initWithString:self.price.text];
                [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_666,        NSFontAttributeName :  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular]} range:NSMakeRange(0, strAttribute.length)];
@@ -184,12 +191,13 @@
                self.price.attributedText = strAttribute;
                self.price.leftTop = XY(W(15), top+ W(20));
     }
-      [self.distance fitTitle:@"约220km装货" variable:SCREEN_WIDTH/2.0 -W(15)];
+    [self.distance fitTitle:isStr(model.distanceShow)?[NSString stringWithFormat:@"约%@装货",model.distanceShow]:@"" variable:SCREEN_WIDTH/2.0 -W(15)];
       self.distance.rightTop = XY(SCREEN_WIDTH - W(15),top+ W(20));
     top = self.distance.bottom;
       
-    self.timeView.date = [[NSDate date] dateByAddingDays:2];
+    self.timeView.date = [GlobalMethod exchangeTimeStampToDate:model.startTime];
     self.timeView.centerXTop = XY(SCREEN_WIDTH/2.0, top + W(20));
+    [self.timeView resetView:self.model.mode];
     [self.timeView resetTime];
     self.viewBG.height = self.timeView.bottom + W(15);
          //设置总高度
@@ -208,6 +216,7 @@
         _addressFrom = [UILabel new];
         _addressFrom.textColor = COLOR_666;
         _addressFrom.font =  [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
+        _addressFrom.textAlignment = NSTextAlignmentCenter;
     }
     return _addressFrom;
 }
@@ -216,6 +225,7 @@
         _addressTo = [UILabel new];
         _addressTo.textColor = COLOR_666;
         _addressTo.font =  [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
+        _addressTo.textAlignment = NSTextAlignmentCenter;
     }
     return _addressTo;
 }
@@ -281,8 +291,10 @@
         iv.rightCenterY = XY(view.right - W(9),view.centerY);
         [self addSubview:iv];
         
-            [self.addressFrom fitTitle:@"起点" variable:W(40)];
-        self.addressFrom.leftCenterY = XY(W(view.left + W(9)),view.centerY);
+        self.addressFrom.width =  W(46);
+        self.addressFrom.height = view.height;
+        self.addressFrom.leftCenterY = view.leftCenterY;
+        self.addressFrom.text = @"起点";
         
         [view addTarget:self action:@selector(fromClick)];
 
@@ -314,9 +326,11 @@
         iv.rightCenterY = XY(view.right - W(9),view.centerY);
         [self addSubview:iv];
         
-            [self.addressTo fitTitle:@"终点" variable:W(40)];
-        self.addressTo.leftCenterY = XY(W(view.left + W(9)),view.centerY);
-        
+        self.addressTo.width =  W(46);
+        self.addressTo.height = view.height;
+        self.addressTo.leftCenterY = view.leftCenterY;
+        self.addressTo.text = @"终点" ;
+
         [view addTarget:self action:@selector(toClick)];
 
     }
@@ -408,4 +422,13 @@
         self.blockVoice();
     }
 }
+
+- (void)reconfigStart:(ModelProvince *)start{
+    self.addressFrom.text = start.name;
+}
+- (void)reconfigEnd:(ModelProvince *)end{
+    self.addressTo.text = end.name;
+
+}
+
 @end
