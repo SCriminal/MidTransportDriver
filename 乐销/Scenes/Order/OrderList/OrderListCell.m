@@ -208,7 +208,6 @@
     }else{
         [GlobalMethod showAlert:@"暂无联系电话"];
     }
-    
 }
 @end
 
