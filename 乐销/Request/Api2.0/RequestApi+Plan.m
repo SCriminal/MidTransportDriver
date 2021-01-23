@@ -89,6 +89,17 @@
 }
 
 /**
+2.0 运单详情(司机)
+*/
++(void)requestOrderDetailWithNumber:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"number":RequestStrKey(number),};
+        [self getUrl:@"/loms/order/driver/{number}" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
 计划单详情(司机)
 */
 +(void)requestPlanDetailWithNumber:(NSString *)number

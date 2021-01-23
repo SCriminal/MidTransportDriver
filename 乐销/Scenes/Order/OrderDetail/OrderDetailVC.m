@@ -13,7 +13,8 @@
 #import "OrderDetailTopView.h"
 #import "OrderDetailAccessoryView.h"
 //request
-#import "RequestApi+Order.h"
+//request
+#import "RequestDriver2.h"
 //share
 #import "ShareView.h"
 #import "OrderListCellBtnView.h"
@@ -108,17 +109,17 @@
 }
 #pragma mark request
 - (void)requestList{
-    [RequestApi requestOrderDetailWithId:self.modelOrder.iDProperty  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestOrderDetailWithNumber:self.modelOrder.endCyName delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.modelOrder = [ModelOrderList modelObjectWithDictionary:response];
         
         [self.topView resetViewWithModel:self.modelOrder];
         [self.btnView resetViewWithModel:self.modelOrder];
 
         [self reconfigTableHeaderView];
-        
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+   
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;

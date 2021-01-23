@@ -8,7 +8,7 @@
 #import "ModelOrderList.h"
 
 
-NSString *const kModelOrderListEndCyName = @"endCyName";
+NSString *const kModelOrderListEndCyName = @"orderNumber";
 NSString *const kModelOrderListPlaceDetailAddr = @"placeDetailAddr";
 NSString *const kModelOrderListStartCyId = @"startCyId";
 NSString *const kModelOrderListId = @"id";
