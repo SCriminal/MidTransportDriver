@@ -39,7 +39,6 @@
 +(void)jumpToRootVC:(NSUInteger)index  animated:(BOOL)animated;
 
 //跳转到订单
-+ (void)jumpToOrderDetailVC:(double )orderID;
 + (void)jumpToOrderList;
 + (void)jumpToMsgVC;
 @end

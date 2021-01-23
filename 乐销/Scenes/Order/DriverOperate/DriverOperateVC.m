@@ -185,7 +185,7 @@
         };
         _bottomView.blockDetailClick = ^{
             OrderDetailVC * detailVC = [OrderDetailVC new];
-            detailVC.modelOrder = weakSelf.modelOrder;
+//            detailVC.modelOrder = weakSelf.modelOrder;
             [GB_Nav pushViewController:detailVC animated:true];
         };
         

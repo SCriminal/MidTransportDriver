@@ -335,45 +335,48 @@
         }
     }
     [self saveAllProperty];
-    if (self.isFirst) {
-        AuthThreeVC * vc = [AuthThreeVC new];
-        vc.isFirst = self.isFirst;
-        vc.grossMass = self.modelOCRDrivingBack.grossMass.doubleValue;
-        [GB_Nav pushViewController:vc animated:true];
-    }else{
-        [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString
-                                      vehicleType:self.modelCarType.identifier.doubleValue
-                                            owner:self.modelCarOwner.subString
-                                        grossMass:self.modelOCRDrivingBack.grossMass.doubleValue
-                                     approvedLoad:self.modelOCRDrivingBack.approvedLoad.doubleValue
-                                    vehicleLength:self.modelOCRDrivingBack.length
-                                     vehicleWidth:self.modelOCRDrivingBack.width
-                                    vehicleHeight:self.modelOCRDrivingBack.height
-                                      driving1Url:self.modelMain.identifier
-                                      driving2Url:self.modelSub.identifier
-                                      driving3Url:self.modelThree.identifier
-                                       plateColor:0
-                                       energyType:isStr(self.modelOCRDrivingBack.energyType)?[AddCarVC exchangeEnergeyTypeWithName:self.modelOCRDrivingBack.energyType].doubleValue:0
-                                     tractionMass:self.modelOCRDrivingBack.tractionMass.doubleValue
-                                   drivingEndTime:0
-                                     useCharacter:nil
-                                      unladenMass:0
-                                              vin:self.modelVin.subString
-                              drivingRegisterDate:0
-                                     engineNumber:nil
-                                 drivingIssueDate:0
-                                            model:nil
-                                       rtbpNumber:nil
-                                        isRequest:true delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            [GlobalMethod showAlert:@"上传成功"];
-            [GB_Nav popViewControllerAnimated:true];
+    [RequestApi requestCarAuthCheckWithPlateNumber:self.modelCarNo.subString vin:self.modelVin.subString owner:self.modelCarOwner.subString vehicleType:self.modelCarType.identifier.doubleValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        
+        if (self.isFirst) {
+            AuthThreeVC * vc = [AuthThreeVC new];
+            vc.isFirst = self.isFirst;
+            vc.grossMass = self.modelOCRDrivingBack.grossMass.doubleValue;
+            [GB_Nav pushViewController:vc animated:true];
+        }else{
+            [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString
+                                          vehicleType:self.modelCarType.identifier.doubleValue
+                                                owner:self.modelCarOwner.subString
+                                            grossMass:self.modelOCRDrivingBack.grossMass.doubleValue
+                                         approvedLoad:self.modelOCRDrivingBack.approvedLoad.doubleValue
+                                        vehicleLength:self.modelOCRDrivingBack.length
+                                         vehicleWidth:self.modelOCRDrivingBack.width
+                                        vehicleHeight:self.modelOCRDrivingBack.height
+                                          driving1Url:self.modelMain.identifier
+                                          driving2Url:self.modelSub.identifier
+                                          driving3Url:self.modelThree.identifier
+                                           plateColor:0
+                                           energyType:isStr(self.modelOCRDrivingBack.energyType)?[AddCarVC exchangeEnergeyTypeWithName:self.modelOCRDrivingBack.energyType].doubleValue:0
+                                         tractionMass:self.modelOCRDrivingBack.tractionMass.doubleValue
+                                       drivingEndTime:0
+                                         useCharacter:nil
+                                          unladenMass:0
+                                                  vin:self.modelVin.subString
+                                  drivingRegisterDate:0
+                                         engineNumber:nil
+                                     drivingIssueDate:0
+                                                model:nil
+                                           rtbpNumber:nil
+                                            isRequest:true delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [GlobalMethod showAlert:@"上传成功"];
+                [GB_Nav popViewControllerAnimated:true];
 
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
 
-        }];
-      
-    }
-   
+            }];
+        }
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
 }
 - (NSString *)fetchRequestJson{
    NSDictionary * dic =      [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString

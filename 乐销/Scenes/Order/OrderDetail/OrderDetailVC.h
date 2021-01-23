@@ -10,6 +10,6 @@
 
 @interface OrderDetailVC : BaseTableVC
 
-@property (nonatomic, strong) ModelOrderList *modelOrder;
+@property (nonatomic, strong) ModelTransportOrder *orderList;
 
 @end

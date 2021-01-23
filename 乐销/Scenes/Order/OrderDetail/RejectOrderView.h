@@ -12,6 +12,6 @@
 @property (nonatomic, strong) void (^blockConfirm)(NSString *);
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model;
+- (void)resetViewWithModel:(ModelTransportOrder *)model;
 
 @end

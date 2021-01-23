@@ -86,8 +86,11 @@
     OrderListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"OrderListCell"];
     [cell resetCellWithModel: self.aryDatas[indexPath.row]];
     WEAKSELF
-    cell.blockDetail = ^(ModelOrderList *model) {
+    cell.blockDetail = ^(ModelTransportOrder *model) {
         [weakSelf jumpToDetail:model];
+    };
+    cell.btnView.blockClick = ^(ENUM_ORDER_LIST_BTN type,ModelTransportOrder * model) {
+        [weakSelf requestOperate:type model:model];
     };
     return cell;
 }
@@ -96,12 +99,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ModelOrderList * model = self.aryDatas[indexPath.row];
+    ModelTransportOrder * model = self.aryDatas[indexPath.row];
     [self jumpToDetail:model];
+    
 }
-- (void)jumpToDetail:(ModelOrderList *)model{
+- (void)jumpToDetail:(ModelTransportOrder *)model{
     OrderDetailVC * operateVC = [OrderDetailVC new];
-    operateVC.modelOrder = model;
+    operateVC.orderList = model;
     WEAKSELF
     operateVC.blockBack = ^(UIViewController *vc) {
         [weakSelf refreshHeaderAll];
@@ -112,7 +116,7 @@
 - (void)requestList{
     [RequestApi requestOrderListWithPage:self.pageNum count:20 orderNumber:nil shipperName:nil plateNumber:nil driverName:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.pageNum ++;
-        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelOrderList"];
+        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelTransportOrder"];
       
         if (self.isRemoveAll) {
             [self.aryDatas removeAllObjects];
@@ -128,6 +132,41 @@
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
+}
+- (void)requestOperate:(ENUM_ORDER_LIST_BTN)type model:(ModelTransportOrder *)model{
+    switch (type) {
+        case ENUM_ORDER_LIST_BTN_REJECT:
+        {
+            
+        }
+            break;
+        case ENUM_ORDER_LIST_BTN_RECEIVE:
+        {
+            [RequestApi requestAcceptWithNumber:model.orderNumber delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [self refreshHeaderAll];
+                        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                            
+                        }];
+        }
+            break;
+        case ENUM_ORDER_LIST_BTN_LOAD_CAR:
+        {
+            
+        }
+            break;
+        case ENUM_ORDER_LIST_BTN_ARRIVE:
+        {
+            
+        }
+            break;
+        case ENUM_ORDER_LIST_BTN_NAVIGATION:
+        {
+            
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 @end

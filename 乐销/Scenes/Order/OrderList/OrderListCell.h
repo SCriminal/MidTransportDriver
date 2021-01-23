@@ -17,12 +17,12 @@
 @property (nonatomic, strong) OrderListCellBtnView *btnView;
 
 
-@property (nonatomic, strong) void (^blockDetail)(ModelOrderList *);
+@property (nonatomic, strong) void (^blockDetail)(ModelTransportOrder *);
 
-@property (nonatomic, strong) ModelOrderList *model;
+@property (nonatomic, strong) ModelTransportOrder *model;
 
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(ModelOrderList *)model;
+- (void)resetCellWithModel:(ModelTransportOrder *)model;
 
 @end
 

@@ -318,6 +318,7 @@
 		D2D5267525B0450C00F99306 /* OrcHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5267425B0450B00F99306 /* OrcHelper.m */; };
 		D2D871072338C8D700F79173 /* ModelBank.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D871052338C8D700F79173 /* ModelBank.m */; };
 		D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D9A4192015D2170025963B /* AppDelegate.m */; };
+		D2DCF77C25BBC37A00C8BA86 /* ModelTransportOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DCF77A25BBC37A00C8BA86 /* ModelTransportOrder.m */; };
 		D2DDC4262595D68A00C810B5 /* ExchangeIntegraProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC4252595D68A00C810B5 /* ExchangeIntegraProductVC.m */; };
 		D2DDC4292599C0B200C810B5 /* ExchangeIntegraProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC4282599C0B200C810B5 /* ExchangeIntegraProductView.m */; };
 		D2DDC42C259C4D6300C810B5 /* ExchangeIntegraOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC42B259C4D6300C810B5 /* ExchangeIntegraOrderListVC.m */; };
@@ -1026,6 +1027,8 @@
 		D2D871052338C8D700F79173 /* ModelBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBank.m; sourceTree = "<group>"; };
 		D2D871062338C8D700F79173 /* ModelBank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBank.h; sourceTree = "<group>"; };
 		D2D9A4192015D2170025963B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D2DCF77A25BBC37A00C8BA86 /* ModelTransportOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelTransportOrder.m; sourceTree = "<group>"; };
+		D2DCF77B25BBC37A00C8BA86 /* ModelTransportOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelTransportOrder.h; sourceTree = "<group>"; };
 		D2DDC4242595D68A00C810B5 /* ExchangeIntegraProductVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeIntegraProductVC.h; sourceTree = "<group>"; };
 		D2DDC4252595D68A00C810B5 /* ExchangeIntegraProductVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeIntegraProductVC.m; sourceTree = "<group>"; };
 		D2DDC4272599C0B200C810B5 /* ExchangeIntegraProductView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeIntegraProductView.h; sourceTree = "<group>"; };
@@ -2455,6 +2458,8 @@
 				D29C2DC222C3059B00BD2F64 /* ModelPackageType.m */,
 				D2DFD79F22991BE100363142 /* ModelPackageInfo.h */,
 				D2DFD7A022991BE100363142 /* ModelPackageInfo.m */,
+				D2DCF77B25BBC37A00C8BA86 /* ModelTransportOrder.h */,
+				D2DCF77A25BBC37A00C8BA86 /* ModelTransportOrder.m */,
 				D29191FD21E0A6F6001B2F9E /* ModelOrderList.h */,
 				D29191FC21E0A6F6001B2F9E /* ModelOrderList.m */,
 			);
@@ -3549,6 +3554,7 @@
 				D285E2991E6D49E100DE9A6D /* NSDate+CategorySld.m in Sources */,
 				D293A39A1E011987005B772A /* LoadingView.m in Sources */,
 				D28A3191258C88C8006AC450 /* MyMsgListVC.m in Sources */,
+				D2DCF77C25BBC37A00C8BA86 /* ModelTransportOrder.m in Sources */,
 				D28A1F71225D976800F252A5 /* InputPwdVC.m in Sources */,
 				D259D54B228E4B2F00CE2632 /* RequestApi+UserApi.m in Sources */,
 				C6A031171F0CC7AA00C90032 /* ReturnAttributeStr.m in Sources */,

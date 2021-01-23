@@ -9,14 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface OrderDetailView : UIView
-@property (nonatomic, strong) ModelOrderList *model;
+@property (nonatomic, strong) ModelTransportOrder *model;
 
-- (void)resetViewWithModel:(ModelOrderList *)model;
+- (void)resetViewWithModel:(ModelTransportOrder *)model;
 @end
 
 
 @interface OrderDetailTrailView : UIView
-@property (nonatomic, strong) ModelOrderList *model;
+@property (nonatomic, strong) ModelTransportOrder *model;
 
-- (void)resetViewWithModel:(ModelOrderList *)model;
+- (void)resetViewWithModel:(ModelTransportOrder *)model;
 @end
+

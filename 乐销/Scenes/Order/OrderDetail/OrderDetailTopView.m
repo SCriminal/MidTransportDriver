@@ -23,7 +23,7 @@
 
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(ModelOrderList *)model{
+- (void)resetViewWithModel:(ModelTransportOrder *)model{
     [self removeAllSubViews];//移除线
     self.model = model;
     {
@@ -55,48 +55,45 @@
         
         iconAddress.centerXTop = XY(SCREEN_WIDTH/2.0, W(30));
         
-        [addressFrom fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.startProvinceName),[model.startPortName isEqualToString:model.startProvinceName]?@"":UnPackStr(model.startPortName)] variable:W(160)];
+        [addressFrom fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.startCityName),UnPackStr(model.startCountyName)] variable:W(160)];
         addressFrom.centerXCenterY = XY((iconAddress.left - W(10))/2.0+W(10), iconAddress.centerY);
-        if (model.orderType == ENUM_ORDER_TYPE_INPUT) {
-            [addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.placeProvinceName),[model.placeCityName isEqualToString:model.placeProvinceName]?@"":UnPackStr(model.placeCityName)] variable:W(160)];
-        }else {
-            [addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.endProvinceName),[model.endPortName isEqualToString:model.endProvinceName]?@"":UnPackStr(model.endPortName)] variable:W(160)];
-        }
+        [addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.endCityName),UnPackStr(model.endCountyName)] variable:W(160)];
+
         addressTo.centerXCenterY = XY((SCREEN_WIDTH - iconAddress.right - W(10))/2.0 + SCREEN_WIDTH/2.0 + iconAddress.width/2.0, iconAddress.centerY);
     }
     NSArray * ary0 = @[^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"运单号：";
-        m.subTitle = @"QD338888882222239";
+        m.subTitle = model.orderNumber;
         m.colorSelect = nil;
         m.left = W(92);
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"发货量：";
-        m.subTitle = @"2000吨";
+        m.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(model.qtyShow),model.unitShow];
         m.colorSelect = nil;
         m.left = W(92);
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"运输费用：";
-        m.subTitle = @"3000元";
+        m.subTitle = [NSString stringWithFormat:@"%@元",NSNumber.dou(model.shipperPrice/100.0).stringValue];
         m.colorSelect = COLOR_RED;
         m.left = W(92);
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"货物名称：";
-        m.subTitle = @"设备零配件";
+        m.subTitle = model.cargoName;
         m.colorSelect = nil;
         m.left = W(92);
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"当前状态：";
-        m.subTitle = @"待装车";
-        m.colorSelect = COLOR_ORANGE;
+        m.subTitle = model.orderStatusShow;
+        m.colorSelect = model.colorStateShow;
         m.left = W(92);
         return m;
     }(),^(){
@@ -109,14 +106,14 @@
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"发货地：";
-        m.subTitle = @"山东省潍坊市寿光市和平路200号";
+        m.subTitle = [NSString stringWithFormat:@"%@%@%@%@",model.startProvinceName,[model.startCityName isEqualToString:model.startProvinceName]?UnPackStr(model.startCityName):@"",model.startCountyName,model.startAddr];
         m.colorSelect = nil;
         m.left = W(77);
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"收货地：";
-        m.subTitle = @"山东省潍坊市寿光市和平路200号山东省潍坊市寿光市和平路200号山东省潍坊市寿光市和平路200号";
+        m.subTitle = [NSString stringWithFormat:@"%@%@%@%@",model.endProvinceName,[model.endCityName isEqualToString:model.endProvinceName]?UnPackStr(model.endCityName):@"",model.endCountyName,model.endAddr];
         m.colorSelect = nil;
         m.left = W(77);
         return m;
@@ -130,16 +127,16 @@
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"发货联系人：";
-        m.subTitle = @"李林";
+        m.subTitle = model.startContacter;
         m.colorSelect = nil;
-        m.thirdTitle = @"15679823999";
+        m.thirdTitle = model.startPhone;
         m.left = W(108);
         m.tag = 1;
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"发货时间：";
-        m.subTitle = @"2020-11-19 12:09:20";
+        m.subTitle = [GlobalMethod exchangeTimeWithStamp:model.startTime andFormatter:TIME_SEC_SHOW];
         m.colorSelect = nil;
         m.left = W(108);
         return m;
@@ -153,16 +150,16 @@
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"收货联系人：";
-        m.subTitle = @"李林";
+        m.subTitle = model.endContacter;
         m.colorSelect = nil;
-        m.thirdTitle = @"15679823999";
+        m.thirdTitle = model.endPhone;
         m.tag = 2;
         m.left = W(123);
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"截止收货时间：";
-        m.subTitle = @"2020-11-19 12:09:20";
+        m.subTitle = [GlobalMethod exchangeTimeWithStamp:model.endTime andFormatter:TIME_SEC_SHOW];
         m.colorSelect = nil;
         m.left = W(123);
         return m;
@@ -176,15 +173,43 @@
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
-        m.title = @"下单：";
-        m.subTitle = @"2020-11-19 12:09:20";
+        m.title = model.bizOrderTime?@"下单：":nil;
+        m.subTitle = model.bizOrderTime?[GlobalMethod exchangeTimeWithStamp:model.bizOrderTime andFormatter:TIME_SEC_SHOW]:nil;
         m.colorSelect = nil;
         m.left = W(62);
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
-        m.title = @"接单：";
-        m.subTitle = @"2020-11-19 12:09:20";
+        m.title = model.acceptTime?@"接单：":nil;
+        m.subTitle = model.acceptTime?[GlobalMethod exchangeTimeWithStamp:model.acceptTime andFormatter:TIME_SEC_SHOW]:nil;
+        m.colorSelect = nil;
+        m.left = W(62);
+        return m;
+    }(),^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = model.loadTime?@"装车：":nil;
+        m.subTitle = model.loadTime?[GlobalMethod exchangeTimeWithStamp:model.loadTime andFormatter:TIME_SEC_SHOW]:nil;
+        m.colorSelect = nil;
+        m.left = W(62);
+        return m;
+    }(),^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = model.unloadTime?@"到达：":nil;
+        m.subTitle = model.unloadTime?[GlobalMethod exchangeTimeWithStamp:model.unloadTime andFormatter:TIME_SEC_SHOW]:nil;
+        m.colorSelect = nil;
+        m.left = W(62);
+        return m;
+    }(),^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = model.confirmTime?@"确认：":nil;
+        m.subTitle = model.confirmTime?[GlobalMethod exchangeTimeWithStamp:model.confirmTime andFormatter:TIME_SEC_SHOW]:nil;
+        m.colorSelect = nil;
+        m.left = W(62);
+        return m;
+    }(),^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = model.finishTime?@"完成：":nil;
+        m.subTitle = model.finishTime?[GlobalMethod exchangeTimeWithStamp:model.finishTime andFormatter:TIME_SEC_SHOW]:nil;
         m.colorSelect = nil;
         m.left = W(62);
         return m;
@@ -227,6 +252,9 @@
 }
 -(CGFloat)addLabel:(NSArray *)ary top:(CGFloat)top{
     for (ModelBtn *m in ary) {
+        if (m.title == nil && m.subTitle == nil) {
+            continue;
+        }
         if (m.isSelected) {
             UIView * view = [UIView new];
             view.backgroundColor = COLOR_BACKGROUND;
@@ -314,7 +342,7 @@
     return self;
 }
 #pragma mark 刷新view
-- (void)resetViewWithModel:(ModelOrderList *)model{
+- (void)resetViewWithModel:(ModelTransportOrder *)model{
     [self removeAllSubViews];//移除线
     self.model = model;
     

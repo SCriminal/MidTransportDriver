@@ -25,17 +25,53 @@
 
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(ModelOrderList *)model{
+- (void)resetViewWithModel:(ModelTransportOrder *)model{
+    self.model = model;
     [self removeAllSubViews];//移除线
-    NSArray * ary = @[ ^(){
-        ModelBtn * m = [ModelBtn new];
-        m.tag = ENUM_ORDER_LIST_BTN_DISMISS;
-        return m;
-    }(),^(){
-        ModelBtn * m = [ModelBtn new];
-        m.tag = ENUM_ORDER_LIST_BTN_RECEIVE;
-        return m;
-    }()];
+    if (model.orderStatus >=4 ) {
+        self.height = 0;
+        return;
+    }
+    self.height = W(39);
+    NSArray * ary = nil;
+    switch ((int)model.orderStatus) {
+        case 1://待接单
+            ary = @[^(){
+                ModelBtn * m = [ModelBtn new];
+                m.tag = ENUM_ORDER_LIST_BTN_REJECT;
+                return m;
+            }(),^(){
+                ModelBtn * m = [ModelBtn new];
+                m.tag = ENUM_ORDER_LIST_BTN_RECEIVE;
+                return m;
+            }()];
+            break;
+        case 2://待装车
+            ary = @[^(){
+                ModelBtn * m = [ModelBtn new];
+                m.tag = ENUM_ORDER_LIST_BTN_NAVIGATION;
+                return m;
+            }(),^(){
+                ModelBtn * m = [ModelBtn new];
+                m.tag = ENUM_ORDER_LIST_BTN_LOAD_CAR;
+                return m;
+            }()];
+            break;
+        case 3://待卸车
+            ary = @[^(){
+                ModelBtn * m = [ModelBtn new];
+                m.tag = ENUM_ORDER_LIST_BTN_NAVIGATION;
+                return m;
+            }(),^(){
+                ModelBtn * m = [ModelBtn new];
+                m.tag = ENUM_ORDER_LIST_BTN_ARRIVE;
+                return m;
+            }()];
+            break;
+        default:
+            break;
+    }
+   
     
     CGFloat left = W(15);
     CGFloat width = (SCREEN_WIDTH - W(30) - (ary.count  -1 )*W(15))/ary.count;
@@ -91,7 +127,7 @@
 #pragma mark 点击事件
 - (void)btnClick:(UIButton *)sender{
     if (self.blockClick) {
-        self.blockClick(sender.tag);
+        self.blockClick(sender.tag,self.model);
     }
 }
 @end

@@ -86,6 +86,36 @@ NS_ASSUME_NONNULL_BEGIN
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+2.0接单
+*/
++(void)requestAcceptWithNumber:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                       failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+2.0到达确认
+*/
++(void)requestArriveWithNumber:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                       failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+2.0装车
+*/
++(void)requestLoadWithUrls:(NSString *)urls
+                number:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                   failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+2.0卸车
+*/
++(void)requestUnloadWithUrls:(NSString *)urls
+                number:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                     failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

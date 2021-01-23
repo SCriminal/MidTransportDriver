@@ -30,6 +30,7 @@
 @end
 
 @implementation AuthThreeVC
+
 - (AuthView *)authTopView{
     if (!_authTopView) {
         _authTopView = [AuthView new];
@@ -40,7 +41,7 @@
 - (AuthTitleView *)authTitleView{
     if (!_authTitleView) {
         _authTitleView = [AuthTitleView new];
-        [_authTitleView resetViewWithModel:nil];
+        [_authTitleView resetViewWithModel:@"总质量大于4.5吨的车辆必须上传道路运输许可证和从业资格证"];
     }
     return _authTitleView;
 }

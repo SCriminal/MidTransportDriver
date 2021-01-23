@@ -46,11 +46,11 @@
 - (OrderListCellBtnView *)btnView{
     if (!_btnView) {
         _btnView = [OrderListCellBtnView new];
-        [_btnView resetViewWithModel:self.modelOrder];
+        [_btnView resetViewWithModel:self.orderList];
         WEAKSELF
-        _btnView.blockClick = ^(ENUM_ORDER_LIST_BTN tag) {
+        _btnView.blockClick = ^(ENUM_ORDER_LIST_BTN tag,ModelTransportOrder * model) {
             RejectOrderView * view = [RejectOrderView new];
-            [view resetViewWithModel:weakSelf.modelOrder];
+            [view resetViewWithModel:weakSelf.orderList];
             [weakSelf.view addSubview:view];
         };
     }
@@ -60,7 +60,7 @@
 - (OrderDetailView *)topView{
     if (!_topView) {
         _topView = [OrderDetailView new];
-        [_topView resetViewWithModel:self.modelOrder];
+        [_topView resetViewWithModel:self.orderList];
     }
     return _topView;
 }
@@ -109,12 +109,12 @@
 }
 #pragma mark request
 - (void)requestList{
-    [RequestApi requestOrderDetailWithNumber:self.modelOrder.endCyName delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        self.modelOrder = [ModelOrderList modelObjectWithDictionary:response];
+    [RequestApi requestOrderDetailWithNumber:self.orderList.orderNumber delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.orderList = [ModelTransportOrder modelObjectWithDictionary:response];
         
-        [self.topView resetViewWithModel:self.modelOrder];
-        [self.btnView resetViewWithModel:self.modelOrder];
-
+        [self.topView resetViewWithModel:self.orderList];
+        [self.btnView resetViewWithModel:self.orderList];
+        self.tableView.height = SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - self.bottomView.height;
         [self reconfigTableHeaderView];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             

@@ -82,19 +82,15 @@
     return self;
 }
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(ModelOrderList *)model{
+- (void)resetCellWithModel:(ModelTransportOrder *)model{
     self.model = model;
     //刷新view
     self.iconAddress.centerXTop = XY(SCREEN_WIDTH/2.0, W(20));
     
-    [self.addressFrom fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.startProvinceName),[model.startPortName isEqualToString:model.startProvinceName]?@"":UnPackStr(model.startPortName)] variable:W(160)];
+    [self.addressFrom fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.startCityName),UnPackStr(model.startCountyName)] variable:W(160)];
     self.addressFrom.centerXCenterY = XY((self.iconAddress.left - W(10))/2.0+W(10), self.iconAddress.centerY);
-    if (model.orderType == ENUM_ORDER_TYPE_INPUT) {
-        [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.placeProvinceName),[model.placeCityName isEqualToString:model.placeProvinceName]?@"":UnPackStr(model.placeCityName)] variable:W(160)];
-    }else {
-        [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.endProvinceName),[model.endPortName isEqualToString:model.endProvinceName]?@"":UnPackStr(model.endPortName)] variable:W(160)];
-        
-    }
+    [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(model.endCityName),UnPackStr(model.endCountyName)] variable:W(160)];
+
     self.addressTo.centerXCenterY = XY((SCREEN_WIDTH - self.iconAddress.right - W(10))/2.0 + SCREEN_WIDTH/2.0 + self.iconAddress.width/2.0, self.iconAddress.centerY);
     
     CGFloat top = self.addressTo.bottom;
@@ -102,42 +98,42 @@
     top = [self addLabel:@[^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"运单号：";
-        m.subTitle = @"202002399992300222";
+        m.subTitle = model.orderNumber;
         m.colorSelect = nil;
         m.thirdTitle = nil;
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"发货量：";
-        m.subTitle = @"20吨";
+        m.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(model.qtyShow),model.unitShow];
         m.colorSelect = nil;
         m.thirdTitle = nil;
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"货物名称：";
-        m.subTitle = @"设备零配件";
+        m.subTitle = model.cargoName;
         m.colorSelect = nil;
         m.thirdTitle = nil;
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"发货联系人：";
-        m.subTitle = @"李林";
+        m.subTitle = model.startContacter;
         m.colorSelect = nil;
-        m.thirdTitle = @"15689942388";
+        m.thirdTitle = model.startPhone;
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"发货时间：";
-        m.subTitle = @"2020-11-19 12:20:19";
+        m.subTitle = [GlobalMethod exchangeTimeWithStamp:model.startTime andFormatter:TIME_SEC_SHOW];
         m.colorSelect = nil;
         m.thirdTitle = nil;
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"当前状态：";
-        m.subTitle = @"待接单";
+        m.subTitle = model.orderStatusShow;
         m.colorSelect = model.colorStateShow;
         m.thirdTitle = nil;
         return m;
@@ -202,8 +198,8 @@
 }
 
 - (void)phoneClick{
-    if (isStr(self.model.endPhone)) {
-        NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel://%@",self.model.endPhone];
+    if (isStr(self.model.startPhone)) {
+        NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel://%@",self.model.startPhone];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     }else{
         [GlobalMethod showAlert:@"暂无联系电话"];

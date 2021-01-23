@@ -177,19 +177,6 @@
     }
 }
 
-+ (void)jumpToOrderDetailVC:(double )orderID{
-    OrderDetailVC * detail = [OrderDetailVC new];
-    detail.modelOrder = ^(){
-        ModelOrderList * model = [ModelOrderList new];
-        model.iDProperty = orderID;
-        return model;
-    }();
-    if ([GB_Nav.lastVC isKindOfClass:OrderDetailVC.class]) {
-        [GB_Nav popLastAndPushVC:detail];
-    }else{
-        [GB_Nav pushViewController:detail animated:true];
-    }
-}
 
 + (void)jumpToOrderList{
     [GB_Nav popToRootViewControllerAnimated:true];

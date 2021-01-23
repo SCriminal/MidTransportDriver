@@ -68,3 +68,4 @@
 #import "ModelAuthBusiness.h"
 #import "ModelAuthCar.h"
 #import "ModelAutOrderListItem.h"
+#import "ModelTransportOrder.h"

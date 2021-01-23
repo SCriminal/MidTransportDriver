@@ -329,7 +329,23 @@
     NSDictionary *dic = @{};
     [self getUrl:@"/ums/vehicle" delegate:delegate parameters:dic success:success failure:failure];
 }
-
+/**
+ 检查车辆认证详情（用户）
+ */
++(void)requestCarAuthCheckWithPlateNumber:(NSString *)plateNumber
+                                      vin:(NSString *)vin
+                                    owner:(NSString *)owner
+                              vehicleType:(double)vehicleType
+delegate:(id <RequestDelegate>)delegate
+                                success:(void (^)(NSDictionary * response, id mark))success
+                                failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"plateNumber":RequestStrKey(plateNumber),
+                          @"vin":RequestStrKey(vin),
+                          @"owner":RequestStrKey(owner),
+                          @"vehicleType":RequestLongKey(vehicleType)
+    };
+    [self getUrl:@"/ums/vehicle/info" delegate:delegate parameters:dic success:success failure:failure];
+}
 +(void)requestBusinessAuthDetailWithDelegate:(id <RequestDelegate>)delegate
                                    success:(void (^)(NSDictionary * response, id mark))success
                                    failure:(void (^)(NSString * errorStr, id mark))failure{
