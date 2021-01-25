@@ -81,14 +81,16 @@
 - (void)resetViewWithModel:(id)model{
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-    self.viewBG.widthHeight = XY(SCREEN_WIDTH, W(286));
+    self.viewBG.widthHeight = XY(SCREEN_WIDTH, self.isShowCarType?W(286):W(166));
     self.viewBG.centerXTop = XY(SCREEN_WIDTH/2.0,NAVIGATIONBAR_HEIGHT+W(50));
-    [self addLabel:@"车型" top:W(17)];
-    [self addBtn];
-    [self addLabel:@"类型" top:W(137)];
+    if (self.isShowCarType) {
+        [self addLabel:@"车型" top:W(17)];
+        [self addBtn];
+    }
+    [self addLabel:@"类型" top:self.isShowCarType?W(137):W(17)];
     [self addSubBtn];
     
-    [self.viewBG addLineFrame:CGRectMake(W(20), W(211), SCREEN_WIDTH - W(40), 1)];
+    [self.viewBG addLineFrame:CGRectMake(W(20),self.viewBG.height - W(75), SCREEN_WIDTH - W(40), 1)];
     
     self.btnSearch.widthHeight = XY(W(165),W(39));
     self.btnReset.widthHeight = XY(W(165),W(39));
@@ -151,7 +153,7 @@
 - (void)addSubBtn{
     NSArray * ary = @[@"全部",@"抢单",@"报价"];
     CGFloat left = W(15);
-    CGFloat top = W(160);
+    CGFloat top = self.isShowCarType? W(160):W(40);
     for (int i = 0; i<ary.count; i++) {
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.widthHeight = XY(W(74), W(34));

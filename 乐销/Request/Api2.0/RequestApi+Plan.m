@@ -76,6 +76,9 @@
                 shipperName:(NSString *)shipperName
                 plateNumber:(NSString *)plateNumber
                 driverName:(NSString *)driverName
+                      startTime:(double)startTime
+                        endTime:(double)endTime
+                   orderStatues:(NSString *)orderStatues
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
@@ -84,7 +87,12 @@
                            @"orderNumber":RequestStrKey(orderNumber),
                            @"shipperName":RequestStrKey(shipperName),
                            @"plateNumber":RequestStrKey(plateNumber),
-                           @"driverName":RequestStrKey(driverName)};
+                           @"driverName":RequestStrKey(driverName),
+                              @"startTime":RequestDoubleKey(startTime),
+                              @"endTime":RequestDoubleKey(endTime),
+                              @"orderStatues":RequestStrKey(orderStatues),
+
+        };
         [self getUrl:@"/loms/order/driver/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 

@@ -49,6 +49,9 @@ NS_ASSUME_NONNULL_BEGIN
                 shipperName:(NSString *)shipperName
                 plateNumber:(NSString *)plateNumber
                 driverName:(NSString *)driverName
+                      startTime:(double)startTime
+                        endTime:(double)endTime
+                   orderStatues:(NSString *)orderStatues
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                         failure:(void (^)(NSString * errorStr, id mark))failure;

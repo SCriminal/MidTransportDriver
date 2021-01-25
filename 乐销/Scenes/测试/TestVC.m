@@ -291,8 +291,8 @@
 //    if (!isfirst) {
 //        isfirst = true;
 //    }
-    
-    [GB_Nav pushVCName:@"AuthThreeVC" animated:true];
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"iosamap://path?sourceApplication=applicationName&sid=&slat=39.92848272&slon=116.39560823&sname=A&did=&dlat=39.98848272&dlon=116.47560823&dname=B&dev=0&t=0"]];
+//    [GB_Nav pushVCName:@"AuthThreeVC" animated:true];
 
 //    [GB_Nav pushVCName:@"AuthOneVC" animated:true];
 //    RechargeInputView * view = [RechargeInputView new];

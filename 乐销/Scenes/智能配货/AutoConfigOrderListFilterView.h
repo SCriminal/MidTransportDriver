@@ -18,7 +18,7 @@
 
 @property (nonatomic, assign) NSInteger btnTagSelected;
 @property (nonatomic, assign) NSInteger btnSubTagSelected;
-
+@property (nonatomic, assign) BOOL isShowCarType;
 @property (nonatomic, strong) void (^blockSearchClick)(NSInteger, NSInteger);
 
 #pragma mark 刷新view

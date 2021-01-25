@@ -10,7 +10,7 @@
 #import "CollectionImageCell.h"//cell
 #import "ImageDetailBigView.h"//detail
 #import "CustomTabBarController.h"
-#import "BulkCargoListManageVC.h"
+#import "OrderListVC.h"
 @interface Collection_Image()
 
 @end
@@ -140,11 +140,10 @@
         [vc showImageVC:NUM_IMAGE];
     }else {
         if ([vc isKindOfClass:NSClassFromString(@"CustomTabBarController")]) {
-            BulkCargoListManageVC *manageVC = [(CustomTabBarController *)vc viewControllers].firstObject;
-            if ([manageVC isKindOfClass:BulkCargoListManageVC.class]) {
-               BaseVC * vc = manageVC.childViewControllers.firstObject;
-                 if ([vc respondsToSelector:@selector(showImageVC:)]) {
-                       [vc showImageVC:NUM_IMAGE];
+            OrderListVC *manageVC = [[(CustomTabBarController *)vc viewControllers] objectAtIndex:2];
+            if ([manageVC isKindOfClass:OrderListVC.class]) {
+                 if ([manageVC respondsToSelector:@selector(showImageVC:)]) {
+                       [manageVC showImageVC:NUM_IMAGE];
                    }
             }
         }

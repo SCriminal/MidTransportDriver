@@ -3375,8 +3375,8 @@
             filePath = "&#x4e50;&#x9500;/General/&#x4e0a;&#x4f20;&#x56fe;&#x7247;/Collection_Image.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "-showSelectImage"
             landmarkType = "7">
          </BreakpointContent>
@@ -5743,8 +5743,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api2.0/RequestApi+Plan.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "+requestOrderDetailWithNumber:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5762,6 +5762,38 @@
             startingLineNumber = "121"
             endingLineNumber = "121"
             landmarkName = "+postUrl:delegate:parameters:returnALL:requestType:constructingBodyWithBlock:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1080F627-A63D-4847-A56C-BA7947A32DDC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x6d4b;&#x8bd5;/TestVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
+            landmarkName = "-jump"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DE5E7468-58AF-401B-9D0C-166D83E572A5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Vender/ThirdMap/ThirdMap.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "+getInstalledMapAppWithEndLocation:currentLocation:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -319,6 +319,7 @@
 		D2D871072338C8D700F79173 /* ModelBank.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D871052338C8D700F79173 /* ModelBank.m */; };
 		D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D9A4192015D2170025963B /* AppDelegate.m */; };
 		D2DCF77C25BBC37A00C8BA86 /* ModelTransportOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DCF77A25BBC37A00C8BA86 /* ModelTransportOrder.m */; };
+		D2DCF78A25BD124D00C8BA86 /* ThirdMap.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DCF78825BD124D00C8BA86 /* ThirdMap.m */; };
 		D2DDC4262595D68A00C810B5 /* ExchangeIntegraProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC4252595D68A00C810B5 /* ExchangeIntegraProductVC.m */; };
 		D2DDC4292599C0B200C810B5 /* ExchangeIntegraProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC4282599C0B200C810B5 /* ExchangeIntegraProductView.m */; };
 		D2DDC42C259C4D6300C810B5 /* ExchangeIntegraOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DDC42B259C4D6300C810B5 /* ExchangeIntegraOrderListVC.m */; };
@@ -1029,6 +1030,8 @@
 		D2D9A4192015D2170025963B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D2DCF77A25BBC37A00C8BA86 /* ModelTransportOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelTransportOrder.m; sourceTree = "<group>"; };
 		D2DCF77B25BBC37A00C8BA86 /* ModelTransportOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelTransportOrder.h; sourceTree = "<group>"; };
+		D2DCF78825BD124D00C8BA86 /* ThirdMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdMap.m; sourceTree = "<group>"; };
+		D2DCF78925BD124D00C8BA86 /* ThirdMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdMap.h; sourceTree = "<group>"; };
 		D2DDC4242595D68A00C810B5 /* ExchangeIntegraProductVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeIntegraProductVC.h; sourceTree = "<group>"; };
 		D2DDC4252595D68A00C810B5 /* ExchangeIntegraProductVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeIntegraProductVC.m; sourceTree = "<group>"; };
 		D2DDC4272599C0B200C810B5 /* ExchangeIntegraProductView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeIntegraProductView.h; sourceTree = "<group>"; };
@@ -2896,6 +2899,15 @@
 			path = "银行卡";
 			sourceTree = "<group>";
 		};
+		D2DCF78725BD124D00C8BA86 /* ThirdMap */ = {
+			isa = PBXGroup;
+			children = (
+				D2DCF78825BD124D00C8BA86 /* ThirdMap.m */,
+				D2DCF78925BD124D00C8BA86 /* ThirdMap.h */,
+			);
+			path = ThirdMap;
+			sourceTree = "<group>";
+		};
 		D2DDC4232595D67600C810B5 /* 立即兑换 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3205,6 +3217,7 @@
 		DA8529051D65B65000AB04CC /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				D2DCF78725BD124D00C8BA86 /* ThirdMap */,
 				D2FD414023C3026800CC90E7 /* 交通部上报 */,
 				D247813A218C35A1005747FC /* DVDishPieHeader */,
 				D2821CAF218AD9B80057688B /* ORChartView */,
@@ -3505,6 +3518,7 @@
 				D2C55800238BCADC0050694F /* RequestApi+Schedule.m in Sources */,
 				D21B58D81FA6A5BF00B2A788 /* UIImage+info.m in Sources */,
 				D23B6EF025B675D00044E28C /* RequestApi+Dic.m in Sources */,
+				D2DCF78A25BD124D00C8BA86 /* ThirdMap.m in Sources */,
 				D2B9FF32248F900C0082E8D2 /* SelectCarNumberView.m in Sources */,
 				D2D5265B25A5462300F99306 /* FeedBackListManagementVC.m in Sources */,
 				D28642EB1E484A350041B64C /* UITapGestureRecognizer+Base.m in Sources */,
