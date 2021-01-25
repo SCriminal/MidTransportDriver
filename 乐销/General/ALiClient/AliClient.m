@@ -30,14 +30,14 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
             return @"ums/person/review/";
             break;
         case ENUM_UP_IMAGE_TYPE_COMPANY_LOGO:
-            return @"ums/ent/logo";
+            return @"ums/ent/logo/";
             break;
         case ENUM_UP_IMAGE_TYPE_COMPANY_AUTHORITY:
             return @"ums/ent/review/";
             break;
         case ENUM_UP_IMAGE_TYPE_COMPANY_CAR:
         {
-            return @"ums/vehicle/review";
+            return @"ums/vehicle/review/";
         }
             break;
         case ENUM_UP_IMAGE_TYPE_ORDER:

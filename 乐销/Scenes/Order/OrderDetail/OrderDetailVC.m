@@ -19,6 +19,9 @@
 #import "ShareView.h"
 #import "OrderListCellBtnView.h"
 #import "RejectOrderView.h"
+#import "BulkCargoOperateLoadView.h"
+#import "ThirdMap.h"
+#import "BaseVC+Location.h"
 
 @interface OrderDetailVC ()
 @property (nonatomic, strong) BaseNavView *nav;
@@ -27,6 +30,8 @@
 @property (nonatomic, strong) OrderDetailTrailView *trailView;
 
 @property (nonatomic, strong) UIView *bottomView;
+@property (nonatomic, strong) BulkCargoOperateLoadView *upLoadImageView;
+@property (nonatomic, strong) BulkCargoOperateLoadView *upUnLoadImageView;
 
 
 @end
@@ -34,6 +39,44 @@
 @implementation OrderDetailVC
 
 #pragma mark lazy init
+- (BulkCargoOperateLoadView *)upLoadImageView{
+    if (!_upLoadImageView) {
+        WEAKSELF
+        BulkCargoOperateLoadView *upLoadImageView = [BulkCargoOperateLoadView new];
+        upLoadImageView.blockComplete = ^(NSArray *aryImages) {
+            NSMutableArray *ary = [aryImages fetchValues:@"url"];
+            [RequestApi requestLoadWithUrls:[ary componentsJoinedByString:@","] number:weakSelf.orderList.orderNumber delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [weakSelf refreshHeaderAll];
+                
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+        };
+        _upLoadImageView = upLoadImageView;
+    }
+    return _upLoadImageView;
+}
+- (BulkCargoOperateLoadView *)upUnLoadImageView{
+    if (!_upUnLoadImageView) {
+        BulkCargoOperateLoadView *upUnLoadImageView = [BulkCargoOperateLoadView new];
+        [upUnLoadImageView.labelInput fitTitle:@"上传完成凭证" variable:0];
+        [upUnLoadImageView.labelTitle fitTitle:@"请上传完成凭证 (回单、卸车磅单)" variable:0];
+        WEAKSELF
+        upUnLoadImageView.blockComplete = ^(NSArray *aryImages) {
+            NSMutableArray *ary = [aryImages fetchValues:@"url"];
+            [RequestApi requestUnloadWithUrls:[ary componentsJoinedByString:@","] number:weakSelf.orderList.orderNumber delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [weakSelf refreshHeaderAll];
+                
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+            
+        };
+        _upUnLoadImageView = upUnLoadImageView;
+        
+    }
+    return _upUnLoadImageView;
+}
 - (BaseNavView *)nav{
     if (!_nav) {
         WEAKSELF
@@ -49,9 +92,7 @@
         [_btnView resetViewWithModel:self.orderList];
         WEAKSELF
         _btnView.blockClick = ^(ENUM_ORDER_LIST_BTN tag,ModelTransportOrder * model) {
-            RejectOrderView * view = [RejectOrderView new];
-            [view resetViewWithModel:weakSelf.orderList];
-            [weakSelf.view addSubview:view];
+            [weakSelf requestOperate:tag model:model];
         };
     }
     return _btnView;
@@ -123,6 +164,87 @@
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
+}
+
+- (void)requestOperate:(ENUM_ORDER_LIST_BTN)type model:(ModelTransportOrder *)model{
+    WEAKSELF
+    switch (type) {
+        case ENUM_ORDER_LIST_BTN_REJECT:
+        {
+            RejectOrderView * view = [RejectOrderView new];
+            [view resetViewWithModel:weakSelf.orderList];
+            view.blockConfirm = ^(NSString * reason) {
+                [RequestApi requestRejectOrderumber:weakSelf.orderList.orderNumber reason:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                    [weakSelf refreshHeaderAll];
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                    
+                }];
+            };
+            [weakSelf.view addSubview:view];
+        }
+            break;
+        case ENUM_ORDER_LIST_BTN_RECEIVE:
+        {
+            [RequestApi requestAcceptWithNumber:model.orderNumber delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [self refreshHeaderAll];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+        }
+            break;
+        case ENUM_ORDER_LIST_BTN_LOAD_CAR:
+        {
+           
+            [self.upLoadImageView show];
+        }
+            break;
+        case ENUM_ORDER_LIST_BTN_ARRIVE:
+        {
+            [self.upUnLoadImageView show];
+        }
+            break;
+        case ENUM_ORDER_LIST_BTN_NAVIGATION:
+        {
+            ModelAddress * moddelLocal = [GlobalMethod readModelForKey:LOCAL_LOCATION_UPTODATE modelName:@"ModelAddress" exchange:false];
+            if (moddelLocal.lat == 0 || moddelLocal.lng == 0) {
+                [self initLocation];
+                [GlobalMethod showAlert:@"定位失败，请稍后重试"];
+                return;
+            }
+            UIAlertController * vc =[ThirdMap getInstalledMapAppWithEndLocation:CLLocationCoordinate2DMake(moddelLocal.lat, moddelLocal.lng) currentLocation:CLLocationCoordinate2DMake(moddelLocal.lat+1, moddelLocal.lng+1)];
+            [self presentViewController:vc animated:YES completion:nil];
+            
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)imagesSelect:(NSArray *)aryImages
+{
+    [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_ORDER;
+
+    [[AliClient sharedInstance]updateImageAry:aryImages  storageSuccess:nil upSuccess:nil upHighQualitySuccess:nil fail:nil];
+    for (BaseImage *image in aryImages) {
+        ModelImage * modelImageInfo = [ModelImage new];
+        modelImageInfo.url = image.imageURL;
+        modelImageInfo.image = image;
+        modelImageInfo.width = image.size.width;
+        modelImageInfo.height = image.size.height;
+        if (self.orderList.orderStatus == 2) {
+            [self.upLoadImageView.collection_Image.aryDatas insertObject:modelImageInfo atIndex:0];
+        }
+        if (self.orderList.orderStatus == 3) {
+            [self.upUnLoadImageView.collection_Image.aryDatas insertObject:modelImageInfo atIndex:0];
+        }
+    }
+    if (self.orderList.orderStatus == 2) {
+        [self.upLoadImageView.collection_Image.collectionView reloadData];
+    }
+    if (self.orderList.orderStatus == 3) {
+        [self.upUnLoadImageView.collection_Image.collectionView reloadData];
+    }
 }
 
 @end

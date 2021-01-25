@@ -151,6 +151,23 @@
                            @"price":NSNumber.dou(price)};
         [self postUrl:@"/zhongcheyun/plan/match/2" delegate:delegate parameters:dic success:success failure:failure];
 }
+/**
+抢单(报价)
+*/
++(void)requestRobWithPlannumber:(NSString *)planNumber
+                vehicleId:(double)vehicleId
+                qty:(double)qty
+                price:(double)price
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"planNumber":RequestStrKey(planNumber),
+                           @"vehicleId":NSNumber.dou(vehicleId),
+                           @"qty":NSNumber.dou(qty),
+                           @"price":NSNumber.dou(price)};
+        [self postUrl:@"/zhongcheyun/plan/match/1" delegate:delegate parameters:dic success:success failure:failure];
+}
+
 
 /**
 2.0接单
@@ -188,12 +205,25 @@
 2.0卸车
 */
 +(void)requestUnloadWithUrls:(NSString *)urls
-                number:(NSString *)number
+                number:(NSString *)orderNumber
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"urls":RequestStrKey(urls),
-                           @"number":RequestStrKey(number)};
-        [self putUrl:@"/zhongcheyun/order/4" delegate:delegate parameters:dic success:success failure:failure];
+                           @"orderNumber":RequestStrKey(orderNumber)};
+        [self putUrl:@"/zhongcheyun/loms/order/4" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
+2.0拒单
+*/
++(void)requestRejectOrderumber:(NSString *)orderNumber
+                        reason:(NSString *)reason
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"reason":RequestStrKey(reason),
+                           @"orderNumber":RequestStrKey(orderNumber)};
+        [self putUrl:@"/loms/order/99/driver/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
 @end

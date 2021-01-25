@@ -205,7 +205,7 @@
         self.authTime.leftTop = XY(W(15),top+W(13));
         top = self.authTime.bottom;
     }
-    if (isStr(model.fourTitle)) {
+    if (isStr(model.fourTitle) && model.num == 11) {
             [self.reason fitTitle: [NSString stringWithFormat:@"%@",model.fourTitle] variable:SCREEN_WIDTH - W(30)];
         self.reason.leftTop = XY(W(15),top+W(13));
         top = self.reason.bottom;

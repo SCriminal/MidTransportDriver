@@ -90,6 +90,16 @@ NS_ASSUME_NONNULL_BEGIN
                 success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
+抢单(报价)
+*/
++(void)requestRobWithPlannumber:(NSString *)planNumber
+                vehicleId:(double)vehicleId
+                qty:(double)qty
+                price:(double)price
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                        failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
 2.0接单
 */
 +(void)requestAcceptWithNumber:(NSString *)number
@@ -119,6 +129,15 @@ NS_ASSUME_NONNULL_BEGIN
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                      failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+2.0拒单
+*/
++(void)requestRejectOrderumber:(NSString *)orderNumber
+                        reason:(NSString *)reason
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                       failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

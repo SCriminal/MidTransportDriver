@@ -55,6 +55,7 @@
 - (DriverDetailModelView *)modelView{
     if (!_modelView) {
         _modelView = [DriverDetailModelView new];
+        WEAKSELF
         [_modelView resetWithAry:@[^(){
             ModelBaseData * m = [ModelBaseData new];
             m.string = @"我的服务";
@@ -71,7 +72,7 @@
                 mB.title = @"认证中心";
                                mB.imageName = @"personal_车辆";
                                mB.blockClick = ^{
-                                   [GB_Nav pushVCName:@"AuthListVC" animated:true];
+                                   [weakSelf jumpAuth];
                                };
                 return mB;
             }(),^(){

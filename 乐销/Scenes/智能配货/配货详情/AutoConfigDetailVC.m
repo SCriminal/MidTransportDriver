@@ -17,6 +17,7 @@
 @property (nonatomic, strong) AutoConfigTimeView *timeView;
 @property (nonatomic, strong) AutoConfigDetailView *topView;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) ModelAuthCar *modelCarInfo;
 
 @end
 
@@ -31,13 +32,7 @@
             [GB_Nav popViewControllerAnimated:true];
         };
         _timeView.blockClick = ^{
-            //报价
-            AutoConfigOfferPriceView * robView = [AutoConfigOfferPriceView new];
-            robView.blockConfirm = ^(double weight, double price) {
-                [weakSelf requestPrice:price weight:weight];
-            };
-            [robView resetViewWithModel:nil];
-            [weakSelf.view addSubview:robView];
+            [weakSelf requestCarInfo];
         };
         [_timeView resetView:self.modelList.mode];
     }
@@ -82,18 +77,22 @@
     [self.view addSubview:nav];
 }
 
-
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 
 #pragma mark request
 - (void)requestList{
     [RequestApi requestPlanDetailWithNumber:self.modelList.planNumber delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            
+        ModelAutOrderListItem * orderDetail = [ModelAutOrderListItem modelObjectWithDictionary:response];
+        orderDetail.comment = self.modelList.comment;
+        self.modelList = orderDetail;
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
-    
 }
-- (void)requestPrice:(double)price weight:(double)weight{
+
+-  (void)requestCarInfo{
     [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelAuthCar * model = [ModelAuthCar modelObjectWithDictionary:response];
         if (!model.vehicleId) {
@@ -107,20 +106,50 @@
             [BaseAlertView initWithTitle:@"提示" content:@"请先提交车辆信息" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
             return;
         }
-        [RequestApi requestPlanPriceWithPlannumber:self.modelList.planNumber vehicleId:model.vehicleId qty:weight price:price delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            [GlobalMethod showAlert:@"抢单成功"];
-            [GB_Nav popViewControllerAnimated:true];
-            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                
-            }];
+        WEAKSELF
+        if (self.modelList.mode == 1) {
+            //抢单
+            AutoConfigRobView * robView = [AutoConfigRobView new];
+            robView.modelCarInfo = model;
+            robView.blockConfirm = ^(double weight, double price) {
+                [weakSelf requestRobe:price weight:weight];
+            };
+            [robView resetViewWithModel:self.modelList];
+            [self.view addSubview:robView];
+        }else{
+            //报价
+            AutoConfigOfferPriceView * robView = [AutoConfigOfferPriceView new];
+            robView.modelCarInfo = model;
+            robView.blockConfirm = ^(double weight, double price) {
+                [weakSelf requestPrice:price weight:weight];
+            };
+            [robView resetViewWithModel:self.modelList];
+            [self.view addSubview:robView];
+        }
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
+}
+- (void)requestPrice:(double)price weight:(double)weight{
+    
+    [RequestApi requestPlanPriceWithPlannumber:self.modelList.planNumber vehicleId:self.modelCarInfo.vehicleId qty:[self.modelList exchangeRequestQty:weight] price:price*100.0  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"报价成功"];
+        [GB_Nav popViewControllerAnimated:true];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
    
 }
-- (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
+- (void)requestRobe:(double)price weight:(double)weight{
+    [RequestApi requestRobWithPlannumber:self.modelList.planNumber vehicleId:self.modelCarInfo.vehicleId qty:[self.modelList exchangeRequestQty:weight] price:price delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"抢单成功"];
+        [GB_Nav popViewControllerAnimated:true];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+   
 }
+
 #pragma mark 定时器相关
 - (void)viewDidAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -216,9 +245,13 @@
     
     CGFloat top = self.iconAddress.bottom + W(20);
     self.newsView.centerXTop = XY(SCREEN_WIDTH/2.0, top);
-    [self.newsView resetWithAry:@[@"156****0983      成交量：100      好评率：90%",@"156****0983      成交量：101      好评率：90%"]];
-//    [self.newsView timerStart];
-    top = self.newsView.bottom + W(20);
+    self.newsView.hidden = true;
+    if (isStr(modelPlan.comment)) {
+        self.newsView.hidden = false;
+        self.newsView.centerXTop = XY(SCREEN_WIDTH/2.0, top);
+        [self.newsView resetWithAry:@[modelPlan.comment]];
+        top = self.newsView.bottom + W(20);
+    }
     
     NSMutableArray * ary = [NSMutableArray new];
     [ary addObject:^(){
@@ -324,7 +357,7 @@
                 l.backgroundColor = [UIColor clearColor];
                 l.numberOfLines = 0;
                 l.lineSpace = W(0);
-                [l fitTitle:modelB.subTitle variable:SCREEN_WIDTH - W(115)];
+                [l fitTitle:isStr(modelB.subTitle)?modelB.subTitle:@"暂无" variable:SCREEN_WIDTH - W(115)];
                 l.leftTop = XY(W(90), top + W(15));
                 [self addSubview:l];
                 top = l.bottom;

@@ -16,4 +16,5 @@
 
 //拼接url
 -(NSString *)appendUrl:(NSString *)value key:(NSString *)key;
+- (NSString *)secretPhone;
 @end

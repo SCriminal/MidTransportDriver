@@ -54,6 +54,8 @@
 @property (nonatomic, assign) double orderQty;
 @property (nonatomic, assign) double matchQty;
 @property (nonatomic, assign) double unitWeight;
+@property (nonatomic, assign) double loadQty;
+
 //logical
 @property (nonatomic, strong) NSString *unitShow;
 @property (nonatomic, assign) double qtyShow;
@@ -61,6 +63,10 @@
 @property (nonatomic, assign) double priceShow;
 @property (nonatomic, strong) NSString *distanceShow;
 @property (nonatomic, strong) NSString *carLenthSHow;
+@property (nonatomic, strong) NSString *comment;
+
+- (double)exchangeRequestQty:(double)qty;
+- (double)exchangeQtyShow:(double)qty;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

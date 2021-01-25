@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) ModelProvince *areaStart;
 @property (nonatomic, strong) ModelProvince *areaEnd;
+@property (nonatomic, strong) NSMutableDictionary *dicComments;
 
 @property (nonatomic, assign) BOOL isRequestSuccess;
 @end
@@ -44,6 +45,12 @@
       
     }
     return _noResultView;
+}
+- (NSMutableDictionary *)dicComments{
+    if (!_dicComments) {
+        _dicComments = [NSMutableDictionary new];
+    }
+    return _dicComments;
 }
 - (AutoConfigOrderListFilterView *)filterView{
     if (!_filterView) {
@@ -209,6 +216,7 @@
         if (self.aryDatas.count == 0) {
             [self requestPath];
         }
+        [self requestCommentList];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
@@ -270,6 +278,33 @@
         }
         [self showNoResult];
 
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+}
+
+- (void)requestCommentList{
+    NSMutableArray * ary = [NSMutableArray array];
+    for (ModelAutOrderListItem * modelItem in self.aryDatas) {
+        if (!isStr(modelItem.comment )) {
+            [ary addObject:NSNumber.dou(modelItem.shipperId).stringValue];
+        }
+    }
+    [RequestApi requestCommentListWithUserIds:[ary componentsJoinedByString:@","] delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        NSLog(@"%@",response);
+        NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelComment"];
+        for (ModelComment * item in ary) {
+            [self.dicComments setObject:item forKey:NSNumber.dou(item.userId).stringValue];
+        }
+        for (ModelAutOrderListItem * item in self.aryDatas) {
+            if (!isStr(item.comment)) {
+                ModelComment * comment = [self.dicComments objectForKey:NSNumber.dou(item.shipperId).stringValue];
+                if (comment.userId) {
+                    item.comment = [NSString stringWithFormat:@"%@      成交量：%@      好评率：%@",comment.cellphone.secretPhone,NSNumber.dou(comment.finishWaybillSum).stringValue,NSNumber.dou(comment.score).stringValue];
+                }
+            }
+        }
+        [self.tableView reloadData];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
@@ -347,13 +382,13 @@
         }
         [self.aryDatas addObjectsFromArray:aryRequest];
         [self.tableView reloadData];
-
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
    
    
 }
+
 
 @end
 

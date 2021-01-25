@@ -320,6 +320,13 @@ success:(void (^)(NSDictionary * response, id mark))success
 +(void)requestAddressListWithDelegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+ 2.0评价列表
+ */
++(void)requestCommentListWithUserIds:(NSString *)userIds
+delegate:(id <RequestDelegate>)delegate
+                              success:(void (^)(NSDictionary * response, id mark))success
+                             failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

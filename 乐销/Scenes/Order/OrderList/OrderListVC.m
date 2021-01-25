@@ -24,6 +24,7 @@
 #import "BaseVC+Location.h"
 #import <MapKit/MapKit.h>
 #import "ThirdMap.h"
+#import "RejectOrderView.h"
 @interface OrderListVC ()
 @property (nonatomic, strong) OrderFilterView *filterView;
 @property (nonatomic, strong) ModelTransportOrder *modelOrder;
@@ -179,7 +180,16 @@
     switch (type) {
         case ENUM_ORDER_LIST_BTN_REJECT:
         {
-            
+            RejectOrderView * view = [RejectOrderView new];
+            [view resetViewWithModel:model];
+            view.blockConfirm = ^(NSString * reason) {
+                [RequestApi requestRejectOrderumber:model.orderNumber reason:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                    [weakSelf refreshHeaderAll];
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                    
+                }];
+            };
+            [weakSelf.view addSubview:view];
         }
             break;
         case ENUM_ORDER_LIST_BTN_RECEIVE:
@@ -248,6 +258,8 @@
 
 - (void)imagesSelect:(NSArray *)aryImages
 {
+    [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_ORDER;
+
     [[AliClient sharedInstance]updateImageAry:aryImages  storageSuccess:nil upSuccess:nil upHighQualitySuccess:nil fail:nil];
     for (BaseImage *image in aryImages) {
         ModelImage * modelImageInfo = [ModelImage new];

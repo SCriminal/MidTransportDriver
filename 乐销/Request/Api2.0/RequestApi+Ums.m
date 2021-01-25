@@ -570,4 +570,16 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
     [self getUrl:@"/ums/address/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
+
+/**
+ 2.0评价列表
+ */
++(void)requestCommentListWithUserIds:(NSString *)userIds
+delegate:(id <RequestDelegate>)delegate
+                              success:(void (^)(NSDictionary * response, id mark))success
+                              failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"userIds":RequestStrKey(userIds)};
+    [self getUrl:@"/ums/evaluation" delegate:delegate parameters:dic success:success failure:failure];
+}
+
 @end

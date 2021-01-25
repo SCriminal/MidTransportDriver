@@ -159,9 +159,13 @@
        self.addressTo.centerXCenterY = XY((SCREEN_WIDTH - self.iconAddress.right - W(10))/2.0 + SCREEN_WIDTH/2.0 + self.iconAddress.width/2.0, self.iconAddress.centerY);
        
     CGFloat top = self.addressTo.bottom + W(20);
-    self.newsView.centerXTop = XY(SCREEN_WIDTH/2.0, top);
-    [self.newsView resetWithAry:@[@"156****0983      成交量：100      好评率：90%",@"156****0983      成交量：101      好评率：90%"]];
-    top = self.newsView.bottom + W(20);
+    self.newsView.hidden = true;
+    if (isStr(model.comment)) {
+        self.newsView.hidden = false;
+        self.newsView.centerXTop = XY(SCREEN_WIDTH/2.0, top);
+        [self.newsView resetWithAry:@[model.comment]];
+        top = self.newsView.bottom + W(20);
+    }
   
     {
         NSString * strRemain = [NSString stringWithFormat:@"（剩%@%@）",NSNumber.dou(model.remainShow).stringValue,model.unitShow];
@@ -202,7 +206,6 @@
     self.viewBG.height = self.timeView.bottom + W(15);
          //设置总高度
     self.height = self.viewBG.bottom + W(12);
-         
 }
 
 @end

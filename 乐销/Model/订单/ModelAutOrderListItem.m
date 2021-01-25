@@ -52,6 +52,7 @@ NSString *const kModelAutOrderListItemStartPhone = @"startPhone";
 NSString *const kModelAutOrderListItemOrderQty = @"orderQty";
 NSString *const kModelAutOrderListItemMatchQty = @"matchQty";
 NSString *const kModelAutOrderListItemUnitWeight = @"unitWeight";
+NSString *const kModelAutOrderListItemLoadQty = @"loadQty";
 
 
 @interface ModelAutOrderListItem ()
@@ -145,12 +146,16 @@ NSString *const kModelAutOrderListItemUnitWeight = @"unitWeight";
         self.endPhone = [dict stringValueForKey:kModelAutOrderListItemEndPhone];
         self.startPhone = [dict stringValueForKey:kModelAutOrderListItemStartPhone];
         self.orderQty = [dict doubleValueForKey:kModelAutOrderListItemOrderQty];
+        self.loadQty = [dict doubleValueForKey:kModelAutOrderListItemLoadQty];
 
         
         //logical
         self.qtyShow = self.qty;
         self.remainShow = self.storageQty;
         self.priceShow = self.unitPrice/100.0;
+        self.qtyShow = [self exchangeQtyShow:self.qty];
+        self.remainShow = [self exchangeRequestQty:self.storageQty];
+
         switch ((int)self.priceUnit) {
             case 1:
                 self.unitShow = @"箱";
@@ -163,13 +168,9 @@ NSString *const kModelAutOrderListItemUnitWeight = @"unitWeight";
                 break;
             case 4:
                 self.unitShow = @"吨";
-                self.qtyShow = self.qty/1000.0;
-                self.remainShow = self.storageQty/1000.0;
                 break;
             case 5:
                 self.unitShow = @"立方米";
-                self.qtyShow = self.qty/1000000000.0;
-                self.remainShow = self.storageQty/1000000000.0;
                 break;
             default:
                 break;
@@ -196,6 +197,45 @@ NSString *const kModelAutOrderListItemUnitWeight = @"unitWeight";
     
     return self;
     
+}
+- (double)exchangeRequestQty:(double)qty{
+    switch ((int)self.priceUnit) {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            qty = qty*1000.0;
+            break;
+        case 5:
+            qty = qty*1000000000.0;
+            break;
+        default:
+            break;
+    }
+    return  qty;
+}
+
+- (double)exchangeQtyShow:(double)qty{
+    switch ((int)self.priceUnit) {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            qty = qty/1000.0;
+            break;
+        case 5:
+            qty = qty/1000000000.0;
+            break;
+        default:
+            break;
+    }
+    return  qty;
 }
 
 - (NSString *)resetDistance:(CGFloat)meter{
@@ -257,6 +297,7 @@ NSString *const kModelAutOrderListItemUnitWeight = @"unitWeight";
     [mutableDict setValue:self.endPhone forKey:kModelAutOrderListItemEndPhone];
     [mutableDict setValue:self.startPhone forKey:kModelAutOrderListItemStartPhone];
     [mutableDict setValue:[NSNumber numberWithDouble:self.orderQty] forKey:kModelAutOrderListItemOrderQty];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.loadQty] forKey:kModelAutOrderListItemLoadQty];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

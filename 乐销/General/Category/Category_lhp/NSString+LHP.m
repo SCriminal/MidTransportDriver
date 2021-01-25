@@ -71,4 +71,11 @@
     return string.copy;
 }
 
+- (NSString *)secretPhone{
+    if (self.length >= 4) {
+        return [NSString stringWithFormat:@"%@****%@",[self substringToIndex:3],[self substringFromIndex:self.length-4]];
+    }
+    return self;
+}
+
 @end

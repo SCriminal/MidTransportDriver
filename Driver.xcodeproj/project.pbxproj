@@ -45,6 +45,7 @@
 		D2136CEA1E13AAE9003B4B92 /* GlobalMethod+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = D2136CE91E13AAE9003B4B92 /* GlobalMethod+Data.m */; };
 		D2136CED1E13C142003B4B92 /* NSMutableArray+Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = D2136CEC1E13C142003B4B92 /* NSMutableArray+Insert.m */; };
 		D2152F6121815DBF0085437D /* CommentStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2152F5F21815DBE0085437D /* CommentStarView.m */; };
+		D215DC0225BE978F002DAA27 /* ModelComment.m in Sources */ = {isa = PBXBuildFile; fileRef = D215DC0125BE978F002DAA27 /* ModelComment.m */; };
 		D2164ED11F05CFC1005120C3 /* UIButton+Creat.m in Sources */ = {isa = PBXBuildFile; fileRef = D2164ECE1F05CFC1005120C3 /* UIButton+Creat.m */; };
 		D2164ED21F05CFC1005120C3 /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = D2164ED01F05CFC1005120C3 /* UIButton+countDown.m */; };
 		D216F5341E56966200E11ED2 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D216F5331E56966200E11ED2 /* NSDictionary+Category.m */; };
@@ -498,6 +499,8 @@
 		D2136CEC1E13C142003B4B92 /* NSMutableArray+Insert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Insert.m"; sourceTree = "<group>"; };
 		D2152F5F21815DBE0085437D /* CommentStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentStarView.m; sourceTree = "<group>"; };
 		D2152F6021815DBE0085437D /* CommentStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentStarView.h; sourceTree = "<group>"; };
+		D215DC0025BE978F002DAA27 /* ModelComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelComment.h; sourceTree = "<group>"; };
+		D215DC0125BE978F002DAA27 /* ModelComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelComment.m; sourceTree = "<group>"; };
 		D2164ECD1F05CFC1005120C3 /* UIButton+Creat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Creat.h"; sourceTree = "<group>"; };
 		D2164ECE1F05CFC1005120C3 /* UIButton+Creat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Creat.m"; sourceTree = "<group>"; };
 		D2164ECF1F05CFC1005120C3 /* UIButton+countDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
@@ -2443,6 +2446,8 @@
 		D2B5F3FA2197F9D20057E525 /* 订单 */ = {
 			isa = PBXGroup;
 			children = (
+				D215DC0025BE978F002DAA27 /* ModelComment.h */,
+				D215DC0125BE978F002DAA27 /* ModelComment.m */,
 				D23B6EFE25BA77E20044E28C /* ModelAutOrderListItem.h */,
 				D23B6EFD25BA77E20044E28C /* ModelAutOrderListItem.m */,
 				D2C55811238CC9D40050694F /* ModelValidCar.h */,
@@ -3594,6 +3599,7 @@
 				D20E8603258845FB00C9EE4C /* AuthOneVC.m in Sources */,
 				D2B6B9CE1E961456005F00C6 /* ImagePickerCollectionCell.m in Sources */,
 				D23458401FD4E5E100F72EF5 /* UIImageView+Category.m in Sources */,
+				D215DC0225BE978F002DAA27 /* ModelComment.m in Sources */,
 				D2745FAA2087442900A0AD05 /* NoticeSectionView.m in Sources */,
 				D2D089111E0E22D900BE1E4C /* PlaceHolderTextView.m in Sources */,
 				D2BC9A901DFFA7C400B0468E /* CustomTabBarController.m in Sources */,

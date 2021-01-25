@@ -9,14 +9,14 @@
 #import "AutoConfigRobView.h"
 #import "UITextField+Text.h"
 
-@interface AutoConfigRobView ()<UITextFieldDelegate>
+@interface AutoConfigOfferPriceView ()<UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *tfWeight;
 @property (nonatomic, strong) UITextField *tfPrice;
 @property (nonatomic, strong) UIView *viewWhitBG;
 
 @end
 
-@implementation AutoConfigRobView
+@implementation AutoConfigOfferPriceView
 - (UITextField *)tfWeight{
     if (_tfWeight == nil) {
         _tfWeight = [UITextField new];
@@ -46,7 +46,11 @@
     return _tfPrice;
 }
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model{
+- (void)resetViewWithModel:(ModelAutOrderListItem *)model{
+    self.model = model;
+    if (model.loadQty) {
+        self.tfWeight.text = NSNumber.dou([model exchangeQtyShow:model.loadQty]).stringValue;
+    }
     [self removeAllSubViews];//移除线
     //重置视图坐标
     {
@@ -75,28 +79,31 @@
     NSArray * aryBtn = @[^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"运输路线：";
-        m.subTitle = @"潍坊市青州市 至 青岛市黄岛市";
+        NSString * strFrom = [NSString stringWithFormat:@"%@%@",UnPackStr(model.startCityName),UnPackStr(model.startCountyName)];
+        NSString * strTo = [NSString stringWithFormat:@"%@%@",UnPackStr(model.endCityName),UnPackStr(model.endCountyName)];
+
+        m.subTitle = [NSString stringWithFormat:@"%@ 至 %@",strFrom,strTo];
         m.colorSelect = nil;
         m.left = W(72);
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"车牌号码：";
-        m.subTitle = @"鲁VGX823";
+        m.subTitle = self.modelCarInfo.plateNumber;
         m.colorSelect = nil;
         m.left = W(107);
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"剩余量：";
-        m.subTitle = @"1800吨";
+        m.subTitle = [NSString stringWithFormat:@"剩%@%@",NSNumber.dou(model.remainShow).stringValue,model.unitShow];
         m.colorSelect = COLOR_RED;
         m.left = W(142);
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"运输量：";
-        m.subTitle = @"吨";
+        m.subTitle = model.unitShow;
         m.colorSelect = nil;
         m.left = W(177);
         return m;
@@ -245,13 +252,14 @@
 @end
 
 
-@interface AutoConfigOfferPriceView ()<UITextFieldDelegate>
+@interface AutoConfigRobView ()<UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *tfWeight;
 @property (nonatomic, strong) UIView *viewWhitBG;
+@property (nonatomic, strong) UILabel *labelPriceAll;
 
 @end
 
-@implementation AutoConfigOfferPriceView
+@implementation AutoConfigRobView
 - (UITextField *)tfWeight{
     if (_tfWeight == nil) {
         _tfWeight = [UITextField new];
@@ -262,13 +270,29 @@
         _tfWeight.backgroundColor = [UIColor clearColor];
         _tfWeight.delegate = self;
         _tfWeight.contentType = ENUM_TEXT_CONTENT_TYPE_PRICE;
+        [_tfWeight addTarget:self action:@selector(priceChange) forControlEvents:UIControlEventEditingChanged];
 //        _tfWeight.placeholder = @"";
     }
     return _tfWeight;
 }
+- (UILabel *)labelPriceAll{
+    if (!_labelPriceAll) {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        l.textColor = COLOR_RED;
+        l.backgroundColor = [UIColor clearColor];
+        _labelPriceAll = l;
+        
+    }
+    return _labelPriceAll;
+}
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model{
+- (void)resetViewWithModel:(ModelAutOrderListItem *)model{
+    self.model = model;
+    if (model.loadQty) {
+        self.tfWeight.text = NSNumber.dou([model exchangeQtyShow:model.loadQty]).stringValue;
+    }
     [self removeAllSubViews];//移除线
     //重置视图坐标
     {
@@ -297,39 +321,43 @@
     NSArray * aryBtn = @[^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"运输路线：";
-        m.subTitle = @"潍坊市青州市 至 青岛市黄岛市";
+        NSString * strFrom = [NSString stringWithFormat:@"%@%@",UnPackStr(model.startCityName),UnPackStr(model.startCountyName)];
+        NSString * strTo = [NSString stringWithFormat:@"%@%@",UnPackStr(model.endCityName),UnPackStr(model.endCountyName)];
+
+        m.subTitle = [NSString stringWithFormat:@"%@ 至 %@",strFrom,strTo];
         m.colorSelect = nil;
         m.left = W(72);
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"车牌号码：";
-        m.subTitle = @"鲁VGX823";
+        m.subTitle = self.modelCarInfo.plateNumber;
         m.colorSelect = nil;
         m.left = W(107);
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"剩余量：";
-        m.subTitle = @"1800吨";
+        m.subTitle = [NSString stringWithFormat:@"剩%@%@",NSNumber.dou(model.remainShow).stringValue,model.unitShow];
         m.colorSelect = COLOR_RED;
         m.left = W(142);
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"运输量：";
-        m.subTitle = @"吨";
+        m.subTitle = model.unitShow;
         m.colorSelect = nil;
         m.left = W(177);
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"合计运费：";
-        m.subTitle = @"2100.00元";
+        m.subTitle = nil;
         m.colorSelect = COLOR_RED;
         m.left = W(212);
         return m;
     }()];
+    
     [self addLabelAry:aryBtn superView:viewWhiteBG];
     {
         UIView * viewBorder = [viewWhiteBG generateBorder:CGRectMake(W(248), W(168), W(88), W(33))];
@@ -339,7 +367,10 @@
         [self.tfWeight removeFromSuperview];
         [viewWhiteBG addSubview:self.tfWeight];
     }
-    
+    {
+        [viewWhiteBG addSubview:self.labelPriceAll];
+        [self priceChange];
+    }
     {
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.widthHeight = XY(W(157), W(39));
@@ -440,7 +471,14 @@
 - (void)weightClick{
     [self.tfWeight becomeFirstResponder];
 }
-
+- (void)priceChange{
+    double price = 0;
+    if (self.tfWeight.text.doubleValue) {
+        price = self.model.unitPrice/100.0 * self.tfWeight.text.doubleValue;
+    }
+    [self.labelPriceAll fitTitle:[NSString stringWithFormat:@"%@元",NSNumber.dou(price).stringValue] variable:0];
+    self.labelPriceAll.rightTop = XY(SCREEN_WIDTH - W(20),W(212));
+}
 
 - (void)endClick{
     [GlobalMethod endEditing];
