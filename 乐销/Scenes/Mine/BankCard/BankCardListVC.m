@@ -12,7 +12,8 @@
 //add card
 #import "AddCardVC.h"
 //request
-#import "RequestApi+Dictionary.h"
+//request
+#import "RequestDriver2.h"
 
 @interface BankCardListVC ()
 
@@ -47,6 +48,7 @@
     }else{
         [self requestList];
     }
+    [self addRefreshHeader];
 }
 
 #pragma mark 添加导航栏
@@ -105,7 +107,7 @@
 
 #pragma mark request
 - (void)requestList{
-    [RequestApi requestBankCardWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestCardListWithPage:1 count:20 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelBank * mb = [ModelBank modelObjectWithDictionary:response];
         if (mb.iDProperty) {
             self.modelBank = mb;
@@ -115,21 +117,25 @@
             [self.aryDatas removeAllObjects];
         }
         [self.tableView reloadData];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    } ];
+
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+ 
     
 }
 
 - (void)requestDelete{
-    [RequestApi requestDeleteBankCardWithId:self.modelBank.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestDeleteCardWithAccountnumber:self.modelBank.bankNumber delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.modelBank = nil;
         [self.aryDatas removeAllObjects];
         [self.tableView reloadData];
         [self showNoResult];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+   
    
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{

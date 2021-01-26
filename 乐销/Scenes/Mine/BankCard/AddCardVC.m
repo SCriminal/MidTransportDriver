@@ -21,6 +21,8 @@
 #import "BaseNavView+Logical.h"
 //request
 #import "RequestApi+Dictionary.h"
+//request
+#import "RequestDriver2.h"
 //bank card list
 #import "BankCardListVC.h"
 //ListAlertView
@@ -255,14 +257,15 @@
     }
    
     if (self.model.iDProperty) {
-        [RequestApi requestEditBankCardWithAccountnumber:self.modelBankAccount.subString bankName:self.modelBankName.subString   id:self.model.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [RequestApi requestEditCardWithAccountnumber:self.modelBankAccount.subString bankId:self.model.iDProperty accountName:self.modelBankName.subString delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             self.requestState = 1;
             [GB_Nav popViewControllerAnimated:true];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
+      
     }else{
-        [RequestApi requestAddBankCardWithAccountNumber:self.modelBankAccount.subString bankName:self.modelBankName.subString delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [RequestApi requestAddCardWithAccountnumber:self.modelBankAccount.subString bankId:self.modelBankName.identifier.doubleValue accountName:self.modelBankName.subString delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             self.requestState = 1;
             if ([GB_Nav hasClass:@"BankCardListVC"]) {
                 [GB_Nav popToClass:@"BankCardListVC"];
@@ -270,23 +273,24 @@
                 BankCardListVC * vc = [BankCardListVC new];
                 [GB_Nav popLastAndPushVC:vc];
             }
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
-        }];
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                    
+                }];
+       
     }
 }
 
 #pragma mark request
 - (void)requestData{
-    [RequestApi requestUserInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        ModelBaseInfo * modelBase = [ModelBaseInfo modelObjectWithDictionary:response];
-        self.modelIdNum.subString = modelBase.idNumber;
-        self.modelName.subString = modelBase.realName;
+    [RequestApi requestDriverAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        ModelAuthDriver * model = [ModelAuthDriver modelObjectWithDictionary:response];
+        self.modelIdNum.subString = model.idNumber;
+        self.modelName.subString = model.name;
         [self.tableView reloadData];
-        
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+   
 }
 
 - (void)requestBank{

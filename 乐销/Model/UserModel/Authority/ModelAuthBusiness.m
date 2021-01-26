@@ -8,10 +8,10 @@
 #import "ModelAuthBusiness.h"
 
 
-NSString *const kModelAuthBusinessQualificationUrl = @"qualificationUrl";
-NSString *const kModelAuthBusinessQualificationNumber = @"qualificationNumber";
+NSString *const kModelAuthBusinessQualificationUrl = @"qcUrl";
+NSString *const kModelAuthBusinessQualificationNumber = @"qcNumber";
 NSString *const kModelAuthBusinessQcEndDate = @"qcEndDate";
-NSString *const kModelAuthBusinessRoadUrl = @"roadUrl";
+NSString *const kModelAuthBusinessRoadUrl = @"rtpUrl";
 NSString *const kModelAuthBusinessReviewTime = @"reviewTime";
 NSString *const kModelAuthBusinessRtpEndDate = @"rtpEndDate";
 NSString *const kModelAuthBusinessReviewerName = @"reviewerName";
@@ -20,7 +20,7 @@ NSString *const kModelAuthBusinessReviewerId = @"reviewerId";
 NSString *const kModelAuthBusinessSubmitterName = @"submitterName";
 NSString *const kModelAuthBusinessSubmitTime = @"submitTime";
 NSString *const kModelAuthBusinessSubmitterId = @"submitterId";
-NSString *const kModelAuthBusinessRoadNumber = @"roadNumber";
+NSString *const kModelAuthBusinessRoadNumber = @"rtpNumber";
 NSString *const kModelAuthBusinessReviewStatus = @"reviewStatus";
 
 

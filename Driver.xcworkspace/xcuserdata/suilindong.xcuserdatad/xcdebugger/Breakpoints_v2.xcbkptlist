@@ -2163,43 +2163,9 @@
             timestampString = "598872924.047834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295"
-            landmarkName = "-requestBank"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FE97A322-5495-4A86-A8E6-4ECB3CF342E7"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/Mine/BankCard/AddCardVC.m"
-            timestampString = "598872924.050195"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
-            landmarkName = "-completeClick"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "564711B2-56CD-4B60-954B-FE2BA9CA71A3"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/Mine/BankCard/AddCardVC.m"
-            timestampString = "598872924.050509"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
-            landmarkName = "-completeClick"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "-requestData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

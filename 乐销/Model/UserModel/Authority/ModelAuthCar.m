@@ -10,7 +10,7 @@
 
 NSString *const kModelAuthCarPlateNumber = @"plateNumber";
 NSString *const kModelAuthCarUseCharacter = @"useCharacter";
-NSString *const kModelAuthCarDriving2Url = @"driving2Url";
+NSString *const kModelAuthCarDriving2Url = @"driving3Url";
 NSString *const kModelAuthCarReviewerName = @"reviewerName";
 NSString *const kModelAuthCarReviewNumber = @"reviewNumber";
 NSString *const kModelAuthCarPlateColor = @"plateColor";
@@ -20,7 +20,7 @@ NSString *const kModelAuthCarSubmitName = @"submitName";
 NSString *const kModelAuthCarDescription = @"description";
 NSString *const kModelAuthCarVehicleLength = @"vehicleLength";
 NSString *const kModelAuthCarVehicleId = @"vehicleId";
-NSString *const kModelAuthCarDriving3Url = @"driving3Url";
+NSString *const kModelAuthCarDriving3Url = @"driving4Url";
 NSString *const kModelAuthCarRtpNumber = @"rtpNumber";
 NSString *const kModelAuthCarDrivingRegisterDate = @"drivingRegisterDate";
 NSString *const kModelAuthCarEnergyType = @"energyType";
@@ -38,7 +38,7 @@ NSString *const kModelAuthCarGrossMass = @"grossMass";
 NSString *const kModelAuthCarVin = @"vin";
 NSString *const kModelAuthCarReviewTime = @"reviewTime";
 NSString *const kModelAuthCarOwner = @"owner";
-NSString *const kModelAuthCarDriving1Url = @"driving1Url";
+NSString *const kModelAuthCarDriving1Url = @"driving2Url";
 NSString *const kModelAuthCarIs4500kg = @"is4500kg";
 NSString *const kModelAuthCarUnladenMass = @"unladenMass";
 NSString *const kModelAuthCarReviewStatus = @"reviewStatus";

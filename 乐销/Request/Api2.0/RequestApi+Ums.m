@@ -156,9 +156,9 @@
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"driver":RequestStrKey(driverJson),
-                           @"service":RequestStrKey(serviceJson),
+                           @"biz":RequestStrKey(serviceJson),
                            @"vehicle":RequestStrKey(vehicleJson)};
-        [self postUrl:@"/ums/all" delegate:delegate parameters:dic success:success failure:failure];
+        [self postUrl:@"/ums/status/2/all" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
 提交司机信息[^/ums/driver$]
@@ -186,23 +186,23 @@
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"idEmblemUrl":RequestStrKey(idEmblemUrl),
                            @"idFaceUrl":RequestStrKey(idFaceUrl),
-                           @"driverUrl":RequestStrKey(driverUrl),
-                           @"vehicleUrl":RequestStrKey(vehicleUrl),
-                           @"name":RequestStrKey(name),
+                           @"dlUrl":RequestStrKey(driverUrl),
+                           @"vehiclePersonUrl":RequestStrKey(vehicleUrl),
+                           @"realName":RequestStrKey(name),
                            @"idNumber":RequestStrKey(idNumber),
                            @"idBirthday":RequestStrKey(idBirthday),
                            @"idGender":RequestStrKey(idGender),
                            @"idNation":RequestStrKey(idNation),
                            @"idOrg":RequestStrKey(idOrg),
                            @"idAddr":RequestStrKey(idAddr),
-                           @"driverNationality":RequestStrKey(driverNationality),
-                           @"driverGender":RequestStrKey(driverGender),
-                           @"driverBirthday":RequestStrKey(driverBirthday),
-                           @"driverClass":RequestStrKey(driverClass),
-                           @"driverArchivesNumber":RequestStrKey(driverArchivesNumber),
-                           @"driverFirstIssueDate":RequestStrKey(driverFirstIssueDate)};
+                           @"dlNationality":RequestStrKey(driverNationality),
+                           @"dlGender":RequestStrKey(driverGender),
+                           @"dlBirthday":RequestStrKey(driverBirthday),
+                           @"dlClass":RequestStrKey(driverClass),
+                           @"dlArchivesNumber":RequestStrKey(driverArchivesNumber),
+                           @"dlFirstIssueDate":RequestStrKey(driverFirstIssueDate)};
     if (isRequest) {
-        [self postUrl:@"/ums/driver" delegate:delegate parameters:dic success:success failure:failure];
+        [self postUrl:@"/ums/driver/status/2/driver" delegate:delegate parameters:dic success:success failure:failure];
     }
     return dic;
 }
@@ -244,9 +244,9 @@
                            @"vehicleLength":NSNumber.lon(vehicleLength),
                            @"vehicleWidth":NSNumber.lon(vehicleWidth),
                            @"vehicleHeight":NSNumber.lon(vehicleHeight),
-                           @"driving1Url":RequestStrKey(driving1Url),
-                           @"driving2Url":RequestStrKey(driving2Url),
-                           @"driving3Url":RequestStrKey(driving3Url),
+                           @"driving2Url":RequestStrKey(driving1Url),
+                           @"driving3Url":RequestStrKey(driving2Url),
+                           @"driving4Url":RequestStrKey(driving3Url),
                            @"plateColor":NSNumber.dou(plateColor),
                            @"energyType":NSNumber.dou(energyType),
                            @"tractionMass":NSNumber.dou(tractionMass),
@@ -260,7 +260,7 @@
                            @"model":RequestStrKey(model),
                            @"rtbpNumber":RequestStrKey(rtbpNumber)};
     if (isRequest) {
-        [self postUrl:@"/ums/vehicle" delegate:delegate parameters:dic success:success failure:failure];
+        [self postUrl:@"/ums/vehicle/status/2/driver" delegate:delegate parameters:dic success:success failure:failure];
     }
     return dic;
 }
@@ -288,10 +288,10 @@
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"qualificationUrl":RequestStrKey(qualificationUrl),
-                           @"roadUrl":RequestStrKey(roadUrl),
-                           @"qualificationNumber":RequestStrKey(qualificationNumber),
-                           @"roadNumber":RequestStrKey(roadNumber),
+        NSDictionary *dic = @{@"qcUrl":RequestStrKey(qualificationUrl),
+                           @"rtpUrl":RequestStrKey(roadUrl),
+                           @"qcNumber":RequestStrKey(qualificationNumber),
+                           @"rtpNumber":RequestStrKey(roadNumber),
                            @"qcAddr":RequestStrKey(qcAddr),
                            @"qcIssueDate":RequestStrKey(qcIssueDate),
                            @"qcAgency":RequestStrKey(qcAgency),
@@ -318,7 +318,7 @@
                                    success:(void (^)(NSDictionary * response, id mark))success
                                    failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/driver" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/driver/driver" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  车辆认证详情（用户）
@@ -327,7 +327,7 @@
                                 success:(void (^)(NSDictionary * response, id mark))success
                                 failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/vehicle" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/vehicle/driver" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  检查车辆认证详情（用户）
@@ -350,7 +350,7 @@ delegate:(id <RequestDelegate>)delegate
                                    success:(void (^)(NSDictionary * response, id mark))success
                                    failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/service" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/biz/driver" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  用户认证详情（用户）[^/ums/user$]
@@ -359,7 +359,7 @@ delegate:(id <RequestDelegate>)delegate
                                   success:(void (^)(NSDictionary * response, id mark))success
                                   failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/review/user" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/personreview" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 /**
@@ -525,7 +525,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"contactPhone":RequestStrKey(contactPhone),
                           @"contacter":RequestStrKey(contacter),
                           @"isDefault":RequestStrKey(isDefault)};
-    [self postUrl:@"/ums/address" delegate:delegate parameters:dic success:success failure:failure];
+    [self postUrl:@"/ums/address/drvier" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  编辑
@@ -549,7 +549,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"contacter":RequestStrKey(contacter),
                           @"isDefault":RequestStrKey(isDefault),
                           @"id":RequestStrKey(id)};
-    [self putUrl:@"/ums/address/{id}" delegate:delegate parameters:dic success:success failure:failure];
+    [self putUrl:@"/ums/address/drvier/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  删除
@@ -559,7 +559,7 @@ delegate:(id <RequestDelegate>)delegate
 success:(void (^)(NSDictionary * response, id mark))success
 failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"id":RequestStrKey(id)};
-    [self deleteUrl:@"/ums/address/{id}" delegate:delegate parameters:dic success:success failure:failure];
+    [self deleteUrl:@"/ums/address/drvier/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  列表
@@ -568,7 +568,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                               success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/address/list/total" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/address/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 /**

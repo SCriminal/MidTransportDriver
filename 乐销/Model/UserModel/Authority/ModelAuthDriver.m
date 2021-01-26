@@ -13,12 +13,12 @@ NSString *const kModelAuthDriverIdNumber = @"idNumber";
 NSString *const kModelAuthDriverSubmitTime = @"submitTime";
 NSString *const kModelAuthDriverReviewTime = @"reviewTime";
 NSString *const kModelAuthDriverSubmitterId = @"submitterId";
-NSString *const kModelAuthDriverVehicleUrl = @"vehicleUrl";
+NSString *const kModelAuthDriverVehicleUrl = @"vehiclePersonUrl";
 NSString *const kModelAuthDriverReviewStatus = @"reviewStatus";
-NSString *const kModelAuthDriverDriverUrl = @"driverUrl";
+NSString *const kModelAuthDriverDriverUrl = @"dlUrl";
 NSString *const kModelAuthDriverIdEmblemUrl = @"idEmblemUrl";
 NSString *const kModelAuthDriverReviewerId = @"reviewerId";
-NSString *const kModelAuthDriverName = @"name";
+NSString *const kModelAuthDriverName = @"realName";
 
 
 @interface ModelAuthDriver ()
