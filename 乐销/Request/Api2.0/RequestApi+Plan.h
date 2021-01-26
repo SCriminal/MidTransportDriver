@@ -67,7 +67,16 @@ NS_ASSUME_NONNULL_BEGIN
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                            failure:(void (^)(NSString * errorStr, id mark))failure;
-
+/**
+我的报价列表
+*/
++(void)requestMyScheduleOrderListWithPage:(double)page
+                count:(double)count
+                                   number:(NSString *)number
+                             matchStatues:(NSString *)matchStatues
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                  failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
 扫码(抢单)
 */

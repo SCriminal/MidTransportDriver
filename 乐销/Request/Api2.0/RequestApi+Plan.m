@@ -119,6 +119,24 @@
 }
 
 /**
+我的报价列表
+*/
++(void)requestMyScheduleOrderListWithPage:(double)page
+                count:(double)count
+                                   number:(NSString *)number
+                             matchStatues:(NSString *)matchStatues
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"page":NSNumber.dou(page),
+                           @"count":NSNumber.dou(count),
+                           @"number":RequestStrKey(number),
+                              @"matchStatues":RequestStrKey(matchStatues),
+
+        };
+        [self getUrl:@"/plan/plan/match/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
 扫码(抢单)
 */
 +(void)requestPlanRobWithPlannumber:(NSString *)planNumber

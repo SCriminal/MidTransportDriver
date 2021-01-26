@@ -39,7 +39,7 @@
 @property (nonatomic, assign) double unitPrice;
 @property (nonatomic, assign) double createTime;
 @property (nonatomic, assign) double startTime;
-@property (nonatomic, assign) double mode;
+@property (nonatomic, assign) double mode;//1抢单 2报价
 @property (nonatomic, strong) NSString *internalBaseClassDescription;
 @property (nonatomic, assign) double lengthMax;
 @property (nonatomic, assign) double lengthMin;

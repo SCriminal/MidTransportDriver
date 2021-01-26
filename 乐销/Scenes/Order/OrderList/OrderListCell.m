@@ -139,13 +139,13 @@
         return m;
     }()] top:top];
     
-    self.btnView.hidden = true;
-    if (self.btnView) {
-        self.btnView.hidden = false;
-        [self.btnView resetViewWithModel:self.model];
-        self.btnView.top = top + W(20);
+   
+    [self.btnView resetViewWithModel:self.model];
+    self.btnView.top = top + W(20);
+    if (self.btnView.height>1) {
         top = self.btnView.bottom;
     }
+
     self.viewBG.height = top + W(20);
     //设置总高度
     self.height = self.viewBG.bottom + W(12);

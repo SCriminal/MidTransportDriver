@@ -95,6 +95,7 @@
 -  (void)requestCarInfo{
     [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelAuthCar * model = [ModelAuthCar modelObjectWithDictionary:response];
+        self.modelCarInfo = model;
         if (!model.vehicleId) {
             ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
             ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"立即提交" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
@@ -141,7 +142,7 @@
    
 }
 - (void)requestRobe:(double)price weight:(double)weight{
-    [RequestApi requestRobWithPlannumber:self.modelList.planNumber vehicleId:self.modelCarInfo.vehicleId qty:[self.modelList exchangeRequestQty:weight] price:price delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestRobWithPlannumber:self.modelList.planNumber vehicleId:self.modelCarInfo.vehicleId qty:[self.modelList exchangeRequestQty:weight] price:price*100.0 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"抢单成功"];
         [GB_Nav popViewControllerAnimated:true];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -282,13 +283,16 @@
         model.isSelected = false;
         return model;
     }()];
-    [ary addObject:^(){
-        ModelBtn * model = [ModelBtn new];
-        model.title = @"单价：";
-        model.subTitle = [NSString stringWithFormat:@"%@元/%@",NSNumber.dou(modelPlan.priceShow).stringValue,modelPlan.unitShow];
-        model.isSelected = true;
-        return model;
-    }()];
+    if (modelPlan.mode == 1) {
+        [ary addObject:^(){
+            ModelBtn * model = [ModelBtn new];
+            model.title = @"单价：";
+            model.subTitle = [NSString stringWithFormat:@"%@元/%@",NSNumber.dou(modelPlan.priceShow).stringValue,modelPlan.unitShow];
+            model.isSelected = true;
+            return model;
+        }()];
+    }
+    
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"距离：";

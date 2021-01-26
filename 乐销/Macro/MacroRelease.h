@@ -25,7 +25,7 @@
 #define TRANSPORT_AGENCY_ENV  @"release"//@"release"
 
 #else
-#define URL_HEAD  @"https://api.zhongcheyun.cn"//外网
+#define URL_HEAD  @"https://api.zhongcheyun.wcn"//外网
 #define URL_IMAGE @"https://img.zhongcheyun.cn"//阿里云
 #define URL_SHARE @"https://www.zhongcheyun.cn"//
 #define TRANSPORT_AGENCY_ENV  @"release"//@"release"  debug

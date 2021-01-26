@@ -151,10 +151,9 @@ NSString *const kModelAutOrderListItemLoadQty = @"loadQty";
         
         //logical
         self.qtyShow = self.qty;
-        self.remainShow = self.storageQty;
         self.priceShow = self.unitPrice/100.0;
         self.qtyShow = [self exchangeQtyShow:self.qty];
-        self.remainShow = [self exchangeRequestQty:self.storageQty];
+        self.remainShow = [self exchangeQtyShow:self.storageQty];
 
         switch ((int)self.priceUnit) {
             case 1:
