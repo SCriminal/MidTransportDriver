@@ -64,7 +64,7 @@
                            @"lng":RequestStrKey(lng),
                               @"vehicleTypeCode":RequestStrKey(vehicleTypeCode),
                            @"sort":NSNumber.dou(sort)};
-        [self getUrl:@"/plan/plan/driver/list/total" delegate:delegate parameters:dic success:success failure:failure];
+        [self getUrl:@"/plan/plan/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 /**
@@ -93,7 +93,7 @@
                               @"orderStatues":RequestStrKey(orderStatues),
 
         };
-        [self getUrl:@"/loms/order/driver/list/total" delegate:delegate parameters:dic success:success failure:failure];
+        [self getUrl:@"/loms/order/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 /**
@@ -136,22 +136,7 @@
         };
         [self getUrl:@"/plan/plan/match/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
 }
-/**
-扫码(抢单)
-*/
-+(void)requestPlanRobWithPlannumber:(NSString *)planNumber
-                vehicleId:(double)vehicleId
-                qty:(double)qty
-                price:(double)price
-                delegate:(id <RequestDelegate>)delegate
-                success:(void (^)(NSDictionary * response, id mark))success
-                failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"planNumber":RequestStrKey(planNumber),
-                           @"vehicleId":NSNumber.dou(vehicleId),
-                           @"qty":NSNumber.dou(qty),
-                           @"price":NSNumber.dou(price)};
-        [self postUrl:@"/zhongcheyun/plan/match/1" delegate:delegate parameters:dic success:success failure:failure];
-}
+
 
 /**
 扫码(报价)
@@ -167,7 +152,7 @@
                            @"vehicleId":NSNumber.dou(vehicleId),
                            @"qty":NSNumber.dou(qty),
                            @"price":NSNumber.dou(price)};
-        [self postUrl:@"/zhongcheyun/plan/match/2" delegate:delegate parameters:dic success:success failure:failure];
+        [self postUrl:@"/zhongcheyun/plan/match/mode/2" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
 抢单(报价)
@@ -183,7 +168,7 @@
                            @"vehicleId":NSNumber.dou(vehicleId),
                            @"qty":NSNumber.dou(qty),
                            @"price":NSNumber.dou(price)};
-        [self postUrl:@"/zhongcheyun/plan/match/1" delegate:delegate parameters:dic success:success failure:failure];
+        [self postUrl:@"/zhongcheyun/plan/match/mode/1" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 
@@ -195,7 +180,7 @@
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"number":RequestStrKey(number)};
-        [self putUrl:@"/loms/order/2/{number}" delegate:delegate parameters:dic success:success failure:failure];
+        [self putUrl:@"/loms/order/status/2/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
 2.0到达确认
@@ -217,7 +202,7 @@
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"urls":RequestStrKey(urls),
                            @"number":RequestStrKey(number)};
-        [self putUrl:@"/loms/order/3/{number}" delegate:delegate parameters:dic success:success failure:failure];
+        [self putUrl:@"/loms/order/status/3/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
 2.0卸车
@@ -228,8 +213,8 @@
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"urls":RequestStrKey(urls),
-                           @"orderNumber":RequestStrKey(orderNumber)};
-        [self putUrl:@"/zhongcheyun/loms/order/4" delegate:delegate parameters:dic success:success failure:failure];
+                           @"number":RequestStrKey(orderNumber)};
+        [self putUrl:@"/zhongcheyun/loms/order/status/4" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 /**
