@@ -1,18 +1,18 @@
 
 //
-//  MyPirceOrderListManagementVC.m
+//  MyPriceOrderListManagementVC.m
 //  Driver
 //
 //  Created by 隋林栋 on 2020/12/18.
 //Copyright © 2020 ping. All rights reserved.
 //
 
-#import "MyPirceOrderListManagementVC.h"
+#import "MyPriceOrderListManagementVC.h"
 //滑动view
 #import "SliderView.h"
 //list vc
-#import "MyPirceOrderListVC.h"
-@interface MyPirceOrderListManagementVC ()<SliderViewDelegate,UIScrollViewDelegate>
+#import "MyPriceOrderListVC.h"
+@interface MyPriceOrderListManagementVC ()<SliderViewDelegate,UIScrollViewDelegate>
 @property (nonatomic, strong) NSArray *arySliderDatas;
 @property (nonatomic, strong) BaseNavView *nav;
 @property (strong, nonatomic) SliderView *sliderView;
@@ -20,11 +20,11 @@
 
 @end
 
-@implementation MyPirceOrderListManagementVC
+@implementation MyPriceOrderListManagementVC
 #pragma mark lazy init
 - (UIScrollView *)scAll{
     if (_scAll == nil) {
-        _scAll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, self.sliderView.bottom +1, SCREEN_WIDTH, SCREEN_HEIGHT - self.sliderView.height-NAVIGATIONBAR_HEIGHT-TABBAR_HEIGHT)];
+        _scAll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, self.sliderView.bottom +1, SCREEN_WIDTH, SCREEN_HEIGHT - self.sliderView.height-NAVIGATIONBAR_HEIGHT)];
         _scAll.contentSize = CGSizeMake(SCREEN_WIDTH * self.arySliderDatas.count, 0);
         _scAll.backgroundColor = [UIColor clearColor];
         _scAll.delegate = self;
@@ -72,7 +72,7 @@
     WEAKSELF
     for (int i = 0; i <self.arySliderDatas.count; i++) {
         ModelBtn * model = self.arySliderDatas[i];
-        MyPirceOrderListVC *sourceVC = [[MyPirceOrderListVC alloc] init];
+        MyPriceOrderListVC *sourceVC = [[MyPriceOrderListVC alloc] init];
         sourceVC.status = model.tag;
         sourceVC.refreshAll = ^{
             for (BaseTableVC * tabVC in weakSelf.childViewControllers) {

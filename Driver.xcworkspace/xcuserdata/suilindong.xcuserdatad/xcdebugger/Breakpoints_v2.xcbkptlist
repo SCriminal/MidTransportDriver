@@ -3985,7 +3985,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "344"
             endingLineNumber = "344"
-            landmarkName = "-timerStart"
+            landmarkName = "-timerRun"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4001,7 +4001,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "340"
             endingLineNumber = "340"
-            landmarkName = "-viewWillDisappear:"
+            landmarkName = "-timerStart"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4017,8 +4017,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "331"
             endingLineNumber = "331"
-            landmarkName = "AutoConfigOrderListVC"
-            landmarkType = "3">
+            landmarkName = "-viewDidAppear:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4033,7 +4033,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "335"
             endingLineNumber = "335"
-            landmarkName = "-viewDidAppear:"
+            landmarkName = "-viewWillDisappear:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4049,7 +4049,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "339"
             endingLineNumber = "339"
-            landmarkName = "-viewWillDisappear:"
+            landmarkName = "-timerStart"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5617,7 +5617,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "346"
             endingLineNumber = "346"
-            landmarkName = "-timerStart"
+            landmarkName = "-timerRun"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5778,6 +5778,38 @@
             startingLineNumber = "30"
             endingLineNumber = "30"
             landmarkName = "+getInstalledMapAppWithEndLocation:currentLocation:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2B2FCC5B-BE19-47C1-B096-F567BD57255A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/&#x6211;&#x7684;&#x62a5;&#x4ef7;/MyPriceOrderListVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "-resetCellWithModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F0096A4E-F89C-4738-AE3C-E97780405B76"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/&#x6211;&#x7684;&#x62a5;&#x4ef7;/MyPriceOrderListVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-resetCellWithModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

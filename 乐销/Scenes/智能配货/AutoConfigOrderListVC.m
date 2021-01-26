@@ -155,7 +155,7 @@
         [GB_Nav pushVCName:@"MyMsgManagementVC" animated:true];
 
     } rightTitle:@"我的报价" righBlock:^{
-        [GB_Nav pushVCName:@"MyPirceOrderListManagementVC" animated:true];
+        [GB_Nav pushVCName:@"MyPriceOrderListManagementVC" animated:true];
     }];
     [nav configBlueStyle];
     [self.view addSubview:nav];
@@ -363,7 +363,7 @@
         [GB_Nav pushVCName:@"MyMsgManagementVC" animated:true];
 
     } rightTitle:@"我的报价" righBlock:^{
-        [GB_Nav pushVCName:@"MyPirceOrderListManagementVC" animated:true];
+        [GB_Nav pushVCName:@"MyPriceOrderListManagementVC" animated:true];
     }];
     [nav configBlueStyle];
     [self.view addSubview:nav];

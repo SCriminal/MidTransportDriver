@@ -1,5 +1,5 @@
 //
-//  MyPirceOrderListManagementVC.h
+//  MyPriceOrderListManagementVC.h
 //  Driver
 //
 //  Created by 隋林栋 on 2021/1/26.
@@ -8,6 +8,6 @@
 
 #import "BaseTableVC.h"
 
-@interface MyPirceOrderListManagementVC : BaseVC
+@interface MyPriceOrderListManagementVC : BaseVC
 
 @end

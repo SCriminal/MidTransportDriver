@@ -6,15 +6,15 @@
 //Copyright © 2021 ping. All rights reserved.
 //
 
-#import "MyPirceOrderListVC.h"
+#import "MyPriceOrderListVC.h"
 //request
 #import "RequestDriver2.h"
 
-@interface MyPirceOrderListVC ()
+@interface MyPriceOrderListVC ()
 
 @end
 
-@implementation MyPirceOrderListVC
+@implementation MyPriceOrderListVC
 #pragma mark noresult view
 @synthesize noResultView = _noResultView;
 - (BOOL)isShowNoResult{
@@ -33,7 +33,7 @@
     [super viewDidLoad];
     //添加导航栏
     //table
-  [self.tableView registerClass:[MyPirceOrderListCell class] forCellReuseIdentifier:@"MyPirceOrderListCell"];
+  [self.tableView registerClass:[MyPriceOrderListCell class] forCellReuseIdentifier:@"MyPriceOrderListCell"];
    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
    self.tableView.backgroundColor = [UIColor clearColor];
@@ -52,7 +52,7 @@
 }
 //cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    MyPirceOrderListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MyPirceOrderListCell"];
+    MyPriceOrderListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MyPriceOrderListCell"];
     [cell resetCellWithModel: self.aryDatas[indexPath.row]];
     WEAKSELF
     cell.blockDismiss = ^(ModelAutOrderListItem *model) {
@@ -61,7 +61,7 @@
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [MyPirceOrderListCell fetchHeight:self.aryDatas[indexPath.row]];
+    return [MyPriceOrderListCell fetchHeight:self.aryDatas[indexPath.row]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -71,10 +71,7 @@
 
 #pragma mark request
 - (void)requestList{
-    [RequestApi requestOrderListWithPage:self.pageNum count:20 orderNumber:nil shipperName:nil plateNumber:nil driverName:nil                       startTime:0
-                                 endTime:0
-                            orderStatues:nil
-                                delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestMyScheduleOrderListWithPage:self.pageNum count:20 number:nil matchStatues:self.status?NSNumber.dou(self.status).stringValue:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.pageNum ++;
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelAutOrderListItem"];
         
@@ -86,16 +83,18 @@
         }
         [self.aryDatas addObjectsFromArray:aryRequest];
         [self.tableView reloadData];
+
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
+    
 }
 @end
 
 
 
 
-@implementation MyPirceOrderListCell
+@implementation MyPriceOrderListCell
 #pragma mark 懒加载
 
 - (UIView *)viewBG{
@@ -116,8 +115,7 @@
         [btn setTitleColor:COLOR_666 forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnDismissClick) forControlEvents:UIControlEventTouchUpInside];
         [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
-        return btn;
-        
+        _btnView = btn;
     }
     return _btnView;
 }

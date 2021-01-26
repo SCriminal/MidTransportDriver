@@ -8,13 +8,13 @@
 
 #import "BaseTableVC.h"
 
-@interface MyPirceOrderListVC : BaseTableVC
+@interface MyPriceOrderListVC : BaseTableVC
 @property (nonatomic, assign) double status;
 @property (nonatomic, strong) void (^refreshAll)(void);
 
 @end
 
-@interface MyPirceOrderListCell : UITableViewCell
+@interface MyPriceOrderListCell : UITableViewCell
 @property (strong, nonatomic) UIView *viewBG;
 @property (nonatomic, strong) UIButton *btnView;
 
