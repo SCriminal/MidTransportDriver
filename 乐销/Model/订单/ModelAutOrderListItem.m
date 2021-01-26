@@ -53,7 +53,15 @@ NSString *const kModelAutOrderListItemOrderQty = @"orderQty";
 NSString *const kModelAutOrderListItemMatchQty = @"matchQty";
 NSString *const kModelAutOrderListItemUnitWeight = @"unitWeight";
 NSString *const kModelAutOrderListItemLoadQty = @"loadQty";
-
+NSString *const kModelAutOrderListItemReason = @"reason";
+NSString *const kModelAutOrderListItemMatchStatus = @"matchStatus";
+NSString *const kModelAutOrderListItemCellphone = @"cellphone";
+NSString *const kModelAutOrderListItemMatchNumber = @"matchNumber";
+NSString *const kModelAutOrderListItemPrice = @"price";
+NSString *const kModelAutOrderListItemVehicleId = @"vehicleId";
+NSString *const kModelAutOrderListItemPlateNumber = @"plateNumber";
+NSString *const kModelAutOrderListItemReplyTime = @"replyTime";
+NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
 
 @interface ModelAutOrderListItem ()
 @end
@@ -147,6 +155,15 @@ NSString *const kModelAutOrderListItemLoadQty = @"loadQty";
         self.startPhone = [dict stringValueForKey:kModelAutOrderListItemStartPhone];
         self.orderQty = [dict doubleValueForKey:kModelAutOrderListItemOrderQty];
         self.loadQty = [dict doubleValueForKey:kModelAutOrderListItemLoadQty];
+        self.reason = [dict stringValueForKey:kModelAutOrderListItemReason];
+        self.matchStatus = [dict doubleValueForKey:kModelAutOrderListItemMatchStatus];
+        self.cellphone = [dict stringValueForKey:kModelAutOrderListItemCellphone];
+        self.matchNumber = [dict stringValueForKey:kModelAutOrderListItemMatchNumber];
+        self.price = [dict doubleValueForKey:kModelAutOrderListItemPrice];
+        self.vehicleId = [dict doubleValueForKey:kModelAutOrderListItemVehicleId];
+        self.plateNumber = [dict stringValueForKey:kModelAutOrderListItemPlateNumber];
+        self.replyTime = [dict doubleValueForKey:kModelAutOrderListItemReplyTime];
+        self.matchTime = [dict doubleValueForKey:kModelAutOrderListItemMatchTime];
 
         
         //logical
@@ -191,11 +208,49 @@ NSString *const kModelAutOrderListItemLoadQty = @"loadQty";
             self.carLenthSHow = nil;
         }
         
-       
     }
     
     return self;
     
+}
++ (NSString *)matchStatusExchange:(double)status{
+    switch ((int)status) {//1匹配中/2已同意/11已拒绝/21已过期
+        case 1:
+            return @"匹配中";
+            break;
+        case 2:
+            return @"已确认";
+            break;
+        case 11:
+            return @"已拒绝";
+            break;
+        case 21:
+            return @"已过期";
+            break;
+
+        default:
+            break;
+    }
+    return @"已过期";
+}
++ (UIColor *)matchStatusColorExchange:(double)status{
+    switch ((int)status) {//1匹配中/2已同意/11已拒绝/21已过期
+        case 1:
+            return COLOR_ORANGE;
+            break;
+        case 2:
+            return COLOR_GREEN;
+            break;
+        case 11:
+            return COLOR_RED;
+            break;
+        case 21:
+            return COLOR_RED;
+            break;
+        default:
+            break;
+    }
+    return COLOR_RED;
 }
 - (double)exchangeRequestQty:(double)qty{
     switch ((int)self.priceUnit) {
@@ -297,6 +352,15 @@ NSString *const kModelAutOrderListItemLoadQty = @"loadQty";
     [mutableDict setValue:self.startPhone forKey:kModelAutOrderListItemStartPhone];
     [mutableDict setValue:[NSNumber numberWithDouble:self.orderQty] forKey:kModelAutOrderListItemOrderQty];
     [mutableDict setValue:[NSNumber numberWithDouble:self.loadQty] forKey:kModelAutOrderListItemLoadQty];
+    [mutableDict setValue:self.reason forKey:kModelAutOrderListItemReason];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.matchStatus] forKey:kModelAutOrderListItemMatchStatus];
+    [mutableDict setValue:self.cellphone forKey:kModelAutOrderListItemCellphone];
+    [mutableDict setValue:self.matchNumber forKey:kModelAutOrderListItemMatchNumber];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.price] forKey:kModelAutOrderListItemPrice];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.vehicleId] forKey:kModelAutOrderListItemVehicleId];
+    [mutableDict setValue:self.plateNumber forKey:kModelAutOrderListItemPlateNumber];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.replyTime] forKey:kModelAutOrderListItemReplyTime];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.matchTime] forKey:kModelAutOrderListItemMatchTime];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

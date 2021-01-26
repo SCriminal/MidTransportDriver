@@ -46,6 +46,8 @@
 		D2136CED1E13C142003B4B92 /* NSMutableArray+Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = D2136CEC1E13C142003B4B92 /* NSMutableArray+Insert.m */; };
 		D2152F6121815DBF0085437D /* CommentStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2152F5F21815DBE0085437D /* CommentStarView.m */; };
 		D215DC0225BE978F002DAA27 /* ModelComment.m in Sources */ = {isa = PBXBuildFile; fileRef = D215DC0125BE978F002DAA27 /* ModelComment.m */; };
+		D215DC0625BFB878002DAA27 /* MyPirceOrderListManagementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D215DC0525BFB877002DAA27 /* MyPirceOrderListManagementVC.m */; };
+		D215DC0925BFB890002DAA27 /* MyPirceOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D215DC0825BFB890002DAA27 /* MyPirceOrderListVC.m */; };
 		D2164ED11F05CFC1005120C3 /* UIButton+Creat.m in Sources */ = {isa = PBXBuildFile; fileRef = D2164ECE1F05CFC1005120C3 /* UIButton+Creat.m */; };
 		D2164ED21F05CFC1005120C3 /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = D2164ED01F05CFC1005120C3 /* UIButton+countDown.m */; };
 		D216F5341E56966200E11ED2 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D216F5331E56966200E11ED2 /* NSDictionary+Category.m */; };
@@ -501,6 +503,10 @@
 		D2152F6021815DBE0085437D /* CommentStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentStarView.h; sourceTree = "<group>"; };
 		D215DC0025BE978F002DAA27 /* ModelComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelComment.h; sourceTree = "<group>"; };
 		D215DC0125BE978F002DAA27 /* ModelComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelComment.m; sourceTree = "<group>"; };
+		D215DC0425BFB877002DAA27 /* MyPirceOrderListManagementVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPirceOrderListManagementVC.h; sourceTree = "<group>"; };
+		D215DC0525BFB877002DAA27 /* MyPirceOrderListManagementVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPirceOrderListManagementVC.m; sourceTree = "<group>"; };
+		D215DC0725BFB890002DAA27 /* MyPirceOrderListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPirceOrderListVC.h; sourceTree = "<group>"; };
+		D215DC0825BFB890002DAA27 /* MyPirceOrderListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPirceOrderListVC.m; sourceTree = "<group>"; };
 		D2164ECD1F05CFC1005120C3 /* UIButton+Creat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Creat.h"; sourceTree = "<group>"; };
 		D2164ECE1F05CFC1005120C3 /* UIButton+Creat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Creat.m"; sourceTree = "<group>"; };
 		D2164ECF1F05CFC1005120C3 /* UIButton+countDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
@@ -1421,6 +1427,17 @@
 			children = (
 			);
 			path = "地图显示view";
+			sourceTree = "<group>";
+		};
+		D215DC0325BFB85C002DAA27 /* 我的报价 */ = {
+			isa = PBXGroup;
+			children = (
+				D215DC0425BFB877002DAA27 /* MyPirceOrderListManagementVC.h */,
+				D215DC0525BFB877002DAA27 /* MyPirceOrderListManagementVC.m */,
+				D215DC0725BFB890002DAA27 /* MyPirceOrderListVC.h */,
+				D215DC0825BFB890002DAA27 /* MyPirceOrderListVC.m */,
+			);
+			path = "我的报价";
 			sourceTree = "<group>";
 		};
 		D2164ECC1F05CFC1005120C3 /* UIButton */ = {
@@ -3022,6 +3039,7 @@
 		D2F3A4F92570E8AA009EBF3F /* 智能配货 */ = {
 			isa = PBXGroup;
 			children = (
+				D215DC0325BFB85C002DAA27 /* 我的报价 */,
 				D2F3A503257626ED009EBF3F /* 配货详情 */,
 				D2F3A4FA2570EA11009EBF3F /* AutoConfigOrderListVC.h */,
 				D2F3A4FB2570EA11009EBF3F /* AutoConfigOrderListVC.m */,
@@ -3613,6 +3631,7 @@
 				D24091D61E5C2FE10049D41D /* GlobalMethod+Request.m in Sources */,
 				D275DB381DFFA43B00670A40 /* NSData+transformData.m in Sources */,
 				D2A076E71E10EBC700CDCA0A /* DatePicker.m in Sources */,
+				D215DC0925BFB890002DAA27 /* MyPirceOrderListVC.m in Sources */,
 				D2BC9A8F1DFFA7C400B0468E /* CustomTabBar.m in Sources */,
 				D2DDC4262595D68A00C810B5 /* ExchangeIntegraProductVC.m in Sources */,
 				D284B2CB24936B4100E2605A /* ModelOCR.m in Sources */,
@@ -3805,6 +3824,7 @@
 				D2BC9AB31DFFE02800B0468E /* GlobalMethod.m in Sources */,
 				D2C55803238BD0100050694F /* ModelScheduleList.m in Sources */,
 				C657C0761FCEAFED00039F53 /* NSDictionary+Model.m in Sources */,
+				D215DC0625BFB878002DAA27 /* MyPirceOrderListManagementVC.m in Sources */,
 				D26B88D2225C7C030051FA78 /* InputCodeVC.m in Sources */,
 				D21B3008239F9DE4005B43D0 /* CarTeamListManagementVC.m in Sources */,
 				D2A3003A2266F75A00AE2EC3 /* InputNumView.m in Sources */,

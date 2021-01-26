@@ -55,7 +55,15 @@
 @property (nonatomic, assign) double matchQty;
 @property (nonatomic, assign) double unitWeight;
 @property (nonatomic, assign) double loadQty;
-
+@property (nonatomic, strong) NSString *reason;
+@property (nonatomic, assign) double matchStatus;
+@property (nonatomic, strong) NSString *cellphone;
+@property (nonatomic, strong) NSString *matchNumber;
+@property (nonatomic, assign) double price;
+@property (nonatomic, assign) double vehicleId;
+@property (nonatomic, strong) NSString *plateNumber;
+@property (nonatomic, assign) double replyTime;
+@property (nonatomic, assign) double matchTime;
 //logical
 @property (nonatomic, strong) NSString *unitShow;
 @property (nonatomic, assign) double qtyShow;
@@ -72,4 +80,6 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;
 
++ (NSString *)matchStatusExchange:(double)status;
++ (UIColor *)matchStatusColorExchange:(double)status;
 @end

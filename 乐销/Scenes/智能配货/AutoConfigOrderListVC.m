@@ -150,10 +150,12 @@
 }
 - (void)addNav{
     //table
+
     BaseNavView * nav = [BaseNavView initNavTitle:@"智能配货" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(23), W(23)) leftBlock:^{
-        
+        [GB_Nav pushVCName:@"MyMsgManagementVC" animated:true];
+
     } rightTitle:@"我的报价" righBlock:^{
-        
+        [GB_Nav pushVCName:@"MyPirceOrderListManagementVC" animated:true];
     }];
     [nav configBlueStyle];
     [self.view addSubview:nav];
@@ -358,9 +360,10 @@
 - (void)addNav{
     //table
     BaseNavView * nav = [BaseNavView initNavTitle:@"最新货源" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(23), W(23)) leftBlock:^{
-        
+        [GB_Nav pushVCName:@"MyMsgManagementVC" animated:true];
+
     } rightTitle:@"我的报价" righBlock:^{
-        
+        [GB_Nav pushVCName:@"MyPirceOrderListManagementVC" animated:true];
     }];
     [nav configBlueStyle];
     [self.view addSubview:nav];
