@@ -112,7 +112,7 @@
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"货物名称：";
-        m.subTitle = model.cargoName;
+        m.subTitle = isStr(model.cargoName)?model.cargoName:@"暂无货物名称";
         m.colorSelect = nil;
         m.thirdTitle = nil;
         return m;

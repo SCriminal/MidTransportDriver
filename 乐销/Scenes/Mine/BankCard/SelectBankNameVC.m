@@ -65,15 +65,15 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.blockSearch) {
-        self.blockSearch(self.aryDatas[indexPath.row]);
+        ModelPackageType * item = self.aryDatas[indexPath.row];
+        self.blockSearch(item.name,item.iDProperty);
     }
     [GB_Nav popViewControllerAnimated:true];
 }
 #pragma mark request
 - (void)requestList{
     [RequestApi requestBankListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-           NSArray * aryBanks = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelPackageType"];
-        self.aryBanks = [aryBanks fetchValues:@"name"];
+        self.aryBanks = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelPackageType"];
         [self filterBanks:nil];
         [self.tableView reloadData];
        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -87,7 +87,8 @@
         [self.tableView reloadData];
         return ;
     }
-    for (NSString * str in self.aryBanks) {
+    for (ModelPackageType * item in self.aryBanks) {
+        NSString * str = item.name;
         if ([str containsString:key]) {
             [self.aryDatas addObject:str];
         }
@@ -237,10 +238,10 @@
     return self;
 }
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(NSString *)model{
+- (void)resetCellWithModel:(ModelPackageType *)model{
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-        [self.name fitTitle:UnPackStr(model) variable:SCREEN_WIDTH - W(30)];
+        [self.name fitTitle:UnPackStr(model.name) variable:SCREEN_WIDTH - W(30)];
     self.name.leftTop = XY(W(15),W(15));
 
     //设置总高度

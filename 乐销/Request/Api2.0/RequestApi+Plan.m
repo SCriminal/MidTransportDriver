@@ -136,7 +136,18 @@
         };
         [self getUrl:@"/plan/plan/match/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
 }
-
+/**
+ 取消报价
+*/
++(void)requestDismissPriceOrderNumber:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{
+                           @"number":RequestStrKey(number),
+        };
+        [self putUrl:@"/plan/plan/match/status/11/{number}" delegate:delegate parameters:dic success:success failure:failure];
+}
 
 /**
 扫码(报价)

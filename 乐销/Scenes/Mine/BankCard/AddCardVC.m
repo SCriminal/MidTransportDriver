@@ -108,8 +108,9 @@
         WEAKSELF
         _modelBankName.blocClick = ^(ModelBaseData *model) {
             SelectBankNameVC * vc = [SelectBankNameVC new ];
-            vc.blockSearch = ^(NSString *name) {
+            vc.blockSearch = ^(NSString *name,double identity) {
                 weakSelf.modelBankName.subString  = name;
+                weakSelf.modelBankName.identifier = NSNumber.dou(identity).stringValue;
                 [weakSelf.tableView reloadData];
             };
             [GB_Nav pushViewController:vc animated:true];
@@ -140,7 +141,6 @@
         _modelBankNum =[ModelBaseData new];
         _modelBankNum.enumType = ENUM_PERFECT_CELL_TEXT;
         _modelBankNum.string = @"银行行号";
-        _modelBankNum.isChangeInvalid = true;
         _modelBankNum.subString = self.model.idNumber;
         _modelBankNum.placeHolderString = @"填写银行行号（非必填）";
       

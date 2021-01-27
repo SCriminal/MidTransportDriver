@@ -369,7 +369,7 @@ delegate:(id <RequestDelegate>)delegate
                                  success:(void (^)(NSDictionary * response, id mark))success
                                  failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/review/driver/log/list/total" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/driver/reviewlog/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  营运审核记录列表
@@ -378,7 +378,7 @@ delegate:(id <RequestDelegate>)delegate
                                    success:(void (^)(NSDictionary * response, id mark))success
                                    failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"/ums/review/service/log/list/total" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/biz/reviewlog/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  认证列表
@@ -525,7 +525,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"contactPhone":RequestStrKey(contactPhone),
                           @"contacter":RequestStrKey(contacter),
                           @"isDefault":RequestStrKey(isDefault)};
-    [self postUrl:@"/ums/address/drvier" delegate:delegate parameters:dic success:success failure:failure];
+    [self postUrl:@"/ums/address/driver" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  编辑
@@ -549,7 +549,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"contacter":RequestStrKey(contacter),
                           @"isDefault":RequestStrKey(isDefault),
                           @"id":RequestStrKey(id)};
-    [self putUrl:@"/ums/address/drvier/{id}" delegate:delegate parameters:dic success:success failure:failure];
+    [self putUrl:@"/ums/address/driver/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  删除
@@ -559,7 +559,7 @@ delegate:(id <RequestDelegate>)delegate
 success:(void (^)(NSDictionary * response, id mark))success
 failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"id":RequestStrKey(id)};
-    [self deleteUrl:@"/ums/address/drvier/{id}" delegate:delegate parameters:dic success:success failure:failure];
+    [self deleteUrl:@"/ums/address/driver/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  列表

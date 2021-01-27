@@ -185,11 +185,16 @@
             break;
         case ENUM_ORDER_LIST_BTN_RECEIVE:
         {
-            [RequestApi requestAcceptWithNumber:model.orderNumber delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                [self refreshHeaderAll];
-            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                
-            }];
+            ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+            ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+            modelConfirm.blockClick = ^(void){
+                [RequestApi requestAcceptWithNumber:model.orderNumber delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                    [weakSelf refreshHeaderAll];
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                    
+                }];
+            };
+            [BaseAlertView initWithTitle:@"提示" content:@"确认要接单？" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:self.view];
         }
             break;
         case ENUM_ORDER_LIST_BTN_LOAD_CAR:

@@ -41,7 +41,7 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     //table
     [self.tableView registerClass:[CardListCell class] forCellReuseIdentifier:@"CardListCell"];
-    self.tableView.contentInset = UIEdgeInsetsMake(W(20), 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(W(10), 0, 0, 0);
     //request
     if (self.modelBank.iDProperty) {
         self.aryDatas = @[self.modelBank].mutableCopy;

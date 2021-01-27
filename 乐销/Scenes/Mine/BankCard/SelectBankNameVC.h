@@ -9,7 +9,7 @@
 #import "BaseTableVC.h"
 
 @interface SelectBankNameVC : BaseTableVC
-@property (nonatomic, strong) void (^blockSearch)(NSString *);
+@property (nonatomic, strong) void (^blockSearch)(NSString *,double);
 
 @end
 
@@ -35,6 +35,6 @@
 @property (strong, nonatomic) UILabel *name;
 
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(id)model;
+- (void)resetCellWithModel:(ModelPackageType *)model;
 
 @end

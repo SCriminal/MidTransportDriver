@@ -179,7 +179,7 @@
         top = self.goodsInfo.bottom;
     }
     
-    [self.goodsName fitTitle:[NSString stringWithFormat:@"%@%@%@",UnPackStr(model.cargoName),isStr(model.cargoName)?@" ":@"",UnPackStr(model.internalBaseClassDescription)] variable:SCREEN_WIDTH/2.0-W(15)];
+    [self.goodsName fitTitle:[NSString stringWithFormat:@"%@ %@",isStr(model.cargoName)?model.cargoName:@"暂无货物名称",UnPackStr(model.internalBaseClassDescription)] variable:SCREEN_WIDTH/2.0-W(15)];
       self.goodsName.leftTop = XY(W(15),top+ W(20));
     [self.time fitTitle:[GlobalMethod exchangeTimeStampToDate:model.createTime].timeAgoShow variable:SCREEN_WIDTH/2.0 -W(15)];
       self.time.rightTop = XY(SCREEN_WIDTH - W(15),top+ W(20));
@@ -195,7 +195,7 @@
                self.price.attributedText = strAttribute;
                self.price.leftTop = XY(W(15), top+ W(20));
     }
-    [self.distance fitTitle:isStr(model.distanceShow)?[NSString stringWithFormat:@"约%@装货",model.distanceShow]:@"" variable:SCREEN_WIDTH/2.0 -W(15)];
+    [self.distance fitTitle:isStr(model.distanceShow)?[NSString stringWithFormat:@"约%@装货",model.distanceShow]:@"暂无距离" variable:SCREEN_WIDTH/2.0 -W(15)];
       self.distance.rightTop = XY(SCREEN_WIDTH - W(15),top+ W(20));
     top = self.distance.bottom;
       

@@ -78,7 +78,13 @@ NS_ASSUME_NONNULL_BEGIN
                 success:(void (^)(NSDictionary * response, id mark))success
                                   failure:(void (^)(NSString * errorStr, id mark))failure;
 
-
+/**
+ 取消报价
+*/
++(void)requestDismissPriceOrderNumber:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                              failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
 扫码(报价)
 */

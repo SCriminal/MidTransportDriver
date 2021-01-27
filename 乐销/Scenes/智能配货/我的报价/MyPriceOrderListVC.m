@@ -56,6 +56,7 @@
     [cell resetCellWithModel: self.aryDatas[indexPath.row]];
     WEAKSELF
     cell.blockDismiss = ^(ModelAutOrderListItem *model) {
+        [weakSelf requestDismiss:model];
     };
    
     return cell;
@@ -89,6 +90,23 @@
     }];
     
 }
+- (void)requestDismiss:(ModelAutOrderListItem *)item{
+    ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+    ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+    WEAKSELF
+    modelConfirm.blockClick = ^(void){
+        [RequestApi requestDismissPriceOrderNumber:item.matchNumber delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [GlobalMethod showAlert:@"取消成功"];
+            [weakSelf refreshHeaderAll];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+    };
+    [BaseAlertView initWithTitle:@"提示" content:@"确认取消订单？" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:GB_Nav.lastVC.view];
+   
+
+}
+
 @end
 
 
@@ -138,7 +156,7 @@
     self.model = model;
     //刷新view
   
-    CGFloat top = W(20);
+    CGFloat top = W(0);
 
     NSMutableArray * ary = @[^(){
         ModelBtn * m = [ModelBtn new];
@@ -225,6 +243,7 @@
     
    
     self.btnView.top = top + W(20);
+    self.btnView.centerX = SCREEN_WIDTH/2.0;
     self.btnView.hidden = model.matchStatus != 1;
     if (!self.btnView.hidden) {
         top = self.btnView.bottom;
@@ -238,7 +257,7 @@
 
 - (CGFloat)addLabel:(NSArray *)ary top:(CGFloat)top{
     [self.contentView removeSubViewWithTag:1];
-    top = top + W(25) - W(15);
+    top = top + W(20) - W(15);
     for (ModelBtn *m in ary) {
         {
             UILabel * l = [UILabel new];
@@ -270,7 +289,7 @@
                 phone.textColor =COLOR_BLUE;
                 phone.backgroundColor = [UIColor clearColor];
                 [phone fitTitle:m.thirdTitle variable:SCREEN_WIDTH - W(105) - W(15)];
-                phone.leftCenterY = XY(l.right + W(10),l.centerY);
+                phone.leftCenterY = XY(l.right ,l.centerY);
                 [self.contentView addSubview:phone];
                 
                 UIView * con =[self.contentView addControlFrame:CGRectInset(phone.frame, -W(20), -W(20)) belowView:phone target:self action:@selector(copyClick)];
