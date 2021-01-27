@@ -72,7 +72,7 @@
         WEAKSELF
         _modelHead.blocClick = ^(ModelBaseData *model) {
             weakSelf.modelImageSelected = model;
-            [weakSelf showImageVC:1];
+            [weakSelf showImageVC:1 cameraType:ENUM_CAMERA_IDENTITY_HEADER];
         };
     }
     return _modelHead;
@@ -87,7 +87,7 @@
         WEAKSELF
         _modelCountry.blocClick = ^(ModelBaseData *model) {
             weakSelf.modelImageSelected = model;
-            [weakSelf showImageVC:1];
+            [weakSelf showImageVC:1 cameraType:ENUM_CAMERA_IDENTITY_EMBLEM];
         };
     }
     return _modelCountry;
@@ -127,7 +127,7 @@
         WEAKSELF
         _modelDriver.blocClick = ^(ModelBaseData *model) {
             weakSelf.modelImageSelected = model;
-            [weakSelf showImageVC:1];
+            [weakSelf showImageVC:1 cameraType:ENUM_CAMERA_DRIVING];
         };
     }
     return _modelDriver;

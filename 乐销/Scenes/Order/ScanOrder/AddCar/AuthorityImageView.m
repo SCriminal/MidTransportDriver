@@ -159,7 +159,7 @@
 #pragma mark click
 - (void)click{
     if (self.model.isChangeInvalid) {
-        [GlobalMethod showAlert:@"不可修改"];
+//        [GlobalMethod showAlert:@"不可修改"];
         return;
     }
     [self showImageVC:1 cameraType:self.model.cameraType];

@@ -225,7 +225,6 @@ WEAKSELF
                 }
                 self.authBtnView.hidden = true;
                 self.tableView.tableHeaderView = [UIView initWithViews:@[self.isFirst?self.authTopView:[NSNull null]]];
-
             }
             [self.tableView reloadData];
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

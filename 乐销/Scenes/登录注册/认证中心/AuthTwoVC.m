@@ -78,7 +78,7 @@
         WEAKSELF
         _modelMain.blocClick = ^(ModelBaseData *model) {
             weakSelf.modelImageSelected = model;
-            [weakSelf showImageVC:1];
+            [weakSelf showImageVC:1 cameraType:ENUM_CAMERA_ROAD];
 
         };
     }

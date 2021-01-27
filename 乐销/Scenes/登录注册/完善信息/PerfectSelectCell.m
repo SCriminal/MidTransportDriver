@@ -104,7 +104,7 @@
 #pragma mark click
 - (void)cellClick{
     if (self.model.isChangeInvalid) {
-        [GlobalMethod showAlert:@"不可修改"];
+//        [GlobalMethod showAlert:@"不可修改"];
         return;
     }
     if (self.model.blocClick) {

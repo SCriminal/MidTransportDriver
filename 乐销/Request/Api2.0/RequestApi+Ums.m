@@ -306,7 +306,7 @@
                            @"qcEndDate":NSNumber.dou(qcEndDate),
                            @"rtpEndDate":NSNumber.dou(rtpEndDate)};
     if (isRequest) {
-        [self postUrl:@"/ums/service" delegate:delegate parameters:dic success:success failure:failure];
+        [self postUrl:@"/ums/biz/driver" delegate:delegate parameters:dic success:success failure:failure];
     }
     return dic;
 

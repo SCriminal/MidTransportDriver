@@ -200,12 +200,16 @@
     self.submitTime.leftTop = XY(W(15),self.infoName.bottom+W(13));
     
     CGFloat top = self.submitTime.bottom;
+    self.authTime.hidden = true;
     if (isStr(model.thirdTitle)) {
+        self.authTime.hidden = false;
             [self.authTime fitTitle:model.thirdTitle variable:0];
         self.authTime.leftTop = XY(W(15),top+W(13));
         top = self.authTime.bottom;
     }
+    self.reason.hidden = true;
     if (isStr(model.fourTitle) && model.num == 11) {
+        self.reason.hidden = false;
             [self.reason fitTitle: [NSString stringWithFormat:@"%@",model.fourTitle] variable:SCREEN_WIDTH - W(30)];
         self.reason.leftTop = XY(W(15),top+W(13));
         top = self.reason.bottom;
