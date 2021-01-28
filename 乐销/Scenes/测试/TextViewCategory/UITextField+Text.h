@@ -12,6 +12,8 @@ typedef NS_ENUM(NSInteger, ENUM_TEXT_CONTENT_TYPE) {
     ENUM_TEXT_CONTENT_TYPE_NONE = 0, //无限制
     ENUM_TEXT_CONTENT_TYPE_NUMBER,   //数字
     ENUM_TEXT_CONTENT_TYPE_PRICE,    //价格（小数点后最多输入两位）
+    ENUM_TEXT_CONTENT_TYPE_NUM_3,    //（小数点后最多输入三位）
+
 };
 
 @protocol TextPropertyDelegate

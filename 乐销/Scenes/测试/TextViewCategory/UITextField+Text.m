@@ -133,9 +133,25 @@ void sld_textDidChange(id<TextPropertyDelegate> target) {
             return;
         }
             break;
+        case ENUM_TEXT_CONTENT_TYPE_NUMBER:
+        {
+            self.regularStr = @"^(([1-9]\\d*)|0)?$";
+            self.keyboardType = UIKeyboardTypeDecimalPad;
+            self.autocorrectionType = UITextAutocorrectionTypeNo;
+            self.delegate = self.delegate;
+        }
+            break;
         case ENUM_TEXT_CONTENT_TYPE_PRICE:
         {
             self.regularStr = @"^(([1-9]\\d*)|0)(\\.\\d{0,2})?$";
+            self.keyboardType = UIKeyboardTypeDecimalPad;
+            self.autocorrectionType = UITextAutocorrectionTypeNo;
+            self.delegate = self.delegate;
+        }
+            break;
+        case ENUM_TEXT_CONTENT_TYPE_NUM_3:
+        {
+            self.regularStr = @"^(([1-9]\\d*)|0)(\\.\\d{0,3})?$";
             self.keyboardType = UIKeyboardTypeDecimalPad;
             self.autocorrectionType = UITextAutocorrectionTypeNo;
             self.delegate = self.delegate;

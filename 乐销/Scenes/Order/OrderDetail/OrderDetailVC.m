@@ -155,6 +155,11 @@
         
         [self.topView resetViewWithModel:self.orderList];
         [self.btnView resetViewWithModel:self.orderList];
+        
+        self.bottomView.height = self.btnView.height + W(20) + iphoneXBottomInterval;
+//        self.bottomView.height = self.btnView.height?(self.btnView.height + W(20) + iphoneXBottomInterval):0;
+        self.bottomView.bottom = SCREEN_HEIGHT;
+
         self.tableView.height = SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - self.bottomView.height;
         [self reconfigTableHeaderView];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

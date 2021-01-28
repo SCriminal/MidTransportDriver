@@ -189,7 +189,7 @@
                     
                 }];
             };
-            [weakSelf.view addSubview:view];
+            [[UIApplication sharedApplication].keyWindow addSubview:view];
         }
             break;
         case ENUM_ORDER_LIST_BTN_RECEIVE:

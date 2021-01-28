@@ -231,13 +231,13 @@
 /**
 2.0拒单
 */
-+(void)requestRejectOrderumber:(NSString *)orderNumber
++(void)requestRejectOrderumber:(NSString *)number
                         reason:(NSString *)reason
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"reason":RequestStrKey(reason),
-                           @"orderNumber":RequestStrKey(orderNumber)};
-        [self putUrl:@"/loms/order/99/driver/{number}" delegate:delegate parameters:dic success:success failure:failure];
+                           @"number":RequestStrKey(number)};
+        [self putUrl:@"/loms/order/status/99/driver/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
 @end

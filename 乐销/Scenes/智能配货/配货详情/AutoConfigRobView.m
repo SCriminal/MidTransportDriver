@@ -170,7 +170,13 @@
         l.leftTop = XY(W(20), W(343));
         [viewWhiteBG addSubview:l];
     }
-    
+    {
+        if ([model.unitShow isEqualToString: @"吨"]||[model.unitShow isEqualToString: @"立方米"]) {
+            self.tfWeight.contentType = ENUM_TEXT_CONTENT_TYPE_NUM_3;
+        }else{
+            self.tfWeight.contentType = ENUM_TEXT_CONTENT_TYPE_NUMBER;
+        }
+    }
 }
 - (void)addLabelAry:(NSArray *)ary superView:(UIView *)superView{
     for (ModelBtn *m in ary) {
@@ -419,7 +425,13 @@
         l.leftTop = XY(W(20), W(360));
         [viewWhiteBG addSubview:l];
     }
-    
+    {
+        if ([model.unitShow isEqualToString: @"吨"]||[model.unitShow isEqualToString: @"立方米"]) {
+            self.tfWeight.contentType = ENUM_TEXT_CONTENT_TYPE_NUM_3;
+        }else{
+            self.tfWeight.contentType = ENUM_TEXT_CONTENT_TYPE_NUMBER;
+        }
+    }
 }
 - (void)addLabelAry:(NSArray *)ary superView:(UIView *)superView{
     for (ModelBtn *m in ary) {
