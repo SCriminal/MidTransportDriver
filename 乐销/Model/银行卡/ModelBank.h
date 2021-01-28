@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSString *accountName;
 @property (nonatomic, strong) NSString *cityName;
 @property (nonatomic, assign) double isInterbank;
+@property (nonatomic, assign) double bankId;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

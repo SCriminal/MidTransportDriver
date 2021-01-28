@@ -108,9 +108,9 @@
 #pragma mark request
 - (void)requestList{
     [RequestApi requestCardListWithPage:1 count:20 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        ModelBank * mb = [ModelBank modelObjectWithDictionary:response];
-        if (mb.iDProperty) {
-            self.modelBank = mb;
+        NSArray * ary = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelBank"];
+        if (ary.count) {
+            self.modelBank = ary.firstObject;
             self.aryDatas = @[self.modelBank].mutableCopy;
         }else{
             self.modelBank = nil;
@@ -126,7 +126,7 @@
 }
 
 - (void)requestDelete{
-    [RequestApi requestDeleteCardWithAccountnumber:self.modelBank.bankNumber delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestDeleteCardWithAccountnumber:self.modelBank.accountNumber delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.modelBank = nil;
         [self.aryDatas removeAllObjects];
         [self.tableView reloadData];

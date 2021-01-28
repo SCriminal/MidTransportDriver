@@ -104,6 +104,8 @@
         _modelBankName.enumType = ENUM_PERFECT_CELL_SELECT;
         _modelBankName.string = @"开户行";
         _modelBankName.subString = self.model.bankName;
+        _modelBankName.identifier = NSNumber.dou(self.model.bankId).stringValue ;
+
         _modelBankName.placeHolderString = @"开户行名称(必选)";
         WEAKSELF
         _modelBankName.blocClick = ^(ModelBaseData *model) {
@@ -225,7 +227,7 @@
 
 #pragma mark config data
 - (void)configData{
-    self.aryDatas = @[ self.modelName,self.modelIdNum,self.modelBankName,self.modelBankAccount,self.modelBankCity,self.modelBankNum].mutableCopy;
+    self.aryDatas = @[ self.modelName,self.modelIdNum,self.modelBankName,self.modelBankAccount].mutableCopy;
     for (ModelBaseData *m in self.aryDatas) {
         m.subLeft = W(105);
     }
@@ -256,8 +258,8 @@
         return;
     }
    
-    if (self.model.iDProperty) {
-        [RequestApi requestEditCardWithAccountnumber:self.modelBankAccount.subString bankId:self.model.iDProperty accountName:self.modelBankName.subString delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    if (isStr(self.model.accountNumber)) {
+        [RequestApi requestEditCardWithAccountnumber:self.modelBankAccount.subString bankId:self.modelBankName.identifier.doubleValue accountName:self.modelBankName.subString delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             self.requestState = 1;
             [GB_Nav popViewControllerAnimated:true];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

@@ -55,6 +55,7 @@ NSString *const kModelBankIsInterbank = @"isInterbank";
             self.accountName = [dict stringValueForKey:kModelBankAccountName];
             self.cityName = [dict stringValueForKey:kModelBankCityName];
             self.isInterbank = [dict doubleValueForKey:kModelBankIsInterbank];
+        self.bankId = [dict doubleValueForKey:@"bankId"];
 
     }
     
@@ -73,6 +74,7 @@ NSString *const kModelBankIsInterbank = @"isInterbank";
     [mutableDict setValue:self.accountName forKey:kModelBankAccountName];
     [mutableDict setValue:self.cityName forKey:kModelBankCityName];
     [mutableDict setValue:[NSNumber numberWithDouble:self.isInterbank] forKey:kModelBankIsInterbank];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.bankId] forKey:@"bankId"];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
