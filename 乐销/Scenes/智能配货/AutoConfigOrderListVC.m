@@ -211,7 +211,6 @@
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelAutOrderListItem"];
         for (ModelAutOrderListItem * item in aryRequest.copy) {
             int interval = [item.dateStart timeIntervalSinceNow];
-            NSLog(@"reqeust number:%@  time:%.f",item.planNumber,interval);
                 if(interval<=0){
                     [aryRequest removeObject:item];
                 }
@@ -387,7 +386,12 @@
         self.isRequestSuccess = true;
         self.pageNum ++;
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelAutOrderListItem"];
-        
+        for (ModelAutOrderListItem * item in aryRequest.copy) {
+            int interval = [item.dateStart timeIntervalSinceNow];
+                if(interval<=0){
+                    [aryRequest removeObject:item];
+                }
+        }
         if (self.isRemoveAll) {
             [self.aryDatas removeAllObjects];
         }

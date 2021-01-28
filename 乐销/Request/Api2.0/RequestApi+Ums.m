@@ -346,6 +346,18 @@ delegate:(id <RequestDelegate>)delegate
     };
     [self getUrl:@"/ums/vehicle/info" delegate:delegate parameters:dic success:success failure:failure];
 }
+
+/**
+ 检查司机是否认证（用户）
+ */
++(void)requestIdnumAuthCheckWithidNumber:(NSString *)idNumber
+delegate:(id <RequestDelegate>)delegate
+                                success:(void (^)(NSDictionary * response, id mark))success
+                                failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"idNumber":RequestStrKey(idNumber),
+    };
+    [self getUrl:@"/ums/driver/isreview" delegate:delegate parameters:dic success:success failure:failure];
+}
 +(void)requestBusinessAuthDetailWithDelegate:(id <RequestDelegate>)delegate
                                    success:(void (^)(NSDictionary * response, id mark))success
                                    failure:(void (^)(NSString * errorStr, id mark))failure{

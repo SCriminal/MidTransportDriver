@@ -228,7 +228,9 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
         case 21:
             return @"已过期";
             break;
-
+        case 99:
+            return @"已取消";
+            break;
         default:
             break;
     }
@@ -246,6 +248,9 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
             return COLOR_RED;
             break;
         case 21:
+            return COLOR_RED;
+            break;
+        case 99:
             return COLOR_RED;
             break;
         default:

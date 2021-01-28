@@ -208,7 +208,7 @@
     self.viewBG.height = self.timeView.bottom + W(15);
          //设置总高度
     self.height = self.viewBG.bottom + W(12);
-    NSLog(@"sld height:%lf",self.height);
+//    NSLog(@"sld height:%lf",self.height);
 }
 - (void)refreshTimer{
     [self.timeView resetTime];

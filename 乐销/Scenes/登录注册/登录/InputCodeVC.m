@@ -185,17 +185,15 @@
     NSLog(@"sld code %@",code);
     NSString * strPhone = [self.strPhone stringByReplacingOccurrencesOfString:@" " withString:@""];
     [RequestApi requestMatchCodeAccount:strPhone code:code delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        if ([response isKindOfClass:[NSDictionary class]]&&[response boolValueForKey:@"status"]) {
-            InputPwdVC * inputPwdVC = [ InputPwdVC new];
-            inputPwdVC.strPhone = self.strPhone;
-            inputPwdVC.code = code;
-            [GB_Nav pushViewController:inputPwdVC animated:true];
-        }else{
-            [self.codeView clearCode];
-            [GlobalMethod showAlert:@"验证码输入错误"];
-        }
+        InputPwdVC * inputPwdVC = [ InputPwdVC new];
+        inputPwdVC.strPhone = self.strPhone;
+        inputPwdVC.code = code;
+        [GB_Nav pushViewController:inputPwdVC animated:true];
+
+            
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                
+            [self.codeView clearCode];
+
         }];
    
 }

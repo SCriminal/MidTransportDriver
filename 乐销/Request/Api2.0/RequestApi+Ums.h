@@ -192,6 +192,14 @@ delegate:(id <RequestDelegate>)delegate
 +(void)requestBusinessAuthDetailWithDelegate:(id <RequestDelegate>)delegate
                                    success:(void (^)(NSDictionary * response, id mark))success
                                      failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+ 检查司机是否认证（用户）
+ */
++(void)requestIdnumAuthCheckWithidNumber:(NSString *)idNumber
+delegate:(id <RequestDelegate>)delegate
+                                success:(void (^)(NSDictionary * response, id mark))success
+                                 failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
 用户认证详情（用户）[^/ums/identification/user$]
 */
