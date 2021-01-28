@@ -22,6 +22,9 @@
 #import "RequestDriver2.h"
 #import "SelectDistrictView.h"
 #import "BaseVC+Location.h"
+#import "AuthOneVC.h"
+#import "AutoConfigRobView.h"
+
 @interface AutoConfigOrderListVC ()
 @property (nonatomic, strong) AutoConfigOrderListFilterView *filterView;
 @property (nonatomic, strong) AutoConfigOrderListAutoFilterView *topView;
@@ -29,6 +32,8 @@
 @property (nonatomic, strong) ModelProvince *areaStart;
 @property (nonatomic, strong) ModelProvince *areaEnd;
 @property (nonatomic, strong) NSMutableDictionary *dicComments;
+@property (nonatomic, strong) ModelAuthCar *modelCarInfo;
+@property (nonatomic, strong) ModelAutOrderListItem *modelList;
 
 @property (nonatomic, assign) BOOL isRequestSuccess;
 @end
@@ -173,7 +178,8 @@
     
     WEAKSELF
     cell.blockDetail = ^(ModelAutOrderListItem *model) {
-        [weakSelf jumpToDetail:model];
+        weakSelf.modelList = model;
+        [weakSelf requestCarInfo];
     };
     cell.blockOutTime = ^(AutoConfigOrderListCell *c) {
         NSLog(@"sld out time %@",c.model.planNumber);
@@ -291,6 +297,64 @@
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
+}
+-  (void)requestCarInfo{
+    [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        ModelAuthCar * model = [ModelAuthCar modelObjectWithDictionary:response];
+        self.modelCarInfo = model;
+        if (!model.vehicleId) {
+            ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+            ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"立即提交" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+            modelConfirm.blockClick = ^(void){
+                AuthOneVC * vc = [AuthOneVC new];
+                vc.isFirst = true;
+                [GB_Nav pushViewController:vc animated:true];
+            };
+            [BaseAlertView initWithTitle:@"提示" content:@"请先提交车辆信息" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
+            return;
+        }
+        WEAKSELF
+        if (self.modelList.mode == 1) {
+            //抢单
+            AutoConfigRobView * robView = [AutoConfigRobView new];
+            robView.modelCarInfo = model;
+            robView.blockConfirm = ^(double weight, double price) {
+                [weakSelf requestRobe:price weight:weight];
+            };
+            [robView resetViewWithModel:self.modelList];
+            [[UIApplication sharedApplication].keyWindow addSubview:robView];
+        }else{
+            //报价
+            AutoConfigOfferPriceView * robView = [AutoConfigOfferPriceView new];
+            robView.modelCarInfo = model;
+            robView.blockConfirm = ^(double weight, double price) {
+                [weakSelf requestPrice:price weight:weight];
+            };
+            [robView resetViewWithModel:self.modelList];
+            [[UIApplication sharedApplication].keyWindow addSubview:robView];
+        }
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+}
+- (void)requestPrice:(double)price weight:(double)weight{
+    
+    [RequestApi requestPlanPriceWithPlannumber:self.modelList.planNumber vehicleId:self.modelCarInfo.vehicleId qty:[self.modelList exchangeRequestQty:weight] price:price*100.0  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"报价成功"];
+        [GB_Nav popViewControllerAnimated:true];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+   
+}
+- (void)requestRobe:(double)price weight:(double)weight{
+    [RequestApi requestRobWithPlannumber:self.modelList.planNumber vehicleId:self.modelCarInfo.vehicleId qty:[self.modelList exchangeRequestQty:weight] price:price*100.0 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"抢单成功"];
+        [GB_Nav popViewControllerAnimated:true];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+   
 }
 
 - (void)requestCommentList{
