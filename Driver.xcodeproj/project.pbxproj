@@ -49,6 +49,7 @@
 		D215DC0625BFB878002DAA27 /* MyPriceOrderListManagementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D215DC0525BFB877002DAA27 /* MyPriceOrderListManagementVC.m */; };
 		D215DC0925BFB890002DAA27 /* MyPriceOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D215DC0825BFB890002DAA27 /* MyPriceOrderListVC.m */; };
 		D215DC0C25BFFAB3002DAA27 /* RequestApi+Cash.m in Sources */ = {isa = PBXBuildFile; fileRef = D215DC0B25BFFAB3002DAA27 /* RequestApi+Cash.m */; };
+		D215DC0F25C16E79002DAA27 /* TestTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D215DC0E25C16E78002DAA27 /* TestTableVC.m */; };
 		D2164ED11F05CFC1005120C3 /* UIButton+Creat.m in Sources */ = {isa = PBXBuildFile; fileRef = D2164ECE1F05CFC1005120C3 /* UIButton+Creat.m */; };
 		D2164ED21F05CFC1005120C3 /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = D2164ED01F05CFC1005120C3 /* UIButton+countDown.m */; };
 		D216F5341E56966200E11ED2 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D216F5331E56966200E11ED2 /* NSDictionary+Category.m */; };
@@ -510,6 +511,8 @@
 		D215DC0825BFB890002DAA27 /* MyPriceOrderListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPriceOrderListVC.m; sourceTree = "<group>"; };
 		D215DC0A25BFFAB3002DAA27 /* RequestApi+Cash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+Cash.h"; sourceTree = "<group>"; };
 		D215DC0B25BFFAB3002DAA27 /* RequestApi+Cash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Cash.m"; sourceTree = "<group>"; };
+		D215DC0D25C16E78002DAA27 /* TestTableVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTableVC.h; sourceTree = "<group>"; };
+		D215DC0E25C16E78002DAA27 /* TestTableVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTableVC.m; sourceTree = "<group>"; };
 		D2164ECD1F05CFC1005120C3 /* UIButton+Creat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Creat.h"; sourceTree = "<group>"; };
 		D2164ECE1F05CFC1005120C3 /* UIButton+Creat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Creat.m"; sourceTree = "<group>"; };
 		D2164ECF1F05CFC1005120C3 /* UIButton+countDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
@@ -1469,6 +1472,8 @@
 				D2706B1A20D35B5F00FBA9C0 /* 假数据 */,
 				D22431981E10AC0300C9F10A /* TestVC.h */,
 				D22431991E10AC0300C9F10A /* TestVC.m */,
+				D215DC0D25C16E78002DAA27 /* TestTableVC.h */,
+				D215DC0E25C16E78002DAA27 /* TestTableVC.m */,
 				D2F11C6A2097101500F18CBD /* TextViewCategory */,
 			);
 			path = "测试";
@@ -3677,6 +3682,7 @@
 				D2DFD7942297C28800363142 /* OrderDetailTopView.m in Sources */,
 				D2AADB592191627800E2173E /* RequestApi+TransportPrice.m in Sources */,
 				D2136CED1E13C142003B4B92 /* NSMutableArray+Insert.m in Sources */,
+				D215DC0F25C16E79002DAA27 /* TestTableVC.m in Sources */,
 				D2BC0C9925B573DB0030599D /* ModelPathListItem.m in Sources */,
 				D28A868B225F1E8E001E3372 /* CarTeamListCell.m in Sources */,
 				D289FEAF1E8F366C00C2636B /* SectionIndexView.m in Sources */,

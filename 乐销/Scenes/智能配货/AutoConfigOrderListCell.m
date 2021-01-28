@@ -128,6 +128,8 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshTimer) name:NOTICE_AUTOORDERLIST_REFERSH object:nil];
+
         self.contentView.backgroundColor = COLOR_BACKGROUND;
         self.backgroundColor = COLOR_BACKGROUND;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -199,15 +201,22 @@
       self.distance.rightTop = XY(SCREEN_WIDTH - W(15),top+ W(20));
     top = self.distance.bottom;
       
-    self.timeView.date = [GlobalMethod exchangeTimeStampToDate:model.startTime];
+    self.timeView.date = model.dateStart;
     self.timeView.centerXTop = XY(SCREEN_WIDTH/2.0, top + W(20));
     [self.timeView resetView:self.model.mode];
     [self.timeView resetTime];
     self.viewBG.height = self.timeView.bottom + W(15);
          //设置总高度
     self.height = self.viewBG.bottom + W(12);
+    NSLog(@"sld height:%lf",self.height);
 }
-
+- (void)refreshTimer{
+    [self.timeView resetTime];
+}
+#pragma mark 销毁
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 @end
 
 

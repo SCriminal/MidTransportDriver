@@ -176,8 +176,11 @@
         [weakSelf jumpToDetail:model];
     };
     cell.blockOutTime = ^(AutoConfigOrderListCell *c) {
-        [weakSelf.aryDatas removeObject:c.model];
-        [weakSelf.tableView reloadData];
+        NSLog(@"sld out time %@",c.model.planNumber);
+        if ([weakSelf.aryDatas containsObject:c.model]) {
+            [weakSelf.aryDatas removeObject:c.model];
+            [weakSelf.tableView reloadData];
+        }
     };
     return cell;
 }
@@ -206,7 +209,13 @@
         self.isRequestSuccess = true;
         self.pageNum ++;
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelAutOrderListItem"];
-        
+        for (ModelAutOrderListItem * item in aryRequest.copy) {
+            int interval = [item.dateStart timeIntervalSinceNow];
+            NSLog(@"reqeust number:%@  time:%.f",item.planNumber,interval);
+                if(interval<=0){
+                    [aryRequest removeObject:item];
+                }
+        }
         if (self.isRemoveAll) {
             [self.aryDatas removeAllObjects];
         }
@@ -338,15 +347,15 @@
     //开启定时器
     if (_timer == nil) {
         _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRun) userInfo:nil repeats:true];
-        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
-        [[NSRunLoop currentRunLoop] run];
     }
 }
 - (void)timerRun{
     if (self.aryDatas.count) {
+//        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_AUTOORDERLIST_REFERSH object:nil];
         for (AutoConfigOrderListCell * cell in self.tableView.visibleCells) {
             [cell.timeView resetTime];
         }
+
     }
 }
 - (void)timerStop{

@@ -167,6 +167,7 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
 
         
         //logical
+        self.dateStart = [GlobalMethod exchangeTimeStampToDate:self.startTime];
         self.qtyShow = self.qty;
         self.priceShow = self.unitPrice/100.0;
         self.qtyShow = [self exchangeQtyShow:self.qty];

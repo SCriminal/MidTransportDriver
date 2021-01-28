@@ -3949,25 +3949,9 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "346"
-            endingLineNumber = "346"
-            landmarkName = "-timerRun"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F0AA45DC-1E56-42B2-89A4-BA87CA7ABA5E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
-            landmarkName = "-timerStart"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
+            landmarkName = "-timerStop"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3981,9 +3965,9 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
-            landmarkName = "-viewDidAppear:"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
+            landmarkName = "-viewWillDisappear:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3997,24 +3981,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
-            landmarkName = "-viewWillDisappear:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "43D7C00D-18CA-49CA-A4E5-5377AC57B028"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "-timerStart"
             landmarkType = "7">
          </BreakpointContent>
@@ -4589,8 +4557,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "-topView"
             landmarkType = "7">
          </BreakpointContent>
@@ -4605,8 +4573,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
             landmarkName = "-fromClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -4621,8 +4589,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
             landmarkName = "-toClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -4637,8 +4605,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "414"
-            endingLineNumber = "414"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "-autoClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -4653,8 +4621,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
             landmarkName = "-filterClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -4669,8 +4637,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "424"
-            endingLineNumber = "424"
+            startingLineNumber = "433"
+            endingLineNumber = "433"
             landmarkName = "-voiceClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -5574,22 +5542,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BE839363-480B-45DA-80F3-3D68A98CF93F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "348"
-            endingLineNumber = "348"
-            landmarkName = "-timerRun"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "0B27791E-EF3F-4879-90F3-4FFE488505D6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -5613,8 +5565,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5677,8 +5629,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "-resetCellWithModel:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5777,6 +5729,190 @@
             endingLineNumber = "159"
             landmarkName = "-resetCellWithModel:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E35F58BF-B1BD-4BE2-915A-F016EAA18014"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
+            landmarkName = "NewAutoConfigOrderListVC"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3ABD9103-FEF2-437A-989A-6E49A77FF3C3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "-resetCellWithModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8BE3F50A-7FEE-443F-85E4-568EE1442D60"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "-resetCellWithModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0C6E7B50-1E35-4FC3-A361-C1DFFAA0785F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "-resetCellWithModel:"
+            landmarkType = "7">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
+                  <ActionContent
+                     consoleCommand = "po self.viewBG.bottom">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6C49CEE1-D9F1-46C2-B462-6E1E34D56FC6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "-refreshTimer"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "51E51D5D-075B-43A8-AC48-C17ACF25E7E2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
+            landmarkName = "-requestList"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "97955E6A-CA46-4C37-AE83-B4AC7390EC1C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "851273FD-024D-496B-935D-F4AA948CEDBE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ED56A7D9-FA17-4AB3-A4BB-9597DE21E9F9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "-requestList"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "ED56A7D9-FA17-4AB3-A4BB-9597DE21E9F9 - 4337d016c318cde"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__36-[AutoConfigOrderListVC requestList]_block_invoke"
+                  moduleName = "Driver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E4%B8%AD%E8%BD%A6%E8%BF%90%E5%8F%B8%E6%9C%BA%E7%AB%AF/%E4%B9%90%E9%94%80/Scenes/%E6%99%BA%E8%83%BD%E9%85%8D%E8%B4%A7/AutoConfigOrderListVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "217"
+                  endingLineNumber = "217"
+                  offsetFromSymbolStart = "805">
+               </Location>
+               <Location
+                  uuid = "ED56A7D9-FA17-4AB3-A4BB-9597DE21E9F9 - 4337d016c318cde"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__36-[AutoConfigOrderListVC requestList]_block_invoke"
+                  moduleName = "Driver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E4%B8%AD%E8%BD%A6%E8%BF%90%E5%8F%B8%E6%9C%BA%E7%AB%AF/%E4%B9%90%E9%94%80/Scenes/%E6%99%BA%E8%83%BD%E9%85%8D%E8%B4%A7/AutoConfigOrderListVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "217"
+                  endingLineNumber = "217"
+                  offsetFromSymbolStart = "930">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -64,6 +64,8 @@
 @property (nonatomic, strong) NSString *plateNumber;
 @property (nonatomic, assign) double replyTime;
 @property (nonatomic, assign) double matchTime;
+@property (nonatomic, strong) NSDate *dateStart;
+
 //logical
 @property (nonatomic, strong) NSString *unitShow;
 @property (nonatomic, assign) double qtyShow;
