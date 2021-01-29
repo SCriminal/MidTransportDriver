@@ -19,8 +19,8 @@
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"app":RequestStrKey(app),
-                           @"client":RequestStrKey(client)};
+        NSDictionary *dic = @{@"app":REQUEST_APP,
+                           @"client":REQUEST_CLIENT};
         [self deleteUrl:@"/auth/user/logout/token" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
@@ -35,8 +35,8 @@
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"app":RequestStrKey(app),
-                           @"client":RequestStrKey(client),
+        NSDictionary *dic = @{@"app":REQUEST_APP,
+                           @"client":REQUEST_CLIENT,
                            @"password":RequestStrKey([password base64Encode]),
                            @"phone":RequestStrKey(account),
                            @"terminalType":NSNumber.dou(terminalType),
@@ -100,7 +100,7 @@
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"app":RequestStrKey(app),
+        NSDictionary *dic = @{@"app":REQUEST_APP,
                            @"account":RequestStrKey(account),
                            @"smsCode":RequestStrKey(smsCode),
                            @"password":RequestStrKey([password base64Encode]),
@@ -120,8 +120,8 @@
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"app":RequestStrKey(app),
-                           @"client":RequestStrKey(client),
+        NSDictionary *dic = @{@"app":REQUEST_APP,
+                           @"client":REQUEST_CLIENT,
                            @"type":NSNumber.dou(type),
                            @"number":RequestStrKey(number)};
         [self putUrl:@"/auth/user/terminal/number" delegate:delegate parameters:dic success:success failure:failure];
@@ -135,7 +135,7 @@
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"app":RequestStrKey(app),
+        NSDictionary *dic = @{@"app":REQUEST_APP,
                            @"account":RequestStrKey(account),
                               @"scope":@"1",
                            @"userType":NSNumber.dou(userType)};

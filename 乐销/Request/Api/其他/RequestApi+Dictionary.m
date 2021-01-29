@@ -26,7 +26,7 @@
                             failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"better":RequestStrKey(better),
                           @"bad":RequestStrKey(bad),
-                          @"app":@"1",
+                          @"app":REQUEST_APP,
                           @"terminalType":@1,
                           @"userId":NSNumber.dou(userId)};
     [self postUrl:@"/zhongcheyun/feedback" delegate:delegate parameters:dic success:success failure:failure];

@@ -153,6 +153,9 @@
         _reason = [UILabel new];
         _reason.textColor = COLOR_RED;
         _reason.font =  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
+        _reason.numberOfLines = 0;
+        _reason.lineSpace  = W(5);
+
     }
     return _reason;
 }

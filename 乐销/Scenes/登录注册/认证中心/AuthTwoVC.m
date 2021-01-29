@@ -281,7 +281,6 @@
                     self.modelCarNo.subString = model.plateNumber;
                 }
                 if (isStr(model.vehicleType)) {
-                    self.modelCarType.subString = model.vehicleType;
                     NSNumber * typeID = [AddCarVC exchangeVehicleTypeWithName:model.vehicleType];
                     if (typeID) {
                         self.modelCarType.subString = model.vehicleType;

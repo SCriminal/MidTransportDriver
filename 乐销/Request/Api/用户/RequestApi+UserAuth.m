@@ -18,7 +18,7 @@
 +(void)requestLogoutWithDelegate:(id <RequestDelegate>)delegate
                     success:(void (^)(NSDictionary * response, id mark))success
                     failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"app":@"1",
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"scene":@"1"};
     [self deleteUrl:@"/ums/auth/logout" delegate:delegate parameters:dic success:^(NSDictionary * response, id mark){
         [GlobalMethod clearUserInfo];
@@ -37,7 +37,7 @@
                           delegate:(id <RequestDelegate>)delegate
                            success:(void (^)(NSDictionary * response, id mark))success
                            failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"app":@"1",
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"scene":@"1",
                           @"password":RequestStrKey([password base64Encode]),
                           @"mode":@1,
@@ -82,7 +82,7 @@
                       delegate:(id <RequestDelegate>)delegate
                        success:(void (^)(NSDictionary * response, id mark))success
                        failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"app":@"1",
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"account":RequestStrKey(account),
                           @"code":RequestStrKey(code),
                           @"password":RequestStrKey([password base64Encode])};
@@ -99,7 +99,7 @@
                       delegate:(id <RequestDelegate>)delegate
                        success:(void (^)(NSDictionary * response, id mark))success
                        failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"app":@"1",
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"phone":RequestStrKey(phone),
                           @"code":RequestStrKey(code)};
     [self postUrl:@"/ums/user/sms/verification/code" delegate:delegate parameters:dic success:success failure:failure];

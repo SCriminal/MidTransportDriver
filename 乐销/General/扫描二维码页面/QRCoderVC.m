@@ -10,10 +10,9 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <AudioToolbox/AudioToolbox.h>
 //request
-#import "RequestApi+Schedule.h"
-//info vc
-#import "ScheduleOrderInfoVC.h"
-
+//request
+#import "RequestDriver2.h"
+#import "AutoConfigDetailVC.h"
 static const NSInteger LIGHTBTNTAG  = 1;
 static const NSInteger QRBTNTAG     = 3;
 @interface QRCoderVC ()<UIImagePickerControllerDelegate,UITextFieldDelegate>
@@ -501,42 +500,50 @@ static const NSInteger QRBTNTAG     = 3;
         [GB_Nav popViewControllerAnimated:true];
         return;
     }
-    if (![stringValue containsString:PREFIX_SCHEDULE]) {
-        [GlobalMethod showBigAlert:@"无效二维码"];
-        [GB_Nav popViewControllerAnimated:true];
-        return;
-    }
-    stringValue = [stringValue componentsSeparatedByString:PREFIX_SCHEDULE].lastObject;
-    [RequestApi requestScheduleDetailWithNumber:stringValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        int code = [response intValueForKey:RESPONSE_CODE];
-        if (code == RESPONSE_CODE_SCHEDULE) {
-            [GlobalMethod showBigAlert:@"已存在未运输扫码运单，下单失败"];
-            [GB_Nav popViewControllerAnimated:true];
-            return ;
-        }
-        response = [response dictionaryValueForKey:RESPONSE_DATA];
-        ModelScheduleInfo *modelInfo = [ModelScheduleInfo modelObjectWithDictionary:response];
-        if (isStr(modelInfo.number)) {
-            if (modelInfo.isOpen == 0) {
-                [GlobalMethod showBigAlert:@"该发货计划已关闭"];
-                [GB_Nav popViewControllerAnimated:true];
-                return;
-            }
-            if (modelInfo.reserveVolume == 0) {
-                [GlobalMethod showBigAlert:@"总运量不足"];
-                [GB_Nav popViewControllerAnimated:true];
-                return;
-            }
-            ScheduleOrderInfoVC * infoVC = [ScheduleOrderInfoVC new];
-            infoVC.modelOrder = modelInfo;
-            [GB_Nav popLastAndPushVC:infoVC];
-        }else{
-            [GlobalMethod showBigAlert:@"该发货计划不存在"];
-            [GB_Nav popViewControllerAnimated:true];
-            return;
-        }
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-    }];
+    AutoConfigDetailVC * vc = [AutoConfigDetailVC new];
+    vc.modelList = ^(){
+        ModelAutOrderListItem * item = [ModelAutOrderListItem new];
+        item.planNumber = stringValue;
+        return item;
+    }();
+    [GB_Nav popLastAndPushVC:vc];
+
+//    if (![stringValue containsString:PREFIX_SCHEDULE]) {
+//        [GlobalMethod showBigAlert:@"无效二维码"];
+//        [GB_Nav popViewControllerAnimated:true];
+//        return;
+//    }
+//    stringValue = [stringValue componentsSeparatedByString:PREFIX_SCHEDULE].lastObject;
+//    [RequestApi requestScheduleDetailWithNumber:stringValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//        int code = [response intValueForKey:RESPONSE_CODE];
+//        if (code == RESPONSE_CODE_SCHEDULE) {
+//            [GlobalMethod showBigAlert:@"已存在未运输扫码运单，下单失败"];
+//            [GB_Nav popViewControllerAnimated:true];
+//            return ;
+//        }
+//        response = [response dictionaryValueForKey:RESPONSE_DATA];
+//        ModelScheduleInfo *modelInfo = [ModelScheduleInfo modelObjectWithDictionary:response];
+//        if (isStr(modelInfo.number)) {
+//            if (modelInfo.isOpen == 0) {
+//                [GlobalMethod showBigAlert:@"该发货计划已关闭"];
+//                [GB_Nav popViewControllerAnimated:true];
+//                return;
+//            }
+//            if (modelInfo.reserveVolume == 0) {
+//                [GlobalMethod showBigAlert:@"总运量不足"];
+//                [GB_Nav popViewControllerAnimated:true];
+//                return;
+//            }
+//            ScheduleOrderInfoVC * infoVC = [ScheduleOrderInfoVC new];
+//            infoVC.modelOrder = modelInfo;
+//            [GB_Nav popLastAndPushVC:infoVC];
+//        }else{
+//            [GlobalMethod showBigAlert:@"该发货计划不存在"];
+//            [GB_Nav popViewControllerAnimated:true];
+//            return;
+//        }
+//    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//    }];
    
 }
 - (void)protocolDidRequestFailure:(NSString *)errorStr{

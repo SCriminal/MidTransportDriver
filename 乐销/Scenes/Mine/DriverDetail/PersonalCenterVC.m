@@ -28,7 +28,7 @@
 //cell
 #import "SettingCell.h"
 #import "AuthOneVC.h"
-
+#import "QRCoderVC.h"
 @interface PersonalCenterVC ()
 @property (nonatomic, strong) DriverDetailTopView *topView;
 @property (nonatomic, strong) DriverDetailModelView *modelView;
@@ -80,7 +80,9 @@
                 mB.title = @"扫一扫";
                                mB.imageName = @"personal_扫一扫";
                                mB.blockClick = ^{
-                                   
+                                   QRCoderVC * vc = [QRCoderVC new];
+                                   [GB_Nav pushViewController:vc animated:true];
+
                                };
                 return mB;
             }(),^(){

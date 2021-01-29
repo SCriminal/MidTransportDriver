@@ -65,10 +65,7 @@
     }];
 }
 
-//extend token time
-+ (void)requestExtendToken{
-    [RequestApi requestExtendTokenSuccess:nil failure:nil];
-}
+
 
 
 @end

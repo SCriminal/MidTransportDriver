@@ -41,7 +41,7 @@
 - (AuthTitleView *)authTitleView{
     if (!_authTitleView) {
         _authTitleView = [AuthTitleView new];
-        [_authTitleView resetViewWithModel:@"总质量大于4.5吨的车辆必须上传道路运输许可证和从业资格证"];
+        [_authTitleView resetViewWithModel:@"总质量大于4.5吨的车辆必须上传道路运输许可证"];
     }
     return _authTitleView;
 }
@@ -66,7 +66,6 @@ WEAKSELF
         _modelLoad =[ModelBaseData new];
         _modelLoad.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelLoad.string = @"道路运输许可证";
-//        _modelLoad.subString = self.model.bankName;
         _modelLoad.placeHolderString = @"点击上传";
         WEAKSELF
         _modelLoad.blocClick = ^(ModelBaseData *model) {
@@ -82,7 +81,6 @@ WEAKSELF
         _modelBusiness =[ModelBaseData new];
         _modelBusiness.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelBusiness.string = @"从业资格证";
-//        _modelBusiness.subString = self.model.bankName;
         _modelBusiness.placeHolderString = @"点击上传";
         WEAKSELF
         _modelBusiness.blocClick = ^(ModelBaseData *model) {
@@ -147,29 +145,23 @@ WEAKSELF
     [GlobalMethod endEditing];
     BOOL needAuth = true;
     if (self.isFirst) {
-        if (self.grossMass > 4500) {
+        if (self.grossMass <= 4500) {
             needAuth = false;
         }
     }else{
-        if (self.modelAuthCar.grossMass>4500) {
+        if (self.modelAuthCar.grossMass<=4500) {
             needAuth = false;
         }
     }
     if (needAuth) {
-        for (ModelBaseData *model  in self.aryDatas) {
-            if (model.enumType == ENUM_PERFECT_CELL_TEXT||model.enumType == ENUM_PERFECT_CELL_SELECT||model.enumType == ENUM_PERFECT_CELL_ADDRESS) {
-                if (!isStr(model.subString)) {
-                    [GlobalMethod showAlert:model.placeHolderString];
-                    return;
-                }
-            }
-            if (model.enumType == ENUM_PERFECT_CELL_SELECT_LOGO) {
-                if (!isStr(model.identifier)) {
-                    [GlobalMethod showAlert:[NSString stringWithFormat:@"请上传%@",model.string]];
-                    return;
-                }
-            }
+        if (!isStr(self.modelLoad.identifier)) {
+            [GlobalMethod showAlert:[NSString stringWithFormat:@"请上传%@",self.modelLoad.string]];
+            return;
         }
+    }
+    if (!isStr(self.modelBusiness.identifier)) {
+        [GlobalMethod showAlert:[NSString stringWithFormat:@"请上传%@",self.modelBusiness.string]];
+        return;
     }
     [self saveAllProperty];
     if (self.isFirst) {

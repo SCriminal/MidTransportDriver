@@ -24,7 +24,7 @@
 #import "BaseVC+Location.h"
 #import "AuthOneVC.h"
 #import "AutoConfigRobView.h"
-
+#import "RequestInstance.h"
 @interface AutoConfigOrderListVC ()
 @property (nonatomic, strong) AutoConfigOrderListFilterView *filterView;
 @property (nonatomic, strong) AutoConfigOrderListAutoFilterView *topView;
@@ -299,6 +299,8 @@
         }];
 }
 -  (void)requestCarInfo{
+    [RequestInstance manager].operationQueue;
+
     [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelAuthCar * model = [ModelAuthCar modelObjectWithDictionary:response];
         self.modelCarInfo = model;
@@ -360,8 +362,10 @@
 - (void)requestCommentList{
     NSMutableArray * ary = [NSMutableArray array];
     for (ModelAutOrderListItem * modelItem in self.aryDatas) {
-        if (!isStr(modelItem.comment )) {
-            [ary addObject:NSNumber.dou(modelItem.shipperId).stringValue];
+        if (!isStr(modelItem.comment)) {
+            if (modelItem.shipperId) {
+                [ary addObject:NSNumber.dou(modelItem.shipperId).stringValue];
+            }
         }
     }
     [RequestApi requestCommentListWithUserIds:[ary componentsJoinedByString:@","] delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
@@ -401,6 +405,30 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self timerStart];
+    [self requestExtendToken];
+
+}
+
+- (void)requestExtendToken{
+    static int requestSuccess = 0;
+    if (requestSuccess) {
+        return;
+    }
+    if (![GlobalMethod isLoginSuccess]) {
+        requestSuccess = 1;
+        return;
+    }
+    if ([RequestInstance sharedInstance].tasks.count == 0) {
+        requestSuccess = 1;
+        [RequestApi requestRefreshTokenDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            NSString * token = [response stringValueForKey:@"token"];
+            if (isStr(token)) {
+                [GlobalData sharedInstance].GB_Key = token;
+            }
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+    }
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -464,6 +492,8 @@
         }
         [self.aryDatas addObjectsFromArray:aryRequest];
         [self.tableView reloadData];
+        [self requestCommentList];
+
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];

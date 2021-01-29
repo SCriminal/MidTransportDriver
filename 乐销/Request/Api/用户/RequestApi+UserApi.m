@@ -21,7 +21,7 @@
                      delegate:(id <RequestDelegate>)delegate
                       success:(void (^)(NSDictionary * response, id mark))success
                       failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"app":@"1",
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"cellPhone":RequestStrKey(cellPhone),
                           @"password":RequestStrKey(password),
                           @"code":RequestStrKey(code)};
@@ -37,7 +37,7 @@
                       delegate:(id <RequestDelegate>)delegate
                        success:(void (^)(NSDictionary * response, id mark))success
                        failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"app":@"1",
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"scene":@"1",
                           @"cellPhone":RequestStrKey(cellPhone),
                           @"code":RequestStrKey(code),
@@ -143,7 +143,7 @@
                       delegate:(id <RequestDelegate>)delegate
                        success:(void (^)(NSDictionary * response, id mark))success
                        failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"app":@"1",
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"cellPhone":RequestStrKey(cellPhone),
                           @"smsType":RequestStrKey(smsType)};
     [self postUrl:@"/ums/user/sms/code" delegate:delegate parameters:dic success:success failure:failure];
@@ -156,7 +156,7 @@
                           success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure{
     return;
-    NSDictionary *dic = @{@"app":@"1",
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"terminalType":@1,
                           @"versionNumber":[GlobalMethod getVersion]};
     [self getUrl:@"/zhongcheyun/version/new" delegate:delegate parameters:dic success:success failure:failure];
@@ -172,7 +172,7 @@
                                delegate:(id <RequestDelegate>)delegate
                                 success:(void (^)(NSDictionary * response, id mark))success
                                 failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"app":@"1",
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"terminalType":@1,
                           @"versionType":ForceUpdate?@2:@1,
                           @"bundleId":[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"],
@@ -194,7 +194,7 @@
     if (!isStr(deviceID)) {
         return;
     }
-    NSDictionary *dic = @{@"app":@"1",
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"scene":@"1",
                           @"type":@1,
                           @"number":deviceID};
@@ -246,7 +246,7 @@
     if (!isStr([GlobalData sharedInstance].GB_Key)) {
         return;
     }
-    NSDictionary *dic = @{@"app":@"1",
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"scene":@"1",
                           @"token":[GlobalData sharedInstance].GB_Key
                           };

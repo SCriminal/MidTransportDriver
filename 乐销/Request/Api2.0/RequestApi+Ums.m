@@ -18,7 +18,7 @@
                              delegate:(id <RequestDelegate>)delegate
                               success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"app":RequestStrKey(appId),
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"phone":RequestStrKey(phone),
                           @"scope":@"1",
 
@@ -33,7 +33,7 @@
                          delegate:(id <RequestDelegate>)delegate
                           success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"app":RequestStrKey(appId),
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"phone":RequestStrKey(phone),
                           @"scope":@"1",
 
@@ -48,7 +48,7 @@
                         delegate:(id <RequestDelegate>)delegate
                          success:(void (^)(NSDictionary * response, id mark))success
                          failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"app":RequestStrKey(appId),
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"phone":RequestStrKey(phone),
                           @"scope":@"1",
 
@@ -83,7 +83,7 @@
                          delegate:(id <RequestDelegate>)delegate
                           success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"app":RequestStrKey(appId),
+    NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"oldCellphone":RequestStrKey(oldCellphone),
                           @"newCellphone":RequestStrKey(newCellphone),
                           @"code":RequestStrKey(code),
@@ -111,8 +111,8 @@
                     delegate:(id <RequestDelegate>)delegate
                      success:(void (^)(NSDictionary * response, id mark))success
                      failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"app":RequestStrKey(appId),
-                          @"client":RequestStrKey(clientId),
+    NSDictionary *dic = @{@"app":REQUEST_APP,
+                          @"client":REQUEST_CLIENT,
                           @"phone":RequestStrKey(phone),
                           @"code":RequestStrKey(code),
                           @"terminalType":@1,
@@ -306,7 +306,7 @@
                            @"qcEndDate":NSNumber.dou(qcEndDate),
                            @"rtpEndDate":NSNumber.dou(rtpEndDate)};
     if (isRequest) {
-        [self postUrl:@"/ums/biz/driver" delegate:delegate parameters:dic success:success failure:failure];
+        [self postUrl:@"/ums/biz/status/2/driver" delegate:delegate parameters:dic success:success failure:failure];
     }
     return dic;
 
@@ -344,7 +344,7 @@ delegate:(id <RequestDelegate>)delegate
                           @"owner":RequestStrKey(owner),
                           @"vehicleType":RequestLongKey(vehicleType)
     };
-    [self getUrl:@"/ums/vehicle/info" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/vehicle/isreview" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 /**
@@ -592,6 +592,19 @@ delegate:(id <RequestDelegate>)delegate
                               failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"userIds":RequestStrKey(userIds)};
     [self getUrl:@"/ums/evaluation" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
+ 刷洗token
+ */
++(void)requestRefreshTokenDelegate:(id <RequestDelegate>)delegate
+                              success:(void (^)(NSDictionary * response, id mark))success
+                              failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"app":REQUEST_APP,
+                          @"client":REQUEST_CLIENT,
+                          @"refreshToken":[GlobalData sharedInstance].GB_REFRESH_TOKEN
+    };
+    [self postUrl:@"/ums/user/login/refresh/token" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 @end

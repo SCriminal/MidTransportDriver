@@ -28,8 +28,11 @@
         _timeView.date = [GlobalMethod exchangeTimeStampToDate:self.modelList.startTime];
         WEAKSELF
         _timeView.blockOutTime = ^{
-            [GlobalMethod showAlert:@"倒计时结束"];
-            [GB_Nav popViewControllerAnimated:true];
+            ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+            modelConfirm.blockClick = ^{
+                [GB_Nav popViewControllerAnimated:true];
+            };
+            [BaseAlertView initWithTitle:@"提示" content:@"倒计时已结束，请选择其他运单" aryBtnModels:@[modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
         };
         _timeView.blockClick = ^{
             [weakSelf requestCarInfo];
@@ -87,11 +90,33 @@
         ModelAutOrderListItem * orderDetail = [ModelAutOrderListItem modelObjectWithDictionary:response];
         orderDetail.comment = self.modelList.comment;
         self.modelList = orderDetail;
+        [self requestComment];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
 }
-
+- (void)requestComment{
+    NSMutableArray * ary = [NSMutableArray array];
+    if (!isStr(self.modelList.comment)) {
+        if (self.modelList.shipperId) {
+            [ary addObject:NSNumber.dou(self.modelList.shipperId).stringValue];
+        }
+    }
+    [RequestApi requestCommentListWithUserIds:[ary componentsJoinedByString:@","] delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        NSLog(@"%@",response);
+        NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelComment"];
+        if (!ary.count) {
+            return;
+        }
+        ModelComment * comment = ary.lastObject;
+       
+        self.modelList.comment = [NSString stringWithFormat:@"%@      成交量：%@      好评率：%@",comment.cellphone.secretPhone,NSNumber.dou(comment.finishWaybillSum).stringValue,NSNumber.dou(comment.score).stringValue];
+        [self.topView resetViewWithModel:self.modelList];
+        self.tableView.tableHeaderView = self.topView;
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+}
 -  (void)requestCarInfo{
     [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelAuthCar * model = [ModelAuthCar modelObjectWithDictionary:response];
@@ -224,10 +249,6 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         self.width = SCREEN_WIDTH;
-        [self addSubview:self.addressFrom];
-        [self addSubview:self.addressTo];
-        [self addSubview:self.iconAddress];
-        [self addSubview:self.newsView];
         
     }
     return self;
@@ -235,7 +256,12 @@
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelAutOrderListItem *)modelPlan{
-    [self removeSubViewWithTag:TAG_LINE];//移除线
+    [self removeAllSubViews];//移除线
+    [self addSubview:self.addressFrom];
+    [self addSubview:self.addressTo];
+    [self addSubview:self.iconAddress];
+    [self addSubview:self.newsView];
+
     //刷新view
     self.iconAddress.centerXTop = XY(SCREEN_WIDTH/2.0, W(20));
     
