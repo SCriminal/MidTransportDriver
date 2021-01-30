@@ -317,5 +317,26 @@
 - (void)viewBgClick{
     
 }
-
+- (NSString *)exchangeChargeType{
+    switch (self.btnTagSelected) {//1充值提现2借款还款3冻结解冻4运费消费5其他消费
+        case 0:
+            return nil;
+            break;
+        case 1:
+            return @"4";
+            break;
+        case 2:
+            return @"1";
+            break;
+        case 3:
+            return @"1";
+            break;
+        case 4:
+            return @"5";
+            break;
+        default:
+            break;
+    }
+    return nil;
+}
 @end

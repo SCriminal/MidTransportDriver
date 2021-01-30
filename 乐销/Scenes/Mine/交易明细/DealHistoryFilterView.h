@@ -28,5 +28,5 @@
 #pragma mark 刷新view
 - (void)resetViewWithModel:(id)model;
 - (void)show;
-
+- (NSString *)exchangeChargeType;
 @end

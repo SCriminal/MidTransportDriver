@@ -9,6 +9,8 @@
 #import "MyPocketVC.h"
 #import "RechargeInputView.h"
 #import "WithdrawInputView.h"
+//request
+#import "RequestDriver2.h"
 @interface MyPocketVC ()
 @property (nonatomic, strong) UILabel *accountNum;
 
@@ -26,10 +28,11 @@
     self.tableView.height = SCREEN_HEIGHT;
     self.tableView.top = 0;
     self.tableView.backgroundColor = [UIColor clearColor];
-    //request
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [self requestList];
 }
-
 #pragma mark 添加导航栏
 - (void)addNav{
     UIView * topView = [UIView new];
@@ -67,7 +70,7 @@
         l.backgroundColor = [UIColor clearColor];
         l.numberOfLines = 0;
         l.lineSpace = W(0);
-        [l fitTitle:@"1000.00" variable:SCREEN_WIDTH - W(30)];
+        [l fitTitle:@"0.00" variable:SCREEN_WIDTH - W(30)];
         l.centerXTop = XY(SCREEN_WIDTH/2.0, W(45)+NAVIGATIONBAR_HEIGHT);
         [topView addSubview:l];
         self.accountNum = l;
@@ -195,7 +198,14 @@
 }
 #pragma mark request
 - (void)requestList{
-    
+    [RequestApi requestPocketWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        double amt = [response doubleValueForKey:@"amt"];
+        [self.accountNum fitTitle:NSNumber.dou(amt).stringValue variable:SCREEN_WIDTH - W(30)];
+        self.accountNum.centerXTop = XY(SCREEN_WIDTH/2.0, W(45)+NAVIGATIONBAR_HEIGHT);
+
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;

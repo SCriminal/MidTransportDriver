@@ -9,12 +9,26 @@
 #import "DealHistoryListVC.h"
 #import "DealHistoryFilterView.h"
 #import "DealHistoryDetailVC.h"
+//request
+#import "RequestDriver2.h"
 @interface DealHistoryListVC ()
 @property (nonatomic, strong) DealHistoryFilterView *filterView;
 
 @end
 
 @implementation DealHistoryListVC
+#pragma mark noresult view
+@synthesize noResultView = _noResultView;
+- (BOOL)isShowNoResult{
+    return true;
+}
+- (NoResultView *)noResultView{
+    if (!_noResultView) {
+        _noResultView = [NoResultView new];
+        [_noResultView resetWithImageName:@"empty_default" title:@"暂无记录"];
+    }
+    return _noResultView;
+}
 - (DealHistoryFilterView *)filterView{
     if (!_filterView) {
         _filterView = [DealHistoryFilterView new];
@@ -35,6 +49,7 @@
     [self.tableView registerClass:[DealHistoryListCell class] forCellReuseIdentifier:@"DealHistoryListCell"];
     //request
     [self requestList];
+    [self addRefresh];
 }
 
 #pragma mark 添加导航栏
@@ -66,12 +81,25 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DealHistoryDetailVC * vc = [DealHistoryDetailVC new];
+    vc.modelItem = self.aryDatas[indexPath.row];
     [GB_Nav pushViewController:vc animated:true];
 }
 #pragma mark request
 - (void)requestList{
-    self.aryDatas = @[@"",@"",@""].mutableCopy;
-    [self.tableView reloadData];
+    [RequestApi requestDealListWithFlownumber:isStr(self.filterView.tfBillNo.text)?self.filterView.tfBillNo.text:nil srcNumber:nil startTime:self.filterView.dateStart.timeIntervalSince1970 endTime:self.filterView.dateEnd.timeIntervalSince1970 chargeTypes:self.filterView.exchangeChargeType page:self.pageNum count:20 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.pageNum ++;
+        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelDealItem"];
+        if (self.isRemoveAll) {
+            [self.aryDatas removeAllObjects];
+        }
+        if (!isAry(aryRequest)) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        [self.aryDatas addObjectsFromArray:aryRequest];
+        [self.tableView reloadData];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
@@ -135,20 +163,20 @@
     return self;
 }
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(id)model{
+- (void)resetCellWithModel:(ModelDealItem *)model{
     self.height = W(76);
 
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-    self.stateShow.text = @"运";
+    self.stateShow.text = [model.chargeTypeShow substringToIndex:1];
     self.stateShow.leftCenterY = XY(W(15),self.height/2.0);
     self.stateShow.backgroundColor = COLOR_BLUE;
     
-        [self.state fitTitle:@"运单成交" variable:W(240)];
+        [self.state fitTitle:model.chargeTypeShow variable:W(240)];
     self.state.leftTop = XY(W(71),W(2)+self.stateShow.top);
-    [self.price fitTitle:@"+1000.00" variable:W(150)];
+    [self.price fitTitle:[NSString stringWithFormat:@"%@%@",model.direction==1?@"+":@"-",NSNumber.dou(model.amt/100.0).stringValue] variable:W(150)];
     self.price.rightCenterY = XY(SCREEN_WIDTH - W(15),self.height/2.0);
-    [self.time fitTitle:@"2020-11-19 12:10:20" variable:0];
+    [self.time fitTitle:[GlobalMethod exchangeTimeWithStamp:model.flowTime andFormatter:TIME_SEC_SHOW] variable:0];
     self.time.leftBottom = XY(W(71),self.stateShow.bottom-W(2));
     [self.contentView addLineFrame:CGRectMake(W(71), self.height - 1, SCREEN_WIDTH - W(71), 1)];
 }

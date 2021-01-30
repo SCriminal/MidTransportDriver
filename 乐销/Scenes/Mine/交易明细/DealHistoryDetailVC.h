@@ -9,5 +9,6 @@
 #import "BaseVC.h"
 
 @interface DealHistoryDetailVC : BaseVC
+@property (nonatomic, strong) ModelDealItem *modelItem;
 
 @end

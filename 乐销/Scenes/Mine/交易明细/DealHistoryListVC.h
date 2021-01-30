@@ -17,8 +17,9 @@
 @property (strong, nonatomic) UILabel *price;
 @property (strong, nonatomic) UILabel *time;
 @property (strong, nonatomic) UILabel *stateShow;
+@property (nonatomic, strong) ModelDealItem *item;
 
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(id)model;
+- (void)resetCellWithModel:(ModelDealItem *)model;
 
 @end

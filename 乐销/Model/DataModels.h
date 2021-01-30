@@ -70,3 +70,4 @@
 #import "ModelAutOrderListItem.h"
 #import "ModelTransportOrder.h"
 #import "ModelComment.h"
+#import "ModelDealItem.h"

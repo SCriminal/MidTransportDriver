@@ -38,7 +38,7 @@
               _stateShow.widthHeight = XY(W(70), W(70));
               _stateShow.textAlignment = NSTextAlignmentCenter;
         _stateShow.backgroundColor = COLOR_BLUE;
-        _stateShow.text = @"运";
+        _stateShow.text = [self.modelItem.chargeTypeShow substringToIndex:1];
         [GlobalMethod setRoundView:_stateShow color:[UIColor clearColor] numRound:_stateShow.width/2.0 width:0];
         _stateShow.centerXTop = XY(SCREEN_WIDTH/2.0, W(40));
         [view addSubview:_stateShow];
@@ -50,7 +50,7 @@
            l.backgroundColor = [UIColor clearColor];
            l.numberOfLines = 0;
            l.lineSpace = W(0);
-           [l fitTitle:@"运单交易" variable:SCREEN_WIDTH - W(30)];
+           [l fitTitle:self.modelItem.chargeTypeShow variable:SCREEN_WIDTH - W(30)];
            l.centerXTop = XY(SCREEN_WIDTH/2.0, W(130));
            [view addSubview:l];
        }
@@ -61,7 +61,7 @@
         l.backgroundColor = [UIColor clearColor];
         l.numberOfLines = 0;
         l.lineSpace = W(0);
-        [l fitTitle:@"+1000.00" variable:SCREEN_WIDTH - W(30)];
+        [l fitTitle:[NSString stringWithFormat:@"%@%@",self.modelItem.direction==1?@"+":@"-",NSNumber.dou(self.modelItem.amt/100.0).stringValue] variable:SCREEN_WIDTH - W(30)];
         l.centerXTop = XY(SCREEN_WIDTH/2.0, W(165));
         [view addSubview:l];
     }
@@ -69,17 +69,17 @@
     NSArray * ary = @[^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"交易单号：";
-        m.subTitle = @"2399999910000000222";
+        m.subTitle = self.modelItem.flowNumber;
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"交易时间：";
-        m.subTitle = @"2020-11-19 12:09:20";
+        m.subTitle = [GlobalMethod exchangeTimeWithStamp:self.modelItem.flowTime andFormatter:TIME_SEC_SHOW];
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"交易说明：";
-        m.subTitle = @"运单交易";
+        m.subTitle = isStr(self.modelItem.internalBaseClassDescription)?self.modelItem.internalBaseClassDescription:@"暂无";
         return m;
     }()];
     CGFloat top = W(273);

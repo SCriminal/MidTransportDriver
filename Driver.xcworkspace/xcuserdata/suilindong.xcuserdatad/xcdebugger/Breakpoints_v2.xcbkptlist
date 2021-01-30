@@ -4221,8 +4221,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/&#x6211;&#x7684;&#x94b1;&#x5305;/MyPocketVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "-btnClick:"
             landmarkType = "7">
          </BreakpointContent>
@@ -6152,6 +6152,22 @@
             startingLineNumber = "607"
             endingLineNumber = "607"
             landmarkName = "+requestRefreshTokenDelegate:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1CF00C9F-3A30-4DE8-A7DA-A41DE51BA7FA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Request/Api2.0/RequestApi+Cash.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "+requestDealListWithFlownumber:srcNumber:startTime:endTime:chargeTypes:page:count:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
