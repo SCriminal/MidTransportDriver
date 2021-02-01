@@ -182,7 +182,7 @@
     return l.bottom;
 }
 - (void)addBtn{
-    NSArray * ary = @[@"全部",@"运单",@"充值",@"提现",@"其他"];
+    NSArray * ary = @[@"全部",@"充值提现",@"借款还款",@"冻结解冻",@"运费消费",@"其他消费"];
     CGFloat left = W(15);
     CGFloat top = W(40);
     for (int i = 0; i<ary.count; i++) {
@@ -323,15 +323,18 @@
             return nil;
             break;
         case 1:
-            return @"4";
+            return @"1";
             break;
         case 2:
-            return @"1";
+            return @"2";
             break;
         case 3:
-            return @"1";
+            return @"3";
             break;
         case 4:
+            return @"4";
+            break;
+        case 5:
             return @"5";
             break;
         default:

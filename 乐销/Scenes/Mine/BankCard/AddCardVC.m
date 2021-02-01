@@ -259,7 +259,7 @@
     }
    
     if (isStr(self.model.accountNumber)) {
-        [RequestApi requestEditCardWithAccountnumber:self.modelBankAccount.subString bankId:self.modelBankName.identifier.doubleValue accountName:self.modelBankName.subString delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [RequestApi requestEditCardWithAccountnumber:self.modelBankAccount.subString bankId:self.modelBankName.identifier.doubleValue accountName:self.modelName.subString delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             self.requestState = 1;
             [GB_Nav popViewControllerAnimated:true];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -267,7 +267,7 @@
         }];
       
     }else{
-        [RequestApi requestAddCardWithAccountnumber:self.modelBankAccount.subString bankId:self.modelBankName.identifier.doubleValue accountName:self.modelBankName.subString delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [RequestApi requestAddCardWithAccountnumber:self.modelBankAccount.subString bankId:self.modelBankName.identifier.doubleValue accountName:self.modelName.subString delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             self.requestState = 1;
             if ([GB_Nav hasClass:@"BankCardListVC"]) {
                 [GB_Nav popToClass:@"BankCardListVC"];

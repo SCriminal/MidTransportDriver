@@ -25,7 +25,7 @@
 - (NoResultView *)noResultView{
     if (!_noResultView) {
         _noResultView = [NoResultView new];
-        [_noResultView resetWithImageName:@"empty_default" title:@"暂无记录"];
+        [_noResultView resetWithImageName:@"empty_waybill_default" title:@"暂无记录"];
     }
     return _noResultView;
 }

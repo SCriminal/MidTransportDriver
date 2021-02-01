@@ -591,7 +591,7 @@ delegate:(id <RequestDelegate>)delegate
                               success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"userIds":RequestStrKey(userIds)};
-    [self getUrl:@"/ums/evaluation" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/ums/evaluation/list" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 /**
