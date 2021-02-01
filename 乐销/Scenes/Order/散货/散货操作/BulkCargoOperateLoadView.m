@@ -16,6 +16,19 @@
 @implementation BulkCargoOperateLoadView
 
 #pragma mark 懒加载
+- (PlaceHolderTextView *)textView{
+    if (_textView == nil) {
+        _textView = [PlaceHolderTextView new];
+        _textView.backgroundColor = [UIColor clearColor];
+//        _textView.delegate = self;
+        [GlobalMethod setLabel:_textView.placeHolder widthLimit:0 numLines:0 fontNum:F(14) textColor:COLOR_999 text:@"其他装车信息 (非必填)"];
+        _textView.placeHolder.leftTop = XY(0, W(4));
+        [_textView setTextColor:COLOR_333];
+        _textView.font = [UIFont systemFontOfSize:F(14)];
+        _textView.widthHeight = XY(W(275-24), W(80-24));
+    }
+    return _textView;
+}
 - (UIView *)viewBG{
     if (_viewBG == nil) {
         _viewBG = [UIView new];
@@ -80,6 +93,7 @@
     if (self) {
         self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
         self.widthHeight = XY(SCREEN_WIDTH, SCREEN_HEIGHT);
+        [self addTarget:self action:@selector(hideKeyboardClick)];
         [self addSubView];
     }
     return self;
@@ -92,7 +106,7 @@
     [self.viewBG addSubview:self.collection_Image];
     [self.viewBG addSubview:self.btnSubmit];
     [self.viewBG addSubview:self.labelTitle];
-    
+
     //初始化页面
     [self resetViewWithModel:nil];
 }
@@ -113,10 +127,23 @@
     self.labelTitle.leftCenterY = XY(W(20),W(77));
     
     self.collection_Image.leftTop = XY(W(20), self.labelTitle.bottom + W(15));
-    [self.viewBG addLineFrame:CGRectMake(0, self.collection_Image.bottom + W(15), self.viewBG.width, 1)];
+    
+    {
+        UIView * view = [UIView new];
+        view.backgroundColor = [UIColor whiteColor];
+        view.widthHeight = XY(W(275), W(80));
+        view.leftTop = XY(W(20), self.collection_Image.bottom + W(15));
+        [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+        [self.viewBG addSubview:view];
+        
+        [self.viewBG addSubview:self.textView];
+        self.textView.center = view.center;
+    }
+    
+    [self.viewBG addLineFrame:CGRectMake(0, self.collection_Image.bottom + W(120), self.viewBG.width, 1)];
     
     self.btnSubmit.widthHeight = XY(self.viewBG.width,W(55));
-    self.btnSubmit.centerXTop = XY(self.viewBG.width/2.0,self.collection_Image.bottom + W(15));
+    self.btnSubmit.centerXTop = XY(self.viewBG.width/2.0,self.collection_Image.bottom + W(120));
     self.viewBG.height = self.btnSubmit.bottom;
     
 }
@@ -143,7 +170,7 @@
 
 - (void)btnSubmitClick{
     if (self.blockComplete) {
-        self.blockComplete(self.collection_Image.aryDatas);
+        self.blockComplete(self.collection_Image.aryDatas,self.textView.text);
     }
     [self removeFromSuperview];
 }

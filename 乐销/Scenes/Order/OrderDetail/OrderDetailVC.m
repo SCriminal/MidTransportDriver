@@ -43,7 +43,7 @@
     if (!_upLoadImageView) {
         WEAKSELF
         BulkCargoOperateLoadView *upLoadImageView = [BulkCargoOperateLoadView new];
-        upLoadImageView.blockComplete = ^(NSArray *aryImages) {
+        upLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason) {
             NSMutableArray *ary = [aryImages fetchValues:@"url"];
             [RequestApi requestLoadWithUrls:[ary componentsJoinedByString:@","] number:weakSelf.orderList.orderNumber delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 [weakSelf refreshHeaderAll];
@@ -61,8 +61,9 @@
         BulkCargoOperateLoadView *upUnLoadImageView = [BulkCargoOperateLoadView new];
         [upUnLoadImageView.labelInput fitTitle:@"上传完成凭证" variable:0];
         [upUnLoadImageView.labelTitle fitTitle:@"请上传完成凭证 (回单、卸车磅单)" variable:0];
+        [GlobalMethod setLabel:upUnLoadImageView.textView.placeHolder widthLimit:0 numLines:0 fontNum:F(14) textColor:COLOR_999 text:@"其他完成信息 (非必填)"];
         WEAKSELF
-        upUnLoadImageView.blockComplete = ^(NSArray *aryImages) {
+        upUnLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason) {
             NSMutableArray *ary = [aryImages fetchValues:@"url"];
             [RequestApi requestUnloadWithUrls:[ary componentsJoinedByString:@","] number:weakSelf.orderList.orderNumber delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 [weakSelf refreshHeaderAll];

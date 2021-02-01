@@ -10,6 +10,7 @@
 
 //图片选择collection
 #import "Collection_Image.h"
+#import "PlaceHolderTextView.h"
 
 @interface BulkCargoOperateLoadView : UIView
 
@@ -18,8 +19,9 @@
 @property (nonatomic, strong) UILabel *labelTitle;
 @property (nonatomic, strong) UIImageView *ivClose;
 @property (nonatomic, strong) UIButton *btnSubmit;
-@property (nonatomic, strong) void (^blockComplete)(NSArray *);
+@property (nonatomic, strong) void (^blockComplete)(NSArray *,NSString *);
 @property (nonatomic, strong) Collection_Image *collection_Image;
+@property (nonatomic,strong) PlaceHolderTextView *textView;
 
 #pragma mark 刷新view
 - (void)show;

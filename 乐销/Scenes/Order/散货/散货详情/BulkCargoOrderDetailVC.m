@@ -98,7 +98,7 @@
            };
            _statusView.blockLoad  = ^(ModelBulkCargoOrder *model) {
                BulkCargoOperateLoadView *upLoadImageView = [BulkCargoOperateLoadView new];
-               upLoadImageView.blockComplete = ^(NSArray *aryImages) {
+               upLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason) {
                    NSMutableArray *ary = [aryImages fetchValues:@"url"];
                    [weakSelf requestOperate:[ary componentsJoinedByString:@","] model:model];
                };
@@ -109,7 +109,7 @@
                BulkCargoOperateLoadView *upUnLoadImageView = [BulkCargoOperateLoadView new];
                [upUnLoadImageView.labelInput fitTitle:@"上传完成凭证" variable:0];
                [upUnLoadImageView.labelTitle fitTitle:@"请上传完成凭证 (回单、卸车磅单)" variable:0];
-               upUnLoadImageView.blockComplete = ^(NSArray *aryImages) {
+               upUnLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason) {
                    NSMutableArray *ary = [aryImages fetchValues:@"url"];
                    [weakSelf requestOperate:[ary componentsJoinedByString:@","] model:model];
                };

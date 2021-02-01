@@ -290,7 +290,7 @@
             }
         }else{
             self.noResultView = [NoResultView new];
-            [self.noResultView resetWithImageName:@"empty_default" title:@"暂无数据"];
+            [self.noResultView resetWithImageName:@"empty_waybill_default" title:@"暂无数据"];
         }
         [self showNoResult];
 
