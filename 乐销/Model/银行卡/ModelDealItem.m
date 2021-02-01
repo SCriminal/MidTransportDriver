@@ -68,21 +68,30 @@ NSString *const kModelDealItemFlowNumber = @"flowNumber";
             self.direction = [dict doubleValueForKey:kModelDealItemDirection];
             self.flowNumber = [dict stringValueForKey:kModelDealItemFlowNumber];
 //        1充值提现2借款还款3冻结解冻4运费消费5其他消费
+        //1 收入 2 支出
+        self.chargeColorShow = COLOR_BLUE_LIGHT;
         switch ((int)self.chargeType) {
             case 1:
                 self.chargeTypeShow = @"充值提现";
+                self.chargeTitleShow = self.direction == 1?@"充":@"提";
+                self.chargeColorShow = self.direction == 1?COLOR_BLUE:COLOR_ORANGE;
                 break;
             case 2:
                 self.chargeTypeShow = @"借款还款";
+                self.chargeTitleShow = self.direction == 1?@"借":@"还";
                 break;
             case 3:
                 self.chargeTypeShow = @"冻结解冻";
+                self.chargeTitleShow = self.direction == 1?@"冻":@"解";
                 break;
             case 4:
                 self.chargeTypeShow = @"运费消费";
+                self.chargeTitleShow = self.direction == 1?@"运":@"运";
                 break;
             case 5:
                 self.chargeTypeShow = @"其他消费";
+                self.chargeTitleShow = self.direction == 1?@"其":@"其";
+                self.chargeColorShow = COLOR_GREEN;
                 break;
             default:
                 break;

@@ -38,7 +38,7 @@
         _tfBillNo.borderStyle = UITextBorderStyleNone;
         _tfBillNo.backgroundColor = [UIColor clearColor];
         _tfBillNo.delegate = self;
-        _tfBillNo.placeholder = @"填写运单单号（支持模糊搜索）";
+        _tfBillNo.placeholder = @"填写交易单号（支持模糊搜索）";
     }
     return _tfBillNo;
 }

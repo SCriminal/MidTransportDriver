@@ -37,8 +37,8 @@
               _stateShow.font =  [UIFont systemFontOfSize:F(25) weight:UIFontWeightMedium];
               _stateShow.widthHeight = XY(W(70), W(70));
               _stateShow.textAlignment = NSTextAlignmentCenter;
-        _stateShow.backgroundColor = COLOR_BLUE;
-        _stateShow.text = [self.modelItem.chargeTypeShow substringToIndex:1];
+        _stateShow.backgroundColor = self.modelItem.chargeColorShow;
+        _stateShow.text = [self.modelItem.chargeTitleShow substringToIndex:1];
         [GlobalMethod setRoundView:_stateShow color:[UIColor clearColor] numRound:_stateShow.width/2.0 width:0];
         _stateShow.centerXTop = XY(SCREEN_WIDTH/2.0, W(40));
         [view addSubview:_stateShow];
