@@ -5925,9 +5925,9 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/BankCard/BankCardListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "-requestDelete"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-requestList"
             landmarkType = "7">
             <Locations>
                <Location

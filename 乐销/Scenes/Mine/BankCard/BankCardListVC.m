@@ -59,13 +59,8 @@
             [GlobalMethod showAlert:@"只能添加一张银行卡"];
             return ;
         }
-        AddCardVC * addVC = [AddCardVC new];
-        addVC.blockBack = ^(UIViewController *vc) {
-            if (vc.requestState) {
-                [weakSelf requestList];
-            }
-        };
-        [GB_Nav pushViewController:addVC animated:true];
+       [weakSelf requestAuth];
+        
     }];
     [nav configBackBlueStyle];
     [self.view addSubview:nav];
@@ -83,12 +78,7 @@
     [cell resetCellWithModel:self.aryDatas[indexPath.row]];
     WEAKSELF
     cell.blockEditClick = ^(ModelBank *mb) {
-        AddCardVC * addVC = [AddCardVC new];
-        addVC.model = mb;
-        addVC.blockBack = ^(UIViewController *vc) {
-            [weakSelf requestList];
-        };
-        [GB_Nav pushViewController:addVC animated:true];
+       
     };
     cell.blockDeleteClick = ^(ModelBank *mb) {
         ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
@@ -140,5 +130,23 @@
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
+}
+- (void)requestAuth{
+    [RequestApi requestDriverAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        ModelAuthDriver * model = [ModelAuthDriver modelObjectWithDictionary:response];
+        if (model.reviewStatus == 10) {
+            WEAKSELF
+            AddCardVC * addVC = [AddCardVC new];
+            addVC.blockBack = ^(UIViewController *vc) {
+                [weakSelf requestList];
+            };
+            [GB_Nav pushViewController:addVC animated:true];
+        }else{
+            [GlobalMethod showAlert:@"认证通过才能添加银行卡"];
+        }
+     
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 @end

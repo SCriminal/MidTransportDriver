@@ -89,8 +89,8 @@
         [self.contentView addSubview:self.labelBankName];
         [self.contentView addSubview:self.labelCardNum];
         [self.contentView addSubview:self.labelName];
-        [self.contentView addSubview:self.iconEdit];
-        [self.contentView addSubview:self.labelEdit];
+//        [self.contentView addSubview:self.iconEdit];
+//        [self.contentView addSubview:self.labelEdit];
         [self.contentView addSubview:self.iconDelete];
         [self.contentView addSubview:self.labelDelete];
         
@@ -118,10 +118,10 @@
     self.iconDelete.rightCenterY = XY(self.labelDelete.left - W(2),self.labelName.centerY);
     [self.contentView addControlFrame:CGRectInset(self.labelDelete.frame, -W(20), -W(30)) belowView:self.labelDelete target:self action:@selector(deleteClick)];
     
-    [self.labelEdit fitTitle:@"编辑" variable:0];
-    self.labelEdit.rightCenterY = XY(self.iconDelete.left- W(20),self.labelName.centerY);
-    self.iconEdit.rightCenterY = XY(self.labelEdit.left- W(2),self.labelName.centerY);
-    [self.contentView addControlFrame:CGRectInset(self.labelEdit.frame, -W(20), -W(30)) belowView:self.labelEdit target:self action:@selector(editClick)];
+//    [self.labelEdit fitTitle:@"编辑" variable:0];
+//    self.labelEdit.rightCenterY = XY(self.iconDelete.left- W(20),self.labelName.centerY);
+//    self.iconEdit.rightCenterY = XY(self.labelEdit.left- W(2),self.labelName.centerY);
+//    [self.contentView addControlFrame:CGRectInset(self.labelEdit.frame, -W(20), -W(30)) belowView:self.labelEdit target:self action:@selector(editClick)];
 
     self.height = self.ivBG.height;
 }
