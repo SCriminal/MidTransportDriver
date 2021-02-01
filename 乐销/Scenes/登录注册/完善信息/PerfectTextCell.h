@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIImageView *iconArrow;
 @property (strong, nonatomic) UILabel *essential;
 @property (nonatomic, strong) ModelBaseData *model;
+@property (nonatomic, strong) UIControl *conIconClick;
 
 #pragma mark 刷新cell
 - (void)resetCellWithModel:(ModelBaseData *)model;

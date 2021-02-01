@@ -75,12 +75,18 @@
     if (!_modelName) {
         _modelName = ^(){
             ModelBaseData * model = [ModelBaseData new];
-            model.enumType = ENUM_PERFECT_CELL_TEXT;
+            model.enumType = ENUM_PERFECT_CELL_SELECT;
             model.imageName = @"";
             model.string = @"开户人";
-            model.isChangeInvalid = true;
+//            model.isChangeInvalid = true;
             model.subString = self.model.accountName;
             model.placeHolderString = @"真实姓名(必填)";
+            model.blocClick = ^(ModelBaseData *item) {
+                ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+                modelConfirm.blockClick = ^(void){
+                };
+                [BaseAlertView initWithTitle:@"持卡人说明" content:@"为了资金安全，一个账号只能添加同一身份下的银行卡" aryBtnModels:@[modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
+            };
             return model;
         }();
     }
@@ -185,7 +191,10 @@
         _modelBankAccount.string = @"银行账户";
         _modelBankAccount.subString = self.model.accountNumber;
         _modelBankAccount.placeHolderString = @"银行账号(必填)";
-        
+        WEAKSELF
+        _modelBankAccount.blockDeleteClick = ^(ModelBaseData * item) {
+            [weakSelf showImageVC:1];
+        };
     }
     return _modelBankAccount;
 }
@@ -227,7 +236,7 @@
 
 #pragma mark config data
 - (void)configData{
-    self.aryDatas = @[ self.modelName,self.modelIdNum,self.modelBankName,self.modelBankAccount].mutableCopy;
+    self.aryDatas = @[ self.modelName,self.modelBankName,self.modelBankAccount].mutableCopy;
     for (ModelBaseData *m in self.aryDatas) {
         m.subLeft = W(105);
     }
@@ -241,7 +250,16 @@
 }
 //cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    PerfectTextCell * cell = (PerfectTextCell *)[self dequeueAuthorityCell:indexPath];
+    PerfectSelectCell * cell = (PerfectSelectCell *)[self dequeueAuthorityCell:indexPath];
+    ModelBaseData * item = self.aryDatas[indexPath.row];
+    if (item == self.modelName) {
+        cell.ivArrow.image = [UIImage imageNamed:@"card_alert"];
+    }
+    if (item == self.modelBankAccount) {
+        PerfectTextCell * textCell = (PerfectTextCell *)cell;
+        textCell.iconArrow.image = [UIImage imageNamed:@"card_camera"];
+        textCell.iconArrow.hidden = false;
+    }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -310,6 +328,30 @@
 #pragma mark status bar
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
+}
+
+- (void)imageSelect:(BaseImage *)image{
+    [self showLoadingView];
+    
+    [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_BANK_CARD;
+    [[AliClient sharedInstance]updateImageAry:@[image] storageSuccess:^{
+        
+    } upSuccess:nil upHighQualitySuccess:^{
+        [self.loadingView hideLoading];
+        [RequestApi requestOCRBankCardWithurl:image.imageURL delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            ModelOCR * model = [ModelOCR modelObjectWithDictionary:[response dictionaryValueForKey:@"data"] ];
+            if (isStr(model.cardNumber)) {
+                self.modelBankAccount.subString = model.cardNumber;
+                [self.tableView reloadData];
+            }
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+       
+    } fail:^{
+        
+    }];
+    
 }
 
 @end

@@ -49,7 +49,6 @@
                          success:(void (^)(NSDictionary * response, id mark))success
                          failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"url":UnPackStr(url),
-                          @"scope":@"1",
                           @"side":UnPackStr(side)
     };
     [self getUrl:@"/oss/ocr/id" delegate:delegate parameters:dic success:success failure:failure];
@@ -60,7 +59,6 @@
                        success:(void (^)(NSDictionary * response, id mark))success
                        failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"url":UnPackStr(url),
-                          @"scope":@"1",
                           @"side":UnPackStr(side)
     };
     [self getUrl:@"/oss/ocr/driver" delegate:delegate parameters:dic success:success failure:failure];
@@ -72,7 +70,6 @@
                          failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"url":UnPackStr(url),
                           @"side":UnPackStr(side),
-                          @"scope":@"1",
 
     };
     [self getUrl:@"/oss/ocr/biz" delegate:delegate parameters:dic success:success failure:failure];
@@ -83,9 +80,16 @@
                        success:(void (^)(NSDictionary * response, id mark))success
                        failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"url":UnPackStr(url),
-                          @"scope":@"1",
                           @"side":UnPackStr(side)
     };
     [self getUrl:@"/oss/ocr/driving" delegate:delegate parameters:dic success:success failure:failure];
+}
++(void)requestOCRBankCardWithurl:(NSString *)url
+                      delegate:(id <RequestDelegate>)delegate
+                       success:(void (^)(NSDictionary * response, id mark))success
+                       failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"url":UnPackStr(url),
+    };
+    [self getUrl:@"/oss/ocr/bank/card" delegate:delegate parameters:dic success:success failure:failure];
 }
 @end

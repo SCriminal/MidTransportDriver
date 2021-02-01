@@ -57,6 +57,9 @@
 @property (nonatomic, strong) NSString *validPeriod;
 @property (nonatomic, strong) NSString *business;
 @property (nonatomic, strong) NSString *registerNumber;
+@property (nonatomic, strong) NSString *bankName;
+@property (nonatomic, strong) NSString *cardNumber;
+@property (nonatomic, strong) NSString *validDate;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

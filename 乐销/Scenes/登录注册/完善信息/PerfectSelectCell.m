@@ -37,9 +37,9 @@
 - (UIImageView *)ivArrow{
     if (!_ivArrow) {
         _ivArrow = [UIImageView new];
-        _ivArrow.image = [UIImage imageNamed:@"setting_RightArrow"];
+        _ivArrow.image = [UIImage imageNamed:@"select_right"];
         _ivArrow.backgroundColor=[UIColor clearColor];
-        _ivArrow.widthHeight = XY(W(25), W(25));
+        _ivArrow.widthHeight = XY(W(23), W(23));
     }
     return _ivArrow;
 }

@@ -110,6 +110,9 @@ NSString *const kModelOCRRegisterNumber = @"registerNumber";
         self.validPeriod = [dict stringValueForKey:kModelOCRValidPeriod];
         self.business = [dict stringValueForKey:kModelOCRBusiness];
         self.registerNumber = [dict stringValueForKey:kModelOCRRegisterNumber];
+        self.bankName = [dict stringValueForKey:@"bankName"];
+        self.cardNumber = [dict stringValueForKey:@"cardNumber"];
+        self.validDate = [dict stringValueForKey:@"validDate"];
 
         if (!isStr(self.iDNumber)) {
             self.iDNumber = [dict stringValueForKey:@"iDNumber"];
@@ -167,6 +170,9 @@ NSString *const kModelOCRRegisterNumber = @"registerNumber";
     [mutableDict setValue:self.validPeriod forKey:kModelOCRValidPeriod];
     [mutableDict setValue:self.business forKey:kModelOCRBusiness];
     [mutableDict setValue:self.registerNumber forKey:kModelOCRRegisterNumber];
+    [mutableDict setValue:self.bankName forKey:@"bankName"];
+    [mutableDict setValue:self.cardNumber forKey:@"cardNumber"];
+    [mutableDict setValue:self.validDate forKey:@"validDate"];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

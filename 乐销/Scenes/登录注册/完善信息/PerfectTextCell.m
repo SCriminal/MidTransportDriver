@@ -32,6 +32,7 @@
         _iconArrow.image = [UIImage imageNamed:@"setting_RightArrow"];
         _iconArrow.hidden = true;
         _iconArrow.widthHeight = XY(W(25), W(25));
+        
     }
     return _iconArrow;
 }
@@ -57,7 +58,13 @@
     }
     return _essential;
 }
-
+- (UIControl *)conIconClick{
+    if (!_conIconClick) {
+        _conIconClick = [UIControl new];
+        [_conIconClick addTarget:self action:@selector(iconClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _conIconClick;
+}
 #pragma mark 初始化
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -69,7 +76,8 @@
         [self.contentView addSubview:self.textField];
         [self.contentView addSubview:self.iconArrow];
         [self.contentView addSubview:self.essential];
-
+        [self.contentView addSubview:self.conIconClick];
+        [self.contentView addSubview:self.iconArrow];
         [self.contentView addTarget:self action:@selector(cellClick)];
         
     }
@@ -83,7 +91,8 @@
     //设置总高度
     self.height = W(49);
     
-    self.iconArrow.rightCenterY = XY(SCREEN_WIDTH- W(10),self.height/2.0);
+    self.iconArrow.rightCenterY = XY(SCREEN_WIDTH- W(15),self.height/2.0);
+    self.conIconClick.frame = CGRectMake(self.textField.right, 0, SCREEN_WIDTH - self.textField.right, self.height);
 
     [self.title fitTitle:model.string variable:0];
     self.title.leftCenterY = XY(W(15),self.height/2.0);
@@ -96,7 +105,6 @@
     self.textField.text = model.subString;
     self.textField.textColor = model.isChangeInvalid?COLOR_999:COLOR_333;
     self.textField.userInteractionEnabled = !model.isChangeInvalid;
-
     {
         NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
         attrs[NSForegroundColorAttributeName] = COLOR_999;
@@ -117,6 +125,11 @@
     }
     if (self.textField.userInteractionEnabled) {
         [self.textField becomeFirstResponder];
+    }
+}
+- (void)iconClick{
+    if (self.model.blockDeleteClick) {
+        self.model.blockDeleteClick(self.model);
     }
 }
 #pragma mark textfild change

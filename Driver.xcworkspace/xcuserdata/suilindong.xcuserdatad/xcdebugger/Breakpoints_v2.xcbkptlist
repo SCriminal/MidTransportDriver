@@ -524,8 +524,8 @@
             timestampString = "594266547.0674371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "-updateImageAry:storageSuccess:upSuccess:upHighQualitySuccess:fail:"
             landmarkType = "7">
          </BreakpointContent>
@@ -541,8 +541,8 @@
             timestampString = "594266547.068126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "-updateImageAry:storageSuccess:upSuccess:upHighQualitySuccess:fail:"
             landmarkType = "7">
          </BreakpointContent>
@@ -558,8 +558,8 @@
             timestampString = "594266547.068473"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "-updateImageAry:storageSuccess:upSuccess:upHighQualitySuccess:fail:"
             landmarkType = "7">
          </BreakpointContent>
@@ -575,8 +575,8 @@
             timestampString = "594266547.068817"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "-upImageData:urlSuffix:blockSuccess:blockFailure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -764,7 +764,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "282"
             endingLineNumber = "282"
-            landmarkName = "-requestMatchCode:"
+            landmarkName = "-textChange"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -898,8 +898,8 @@
             timestampString = "594266547.069627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "-updateImageAry:storageSuccess:upSuccess:upHighQualitySuccess:fail:"
             landmarkType = "7">
             <Locations>
@@ -1589,8 +1589,8 @@
             timestampString = "594266547.070766"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "-updateImageAry:storageSuccess:upSuccess:upHighQualitySuccess:fail:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2163,8 +2163,8 @@
             timestampString = "598872924.047834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
             landmarkName = "-requestBank"
             landmarkType = "7">
          </BreakpointContent>
@@ -3069,8 +3069,8 @@
             filePath = "&#x4e50;&#x9500;/General/ALiClient/AliClient.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-updateImageAry:storageSuccess:upSuccess:upHighQualitySuccess:fail:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5085,8 +5085,8 @@
             filePath = "&#x4e50;&#x9500;/General/ALiClient/AliClient.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "-upImageHeigh:urlSuffix:blockSuccess:blockFailure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5101,8 +5101,8 @@
             filePath = "&#x4e50;&#x9500;/General/ALiClient/AliClient.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "-upImageData:urlSuffix:blockSuccess:blockFailure:"
             landmarkType = "7">
             <Locations>
@@ -5149,8 +5149,8 @@
             filePath = "&#x4e50;&#x9500;/General/ALiClient/AliClient.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "-upImageData:urlSuffix:blockSuccess:blockFailure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5437,8 +5437,8 @@
             filePath = "&#x4e50;&#x9500;/General/ALiClient/AliClient.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "-upImageData:urlSuffix:blockSuccess:blockFailure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5973,8 +5973,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/BankCard/AddCardVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "-completeClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -6168,6 +6168,38 @@
             startingLineNumber = "96"
             endingLineNumber = "96"
             landmarkName = "+requestDealListWithFlownumber:srcNumber:startTime:endTime:chargeTypes:page:count:delegate:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32BDA382-3238-4EDA-8FDD-EABF73FC920D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x5b8c;&#x5584;&#x4fe1;&#x606f;/PerfectTextCell.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "-iconArrow"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "63BBE7BF-A90C-49FA-BE52-A63B51DA1A0E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Mine/BankCard/AddCardVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
+            landmarkName = "-imageSelect:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

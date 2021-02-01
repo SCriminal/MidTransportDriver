@@ -420,14 +420,14 @@
     }
     if ([RequestInstance sharedInstance].tasks.count == 0) {
         requestSuccess = 1;
-        [RequestApi requestRefreshTokenDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            NSString * token = [response stringValueForKey:@"token"];
-            if (isStr(token)) {
-                [GlobalData sharedInstance].GB_Key = token;
-            }
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
-        }];
+//        [RequestApi requestRefreshTokenDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//            NSString * token = [response stringValueForKey:@"token"];
+//            if (isStr(token)) {
+//                [GlobalData sharedInstance].GB_Key = token;
+//            }
+//        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//
+//        }];
     }
 }
 - (void)viewWillDisappear:(BOOL)animated{
