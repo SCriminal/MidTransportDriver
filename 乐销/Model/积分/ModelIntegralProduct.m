@@ -20,9 +20,9 @@ NSString *const kModelIntegralProductQty = @"qty";
 NSString *const kModelIntegralProductCode = @"code";
 NSString *const kModelIntegralProductDisplayMode = @"displayMode";
 NSString *const kModelIntegralProductSelected = @"selected";
-NSString *const kModelIntegralProductBody = @"body";
+NSString *const kModelIntegralProductBody = @"description";
 NSString *const kModelIntegralProductCategoryId = @"categoryId";
-NSString *const kModelIntegralProductMonthAmount = @"monthAmount";
+NSString *const kModelIntegralProductMonthAmount = @"saleAmount";
 NSString *const kModelIntegralProductCategoryName = @"categoryName";
 NSString *const kModelIntegralProductUrls = @"urls";
 
@@ -67,10 +67,13 @@ NSString *const kModelIntegralProductUrls = @"urls";
         self.selected = [dict doubleValueForKey:kModelIntegralProductSelected];
         self.body = [dict stringValueForKey:kModelIntegralProductBody];
                   self.categoryId = [dict doubleValueForKey:kModelIntegralProductCategoryId];
-                  self.monthAmount = [dict doubleValueForKey:kModelIntegralProductMonthAmount];
+                  self.saleAmount = [dict doubleValueForKey:kModelIntegralProductMonthAmount];
                   self.categoryName = [dict stringValueForKey:kModelIntegralProductCategoryName];
         self.urls =  [dict arrayValueForKey:kModelIntegralProductUrls];
+        self.point = [dict doubleValueForKey:@"point"];
+        self.number = [dict stringValueForKey:@"number"];
 
+        
     }
     
     return self;
@@ -92,10 +95,13 @@ NSString *const kModelIntegralProductUrls = @"urls";
     [mutableDict setValue:[NSNumber numberWithDouble:self.selected] forKey:kModelIntegralProductSelected];
     [mutableDict setValue:self.body forKey:kModelIntegralProductBody];
        [mutableDict setValue:[NSNumber numberWithDouble:self.categoryId] forKey:kModelIntegralProductCategoryId];
-       [mutableDict setValue:[NSNumber numberWithDouble:self.monthAmount] forKey:kModelIntegralProductMonthAmount];
+       [mutableDict setValue:[NSNumber numberWithDouble:self.saleAmount] forKey:kModelIntegralProductMonthAmount];
        [mutableDict setValue:self.categoryName forKey:kModelIntegralProductCategoryName];
     [mutableDict setValue:[GlobalMethod exchangeAryModelToAryDic:self.urls] forKey:kModelIntegralProductUrls];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.point] forKey:kModelIntegralProductCategoryId];
+    [mutableDict setValue:self.number forKey:@"number"];
 
+    
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 

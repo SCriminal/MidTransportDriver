@@ -72,3 +72,4 @@
 #import "ModelComment.h"
 #import "ModelDealItem.h"
 #import "ModelSignItem.h"
+#import "ModelIntegralOrder.h"

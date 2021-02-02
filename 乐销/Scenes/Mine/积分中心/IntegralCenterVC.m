@@ -63,6 +63,7 @@
 #pragma mark view dited load
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView removeFromSuperview];
     //添加导航栏
     [self addNav];
     [self.view addSubview:self.myCollectionView];
@@ -100,17 +101,31 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     IntegralProductDetailVC * vc =[IntegralProductDetailVC new];
+    vc.modelDetail = self.aryDatas[indexPath.row];
     [GB_Nav pushViewController:vc animated:true];
 }
 
 
 #pragma mark request
 - (void)requestList{
-//   RequestApi requestin 
-    UICollectionWaterLayout *layout = [UICollectionWaterLayout layoutWithColoumn:2 data:self.aryDatas verticleMin:W(15) horizonMin:W(15) leftMargin:W(15) rightMargin:W(15)];
-    self.myCollectionView.collectionViewLayout = layout;
-
-    [self.myCollectionView reloadData];
+    [RequestApi requestIntegralProductListWithPage:self.pageNum count:30 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.pageNum ++;
+        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelIntegralProduct"];
+        if (self.isRemoveAll) {
+            [self.aryDatas removeAllObjects];
+        }
+        if (!isAry(aryRequest)) {
+            [self.myCollectionView.mj_footer endRefreshingWithNoMoreData];
+        }
+        [self.aryDatas addObjectsFromArray:aryRequest];
+        UICollectionWaterLayout *layout = [UICollectionWaterLayout layoutWithColoumn:2 data:self.aryDatas verticleMin:W(15) horizonMin:W(15) leftMargin:W(15) rightMargin:W(15)];
+        self.myCollectionView.collectionViewLayout = layout;
+        [self.myCollectionView reloadData];
+        
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+  
    
 }
 
@@ -130,6 +145,7 @@
 - (void)requestSign{
     [RequestApi requestSignWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"签到成功"];
+        [self reqeustSignNum];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
@@ -159,6 +175,7 @@
                     isAfter = true;
                 }
             }
+            self.topView.isSigned = [dicResponse valueForKey:[NSDate date].weekdayStr_sld];
             [self.topView resetViewWithModel:aryReturn];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             

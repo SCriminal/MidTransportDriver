@@ -9,5 +9,6 @@
 #import "BaseTableVC.h"
 
 @interface ExchangeIntegraOrderDetailVC : BaseTableVC
+@property (nonatomic, strong) ModelIntegralOrder *modelItem;
 
 @end

@@ -8,6 +8,8 @@
 
 #import "ExchangeIntegraProductVC.h"
 #import "ExchangeIntegraProductView.h"
+//request
+#import "RequestDriver2.h"
 
 @interface ExchangeIntegraProductVC ()
 @property (nonatomic, strong) ExchangeIntegraProductView *numView;
@@ -117,6 +119,11 @@
     
 }
 - (void)exchangeClick{
-    
+    [RequestApi requestExchangeProductWithSkuid:self.modelDetail.number qty:1 addrId:2036 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GB_Nav popViewControllerAnimated:true];
+        [GlobalMethod showAlert:@"兑换成功"];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 @end

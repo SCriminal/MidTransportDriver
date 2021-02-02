@@ -9,5 +9,6 @@
 #import "BaseTableVC.h"
 
 @interface ExchangeIntegraProductVC : BaseTableVC
+@property (nonatomic, strong) ModelIntegralProduct *modelDetail;
 
 @end

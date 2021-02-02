@@ -13,6 +13,8 @@
 #import "RequestApi+Dictionary.h"
 //图片选择collection
 #import "Collection_Image.h"
+//request
+#import "RequestDriver2.h"
 
 @interface FeedbackVC ()
 @property (nonatomic, strong) UILabel *labelNum;
@@ -148,22 +150,39 @@
     self.labelNum.textColor = COLOR_333;
 }
 - (void)saveClick{
-    
+    [self request];
+
 }
 #pragma mark request
 - (void)request{
    
-    if (self.textView.text.length <5&&self.textView.text.length <=5) {
+    if (self.textView.text.length <5) {
         [GlobalMethod showAlert:@"请输入更多内容"];
         return;
     }
-    [RequestApi requestAddFeedbackWithBetter:self.textView.text bad:self.textView.text app:@"1" teminalType:1 userId:[GlobalData sharedInstance].GB_UserModel.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    NSString *str0 = nil;
+    NSString *str1 = nil;
+    NSString *str2 = nil;
+    if (self.collection_Image.aryDatas.count>=3) {
+        ModelImage * item = self.collection_Image.aryDatas[2];
+        str2 = item.url;
+    }
+    if (self.collection_Image.aryDatas.count>=2) {
+        ModelImage * item = self.collection_Image.aryDatas[1];
+        str1 = item.url;
+    }
+    if (self.collection_Image.aryDatas.count>=1) {
+        ModelImage * item = self.collection_Image.aryDatas[0];
+        str0 = item.url;
+    }
+    [RequestApi requestProblemWithProblemtype:1 type:1 description:self.textView.text submitUrl1:str0 submitUrl2:str1 submitUrl3:str2 waybillNumber:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"提交成功"];
         [GB_Nav popViewControllerAnimated:true];
 
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+
 }
 
 - (void)imagesSelect:(NSArray *)aryImages

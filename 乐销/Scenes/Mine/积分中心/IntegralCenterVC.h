@@ -8,6 +8,6 @@
 
 #import "BaseVC.h"
 
-@interface IntegralCenterVC : BaseVC
+@interface IntegralCenterVC : BaseTableVC
 
 @end

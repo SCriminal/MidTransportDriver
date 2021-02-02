@@ -12,7 +12,7 @@
 @property (nonatomic, strong) void (^blockNumChange)(int);
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model;
+- (void)resetViewWithModel:(ModelIntegralProduct *)model;
 
 @end
 

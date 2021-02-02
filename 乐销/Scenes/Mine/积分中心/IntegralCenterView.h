@@ -11,6 +11,7 @@
 @interface IntegralCenterTopView : UIView
 @property (nonatomic, strong) void (^blockSign)(void);
 @property (nonatomic, assign) double  point;
+@property (nonatomic, assign) BOOL isSigned;
 #pragma mark 刷新view
 - (void)resetViewWithModel:(NSArray *)ary;
 

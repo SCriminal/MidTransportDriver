@@ -37,7 +37,7 @@
 }
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model{
+- (void)resetViewWithModel:(ModelIntegralProduct *)model{
     [self removeAllSubViews];//移除线
     //重置视图坐标
     {
@@ -58,7 +58,7 @@
         l.backgroundColor = [UIColor clearColor];
         l.numberOfLines = 2;
         l.lineSpace = W(6);
-        [l fitTitle:@"小米米家智能体重秤智能体脂小米米家智能体重秤智能体脂小米米家智能体重秤智能体脂" variable: W(200)];
+        [l fitTitle:model.name variable: W(200)];
         l.leftCenterY = XY(W(15), W(66.5));
         [self addSubview:l];
     }

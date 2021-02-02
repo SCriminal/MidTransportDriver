@@ -15,11 +15,11 @@
 @property (strong, nonatomic) UILabel *price;
 @property (strong, nonatomic) UILabel *limit;
 @property (strong, nonatomic) UILabel *score;
-@property (nonatomic, strong) ModelBaseData *model;
+@property (nonatomic, strong) ModelIntegralProduct *model;
 
 
 
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(ModelBaseData  *)model;
+- (void)resetCellWithModel:(ModelIntegralProduct  *)model;
 
 @end

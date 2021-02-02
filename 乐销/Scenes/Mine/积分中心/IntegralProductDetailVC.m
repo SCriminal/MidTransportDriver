@@ -19,7 +19,6 @@
 @property (nonatomic, strong) IntegralProductDetailView *titleView;
 @property (nonatomic, strong) UIView *viewBottom;
 @property (nonatomic, strong) AutoScView *autoSCView;
-@property (nonatomic, strong) ModelIntegralProduct *modelDetail;
 @property (strong, nonatomic) UIWebView *webDetail;
 
 @end
@@ -80,7 +79,7 @@
         _autoSCView.pageDefaultColor = [UIColor colorWithHexString:@"ffffff" alpha:0.5];
         _autoSCView.pageControlToBottom = W(30);
         _autoSCView.imageConteMode = UIViewContentModeScaleAspectFill;
-//        _autoSCView.isClickValid = true;
+        //        _autoSCView.isClickValid = true;
         [_autoSCView timerStart];
     }
     return _autoSCView;
@@ -103,7 +102,7 @@
     //table
     self.tableView.top = 0;
     self.tableView.height = SCREEN_HEIGHT- self.viewBottom.height;
-//    [self.tableView registerClass:[<#CellName#> class] forCellReuseIdentifier:@"<#CellName#>"];
+    //    [self.tableView registerClass:[<#CellName#> class] forCellReuseIdentifier:@"<#CellName#>"];
     //request
     [self requestDetail];
 }
@@ -134,26 +133,14 @@
 
 #pragma mark request
 - (void)requestDetail{
-    NSString * strPath = [[NSBundle mainBundle]pathForResource:@"LocalData_Model" ofType:@"json"];
-    // 将文件数据化
-    NSData *data = [[NSData alloc] initWithContentsOfFile:strPath];
-    // 对数据进行JSON格式化并返回字典形式
-    NSDictionary * response = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            self.modelDetail = [ModelIntegralProduct modelObjectWithDictionary:response[@"ModelIntegralProduct"]];
-            [self.titleView resetViewWithModel:self.modelDetail];
-    
-            [self.webDetail loadHTMLString:[UnPackStr(self.modelDetail.body) fitWebImage] baseURL:nil];
-            [self config];
-
-//    [RequestApi requestIntegralProductDetailWithId:self.integralProductID delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-//
-//    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-//
-//    }];
-    
+    [self.titleView resetViewWithModel:self.modelDetail];
+    [self.webDetail loadHTMLString:[UnPackStr(self.modelDetail.body) fitWebImage] baseURL:nil];
+    [self config];
 }
+
 - (void)btnChangeClick{
     ExchangeIntegraProductVC * vc = [ExchangeIntegraProductVC new];
+    vc.modelDetail = self.modelDetail;
     [GB_Nav pushViewController:vc animated:true];
 }
 

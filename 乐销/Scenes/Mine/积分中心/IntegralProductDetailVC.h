@@ -9,6 +9,6 @@
 #import "BaseTableVC.h"
 
 @interface IntegralProductDetailVC : BaseTableVC
-@property (nonatomic, assign) double integralProductID;
+@property (nonatomic, strong) ModelIntegralProduct *modelDetail;
 
 @end

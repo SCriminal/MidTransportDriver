@@ -12,7 +12,9 @@
 //text view
 #import "PlaceHolderTextView.h"
 //request
-#import "RequestApi+Dictionary.h"
+//request
+#import "RequestDriver2.h"
+
 //图片选择collection
 #import "Collection_Image.h"
 
@@ -117,22 +119,24 @@
     self.textView.text = [self.textView.text stringByAppendingString:sender.titleLabel.text];
 }
 - (void)saveClick{
-    
+    [self request];
 }
 #pragma mark request
 - (void)request{
    
-    if (self.textView.text.length <5&&self.textView.text.length <=5) {
+    if (self.textView.text.length <5) {
         [GlobalMethod showAlert:@"请输入更多内容"];
         return;
     }
-    [RequestApi requestAddFeedbackWithBetter:self.textView.text bad:self.textView.text app:@"1" teminalType:1 userId:[GlobalData sharedInstance].GB_UserModel.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+   
+    [RequestApi requestProblemWithProblemtype:4 type:2 description:self.textView.text submitUrl1:nil submitUrl2:nil submitUrl3:nil waybillNumber:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"提交成功"];
         [GB_Nav popViewControllerAnimated:true];
 
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+
 }
 
 

@@ -15,5 +15,6 @@
 #import "RequestApi+Plan.h"
 #import "RequestApi+Cash.h"
 #import "RequestApi+Integral.h"
+#import "RequestApi+Problem.h"
 
 #endif /* RequestDriver2_h */

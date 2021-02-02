@@ -21,6 +21,6 @@
 @property (strong, nonatomic) UIImageView *arrow;
 
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(id)model;
+- (void)resetCellWithModel:(ModelIntegralOrder *)model;
 
 @end

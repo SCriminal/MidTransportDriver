@@ -94,19 +94,19 @@
 
 
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(ModelBaseData *)model{
+- (void)resetCellWithModel:(ModelIntegralProduct *)model{
     self.model = model;
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
       
-    [self.productImage sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT]];
+    [self.productImage sd_setImageWithURL:[NSURL URLWithString:model.coverUrl] placeholderImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT]];
 //    self.productImage.image = [UIImage imageNamed:@"temp_computer"];
-    [self.name fitTitle:model.string variable:self.productImage.width - W(20)];
+    [self.name fitTitle:model.name variable:self.productImage.width - W(20)];
     self.name.leftTop = XY(W(10),self.productImage.bottom+W(15));
 
-    [self.limit fitTitle:[NSString stringWithFormat:@"%.f件已兑换",2.0] variable:self.productImage.width/2.0-W(10)];
+    [self.limit fitTitle:[NSString stringWithFormat:@"%.f件已兑换",model.saleAmount] variable:self.productImage.width/2.0-W(10)];
     self.limit.leftTop = XY(W(10),self.name.bottom + W(12));
-    [self.score fitTitle:[NSString stringWithFormat:@"%.f积分",3000.0] variable:self.productImage.width - W(20)];
+    [self.score fitTitle:[NSString stringWithFormat:@"%.f积分",model.point] variable:self.productImage.width - W(20)];
     self.score.leftTop = XY(W(10),self.limit.bottom+W(12));
     
     self.viewFather.widthHeight = XY(self.productImage.width, self.score.bottom+W(15));

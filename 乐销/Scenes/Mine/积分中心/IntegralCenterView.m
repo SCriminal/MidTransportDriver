@@ -62,7 +62,7 @@
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.widthHeight = XY(W(80), W(34));
         btn.backgroundColor = COLOR_BLUE;
-        [btn setTitle:@"签到" forState:UIControlStateNormal];
+        [btn setTitle:self.isSigned?@"已签到":@"签到" forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:F(13) weight:UIFontWeightMedium];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnSignClick) forControlEvents:UIControlEventTouchUpInside];

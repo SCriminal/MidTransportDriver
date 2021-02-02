@@ -23,9 +23,11 @@
 @property (nonatomic, assign) double displayMode;
 @property (nonatomic, strong) NSString *body;
 @property (nonatomic, assign) double categoryId;
-@property (nonatomic, assign) double monthAmount;
+@property (nonatomic, assign) double saleAmount;
 @property (nonatomic, strong) NSString *categoryName;
 @property (nonatomic, strong) NSArray *urls;
+@property (nonatomic, assign) double point;
+@property (nonatomic, strong) NSString *number;
 
 //logical
 @property (nonatomic, assign) BOOL selected;

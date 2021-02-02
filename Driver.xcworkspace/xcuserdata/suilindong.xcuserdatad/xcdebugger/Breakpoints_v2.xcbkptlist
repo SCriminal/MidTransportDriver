@@ -4361,8 +4361,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/&#x79ef;&#x5206;&#x4e2d;&#x5fc3;/IntegralCenterVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "-requestList"
             landmarkType = "7">
          </BreakpointContent>
@@ -6218,22 +6218,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EC89D49C-51B8-4DF2-82CB-9F3D786D0181"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/Mine/&#x79ef;&#x5206;&#x4e2d;&#x5fc3;/IntegralCenterVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "-reqeustSignNum"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "B466F082-12BA-4782-8D61-9CB159BCDD3F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -6241,8 +6225,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/&#x79ef;&#x5206;&#x4e2d;&#x5fc3;/IntegralCenterVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "-reqeustSignNum"
             landmarkType = "7">
          </BreakpointContent>

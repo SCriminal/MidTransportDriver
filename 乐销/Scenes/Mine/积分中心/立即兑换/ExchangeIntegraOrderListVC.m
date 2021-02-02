@@ -8,6 +8,8 @@
 
 #import "ExchangeIntegraOrderListVC.h"
 #import "ExchangeIntegraOrderDetailVC.h"
+//request
+#import "RequestDriver2.h"
 @interface ExchangeIntegraOrderListVC ()
 
 @end
@@ -23,6 +25,7 @@
     [self.tableView registerClass:[ExchangeIntegraOrderListCell class] forCellReuseIdentifier:@"ExchangeIntegraOrderListCell"];
     //request
     [self requestList];
+    [self addRefresh];
 }
 
 #pragma mark 添加导航栏
@@ -52,13 +55,27 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ExchangeIntegraOrderDetailVC * vc = [ExchangeIntegraOrderDetailVC new];
+    vc.modelItem = self.aryDatas[indexPath.row];
     [GB_Nav pushViewController:vc animated:true];
 }
 
 #pragma mark request
 - (void)requestList{
-    self.aryDatas = @[@"",@"",@""].mutableCopy;
-    [self.tableView reloadData];
+    [RequestApi requestIntegralOrderListWithPage:self.pageNum count:40 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.pageNum ++;
+        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelIntegralOrder"];
+        if (self.isRemoveAll) {
+            [self.aryDatas removeAllObjects];
+        }
+        if (!isAry(aryRequest)) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        [self.aryDatas addObjectsFromArray:aryRequest];
+        [self.tableView reloadData];
+      
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 @end
 
@@ -114,14 +131,16 @@
     return self;
 }
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(id)model{
+- (void)resetCellWithModel:(ModelIntegralOrder *)model{
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-        [self.orderNum fitTitle:@"订单编号：22300012992300002222" variable:W(300)];
+    
+        [self.orderNum fitTitle:[NSString stringWithFormat:@"订单编号：%@",model.orderNumber] variable:W(300)];
     self.orderNum.leftTop = XY(W(15),W(18));
-    [self.name fitTitle:@"商品名称：小米米家智能体重秤智能体脂称充电式" variable:W(300)];
+    [self.name fitTitle:[NSString stringWithFormat:@"商品名称：%@",model.skuName] variable:W(300)];
     self.name.leftTop = XY(W(15),W(46));
-    [self.time fitTitle:@"下单时间：2020-11-19 12:10:20" variable:W(300)];
+    
+    [self.time fitTitle:[NSString stringWithFormat:@"下单时间：%@",[GlobalMethod exchangeTimeWithStamp:model.orderTime andFormatter:TIME_SEC_SHOW]] variable:W(300)];
     self.time.leftTop = XY(W(15),W(71));
 
     self.height = W(100);

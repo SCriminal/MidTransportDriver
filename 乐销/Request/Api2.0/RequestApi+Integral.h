@@ -29,6 +29,30 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)requestSignListDelegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                        failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+列表[^/zhongcheyun/point/sku/list/total$]
+*/
++(void)requestIntegralProductListWithPage:(double)page
+                count:(double)count
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                  failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+新增(兑换)
+*/
++(void)requestExchangeProductWithSkuid:(NSString *)skuId
+                qty:(double)qty
+                addrId:(double)addrId
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                               failure:(void (^)(NSString * errorStr, id mark))failure;
+
++(void)requestIntegralOrderListWithPage:(double)page
+                count:(double)count
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END
