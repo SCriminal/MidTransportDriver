@@ -15,11 +15,13 @@
 #import "Collection_Image.h"
 //request
 #import "RequestDriver2.h"
+#import "SelectOrderVC.h"
 
 @interface FeedbackVC ()
 @property (nonatomic, strong) UILabel *labelNum;
 @property (nonatomic,strong) PlaceHolderTextView *textView;
 @property (nonatomic, strong) Collection_Image *collection_Image;
+@property (nonatomic, strong) ModelTransportOrder *modelSelected;
 
 @end
 
@@ -83,7 +85,7 @@
         
         [self.view addSubview:self.labelNum];
         self.labelNum.leftCenterY = XY(W(90), l.centerY);
-        [self.view addControlFrame:CGRectInset(self.labelNum.frame, -W(30), -W(20)) belowView:self.labelNum target:self action:@selector(numClick)];
+        [self.view addControlFrame:CGRectInset(self.labelNum.frame, -W(230), -W(20)) belowView:self.labelNum target:self action:@selector(numClick)];
         
         UIImageView * iv = [UIImageView new];
         iv.backgroundColor = [UIColor clearColor];
@@ -146,8 +148,14 @@
 }
 
 - (void)numClick{
-    [self.labelNum fitTitle:@"" variable:W(220)];
-    self.labelNum.textColor = COLOR_333;
+    SelectOrderVC * selectVC = [SelectOrderVC new];
+    WEAKSELF
+    selectVC.blockSelected = ^(ModelTransportOrder * item) {
+        [weakSelf.labelNum fitTitle:item.orderNumber variable:W(220)];
+        weakSelf.labelNum.textColor = COLOR_333;
+        weakSelf.modelSelected = item;
+    };
+    [GB_Nav pushViewController:selectVC animated:true];
 }
 - (void)saveClick{
     [self request];
@@ -175,7 +183,7 @@
         ModelImage * item = self.collection_Image.aryDatas[0];
         str0 = item.url;
     }
-    [RequestApi requestProblemWithProblemtype:1 type:1 description:self.textView.text submitUrl1:str0 submitUrl2:str1 submitUrl3:str2 waybillNumber:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestProblemWithProblemtype:1 type:1 description:self.textView.text submitUrl1:str0 submitUrl2:str1 submitUrl3:str2 waybillNumber:self.modelSelected.orderNumber delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"提交成功"];
         [GB_Nav popViewControllerAnimated:true];
 
@@ -199,5 +207,8 @@
     [self.collection_Image.collectionView reloadData];
 
 }
-
+//选择图片
+- (void)showImageVC:(int)imageNum{
+    [self showImageVC:3 cameraType:ENUM_CAMERA_DEFAULT];
+}
 @end

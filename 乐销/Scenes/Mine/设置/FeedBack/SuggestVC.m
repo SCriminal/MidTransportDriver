@@ -20,7 +20,7 @@
 
 @interface SuggestVC ()
 @property (nonatomic,strong) PlaceHolderTextView *textView;
-
+@property (nonatomic, assign) int  indexSelected;
 @end
 
 @implementation SuggestVC
@@ -76,11 +76,13 @@
             btn.titleLabel.font = [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
             [btn setTitleColor:COLOR_666 forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+            btn.tag = 100 +i;
             [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
             [self.view addSubview:btn];
             btn.leftTop = XY(left, W(59));
             left = btn.right + W(12);
         }
+        [self btnClick:[self.view viewWithTag:100]];
     }
     [self.view addLineFrame:CGRectMake(W(15), W(110), SCREEN_WIDTH - W(30), 1)];
 
@@ -116,7 +118,23 @@
 
 #pragma mark 点击事件
 - (void)btnClick:(UIButton *)sender{
-    self.textView.text = [self.textView.text stringByAppendingString:sender.titleLabel.text];
+    self.indexSelected = sender.tag - 100;
+    for (int i = 0; i<4; i++) {
+        UIButton * btn = [self.view viewWithTag:i+100];
+        if (sender.tag == i+100) {
+            if ([btn isKindOfClass:[UIButton class]]) {
+                btn.backgroundColor = COLOR_BLUE;
+                [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:0 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+            }
+        }else{
+            if ([btn isKindOfClass:[UIButton class]]) {
+                btn.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
+                [btn setTitleColor:COLOR_666 forState:UIControlStateNormal];
+                [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+            }
+        }
+    }
 }
 - (void)saveClick{
     [self request];
@@ -129,7 +147,7 @@
         return;
     }
    
-    [RequestApi requestProblemWithProblemtype:4 type:2 description:self.textView.text submitUrl1:nil submitUrl2:nil submitUrl3:nil waybillNumber:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestProblemWithProblemtype:self.indexSelected +1 type:2 description:self.textView.text submitUrl1:nil submitUrl2:nil submitUrl3:nil waybillNumber:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"提交成功"];
         [GB_Nav popViewControllerAnimated:true];
 
