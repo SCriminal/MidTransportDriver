@@ -92,4 +92,15 @@
     };
     [self getUrl:@"/oss/ocr/bank/card" delegate:delegate parameters:dic success:success failure:failure];
 }
++(void)requestCarTypeDelegate:(id <RequestDelegate>)delegate
+                       success:(void (^)(NSDictionary * response, id mark))success
+                       failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{
+        @"page":@1,
+        @"count":@1000
+    };
+    [self getUrl:@"/zhongcheyun/vehicletype/list/total" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+
 @end

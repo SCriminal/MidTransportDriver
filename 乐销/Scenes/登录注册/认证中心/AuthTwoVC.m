@@ -33,6 +33,7 @@
 @property (nonatomic, strong) ModelBaseData *modelImageSelected;
 @property (nonatomic, strong) ModelOCR *modelOCRDribingFace;
 @property (nonatomic, strong) ModelOCR *modelOCRDrivingBack;
+@property (nonatomic, strong) NSArray *aryCarType;
 
 
 @end
@@ -232,6 +233,7 @@
     }
     [self.tableView reloadData];
     [self requestDetail];
+    [self requestCarType];
 }
 
 #pragma mark 添加导航栏
@@ -290,20 +292,19 @@
                 if (isStr(model.owner)) {
                     self.modelCarOwner.subString = model.owner;
                 }
+                if (isStr(model.vin)) {
+                    self.modelVin.subString = model.vin;
+                }
                 [self.tableView reloadData];
                         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                             
                         }];
-         
         }
         if (self.modelImageSelected == self.modelSub) {
             [RequestApi requestOCRDrivingWithurl:image.imageURL side:@"back" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"backResult"]];
                 
                 self.modelOCRDrivingBack = model;
-                if (model.vin) {
-                    self.modelVin.subString = model.vin;
-                }
               
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                 
@@ -442,5 +443,17 @@
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
+}
+- (void)requestCarType{
+    NSArray * ary = [GlobalMethod readAry:LOCAL_CAR_TYPE modelName:@"ModelIntegralProduct"];
+    if (ary.count) {
+        return;
+    }
+    [RequestApi requestCarTypeDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        NSArray * ary = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelIntegralProduct"];
+        [GlobalMethod writeAry:ary key:LOCAL_CAR_TYPE];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 @end

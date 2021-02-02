@@ -467,21 +467,19 @@
 
 
 + (NSString *)exchangeVehicleType:(NSString *)identity{
-    NSString * strPath = [[NSBundle mainBundle]pathForResource:@"CarType" ofType:@"json"];
-    NSArray * ary = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:strPath] options:0 error:nil];
-    for (NSDictionary * dic in ary) {
-        if (identity.doubleValue == [dic doubleValueForKey:@"value"]) {
-            return [dic stringValueForKey:@"label"];
+    NSArray * ary = [GlobalMethod readAry:LOCAL_CAR_TYPE modelName:@"ModelIntegralProduct"];
+    for (ModelIntegralProduct * dic in ary) {
+        if (identity.doubleValue == dic.iDProperty) {
+            return dic.name;
         }
     }
     return nil;
 }
 + (NSNumber *)exchangeVehicleTypeWithName:(NSString *)name{
-    NSString * strPath = [[NSBundle mainBundle]pathForResource:@"CarType" ofType:@"json"];
-    NSArray * ary = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:strPath] options:0 error:nil];
-    for (NSDictionary * dic in ary) {
-        if ([name isEqualToString:[dic stringValueForKey:@"label"]]) {
-            return [dic numberValueForKey:@"value"];
+    NSArray * ary = [GlobalMethod readAry:LOCAL_CAR_TYPE modelName:@"ModelIntegralProduct"];
+    for (ModelIntegralProduct * item in ary) {
+        if ([name isEqualToString:item.name]) {
+            return NSNumber.dou(item.iDProperty);
         }
     }
     return nil;

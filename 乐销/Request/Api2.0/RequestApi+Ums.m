@@ -239,7 +239,7 @@
         NSDictionary *dic = @{@"plateNumber":RequestStrKey(plateNumber),
                            @"vehicleType":NSNumber.dou(vehicleType),
                            @"owner":RequestStrKey(owner),
-                           @"grossMass":NSNumber.dou(grossMass/1000.0),
+                           @"grossMass":NSNumber.dou(grossMass),
                            @"approvedLoad":NSNumber.dou(approvedLoad),
                            @"vehicleLength":NSNumber.lon(vehicleLength),
                            @"vehicleWidth":NSNumber.lon(vehicleWidth),

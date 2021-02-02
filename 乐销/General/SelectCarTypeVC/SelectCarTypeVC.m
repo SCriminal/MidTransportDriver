@@ -7,7 +7,8 @@
 //
 
 #import "SelectCarTypeVC.h"
-
+//request
+#import "RequestDriver2.h"
 @interface SelectCarTypeVC ()
 @property (nonatomic, strong) NSMutableArray *aryCarID;
 @property (nonatomic, strong) NSMutableArray *aryCarType;
@@ -43,19 +44,16 @@
     [self refreshData];
 }
 - (void)exchangeValue{
-    NSString * strPath = [[NSBundle mainBundle]pathForResource:@"CarType" ofType:@"json"];
-    // 将文件数据化
-    NSData *data = [[NSData alloc] initWithContentsOfFile:strPath];
+
     // 对数据进行JSON格式化并返回字典形式
-    NSArray * ary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSArray * ary = [GlobalMethod readAry:LOCAL_CAR_TYPE modelName:@"ModelIntegralProduct"];
+    
     NSMutableArray * aryLabel = [NSMutableArray new];
     NSMutableArray * aryID = [NSMutableArray new];
-    for (NSDictionary * dic in ary) {
-        int status = [dic doubleValueForKey:@"status"];
-        if (status != 0) {
-            [aryLabel addObject:[dic stringValueForKey:@"label"]];
-            [aryID addObject:[dic numberValueForKey:@"value"]];
-        }
+   
+    for (ModelIntegralProduct * dic in ary) {
+        [aryLabel addObject:dic.name];
+        [aryID addObject:NSNumber.dou(dic.iDProperty)];
     }
     self.aryCarType = aryLabel;
     self.aryCarID = aryID;
@@ -104,6 +102,20 @@
         self.blockSelected(strTypeSelected, self.aryCarID[index]);
     }
     [GB_Nav popViewControllerAnimated:true];
+}
+- (void)requestList{
+    NSArray * ary = [GlobalMethod readAry:LOCAL_CAR_TYPE modelName:@"ModelIntegralProduct"];
+    if (ary.count) {
+        [self exchangeValue];
+        return;
+    }
+    [RequestApi requestCarTypeDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        NSArray * ary = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelIntegralProduct"];
+        [GlobalMethod writeAry:ary key:LOCAL_CAR_TYPE];
+        [self exchangeValue];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 @end
 

@@ -93,6 +93,7 @@ return [UIColor colorWithRed:((float)((hexNumber & 0xFF0000) >> 16))/255.0 green
 #define LOCAL_LOGIN_TIME @"LOCAL_LOGIN_TIME"//
 
 #define LOCAL_KEY_HEAD @"LOCAL_LD_"
+#define LOCAL_CAR_TYPE @"LOCAL_CAR_TYPE"//token
 
 
 

@@ -184,7 +184,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
     {
         ModelAddress * addressLast = [GlobalData sharedInstance].aryLocations.lastObject;
         MAMapPoint point1 = MAMapPointForCoordinate(CLLocationCoordinate2DMake(modelAddress.lat,modelAddress.lng));
-        MAMapPoint point2 = MAMapPointForCoordinate(CLLocationCoordinate2DMake(addressLast.lat,addressLast.lng));
+        MAMapPoint point2 =  MAMapPointForCoordinate(CLLocationCoordinate2DMake(addressLast.lat,addressLast.lng));
         //2.计算距离
         CLLocationDistance distance = MAMetersBetweenMapPoints(point1,point2);
         if (distance > 5||addressLast.lat == 0) {
