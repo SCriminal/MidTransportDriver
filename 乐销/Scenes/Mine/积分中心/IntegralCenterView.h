@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface IntegralCenterTopView : UIView
-
+@property (nonatomic, strong) void (^blockSign)(void);
+@property (nonatomic, assign) double  point;
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model;
+- (void)resetViewWithModel:(NSArray *)ary;
 
 @end

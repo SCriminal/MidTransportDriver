@@ -49,6 +49,9 @@
         _topView.blockAuthClick = ^{
             [weakSelf jumpAuth];
         };
+        _topView.blockSignClick = ^{
+            [weakSelf requestSign];
+        };
     }
     return _topView;
 }
@@ -240,7 +243,10 @@
         
     }];
 }
-
+- (void)requestSign{
+    [GB_Nav pushVCName:@"IntegralCenterVC" animated:true];
+  
+}
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }

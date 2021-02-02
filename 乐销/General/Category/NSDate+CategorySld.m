@@ -34,7 +34,7 @@
             return @"前天";
         }else if (hour >= -24*7 ) {
             NSString *weekday = @"";
-            switch ([self weekday]) {
+            switch ([self weekday_sld]) {
                 case 1: weekday = @"星期日"; break;
                 case 2: weekday = @"星期一"; break;
                 case 3: weekday = @"星期二"; break;

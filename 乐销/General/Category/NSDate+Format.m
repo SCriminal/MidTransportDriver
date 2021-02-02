@@ -17,7 +17,7 @@
 @dynamic hour;
 @dynamic minute;
 @dynamic second;
-@dynamic weekday;
+@dynamic weekday_sld;
 
 - (NSInteger)year {
     return [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:self].year;
@@ -37,24 +37,33 @@
 - (NSInteger)second {
     return [[NSCalendar currentCalendar] components:NSCalendarUnitSecond fromDate:self].second;
 }
-- (NSInteger)weekday {
+- (NSInteger)weekday_sld {
     //这里会差一天 我也是醉了
-    NSInteger week = [[NSCalendar currentCalendar] components:NSCalendarUnitWeekday fromDate:self].weekday;
-    week = week - 1;
-    return week ?: 7;
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    [calendar setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]];
+    // 1.周日 2.周一 3.周二 4.周三 5.周四 6.周五  7.周六
+    calendar.firstWeekday = 2;
+    
+    // 日历单元
+    unsigned unitFlag = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday;
+    NSDateComponents *nowComponents = [calendar components:unitFlag fromDate:self];
+    // 获取今天是周几，需要用来计算
+    NSInteger weekDay = [nowComponents weekday];
+    
+    weekDay = weekDay - 1;
+    return weekDay ?: 7;
 }
-- (NSString*)weekdayStr {
+- (NSString*)weekdayStr_sld {
     NSString *weekday = nil;
-    NSInteger week = [[NSCalendar currentCalendar] components:NSCalendarUnitWeekday fromDate:self].weekday;
-    week = week - 1;
+    NSInteger week = self.weekday_sld;
     switch (week ?: 7) {
-        case 1:weekday = @"周一";break;
-        case 2:weekday = @"周二";break;
-        case 3:weekday = @"周三";break;
-        case 4:weekday = @"周四";break;
-        case 5:weekday = @"周五";break;
-        case 6:weekday = @"周六";break;
-        default:weekday = @"周日"; break;
+        case 1:weekday = @"一";break;
+        case 2:weekday = @"二";break;
+        case 3:weekday = @"三";break;
+        case 4:weekday = @"四";break;
+        case 5:weekday = @"五";break;
+        case 6:weekday = @"六";break;
+        default:weekday = @"日"; break;
     }
     return weekday;
 }
@@ -120,14 +129,14 @@
     NSString *nowStr = [[self description] substringToIndex:10];
     
     NSString *weekday = @"";
-    switch ([self weekday]) {
-        case 1: weekday = @"星期日"; break;
-        case 2: weekday = @"星期一"; break;
-        case 3: weekday = @"星期二"; break;
-        case 4: weekday = @"星期三"; break;
-        case 5: weekday = @"星期四"; break;
-        case 6: weekday = @"星期五"; break;
-        case 7: weekday = @"星期六"; break;
+    switch ([self weekday_sld]) {
+        case 1: weekday = @"星期一"; break;
+        case 2: weekday = @"星期二"; break;
+        case 3: weekday = @"星期三"; break;
+        case 4: weekday = @"星期四"; break;
+        case 5: weekday = @"星期五"; break;
+        case 6: weekday = @"星期六"; break;
+        case 7: weekday = @"星期日"; break;
         default:
             break;
     }
@@ -348,5 +357,48 @@
 }
 + (NSString *)stringWithDate:(NSDate *)date format:(NSString *)format {
     return [date stringWithFormat:format];
+}
+
++ (NSString *)currentScopeWeek:(NSUInteger)firstWeekday dateFormat:(NSString *)dateFormat
+{
+    NSDate *nowDate = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    [calendar setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]];
+    // 1.周日 2.周一 3.周二 4.周三 5.周四 6.周五  7.周六
+    calendar.firstWeekday = firstWeekday;
+    
+    // 日历单元
+    unsigned unitFlag = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday;
+    unsigned unitNewFlag = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+    NSDateComponents *nowComponents = [calendar components:unitFlag fromDate:nowDate];
+    // 获取今天是周几，需要用来计算
+    NSInteger weekDay = [nowComponents weekday];
+    // 获取今天是几号，需要用来计算
+    NSInteger day = [nowComponents day];
+    // 计算今天与本周第一天的间隔天数
+    NSInteger countDays = 0;
+    // 特殊情况，本周第一天firstWeekday比当前星期weekDay小的，要回退7天
+    if (calendar.firstWeekday > weekDay) {
+        countDays = 7 + (weekDay - calendar.firstWeekday);
+    } else {
+        countDays = weekDay - calendar.firstWeekday;
+    }
+    // 获取这周的第一天日期
+    NSDateComponents *firstComponents = [calendar components:unitNewFlag fromDate:nowDate];
+    [firstComponents setDay:day - countDays];
+    NSDate *firstDate = [calendar dateFromComponents:firstComponents];
+    
+    // 获取这周的最后一天日期
+    NSDateComponents *lastComponents = firstComponents;
+    [lastComponents setDay:firstComponents.day + 6];
+//    NSDate *lastDate = [calendar dateFromComponents:lastComponents];
+    
+    // 输出
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:dateFormat];
+    NSString *firstDay = [formatter stringFromDate:firstDate];
+//    NSString *lastDay = [formatter stringFromDate:lastDate];
+    
+    return [NSString stringWithFormat:@"%@",firstDay];
 }
 @end

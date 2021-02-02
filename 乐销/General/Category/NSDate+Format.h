@@ -27,7 +27,7 @@
 @property (nonatomic, readonly) NSInteger	hour;
 @property (nonatomic, readonly) NSInteger	minute;
 @property (nonatomic, readonly) NSInteger	second;
-@property (nonatomic, readonly) NSInteger	weekday;
+@property (nonatomic, readonly) NSInteger	weekday_sld;
 
 //- (NSString *)stringWithDateFormat:(NSString *)format;
 //- (NSString *)timeAgo;
@@ -39,7 +39,7 @@
 - (NSString *)timeAgoShow;
 //+ (NSDate*)dateWithFormat:(NSString *)format;
 
-- (NSString*)weekdayStr;
+- (NSString*)weekdayStr_sld;
 + (NSString *)stringWithDate:(NSDate *)date format:(NSString *)format;
-
++ (NSString *)currentScopeWeek:(NSUInteger)firstWeekday dateFormat:(NSString *)dateFormat;
 @end

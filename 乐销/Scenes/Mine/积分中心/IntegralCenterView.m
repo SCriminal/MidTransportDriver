@@ -9,13 +9,14 @@
 #import "IntegralCenterView.h"
 
 @interface IntegralCenterTopView ()
+@property (nonatomic, strong) UILabel *labelNum;
 
 @end
 
 @implementation IntegralCenterTopView
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model{
+- (void)resetViewWithModel:(NSArray *)ary{
     [self removeAllSubViews];
     self.backgroundColor = [UIColor clearColor];
     
@@ -45,6 +46,7 @@
         [l fitTitle:@"200000" variable:SCREEN_WIDTH - W(30)];
         l.leftTop = XY(W(33), W(35));
         [self addSubview:l];
+        self.labelNum = l;
         
     }
     {
@@ -69,31 +71,29 @@
         [self addSubview:btn];
     }
     //重置视图坐标
-    NSArray * ary = @[@1,@0,@1,@1,@-1,@-1,@-1];
-    NSArray * aryTitle = @[@"一",@"二",@"三",@"四",@"五",@"六",@"日"];
     
     CGFloat left = W(33);
     for (int i = 0; i<ary.count; i++) {
-        NSNumber *n = ary[i];
+        ModelBaseData * item = ary[i];
         UILabel * l = [UILabel new];
         l.textAlignment = NSTextAlignmentCenter;
         l.font = [UIFont systemFontOfSize:F(14) weight:UIFontWeightMedium];
         l.widthHeight = XY(W(32), W(32));
-        l.text = aryTitle[i];
+        l.text = item.string;
         l.leftTop = XY(left, W(107));
         [self addSubview:l];
         left = l.right + W(14);
-        if (n.intValue == 1) {
+        if (item.enumType == 1) {
             l.textColor = [UIColor whiteColor];
             l.backgroundColor = COLOR_BLUE;
             [l addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:l.width/2.0 lineWidth:0 lineColor:[UIColor clearColor]];
         }
-        if (n.intValue ==0) {
+        if (item.enumType ==0) {
             l.textColor = [UIColor colorWithHexString:@"#D4DEF0"];
             l.backgroundColor = [UIColor whiteColor];
             [l addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:l.width/2.0 lineWidth:1 lineColor:l.textColor];
         }
-        if (n.intValue ==-1) {
+        if (item.enumType ==-1) {
             l.textColor = COLOR_BLUE;
             l.backgroundColor = [UIColor whiteColor];
             [l addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:l.width/2.0 lineWidth:1 lineColor:l.textColor];
@@ -113,7 +113,9 @@
     self.height = W(205);
 }
 - (void)btnSignClick{
-    
+    if (self.blockSign) {
+        self.blockSign();
+    }
 }
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{

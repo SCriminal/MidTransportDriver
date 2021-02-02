@@ -183,6 +183,9 @@
     }
 }
 - (void)signClick{
+    if (self.blockSignClick) {
+        self.blockSignClick();
+    }
 }
 - (void)authClick{
     if (self.blockAuthClick) {

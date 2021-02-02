@@ -12,7 +12,8 @@
 #import "UICollectionWaterLayout.h"
 #import "IntegralProductDetailVC.h"
 #import "ExchangeIntegraOrderListVC.h"
-
+//request
+#import "RequestDriver2.h"
 @interface IntegralCenterVC ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UICollectionView *myCollectionView;
 @property (nonatomic, strong) NSMutableArray *aryDatas;
@@ -27,6 +28,10 @@
 - (IntegralCenterTopView *)topView{
     if (!_topView) {
         _topView = [IntegralCenterTopView new];
+        WEAKSELF
+        _topView.blockSign = ^{
+            [weakSelf requestSign];
+        };
     }
     return _topView;
 }
@@ -64,6 +69,7 @@
     [self.myCollectionView addSubview:self.topView];
     //request
     [self requestList];
+    [self reqeustSignNum];
 }
 
 #pragma mark 添加导航栏
@@ -100,67 +106,7 @@
 
 #pragma mark request
 - (void)requestList{
-    self.aryDatas = @[^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaewf";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaewjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaejaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaef";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkwf";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaewf";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaewjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaejaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaef";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkwf";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaewf";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaewjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaejaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaef";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkwf";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaewf";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaewjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaejaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaef";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkwf";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaewf";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaewjaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaejaldkjflsakjflkadsjflkdasjflkajoqwe\naoqwieoqiweuoiqwjeqlkwjelkqjlekjqlkwjelqkjelkqjelkjsodiuqwlkejoisudqlwkjeqowiueoqiuwoeiuqoieuqoie\nafaef";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"adlsfkwf";
-        return m;
-    }()].mutableCopy;
+//   RequestApi requestin 
     UICollectionWaterLayout *layout = [UICollectionWaterLayout layoutWithColoumn:2 data:self.aryDatas verticleMin:W(15) horizonMin:W(15) leftMargin:W(15) rightMargin:W(15)];
     self.myCollectionView.collectionViewLayout = layout;
 
@@ -181,5 +127,45 @@
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
-
+- (void)requestSign{
+    [RequestApi requestSignWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"签到成功"];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+}
+- (void)reqeustSignNum{
+    [RequestApi requestIntegralNumWithDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.topView.point = [response doubleValueForKey:@"point"];
+        [RequestApi requestSignListDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            
+            NSArray * aryResponse = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelSignItem"];
+            NSDictionary * dicResponse = [aryResponse exchangeDicWithKeyPath:@"strWeekShow"];
+            NSMutableArray * aryReturn = [NSMutableArray array];
+            NSArray * aryTitle = @[@"一",@"二",@"三",@"四",@"五",@"六",@"日"];
+            BOOL isAfter = false;
+            for (NSString * str in aryTitle) {
+                ModelBaseData * item = [ModelBaseData new];
+                item.string = str;
+                if (isAfter) {
+                    item.enumType = -1;
+                }else if ([dicResponse valueForKey:str]) {
+                    item.enumType = 1;
+                }else {
+                    item.enumType = 0;
+                }
+                [aryReturn addObject:item];
+                if ([str isEqualToString:[NSDate date].weekdayStr_sld]) {
+                    isAfter = true;
+                }
+            }
+            [self.topView resetViewWithModel:aryReturn];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+    
+}
 @end

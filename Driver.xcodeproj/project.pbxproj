@@ -217,6 +217,8 @@
 		D2A076E71E10EBC700CDCA0A /* DatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A076E61E10EBC700CDCA0A /* DatePicker.m */; };
 		D2A0901D1E077DA20021B96C /* SliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A0901C1E077DA20021B96C /* SliderView.m */; };
 		D2A1EF2925C54F2F0066864D /* ModelDealItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF2825C54F2F0066864D /* ModelDealItem.m */; };
+		D2A1EF2C25C8E47F0066864D /* RequestApi+Integral.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF2B25C8E47D0066864D /* RequestApi+Integral.m */; };
+		D2A1EF2F25C8F1420066864D /* ModelSignItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF2D25C8F1420066864D /* ModelSignItem.m */; };
 		D2A300202265B7CD00AE2EC3 /* AccountListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */; };
 		D2A300232265B7DF00AE2EC3 /* AccountListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300222265B7DF00AE2EC3 /* AccountListCell.m */; };
 		D2A300332266BF9500AE2EC3 /* EditInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300322266BF9500AE2EC3 /* EditInfoVC.m */; };
@@ -842,6 +844,10 @@
 		D2A0901C1E077DA20021B96C /* SliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderView.m; sourceTree = "<group>"; };
 		D2A1EF2725C54F2F0066864D /* ModelDealItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelDealItem.h; sourceTree = "<group>"; };
 		D2A1EF2825C54F2F0066864D /* ModelDealItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelDealItem.m; sourceTree = "<group>"; };
+		D2A1EF2A25C8E47D0066864D /* RequestApi+Integral.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+Integral.h"; sourceTree = "<group>"; };
+		D2A1EF2B25C8E47D0066864D /* RequestApi+Integral.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Integral.m"; sourceTree = "<group>"; };
+		D2A1EF2D25C8F1420066864D /* ModelSignItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelSignItem.m; sourceTree = "<group>"; };
+		D2A1EF2E25C8F1420066864D /* ModelSignItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelSignItem.h; sourceTree = "<group>"; };
 		D2A3001E2265B7CD00AE2EC3 /* AccountListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountListVC.h; sourceTree = "<group>"; };
 		D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountListVC.m; sourceTree = "<group>"; };
 		D2A300212265B7DF00AE2EC3 /* AccountListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountListCell.h; sourceTree = "<group>"; };
@@ -1523,6 +1529,8 @@
 		D22851B125942CED00100231 /* 积分 */ = {
 			isa = PBXGroup;
 			children = (
+				D2A1EF2E25C8F1420066864D /* ModelSignItem.h */,
+				D2A1EF2D25C8F1420066864D /* ModelSignItem.m */,
 				D22851B225942CED00100231 /* ModelIntegralProduct.m */,
 				D22851B325942CED00100231 /* ModelIntegralProduct.h */,
 			);
@@ -2921,6 +2929,8 @@
 				D23B6EFB25B91FF50044E28C /* RequestApi+Plan.m */,
 				D215DC0A25BFFAB3002DAA27 /* RequestApi+Cash.h */,
 				D215DC0B25BFFAB3002DAA27 /* RequestApi+Cash.m */,
+				D2A1EF2A25C8E47D0066864D /* RequestApi+Integral.h */,
+				D2A1EF2B25C8E47D0066864D /* RequestApi+Integral.m */,
 			);
 			path = Api2.0;
 			sourceTree = "<group>";
@@ -3575,6 +3585,7 @@
 				D29C2DC322C3059B00BD2F64 /* ModelPackageType.m in Sources */,
 				D20E85F925875D2E00C9EE4C /* DealHistoryListVC.m in Sources */,
 				D2BE30BD21070C170059929D /* ModelLabel.m in Sources */,
+				D2A1EF2F25C8F1420066864D /* ModelSignItem.m in Sources */,
 				D2164ED11F05CFC1005120C3 /* UIButton+Creat.m in Sources */,
 				D2DDC42C259C4D6300C810B5 /* ExchangeIntegraOrderListVC.m in Sources */,
 				D28A867D225F1572001E3372 /* SettingCell.m in Sources */,
@@ -3859,6 +3870,7 @@
 				D23B6EFC25B91FF50044E28C /* RequestApi+Plan.m in Sources */,
 				D2E46D7821D4A1A1007B04A1 /* DriverDetailTopView.m in Sources */,
 				D2BE30B621070BD40059929D /* ModelImage.m in Sources */,
+				D2A1EF2C25C8E47F0066864D /* RequestApi+Integral.m in Sources */,
 				D21015081EB879BF0096C9CF /* NSDate+Format.m in Sources */,
 				D27646AB1F2B0FD2001096DB /* UIView+Coordeinate.m in Sources */,
 				D2A797622488C8470062B4F6 /* CarDetailVC.m in Sources */,
