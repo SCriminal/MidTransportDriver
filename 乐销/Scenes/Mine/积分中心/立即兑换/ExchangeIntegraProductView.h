@@ -32,6 +32,6 @@
 @property (strong, nonatomic) UILabel *all;
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model;
+- (void)resetViewWithModel:(ModelIntegralProduct *)model;
 
 @end

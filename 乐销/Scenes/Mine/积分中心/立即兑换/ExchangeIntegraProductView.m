@@ -152,7 +152,7 @@
 
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(NSString *)model{
+- (void)resetViewWithModel:(ModelShopAddress *)model{
     [self removeAllSubViews];//移除线
     //刷新view
     {
@@ -185,17 +185,17 @@
         l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
         l.textColor = COLOR_333;
         l.backgroundColor = [UIColor clearColor];
-        [l fitTitle:isStr(model)?model:@"请选择收货地址" variable:SCREEN_WIDTH - W(30)];
+        [l fitTitle:model.iDProperty?[NSString stringWithFormat:@"%@ %@",model.contact,model.phone]:@"请选择收货地址" variable:SCREEN_WIDTH - W(30)];
         l.leftTop = XY(W(15), W(47));
         [self addSubview:l];
         top = l.bottom;
     }
-    if (isStr(model)) {
+    if (model.iDProperty) {
         UILabel * l = [UILabel new];
         l.font = [UIFont systemFontOfSize:F(13) weight:UIFontWeightRegular];
         l.textColor = COLOR_666;
         l.backgroundColor = [UIColor clearColor];
-        [l fitTitle:@"山东省潍坊市奎文区梨园街道世博国" variable:SCREEN_WIDTH - W(30)];
+        [l fitTitle:model.addressDetailShow variable:SCREEN_WIDTH - W(30)];
         l.leftTop = XY(W(15), top + W(10));
         [self addSubview:l];
         top = l.bottom;
@@ -255,11 +255,10 @@
 }
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model{
+- (void)resetViewWithModel:(ModelIntegralProduct *)model{
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-       
-    [self.num fitTitle:@"3000积分" variable:0];
+    [self.num fitTitle:[NSString stringWithFormat:@"%@积分",NSNumber.dou(model.qty*model.point).stringValue] variable:0];
     self.num.rightCenterY = XY(SCREEN_WIDTH - W(15),self.height/2.0);
     
     [self.all fitTitle:@"合计：" variable:0];

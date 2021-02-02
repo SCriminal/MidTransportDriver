@@ -10,12 +10,13 @@
 #import "ExchangeIntegraProductView.h"
 //request
 #import "RequestDriver2.h"
-
+#import "SelectAddressVC.h"
 @interface ExchangeIntegraProductVC ()
 @property (nonatomic, strong) ExchangeIntegraProductView *numView;
 @property (nonatomic, strong) UIView *btnView;
 @property (nonatomic, strong) ExchangeIntegraAddressView *addressView;
 @property (nonatomic, strong) ExchangeIntegraView *integralView;
+@property (nonatomic, strong) ModelShopAddress *modelAddress;
 
 
 @end
@@ -24,7 +25,12 @@
 - (ExchangeIntegraProductView *)numView{
     if (!_numView) {
         _numView = [ExchangeIntegraProductView new];
-        [_numView resetViewWithModel:nil];
+        [_numView resetViewWithModel:self.modelDetail];
+        WEAKSELF
+        _numView.blockNumChange = ^(int num) {
+            weakSelf.modelDetail.qty = num;
+            [weakSelf.integralView resetViewWithModel:weakSelf.modelDetail];
+        };
     }
     return _numView;
 }
@@ -33,8 +39,13 @@
         _addressView = [ExchangeIntegraAddressView new];
         WEAKSELF
         _addressView.blockClick = ^{
-            [weakSelf.addressView resetViewWithModel:@"1"];
-            [weakSelf reconfigView];
+            SelectAddressVC * vc = [SelectAddressVC new];
+            vc.blockSelected = ^(ModelShopAddress *item) {
+                weakSelf.modelAddress = item;
+                [weakSelf.addressView resetViewWithModel:weakSelf.modelAddress];
+                [weakSelf reconfigView];
+            };
+            [GB_Nav pushViewController:vc animated:true];
         };
         [_addressView resetViewWithModel:nil];
     }
@@ -57,6 +68,8 @@
 - (ExchangeIntegraView *)integralView{
     if (!_integralView) {
         _integralView = [ExchangeIntegraView new];
+        self.modelDetail.qty = 1;
+        [_integralView resetViewWithModel:self.modelDetail];
     }
     return _integralView;
 }
@@ -119,7 +132,15 @@
     
 }
 - (void)exchangeClick{
-    [RequestApi requestExchangeProductWithSkuid:self.modelDetail.number qty:1 addrId:2036 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    if (self.modelDetail.qty == 0) {
+        [GlobalMethod showAlert:@"请选择数量"];
+        return;
+    }
+    if (self.modelAddress.iDProperty == 0) {
+        [GlobalMethod showAlert:@"请选择收货地址"];
+        return;
+    }
+    [RequestApi requestExchangeProductWithSkuid:self.modelDetail.number qty:self.modelDetail.qty addrId:self.modelAddress.iDProperty delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GB_Nav popViewControllerAnimated:true];
         [GlobalMethod showAlert:@"兑换成功"];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

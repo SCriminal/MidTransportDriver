@@ -24,6 +24,14 @@ NS_ASSUME_NONNULL_BEGIN
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                              failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+ 列表（司机）
+*/
++(void)requestProblemListWithPage:(double)page
+                            count:(double)count
+                         delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                          failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

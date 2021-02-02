@@ -110,12 +110,12 @@
 - (void)resetViewWithModel:(ModelIntegralProduct *)model{
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-    [self.scoreNum fitTitle:[NSString stringWithFormat:@"%.f",model.score] variable:0];
+    [self.scoreNum fitTitle:[NSString stringWithFormat:@"%.f",model.point] variable:0];
     self.scoreNum.leftTop = XY(W(15),W(17));
     [self.score fitTitle:@"积分" variable:0];
     self.score.leftBottom = XY(self.scoreNum.right + W(2),self.scoreNum.bottom-W(2));
 
-    [self.remain fitTitle:[NSString stringWithFormat:@"%.f件已兑换",model.stockAmount]  variable:0];
+    [self.remain fitTitle:[NSString stringWithFormat:@"%.f件已兑换",model.saleAmount]  variable:0];
     self.remain.rightCenterY = XY(SCREEN_WIDTH - W(15),self.scoreNum.centerY);
     
     [self.title fitTitle:UnPackStr(model.name) variable:0];

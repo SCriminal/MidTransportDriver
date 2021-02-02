@@ -73,7 +73,7 @@
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"合计：";
-        m.subTitle = [NSString stringWithFormat:@"%@积分",NSNumber.dou(self.modelItem.qty*self.modelItem.point).stringValue] ;
+        m.subTitle = [NSString stringWithFormat:@"%@积分",NSNumber.dou(self.modelItem.point).stringValue] ;
         m.isSelected = true;
         return m;
     }(),^(){

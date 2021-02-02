@@ -43,7 +43,7 @@
         l.font = [UIFont systemFontOfSize:F(20) weight:UIFontWeightMedium];
         l.textColor = COLOR_BLUE;
         l.backgroundColor = [UIColor clearColor];
-        [l fitTitle:@"200000" variable:SCREEN_WIDTH - W(30)];
+        [l fitTitle:NSNumber.dou(self.point).stringValue variable:SCREEN_WIDTH - W(30)];
         l.leftTop = XY(W(33), W(35));
         [self addSubview:l];
         self.labelNum = l;

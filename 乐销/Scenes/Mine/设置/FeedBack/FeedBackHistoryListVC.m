@@ -8,12 +8,25 @@
 
 #import "FeedBackHistoryListVC.h"
 #import "SuggestDetailVC.h"
+//request
+#import "RequestDriver2.h"
 @interface FeedBackHistoryListVC ()
 
 @end
 
 @implementation FeedBackHistoryListVC
-
+#pragma mark noresult view
+@synthesize noResultView = _noResultView;
+- (BOOL)isShowNoResult{
+    return true;
+}
+- (NoResultView *)noResultView{
+    if (!_noResultView) {
+        _noResultView = [NoResultView new];
+        [_noResultView resetWithImageName:@"empty_waybill_default" title:@"暂无记录"];
+    }
+    return _noResultView;
+}
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,8 +60,21 @@
 }
 #pragma mark request
 - (void)requestList{
-    self.aryDatas = @[@"",@"",@""].mutableCopy;
-    [self.tableView reloadData];
+    [RequestApi requestProblemListWithPage:self.pageNum count:20 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.pageNum ++;
+        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"SuggestHistoryListVC"];
+        if (self.isRemoveAll) {
+            [self.aryDatas removeAllObjects];
+        }
+        if (!isAry(aryRequest)) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        [self.aryDatas addObjectsFromArray:aryRequest];
+        [self.tableView reloadData];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+
 }
 @end
 
@@ -148,8 +174,20 @@
 }
 #pragma mark request
 - (void)requestList{
-    self.aryDatas = @[@"",@"",@""].mutableCopy;
-    [self.tableView reloadData];
+    [RequestApi requestProblemListWithPage:self.pageNum count:20 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.pageNum ++;
+        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"SuggestHistoryListVC"];
+        if (self.isRemoveAll) {
+            [self.aryDatas removeAllObjects];
+        }
+        if (!isAry(aryRequest)) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        [self.aryDatas addObjectsFromArray:aryRequest];
+        [self.tableView reloadData];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
 
 }
 @end

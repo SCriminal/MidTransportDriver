@@ -221,6 +221,8 @@
 		D2A1EF2F25C8F1420066864D /* ModelSignItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF2D25C8F1420066864D /* ModelSignItem.m */; };
 		D2A1EF3225C922DD0066864D /* RequestApi+Problem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF3125C922DD0066864D /* RequestApi+Problem.m */; };
 		D2A1EF3525C9271B0066864D /* ModelIntegralOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF3425C9271B0066864D /* ModelIntegralOrder.m */; };
+		D2A1EF3A25C93ABA0066864D /* SelectAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF3625C93AB90066864D /* SelectAddressCell.m */; };
+		D2A1EF3B25C93ABA0066864D /* SelectAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF3925C93ABA0066864D /* SelectAddressVC.m */; };
 		D2A300202265B7CD00AE2EC3 /* AccountListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */; };
 		D2A300232265B7DF00AE2EC3 /* AccountListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300222265B7DF00AE2EC3 /* AccountListCell.m */; };
 		D2A300332266BF9500AE2EC3 /* EditInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300322266BF9500AE2EC3 /* EditInfoVC.m */; };
@@ -854,6 +856,10 @@
 		D2A1EF3125C922DD0066864D /* RequestApi+Problem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Problem.m"; sourceTree = "<group>"; };
 		D2A1EF3325C9271B0066864D /* ModelIntegralOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelIntegralOrder.h; sourceTree = "<group>"; };
 		D2A1EF3425C9271B0066864D /* ModelIntegralOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelIntegralOrder.m; sourceTree = "<group>"; };
+		D2A1EF3625C93AB90066864D /* SelectAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddressCell.m; sourceTree = "<group>"; };
+		D2A1EF3725C93AB90066864D /* SelectAddressVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddressVC.h; sourceTree = "<group>"; };
+		D2A1EF3825C93ABA0066864D /* SelectAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAddressCell.h; sourceTree = "<group>"; };
+		D2A1EF3925C93ABA0066864D /* SelectAddressVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAddressVC.m; sourceTree = "<group>"; };
 		D2A3001E2265B7CD00AE2EC3 /* AccountListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountListVC.h; sourceTree = "<group>"; };
 		D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountListVC.m; sourceTree = "<group>"; };
 		D2A300212265B7DF00AE2EC3 /* AccountListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountListCell.h; sourceTree = "<group>"; };
@@ -2152,6 +2158,10 @@
 		D28A319225908D78006AC450 /* 收货地址 */ = {
 			isa = PBXGroup;
 			children = (
+				D2A1EF3825C93ABA0066864D /* SelectAddressCell.h */,
+				D2A1EF3625C93AB90066864D /* SelectAddressCell.m */,
+				D2A1EF3725C93AB90066864D /* SelectAddressVC.h */,
+				D2A1EF3925C93ABA0066864D /* SelectAddressVC.m */,
 				D28A319325908D78006AC450 /* AddressListCell.h */,
 				D28A319625908D79006AC450 /* AddressListCell.m */,
 				D28A319525908D79006AC450 /* AddressListVC.h */,
@@ -3822,6 +3832,7 @@
 				D21B2FC223960C48005B43D0 /* AttachedCarTeamListCell.m in Sources */,
 				D28A31A2259193CF006AC450 /* CreditCenterVC.m in Sources */,
 				D2E50D0A1E319E650045AD3F /* BaseVC+KeyboardObserve.m in Sources */,
+				D2A1EF3A25C93ABA0066864D /* SelectAddressCell.m in Sources */,
 				D2789B4B22E187E100F2E6E1 /* BulkCargoOperateLoadView.m in Sources */,
 				D22851B025942CAF00100231 /* IntegralProductDetailView.m in Sources */,
 				D2F11C6D2097103600F18CBD /* UITextField+Text.m in Sources */,
@@ -3852,6 +3863,7 @@
 				D275DB411DFFA43B00670A40 /* UITabBar+littleRedDotBadge.m in Sources */,
 				D2A946DD2192C66900AD1E5B /* GlobalMethod+Logical.m in Sources */,
 				D239EACD1E2E175100E803F6 /* CutomFooter.m in Sources */,
+				D2A1EF3B25C93ABA0066864D /* SelectAddressVC.m in Sources */,
 				D2A946D72192B69C00AD1E5B /* ModelProvince.m in Sources */,
 				D23327C82185A23900495488 /* OrderListVC.m in Sources */,
 				D2AADB502191625400E2173E /* RequestApi+Order.m in Sources */,
