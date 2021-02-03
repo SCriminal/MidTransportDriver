@@ -9,5 +9,6 @@
 #import "BaseTableVC.h"
 
 @interface SuggestDetailVC : BaseTableVC
+@property (nonatomic, strong) ModelProblemHistoryItem *modelItem;
 
 @end

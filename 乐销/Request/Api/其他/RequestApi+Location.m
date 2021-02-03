@@ -19,14 +19,13 @@
                                delegate:(id <RequestDelegate>)delegate
                                 success:(void (^)(NSDictionary * response, id mark))success
                                 failure:(void (^)(NSString * errorStr, id mark))failure{
-    return;
     NSDictionary *dic = @{
                           @"lng":NSNumber.dou(lng),
                           @"addr":UnPackStr(addr),
                           @"lat":NSNumber.dou(lat),
                           @"spd":NSNumber.lon(spd)
                           };
-    [self patchUrl:@"/location/user" delegate:delegate parameters:dic success:success failure:failure];
+    [self putUrl:@"/location/user" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  查询车辆地理位置

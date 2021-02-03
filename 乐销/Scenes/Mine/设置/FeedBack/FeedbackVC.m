@@ -195,6 +195,8 @@
 
 - (void)imagesSelect:(NSArray *)aryImages
 {
+    [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_FEEDBACK;
+
     [[AliClient sharedInstance]updateImageAry:aryImages  storageSuccess:nil upSuccess:nil upHighQualitySuccess:nil fail:nil];
     for (BaseImage *image in aryImages) {
         ModelImage * modelImageInfo = [ModelImage new];
@@ -209,6 +211,7 @@
 }
 //选择图片
 - (void)showImageVC:(int)imageNum{
+    
     [self showImageVC:3 cameraType:ENUM_CAMERA_DEFAULT];
 }
 @end

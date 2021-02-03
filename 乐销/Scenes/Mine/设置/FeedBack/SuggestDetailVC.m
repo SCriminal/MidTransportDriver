@@ -52,35 +52,39 @@
 }
 - (void)reconfigTopView{
     [self.topView removeAllSubViews];
-    {
-        UILabel * l = [UILabel new];
-        l.font = [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
-        l.textColor = COLOR_999;
-        l.backgroundColor = [UIColor clearColor];
-        [l fitTitle:@"运单编号" variable:SCREEN_WIDTH - W(30)];
-        l.leftTop = XY(W(15), W(20));
-        [self.topView addSubview:l];
+    CGFloat top = 0;
+    if (isStr(self.modelItem.waybillNumber)) {
+        {
+            UILabel * l = [UILabel new];
+            l.font = [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
+            l.textColor = COLOR_999;
+            l.backgroundColor = [UIColor clearColor];
+            [l fitTitle:@"运单编号" variable:SCREEN_WIDTH - W(30)];
+            l.leftTop = XY(W(15),top + W(20));
+            [self.topView addSubview:l];
+        }
+        {
+            UILabel * l = [UILabel new];
+            l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+            l.textColor = COLOR_BLUE;
+            l.backgroundColor = [UIColor clearColor];
+            [l fitTitle:self.modelItem.waybillNumber variable:SCREEN_WIDTH - W(30)];
+            l.leftTop = XY(W(15), top + W(47));
+            [self.topView addSubview:l];
+        }
+       top =  [self.topView addLineFrame:CGRectMake(W(15),top + W(82), SCREEN_WIDTH - W(30), 1)];
     }
-    {
-        UILabel * l = [UILabel new];
-        l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
-        l.textColor = COLOR_BLUE;
-        l.backgroundColor = [UIColor clearColor];
-        [l fitTitle:@"2020399390029999999922" variable:SCREEN_WIDTH - W(30)];
-        l.leftTop = XY(W(15), W(47));
-        [self.topView addSubview:l];
-    }
-    [self.topView addLineFrame:CGRectMake(W(15), W(82), SCREEN_WIDTH - W(30), 1)];
+   
     {
         UILabel * l = [UILabel new];
         l.font = [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
         l.textColor = COLOR_999;
         l.backgroundColor = [UIColor clearColor];
         [l fitTitle:@"投诉内容" variable:SCREEN_WIDTH - W(30)];
-        l.leftTop = XY(W(15), W(104));
+        l.leftTop = XY(W(15),top + W(20));
         [self.topView addSubview:l];
+        top = l.bottom;
     }
-    CGFloat top = 0;
     {
         UILabel * l = [UILabel new];
         l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
@@ -88,15 +92,14 @@
         l.backgroundColor = [UIColor clearColor];
         l.numberOfLines = 0;
         l.lineSpace = W(5);
-        [l fitTitle:@"货送到了，收货方不确认到达，不付运费货送到了，收货方不确认到达，不付运费货送到了，收货方不确认到达，不付运费货送到了，收货方不确认到达，不付运费货送到了，收货方不确认到达，不付运费" variable:SCREEN_WIDTH - W(30)];
-        l.leftTop = XY(W(15), W(131));
+        [l fitTitle:UnPackStr(self.modelItem.internalBaseClassDescription) variable:SCREEN_WIDTH - W(30)];
+        l.leftTop = XY(W(15),top + W(15));
         [self.topView addSubview:l];
         top = l.bottom;
     }
-    
-    {
-        top = [self.topView addLineFrame:CGRectMake(W(15), W(20) + top, SCREEN_WIDTH - W(30), 1)];
-        
+    top = [self.topView addLineFrame:CGRectMake(W(15), W(20) + top, SCREEN_WIDTH - W(30), 1)];
+
+    if (self.modelItem.urls.count) {
         UILabel * l = [UILabel new];
         l.font = [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
         l.textColor = COLOR_999;
@@ -107,14 +110,13 @@
         top = l.bottom;
         
         Collection_Image * _collection_Image = [Collection_Image new];
-        _collection_Image.isEditing = true;
+        _collection_Image.isEditing = false;
         _collection_Image.width =  SCREEN_WIDTH - W(30);
-        [_collection_Image resetWithAry:nil];
+        [_collection_Image resetWithAry:self.modelItem.urls];
         [self.topView addSubview:_collection_Image];
         _collection_Image.leftTop = XY(W(15), top + W(15));
         top = _collection_Image.bottom;
     }
-    
     {
         UIView * view = [UIView new];
         view.backgroundColor = COLOR_BACKGROUND;
@@ -128,6 +130,9 @@
 }
 - (void)reconfigBottomView{
     [self.bottomView removeAllSubViews];
+    if (!isStr(self.modelItem.replyMessage)) {
+        return;
+    }
     {
         UILabel * l = [UILabel new];
         l.font = [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
@@ -139,13 +144,8 @@
     }
     NSArray * ary = @[^(){
         ModelBaseData * m = [ModelBaseData new];
-        m.string = @"经核实确实存在此情况，我们已于货主协同中。";
-        m.subString = @"2020-11-19 12:10:20";
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        m.string = @"已处理完毕，感谢您的投诉。";
-        m.subString = @"2020-11-19 12:10:20";
+        m.string = self.modelItem.replyMessage;
+        m.subString = [GlobalMethod exchangeTimeWithStamp:self.modelItem.replyTime andFormatter:TIME_SEC_SHOW];
         return m;
     }()];
     CGFloat top = W(52);

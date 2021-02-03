@@ -56,13 +56,15 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SuggestDetailVC * vc = [SuggestDetailVC new];
+    vc.modelItem = self.aryDatas[indexPath.row];
     [GB_Nav pushViewController:vc animated:true];
 }
 #pragma mark request
 - (void)requestList{
-    [RequestApi requestProblemListWithPage:self.pageNum count:20 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestProblemListWithPage:self.pageNum count:20
+                                      type:self.type delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.pageNum ++;
-        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"SuggestHistoryListVC"];
+        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelProblemHistoryItem"];
         if (self.isRemoveAll) {
             [self.aryDatas removeAllObjects];
         }
@@ -121,14 +123,14 @@
     return self;
 }
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(id)model{
+- (void)resetCellWithModel:(ModelProblemHistoryItem *)model{
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-        [self.num fitTitle:@"编号：20399993002999999" variable:W(300)];
+    [self.num fitTitle:[NSString stringWithFormat:@"编号：%@",model.number] variable:W(300)];
     self.num.leftTop = XY(W(15),W(18));
-    [self.time fitTitle:@"提交时间：2020-11-19 12:10:20" variable:0];
+    
+    [self.time fitTitle:[NSString stringWithFormat:@"提交时间：%@",[GlobalMethod exchangeTimeWithStamp:model.submitterTime andFormatter:TIME_SEC_SHOW]] variable:0];
     self.time.leftTop = XY(W(15),self.num.bottom+W(13));
-
 
     //设置总高度
     self.height = self.time.bottom + W(18);
@@ -139,55 +141,3 @@
 @end
 
 
-@implementation SuggestHistoryListVC
-
-#pragma mark view did load
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    self.tableView.contentInset = UIEdgeInsetsMake(W(10), 0, 0, 0);
-    //table
-    [self.tableView registerClass:[FeedBackHistoryListCell class] forCellReuseIdentifier:@"FeedBackHistoryListCell"];
-    //request
-    [self requestList];
-}
-
-
-#pragma mark UITableViewDelegate
-//row num
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.aryDatas.count;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    FeedBackHistoryListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"FeedBackHistoryListCell"];
-    [cell resetCellWithModel:self.aryDatas[indexPath.row]];
-    return cell;
-    
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [FeedBackHistoryListCell fetchHeight:self.aryDatas[indexPath.row]];
-}
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    SuggestDetailVC * vc = [SuggestDetailVC new];
-    [GB_Nav pushViewController:vc animated:true];
-}
-#pragma mark request
-- (void)requestList{
-    [RequestApi requestProblemListWithPage:self.pageNum count:20 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        self.pageNum ++;
-        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"SuggestHistoryListVC"];
-        if (self.isRemoveAll) {
-            [self.aryDatas removeAllObjects];
-        }
-        if (!isAry(aryRequest)) {
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
-        }
-        [self.aryDatas addObjectsFromArray:aryRequest];
-        [self.tableView reloadData];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
-
-}
-@end

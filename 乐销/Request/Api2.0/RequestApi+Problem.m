@@ -38,11 +38,23 @@
 */
 +(void)requestProblemListWithPage:(double)page
                             count:(double)count
+                             type:(double)type
                          delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"page":RequestLongKey(page),
+                          @"type":RequestLongKey(type),
                        @"count":RequestLongKey(count)};
         [self getUrl:@"/zhongcheyun/ticket/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
+详情
+*/
++(void)requestCreditNumWithDelegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{};
+        [self getUrl:@"/zhongcheyun/score" delegate:delegate parameters:dic success:success failure:failure];
 }
 @end

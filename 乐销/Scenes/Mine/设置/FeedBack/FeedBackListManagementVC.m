@@ -59,13 +59,15 @@
 {
     {
         FeedBackHistoryListVC * feedVC =  [FeedBackHistoryListVC new];
+        feedVC.type = 1;
         feedVC.view.frame = CGRectMake(SCREEN_WIDTH*0, 0, self.scAll.width, self.scAll.height);
         feedVC.tableView.height = feedVC.view.height;
         [self addChildViewController:feedVC];
         [self.scAll addSubview:feedVC.view];
     }
     {
-        SuggestHistoryListVC * feedVC =  [SuggestHistoryListVC new];
+        FeedBackHistoryListVC * feedVC =  [FeedBackHistoryListVC new];
+        feedVC.type = 2;
         feedVC.view.frame = CGRectMake(SCREEN_WIDTH*1, 0, self.scAll.width, self.scAll.height);
         feedVC.tableView.height = feedVC.view.height;
         [self addChildViewController:feedVC];

@@ -7,9 +7,10 @@
 //
 
 #import "CreditCenterVC.h"
-
+//request
+#import "RequestDriver2.h"
 @interface CreditCenterVC ()
-
+@property (nonatomic, assign) double score;
 @end
 
 @implementation CreditCenterVC
@@ -27,6 +28,16 @@
     [self reconfigView];
 }
 - (void)reconfigView{
+    NSString * greed = nil;
+    if (self.score >= 81) {
+        greed = @"优秀";
+    }else if(self.score >= 71){
+        greed = @"良好";
+    }else if(self.score >= 31){
+        greed = @"一般";
+    }else{
+        greed = @"过低";
+    }
     self.tableView.tableHeaderView = ^(){
         UIView * viewAll = [UIView new];
         viewAll.backgroundColor = COLOR_BACKGROUND;
@@ -64,7 +75,7 @@
             l.font = [UIFont systemFontOfSize:F(40) weight:UIFontWeightRegular];
             l.textColor = COLOR_BLUE;
             l.backgroundColor = [UIColor clearColor];
-            [l fitTitle:@"90.00" variable:SCREEN_WIDTH - W(30)];
+            [l fitTitle:NSNumber.dou(self.score).stringValue variable:SCREEN_WIDTH - W(30)];
             l.centerXTop = XY(SCREEN_WIDTH/2.0, W(77));
             [viewAll addSubview:l];
         }
@@ -73,7 +84,7 @@
             l.font = [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
             l.textColor = COLOR_BLUE;
             l.backgroundColor = [UIColor clearColor];
-            [l fitTitle:@"信用极好" variable:SCREEN_WIDTH - W(30)];
+            [l fitTitle:[NSString stringWithFormat:@"信用%@",UnPackStr(greed)] variable:SCREEN_WIDTH - W(30)];
             l.centerXTop = XY(SCREEN_WIDTH/2.0, W(141));
             [viewAll addSubview:l];
         }
@@ -106,6 +117,12 @@
 
 #pragma mark request
 - (void)requestList{
-    
+    [RequestApi requestCreditNumWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.score = [response doubleValueForKey:@"score"];
+      
+        [self reconfigView];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 @end

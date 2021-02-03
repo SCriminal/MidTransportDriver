@@ -44,7 +44,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
             return @"loms/agreement/";
             break;
         case ENUM_UP_IMAGE_TYPE_FEEDBACK:
-            return @"app/feedback/";
+            return @"zhongcheyun/ticket/";
             break;
         case ENUM_UP_IMAGE_TYPE_BANK_CARD:
             return @"ums/bank/card/";

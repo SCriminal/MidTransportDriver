@@ -29,9 +29,17 @@ NS_ASSUME_NONNULL_BEGIN
 */
 +(void)requestProblemListWithPage:(double)page
                             count:(double)count
+                             type:(double)type
                          delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+详情
+*/
++(void)requestCreditNumWithDelegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                            failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -9,7 +9,7 @@
 #import "BaseTableVC.h"
 
 @interface FeedBackHistoryListVC : BaseTableVC
-
+@property (nonatomic, assign) double type;
 @end
 
 @interface FeedBackHistoryListCell : UITableViewCell
@@ -20,9 +20,5 @@
 
 #pragma mark 刷新cell
 - (void)resetCellWithModel:(id)model;
-
-@end
-
-@interface SuggestHistoryListVC : BaseTableVC
 
 @end

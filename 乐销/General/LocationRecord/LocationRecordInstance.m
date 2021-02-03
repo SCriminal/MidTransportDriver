@@ -286,9 +286,8 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
     }
     [RequestApi requestAddLocationWithLng:model.lng addr:model.desc lat:model.lat spd:model.spd delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         dateRequestLocation = [NSDate date];
-        NSLog(@"success");
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        NSLog(@"fail");
+
     }];
 }
 

@@ -1,7 +1,7 @@
 //
 //  ModelProblemHistoryItem.m
 //
-//  Created by 林栋 隋 on 2021/2/2
+//  Created by 林栋 隋 on 2021/2/3
 //  Copyright (c) 2021 __MyCompanyName__. All rights reserved.
 //
 
@@ -77,24 +77,40 @@ NSString *const kModelProblemHistoryItemDescription = @"description";
             self.replyTime = [dict doubleValueForKey:kModelProblemHistoryItemReplyTime];
             self.submitterTime = [dict doubleValueForKey:kModelProblemHistoryItemSubmitterTime];
             self.score = [dict doubleValueForKey:kModelProblemHistoryItemScore];
-            self.replyUrl1 = [dict objectForKey:kModelProblemHistoryItemReplyUrl1];
-            self.replyUrl3 = [dict objectForKey:kModelProblemHistoryItemReplyUrl3];
+            self.replyUrl1 = [dict stringValueForKey:kModelProblemHistoryItemReplyUrl1];
+            self.replyUrl3 = [dict stringValueForKey:kModelProblemHistoryItemReplyUrl3];
             self.submitterEmpId = [dict doubleValueForKey:kModelProblemHistoryItemSubmitterEmpId];
             self.replyEmpId = [dict doubleValueForKey:kModelProblemHistoryItemReplyEmpId];
             self.submitterEmpName = [dict stringValueForKey:kModelProblemHistoryItemSubmitterEmpName];
-            self.replyMessage = [dict objectForKey:kModelProblemHistoryItemReplyMessage];
+            self.replyMessage = [dict stringValueForKey:kModelProblemHistoryItemReplyMessage];
             self.type = [dict doubleValueForKey:kModelProblemHistoryItemType];
-            self.submitUrl3 = [dict objectForKey:kModelProblemHistoryItemSubmitUrl3];
-            self.submitUrl2 = [dict objectForKey:kModelProblemHistoryItemSubmitUrl2];
+            self.submitUrl3 = [dict stringValueForKey:kModelProblemHistoryItemSubmitUrl3];
+            self.submitUrl2 = [dict stringValueForKey:kModelProblemHistoryItemSubmitUrl2];
             self.number = [dict stringValueForKey:kModelProblemHistoryItemNumber];
-            self.submitUrl1 = [dict objectForKey:kModelProblemHistoryItemSubmitUrl1];
+            self.submitUrl1 = [dict stringValueForKey:kModelProblemHistoryItemSubmitUrl1];
             self.submitterId = [dict doubleValueForKey:kModelProblemHistoryItemSubmitterId];
-            self.replyUrl2 = [dict objectForKey:kModelProblemHistoryItemReplyUrl2];
-            self.replyEmpName = [dict objectForKey:kModelProblemHistoryItemReplyEmpName];
+            self.replyUrl2 = [dict stringValueForKey:kModelProblemHistoryItemReplyUrl2];
+            self.replyEmpName = [dict stringValueForKey:kModelProblemHistoryItemReplyEmpName];
             self.submitterName = [dict stringValueForKey:kModelProblemHistoryItemSubmitterName];
-            self.waybillNumber = [dict objectForKey:kModelProblemHistoryItemWaybillNumber];
+            self.waybillNumber = [dict stringValueForKey:kModelProblemHistoryItemWaybillNumber];
             self.internalBaseClassDescription = [dict stringValueForKey:kModelProblemHistoryItemDescription];
-
+        NSMutableArray * ary = [NSMutableArray array];
+        if (isStr(self.submitUrl1)) {
+            ModelImage * modelImageInfo = [ModelImage new];
+            modelImageInfo.url = self.submitUrl1;
+            [ary addObject:modelImageInfo];
+        }
+        if (isStr(self.submitUrl2)) {
+            ModelImage * modelImageInfo = [ModelImage new];
+            modelImageInfo.url = self.submitUrl2;
+            [ary addObject:modelImageInfo];
+        }
+        if (isStr(self.submitUrl3)) {
+            ModelImage * modelImageInfo = [ModelImage new];
+            modelImageInfo.url = self.submitUrl3;
+            [ary addObject:modelImageInfo];
+        }
+        self.urls = ary;
     }
     
     return self;
