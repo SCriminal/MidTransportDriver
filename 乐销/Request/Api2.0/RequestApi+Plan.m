@@ -67,45 +67,7 @@
         [self getUrl:@"/plan/plan/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 
-/**
-2.0 运单列表(司机)
-*/
-+(void)requestOrderListWithPage:(double)page
-                count:(double)count
-                orderNumber:(NSString *)orderNumber
-                shipperName:(NSString *)shipperName
-                plateNumber:(NSString *)plateNumber
-                driverName:(NSString *)driverName
-                      startTime:(double)startTime
-                        endTime:(double)endTime
-                   orderStatues:(NSString *)orderStatues
-                delegate:(id <RequestDelegate>)delegate
-                success:(void (^)(NSDictionary * response, id mark))success
-                failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"page":NSNumber.dou(page),
-                           @"count":NSNumber.dou(count),
-                           @"orderNumber":RequestStrKey(orderNumber),
-                           @"shipperName":RequestStrKey(shipperName),
-                           @"plateNumber":RequestStrKey(plateNumber),
-                           @"driverName":RequestStrKey(driverName),
-                              @"startTime":RequestDoubleKey(startTime),
-                              @"endTime":RequestDoubleKey(endTime),
-                              @"orderStatues":RequestStrKey(orderStatues),
 
-        };
-        [self getUrl:@"/loms/order/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
-}
-
-/**
-2.0 运单详情(司机)
-*/
-+(void)requestOrderDetailWithNumber:(NSString *)number
-                delegate:(id <RequestDelegate>)delegate
-                success:(void (^)(NSDictionary * response, id mark))success
-                failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"number":RequestStrKey(number),};
-        [self getUrl:@"/loms/order/driver/{number}" delegate:delegate parameters:dic success:success failure:failure];
-}
 
 /**
 计划单详情(司机)
@@ -240,4 +202,46 @@
                            @"number":RequestStrKey(number)};
         [self putUrl:@"/loms/order/status/99/driver/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
+
+/**
+2.0 运单列表(司机)
+*/
++(void)requestOrderListWithPage:(double)page
+                count:(double)count
+                orderNumber:(NSString *)orderNumber
+                shipperName:(NSString *)shipperName
+                plateNumber:(NSString *)plateNumber
+                driverName:(NSString *)driverName
+                      startTime:(double)startTime
+                        endTime:(double)endTime
+                   orderStatues:(NSString *)orderStatues
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"page":NSNumber.dou(page),
+                           @"count":NSNumber.dou(count),
+                           @"orderNumber":RequestStrKey(orderNumber),
+                           @"shipperName":RequestStrKey(shipperName),
+                           @"plateNumber":RequestStrKey(plateNumber),
+                           @"driverName":RequestStrKey(driverName),
+                              @"startTime":RequestDoubleKey(startTime),
+                              @"endTime":RequestDoubleKey(endTime),
+                              @"orderStatues":RequestStrKey(orderStatues),
+
+        };
+        [self getUrl:@"/loms/order/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
+2.0 运单详情(司机)
+*/
++(void)requestOrderDetailWithNumber:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"number":RequestStrKey(number),};
+        [self getUrl:@"/loms/order/driver/{number}" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+
 @end

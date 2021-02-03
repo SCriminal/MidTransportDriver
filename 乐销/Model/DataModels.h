@@ -74,3 +74,4 @@
 #import "ModelSignItem.h"
 #import "ModelIntegralOrder.h"
 #import "ModelProblemHistoryItem.h"
+#import "ModelMsgItem.h"

@@ -96,26 +96,29 @@
         }];
 }
 - (void)requestComment{
-    NSMutableArray * ary = [NSMutableArray array];
-    if (!isStr(self.modelList.comment)) {
-        if (self.modelList.shipperId) {
-            [ary addObject:NSNumber.dou(self.modelList.shipperId).stringValue];
-        }
+    if (isStr(self.modelList.comment)) {
+        return;
+      
     }
-    [RequestApi requestCommentListWithUserIds:[ary componentsJoinedByString:@","] delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        NSLog(@"%@",response);
-        NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelComment"];
-        if (!ary.count) {
-            return;
-        }
-        ModelComment * comment = ary.lastObject;
-       
-        self.modelList.comment = [NSString stringWithFormat:@"%@      成交量：%@      好评率：%@",comment.cellphone.secretPhone,NSNumber.dou(comment.finishWaybillSum).stringValue,NSNumber.dou(comment.score).stringValue];
-        [self.topView resetViewWithModel:self.modelList];
-        self.tableView.tableHeaderView = self.topView;
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
-        }];
+    if (self.modelList.shipperId) {
+        NSMutableArray * ary = [NSMutableArray array];
+        [ary addObject:NSNumber.dou(self.modelList.shipperId).stringValue];
+        [RequestApi requestCommentListWithUserIds:[ary componentsJoinedByString:@","] delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            NSLog(@"%@",response);
+            NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelComment"];
+            if (!ary.count) {
+                return;
+            }
+            ModelComment * comment = ary.lastObject;
+           
+            self.modelList.comment = [NSString stringWithFormat:@"%@      成交量：%@      好评率：%@",comment.cellphone.secretPhone,NSNumber.dou(comment.finishWaybillSum).stringValue,NSNumber.dou(comment.score).stringValue];
+            [self.topView resetViewWithModel:self.modelList];
+            self.tableView.tableHeaderView = self.topView;
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+    }
+   
 }
 -  (void)requestCarInfo{
     [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {

@@ -86,4 +86,49 @@
                            @"count":RequestLongKey(count)};
         [self getUrl:@"/zhongcheyun/point/order/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
+
+/**
+列表
+*/
++(void)requestMsgListWithChannel:(double)channel
+                isRead:(double)isRead
+                page:(double)page
+                count:(double)count
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+    
+        NSMutableDictionary *dic = @{@"channel":NSNumber.dou(channel),
+                           @"page":NSNumber.dou(page),
+                           @"count":NSNumber.dou(count)}.mutableCopy;
+    if (isRead == 0) {
+        
+    }
+    if (isRead == 1) {
+        [dic setValue:@0 forKey:@"isRead"];
+    }
+    if (isRead == 2) {
+        [dic setValue:@1 forKey:@"isRead"];
+    }
+        [self getUrl:@"/zhongcheyun/message/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
+渠道未读数
+*/
++(void)requestMsgAllWithDelegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{};
+        [self getUrl:@"/zhongcheyun/message/list/channel" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
+详情
+*/
++(void)requestMsgDetailWithNumber:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"number":RequestStrKey(number)};
+        [self getUrl:@"/zhongcheyun/message/{number}" delegate:delegate parameters:dic success:success failure:failure];
+}
 @end

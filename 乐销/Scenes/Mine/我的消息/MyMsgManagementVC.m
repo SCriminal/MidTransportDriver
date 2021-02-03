@@ -58,25 +58,11 @@
 #pragma mark 初始化子控制器
 - (void)setupChildVC
 {
-    WEAKSELF
+//    WEAKSELF
     for (int i = 0; i <self.arySliderDatas.count; i++) {
-        ModelBtn * model = self.arySliderDatas[i];
         MyMsgListVC *sourceVC = [[MyMsgListVC alloc] init];
-//        sourceVC.blockTotal = ^(ENUM_ORDER_LIST_SORT type, int total) {
-//            NSString * strTotal = total?[NSString stringWithFormat:@"(%d)",total]:@"";
-//            if (total>99) {
-//                strTotal = @"(99+)";
-//            }
-//            if (type == ENUM_ORDER_LIST_SORT_GOING) {
-//                [weakSelf.sliderView refreshBtn:0 title:[NSString stringWithFormat:@"进行中%@",strTotal]];
-//            }
-//
-//
-//            if (type == ENUM_ORDER_LIST_SORT_COMPLETE) {
-//                [weakSelf.sliderView refreshBtn:1 title:[NSString stringWithFormat:@"已完成%@",strTotal]];
-//            }
-//        };
-//        sourceVC.sortType = model.num;
+        sourceVC.channel = self.channel;
+        sourceVC.index = i;
         sourceVC.view.frame = CGRectMake(SCREEN_WIDTH*i, 0, self.scAll.width, self.scAll.height);
         sourceVC.tableView.height = sourceVC.view.height;
         [self addChildViewController:sourceVC];

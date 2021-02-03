@@ -53,6 +53,30 @@ NS_ASSUME_NONNULL_BEGIN
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                                 failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+列表
+*/
++(void)requestMsgListWithChannel:(double)channel
+                isRead:(double)isRead
+                page:(double)page
+                count:(double)count
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                         failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+渠道未读数
+*/
++(void)requestMsgAllWithDelegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                         failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+详情
+*/
++(void)requestMsgDetailWithNumber:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                          failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

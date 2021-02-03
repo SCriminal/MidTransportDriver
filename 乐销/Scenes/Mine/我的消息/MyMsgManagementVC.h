@@ -9,5 +9,6 @@
 #import "BaseVC.h"
 
 @interface MyMsgManagementVC : BaseVC
+@property (nonatomic, strong) NSString *channel;
 
 @end

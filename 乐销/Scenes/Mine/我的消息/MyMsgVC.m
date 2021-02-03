@@ -8,7 +8,8 @@
 
 #import "MyMsgVC.h"
 #import "MyMsgManagementVC.h"
-
+//request
+#import "RequestDriver2.h"
 @interface MyMsgVC ()
 
 @end
@@ -52,41 +53,75 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
                  MyMsgManagementVC* vc = [MyMsgManagementVC new];
+    ModelBtn * item = self.aryDatas[indexPath.row];
+    vc.channel = item.vcName;
     [GB_Nav pushViewController:vc animated:true];
 
 }
 #pragma mark request
 - (void)requestList{
-    self.aryDatas = @[^(){
-        ModelBtn * m = [ModelBtn new];
-        m.title = @"配";
-        m.subTitle = @"配货消息";
-        m.color = COLOR_ORANGE;
-        m.num = 10;
-        return m;
-    }(),^(){
-        ModelBtn * m = [ModelBtn new];
-        m.title = @"运";
-        m.subTitle = @"运单消息";
-        m.color = COLOR_BLUE_LIGHT;
-        m.num = 99;
-        return m;
-    }(),^(){
-        ModelBtn * m = [ModelBtn new];
-        m.title = @"认";
-        m.subTitle = @"认证消息";
-        m.color = COLOR_BLUE;
-        m.num = 1011;
-        return m;
-    }(),^(){
-        ModelBtn * m = [ModelBtn new];
-        m.title = @"其";
-        m.subTitle = @"其他消息";
-        m.color = COLOR_GREEN;
-        m.num = 0;
-        return m;
-    }()].mutableCopy;
-    [self.tableView reloadData];
+    [RequestApi requestMsgAllWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//        渠道 1-配货消息 2-运单消息 3-认证消息 4-其他消息
+        double num1 = 0;
+        double num2 = 0;
+        double num3 = 0;
+        double num4 = 0;
+        NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelMsgItem"];
+        for (ModelMsgItem * item in ary) {
+            if ([item.channel isEqualToString:@"1"]) {
+                num1 = item.total;
+            }
+            if ([item.channel isEqualToString:@"2"]) {
+                num2 = item.total;
+            }
+            if ([item.channel isEqualToString:@"3"]) {
+                num3 = item.total;
+            }
+            if ([item.channel isEqualToString:@"4"]) {
+                num4 = item.total;
+            }
+        }
+        self.aryDatas = @[^(){
+            ModelBtn * m = [ModelBtn new];
+            m.title = @"配";
+            m.subTitle = @"配货消息";
+            m.color = COLOR_ORANGE;
+            m.num = num1;
+            m.vcName = @"1";
+            return m;
+        }(),^(){
+            ModelBtn * m = [ModelBtn new];
+            m.title = @"运";
+            m.subTitle = @"运单消息";
+            m.color = COLOR_BLUE_LIGHT;
+            m.num = num2;
+            m.vcName = @"2";
+
+            return m;
+        }(),^(){
+            ModelBtn * m = [ModelBtn new];
+            m.title = @"认";
+            m.subTitle = @"认证消息";
+            m.color = COLOR_BLUE;
+            m.num = num3;
+            m.vcName = @"3";
+
+            return m;
+        }(),^(){
+            ModelBtn * m = [ModelBtn new];
+            m.title = @"其";
+            m.subTitle = @"其他消息";
+            m.color = COLOR_GREEN;
+            m.num = num4;
+            m.vcName = @"4";
+
+            return m;
+        }()].mutableCopy;
+        [self.tableView reloadData];
+
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 @end
 

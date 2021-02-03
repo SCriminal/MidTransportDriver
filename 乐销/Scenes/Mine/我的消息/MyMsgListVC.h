@@ -9,6 +9,8 @@
 #import "BaseTableVC.h"
 
 @interface MyMsgListVC : BaseTableVC
+@property (nonatomic, assign) int index;
+@property (nonatomic, strong) NSString *channel;
 
 @end
 
@@ -20,6 +22,6 @@
 @property (strong, nonatomic) UIImageView *iconArrow;
 
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(id)model;
+- (void)resetCellWithModel:(ModelMsgItem *)model;
 
 @end

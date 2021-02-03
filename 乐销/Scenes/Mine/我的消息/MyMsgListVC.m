@@ -8,7 +8,8 @@
 
 #import "MyMsgListVC.h"
 #import "ModelLabel.h"
-
+//request
+#import "RequestDriver2.h"
 @interface MyMsgListVC ()
 
 @end
@@ -33,20 +34,20 @@
     //添加导航栏
     [self addNav];
     //table
-  [self.tableView registerClass:[MyMsgListCell class] forCellReuseIdentifier:@"MyMsgListCell"];
-   self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-   self.tableView.backgroundColor = [UIColor clearColor];
-   self.tableView.contentInset = UIEdgeInsetsMake(0, 0, W(10), 0);
-   [self addRefreshHeader];
-   [self addRefreshFooter];
-   //request
-   [self requestList];    //request
+    [self.tableView registerClass:[MyMsgListCell class] forCellReuseIdentifier:@"MyMsgListCell"];
+    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, W(10), 0);
+    [self addRefreshHeader];
+    [self addRefreshFooter];
+    //request
+    [self requestList];    //request
 }
 
 #pragma mark 添加导航栏
 - (void)addNav{
-//    [self.view addSubview:[BaseNavView initNavBackTitle:<#导航栏标题#> rightView:nil]];
+    //    [self.view addSubview:[BaseNavView initNavBackTitle:<#导航栏标题#> rightView:nil]];
 }
 
 #pragma mark UITableViewDelegate
@@ -57,7 +58,7 @@
 
 //cell
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-     MyMsgListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MyMsgListCell"];
+    MyMsgListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MyMsgListCell"];
     [cell resetCellWithModel:self.aryDatas[indexPath.row]];
     return cell;;
 }
@@ -65,33 +66,39 @@
     return [MyMsgListCell fetchHeight:self.aryDatas[indexPath.row]];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ModelBaseData * m = self.aryDatas[indexPath.row];
-    m.isSelected = !m.isSelected;
-    [self.tableView reloadData];
+    ModelMsgItem * m = self.aryDatas[indexPath.row];
+    if (isStr(m.content)) {
+        m.content = nil;
+        [self.tableView reloadData];
+        
+    }else{
+        [RequestApi requestMsgDetailWithNumber:m.number delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            m.content = [response stringValueForKey:@"content"];
+            [self.tableView reloadData];
+            
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+    }
 }
 
 #pragma mark request
 - (void)requestList{
-    self.aryDatas = @[^(){
-        ModelBaseData * m = [ModelBaseData new];
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        return m;
-    }(),^(){
-        ModelBaseData * m = [ModelBaseData new];
-        return m;
-    }()].mutableCopy;
-    [self.tableView reloadData];
+    [RequestApi requestMsgListWithChannel:self.channel.doubleValue isRead:self.index page:self.pageNum count:20 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.pageNum ++;
+        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelMsgItem"];
+        if (self.isRemoveAll) {
+            [self.aryDatas removeAllObjects];
+        }
+        if (!isAry(aryRequest)) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        [self.aryDatas addObjectsFromArray:aryRequest];
+        [self.tableView reloadData];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+    
 }
 @end
 
@@ -144,72 +151,50 @@
         self.backgroundColor = [UIColor whiteColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.state];
-    [self.contentView addSubview:self.msgTitle];
-    [self.contentView addSubview:self.msgContent];
-    [self.contentView addSubview:self.iconArrow];
-
+        [self.contentView addSubview:self.msgTitle];
+        [self.contentView addSubview:self.msgContent];
+        [self.contentView addSubview:self.iconArrow];
+        
     }
     return self;
 }
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(ModelBaseData *)model{
+- (void)resetCellWithModel:(ModelMsgItem *)model{
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
     self.state.text = @"未读";
-    self.state.backgroundColor = model.isSelected?[UIColor colorWithHexString:@"#D4DEF0"]:[UIColor colorWithHexString:@"#FF9523"];
+    self.state.backgroundColor = model.isRead?[UIColor colorWithHexString:@"#D4DEF0"]:[UIColor colorWithHexString:@"#FF9523"];
     self.state.leftTop = XY(W(15),W(17));
     
-    [self.msgTitle fitTitle:@"恭喜您，抢单成功" variable:W(295)];
+    [self.msgTitle fitTitle:UnPackStr(model.title) variable:W(295)];
     self.msgTitle.leftCenterY = XY(W(6)+self.state.right,self.state.centerY);
     
-    self.msgContent.hidden = !model.isSelected;
-    if (model.isSelected) {
+    self.msgContent.hidden = !isStr(model.content);
+    if (self.msgContent.hidden) {
         [self.msgContent resetAttributeStrFixed:W(346) models:@[^(){
             ModelLabel * m = [ModelLabel new];
-            m.text = @"您报价的编号：";
+            m.text = model.content;
             m.textColor = COLOR_999;
             m.font = F(12);
             return m;
-        }(),^(){
-            ModelLabel * m = [ModelLabel new];
-            m.text = @"2399900020333";
-            m.textColor = COLOR_BLUE;
-            m.font = F(12);
-            return m;
-        }(),^(){
-            ModelLabel * m = [ModelLabel new];
-            m.text = @"您报价的编号123：";
-            m.textColor = COLOR_999;
-            m.font = F(12);
-            return m;
-        }(),^(){
-            ModelLabel * m = [ModelLabel new];
-            m.text = @"2399900020333";
-            m.textColor = COLOR_BLUE;
-            m.font = F(12);
-            return m;
-        }(),^(){
-            ModelLabel * m = [ModelLabel new];
-            m.text = @"您报价的编号123：";
-            m.textColor = COLOR_999;
-            m.font = F(12);
-            return m;
-        }(),^(){
-            ModelLabel * m = [ModelLabel new];
-            m.text = @"2399900020333";
-            m.textColor = COLOR_BLUE;
-            m.font = F(12);
-            return m;
-        }()] lineSpace:W(6)];
+        }()
+                                                                 //                                                                 ,^(){
+                                                                 //            ModelLabel * m = [ModelLabel new];
+                                                                 //            m.text = @"2399900020333";
+                                                                 //            m.textColor = COLOR_BLUE;
+                                                                 //            m.font = F(12);
+                                                                 //            return m;
+                                                                 //        }()
+        ] lineSpace:W(6)];
         self.msgContent.leftTop = XY(W(15),self.state.bottom+W(12));
-
+        
     }
     
-
+    
     self.iconArrow.rightCenterY = XY(SCREEN_WIDTH - W(15),self.state.centerY);
-    self.iconArrow.highlighted = model.isSelected;
+    self.iconArrow.highlighted = self.msgContent.hidden;
     //设置总高度
-    self.height = (model.isSelected?self.msgContent.bottom:self.state.bottom)+W(18);
+    self.height = (self.msgContent.hidden?self.msgContent.bottom:self.state.bottom)+W(18);
     [self.contentView addLineFrame:CGRectMake(W(15), self.height - 1, SCREEN_WIDTH - W(30), 1)];
 }
 

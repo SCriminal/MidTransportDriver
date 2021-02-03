@@ -226,6 +226,7 @@
 		D2A1EF3E25C951870066864D /* SelectOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF3D25C951870066864D /* SelectOrderVC.m */; };
 		D2A1EF4125C951DE0066864D /* SelectOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF4025C951DE0066864D /* SelectOrderCell.m */; };
 		D2A1EF4525C95A940066864D /* ModelProblemHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF4425C95A940066864D /* ModelProblemHistoryItem.m */; };
+		D2A1EF4825CA854F0066864D /* ModelMsgItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF4725CA854E0066864D /* ModelMsgItem.m */; };
 		D2A300202265B7CD00AE2EC3 /* AccountListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */; };
 		D2A300232265B7DF00AE2EC3 /* AccountListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300222265B7DF00AE2EC3 /* AccountListCell.m */; };
 		D2A300332266BF9500AE2EC3 /* EditInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300322266BF9500AE2EC3 /* EditInfoVC.m */; };
@@ -869,6 +870,8 @@
 		D2A1EF4025C951DE0066864D /* SelectOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectOrderCell.m; sourceTree = "<group>"; };
 		D2A1EF4325C95A940066864D /* ModelProblemHistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelProblemHistoryItem.h; sourceTree = "<group>"; };
 		D2A1EF4425C95A940066864D /* ModelProblemHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelProblemHistoryItem.m; sourceTree = "<group>"; };
+		D2A1EF4625CA854D0066864D /* ModelMsgItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelMsgItem.h; sourceTree = "<group>"; };
+		D2A1EF4725CA854E0066864D /* ModelMsgItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelMsgItem.m; sourceTree = "<group>"; };
 		D2A3001E2265B7CD00AE2EC3 /* AccountListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountListVC.h; sourceTree = "<group>"; };
 		D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountListVC.m; sourceTree = "<group>"; };
 		D2A300212265B7DF00AE2EC3 /* AccountListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountListCell.h; sourceTree = "<group>"; };
@@ -1550,6 +1553,8 @@
 		D22851B125942CED00100231 /* 积分 */ = {
 			isa = PBXGroup;
 			children = (
+				D2A1EF4625CA854D0066864D /* ModelMsgItem.h */,
+				D2A1EF4725CA854E0066864D /* ModelMsgItem.m */,
 				D2A1EF3325C9271B0066864D /* ModelIntegralOrder.h */,
 				D2A1EF3425C9271B0066864D /* ModelIntegralOrder.m */,
 				D2A1EF2E25C8F1420066864D /* ModelSignItem.h */,
@@ -3933,6 +3938,7 @@
 				D2996A4021E6E3AA00562587 /* CollectionImageCell.m in Sources */,
 				D2A1EF3225C922DD0066864D /* RequestApi+Problem.m in Sources */,
 				D2A3003D226704D100AE2EC3 /* InputPlumbumNumView.m in Sources */,
+				D2A1EF4825CA854F0066864D /* ModelMsgItem.m in Sources */,
 				D2BE30E5210716310059929D /* VersionUpView.m in Sources */,
 				D22F88F41F94B2590005944C /* UIPickerView+Category.m in Sources */,
 				D203760921071F260054F8A6 /* ModelVersionUp.m in Sources */,
