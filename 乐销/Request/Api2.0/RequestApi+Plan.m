@@ -243,5 +243,93 @@
         [self getUrl:@"/loms/order/driver/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
 
+/**
+2.0接单-自有运单
+*/
++(void)requestAcceptSelfPossessOrderWithNumber:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"number":RequestStrKey(number)};
+        [self putUrl:@"/tms/lo/status/2/{number}" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
+2.0装车-自有运单
+*/
++(void)requestLoadSelfPossessOrderWithUrls:(NSString *)urls
+                number:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"urls":RequestStrKey(urls),
+                           @"number":RequestStrKey(number)};
+        [self putUrl:@"/tms/lo/status/3/{number}" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
+2.0卸车-自有运单
+*/
++(void)requestUnloadSelfPossessOrderWithUrls:(NSString *)urls
+                number:(NSString *)orderNumber
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"urls":RequestStrKey(urls),
+                           @"number":RequestStrKey(orderNumber)};
+        [self putUrl:@"/tms/lo/status/4/{number}" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
+2.0拒单-自有运单
+*/
++(void)requestRejectSelfPossessOrderumber:(NSString *)number
+                        reason:(NSString *)reason
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"reason":RequestStrKey(reason),
+                           @"number":RequestStrKey(number)};
+        [self putUrl:@"/tms/lo/status/99/driver/{number}" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
+2.0 运单列表(司机)-自有运单
+*/
++(void)requestSelfPossessOrderListWithPage:(double)page
+                count:(double)count
+                orderNumber:(NSString *)orderNumber
+                shipperName:(NSString *)shipperName
+                plateNumber:(NSString *)plateNumber
+                driverName:(NSString *)driverName
+                      startTime:(double)startTime
+                        endTime:(double)endTime
+                   orderStatues:(NSString *)orderStatues
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"page":NSNumber.dou(page),
+                           @"count":NSNumber.dou(count),
+                           @"orderNumber":RequestStrKey(orderNumber),
+                           @"shipperName":RequestStrKey(shipperName),
+                           @"plateNumber":RequestStrKey(plateNumber),
+                           @"driverName":RequestStrKey(driverName),
+                              @"startTime":RequestDoubleKey(startTime),
+                              @"endTime":RequestDoubleKey(endTime),
+                              @"orderStatues":RequestStrKey(orderStatues),
+
+        };
+        [self getUrl:@"/tms/lo/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
+2.0 运单详情(司机)-自有运单
+*/
++(void)requestSelfPossessOrderDetailWithNumber:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"number":RequestStrKey(number),};
+        [self getUrl:@"/tms/lo/driver/{number}" delegate:delegate parameters:dic success:success failure:failure];
+}
 
 @end

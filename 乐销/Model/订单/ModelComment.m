@@ -11,7 +11,7 @@
 NSString *const kModelCommentFinishWaybillSum = @"finishWaybillSum";
 NSString *const kModelCommentScore = @"score";
 NSString *const kModelCommentCellphone = @"cellphone";
-NSString *const kModelCommentName = @"name";
+NSString *const kModelCommentName = @"realName";
 NSString *const kModelCommentUserId = @"userId";
 
 

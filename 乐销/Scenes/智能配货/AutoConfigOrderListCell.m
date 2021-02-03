@@ -189,7 +189,12 @@
     
     {
         NSString * str1 = @"单价：";
-        NSString * str2 = [NSString stringWithFormat:@"%@元/%@",NSNumber.dou(model.priceShow).stringValue,model.unitShow];
+        NSString * str2 = nil;
+        if (self.model.mode == 2) {//1 抢单 2 报价
+            str2 = @"待报价";
+        }else{
+            str2 = [NSString stringWithFormat:@"%@元/%@",NSNumber.dou(model.priceShow).stringValue,model.unitShow];
+        }
         [self.price fitTitle:[NSString stringWithFormat:@"%@%@",str1,str2] variable:SCREEN_WIDTH/2.0 -W(15)];
         NSMutableAttributedString * strAttribute = [[NSMutableAttributedString alloc]initWithString:self.price.text];
                [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_666,        NSFontAttributeName :  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular]} range:NSMakeRange(0, strAttribute.length)];
