@@ -227,6 +227,8 @@
 		D2A1EF4125C951DE0066864D /* SelectOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF4025C951DE0066864D /* SelectOrderCell.m */; };
 		D2A1EF4525C95A940066864D /* ModelProblemHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF4425C95A940066864D /* ModelProblemHistoryItem.m */; };
 		D2A1EF4825CA854F0066864D /* ModelMsgItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF4725CA854E0066864D /* ModelMsgItem.m */; };
+		D2A1EF4B25CA9A180066864D /* SelfPossessOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF4A25CA9A180066864D /* SelfPossessOrderListVC.m */; };
+		D2A1EF4E25CA9AD10066864D /* SelfPossessOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF4D25CA9AD10066864D /* SelfPossessOrderDetailVC.m */; };
 		D2A300202265B7CD00AE2EC3 /* AccountListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */; };
 		D2A300232265B7DF00AE2EC3 /* AccountListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300222265B7DF00AE2EC3 /* AccountListCell.m */; };
 		D2A300332266BF9500AE2EC3 /* EditInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300322266BF9500AE2EC3 /* EditInfoVC.m */; };
@@ -872,6 +874,10 @@
 		D2A1EF4425C95A940066864D /* ModelProblemHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelProblemHistoryItem.m; sourceTree = "<group>"; };
 		D2A1EF4625CA854D0066864D /* ModelMsgItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelMsgItem.h; sourceTree = "<group>"; };
 		D2A1EF4725CA854E0066864D /* ModelMsgItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelMsgItem.m; sourceTree = "<group>"; };
+		D2A1EF4925CA9A180066864D /* SelfPossessOrderListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelfPossessOrderListVC.h; sourceTree = "<group>"; };
+		D2A1EF4A25CA9A180066864D /* SelfPossessOrderListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfPossessOrderListVC.m; sourceTree = "<group>"; };
+		D2A1EF4C25CA9AD10066864D /* SelfPossessOrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelfPossessOrderDetailVC.h; sourceTree = "<group>"; };
+		D2A1EF4D25CA9AD10066864D /* SelfPossessOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfPossessOrderDetailVC.m; sourceTree = "<group>"; };
 		D2A3001E2265B7CD00AE2EC3 /* AccountListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountListVC.h; sourceTree = "<group>"; };
 		D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountListVC.m; sourceTree = "<group>"; };
 		D2A300212265B7DF00AE2EC3 /* AccountListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountListCell.h; sourceTree = "<group>"; };
@@ -1664,6 +1670,8 @@
 				D257759424D2AF1300449C75 /* RejectOrderReason.m */,
 				D23327C62185A23900495488 /* OrderListVC.h */,
 				D23327C72185A23900495488 /* OrderListVC.m */,
+				D2A1EF4925CA9A180066864D /* SelfPossessOrderListVC.h */,
+				D2A1EF4A25CA9A180066864D /* SelfPossessOrderListVC.m */,
 				D23327C92185A27900495488 /* OrderListCell.h */,
 				D23327CA2185A27900495488 /* OrderListCell.m */,
 				D20DCA042578CA68003B89B5 /* OrderFilterView.h */,
@@ -1860,6 +1868,8 @@
 				D2B9374522D862830005B5D2 /* OrderDetailAccessoryView.m */,
 				D275D9E92179707C0060BB0E /* OrderDetailVC.h */,
 				D275D9EA2179707C0060BB0E /* OrderDetailVC.m */,
+				D2A1EF4C25CA9AD10066864D /* SelfPossessOrderDetailVC.h */,
+				D2A1EF4D25CA9AD10066864D /* SelfPossessOrderDetailVC.m */,
 			);
 			path = OrderDetail;
 			sourceTree = "<group>";
@@ -3789,7 +3799,9 @@
 				D2A797612488C8470062B4F6 /* CarDetailView.m in Sources */,
 				D2C55812238CC9D50050694F /* ModelValidCar.m in Sources */,
 				D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */,
+				D2A1EF4B25CA9A180066864D /* SelfPossessOrderListVC.m in Sources */,
 				D21F19441E1A46390094B90F /* BaseVC+BaseImageSelectVC.m in Sources */,
+				D2A1EF4E25CA9AD10066864D /* SelfPossessOrderDetailVC.m in Sources */,
 				D2F3A4FF2570EA2D009EBF3F /* AutoConfigOrderListCell.m in Sources */,
 				D27470B022A798DA009B645D /* RequestApi+Location.m in Sources */,
 				D22B1D542383E34400BC00F0 /* ScanOrderListVC.m in Sources */,

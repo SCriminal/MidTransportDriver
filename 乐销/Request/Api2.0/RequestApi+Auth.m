@@ -166,5 +166,21 @@
         [self putUrl:@"/auth/pvt/relation" delegate:delegate parameters:dic success:success failure:failure];
 }
 
-
+/**
+ 登出
+ */
++(void)requestLogoutWithDelegate:(id <RequestDelegate>)delegate
+                    success:(void (^)(NSDictionary * response, id mark))success
+                    failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"app":REQUEST_APP,
+                          @"client":REQUEST_CLIENT};
+    [self deleteUrl:@"/auth/user/logout/token" delegate:delegate parameters:dic success:^(NSDictionary * response, id mark){
+        [GlobalMethod clearUserInfo];
+        [GlobalMethod createRootNav];
+        
+    } failure: ^(NSString * errorStr, id mark){
+        [GlobalMethod clearUserInfo];
+        [GlobalMethod createRootNav];
+    }];
+}
 @end

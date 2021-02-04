@@ -112,18 +112,13 @@ NS_ASSUME_NONNULL_BEGIN
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                        failure:(void (^)(NSString * errorStr, id mark))failure;
-/**
-2.0到达确认
-*/
-+(void)requestArriveWithNumber:(NSString *)number
-                delegate:(id <RequestDelegate>)delegate
-                success:(void (^)(NSDictionary * response, id mark))success
-                       failure:(void (^)(NSString * errorStr, id mark))failure;
+
 /**
 2.0装车
 */
 +(void)requestLoadWithUrls:(NSString *)urls
                 number:(NSString *)number
+               description:(NSString *)description
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                    failure:(void (^)(NSString * errorStr, id mark))failure;
@@ -132,6 +127,7 @@ NS_ASSUME_NONNULL_BEGIN
 */
 +(void)requestUnloadWithUrls:(NSString *)urls
                 number:(NSString *)number
+                 description:(NSString *)description
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                      failure:(void (^)(NSString * errorStr, id mark))failure;
@@ -144,6 +140,67 @@ NS_ASSUME_NONNULL_BEGIN
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                        failure:(void (^)(NSString * errorStr, id mark))failure;
+
+
+/**
+2.0接单-自有运单
+*/
++(void)requestAcceptSelfPossessOrderWithNumber:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                       failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+2.0装车-自有运单
+*/
++(void)requestLoadSelfPossessOrderWithUrls:(NSString *)urls
+                number:(NSString *)number
+                               description:(NSString *)description
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                   failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+2.0卸车-自有运单
+*/
++(void)requestUnloadSelfPossessOrderWithUrls:(NSString *)urls
+                number:(NSString *)orderNumber
+                                 description:(NSString *)description
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                     failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+2.0拒单-自有运单
+*/
++(void)requestRejectSelfPossessOrderumber:(NSString *)number
+                        reason:(NSString *)reason
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                  failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+2.0 运单列表(司机)-自有运单
+*/
++(void)requestSelfPossessOrderListWithPage:(double)page
+                count:(double)count
+                orderNumber:(NSString *)orderNumber
+                shipperName:(NSString *)shipperName
+                plateNumber:(NSString *)plateNumber
+                driverName:(NSString *)driverName
+                      startTime:(double)startTime
+                        endTime:(double)endTime
+                   orderStatues:(NSString *)orderStatues
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                   failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+2.0 运单详情(司机)-自有运单
+*/
++(void)requestSelfPossessOrderDetailWithNumber:(NSString *)number
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                       failure:(void (^)(NSString * errorStr, id mark))failure;
+
 @end
 
 NS_ASSUME_NONNULL_END

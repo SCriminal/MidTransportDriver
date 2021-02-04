@@ -29,6 +29,15 @@
     }
     return _textView;
 }
+- (UIView *)viewClick{
+    if (!_viewClick) {
+        _viewClick = [UIView new];
+        _viewClick.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        _viewClick.backgroundColor = [UIColor clearColor];
+        [_viewClick addTarget:self action:@selector(hideKeyboardClick)];
+    }
+    return _viewClick;
+}
 - (UIView *)viewBG{
     if (_viewBG == nil) {
         _viewBG = [UIView new];
@@ -93,13 +102,15 @@
     if (self) {
         self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
         self.widthHeight = XY(SCREEN_WIDTH, SCREEN_HEIGHT);
-        [self addTarget:self action:@selector(hideKeyboardClick)];
+//        [self addTarget:self action:@selector(hideKeyboardClick)];
         [self addSubView];
     }
     return self;
 }
 //添加subview
 - (void)addSubView{
+    
+    [self addSubview:self.viewClick];
     [self addSubview:self.viewBG];
     [self.viewBG addSubview:self.labelInput];
     [self.viewBG addSubview:self.ivClose];

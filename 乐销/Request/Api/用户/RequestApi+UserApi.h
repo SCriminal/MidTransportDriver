@@ -95,12 +95,6 @@ NS_ASSUME_NONNULL_BEGIN
                               delegate:(_Nullable id <RequestDelegate>)delegate
                                success:(void (^)(NSDictionary * response, id mark))success
                                failure:(void (^)(NSString * errorStr, id mark))failure;
-/**
- 版本升级
- */
-+(void)requestVersionWithDelegate:(_Nullable id <RequestDelegate>)delegate
-                          success:(void (^)(NSDictionary * response, id mark))success
-                          failure:(void (^)(NSString * errorStr, id mark))failure;
 
 /**
  添加版本信息

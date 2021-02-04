@@ -149,19 +149,7 @@
     [self postUrl:@"/ums/user/sms/code" delegate:delegate parameters:dic success:success failure:failure];
 }
 
-/**
- 版本升级
- */
-+(void)requestVersionWithDelegate:(_Nullable id<RequestDelegate> )delegate
-                          success:(void (^)(NSDictionary * response, id mark))success
-                          failure:(void (^)(NSString * errorStr, id mark))failure{
-    return;
-    NSDictionary *dic = @{@"app":REQUEST_APP,
-                          @"terminalType":@1,
-                          @"versionNumber":[GlobalMethod getVersion]};
-    [self getUrl:@"/zhongcheyun/version/new" delegate:delegate parameters:dic success:success failure:failure];
-    
-}
+
 
 /**
  添加版本信息

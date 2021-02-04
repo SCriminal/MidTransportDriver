@@ -13,12 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RequestApi (UserAuth)
 
 
-/**
- 登出
- */
-+(void)requestLogoutWithDelegate:(id <RequestDelegate>)delegate
-                         success:(void (^)(NSDictionary * response, id mark))success
-                         failure:(void (^)(NSString * errorStr, id mark))failure;
+
 /**
  登录
  */

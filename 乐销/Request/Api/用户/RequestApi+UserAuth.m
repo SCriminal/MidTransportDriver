@@ -12,23 +12,7 @@
 #import <CloudPushSDK/CloudPushSDK.h>
 @implementation RequestApi (UserAuth)
 
-/**
- 登出
- */
-+(void)requestLogoutWithDelegate:(id <RequestDelegate>)delegate
-                    success:(void (^)(NSDictionary * response, id mark))success
-                    failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"app":REQUEST_APP,
-                          @"scene":@"1"};
-    [self deleteUrl:@"/ums/auth/logout" delegate:delegate parameters:dic success:^(NSDictionary * response, id mark){
-        [GlobalMethod clearUserInfo];
-        [GlobalMethod createRootNav];
-        
-    } failure: ^(NSString * errorStr, id mark){
-        [GlobalMethod clearUserInfo];
-        [GlobalMethod createRootNav];
-    }];
-}
+
 /**
  登录
  */

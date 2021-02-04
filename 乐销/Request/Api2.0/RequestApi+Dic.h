@@ -68,6 +68,12 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)requestCarTypeDelegate:(id <RequestDelegate>)delegate
                        success:(void (^)(NSDictionary * response, id mark))success
                       failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+ 版本升级
+ */
++(void)requestVersionWithDelegate:(_Nullable id <RequestDelegate>)delegate
+                          success:(void (^)(NSDictionary * response, id mark))success
+                          failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

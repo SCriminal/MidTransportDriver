@@ -92,6 +92,13 @@ NS_ASSUME_NONNULL_BEGIN
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure;
 
+/**
+ 登出
+ */
++(void)requestLogoutWithDelegate:(id <RequestDelegate>)delegate
+                         success:(void (^)(NSDictionary * response, id mark))success
+                         failure:(void (^)(NSString * errorStr, id mark))failure;
+
 @end
 
 NS_ASSUME_NONNULL_END

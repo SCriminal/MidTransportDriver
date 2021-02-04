@@ -157,7 +157,7 @@
     //table
 
     BaseNavView * nav = [BaseNavView initNavTitle:@"智能配货" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(23), W(23)) leftBlock:^{
-        [GB_Nav pushVCName:@"MyMsgManagementVC" animated:true];
+        [GB_Nav pushVCName:@"MyMsgVC" animated:true];
 
     } rightTitle:@"我的报价" righBlock:^{
         [GB_Nav pushVCName:@"MyPriceOrderListManagementVC" animated:true];
@@ -420,14 +420,15 @@
     }
     if ([RequestInstance sharedInstance].tasks.count == 0) {
         requestSuccess = 1;
-//        [RequestApi requestRefreshTokenDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-//            NSString * token = [response stringValueForKey:@"token"];
-//            if (isStr(token)) {
-//                [GlobalData sharedInstance].GB_Key = token;
-//            }
-//        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-//
-//        }];
+        [RequestApi requestRefreshTokenDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            NSString * token = [response stringValueForKey:@"token"];
+            if (isStr(token)) {
+                [GlobalData sharedInstance].GB_Key = token;
+                [GlobalData sharedInstance].GB_REFRESH_TOKEN =  [response stringValueForKey:@"refreshToken"];
+            }
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+
+        }];
     }
 }
 - (void)viewWillDisappear:(BOOL)animated{
@@ -462,7 +463,7 @@
 - (void)addNav{
     //table
     BaseNavView * nav = [BaseNavView initNavTitle:@"最新货源" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(23), W(23)) leftBlock:^{
-        [GB_Nav pushVCName:@"MyMsgManagementVC" animated:true];
+        [GB_Nav pushVCName:@"MyMsgVC" animated:true];
 
     } rightTitle:@"我的报价" righBlock:^{
         [GB_Nav pushVCName:@"MyPriceOrderListManagementVC" animated:true];

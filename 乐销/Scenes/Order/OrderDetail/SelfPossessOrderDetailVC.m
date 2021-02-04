@@ -1,12 +1,12 @@
 //
-//  OrderDetailVC.m
-//中车运
+//  SelfPossessOrderDetailVC.m
+//  Driver
 //
-//  Created by 隋林栋 on 2018/10/19.
-//Copyright © 2018年 ping. All rights reserved.
+//  Created by 隋林栋 on 2021/2/3.
+//Copyright © 2021 ping. All rights reserved.
 //
 
-#import "OrderDetailVC.h"
+#import "SelfPossessOrderDetailVC.h"
 //nav
 #import "BaseNavView+Logical.h"
 //sub view
@@ -22,8 +22,7 @@
 #import "BulkCargoOperateLoadView.h"
 #import "ThirdMap.h"
 #import "BaseVC+Location.h"
-
-@interface OrderDetailVC ()
+@interface SelfPossessOrderDetailVC ()
 @property (nonatomic, strong) BaseNavView *nav;
 @property (nonatomic, strong) OrderDetailView *topView;
 @property (nonatomic, strong) OrderListCellBtnView *btnView;
@@ -33,10 +32,9 @@
 @property (nonatomic, strong) BulkCargoOperateLoadView *upLoadImageView;
 @property (nonatomic, strong) BulkCargoOperateLoadView *upUnLoadImageView;
 
-
 @end
 
-@implementation OrderDetailVC
+@implementation SelfPossessOrderDetailVC
 
 #pragma mark lazy init
 - (BulkCargoOperateLoadView *)upLoadImageView{
@@ -45,7 +43,8 @@
         BulkCargoOperateLoadView *upLoadImageView = [BulkCargoOperateLoadView new];
         upLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason) {
             NSMutableArray *ary = [aryImages fetchValues:@"url"];
-            [RequestApi requestLoadWithUrls:[ary componentsJoinedByString:@","] number:weakSelf.orderList.orderNumber                description:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [RequestApi requestLoadSelfPossessOrderWithUrls:[ary componentsJoinedByString:@","] number:weakSelf.orderList.orderNumber                                                   description:reason
+ delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 [weakSelf refreshHeaderAll];
                 
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -65,7 +64,9 @@
         WEAKSELF
         upUnLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason) {
             NSMutableArray *ary = [aryImages fetchValues:@"url"];
-            [RequestApi requestUnloadWithUrls:[ary componentsJoinedByString:@","] number:weakSelf.orderList.orderNumber description:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [RequestApi requestUnloadSelfPossessOrderWithUrls:[ary componentsJoinedByString:@","] number:weakSelf.orderList.orderNumber
+                                                  description:reason
+ delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 [weakSelf refreshHeaderAll];
                 
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -151,7 +152,7 @@
 }
 #pragma mark request
 - (void)requestList{
-    [RequestApi requestOrderDetailWithNumber:self.orderList.orderNumber delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestSelfPossessOrderDetailWithNumber:self.orderList.orderNumber delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.orderList = [ModelTransportOrder modelObjectWithDictionary:response];
         
         [self.topView resetViewWithModel:self.orderList];
@@ -180,7 +181,7 @@
             RejectOrderView * view = [RejectOrderView new];
             [view resetViewWithModel:weakSelf.orderList];
             view.blockConfirm = ^(NSString * reason) {
-                [RequestApi requestRejectOrderumber:weakSelf.orderList.orderNumber reason:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [RequestApi requestRejectSelfPossessOrderumber:weakSelf.orderList.orderNumber reason:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                     [weakSelf refreshHeaderAll];
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                     
@@ -194,7 +195,7 @@
             ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
             ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
             modelConfirm.blockClick = ^(void){
-                [RequestApi requestAcceptWithNumber:model.orderNumber delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [RequestApi requestAcceptSelfPossessOrderWithNumber:model.orderNumber delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                     [weakSelf refreshHeaderAll];
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                     

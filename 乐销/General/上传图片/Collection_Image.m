@@ -140,8 +140,9 @@
         [vc showImageVC:NUM_IMAGE];
     }else {
         if ([vc isKindOfClass:NSClassFromString(@"CustomTabBarController")]) {
-            OrderListVC *manageVC = [[(CustomTabBarController *)vc viewControllers] objectAtIndex:2];
-            if ([manageVC isKindOfClass:OrderListVC.class]) {
+            CustomTabBarController * tabbarvc = (CustomTabBarController *)vc;
+            BaseTableVC *manageVC = [[tabbarvc viewControllers] objectAtIndex:tabbarvc.selectedIndex];
+            if ([manageVC isKindOfClass:BaseTableVC.class]) {
                  if ([manageVC respondsToSelector:@selector(showImageVC:)]) {
                        [manageVC showImageVC:NUM_IMAGE];
                    }

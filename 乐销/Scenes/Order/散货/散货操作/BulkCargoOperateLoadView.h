@@ -13,6 +13,7 @@
 #import "PlaceHolderTextView.h"
 
 @interface BulkCargoOperateLoadView : UIView
+@property (nonatomic, strong) UIView *viewClick;
 
 @property (nonatomic, strong) UIView *viewBG;
 @property (nonatomic, strong) UILabel *labelInput;

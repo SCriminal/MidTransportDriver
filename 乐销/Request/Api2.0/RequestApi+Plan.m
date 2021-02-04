@@ -155,25 +155,18 @@
         NSDictionary *dic = @{@"number":RequestStrKey(number)};
         [self putUrl:@"/loms/order/status/2/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
-/**
-2.0到达确认
-*/
-+(void)requestArriveWithNumber:(NSString *)number
-                delegate:(id <RequestDelegate>)delegate
-                success:(void (^)(NSDictionary * response, id mark))success
-                failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"number":RequestStrKey(number)};
-        [self putUrl:@"/loms/order/5/{number}" delegate:delegate parameters:dic success:success failure:failure];
-}
+
 /**
 2.0装车
 */
 +(void)requestLoadWithUrls:(NSString *)urls
                 number:(NSString *)number
+               description:(NSString *)description
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"urls":RequestStrKey(urls),
+                              @"description":RequestStrKey(description),
                            @"number":RequestStrKey(number)};
         [self putUrl:@"/loms/order/status/3/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -181,11 +174,13 @@
 2.0卸车
 */
 +(void)requestUnloadWithUrls:(NSString *)urls
+                 description:(NSString *)description
                 number:(NSString *)orderNumber
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"urls":RequestStrKey(urls),
+                              @"description":RequestStrKey(description),
                            @"number":RequestStrKey(orderNumber)};
         [self putUrl:@"/zhongcheyun/loms/order/status/4" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -259,10 +254,12 @@
 */
 +(void)requestLoadSelfPossessOrderWithUrls:(NSString *)urls
                 number:(NSString *)number
+                               description:(NSString *)description
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"urls":RequestStrKey(urls),
+                              @"description":RequestStrKey(description),
                            @"number":RequestStrKey(number)};
         [self putUrl:@"/tms/lo/status/3/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -271,10 +268,12 @@
 */
 +(void)requestUnloadSelfPossessOrderWithUrls:(NSString *)urls
                 number:(NSString *)orderNumber
+                                 description:(NSString *)description
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"urls":RequestStrKey(urls),
+                              @"description":RequestStrKey(description),
                            @"number":RequestStrKey(orderNumber)};
         [self putUrl:@"/tms/lo/status/4/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }

@@ -102,5 +102,16 @@
     [self getUrl:@"/zhongcheyun/vehicletype/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 
-
+/**
+ 版本升级
+ */
++(void)requestVersionWithDelegate:(_Nullable id<RequestDelegate> )delegate
+                          success:(void (^)(NSDictionary * response, id mark))success
+                          failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{
+                          @"clientNumber":REQUEST_CLIENT,
+                          @"versionNumber":[GlobalMethod getVersion]};
+    [self getUrl:@"/app/version/new" delegate:delegate parameters:dic success:success failure:failure];
+    
+}
 @end

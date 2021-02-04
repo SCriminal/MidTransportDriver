@@ -1,12 +1,12 @@
 //
-//  OrderListVC.m
-//中车运
+//  SelfPossessOrderListVC.m
+//  Driver
 //
-//  Created by 隋林栋 on 2018/10/28.
-//Copyright © 2018年 ping. All rights reserved.
+//  Created by 隋林栋 on 2021/2/3.
+//Copyright © 2021 ping. All rights reserved.
 //
 
-#import "OrderListVC.h"
+#import "SelfPossessOrderListVC.h"
 //cell
 #import "OrderListCell.h"
 
@@ -14,7 +14,7 @@
 //request
 #import "RequestDriver2.h"
 //detail
-#import "OrderDetailVC.h"
+#import "SelfPossessOrderDetailVC.h"
 //operate
 #import "DriverOperateVC.h"
 //bottom view
@@ -26,7 +26,7 @@
 #import "ThirdMap.h"
 #import "RejectOrderView.h"
 
-@interface OrderListVC ()
+@interface SelfPossessOrderListVC ()
 @property (nonatomic, strong) OrderFilterView *filterView;
 @property (nonatomic, strong) ModelTransportOrder *modelOrder;
 @property (nonatomic, strong) BulkCargoOperateLoadView *upLoadImageView;
@@ -38,7 +38,7 @@
 
 @end
 
-@implementation OrderListVC
+@implementation SelfPossessOrderListVC
 @synthesize noResultView = _noResultView;
 #pragma mark lazy init
 - (BOOL)isShowNoResult{
@@ -72,7 +72,7 @@
     [super viewDidLoad];
     //table
     WEAKSELF
-    BaseNavView * nav = [BaseNavView initNavTitle:@"运单中心" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(23), W(23)) leftBlock:^{
+    BaseNavView * nav = [BaseNavView initNavTitle:@"自有运单中心" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(23), W(23)) leftBlock:^{
         [GB_Nav pushVCName:@"MyMsgVC" animated:true];
 
     } rightImageName:@"nav_filter_white" rightImageSize:CGSizeMake(W(23), W(23)) righBlock:^{
@@ -121,7 +121,7 @@
     
 }
 - (void)jumpToDetail:(ModelTransportOrder *)model{
-    OrderDetailVC * operateVC = [OrderDetailVC new];
+    SelfPossessOrderDetailVC * operateVC = [SelfPossessOrderDetailVC new];
     operateVC.orderList = model;
     WEAKSELF
     operateVC.blockBack = ^(UIViewController *vc) {
@@ -154,7 +154,8 @@
         default:
             break;
     }
-    [RequestApi requestOrderListWithPage:self.pageNum count:20 orderNumber:isStr(self.billNo)?self.billNo:nil shipperName:nil plateNumber:nil driverName:nil                       startTime:self.dateStart?self.dateStart.timeIntervalSince1970:0
+    
+    [RequestApi requestSelfPossessOrderListWithPage:self.pageNum count:20 orderNumber:isStr(self.billNo)?self.billNo:nil shipperName:nil plateNumber:nil driverName:nil                       startTime:self.dateStart?self.dateStart.timeIntervalSince1970:0
                                  endTime:self.dateEnd?self.dateEnd.timeIntervalSince1970:0
                             orderStatues:strOrderStatus
                                 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
@@ -185,7 +186,7 @@
             RejectOrderView * view = [RejectOrderView new];
             [view resetViewWithModel:model];
             view.blockConfirm = ^(NSString * reason) {
-                [RequestApi requestRejectOrderumber:model.orderNumber reason:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [RequestApi requestRejectSelfPossessOrderumber:model.orderNumber reason:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                     [weakSelf refreshHeaderAll];
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                     
@@ -199,7 +200,7 @@
             ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
             ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
             modelConfirm.blockClick = ^(void){
-                [RequestApi requestAcceptWithNumber:model.orderNumber delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [RequestApi requestAcceptSelfPossessOrderWithNumber:model.orderNumber delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                     [weakSelf refreshHeaderAll];
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                     
@@ -214,7 +215,7 @@
             BulkCargoOperateLoadView *upLoadImageView = [BulkCargoOperateLoadView new];
             upLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason) {
                 NSMutableArray *ary = [aryImages fetchValues:@"url"];
-                [RequestApi requestLoadWithUrls:[ary componentsJoinedByString:@","] number:model.orderNumber description:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [RequestApi requestLoadSelfPossessOrderWithUrls:[ary componentsJoinedByString:@","] number:model.orderNumber description:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                     [weakSelf refreshHeaderAll];
                     
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -235,7 +236,7 @@
             WEAKSELF
             upUnLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason) {
                 NSMutableArray *ary = [aryImages fetchValues:@"url"];
-                [RequestApi requestUnloadWithUrls:[ary componentsJoinedByString:@","] number:model.orderNumber description:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [RequestApi requestUnloadSelfPossessOrderWithUrls:[ary componentsJoinedByString:@","] number:model.orderNumber description:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                     [weakSelf refreshHeaderAll];
                     
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
