@@ -229,6 +229,7 @@
 		D2A1EF4825CA854F0066864D /* ModelMsgItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF4725CA854E0066864D /* ModelMsgItem.m */; };
 		D2A1EF4B25CA9A180066864D /* SelfPossessOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF4A25CA9A180066864D /* SelfPossessOrderListVC.m */; };
 		D2A1EF4E25CA9AD10066864D /* SelfPossessOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF4D25CA9AD10066864D /* SelfPossessOrderDetailVC.m */; };
+		D2A1EF5125CBECE30066864D /* ModelModule.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF5025CBECDF0066864D /* ModelModule.m */; };
 		D2A300202265B7CD00AE2EC3 /* AccountListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */; };
 		D2A300232265B7DF00AE2EC3 /* AccountListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300222265B7DF00AE2EC3 /* AccountListCell.m */; };
 		D2A300332266BF9500AE2EC3 /* EditInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300322266BF9500AE2EC3 /* EditInfoVC.m */; };
@@ -878,6 +879,8 @@
 		D2A1EF4A25CA9A180066864D /* SelfPossessOrderListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfPossessOrderListVC.m; sourceTree = "<group>"; };
 		D2A1EF4C25CA9AD10066864D /* SelfPossessOrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelfPossessOrderDetailVC.h; sourceTree = "<group>"; };
 		D2A1EF4D25CA9AD10066864D /* SelfPossessOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfPossessOrderDetailVC.m; sourceTree = "<group>"; };
+		D2A1EF4F25CBECDF0066864D /* ModelModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelModule.h; sourceTree = "<group>"; };
+		D2A1EF5025CBECDF0066864D /* ModelModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelModule.m; sourceTree = "<group>"; };
 		D2A3001E2265B7CD00AE2EC3 /* AccountListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountListVC.h; sourceTree = "<group>"; };
 		D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountListVC.m; sourceTree = "<group>"; };
 		D2A300212265B7DF00AE2EC3 /* AccountListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountListCell.h; sourceTree = "<group>"; };
@@ -1559,6 +1562,8 @@
 		D22851B125942CED00100231 /* 积分 */ = {
 			isa = PBXGroup;
 			children = (
+				D2A1EF4F25CBECDF0066864D /* ModelModule.h */,
+				D2A1EF5025CBECDF0066864D /* ModelModule.m */,
 				D2A1EF4625CA854D0066864D /* ModelMsgItem.h */,
 				D2A1EF4725CA854E0066864D /* ModelMsgItem.m */,
 				D2A1EF3325C9271B0066864D /* ModelIntegralOrder.h */,
@@ -3698,6 +3703,7 @@
 				D2BCE91322695F0F00E8C4E2 /* FeedbackVC.m in Sources */,
 				D2FF933D20D1118D00B198EB /* UIFont+Category.m in Sources */,
 				D22BA9D21E5EB8CA00C5B391 /* FSCalendarAppearance.m in Sources */,
+				D2A1EF5125CBECE30066864D /* ModelModule.m in Sources */,
 				D2A946DA2192B75600AD1E5B /* SelectDistrictView.m in Sources */,
 				D20E8603258845FB00C9EE4C /* AuthOneVC.m in Sources */,
 				D2B6B9CE1E961456005F00C6 /* ImagePickerCollectionCell.m in Sources */,

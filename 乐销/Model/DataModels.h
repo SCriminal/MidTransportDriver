@@ -75,3 +75,4 @@
 #import "ModelIntegralOrder.h"
 #import "ModelProblemHistoryItem.h"
 #import "ModelMsgItem.h"
+#import "ModelModule.h"

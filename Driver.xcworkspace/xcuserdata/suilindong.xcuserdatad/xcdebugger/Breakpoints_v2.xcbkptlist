@@ -236,8 +236,8 @@
             timestampString = "597805667.275076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "-resetViewWithModel:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4007,8 +4007,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/DriverDetail/DriverDetailTopView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "-resetWithAry:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4128,22 +4128,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4C6E2F1B-664B-4E7F-8119-82FC86EBD394"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/Mine/DriverDetail/PersonalCenterVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "-modelView"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "F2681612-6B53-4F2A-BF29-880B707F1B28"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -4151,8 +4135,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/DriverDetail/DriverDetailTopView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "-btnClick:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5383,8 +5367,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/DriverDetail/DriverDetailTopView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "-resetViewWithModel:"
             landmarkType = "7">
          </BreakpointContent>

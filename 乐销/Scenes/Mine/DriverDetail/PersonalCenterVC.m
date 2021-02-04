@@ -33,6 +33,7 @@
 @property (nonatomic, strong) DriverDetailTopView *topView;
 @property (nonatomic, strong) DriverDetailModelView *modelView;
 @property (nonatomic, strong) ModelAuthorityInfo *modelAuthInfo;
+@property (nonatomic, strong) NSMutableArray *aryModule;
 
 @end
 
@@ -55,11 +56,10 @@
     }
     return _topView;
 }
-- (DriverDetailModelView *)modelView{
-    if (!_modelView) {
-        _modelView = [DriverDetailModelView new];
+- (NSMutableArray *)aryModule{
+    if (!_aryModule) {
         WEAKSELF
-        [_modelView resetWithAry:@[^(){
+        _aryModule = @[^(){
             ModelBaseData * m = [ModelBaseData new];
             m.string = @"我的服务";
             m.aryDatas = @[^(){
@@ -93,7 +93,7 @@
                 mB.title = @"我的消息";
                                mB.imageName = @"personal_消息";
                                mB.blockClick = ^{
-                                   [GB_Nav pushVCName:@"MyMsgVC" animated:true];                                   
+                                   [GB_Nav pushVCName:@"MyMsgVC" animated:true];
                                };
                 return mB;
             }(),^(){
@@ -131,60 +131,14 @@
                 return mB;
             }()].mutableCopy;
             return m;
-        }(),^(){
-            ModelBaseData * m = [ModelBaseData new];
-            m.string = @"其他服务";
-            m.aryDatas = @[^(){
-                ModelBtn * mB = [ModelBtn new];
-                mB.title = @"查违章";
-                mB.imageName = @"personal_违章";
-                mB.blockClick = ^{
-                    
-                };
-                return mB;
-            }(),^(){
-                ModelBtn * mB = [ModelBtn new];
-                mB.title = @"货车导航";
-                               mB.imageName = @"personal_导航";
-                               mB.blockClick = ^{
-                                   
-                               };
-                return mB;
-            }(),^(){
-                ModelBtn * mB = [ModelBtn new];
-                mB.title = @"附近服务";
-                               mB.imageName = @"personal_附近";
-                               mB.blockClick = ^{
-                                   
-                               };
-                return mB;
-            }(),^(){
-                ModelBtn * mB = [ModelBtn new];
-                mB.title = @"我要加油";
-                               mB.imageName = @"personal_加油";
-                               mB.blockClick = ^{
-                                   
-                               };
-                return mB;
-            }(),^(){
-                ModelBtn * mB = [ModelBtn new];
-                mB.title = @"行业资讯";
-                               mB.imageName = @"personal_资讯";
-                               mB.blockClick = ^{
-                                   
-                               };
-                return mB;
-            }(),^(){
-                ModelBtn * mB = [ModelBtn new];
-                mB.title = @"司机专栏";
-                               mB.imageName = @"personal_司机";
-                               mB.blockClick = ^{
-                                   
-                               };
-                return mB;
-            }()].mutableCopy;
-            return m;
-        }()]];
+        }()].mutableCopy;
+    }
+    return _aryModule;
+}
+- (DriverDetailModelView *)modelView{
+    if (!_modelView) {
+        _modelView = [DriverDetailModelView new];
+        [_modelView resetWithAry:self.aryModule];
     }
     return _modelView;
 }
@@ -197,7 +151,6 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     [self.tableBackgroundView removeFromSuperview];
     self.tableView.tableHeaderView = self.topView;
-    self.tableView.tableFooterView = self.modelView;
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBAR_HEIGHT);
     //request
     [self reconfigData];
@@ -253,7 +206,30 @@
 }
 - (void)requestModel{
     [RequestApi requestModelsWithDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            
+        self.pageNum ++;
+        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelModule"];
+        
+            ModelBaseData * m = [ModelBaseData new];
+            m.string = @"其他服务";
+        NSMutableArray * ary = [NSMutableArray array];
+        for (ModelModule *item in aryRequest) {
+            ModelBtn * mB = [ModelBtn new];
+            mB.title = item.name;
+            mB.imageName = item.iconUrl;
+            mB.vcName =item.to;
+            [ary addObject:mB];
+        }
+        m.aryDatas = ary;
+         
+        if (self.aryModule.count > 1) {
+            [self.aryModule removeLastObject];
+        }
+        [self.aryModule addObject:m];
+        
+        [self.modelView resetWithAry:self.aryModule];
+        self.tableView.tableFooterView = nil;
+        self.tableView.tableFooterView = self.modelView;
+
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];

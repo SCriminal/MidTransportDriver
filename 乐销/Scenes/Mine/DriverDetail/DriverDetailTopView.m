@@ -11,6 +11,8 @@
 #import "RequestApi+UserApi.h"
 #import "UIButton+Creat.h"
 #import "AuthOneVC.h"
+#import "WebVC.h"
+
 @interface DriverDetailTopView ()
 
 @end
@@ -232,9 +234,9 @@
             iv.backgroundColor = [UIColor clearColor];
             iv.contentMode = UIViewContentModeScaleAspectFill;
             iv.clipsToBounds = true;
-            iv.image = [UIImage imageNamed:mBtn.imageName];
             iv.widthHeight = XY(W(45),W(45));
             iv.leftTop = XY(left,btnTop);
+            [iv sd_setImageWithURL:[NSURL URLWithString:UnPackStr(mBtn.imageName)] placeholderImage:[UIImage imageNamed:mBtn.imageName]];
             [self addSubview:iv];
 
             UILabel * l = [UILabel new];
@@ -277,6 +279,13 @@
 - (void)btnClick:(UIButton *)sender{
     if (sender.modelBtn.blockClick) {
         sender.modelBtn.blockClick();
+    }else{
+        if (isStr(sender.modelBtn.vcName)) {
+            WebVC * vc = [WebVC new];
+                              vc.navTitle = sender.modelBtn.title;
+                              vc.url = sender.modelBtn.vcName;
+                              [GB_Nav pushViewController:vc animated:true];
+        }
     }
 }
 @end
