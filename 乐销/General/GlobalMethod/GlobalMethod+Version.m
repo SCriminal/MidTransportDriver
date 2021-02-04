@@ -60,7 +60,6 @@
 
     [GlobalData sharedInstance].GB_UserModel = [ModelBaseInfo modelObjectWithDictionary:response];
     [GlobalMethod requestBindDeviceToken];
-    [GlobalMethod requestPackageType];
     if (success) {
         success(response,mark);
     }

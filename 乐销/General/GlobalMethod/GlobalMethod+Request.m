@@ -43,7 +43,7 @@
 }
 //request package type
 + (void)requestPackageType{
-    [RequestApi requestPackageTypeWithDelegate:nil success:nil failure:nil];
+//    [RequestApi requestPackageTypeWithDelegate:nil success:nil failure:nil];
 }
 //request version
 + (void)requestVersion:(void(^)(void))blockSuccess{

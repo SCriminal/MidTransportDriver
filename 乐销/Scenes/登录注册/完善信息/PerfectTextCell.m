@@ -92,7 +92,6 @@
     self.height = W(49);
     
     self.iconArrow.rightCenterY = XY(SCREEN_WIDTH- W(15),self.height/2.0);
-    self.conIconClick.frame = CGRectMake(self.textField.right, 0, SCREEN_WIDTH - self.textField.right, self.height);
 
     [self.title fitTitle:model.string variable:0];
     self.title.leftCenterY = XY(W(15),self.height/2.0);
@@ -115,6 +114,8 @@
     if (!model.hideState) {
         [self.contentView addLineFrame:CGRectMake(W(15), self.height -1, SCREEN_WIDTH - W(15), 1)];
     }
+    self.conIconClick.frame = CGRectMake(self.textField.right, 0, SCREEN_WIDTH - self.textField.right, self.height);
+
 }
 
 #pragma mark cell click

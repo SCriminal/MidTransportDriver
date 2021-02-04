@@ -49,7 +49,6 @@
         _modelName = ^(){
             ModelBaseData * model = [ModelBaseData new];
             model.enumType = ENUM_PERFECT_CELL_TEXT;
-            model.imageName = @"";
             model.string = @"联系人";
             model.subString = self.model.contact;
             model.placeHolderString = @"填写联系人姓名";
@@ -63,7 +62,6 @@
         _modelPhone = ^(){
             ModelBaseData * model = [ModelBaseData new];
             model.enumType = ENUM_PERFECT_CELL_TEXT;
-            model.imageName = @"";
             model.string = @"联系电话";
             model.subString = self.model.phone;
             model.placeHolderString = @"填写联系人电话";

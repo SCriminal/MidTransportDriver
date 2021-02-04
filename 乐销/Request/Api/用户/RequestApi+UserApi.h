@@ -88,13 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
                        success:(void (^)(NSDictionary * response, id mark))success
                        failure:(void (^)(NSString * errorStr, id mark))failure;
 
-/**
- - 绑定设备
- */
-+(void)requestBindDeviceIdWithDeviceID:(NSString *)device_id
-                              delegate:(_Nullable id <RequestDelegate>)delegate
-                               success:(void (^)(NSDictionary * response, id mark))success
-                               failure:(void (^)(NSString * errorStr, id mark))failure;
+
 
 /**
  添加版本信息

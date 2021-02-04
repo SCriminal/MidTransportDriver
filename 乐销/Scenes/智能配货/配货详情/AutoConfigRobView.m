@@ -255,6 +255,10 @@
     [self removeFromSuperview];
 }
 - (void)btnConfirmClick{
+    if (self.tfWeight.text.doubleValue == 0) {
+        [GlobalMethod showAlert:@"请输入数量"];
+        return;
+    }
     if (self.blockConfirm) {
         self.blockConfirm(self.tfWeight.text.doubleValue, self.labelPriceAll.text.doubleValue);
     }
@@ -505,6 +509,10 @@
     [self removeFromSuperview];
 }
 - (void)btnConfirmClick{
+    if (self.tfWeight.text.doubleValue == 0) {
+        [GlobalMethod showAlert:@"请输入数量"];
+        return;
+    }
     if (self.blockConfirm) {
         self.blockConfirm(self.tfWeight.text.doubleValue, self.tfPrice.text.doubleValue);
     }

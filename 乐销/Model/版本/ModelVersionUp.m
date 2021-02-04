@@ -15,8 +15,8 @@ NSString *const kModelVersionUpId = @"id";
 NSString *const kModelVersionUpBundleId = @"bundleId";
 NSString *const kModelVersionUpTerminalType = @"terminalType";
 NSString *const kModelVersionUpDescription = @"description";
-NSString *const kModelVersionUpVersionType = @"versionType";
-NSString *const kModelVersionUpVersionNumber = @"versionNumber";
+NSString *const kModelVersionUpVersionType = @"type";
+NSString *const kModelVersionUpVersionNumber = @"number";
 
 
 @interface ModelVersionUp ()

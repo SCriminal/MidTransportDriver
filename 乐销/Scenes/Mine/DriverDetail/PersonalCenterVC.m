@@ -201,6 +201,7 @@
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBAR_HEIGHT);
     //request
     [self reconfigData];
+    [self requestModel];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -250,5 +251,11 @@
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
-
+- (void)requestModel{
+    [RequestApi requestModelsWithDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+}
 @end

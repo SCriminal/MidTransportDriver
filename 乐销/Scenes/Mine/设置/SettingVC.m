@@ -12,11 +12,10 @@
 //网络加载图片
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDImageCache.h>
-//request
-#import "RequestApi+UserAuth.h"
 //input code
 #import "InputCodeVC.h"
-
+//request
+#import "RequestDriver2.h"
 @interface SettingVC ()
 @property (nonatomic, strong) UIView *loginoutView;
 

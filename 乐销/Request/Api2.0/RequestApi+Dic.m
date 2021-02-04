@@ -110,8 +110,17 @@
                           failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{
                           @"clientNumber":REQUEST_CLIENT,
-                          @"versionNumber":[GlobalMethod getVersion]};
+                          @"number":[GlobalMethod getVersion]};
     [self getUrl:@"/app/version/new" delegate:delegate parameters:dic success:success failure:failure];
     
 }
++(void)requestModelsWithDelegate:(_Nullable id<RequestDelegate> )delegate
+                          success:(void (^)(NSDictionary * response, id mark))success
+                          failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{
+                          @"clientType":@4};
+    [self getUrl:@"/zhongcheyun/module/list" delegate:delegate parameters:dic success:success failure:failure];
+    
+}
+
 @end

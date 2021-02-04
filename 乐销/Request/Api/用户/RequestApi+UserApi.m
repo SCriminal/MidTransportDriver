@@ -170,25 +170,7 @@
                           @"description":RequestStrKey(description)};
     [self postUrl:@"/zhongcheyun/version" delegate:delegate parameters:dic success:success failure:failure];
 }
-/**
- - 绑定设备
- */
-+(void)requestBindDeviceIdWithDeviceID:(NSString *)device_id
-                              delegate:(_Nullable id <RequestDelegate>)delegate
-                               success:(void (^)(NSDictionary * response, id mark))success
-                               failure:(void (^)(NSString * errorStr, id mark))failure{
-    //
-    NSString * deviceID = [CloudPushSDK getDeviceId];
-    if (!isStr(deviceID)) {
-        return;
-    }
-    NSDictionary *dic = @{@"app":REQUEST_APP,
-                          @"scene":@"1",
-                          @"type":@1,
-                          @"number":deviceID};
-    [self patchUrl:@"/ums/user/terminal/number" delegate:delegate parameters:dic success:success failure:failure];
-    
-}
+
 
 /**
  车队列表（司机）

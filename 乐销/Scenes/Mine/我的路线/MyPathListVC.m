@@ -16,6 +16,18 @@
 
 @implementation MyPathListVC
 
+#pragma mark noresult view
+@synthesize noResultView = _noResultView;
+- (BOOL)isShowNoResult{
+    return true;
+}
+- (NoResultView *)noResultView{
+    if (!_noResultView) {
+        _noResultView = [NoResultView new];
+        [_noResultView resetWithImageName:@"empty_waybill_default" title:@"暂无路线"];
+    }
+    return _noResultView;
+}
 
 #pragma mark view did load
 - (void)viewDidLoad {

@@ -183,4 +183,24 @@
         [GlobalMethod createRootNav];
     }];
 }
+
+/**
+ - 绑定设备
+ */
++(void)requestBindDeviceIdWithDeviceID:(NSString *)device_id
+                              delegate:(_Nullable id <RequestDelegate>)delegate
+                               success:(void (^)(NSDictionary * response, id mark))success
+                               failure:(void (^)(NSString * errorStr, id mark))failure{
+    //
+    NSString * deviceID = [CloudPushSDK getDeviceId];
+    if (!isStr(deviceID)) {
+        return;
+    }
+    NSDictionary *dic = @{@"app":REQUEST_APP,
+                          @"client":REQUEST_CLIENT,
+                          @"type":REQUEST_TERMINALTYPE,
+                          @"number":deviceID};
+    [self putUrl:@"/auth/user/terminal/number" delegate:delegate parameters:dic success:success failure:failure];
+    
+}
 @end

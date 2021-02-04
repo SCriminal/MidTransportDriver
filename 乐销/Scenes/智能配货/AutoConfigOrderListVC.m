@@ -272,7 +272,7 @@
                 l.backgroundColor = [UIColor clearColor];
                 l.numberOfLines = 0;
                 l.lineSpace = W(0);
-                [l fitTitle:@"添加后平台自动为您推送匹配路线资源" variable:SCREEN_WIDTH];
+                [l fitTitle:@"添加后平台自动为您推送匹配路线货源" variable:SCREEN_WIDTH];
                 l.centerXTop = XY(SCREEN_WIDTH/2.0, W(284));
                 [self.noResultView addSubview:l];
             }
