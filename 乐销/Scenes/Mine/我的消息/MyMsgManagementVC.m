@@ -23,7 +23,7 @@
 #pragma mark lazy init
 - (UIScrollView *)scAll{
     if (_scAll == nil) {
-        _scAll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, self.sliderView.bottom +1, SCREEN_WIDTH, SCREEN_HEIGHT - self.sliderView.height-NAVIGATIONBAR_HEIGHT-TABBAR_HEIGHT)];
+        _scAll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, self.sliderView.bottom +1, SCREEN_WIDTH, SCREEN_HEIGHT - self.sliderView.height-NAVIGATIONBAR_HEIGHT)];
         _scAll.contentSize = CGSizeMake(SCREEN_WIDTH * self.arySliderDatas.count, 0);
         _scAll.backgroundColor = [UIColor clearColor];
         _scAll.delegate = self;
