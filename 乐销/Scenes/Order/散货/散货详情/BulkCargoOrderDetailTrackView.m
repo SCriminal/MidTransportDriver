@@ -90,6 +90,7 @@
 
 }
 -(void)requestTrick{
+    
     double startTtime = 0;
     if (self.modelOrder.acceptTime) {
         startTtime = self.modelOrder.acceptTime;
@@ -103,6 +104,9 @@
     double finishTime = self.modelOrder.unloadTime?self.modelOrder.unloadTime:self.modelOrder.finishTime;
     [RequestApi requestCarLocationWithuploaderId:[GlobalData sharedInstance].GB_UserModel.iDProperty startTime:startTtime endTime:finishTime?finishTime:[[NSDate date]timeIntervalSince1970] vehicleNumber:self.modelOrder.plateNumber  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.aryLocationRequest = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelLocationItem"];
+        if (self.blockReqeustTrack) {
+            self.blockReqeustTrack(self.aryLocationRequest);
+        }
         [self drawLine:self.aryLocationRequest.mutableCopy];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         self.mapView.showsUserLocation = true;

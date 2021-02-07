@@ -22,11 +22,13 @@
 #import "BulkCargoOperateLoadView.h"
 #import "ThirdMap.h"
 #import "BaseVC+Location.h"
+#import "BulkCargoOrderDetailTrackView.h"
+
 @interface SelfPossessOrderDetailVC ()
 @property (nonatomic, strong) BaseNavView *nav;
 @property (nonatomic, strong) OrderDetailView *topView;
 @property (nonatomic, strong) OrderListCellBtnView *btnView;
-@property (nonatomic, strong) OrderDetailTrailView *trailView;
+@property (nonatomic, strong) BulkCargoOrderDetailTrackView *trackView;
 
 @property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) BulkCargoOperateLoadView *upLoadImageView;
@@ -99,6 +101,30 @@
     }
     return _btnView;
 }
+- (BulkCargoOrderDetailTrackView *)trackView{
+    if (!_trackView) {
+        _trackView = [BulkCargoOrderDetailTrackView new];
+        _trackView.topToUpView = W(10);
+        WEAKSELF
+        _trackView.blockReqeustTrack = ^(NSMutableArray *ary) {
+            weakSelf.aryDatas = ary;
+            for (ModelLocationItem * item in weakSelf.aryDatas) {
+                item.isFirst = false;
+                item.isLast = false;
+            }
+            if (weakSelf.aryDatas.count) {
+                ModelLocationItem * item = weakSelf.aryDatas.firstObject;
+                item.isFirst = true;
+                item = weakSelf.aryDatas.lastObject;
+                item.isLast = true;
+            }
+            [weakSelf.tableView reloadData];
+        };
+        [_trackView resetViewWithModel:self.orderList];
+
+    }
+    return _trackView;
+}
 
 - (OrderDetailView *)topView{
     if (!_topView) {
@@ -106,12 +132,6 @@
         [_topView resetViewWithModel:self.orderList];
     }
     return _topView;
-}
-- (OrderDetailTrailView *)trailView{
-    if (!_trailView) {
-        _trailView = [OrderDetailTrailView new];
-    }
-    return _trailView;
 }
 - (UIView *)bottomView{
     if (!_bottomView) {
@@ -133,13 +153,27 @@
     //添加导航栏
     [self addNav];
     //table
+    [self.tableView registerClass:OrderDetailTrackCell.class forCellReuseIdentifier:@"OrderDetailTrackCell"];
     self.tableBackgroundView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.trailView]];
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.trackView]];
     self.tableView.height = SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - self.bottomView.height;
     [self.view addSubview:self.bottomView];
     [self addRefreshHeader];
     [self requestList];
+}
+//row num
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.aryDatas.count;
+}
+//cell
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    OrderDetailTrackCell * cell = [tableView dequeueReusableCellWithIdentifier:@"OrderDetailTrackCell"];
+    [cell resetCellWithModel: self.aryDatas[indexPath.row]];
+    return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [OrderDetailTrackCell fetchHeight:self.aryDatas[indexPath.row]];
 }
 
 #pragma mark 添加导航栏
@@ -148,7 +182,7 @@
 }
 #pragma mark refresh table header view
 - (void)reconfigTableHeaderView{
-        self.tableView.tableHeaderView = self.topView;
+    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.trackView]];
 }
 #pragma mark request
 - (void)requestList{

@@ -11,6 +11,7 @@
 @interface BulkCargoOrderDetailTrackView : UIView
 @property (strong, nonatomic) UILabel *labelTitle;
 @property (strong, nonatomic) UIImageView *ivBg;
+@property (nonatomic, strong) void (^blockReqeustTrack)(NSMutableArray *);
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelTransportOrder *)model;

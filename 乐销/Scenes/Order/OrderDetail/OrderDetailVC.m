@@ -112,7 +112,23 @@
     if (!_trackView) {
         _trackView = [BulkCargoOrderDetailTrackView new];
         _trackView.topToUpView = W(10);
+        WEAKSELF
+        _trackView.blockReqeustTrack = ^(NSMutableArray *ary) {
+            weakSelf.aryDatas = ary;
+            for (ModelLocationItem * item in weakSelf.aryDatas) {
+                item.isFirst = false;
+                item.isLast = false;
+            }
+            if (weakSelf.aryDatas.count) {
+                ModelLocationItem * item = weakSelf.aryDatas.firstObject;
+                item.isFirst = true;
+                item = weakSelf.aryDatas.lastObject;
+                item.isLast = true;
+            }
+            [weakSelf.tableView reloadData];
+        };
         [_trackView resetViewWithModel:self.orderList];
+
     }
     return _trackView;
 }
@@ -136,6 +152,7 @@
     //添加导航栏
     [self addNav];
     //table
+    [self.tableView registerClass:OrderDetailTrackCell.class forCellReuseIdentifier:@"OrderDetailTrackCell"];
     self.tableBackgroundView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.trackView]];
@@ -143,6 +160,20 @@
     [self.view addSubview:self.bottomView];
     [self addRefreshHeader];
     [self requestList];
+}
+#pragma mark UITableViewDelegate
+//row num
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.aryDatas.count;
+}
+//cell
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    OrderDetailTrackCell * cell = [tableView dequeueReusableCellWithIdentifier:@"OrderDetailTrackCell"];
+    [cell resetCellWithModel: self.aryDatas[indexPath.row]];
+    return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [OrderDetailTrackCell fetchHeight:self.aryDatas[indexPath.row]];
 }
 
 #pragma mark 添加导航栏

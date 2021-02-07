@@ -19,6 +19,8 @@
 @property (nonatomic, assign) double lng;
 @property (nonatomic, strong) NSString *terminalNumber;
 @property (nonatomic, assign) double uploaderId;
+@property (nonatomic, assign) bool isFirst;
+@property (nonatomic, assign) bool isLast;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

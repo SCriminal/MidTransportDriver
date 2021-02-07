@@ -15,9 +15,16 @@
 @end
 
 
-@interface OrderDetailTrailView : UIView
-@property (nonatomic, strong) ModelTransportOrder *model;
 
-- (void)resetViewWithModel:(ModelTransportOrder *)model;
+
+@interface OrderDetailTrackCell : UITableViewCell
+
+@property (strong, nonatomic) UILabel *l;
+@property (strong, nonatomic) UILabel *time;
+@property (strong, nonatomic) UIView *dot;
+@property (strong, nonatomic) UIView *line;
+
+#pragma mark 刷新cell
+- (void)resetCellWithModel:(ModelLocationItem *)model;
+
 @end
-
