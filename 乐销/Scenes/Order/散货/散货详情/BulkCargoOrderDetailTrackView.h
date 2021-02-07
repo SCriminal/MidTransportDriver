@@ -13,6 +13,6 @@
 @property (strong, nonatomic) UIImageView *ivBg;
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model;
+- (void)resetViewWithModel:(ModelTransportOrder *)model;
 
 @end

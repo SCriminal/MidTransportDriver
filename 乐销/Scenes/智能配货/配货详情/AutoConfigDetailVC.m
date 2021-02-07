@@ -98,7 +98,6 @@
 - (void)requestComment{
     if (isStr(self.modelList.comment)) {
         return;
-      
     }
     if (self.modelList.shipperId) {
         NSMutableArray * ary = [NSMutableArray array];

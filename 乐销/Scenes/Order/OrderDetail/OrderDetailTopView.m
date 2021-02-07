@@ -116,7 +116,7 @@
         m.subTitle = [NSString stringWithFormat:@"%@%@%@%@",model.endProvinceName,[model.endCityName isEqualToString:model.endProvinceName]?UnPackStr(model.endCityName):@"",model.endCountyName,model.endAddr];
         m.colorSelect = nil;
         m.left = W(77);
-        return m;
+            return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"发货信息";

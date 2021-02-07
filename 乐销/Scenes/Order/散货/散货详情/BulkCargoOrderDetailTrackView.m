@@ -25,7 +25,7 @@
 @property (nonatomic,strong) MAMapView *mapView;
 @property (nonatomic,strong) UIView *mapViewSuperiew;
 
-@property (nonatomic, strong) ModelBulkCargoOrder *modelOrder;
+@property (nonatomic, strong) ModelTransportOrder *modelOrder;
 @property (nonatomic, strong) NSMutableArray *aryLocationRequest;
 @property (nonatomic, assign) CLLocationCoordinate2D locationStart;
 @property (nonatomic, assign) CLLocationCoordinate2D locationEnd;
@@ -36,7 +36,7 @@
 #pragma mark 懒加载
 - (MAMapView *)mapView{
     if (!_mapView) {
-        _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, W(325), W(150))];
+        _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, W(345), W(150))];
         _mapView.showsCompass= NO; // 设置成NO表示关闭指南针；YES表示显示指南针
         _mapView.showsScale= NO;
         _mapView.delegate = self;
@@ -53,7 +53,7 @@
 - (UIView *)mapViewSuperiew{
     if (!_mapViewSuperiew) {
         _mapViewSuperiew = [UIView new];
-        _mapViewSuperiew.size = CGSizeMake(W(325), W(150));
+        _mapViewSuperiew.size = CGSizeMake(W(345), W(150));
         _mapViewSuperiew.clipsToBounds = true;
         [_mapViewSuperiew addSubview:self.mapView];
     }
@@ -62,7 +62,7 @@
 - (UILabel *)labelTitle{
     if (_labelTitle == nil) {
         _labelTitle = [UILabel new];
-        _labelTitle.textColor = COLOR_666;
+        _labelTitle.textColor = COLOR_333;
         _labelTitle.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         [_labelTitle fitTitle:@"路线轨迹" variable:0];
         
@@ -70,20 +70,12 @@
     return _labelTitle;
 }
 
-- (UIImageView *)ivBg{
-    if (_ivBg == nil) {
-        _ivBg = [UIImageView new];
-        _ivBg.image = IMAGE_WHITE_BG;
-        _ivBg.backgroundColor = [UIColor clearColor];
-    }
-    return _ivBg;
-}
 
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor whiteColor];
         self.width = SCREEN_WIDTH;
         self.clipsToBounds = false;
         [self addSubView];
@@ -98,12 +90,18 @@
 
 }
 -(void)requestTrick{
-    if (!self.modelOrder.loadTime) {
+    double startTtime = 0;
+    if (self.modelOrder.acceptTime) {
+        startTtime = self.modelOrder.acceptTime;
+    }else if(self.modelOrder.loadTime){
+        startTtime = self.modelOrder.loadTime;
+    }
+    if (!startTtime) {
         self.mapView.showsUserLocation = true;
         return;
     }
     double finishTime = self.modelOrder.unloadTime?self.modelOrder.unloadTime:self.modelOrder.finishTime;
-    [RequestApi requestCarLocationWithuploaderId:self.modelOrder.driverId startTime:self.modelOrder.loadTime endTime:finishTime?finishTime:[[NSDate date]timeIntervalSince1970] vehicleNumber:self.modelOrder.vehicleNumber  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestCarLocationWithuploaderId:[GlobalData sharedInstance].GB_UserModel.iDProperty startTime:startTtime endTime:finishTime?finishTime:[[NSDate date]timeIntervalSince1970] vehicleNumber:self.modelOrder.plateNumber  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.aryLocationRequest = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelLocationItem"];
         [self drawLine:self.aryLocationRequest.mutableCopy];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -204,18 +202,17 @@
 
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(ModelBulkCargoOrder *)model{
+- (void)resetViewWithModel:(ModelTransportOrder *)model{
     self.modelOrder = model;
     [self requestTrick];
     [self removeSubViewWithTag:TAG_LINE];//移除线
 
-    self.labelTitle.leftTop = XY(W(25),W(20));
+    self.labelTitle.leftTop = XY(W(15),W(15));
     
-    CGFloat top = [self addLineFrame:CGRectMake(W(25), self.labelTitle.bottom + W(20), SCREEN_WIDTH - W(50), 1)];
-    self.mapViewSuperiew.centerXTop = XY(SCREEN_WIDTH/2.0, top + W(18));
+    CGFloat top = [self addLineFrame:CGRectMake(W(15), self.labelTitle.bottom + W(15), SCREEN_WIDTH - W(30), 1)];
+    self.mapViewSuperiew.centerXTop = XY(SCREEN_WIDTH/2.0, top + W(15));
     
-    self.height = top + W(186);
-    self.ivBg.frame = CGRectMake(0, -W(10), SCREEN_WIDTH, self.height + W(20));
+    self.height = self.mapViewSuperiew.bottom + W(20);
 }
 
 

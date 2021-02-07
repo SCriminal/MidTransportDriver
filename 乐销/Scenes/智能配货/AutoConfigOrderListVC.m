@@ -234,69 +234,73 @@
         }
         [self requestCommentList];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
+            if (self.aryDatas.count == 0) {
+                [self requestPath];
+            }
         }];
    
 }
 - (void)requestPath{
     [RequestApi requestPathListDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        [self.noResultView removeFromSuperview];
         NSArray * aryPath = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelPathListItem"];
-        if (aryPath.count == 0) {
-            [self.noResultView removeAllSubViews];
-            {
-                UIImageView * iv = [UIImageView new];
-                iv.backgroundColor = [UIColor clearColor];
-                iv.contentMode = UIViewContentModeScaleAspectFill;
-                iv.clipsToBounds = true;
-                iv.image = [UIImage imageNamed:@"empty_auto"];
-                iv.widthHeight = XY(W(162),W(120));
-                iv.centerXTop = XY(SCREEN_WIDTH/2.0,W(90));
-                [self.noResultView addSubview:iv];
-            }
-            {
-                UILabel * l = [UILabel new];
-                l.font = [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
-                l.textColor = COLOR_666;
-                l.backgroundColor = [UIColor clearColor];
-                l.numberOfLines = 0;
-                l.lineSpace = W(0);
-                [l fitTitle:@"您还未添加常运路线！" variable:SCREEN_WIDTH];
-                l.centerXTop = XY(SCREEN_WIDTH/2.0, W(260));
-                [self.noResultView addSubview:l];
-            }
-            {
-                UILabel * l = [UILabel new];
-                l.font = [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
-                l.textColor = COLOR_666;
-                l.backgroundColor = [UIColor clearColor];
-                l.numberOfLines = 0;
-                l.lineSpace = W(0);
-                [l fitTitle:@"添加后平台自动为您推送匹配路线货源" variable:SCREEN_WIDTH];
-                l.centerXTop = XY(SCREEN_WIDTH/2.0, W(284));
-                [self.noResultView addSubview:l];
-            }
-            {
-                UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-                btn.widthHeight = XY(W(315), W(39));
-                btn.backgroundColor = [UIColor whiteColor];
-                [btn setTitle:@"+ 添加常用路线" forState:UIControlStateNormal];
-                btn.titleLabel.fontNum = F(15);
-                [btn setTitleColor:COLOR_RED forState:UIControlStateNormal];
-                [btn addTarget:self action:@selector(btnAddClick) forControlEvents:UIControlEventTouchUpInside];
-                [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:1 lineColor:COLOR_RED];
-                btn.centerXTop = XY(SCREEN_WIDTH/2.0, W(348));
-                [self.noResultView addSubview:btn];
-            }
-        }else{
-            self.noResultView = [NoResultView new];
-            [self.noResultView resetWithImageName:@"empty_waybill_default" title:@"暂无数据"];
-        }
-        [self showNoResult];
-
+        [self pathRequested:aryPath];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
+            [self pathRequested:nil];
         }];
+}
+- (void)pathRequested:(NSArray *)aryPath{
+    [self.noResultView removeFromSuperview];
+    if (aryPath.count == 0) {
+        [self.noResultView removeAllSubViews];
+        {
+            UIImageView * iv = [UIImageView new];
+            iv.backgroundColor = [UIColor clearColor];
+            iv.contentMode = UIViewContentModeScaleAspectFill;
+            iv.clipsToBounds = true;
+            iv.image = [UIImage imageNamed:@"empty_auto"];
+            iv.widthHeight = XY(W(162),W(120));
+            iv.centerXTop = XY(SCREEN_WIDTH/2.0,W(90));
+            [self.noResultView addSubview:iv];
+        }
+        {
+            UILabel * l = [UILabel new];
+            l.font = [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
+            l.textColor = COLOR_666;
+            l.backgroundColor = [UIColor clearColor];
+            l.numberOfLines = 0;
+            l.lineSpace = W(0);
+            [l fitTitle:@"您还未添加常运路线！" variable:SCREEN_WIDTH];
+            l.centerXTop = XY(SCREEN_WIDTH/2.0, W(260));
+            [self.noResultView addSubview:l];
+        }
+        {
+            UILabel * l = [UILabel new];
+            l.font = [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
+            l.textColor = COLOR_666;
+            l.backgroundColor = [UIColor clearColor];
+            l.numberOfLines = 0;
+            l.lineSpace = W(0);
+            [l fitTitle:@"添加后平台自动为您推送匹配路线货源" variable:SCREEN_WIDTH];
+            l.centerXTop = XY(SCREEN_WIDTH/2.0, W(284));
+            [self.noResultView addSubview:l];
+        }
+        {
+            UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            btn.widthHeight = XY(W(315), W(39));
+            btn.backgroundColor = [UIColor whiteColor];
+            [btn setTitle:@"+ 添加常用路线" forState:UIControlStateNormal];
+            btn.titleLabel.fontNum = F(15);
+            [btn setTitleColor:COLOR_RED forState:UIControlStateNormal];
+            [btn addTarget:self action:@selector(btnAddClick) forControlEvents:UIControlEventTouchUpInside];
+            [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:1 lineColor:COLOR_RED];
+            btn.centerXTop = XY(SCREEN_WIDTH/2.0, W(348));
+            [self.noResultView addSubview:btn];
+        }
+    }else{
+        self.noResultView = [NoResultView new];
+        [self.noResultView resetWithImageName:@"empty_waybill_default" title:@"暂无数据"];
+    }
+    [self showNoResult];
 }
 -  (void)requestCarInfo{
     [RequestInstance manager].operationQueue;
