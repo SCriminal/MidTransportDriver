@@ -166,7 +166,7 @@
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"urls":RequestStrKey(urls),
-                              @"description":RequestStrKey(description),
+                              @"loadDescription":RequestStrKey(description),
                            @"number":RequestStrKey(number)};
         [self putUrl:@"/loms/order/status/3/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -180,7 +180,7 @@
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"urls":RequestStrKey(urls),
-                              @"description":RequestStrKey(description),
+                              @"unloadDescription":RequestStrKey(description),
                            @"number":RequestStrKey(orderNumber)};
         [self putUrl:@"/zhongcheyun/loms/order/status/4" delegate:delegate parameters:dic success:success failure:failure];
 }
