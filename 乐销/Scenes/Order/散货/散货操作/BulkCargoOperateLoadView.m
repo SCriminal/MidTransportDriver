@@ -29,6 +29,20 @@
     }
     return _textView;
 }
+- (PlaceHolderTextView *)subTextView{
+    if (_subTextView == nil) {
+        _subTextView = [PlaceHolderTextView new];
+        _subTextView.backgroundColor = [UIColor clearColor];
+//        _subTextView.delegate = self;
+        [GlobalMethod setLabel:_subTextView.placeHolder widthLimit:0 numLines:0 fontNum:F(14) textColor:COLOR_999 text:@"延迟原因 (必填)"];
+        _subTextView.placeHolder.leftTop = XY(0, W(4));
+        [_subTextView setTextColor:COLOR_333];
+        _subTextView.font = [UIFont systemFontOfSize:F(14)];
+        _subTextView.widthHeight = XY(W(275-24), W(80-24));
+    }
+    return _subTextView;
+}
+
 - (UIView *)viewClick{
     if (!_viewClick) {
         _viewClick = [UIView new];
@@ -103,20 +117,34 @@
         self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
         self.widthHeight = XY(SCREEN_WIDTH, SCREEN_HEIGHT);
 //        [self addTarget:self action:@selector(hideKeyboardClick)];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification  object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification  object:nil];
+
         [self addSubView];
     }
     return self;
 }
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+- (void)keyboardShow:(NSNotification *)notice{
+    if (self.subTextView.isFirstResponder) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.viewBG.centerXCenterY = XY(SCREEN_WIDTH/2.0,SCREEN_HEIGHT/2.0-W(80));
+        }];
+    }
+   
+}
+
+- (void)keyboardHide:(NSNotification *)notice{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.viewBG.centerXCenterY = XY(SCREEN_WIDTH/2.0,SCREEN_HEIGHT/2.0);
+    }];
+}
 //添加subview
 - (void)addSubView{
     
-    [self addSubview:self.viewClick];
-    [self addSubview:self.viewBG];
-    [self.viewBG addSubview:self.labelInput];
-    [self.viewBG addSubview:self.ivClose];
-    [self.viewBG addSubview:self.collection_Image];
-    [self.viewBG addSubview:self.btnSubmit];
-    [self.viewBG addSubview:self.labelTitle];
+   
 
     //初始化页面
     [self resetViewWithModel:nil];
@@ -124,10 +152,17 @@
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(id)model{
-    [self removeSubViewWithTag:TAG_LINE];//移除线
+    [self removeAllSubViews];
+    [self addSubview:self.viewClick];
+    [self addSubview:self.viewBG];
+    [self.viewBG addSubview:self.labelInput];
+    [self.viewBG addSubview:self.ivClose];
+    [self.viewBG addSubview:self.collection_Image];
+    [self.viewBG addSubview:self.btnSubmit];
+    [self.viewBG addSubview:self.labelTitle];
+    
     //刷新view
     self.viewBG.width = W(315);
-    self.viewBG.centerXTop = XY(SCREEN_WIDTH/2.0,MIN(SCREEN_HEIGHT/2.0-W(203)/2.0, W(200)) );
     
     self.labelInput.centerXTop = XY(self.viewBG.width/2.0,W(25));
     
@@ -139,6 +174,7 @@
     
     self.collection_Image.leftTop = XY(W(20), self.labelTitle.bottom + W(15));
     
+    CGFloat top = 0;
     {
         UIView * view = [UIView new];
         view.backgroundColor = [UIColor whiteColor];
@@ -149,14 +185,30 @@
         
         [self.viewBG addSubview:self.textView];
         self.textView.center = view.center;
+        top = view.bottom;
+    }
+    if (self.isOutTime)
+    {
+        UIView * view = [UIView new];
+        view.backgroundColor = [UIColor whiteColor];
+        view.widthHeight = XY(W(275), W(80));
+        view.leftTop = XY(W(20), top + W(15));
+        [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+        [self.viewBG addSubview:view];
+        
+        [self.viewBG addSubview:self.subTextView];
+        self.subTextView.center = view.center;
+        top = view.bottom;
+
     }
     
-    [self.viewBG addLineFrame:CGRectMake(0, self.collection_Image.bottom + W(120), self.viewBG.width, 1)];
+    [self.viewBG addLineFrame:CGRectMake(0, top + W(25), self.viewBG.width, 1)];
     
     self.btnSubmit.widthHeight = XY(self.viewBG.width,W(55));
-    self.btnSubmit.centerXTop = XY(self.viewBG.width/2.0,self.collection_Image.bottom + W(120));
+    self.btnSubmit.centerXTop = XY(self.viewBG.width/2.0,top + W(25));
     self.viewBG.height = self.btnSubmit.bottom;
-    
+    self.viewBG.centerXCenterY = XY(SCREEN_WIDTH/2.0,SCREEN_HEIGHT/2.0);
+
 }
 - (void)show{
     [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_ORDER;
@@ -181,7 +233,7 @@
 
 - (void)btnSubmitClick{
     if (self.blockComplete) {
-        self.blockComplete(self.collection_Image.aryDatas,self.textView.text);
+        self.blockComplete(self.collection_Image.aryDatas,self.textView.text,self.subTextView.text);
     }
     [self removeFromSuperview];
 }

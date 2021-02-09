@@ -20,11 +20,13 @@
 @property (nonatomic, strong) UILabel *labelTitle;
 @property (nonatomic, strong) UIImageView *ivClose;
 @property (nonatomic, strong) UIButton *btnSubmit;
-@property (nonatomic, strong) void (^blockComplete)(NSArray *,NSString *);
+@property (nonatomic, strong) void (^blockComplete)(NSArray *,NSString *,NSString *);
 @property (nonatomic, strong) Collection_Image *collection_Image;
 @property (nonatomic,strong) PlaceHolderTextView *textView;
-
+@property (nonatomic,strong) PlaceHolderTextView *subTextView;
+@property (nonatomic, assign) BOOL isOutTime;
 #pragma mark 刷新view
+- (void)resetViewWithModel:(id)model;
 - (void)show;
 
 

@@ -212,7 +212,7 @@
         case ENUM_ORDER_LIST_BTN_LOAD_CAR:
         {
             BulkCargoOperateLoadView *upLoadImageView = [BulkCargoOperateLoadView new];
-            upLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason) {
+            upLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason,NSString * reason1) {
                 NSMutableArray *ary = [aryImages fetchValues:@"url"];
                 [RequestApi requestLoadWithUrls:[ary componentsJoinedByString:@","] number:model.orderNumber description:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                     [weakSelf refreshHeaderAll];
@@ -233,9 +233,9 @@
             [upUnLoadImageView.labelTitle fitTitle:@"请上传完成凭证 (回单、卸车磅单)" variable:0];
             [GlobalMethod setLabel:upUnLoadImageView.textView.placeHolder widthLimit:0 numLines:0 fontNum:F(14) textColor:COLOR_999 text:@"其他完成信息 (非必填)"];
             WEAKSELF
-            upUnLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason) {
+            upUnLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason,NSString * reason1) {
                 NSMutableArray *ary = [aryImages fetchValues:@"url"];
-                [RequestApi requestUnloadWithUrls:[ary componentsJoinedByString:@","] number:model.orderNumber description:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [RequestApi requestUnloadWithUrls:[ary componentsJoinedByString:@","] number:model.orderNumber description:reason delayReasoon:reason1 delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                     [weakSelf refreshHeaderAll];
                     
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -243,6 +243,8 @@
                 }];
                 
             };
+            upUnLoadImageView.isOutTime = self.modelOrder.isOutOfTime;
+            [upUnLoadImageView resetViewWithModel:nil];
             [upUnLoadImageView show];
             self.upUnLoadImageView = upUnLoadImageView;
         }

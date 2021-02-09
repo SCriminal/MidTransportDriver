@@ -128,6 +128,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)requestUnloadWithUrls:(NSString *)urls
                 number:(NSString *)number
                  description:(NSString *)description
+                delayReasoon:(NSString *)delayReasoon
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                      failure:(void (^)(NSString * errorStr, id mark))failure;
@@ -165,6 +166,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)requestUnloadSelfPossessOrderWithUrls:(NSString *)urls
                 number:(NSString *)orderNumber
                                  description:(NSString *)description
+                                delayReasoon:(NSString *)delayReasoon
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                                      failure:(void (^)(NSString * errorStr, id mark))failure;

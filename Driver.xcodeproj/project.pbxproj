@@ -110,6 +110,9 @@
 		D23327CE2185A6CB00495488 /* OrderListManagementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D23327CD2185A6CB00495488 /* OrderListManagementVC.m */; };
 		D23398601EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D233985F1EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m */; };
 		D23458401FD4E5E100F72EF5 /* UIImageView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D234583F1FD4E5E100F72EF5 /* UIImageView+Category.m */; };
+		D235C40725D282CC0044E34A /* BulkCargoOperateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D235C40325D282CC0044E34A /* BulkCargoOperateVC.m */; };
+		D235C40825D282CC0044E34A /* BulkCargoOperateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D235C40425D282CC0044E34A /* BulkCargoOperateView.m */; };
+		D235C40925D282CC0044E34A /* BulkCargoOperateLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = D235C40525D282CC0044E34A /* BulkCargoOperateLoadView.m */; };
 		D239D115218822E3009D7D45 /* PersonalCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D239D114218822E3009D7D45 /* PersonalCenterVC.m */; };
 		D239EACA1E2E0EB000E803F6 /* MJChiBaoZiHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D239EAC91E2E0EB000E803F6 /* MJChiBaoZiHeader.m */; };
 		D239EACD1E2E175100E803F6 /* CutomFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = D239EACC1E2E175100E803F6 /* CutomFooter.m */; };
@@ -163,7 +166,6 @@
 		D275DB381DFFA43B00670A40 /* NSData+transformData.m in Sources */ = {isa = PBXBuildFile; fileRef = D275DB221DFFA43B00670A40 /* NSData+transformData.m */; };
 		D275DB411DFFA43B00670A40 /* UITabBar+littleRedDotBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = D275DB341DFFA43B00670A40 /* UITabBar+littleRedDotBadge.m */; };
 		D27646AB1F2B0FD2001096DB /* UIView+Coordeinate.m in Sources */ = {isa = PBXBuildFile; fileRef = D27646AA1F2B0FD2001096DB /* UIView+Coordeinate.m */; };
-		D2789B4B22E187E100F2E6E1 /* BulkCargoOperateLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2789B4A22E187E100F2E6E1 /* BulkCargoOperateLoadView.m */; };
 		D279C0141E29D77800D0FF94 /* CustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D279C0131E29D77800D0FF94 /* CustomPicker.m */; };
 		D2821CBC218AD9B90057688B /* ORChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2821CB0218AD9B80057688B /* ORChartView.m */; };
 		D2821CBD218AD9B90057688B /* UIButton+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = D2821CB3218AD9B80057688B /* UIButton+EnlargeTouchArea.m */; };
@@ -303,9 +305,7 @@
 		D2C6D14622DEBC3100A22EA6 /* BulkCargoListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D14522DEBC3100A22EA6 /* BulkCargoListVC.m */; };
 		D2C6D14922DEBDE600A22EA6 /* BulkCargoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D14822DEBDE600A22EA6 /* BulkCargoListCell.m */; };
 		D2C6D14C22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D14B22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m */; };
-		D2C6D15122DEC99300A22EA6 /* BulkCargoOperateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D15022DEC99300A22EA6 /* BulkCargoOperateVC.m */; };
 		D2C6D15422DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D15322DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.m */; };
-		D2C6D15722DEE7D700A22EA6 /* BulkCargoOperateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D15622DEE7D700A22EA6 /* BulkCargoOperateView.m */; };
 		D2C6D15B22DEEEF600A22EA6 /* ModelBulkCargoOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D15A22DEEEF600A22EA6 /* ModelBulkCargoOrder.m */; };
 		D2C6D15E22DF0FBB00A22EA6 /* BulkCargoOrderDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D15D22DF0FBB00A22EA6 /* BulkCargoOrderDetailView.m */; };
 		D2C6D16122DF245600A22EA6 /* ModelLocationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D15F22DF245500A22EA6 /* ModelLocationItem.m */; };
@@ -647,6 +647,12 @@
 		D233985F1EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableParagraphStyle+Category.m"; sourceTree = "<group>"; };
 		D234583E1FD4E5E100F72EF5 /* UIImageView+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Category.h"; sourceTree = "<group>"; };
 		D234583F1FD4E5E100F72EF5 /* UIImageView+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Category.m"; sourceTree = "<group>"; };
+		D235C40125D282CC0044E34A /* BulkCargoOperateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkCargoOperateView.h; sourceTree = "<group>"; };
+		D235C40225D282CC0044E34A /* BulkCargoOperateLoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkCargoOperateLoadView.h; sourceTree = "<group>"; };
+		D235C40325D282CC0044E34A /* BulkCargoOperateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOperateVC.m; sourceTree = "<group>"; };
+		D235C40425D282CC0044E34A /* BulkCargoOperateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOperateView.m; sourceTree = "<group>"; };
+		D235C40525D282CC0044E34A /* BulkCargoOperateLoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOperateLoadView.m; sourceTree = "<group>"; };
+		D235C40625D282CC0044E34A /* BulkCargoOperateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkCargoOperateVC.h; sourceTree = "<group>"; };
 		D239D113218822E3009D7D45 /* PersonalCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalCenterVC.h; sourceTree = "<group>"; };
 		D239D114218822E3009D7D45 /* PersonalCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalCenterVC.m; sourceTree = "<group>"; };
 		D239EAC81E2E0EB000E803F6 /* MJChiBaoZiHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJChiBaoZiHeader.h; sourceTree = "<group>"; };
@@ -749,8 +755,6 @@
 		D275DB341DFFA43B00670A40 /* UITabBar+littleRedDotBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+littleRedDotBadge.m"; sourceTree = "<group>"; };
 		D27646A91F2B0FD2001096DB /* UIView+Coordeinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Coordeinate.h"; sourceTree = "<group>"; };
 		D27646AA1F2B0FD2001096DB /* UIView+Coordeinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Coordeinate.m"; sourceTree = "<group>"; };
-		D2789B4922E187E100F2E6E1 /* BulkCargoOperateLoadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulkCargoOperateLoadView.h; sourceTree = "<group>"; };
-		D2789B4A22E187E100F2E6E1 /* BulkCargoOperateLoadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOperateLoadView.m; sourceTree = "<group>"; };
 		D279C0121E29D77800D0FF94 /* CustomPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPicker.h; sourceTree = "<group>"; };
 		D279C0131E29D77800D0FF94 /* CustomPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPicker.m; sourceTree = "<group>"; };
 		D2821CB0218AD9B80057688B /* ORChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORChartView.m; sourceTree = "<group>"; };
@@ -1026,12 +1030,8 @@
 		D2C6D14822DEBDE600A22EA6 /* BulkCargoListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BulkCargoListCell.m; sourceTree = "<group>"; };
 		D2C6D14A22DEBE8F00A22EA6 /* RequestApi+BulkCargo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+BulkCargo.h"; sourceTree = "<group>"; };
 		D2C6D14B22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+BulkCargo.m"; sourceTree = "<group>"; };
-		D2C6D14F22DEC99300A22EA6 /* BulkCargoOperateVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulkCargoOperateVC.h; sourceTree = "<group>"; };
-		D2C6D15022DEC99300A22EA6 /* BulkCargoOperateVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOperateVC.m; sourceTree = "<group>"; };
 		D2C6D15222DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulkCargoOrderDetailVC.h; sourceTree = "<group>"; };
 		D2C6D15322DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOrderDetailVC.m; sourceTree = "<group>"; };
-		D2C6D15522DEE7D700A22EA6 /* BulkCargoOperateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulkCargoOperateView.h; sourceTree = "<group>"; };
-		D2C6D15622DEE7D700A22EA6 /* BulkCargoOperateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOperateView.m; sourceTree = "<group>"; };
 		D2C6D15922DEEEF600A22EA6 /* ModelBulkCargoOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBulkCargoOrder.h; sourceTree = "<group>"; };
 		D2C6D15A22DEEEF600A22EA6 /* ModelBulkCargoOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBulkCargoOrder.m; sourceTree = "<group>"; };
 		D2C6D15C22DF0FBB00A22EA6 /* BulkCargoOrderDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulkCargoOrderDetailView.h; sourceTree = "<group>"; };
@@ -1689,6 +1689,19 @@
 				D267E699234C9A62005735B0 /* OrderManagementBottomView.m */,
 			);
 			path = OrderList;
+			sourceTree = "<group>";
+		};
+		D235C40025D282CC0044E34A /* 散货操作 */ = {
+			isa = PBXGroup;
+			children = (
+				D235C40225D282CC0044E34A /* BulkCargoOperateLoadView.h */,
+				D235C40525D282CC0044E34A /* BulkCargoOperateLoadView.m */,
+				D235C40625D282CC0044E34A /* BulkCargoOperateVC.h */,
+				D235C40325D282CC0044E34A /* BulkCargoOperateVC.m */,
+				D235C40125D282CC0044E34A /* BulkCargoOperateView.h */,
+				D235C40425D282CC0044E34A /* BulkCargoOperateView.m */,
+			);
+			path = "散货操作";
 			sourceTree = "<group>";
 		};
 		D239D112218822D6009D7D45 /* DriverDetail */ = {
@@ -2867,7 +2880,7 @@
 		D2C6D14022DEBBC100A22EA6 /* 散货 */ = {
 			isa = PBXGroup;
 			children = (
-				D2C6D14E22DEC95D00A22EA6 /* 散货操作 */,
+				D235C40025D282CC0044E34A /* 散货操作 */,
 				D2C6D14D22DEC95D00A22EA6 /* 散货详情 */,
 				D2C6D14122DEBBFA00A22EA6 /* BulkCargoListManageVC.h */,
 				D2C6D14222DEBBFA00A22EA6 /* BulkCargoListManageVC.m */,
@@ -2890,19 +2903,6 @@
 				D257759724D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m */,
 			);
 			path = "散货详情";
-			sourceTree = "<group>";
-		};
-		D2C6D14E22DEC95D00A22EA6 /* 散货操作 */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6D14F22DEC99300A22EA6 /* BulkCargoOperateVC.h */,
-				D2C6D15022DEC99300A22EA6 /* BulkCargoOperateVC.m */,
-				D2C6D15522DEE7D700A22EA6 /* BulkCargoOperateView.h */,
-				D2C6D15622DEE7D700A22EA6 /* BulkCargoOperateView.m */,
-				D2789B4922E187E100F2E6E1 /* BulkCargoOperateLoadView.h */,
-				D2789B4A22E187E100F2E6E1 /* BulkCargoOperateLoadView.m */,
-			);
-			path = "散货操作";
 			sourceTree = "<group>";
 		};
 		D2C6D15822DEEEF600A22EA6 /* 散货 */ = {
@@ -3661,6 +3661,7 @@
 				D2BC9AAF1DFFDF0400B0468E /* GlobalData.m in Sources */,
 				D2CD1BA41E233BBE0042182B /* BaseImage.m in Sources */,
 				D22BA9DB1E5EB8CA00C5B391 /* FSCalendarHeaderView.m in Sources */,
+				D235C40825D282CC0044E34A /* BulkCargoOperateView.m in Sources */,
 				D26B88CC225C422D0051FA78 /* LoginView.m in Sources */,
 				D2ACCC1B21DC8DFD00F39E28 /* TopAlertView.m in Sources */,
 				D2A300332266BF9500AE2EC3 /* EditInfoVC.m in Sources */,
@@ -3727,7 +3728,6 @@
 				D2DDC4262595D68A00C810B5 /* ExchangeIntegraProductVC.m in Sources */,
 				D284B2CB24936B4100E2605A /* ModelOCR.m in Sources */,
 				D2ACCC2221DC8E4600F39E28 /* ModelApns.m in Sources */,
-				D2C6D15122DEC99300A22EA6 /* BulkCargoOperateVC.m in Sources */,
 				D279C0141E29D77800D0FF94 /* CustomPicker.m in Sources */,
 				D23B6EF325B8127C0044E28C /* ModelAuthDriver.m in Sources */,
 				C69570561E861A7000ABB2ED /* NSString+Category.m in Sources */,
@@ -3764,6 +3764,7 @@
 				D2AADB592191627800E2173E /* RequestApi+TransportPrice.m in Sources */,
 				D2136CED1E13C142003B4B92 /* NSMutableArray+Insert.m in Sources */,
 				D215DC0F25C16E79002DAA27 /* TestTableVC.m in Sources */,
+				D235C40925D282CC0044E34A /* BulkCargoOperateLoadView.m in Sources */,
 				D2BC0C9925B573DB0030599D /* ModelPathListItem.m in Sources */,
 				D28A868B225F1E8E001E3372 /* CarTeamListCell.m in Sources */,
 				D289FEAF1E8F366C00C2636B /* SectionIndexView.m in Sources */,
@@ -3812,6 +3813,7 @@
 				D27470B022A798DA009B645D /* RequestApi+Location.m in Sources */,
 				D22B1D542383E34400BC00F0 /* ScanOrderListVC.m in Sources */,
 				D2D5265E25A5463500F99306 /* FeedBackHistoryListVC.m in Sources */,
+				D235C40725D282CC0044E34A /* BulkCargoOperateVC.m in Sources */,
 				D23327CE2185A6CB00495488 /* OrderListManagementVC.m in Sources */,
 				D28A319925908D79006AC450 /* CreateAddressVC.m in Sources */,
 				D23398601EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m in Sources */,
@@ -3881,7 +3883,6 @@
 				D28A31A2259193CF006AC450 /* CreditCenterVC.m in Sources */,
 				D2E50D0A1E319E650045AD3F /* BaseVC+KeyboardObserve.m in Sources */,
 				D2A1EF3A25C93ABA0066864D /* SelectAddressCell.m in Sources */,
-				D2789B4B22E187E100F2E6E1 /* BulkCargoOperateLoadView.m in Sources */,
 				D22851B025942CAF00100231 /* IntegralProductDetailView.m in Sources */,
 				D2F11C6D2097103600F18CBD /* UITextField+Text.m in Sources */,
 				D2D5265525A44E1A00F99306 /* FeedBackManagementVC.m in Sources */,
@@ -3895,7 +3896,6 @@
 				D23327C121855BBE00495488 /* DriverOperateVC.m in Sources */,
 				D2DDC436259D66D400C810B5 /* AddPathVC.m in Sources */,
 				D2996A4221E6E3AA00562587 /* UpImageWithTextCell.m in Sources */,
-				D2C6D15722DEE7D700A22EA6 /* BulkCargoOperateView.m in Sources */,
 				D28A318B258B2E72006AC450 /* MyMsgVC.m in Sources */,
 				D22BA9D31E5EB8CA00C5B391 /* FSCalendarCalculator.m in Sources */,
 				D217D8C61E1B8B8B0094FD55 /* BaseAlertView.m in Sources */,

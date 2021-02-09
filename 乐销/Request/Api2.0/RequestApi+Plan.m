@@ -176,11 +176,13 @@
 +(void)requestUnloadWithUrls:(NSString *)urls
                  description:(NSString *)description
                 number:(NSString *)orderNumber
+                delayReasoon:(NSString *)delayReasoon
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"urls":RequestStrKey(urls),
                               @"unloadDescription":RequestStrKey(description),
+                              @"delayReasoon":RequestStrKey(delayReasoon),
                            @"number":RequestStrKey(orderNumber)};
         [self putUrl:@"/zhongcheyun/loms/order/status/4" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -269,11 +271,13 @@
 +(void)requestUnloadSelfPossessOrderWithUrls:(NSString *)urls
                 number:(NSString *)orderNumber
                                  description:(NSString *)description
+                                delayReasoon:(NSString *)delayReasoon
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"urls":RequestStrKey(urls),
                               @"description":RequestStrKey(description),
+                              @"delayReasoon":RequestStrKey(delayReasoon),
                            @"number":RequestStrKey(orderNumber)};
         [self putUrl:@"/tms/lo/status/4/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -308,13 +312,13 @@
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"page":NSNumber.dou(page),
                            @"count":NSNumber.dou(count),
-                           @"orderNumber":RequestStrKey(orderNumber),
+                           @"number":RequestStrKey(orderNumber),
                            @"shipperName":RequestStrKey(shipperName),
                            @"plateNumber":RequestStrKey(plateNumber),
                            @"driverName":RequestStrKey(driverName),
-                              @"startTime":RequestDoubleKey(startTime),
-                              @"endTime":RequestDoubleKey(endTime),
-                              @"orderStatues":RequestStrKey(orderStatues),
+                              @"startTime":RequestLongKey(startTime),
+                              @"endTime":RequestLongKey(endTime),
+                              @"orderStatus":RequestStrKey(orderStatues),
 
         };
         [self getUrl:@"/tms/lo/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];

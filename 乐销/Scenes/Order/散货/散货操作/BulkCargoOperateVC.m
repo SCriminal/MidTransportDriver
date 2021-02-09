@@ -80,7 +80,7 @@
     if (!_upLoadImageView) {
         _upLoadImageView = [BulkCargoOperateLoadView new];
         WEAKSELF
-        _upLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason) {
+        _upLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason,NSString * reason1) {
             NSMutableArray *ary = [aryImages fetchValues:@"url"];
             [weakSelf requestOperate:[ary componentsJoinedByString:@","]];
         };
@@ -93,7 +93,7 @@
         [_upUnLoadImageView.labelInput fitTitle:@"上传完成凭证" variable:0];
         [_upUnLoadImageView.labelTitle fitTitle:@"请上传完成凭证 (回单、卸车磅单)" variable:0];
         WEAKSELF
-        _upUnLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason) {
+        _upUnLoadImageView.blockComplete = ^(NSArray *aryImages,NSString * reason,NSString * reason1) {
             NSMutableArray *ary = [aryImages fetchValues:@"url"];
             [weakSelf requestOperate:[ary componentsJoinedByString:@","]];
         };

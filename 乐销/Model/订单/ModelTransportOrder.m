@@ -124,6 +124,11 @@ NSString *const kModelTransportOrderUnitPrice = @"unitPrice";
 @synthesize startProvinceName = _startProvinceName;
 @synthesize unitPrice = _unitPrice;
 
+- (BOOL)isOutOfTime{
+    NSDate * date = [GlobalMethod exchangeTimeStampToDate:self.endTime];
+//    return  date.timeIntervalSinceNow > 0;
+    return  date.timeIntervalSinceNow < 0;
+}
 
 #pragma mark init
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict {

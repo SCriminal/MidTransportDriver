@@ -71,11 +71,10 @@
 @property (nonatomic, strong) NSString *unitShow;
 @property (nonatomic, assign) double qtyShow;
 @property (nonatomic, assign) double priceShow;
-
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;
-
+- (BOOL)isOutOfTime;
 +(NSString *)statusTransport:(double)state;
 +(UIColor *)statusColorTransport:(double)state;
 
