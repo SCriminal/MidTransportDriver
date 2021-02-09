@@ -3849,7 +3849,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "456"
             endingLineNumber = "456"
-            landmarkName = "-timerStop"
+            landmarkName = "-timerRun"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5577,8 +5577,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "465"
             endingLineNumber = "465"
-            landmarkName = "NewAutoConfigOrderListVC"
-            landmarkType = "3">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -6105,7 +6105,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0C5CBE4C-D7D9-402B-933A-9AA8409BB7EC"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x8ba4;&#x8bc1;&#x4e2d;&#x5fc3;/AuthTwoVC.m"
@@ -6297,7 +6297,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "45E73352-9E0C-4F5E-AE7E-05BB804D983B"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/General/GlobalMethod/GlobalMethod+Version.m"
@@ -6402,6 +6402,22 @@
             startingLineNumber = "415"
             endingLineNumber = "415"
             landmarkName = "-addLabel:top:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC61C8F9-8D7C-4573-9EA4-AFFACFB3BB44"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "-requestUpuserLocation:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

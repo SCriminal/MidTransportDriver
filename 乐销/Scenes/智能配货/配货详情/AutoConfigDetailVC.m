@@ -110,7 +110,7 @@
             }
             ModelComment * comment = ary.lastObject;
            
-            self.modelList.comment = [NSString stringWithFormat:@"%@      成交量：%@      好评率：%@",comment.cellphone.secretPhone,NSNumber.dou(comment.finishWaybillSum).stringValue,NSNumber.dou(comment.score).stringValue];
+            self.modelList.comment = [NSString stringWithFormat:@"%@      成交量：%@      好评率：%@",comment.cellphone.secretPhone,NSNumber.dou(comment.finishWaybillSum).stringValue,comment.praiseRateShow];
             [self.topView resetViewWithModel:self.modelList];
             self.tableView.tableHeaderView = self.topView;
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

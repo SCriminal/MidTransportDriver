@@ -382,7 +382,7 @@
             if (!isStr(item.comment)) {
                 ModelComment * comment = [self.dicComments objectForKey:NSNumber.dou(item.shipperId).stringValue];
                 if (comment.userId) {
-                    item.comment = [NSString stringWithFormat:@"%@      成交量：%@      好评率：%@",comment.cellphone.secretPhone,NSNumber.dou(comment.finishWaybillSum).stringValue,NSNumber.dou(comment.score).stringValue];
+                    item.comment = [NSString stringWithFormat:@"%@      成交量：%@      好评率：%@",comment.cellphone.secretPhone,NSNumber.dou(comment.finishWaybillSum).stringValue,comment.praiseRateShow];
                 }
             }
         }

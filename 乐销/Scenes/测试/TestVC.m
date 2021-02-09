@@ -67,13 +67,14 @@
     [self.view addSubview:self.labelShow];
     self.labelShow.leftTop = XY(0, NAVIGATIONBAR_HEIGHT);
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(datarefresh) name:NOTICE_LOCATION_CHANGE object:nil];
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(datarefresh) name:NOTICE_LOCATION_CHANGE object:nil];
     
     [CLShanYanSDKManager preGetPhonenumber];
     return;
 }
 
 - (void)jump{
+//    [GB_Nav pushVCName:@"AuthOneVC" animated:true];
 //   NSString * str = [self currentScopeWeek:2 dateFormat:TIME_DAY_SHOW];
 //    NSLog(@"%@",str);
 }

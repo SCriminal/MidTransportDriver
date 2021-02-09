@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *cellphone;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) double userId;
+@property (nonatomic, strong) NSString *praiseRateShow;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
