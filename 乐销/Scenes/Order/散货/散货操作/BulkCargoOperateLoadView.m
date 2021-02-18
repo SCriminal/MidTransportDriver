@@ -232,8 +232,14 @@
 }
 
 - (void)btnSubmitClick{
+    if (self.isOutTime) {
+        if (self.subTextView.text.length == 0) {
+            [GlobalMethod showAlert:@"请输入延误原因"];
+            return;
+        }
+    }
     if (self.blockComplete) {
-        self.blockComplete(self.collection_Image.aryDatas,self.textView.text,self.subTextView.text);
+        self.blockComplete(self.collection_Image.aryDatas,self.textView.text,isStr(self.subTextView.text)?self.subTextView.text:nil);
     }
     [self removeFromSuperview];
 }

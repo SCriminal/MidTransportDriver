@@ -290,7 +290,7 @@
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"reason":RequestStrKey(reason),
+        NSDictionary *dic = @{@"reasoon":RequestStrKey(reason),
                            @"number":RequestStrKey(number)};
         [self putUrl:@"/tms/lo/status/99/driver/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
