@@ -9,7 +9,6 @@
 #import "ScheduleInfoView.h"
 //detail
 #import "ImageDetailBigView.h"
-#import "BulkCargoListCell.h"
 
 
 @interface ScheduleInfoTopView ()

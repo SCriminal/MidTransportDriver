@@ -26,9 +26,9 @@
         _labelAlert = [UILabel new];
         _labelAlert.textColor = [UIColor whiteColor];
         _labelAlert.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
-        _labelAlert.backgroundColor = COLOR_BLACK_ALPHA_PER60;
+        _labelAlert.backgroundColor = COLOR_BLACK_ALPHA_PER30;
         _labelAlert.textAlignment = NSTextAlignmentCenter;
-        _labelAlert.text = [NSString stringWithFormat:@"跳过(%.f)",self.numTime];
+        _labelAlert.text = [NSString stringWithFormat:@"%.f  跳过",self.numTime];
         _labelAlert.width = [UILabel fetchWidthFontNum:_labelAlert.font.pointSize text:_labelAlert.text] + W(32);
         _labelAlert.height = _labelAlert.font.lineHeight + W(20);
         [GlobalMethod setRoundView:_labelAlert color:[UIColor clearColor] numRound:_labelAlert.height/2.0 width:0];
@@ -118,7 +118,7 @@
         return;
     }
     _numTime --;
-    self.labelAlert.text = [NSString stringWithFormat:@"%.f 跳过",self.numTime];
+    self.labelAlert.text = [NSString stringWithFormat:@"%.f  跳过",self.numTime];
 //    self.controlSkip.userInteractionEnabled = false;
 }
 

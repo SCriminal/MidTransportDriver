@@ -7,7 +7,7 @@
 //
 
 #import "ScanListCell.h"
-#import "BulkCargoListCell.h"
+#import "ScanListCell.h"
 
 @interface ScanListCell ()
 
@@ -111,7 +111,7 @@
     self.labelTo.centerXBottom = XY(self.labelAddressTo.centerX, self.iconArrow.top - W(6));
     
     __block int tag = 100;
-   CGFloat top = [BulkCargoListCell addTitle:^(){
+   CGFloat top = [ScanListCell addTitle:^(){
                 ModelBtn * m = [ModelBtn new];
                 m.title = @"当前状态";
                 m.subTitle = model.scheduleStatusShow;
@@ -120,7 +120,7 @@
                 return m;
          }() view:self.contentView top:self.iconArrow.bottom + W(22)];
     
-    top = [BulkCargoListCell addTitle:^(){
+    top = [ScanListCell addTitle:^(){
            ModelBtn * m = [ModelBtn new];
            m.title = @"发货单号";
            m.subTitle = model.planNumber;
@@ -128,7 +128,7 @@
            return m;
     }() view:self.contentView top:top + W(15)];
     
-    top = [BulkCargoListCell addTitle:^(){
+    top = [ScanListCell addTitle:^(){
            ModelBtn * m = [ModelBtn new];
            m.title = @"货物名称";
            m.subTitle = model.cargoName;
@@ -136,7 +136,7 @@
            return m;
     }() view:self.contentView top:top + W(15)];
     
-    top = [BulkCargoListCell addTitle:^(){
+    top = [ScanListCell addTitle:^(){
            ModelBtn * m = [ModelBtn new];
            m.title = @"发  货  量";
            m.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(model.actualLoad),UnPackStr(model.loadUnit)];
@@ -150,6 +150,54 @@
     
 }
 
+
++ (CGFloat)addTitle:(ModelBtn *)modelBtn  view:(UIView *)superView top:(CGFloat)top {
+    UILabel * labelTitle = [superView viewWithTag:modelBtn.tag];
+    if (labelTitle == nil) {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        l.textColor = COLOR_666;
+        l.backgroundColor = [UIColor clearColor];
+        l.numberOfLines = 1;
+        l.lineSpace = W(0);
+        l.tag = modelBtn.tag;
+        [superView addSubview:l];
+        labelTitle = l;
+    }
+    [labelTitle fitTitle:UnPackStr(modelBtn.title) variable:W(100)];
+    labelTitle.leftTop = XY(modelBtn.left?modelBtn.left:W(25), top);
+    
+    UILabel * labelSubtitle = [superView viewWithTag:modelBtn.tag+100];
+    if (labelSubtitle == nil) {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        l.backgroundColor = [UIColor clearColor];
+        l.numberOfLines = 1;
+        l.lineSpace = W(0);
+        l.tag = modelBtn.tag + 100;
+        l.textAlignment = NSTextAlignmentRight;
+        [superView addSubview:l];
+        labelSubtitle = l;
+    }
+    if (modelBtn.color) {
+        labelSubtitle.fontNum = F(11);
+        labelSubtitle.backgroundColor = modelBtn.color;
+        labelSubtitle.textColor = [UIColor whiteColor];
+        labelSubtitle.textAlignment = NSTextAlignmentCenter;
+        CGFloat width = [modelBtn.subTitle sizeWithAttributes:@{NSFontAttributeName: labelSubtitle.font}].width + W(10);
+        labelSubtitle.widthHeight = XY(width, W(18));
+        [GlobalMethod setRoundView:labelSubtitle color:[UIColor clearColor] numRound:3 width:0];
+        labelSubtitle.text = modelBtn.subTitle;
+        labelSubtitle.rightCenterY = XY(SCREEN_WIDTH - (modelBtn.right?modelBtn.right:W(25)), labelTitle.centerY);
+    }else{
+        labelSubtitle.numberOfLines = modelBtn.numOfLines?modelBtn.numOfLines:1;
+        [labelSubtitle fitTitle:isStr(modelBtn.subTitle)?modelBtn.subTitle:@"暂无" variable:W(250)];
+        labelSubtitle.textColor = modelBtn.colorSelect?modelBtn.colorSelect:COLOR_333;
+        labelSubtitle.rightTop = XY(SCREEN_WIDTH - (modelBtn.right?modelBtn.right:W(25)), top);
+    }
+
+    return MAX(labelTitle.bottom, labelSubtitle.bottom);
+}
 
 
 @end

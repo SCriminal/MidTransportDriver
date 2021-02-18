@@ -111,7 +111,6 @@
         [privateView show];
     }
 
-    //欢迎页
     if (![GlobalMethod isLoginSuccess]) {
         [GB_Nav pushVCName:@"LoginViewController" animated:false];
     }

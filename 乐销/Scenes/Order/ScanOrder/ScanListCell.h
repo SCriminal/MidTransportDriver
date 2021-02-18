@@ -23,4 +23,6 @@
 #pragma mark 刷新cell
 - (void)resetCellWithModel:(ModelScheduleList *)model;
 
++ (CGFloat)addTitle:(ModelBtn *)modelBtn  view:(UIView *)superView top:(CGFloat)top;
+
 @end

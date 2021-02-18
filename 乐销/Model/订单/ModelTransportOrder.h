@@ -71,6 +71,11 @@
 @property (nonatomic, strong) NSString *unitShow;
 @property (nonatomic, assign) double qtyShow;
 @property (nonatomic, assign) double priceShow;
+
+@property (nonatomic, assign) double startAreaId;
+@property (nonatomic, assign) double endAreaId;
+
+
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;

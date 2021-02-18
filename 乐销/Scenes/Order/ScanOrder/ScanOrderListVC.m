@@ -126,22 +126,22 @@
 }
 
 - (void)requestCarList{
-    [RequestApi requestValidCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        NSMutableArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelValidCar"];
-        if (ary.count == 0) {
-            ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
-            ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
-            modelConfirm.blockClick = ^(void){
-                [GB_Nav pushVCName:@"AddCarVC" animated:true];
-            };
-            [BaseAlertView initWithTitle:@"提示" content:@"挂靠或添加车辆才能扫码下单" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
-            return;
-        }
-        QRCoderVC * vc = [QRCoderVC new];
-        [GB_Nav pushViewController:vc animated:true];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+//    [RequestApi requestValidCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//        NSMutableArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelValidCar"];
+//        if (ary.count == 0) {
+//            ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+//            ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+//            modelConfirm.blockClick = ^(void){
+//                [GB_Nav pushVCName:@"AuthTwoVC" animated:true];
+//            };
+//            [BaseAlertView initWithTitle:@"提示" content:@"挂靠或添加车辆才能扫码下单" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
+//            return;
+//        }
+//        QRCoderVC * vc = [QRCoderVC new];
+//        [GB_Nav pushViewController:vc animated:true];
+//    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//        
+//    }];
 }
 
 @end

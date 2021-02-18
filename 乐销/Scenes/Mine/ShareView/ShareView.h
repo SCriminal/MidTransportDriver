@@ -9,12 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ShareView : UIView
-@property (nonatomic, strong) ModelOrderList *modelOrder;
-@property (nonatomic, strong) ModelBulkCargoOrder *modelBulkCargoOrder;
+@property (nonatomic, strong) ModelTransportOrder *modelOrder;
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(id)model;
-+ (void)show:(ModelOrderList *)modelOrder;
-+ (void)showBulkCargo:(ModelBulkCargoOrder *)modelOrder;
++ (void)show:(ModelTransportOrder *)modelOrder;
 
 @end

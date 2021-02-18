@@ -13,8 +13,6 @@
 #import "AliClient.h"
 //top view
 #import "DriverDetailTopView.h"
-//hot line view
-#import "HotLineView.h"
 //request
 #import "RequestApi+UserApi.h"
 #import "RequestApi+Dictionary.h"

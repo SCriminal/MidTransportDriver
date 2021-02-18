@@ -74,9 +74,8 @@
 }
 
 - (void)jump{
-//    [GB_Nav pushVCName:@"AuthOneVC" animated:true];
-//   NSString * str = [self currentScopeWeek:2 dateFormat:TIME_DAY_SHOW];
-//    NSLog(@"%@",str);
+    [self.view addSubview:[NSClassFromString(@"AdvertiesementView") new]];
+
 }
 /**
  当前周的日期范围

@@ -7,7 +7,6 @@
 //
 
 #import "OrderDetailTopView.h"
-#import "BulkCargoListCell.h"
 @implementation OrderDetailView
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{

@@ -14,7 +14,7 @@
 #import "BaseVC+BaseImageSelectVC.h"
 #import "AuthThreeVC.h"
 #import "SelectCarTypeVC.h"
-#import "AddCarVC.h"
+#import "CarHelper.h"
 
 @interface AuthTwoVC ()
 @property (nonatomic, strong) AuthView *authTopView;
@@ -283,7 +283,7 @@
                     self.modelCarNo.subString = model.plateNumber;
                 }
                 if (isStr(model.vehicleType)) {
-                    NSNumber * typeID = [AddCarVC exchangeVehicleTypeWithName:model.vehicleType];
+                    NSNumber * typeID = [CarHelper exchangeVehicleTypeWithName:model.vehicleType];
                     if (typeID) {
                         self.modelCarType.subString = model.vehicleType;
                         self.modelCarType.identifier = typeID.stringValue;
@@ -355,7 +355,7 @@
                                           driving2Url:self.modelSub.identifier
                                           driving3Url:self.modelThree.identifier
                                            plateColor:0
-                                           energyType:isStr(self.modelOCRDrivingBack.energyType)?[AddCarVC exchangeEnergeyTypeWithName:self.modelOCRDrivingBack.energyType].doubleValue:0
+                                           energyType:isStr(self.modelOCRDrivingBack.energyType)?[CarHelper exchangeEnergeyTypeWithName:self.modelOCRDrivingBack.energyType].doubleValue:0
                                          tractionMass:self.modelOCRDrivingBack.tractionMass.doubleValue
                                        drivingEndTime:0
                                          useCharacter:nil
@@ -391,7 +391,7 @@
                                                            driving2Url:self.modelSub.identifier
                                                            driving3Url:self.modelThree.identifier
                                                             plateColor:0
-                                                            energyType:isStr(self.modelOCRDrivingBack.energyType)?[AddCarVC exchangeEnergeyTypeWithName:self.modelOCRDrivingBack.energyType].doubleValue:0
+                                                            energyType:isStr(self.modelOCRDrivingBack.energyType)?[CarHelper exchangeEnergeyTypeWithName:self.modelOCRDrivingBack.energyType].doubleValue:0
                                                           tractionMass:self.modelOCRDrivingBack.tractionMass.doubleValue
                                                         drivingEndTime:0
                                                           useCharacter:nil
@@ -424,7 +424,7 @@
         self.modelOCRDrivingBack.length = model.vehicleLength;
         self.modelCarType.identifier = NSNumber.dou(model.vehicleType).stringValue;
         
-        self.modelCarType.subString = model.vehicleType?[AddCarVC exchangeVehicleType:self.modelCarType.identifier]:nil;
+        self.modelCarType.subString = model.vehicleType?[CarHelper exchangeVehicleType:self.modelCarType.identifier]:nil;
         self.modelOCRDrivingBack.width = model.vehicleWidth;
         self.modelMain.identifier = model.driving1Url;
         self.modelSub.identifier = model.driving2Url;

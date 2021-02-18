@@ -1369,8 +1369,8 @@
             timestampString = "604225259.887427"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "-request:blockSuccess:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1589,8 +1589,8 @@
             timestampString = "604225259.887593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "-request:blockSuccess:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1827,8 +1827,8 @@
             timestampString = "604225259.88794"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295">
+            startingLineNumber = "237"
+            endingLineNumber = "237">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1842,8 +1842,8 @@
             timestampString = "604225259.887982"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "LocationRecordInstance"
             landmarkType = "3">
             <Locations>
@@ -1893,8 +1893,8 @@
             timestampString = "604225259.8880219"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295">
+            startingLineNumber = "237"
+            endingLineNumber = "237">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2409,57 +2409,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "733B1709-C45C-40BF-8F0A-0FACCE50D61E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
-            timestampString = "604225259.889107"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "-startLocationWithShippingNoteInfos:listener:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "733B1709-C45C-40BF-8F0A-0FACCE50D61E - f518f234e67b3f18"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[LocationRecordInstance startRecord]"
-                  moduleName = "Driver"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/suilindong/Desktop/%E4%B8%AD%E8%BD%A6%E8%BF%90%E5%8F%B8%E6%9C%BA%E7%AB%AF/%E4%B9%90%E9%94%80/General/LocationRecord/LocationRecordInstance.m"
-                  timestampString = "600577883.227891"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  uuid = "733B1709-C45C-40BF-8F0A-0FACCE50D61E - 1898ca695d4e04ef"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__37-[LocationRecordInstance startRecord]_block_invoke"
-                  moduleName = "Driver"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/suilindong/Desktop/%E4%B8%AD%E8%BD%A6%E8%BF%90%E5%8F%B8%E6%9C%BA%E7%AB%AF/%E4%B9%90%E9%94%80/General/LocationRecord/LocationRecordInstance.m"
-                  timestampString = "600577883.2298959"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
-                  offsetFromSymbolStart = "96">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "20639128-482D-4866-A285-F92B69391ACA"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -2468,8 +2417,8 @@
             timestampString = "604225259.889155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-request:blockSuccess:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2494,40 +2443,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "45089FDC-65DB-4D1C-A66D-85E5376DFC74"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
-            timestampString = "604225259.889271"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "-startLocationWithShippingNoteInfos:listener:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D9428221-8CB2-469C-8A97-3D8C40822928"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
-            timestampString = "604225259.889308"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "-stopLocationWithShippingNoteInfos:listener:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "38592A40-ECA4-4F8F-90D9-92B1B921FF41"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -2535,8 +2450,8 @@
             filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-stopLocationWithShippingNoteInfos:listener:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2615,8 +2530,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "-requestAdd"
             landmarkType = "7">
          </BreakpointContent>
@@ -2631,8 +2546,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "-addNav"
             landmarkType = "7">
          </BreakpointContent>
@@ -2647,8 +2562,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "-requestAdd"
             landmarkType = "7">
          </BreakpointContent>
@@ -2855,8 +2770,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "-modelCarNum"
             landmarkType = "7">
          </BreakpointContent>
@@ -2919,8 +2834,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "-refreshBottomView:"
             landmarkType = "7">
             <Locations>
@@ -3152,22 +3067,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "74D0F2D3-B967-4AA3-93BD-E9CE8C73F36F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/Order/&#x6563;&#x8d27;/BulkCargoListCell.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
-            landmarkName = "+addTitle:view:top:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "755CEE53-6CA3-43CB-A402-2D0BD0453456"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -3191,8 +3090,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderDetail/OrderDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-reconfigTableHeaderView"
             landmarkType = "7">
          </BreakpointContent>
@@ -3408,22 +3307,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0DE2AADC-04C8-45C3-AE45-41589673B9D5"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "-startLocationWithShippingNoteInfos:listener:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "E79DD362-54EB-4AC6-9C2F-B21DB20BDB1F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -3568,22 +3451,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8853A55F-87E4-485A-9618-C1C915A6CD29"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-startLocationWithShippingNoteInfos:listener:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "BD817D1A-F3D9-4CB4-A955-E350A74E9C66"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -3591,8 +3458,8 @@
             filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-startLocationWithShippingNoteInfos:listener:"
             landmarkType = "7">
             <Locations>
@@ -3639,8 +3506,8 @@
             filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "-stopLocationWithShippingNoteInfos:listener:"
             landmarkType = "7">
             <Locations>
@@ -3687,8 +3554,8 @@
             filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "-stopLocationWithShippingNoteInfos:listener:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3703,8 +3570,8 @@
             filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "-amapLocationManager:didUpdateLocation:reGeocode:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3719,74 +3586,10 @@
             filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "-amapLocationManager:didUpdateLocation:reGeocode:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4984ABD2-5977-4D53-9080-BCADB381EF96"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "-stopLocationWithShippingNoteInfos:listener:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "95ECCEAC-3D10-44BC-83C6-DCDAA1562C4E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "-stopLocationWithShippingNoteInfos:listener:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "95ECCEAC-3D10-44BC-83C6-DCDAA1562C4E - c3364ba4824c8a20"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__69-[LocationRecordInstance stopLocationWithShippingNoteInfos:listener:]_block_invoke_6"
-                  moduleName = "Driver"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/suilindong/Desktop/%E4%B8%AD%E8%BD%A6%E8%BF%90%E5%8F%B8%E6%9C%BA%E7%AB%AF/%E4%B9%90%E9%94%80/General/LocationRecord/LocationRecordInstance.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "166"
-                  endingLineNumber = "166"
-                  offsetFromSymbolStart = "1235">
-               </Location>
-               <Location
-                  uuid = "95ECCEAC-3D10-44BC-83C6-DCDAA1562C4E - c3364ba4834c8add"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__69-[LocationRecordInstance stopLocationWithShippingNoteInfos:listener:]_block_invoke_7"
-                  moduleName = "Driver"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/suilindong/Desktop/%E4%B8%AD%E8%BD%A6%E8%BF%90%E5%8F%B8%E6%9C%BA%E7%AB%AF/%E4%B9%90%E9%94%80/General/LocationRecord/LocationRecordInstance.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
-                  offsetFromSymbolStart = "73">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3847,8 +3650,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "456"
-            endingLineNumber = "456"
+            startingLineNumber = "454"
+            endingLineNumber = "454"
             landmarkName = "-timerRun"
             landmarkType = "7">
          </BreakpointContent>
@@ -3863,8 +3666,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
             landmarkName = "-viewWillDisappear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3879,8 +3682,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442"
+            startingLineNumber = "440"
+            endingLineNumber = "440"
             landmarkName = "-timerStart"
             landmarkType = "7">
          </BreakpointContent>
@@ -4439,8 +4242,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "-topView"
             landmarkType = "7">
          </BreakpointContent>
@@ -4455,8 +4258,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
             landmarkName = "-fromClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -4471,8 +4274,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "423"
-            endingLineNumber = "423"
+            startingLineNumber = "422"
+            endingLineNumber = "422"
             landmarkName = "-toClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -4487,8 +4290,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "428"
-            endingLineNumber = "428"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
             landmarkName = "-autoClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -4503,8 +4306,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
+            startingLineNumber = "432"
+            endingLineNumber = "432"
             landmarkName = "-filterClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -4519,8 +4322,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
+            startingLineNumber = "437"
+            endingLineNumber = "437"
             landmarkName = "-voiceClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -5495,8 +5298,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "-resetCellWithModel:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5575,8 +5378,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "465"
-            endingLineNumber = "465"
+            startingLineNumber = "463"
+            endingLineNumber = "463"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -5591,8 +5394,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "-resetCellWithModel:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5607,8 +5410,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "-resetCellWithModel:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5623,8 +5426,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "-resetCellWithModel:"
             landmarkType = "7">
             <Actions>
@@ -5647,8 +5450,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "-refreshTimer"
             landmarkType = "7">
          </BreakpointContent>
@@ -5663,8 +5466,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "503"
-            endingLineNumber = "503"
+            startingLineNumber = "501"
+            endingLineNumber = "501"
             landmarkName = "-requestList"
             landmarkType = "7">
          </BreakpointContent>
@@ -5679,8 +5482,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5695,8 +5498,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5711,8 +5514,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "-requestList"
             landmarkType = "7">
          </BreakpointContent>
@@ -5727,8 +5530,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "-requestList"
             landmarkType = "7">
          </BreakpointContent>
@@ -5759,8 +5562,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderDetail/OrderDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "-requestList"
             landmarkType = "7">
          </BreakpointContent>
@@ -5903,8 +5706,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "427"
-            endingLineNumber = "427"
+            startingLineNumber = "425"
+            endingLineNumber = "425"
             landmarkName = "-requestExtendToken"
             landmarkType = "7">
             <Locations>
@@ -6034,22 +5837,6 @@
             startingLineNumber = "343"
             endingLineNumber = "343"
             landmarkName = "-imageSelect:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B2A02CEC-A1D0-47EE-88FA-B3CB67B4D7B9"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/Order/ScanOrder/AddCar/AddCarVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "480"
-            endingLineNumber = "480"
-            landmarkName = "+exchangeVehicleTypeWithName:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6319,8 +6106,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderDetail/OrderDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "-trackView"
             landmarkType = "7">
          </BreakpointContent>
@@ -6351,9 +6138,9 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderDetail/OrderDetailTopView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "412"
-            endingLineNumber = "412"
-            landmarkName = "-resetViewWithModel:"
+            startingLineNumber = "411"
+            endingLineNumber = "411"
+            landmarkName = "-resetCellWithModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6399,9 +6186,9 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderDetail/OrderDetailTopView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "415"
-            endingLineNumber = "415"
-            landmarkName = "-addLabel:top:"
+            startingLineNumber = "414"
+            endingLineNumber = "414"
+            landmarkName = "-resetCellWithModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6415,8 +6202,8 @@
             filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "-requestUpuserLocation:"
             landmarkType = "7">
          </BreakpointContent>
@@ -6431,8 +6218,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderDetail/SelfPossessOrderDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-requestList"
             landmarkType = "7">
          </BreakpointContent>

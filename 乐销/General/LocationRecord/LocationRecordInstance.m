@@ -95,80 +95,22 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
 #pragma mark 交通部
 -(void)startLocationWithShippingNoteInfos:(NSArray *)shippingNoteInfos listener:(void(^)(id model, NSError *error))listener{
     NSMutableArray * aryDatas = [NSMutableArray new];
-    for (ModelOrderList * modelItem in shippingNoteInfos) {
-        if ([modelItem isKindOfClass:[ModelOrderList class]]) {
-            [RequestApi requestTransportDeptlWithId:modelItem.startAreaId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                NSString * startCode = [response stringValueForKey:@"code"];
-                [RequestApi requestTransportDeptlWithId:modelItem.endAreaId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                    NSString * endCode = [response stringValueForKey:@"code"];
-                    if (isStr(startCode)&& isStr(endCode)) {
-                        [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":startCode,@"endCountrySubdivisionCode":endCode}];
-                        [self.mapTransport startLocationWithShippingNoteInfos:aryDatas listener:listener];
-                        return;
-                    }
-                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                    
-                }];
-            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                
-            }];
-        }else if ([modelItem isKindOfClass:[ModelBulkCargoOrder class]]){
-            ModelBulkCargoOrder * modelBulkItem = (ModelBulkCargoOrder *)modelItem;
-            [RequestApi requestTransportDeptlWithId:modelBulkItem.startTownId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                NSString * startCode = [response stringValueForKey:@"code"];
-                [RequestApi requestTransportDeptlWithId:modelBulkItem.endTownId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                    NSString * endCode = [response stringValueForKey:@"code"];
-                    if (isStr(startCode)&& isStr(endCode)) {
-                        [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelBulkItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":startCode,@"endCountrySubdivisionCode":endCode}];
-                        [self.mapTransport startLocationWithShippingNoteInfos:aryDatas listener:listener];
-                        return;
-                    }
-                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                    
-                }];
-            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                
-            }];
+    for (ModelTransportOrder * modelItem in shippingNoteInfos) {
+        if ([modelItem isKindOfClass:[ModelTransportOrder class]]) {
+            [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelItem.orderNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":modelItem.startCountyCode,@"endCountrySubdivisionCode":modelItem.endCountyCode}];
+            [self.mapTransport startLocationWithShippingNoteInfos:aryDatas listener:listener];
+            return;
         }
     }
 }
 -(void)stopLocationWithShippingNoteInfos:(NSArray *)shippingNoteInfos listener:(void(^)(id model, NSError *error))listener{
     NSMutableArray * aryDatas = [NSMutableArray new];
-    for (ModelOrderList * modelItem in shippingNoteInfos) {
-        if ([modelItem isKindOfClass:[ModelOrderList class]]) {
-            [RequestApi requestTransportDeptlWithId:modelItem.startAreaId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                NSString * startCode = [response stringValueForKey:@"code"];
-                [RequestApi requestTransportDeptlWithId:modelItem.endAreaId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                    NSString * endCode = [response stringValueForKey:@"code"];
-                    if (isStr(startCode)&& isStr(endCode)) {
-                        [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":startCode,@"endCountrySubdivisionCode":endCode}];
-                        [self.mapTransport stopLocationWithShippingNoteInfos:aryDatas listener:listener];
-                        return;
-                    }
-                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                    
-                }];
-            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                
-            }];
+    for (ModelTransportOrder * modelItem in shippingNoteInfos) {
+        if ([modelItem isKindOfClass:[ModelTransportOrder class]]) {
+            [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelItem.orderNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":modelItem.startCountyCode,@"endCountrySubdivisionCode":modelItem.endCountyCode}];
+            [self.mapTransport stopLocationWithShippingNoteInfos:aryDatas listener:listener];
             
-        }else if ([modelItem isKindOfClass:[ModelBulkCargoOrder class]]){
-                ModelBulkCargoOrder * modelBulkItem = (ModelBulkCargoOrder *)modelItem;
-                [RequestApi requestTransportDeptlWithId:modelBulkItem.startTownId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                    NSString * startCode = [response stringValueForKey:@"code"];
-                    [RequestApi requestTransportDeptlWithId:modelBulkItem.endTownId  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                        NSString * endCode = [response stringValueForKey:@"code"];
-                        if (isStr(startCode)&& isStr(endCode)) {
-                            [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelBulkItem.waybillNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":startCode,@"endCountrySubdivisionCode":endCode}];
-                            [self.mapTransport stopLocationWithShippingNoteInfos:aryDatas listener:listener];
-                            return;
-                        }
-                    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                        
-                    }];
-                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                    
-                }];        }
+        }
     }
 }
 #pragma mark delegate

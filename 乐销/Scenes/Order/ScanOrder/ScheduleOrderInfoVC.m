@@ -120,12 +120,12 @@
 }
 #pragma mark reques car
 - (void)requestCarList{
-    [RequestApi requestValidCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        NSMutableArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelValidCar"];
-//        self.confirmView.aryDatas = ary;
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+//    [RequestApi requestValidCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//        NSMutableArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelValidCar"];
+////        self.confirmView.aryDatas = ary;
+//    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//
+//    }];
 }
 
 - (void)requestConfirm:(ModelValidCar *)model phone:(NSString *)phone endAddrId:(double)endAddrId endAddr:(NSString *)endAddr endContact:(NSString *)endContact endPhone:(NSString *)endPhone endEntName:(NSString *)endEntName{

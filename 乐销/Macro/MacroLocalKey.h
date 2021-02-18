@@ -36,6 +36,7 @@
 
 
 //透明度
+#define COLOR_BLACK_ALPHA_PER30 [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.3]
 #define COLOR_BLACK_ALPHA_PER60 [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.6]
 #define COLOR_BLACK_ALPHA_PER90 [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.9]
 //map放大倍数

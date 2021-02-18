@@ -125,10 +125,8 @@
         [self configMediamsg:message];
         req.message = message;
         WXWebpageObject *ext = [WXWebpageObject object];
-        if (self.modelOrder.iDProperty) {
-            ext.webpageUrl = [NSString stringWithFormat:@"%@/h5/waybill/detail/%@",URL_SHARE,self.modelOrder.key];
-        }else{
-            ext.webpageUrl = [NSString stringWithFormat:@"%@/h5/bulk/detail/%@",URL_SHARE,self.modelBulkCargoOrder.key];
+        if (self.modelOrder.orderNumber) {
+            ext.webpageUrl = [NSString stringWithFormat:@"%@/h5/waybill/detail/%@",URL_SHARE,self.modelOrder.orderNumber];
         }
         message.mediaObject = ext;
         //默认是Session分享给朋友,Timeline是朋友圈,Favorite是收藏
@@ -152,10 +150,8 @@
         [self configMediamsg:message];
         req.message = message;
         WXWebpageObject *ext = [WXWebpageObject object];
-        if (self.modelOrder.iDProperty) {
-            ext.webpageUrl = [NSString stringWithFormat:@"%@/h5/waybill/detail/%@",URL_SHARE,self.modelOrder.key];
-        }else{
-            ext.webpageUrl = [NSString stringWithFormat:@"%@/h5/bulk/detail/%@",URL_SHARE,self.modelBulkCargoOrder.key];
+        if (self.modelOrder.orderNumber.length) {
+            ext.webpageUrl = [NSString stringWithFormat:@"%@/h5/waybill/detail/%@",URL_SHARE,self.modelOrder.orderNumber];
         }
         message.mediaObject = ext;
         //默认是Session分享给朋友,Timeline是朋友圈,Favorite是收藏
@@ -172,25 +168,19 @@
 }
 
 - (void) configMediamsg:(WXMediaMessage *)message{
-    if (self.modelOrder.iDProperty) {
+    if (self.modelOrder.orderNumber.length) {
         //集运
-        message.title = [NSString stringWithFormat:@"提单号：%@",self.modelOrder.blNumber];
+        message.title = [NSString stringWithFormat:@"运单单号：%@",self.modelOrder.orderNumber];
         NSMutableString *strDes = [NSMutableString new];
-        [strDes appendString:[NSString stringWithFormat:@"背箱方式：%@\n",self.modelOrder.total == 2?@"双背":@"单背"]];
-        [strDes appendString:[NSString stringWithFormat:@"%@：%@%@\n",self.modelOrder.orderType == ENUM_ORDER_TYPE_INPUT?@"提箱港":@"提箱点",UnPackStr(self.modelOrder.startProvinceName),[self.modelOrder.startPortName isEqualToString:self.modelOrder.startProvinceName]?@"":UnPackStr(self.modelOrder.startPortName)]];
-        [strDes appendString:[NSString stringWithFormat:@"%@：%@%@",self.modelOrder.orderType == ENUM_ORDER_TYPE_INPUT?@"卸货地":@"装货地",UnPackStr(self.modelOrder.placeProvinceName),[self.modelOrder.placeCityName isEqualToString:self.modelOrder.placeProvinceName]?@"":UnPackStr(self.modelOrder.placeCityName)]];
-        message.description = strDes;
-    }else{
-        message.title = [NSString stringWithFormat:@"订单号：%@",self.modelBulkCargoOrder.waybillNumber];
-        NSMutableString *strDes = [NSMutableString new];
-        [strDes appendString:[NSString stringWithFormat:@"货物：%@ %@%@  \n",UnPackStr(self.modelBulkCargoOrder.cargoName),NSNumber.dou(self.modelBulkCargoOrder.actualLoad),self.modelBulkCargoOrder.loadUnit]];
-        [strDes appendString:[NSString stringWithFormat:@"%@：%@%@\n",@"发货地",UnPackStr(self.modelBulkCargoOrder.startProvinceName),[self.modelBulkCargoOrder.startCityName isEqualToString:self.modelBulkCargoOrder.startProvinceName]?@"":UnPackStr(self.modelBulkCargoOrder.startCityName)]];
-        [strDes appendString:[NSString stringWithFormat:@"%@：%@%@",@"收货地",UnPackStr(self.modelBulkCargoOrder.endProvinceName),[self.modelBulkCargoOrder.endCityName isEqualToString:self.modelBulkCargoOrder.endProvinceName]?@"":UnPackStr(self.modelBulkCargoOrder.endCityName)]];
+//        [strDes appendString:[NSString stringWithFormat:@"背箱方式：%@\n",self.modelOrder.total == 2?@"双背":@"单背"]];
+
+        [strDes appendString:[NSString stringWithFormat:@"发货地：%@\n",[NSString stringWithFormat:@"%@%@%@%@",self.modelOrder.startProvinceName,[self.modelOrder.startCityName isEqualToString:self.modelOrder.startProvinceName]?UnPackStr(self.modelOrder.startCityName):@"",self.modelOrder.startCountyName,self.modelOrder.startAddr]]];
+        [strDes appendString:[NSString stringWithFormat:@"收货地：%@\n",[NSString stringWithFormat:@"%@%@%@%@",self.modelOrder.endProvinceName,[self.modelOrder.endCityName isEqualToString:self.modelOrder.endProvinceName]?UnPackStr(self.modelOrder.endCityName):@"",self.modelOrder.endCountyName,self.modelOrder.endAddr]]];
         message.description = strDes;
     }
     [message setThumbImage:[UIImage imageNamed:@"shareIcon"]];
 }
-+ (void)show:(ModelOrderList *)modelOrder{
++ (void)show:(ModelTransportOrder *)modelOrder{
     ShareView * share = [ShareView new];
     share.alpha = 0;
     share.modelOrder = modelOrder;
@@ -200,14 +190,5 @@
     }];
 }
 
-+ (void)showBulkCargo:(ModelBulkCargoOrder *)modelOrder{
-    ShareView * share = [ShareView new];
-    share.alpha = 0;
-    share.modelBulkCargoOrder = modelOrder;
-    [GB_Nav.lastVC.view addSubview:share];
-    [UIView animateWithDuration:0.2 animations:^{
-        share.alpha = 1;
-    }];
-}
 
 @end

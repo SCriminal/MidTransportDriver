@@ -103,16 +103,10 @@
 		D22F7DA21F666A3B000DB837 /* VideoPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D22F7DA11F666A3B000DB837 /* VideoPickerVC.m */; };
 		D22F88F41F94B2590005944C /* UIPickerView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D22F88F31F94B2590005944C /* UIPickerView+Category.m */; };
 		D23327AC21854FE000495488 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = D23327AB21854FE000495488 /* MapView.m */; };
-		D23327C121855BBE00495488 /* DriverOperateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D23327BF21855BBE00495488 /* DriverOperateVC.m */; };
-		D23327C421855EDC00495488 /* DriverOperateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D23327C321855EDC00495488 /* DriverOperateView.m */; };
 		D23327C82185A23900495488 /* OrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D23327C72185A23900495488 /* OrderListVC.m */; };
 		D23327CB2185A27900495488 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D23327CA2185A27900495488 /* OrderListCell.m */; };
-		D23327CE2185A6CB00495488 /* OrderListManagementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D23327CD2185A6CB00495488 /* OrderListManagementVC.m */; };
 		D23398601EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D233985F1EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m */; };
 		D23458401FD4E5E100F72EF5 /* UIImageView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D234583F1FD4E5E100F72EF5 /* UIImageView+Category.m */; };
-		D235C40725D282CC0044E34A /* BulkCargoOperateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D235C40325D282CC0044E34A /* BulkCargoOperateVC.m */; };
-		D235C40825D282CC0044E34A /* BulkCargoOperateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D235C40425D282CC0044E34A /* BulkCargoOperateView.m */; };
-		D235C40925D282CC0044E34A /* BulkCargoOperateLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = D235C40525D282CC0044E34A /* BulkCargoOperateLoadView.m */; };
 		D239D115218822E3009D7D45 /* PersonalCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D239D114218822E3009D7D45 /* PersonalCenterVC.m */; };
 		D239EACA1E2E0EB000E803F6 /* MJChiBaoZiHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D239EAC91E2E0EB000E803F6 /* MJChiBaoZiHeader.m */; };
 		D239EACD1E2E175100E803F6 /* CutomFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = D239EACC1E2E175100E803F6 /* CutomFooter.m */; };
@@ -138,7 +132,6 @@
 		D25145D21E33055300E8107F /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D25145D11E33055300E8107F /* NSArray+Category.m */; };
 		D2545A5D1E72AD2500DEC7CE /* UIControl+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2545A5C1E72AD2500DEC7CE /* UIControl+Category.m */; };
 		D257759524D2AF1300449C75 /* RejectOrderReason.m in Sources */ = {isa = PBXBuildFile; fileRef = D257759424D2AF1300449C75 /* RejectOrderReason.m */; };
-		D257759824D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m in Sources */ = {isa = PBXBuildFile; fileRef = D257759724D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m */; };
 		D259AC4A20F435CF00F71C87 /* SendMsgHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259AC4920F435CF00F71C87 /* SendMsgHelper.m */; };
 		D259D54A228E4B2F00CE2632 /* RequestApi+UserAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = D259D546228E4B2F00CE2632 /* RequestApi+UserAuth.m */; };
 		D259D54B228E4B2F00CE2632 /* RequestApi+UserApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D259D549228E4B2F00CE2632 /* RequestApi+UserApi.m */; };
@@ -166,6 +159,9 @@
 		D275DB381DFFA43B00670A40 /* NSData+transformData.m in Sources */ = {isa = PBXBuildFile; fileRef = D275DB221DFFA43B00670A40 /* NSData+transformData.m */; };
 		D275DB411DFFA43B00670A40 /* UITabBar+littleRedDotBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = D275DB341DFFA43B00670A40 /* UITabBar+littleRedDotBadge.m */; };
 		D27646AB1F2B0FD2001096DB /* UIView+Coordeinate.m in Sources */ = {isa = PBXBuildFile; fileRef = D27646AA1F2B0FD2001096DB /* UIView+Coordeinate.m */; };
+		D279A47A25DE3B5D0088DAAB /* CarHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D279A47925DE3B5D0088DAAB /* CarHelper.m */; };
+		D279A47F25DE3D480088DAAB /* BulkCargoOperateLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = D279A47B25DE3D480088DAAB /* BulkCargoOperateLoadView.m */; };
+		D279A48025DE3D480088DAAB /* BulkCargoOrderDetailTrackView.m in Sources */ = {isa = PBXBuildFile; fileRef = D279A47C25DE3D480088DAAB /* BulkCargoOrderDetailTrackView.m */; };
 		D279C0141E29D77800D0FF94 /* CustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D279C0131E29D77800D0FF94 /* CustomPicker.m */; };
 		D2821CBC218AD9B90057688B /* ORChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2821CB0218AD9B80057688B /* ORChartView.m */; };
 		D2821CBD218AD9B90057688B /* UIButton+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = D2821CB3218AD9B80057688B /* UIButton+EnlargeTouchArea.m */; };
@@ -199,7 +195,6 @@
 		D28B6FE71E794589001CC3A8 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28B6FE61E794589001CC3A8 /* BaseCell.m */; };
 		D28F186F2551264E0020BF65 /* PrivateAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D28F186E2551264E0020BF65 /* PrivateAlertView.m */; };
 		D290DB28226EF586004B18B4 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = D290DB27226EF586004B18B4 /* ShareView.m */; };
-		D290DB2C226F01F0004B18B4 /* HotLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = D290DB2B226F01F0004B18B4 /* HotLineView.m */; };
 		D29191FE21E0A6F6001B2F9E /* ModelOrderList.m in Sources */ = {isa = PBXBuildFile; fileRef = D29191FC21E0A6F6001B2F9E /* ModelOrderList.m */; };
 		D293168C1EF3B62F0034E6FB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D293168A1EF3B62F0034E6FB /* LoginViewController.m */; };
 		D29316901EF3BD980034E6FB /* GlobalMethod+Authority.m in Sources */ = {isa = PBXBuildFile; fileRef = D293168F1EF3BD980034E6FB /* GlobalMethod+Authority.m */; };
@@ -232,19 +227,9 @@
 		D2A1EF4B25CA9A180066864D /* SelfPossessOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF4A25CA9A180066864D /* SelfPossessOrderListVC.m */; };
 		D2A1EF4E25CA9AD10066864D /* SelfPossessOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF4D25CA9AD10066864D /* SelfPossessOrderDetailVC.m */; };
 		D2A1EF5125CBECE30066864D /* ModelModule.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A1EF5025CBECDF0066864D /* ModelModule.m */; };
-		D2A300202265B7CD00AE2EC3 /* AccountListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */; };
-		D2A300232265B7DF00AE2EC3 /* AccountListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300222265B7DF00AE2EC3 /* AccountListCell.m */; };
 		D2A300332266BF9500AE2EC3 /* EditInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300322266BF9500AE2EC3 /* EditInfoVC.m */; };
 		D2A300372266D21800AE2EC3 /* GuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300362266D21800AE2EC3 /* GuideView.m */; };
-		D2A3003A2266F75A00AE2EC3 /* InputNumView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300392266F75A00AE2EC3 /* InputNumView.m */; };
-		D2A3003D226704D100AE2EC3 /* InputPlumbumNumView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3003C226704D100AE2EC3 /* InputPlumbumNumView.m */; };
-		D2A30041226706CE00AE2EC3 /* OrderAccountListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A30040226706CE00AE2EC3 /* OrderAccountListVC.m */; };
-		D2A300442267072000AE2EC3 /* OrderAccountListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300432267072000AE2EC3 /* OrderAccountListCell.m */; };
-		D2A3004722671E1000AE2EC3 /* InputAccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3004622671E1000AE2EC3 /* InputAccountView.m */; };
-		D2A3004A2267248E00AE2EC3 /* AccountFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A300492267248E00AE2EC3 /* AccountFilterView.m */; };
 		D2A3FD651F0B1EDB000A5C1B /* BaseVC+Location.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A3FD641F0B1EDB000A5C1B /* BaseVC+Location.m */; };
-		D2A797612488C8470062B4F6 /* CarDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A7975D2488C8470062B4F6 /* CarDetailView.m */; };
-		D2A797622488C8470062B4F6 /* CarDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A797602488C8470062B4F6 /* CarDetailVC.m */; };
 		D2A946D72192B69C00AD1E5B /* ModelProvince.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946D52192B69B00AD1E5B /* ModelProvince.m */; };
 		D2A946DA2192B75600AD1E5B /* SelectDistrictView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946D92192B75600AD1E5B /* SelectDistrictView.m */; };
 		D2A946DD2192C66900AD1E5B /* GlobalMethod+Logical.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946DC2192C66900AD1E5B /* GlobalMethod+Logical.m */; };
@@ -299,15 +284,8 @@
 		D2C5580C238CB7DB0050694F /* ModelScheduleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C5580B238CB7DB0050694F /* ModelScheduleInfo.m */; };
 		D2C5580F238CC18D0050694F /* ScheduleConfirmView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C5580E238CC18D0050694F /* ScheduleConfirmView.m */; };
 		D2C55812238CC9D50050694F /* ModelValidCar.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C55810238CC9D40050694F /* ModelValidCar.m */; };
-		D2C582712480F2C800121039 /* CarListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C582702480F2C800121039 /* CarListVC.m */; };
-		D2C582742480F39500121039 /* CarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C582732480F39500121039 /* CarListCell.m */; };
-		D2C6D14322DEBBFA00A22EA6 /* BulkCargoListManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D14222DEBBFA00A22EA6 /* BulkCargoListManageVC.m */; };
-		D2C6D14622DEBC3100A22EA6 /* BulkCargoListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D14522DEBC3100A22EA6 /* BulkCargoListVC.m */; };
-		D2C6D14922DEBDE600A22EA6 /* BulkCargoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D14822DEBDE600A22EA6 /* BulkCargoListCell.m */; };
 		D2C6D14C22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D14B22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m */; };
-		D2C6D15422DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D15322DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.m */; };
 		D2C6D15B22DEEEF600A22EA6 /* ModelBulkCargoOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D15A22DEEEF600A22EA6 /* ModelBulkCargoOrder.m */; };
-		D2C6D15E22DF0FBB00A22EA6 /* BulkCargoOrderDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D15D22DF0FBB00A22EA6 /* BulkCargoOrderDetailView.m */; };
 		D2C6D16122DF245600A22EA6 /* ModelLocationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D15F22DF245500A22EA6 /* ModelLocationItem.m */; };
 		D2C99C341E0BA42F001D5DBA /* RadioBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C99C331E0BA42F001D5DBA /* RadioBtnView.m */; };
 		D2C99C381E0BC021001D5DBA /* AddSubtractView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C99C371E0BC021001D5DBA /* AddSubtractView.m */; };
@@ -371,8 +349,6 @@
 		D2F3A50C25779B6F009EBF3F /* OrderListCellBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F3A50B25779B6F009EBF3F /* OrderListCellBtnView.m */; };
 		D2F733B41E8642EE0008E561 /* LocalData.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F733B31E8642EE0008E561 /* LocalData.json */; };
 		D2F926AC24CFC62900FB256D /* tab_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F926AB24CFC62900FB256D /* tab_shadow@2x.png */; };
-		D2FC339D247F5776000DE338 /* AddCarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC339B247F5776000DE338 /* AddCarVC.m */; };
-		D2FC33A0247F57AE000DE338 /* AuthorityImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC339F247F57AE000DE338 /* AuthorityImageView.m */; };
 		D2FC33A4247F5A56000DE338 /* ModelCar.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC33A2247F5A56000DE338 /* ModelCar.m */; };
 		D2FD667620D254930048D351 /* module.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2FD667520D254920048D351 /* module.plist */; };
 		D2FF933D20D1118D00B198EB /* UIFont+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FF933C20D1118D00B198EB /* UIFont+Category.m */; };
@@ -633,26 +609,14 @@
 		D22F88F31F94B2590005944C /* UIPickerView+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIPickerView+Category.m"; sourceTree = "<group>"; };
 		D23327AA21854FE000495488 /* MapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
 		D23327AB21854FE000495488 /* MapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
-		D23327BF21855BBE00495488 /* DriverOperateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverOperateVC.m; sourceTree = "<group>"; };
-		D23327C021855BBE00495488 /* DriverOperateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverOperateVC.h; sourceTree = "<group>"; };
-		D23327C221855EDC00495488 /* DriverOperateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DriverOperateView.h; sourceTree = "<group>"; };
-		D23327C321855EDC00495488 /* DriverOperateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DriverOperateView.m; sourceTree = "<group>"; };
 		D23327C62185A23900495488 /* OrderListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderListVC.h; sourceTree = "<group>"; };
 		D23327C72185A23900495488 /* OrderListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderListVC.m; sourceTree = "<group>"; };
 		D23327C92185A27900495488 /* OrderListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderListCell.h; sourceTree = "<group>"; };
 		D23327CA2185A27900495488 /* OrderListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderListCell.m; sourceTree = "<group>"; };
-		D23327CC2185A6CB00495488 /* OrderListManagementVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderListManagementVC.h; sourceTree = "<group>"; };
-		D23327CD2185A6CB00495488 /* OrderListManagementVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderListManagementVC.m; sourceTree = "<group>"; };
 		D233985E1EFCFFD6001F71D6 /* NSMutableParagraphStyle+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableParagraphStyle+Category.h"; sourceTree = "<group>"; };
 		D233985F1EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableParagraphStyle+Category.m"; sourceTree = "<group>"; };
 		D234583E1FD4E5E100F72EF5 /* UIImageView+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Category.h"; sourceTree = "<group>"; };
 		D234583F1FD4E5E100F72EF5 /* UIImageView+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Category.m"; sourceTree = "<group>"; };
-		D235C40125D282CC0044E34A /* BulkCargoOperateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkCargoOperateView.h; sourceTree = "<group>"; };
-		D235C40225D282CC0044E34A /* BulkCargoOperateLoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkCargoOperateLoadView.h; sourceTree = "<group>"; };
-		D235C40325D282CC0044E34A /* BulkCargoOperateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOperateVC.m; sourceTree = "<group>"; };
-		D235C40425D282CC0044E34A /* BulkCargoOperateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOperateView.m; sourceTree = "<group>"; };
-		D235C40525D282CC0044E34A /* BulkCargoOperateLoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOperateLoadView.m; sourceTree = "<group>"; };
-		D235C40625D282CC0044E34A /* BulkCargoOperateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkCargoOperateVC.h; sourceTree = "<group>"; };
 		D239D113218822E3009D7D45 /* PersonalCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalCenterVC.h; sourceTree = "<group>"; };
 		D239D114218822E3009D7D45 /* PersonalCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalCenterVC.m; sourceTree = "<group>"; };
 		D239EAC81E2E0EB000E803F6 /* MJChiBaoZiHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJChiBaoZiHeader.h; sourceTree = "<group>"; };
@@ -701,8 +665,6 @@
 		D2545A5C1E72AD2500DEC7CE /* UIControl+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+Category.m"; sourceTree = "<group>"; };
 		D257759324D2AF1300449C75 /* RejectOrderReason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RejectOrderReason.h; sourceTree = "<group>"; };
 		D257759424D2AF1300449C75 /* RejectOrderReason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RejectOrderReason.m; sourceTree = "<group>"; };
-		D257759624D3BFB000449C75 /* BulkCargoOrderDetailTrackView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulkCargoOrderDetailTrackView.h; sourceTree = "<group>"; };
-		D257759724D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOrderDetailTrackView.m; sourceTree = "<group>"; };
 		D259AC4820F435CF00F71C87 /* SendMsgHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMsgHelper.h; sourceTree = "<group>"; };
 		D259AC4920F435CF00F71C87 /* SendMsgHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendMsgHelper.m; sourceTree = "<group>"; };
 		D259D546228E4B2F00CE2632 /* RequestApi+UserAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+UserAuth.m"; sourceTree = "<group>"; };
@@ -755,6 +717,12 @@
 		D275DB341DFFA43B00670A40 /* UITabBar+littleRedDotBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+littleRedDotBadge.m"; sourceTree = "<group>"; };
 		D27646A91F2B0FD2001096DB /* UIView+Coordeinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Coordeinate.h"; sourceTree = "<group>"; };
 		D27646AA1F2B0FD2001096DB /* UIView+Coordeinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Coordeinate.m"; sourceTree = "<group>"; };
+		D279A47825DE3B5D0088DAAB /* CarHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarHelper.h; sourceTree = "<group>"; };
+		D279A47925DE3B5D0088DAAB /* CarHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarHelper.m; sourceTree = "<group>"; };
+		D279A47B25DE3D480088DAAB /* BulkCargoOperateLoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOperateLoadView.m; sourceTree = "<group>"; };
+		D279A47C25DE3D480088DAAB /* BulkCargoOrderDetailTrackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOrderDetailTrackView.m; sourceTree = "<group>"; };
+		D279A47D25DE3D480088DAAB /* BulkCargoOperateLoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkCargoOperateLoadView.h; sourceTree = "<group>"; };
+		D279A47E25DE3D480088DAAB /* BulkCargoOrderDetailTrackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkCargoOrderDetailTrackView.h; sourceTree = "<group>"; };
 		D279C0121E29D77800D0FF94 /* CustomPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPicker.h; sourceTree = "<group>"; };
 		D279C0131E29D77800D0FF94 /* CustomPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPicker.m; sourceTree = "<group>"; };
 		D2821CB0218AD9B80057688B /* ORChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORChartView.m; sourceTree = "<group>"; };
@@ -817,8 +785,6 @@
 		D29072CC1F20919B00726EBB /* MacroLocalKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroLocalKey.h; sourceTree = "<group>"; };
 		D290DB26226EF586004B18B4 /* ShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
 		D290DB27226EF586004B18B4 /* ShareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
-		D290DB2A226F01F0004B18B4 /* HotLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotLineView.h; sourceTree = "<group>"; };
-		D290DB2B226F01F0004B18B4 /* HotLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotLineView.m; sourceTree = "<group>"; };
 		D29191FC21E0A6F6001B2F9E /* ModelOrderList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelOrderList.m; sourceTree = "<group>"; };
 		D29191FD21E0A6F6001B2F9E /* ModelOrderList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelOrderList.h; sourceTree = "<group>"; };
 		D29316891EF3B62F0034E6FB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -885,32 +851,12 @@
 		D2A1EF4D25CA9AD10066864D /* SelfPossessOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfPossessOrderDetailVC.m; sourceTree = "<group>"; };
 		D2A1EF4F25CBECDF0066864D /* ModelModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelModule.h; sourceTree = "<group>"; };
 		D2A1EF5025CBECDF0066864D /* ModelModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelModule.m; sourceTree = "<group>"; };
-		D2A3001E2265B7CD00AE2EC3 /* AccountListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountListVC.h; sourceTree = "<group>"; };
-		D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountListVC.m; sourceTree = "<group>"; };
-		D2A300212265B7DF00AE2EC3 /* AccountListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountListCell.h; sourceTree = "<group>"; };
-		D2A300222265B7DF00AE2EC3 /* AccountListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountListCell.m; sourceTree = "<group>"; };
 		D2A300312266BF9500AE2EC3 /* EditInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditInfoVC.h; sourceTree = "<group>"; };
 		D2A300322266BF9500AE2EC3 /* EditInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditInfoVC.m; sourceTree = "<group>"; };
 		D2A300352266D21800AE2EC3 /* GuideView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuideView.h; sourceTree = "<group>"; };
 		D2A300362266D21800AE2EC3 /* GuideView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuideView.m; sourceTree = "<group>"; };
-		D2A300382266F75A00AE2EC3 /* InputNumView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputNumView.h; sourceTree = "<group>"; };
-		D2A300392266F75A00AE2EC3 /* InputNumView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InputNumView.m; sourceTree = "<group>"; };
-		D2A3003B226704D100AE2EC3 /* InputPlumbumNumView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputPlumbumNumView.h; sourceTree = "<group>"; };
-		D2A3003C226704D100AE2EC3 /* InputPlumbumNumView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InputPlumbumNumView.m; sourceTree = "<group>"; };
-		D2A3003F226706CE00AE2EC3 /* OrderAccountListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderAccountListVC.h; sourceTree = "<group>"; };
-		D2A30040226706CE00AE2EC3 /* OrderAccountListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderAccountListVC.m; sourceTree = "<group>"; };
-		D2A300422267072000AE2EC3 /* OrderAccountListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderAccountListCell.h; sourceTree = "<group>"; };
-		D2A300432267072000AE2EC3 /* OrderAccountListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderAccountListCell.m; sourceTree = "<group>"; };
-		D2A3004522671E1000AE2EC3 /* InputAccountView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputAccountView.h; sourceTree = "<group>"; };
-		D2A3004622671E1000AE2EC3 /* InputAccountView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InputAccountView.m; sourceTree = "<group>"; };
-		D2A300482267248E00AE2EC3 /* AccountFilterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountFilterView.h; sourceTree = "<group>"; };
-		D2A300492267248E00AE2EC3 /* AccountFilterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountFilterView.m; sourceTree = "<group>"; };
 		D2A3FD631F0B1EDB000A5C1B /* BaseVC+Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BaseVC+Location.h"; sourceTree = "<group>"; };
 		D2A3FD641F0B1EDB000A5C1B /* BaseVC+Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseVC+Location.m"; sourceTree = "<group>"; };
-		D2A7975D2488C8470062B4F6 /* CarDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarDetailView.m; sourceTree = "<group>"; };
-		D2A7975E2488C8470062B4F6 /* CarDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarDetailVC.h; sourceTree = "<group>"; };
-		D2A7975F2488C8470062B4F6 /* CarDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarDetailView.h; sourceTree = "<group>"; };
-		D2A797602488C8470062B4F6 /* CarDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarDetailVC.m; sourceTree = "<group>"; };
 		D2A946D52192B69B00AD1E5B /* ModelProvince.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelProvince.m; sourceTree = "<group>"; };
 		D2A946D62192B69B00AD1E5B /* ModelProvince.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelProvince.h; sourceTree = "<group>"; };
 		D2A946D82192B75600AD1E5B /* SelectDistrictView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDistrictView.h; sourceTree = "<group>"; };
@@ -1018,24 +964,10 @@
 		D2C5580E238CC18D0050694F /* ScheduleConfirmView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleConfirmView.m; sourceTree = "<group>"; };
 		D2C55810238CC9D40050694F /* ModelValidCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelValidCar.m; sourceTree = "<group>"; };
 		D2C55811238CC9D40050694F /* ModelValidCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelValidCar.h; sourceTree = "<group>"; };
-		D2C5826F2480F2C800121039 /* CarListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarListVC.h; sourceTree = "<group>"; };
-		D2C582702480F2C800121039 /* CarListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarListVC.m; sourceTree = "<group>"; };
-		D2C582722480F39500121039 /* CarListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarListCell.h; sourceTree = "<group>"; };
-		D2C582732480F39500121039 /* CarListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarListCell.m; sourceTree = "<group>"; };
-		D2C6D14122DEBBFA00A22EA6 /* BulkCargoListManageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulkCargoListManageVC.h; sourceTree = "<group>"; };
-		D2C6D14222DEBBFA00A22EA6 /* BulkCargoListManageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BulkCargoListManageVC.m; sourceTree = "<group>"; };
-		D2C6D14422DEBC3100A22EA6 /* BulkCargoListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulkCargoListVC.h; sourceTree = "<group>"; };
-		D2C6D14522DEBC3100A22EA6 /* BulkCargoListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BulkCargoListVC.m; sourceTree = "<group>"; };
-		D2C6D14722DEBDE600A22EA6 /* BulkCargoListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulkCargoListCell.h; sourceTree = "<group>"; };
-		D2C6D14822DEBDE600A22EA6 /* BulkCargoListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BulkCargoListCell.m; sourceTree = "<group>"; };
 		D2C6D14A22DEBE8F00A22EA6 /* RequestApi+BulkCargo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+BulkCargo.h"; sourceTree = "<group>"; };
 		D2C6D14B22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+BulkCargo.m"; sourceTree = "<group>"; };
-		D2C6D15222DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulkCargoOrderDetailVC.h; sourceTree = "<group>"; };
-		D2C6D15322DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOrderDetailVC.m; sourceTree = "<group>"; };
 		D2C6D15922DEEEF600A22EA6 /* ModelBulkCargoOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBulkCargoOrder.h; sourceTree = "<group>"; };
 		D2C6D15A22DEEEF600A22EA6 /* ModelBulkCargoOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBulkCargoOrder.m; sourceTree = "<group>"; };
-		D2C6D15C22DF0FBB00A22EA6 /* BulkCargoOrderDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulkCargoOrderDetailView.h; sourceTree = "<group>"; };
-		D2C6D15D22DF0FBB00A22EA6 /* BulkCargoOrderDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOrderDetailView.m; sourceTree = "<group>"; };
 		D2C6D15F22DF245500A22EA6 /* ModelLocationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelLocationItem.m; sourceTree = "<group>"; };
 		D2C6D16022DF245600A22EA6 /* ModelLocationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelLocationItem.h; sourceTree = "<group>"; };
 		D2C99C321E0BA42F001D5DBA /* RadioBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioBtnView.h; sourceTree = "<group>"; };
@@ -1148,10 +1080,6 @@
 		D2F3A50B25779B6F009EBF3F /* OrderListCellBtnView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderListCellBtnView.m; sourceTree = "<group>"; };
 		D2F733B31E8642EE0008E561 /* LocalData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocalData.json; sourceTree = "<group>"; };
 		D2F926AB24CFC62900FB256D /* tab_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_shadow@2x.png"; sourceTree = "<group>"; };
-		D2FC339B247F5776000DE338 /* AddCarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCarVC.m; sourceTree = "<group>"; };
-		D2FC339C247F5776000DE338 /* AddCarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCarVC.h; sourceTree = "<group>"; };
-		D2FC339E247F57AE000DE338 /* AuthorityImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorityImageView.h; sourceTree = "<group>"; };
-		D2FC339F247F57AE000DE338 /* AuthorityImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorityImageView.m; sourceTree = "<group>"; };
 		D2FC33A2247F5A56000DE338 /* ModelCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelCar.m; sourceTree = "<group>"; };
 		D2FC33A3247F5A56000DE338 /* ModelCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelCar.h; sourceTree = "<group>"; };
 		D2FD667520D254920048D351 /* module.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = module.plist; sourceTree = "<group>"; };
@@ -1654,16 +1582,8 @@
 		D23327BE21855BBE00495488 /* DriverOperate */ = {
 			isa = PBXGroup;
 			children = (
-				D23327C021855BBE00495488 /* DriverOperateVC.h */,
-				D23327BF21855BBE00495488 /* DriverOperateVC.m */,
 				D2D5267325B0450B00F99306 /* OrcHelper.h */,
 				D2D5267425B0450B00F99306 /* OrcHelper.m */,
-				D23327C221855EDC00495488 /* DriverOperateView.h */,
-				D23327C321855EDC00495488 /* DriverOperateView.m */,
-				D2A300382266F75A00AE2EC3 /* InputNumView.h */,
-				D2A300392266F75A00AE2EC3 /* InputNumView.m */,
-				D2A3003B226704D100AE2EC3 /* InputPlumbumNumView.h */,
-				D2A3003C226704D100AE2EC3 /* InputPlumbumNumView.m */,
 			);
 			path = DriverOperate;
 			sourceTree = "<group>";
@@ -1683,25 +1603,10 @@
 				D20DCA032578CA68003B89B5 /* OrderFilterView.m */,
 				D2F3A50A25779B6F009EBF3F /* OrderListCellBtnView.h */,
 				D2F3A50B25779B6F009EBF3F /* OrderListCellBtnView.m */,
-				D23327CC2185A6CB00495488 /* OrderListManagementVC.h */,
-				D23327CD2185A6CB00495488 /* OrderListManagementVC.m */,
 				D267E698234C9A62005735B0 /* OrderManagementBottomView.h */,
 				D267E699234C9A62005735B0 /* OrderManagementBottomView.m */,
 			);
 			path = OrderList;
-			sourceTree = "<group>";
-		};
-		D235C40025D282CC0044E34A /* 散货操作 */ = {
-			isa = PBXGroup;
-			children = (
-				D235C40225D282CC0044E34A /* BulkCargoOperateLoadView.h */,
-				D235C40525D282CC0044E34A /* BulkCargoOperateLoadView.m */,
-				D235C40625D282CC0044E34A /* BulkCargoOperateVC.h */,
-				D235C40325D282CC0044E34A /* BulkCargoOperateVC.m */,
-				D235C40125D282CC0044E34A /* BulkCargoOperateView.h */,
-				D235C40425D282CC0044E34A /* BulkCargoOperateView.m */,
-			);
-			path = "散货操作";
 			sourceTree = "<group>";
 		};
 		D239D112218822D6009D7D45 /* DriverDetail */ = {
@@ -1802,7 +1707,6 @@
 			isa = PBXGroup;
 			children = (
 				D22B1D512383E32C00BC00F0 /* ScanOrder */,
-				D2C6D14022DEBBC100A22EA6 /* 散货 */,
 				D275D9E521796FA20060BB0E /* OrderDetail */,
 				D23327C52185A22B00495488 /* OrderList */,
 				D23327BE21855BBE00495488 /* DriverOperate */,
@@ -1878,6 +1782,10 @@
 		D275D9E521796FA20060BB0E /* OrderDetail */ = {
 			isa = PBXGroup;
 			children = (
+				D279A47D25DE3D480088DAAB /* BulkCargoOperateLoadView.h */,
+				D279A47B25DE3D480088DAAB /* BulkCargoOperateLoadView.m */,
+				D279A47E25DE3D480088DAAB /* BulkCargoOrderDetailTrackView.h */,
+				D279A47C25DE3D480088DAAB /* BulkCargoOrderDetailTrackView.m */,
 				D24CBB702580782500F6AB3E /* RejectOrderView.h */,
 				D24CBB6F2580782500F6AB3E /* RejectOrderView.m */,
 				D2CF118221B8F88D001475B3 /* OrderDetailTopView.h */,
@@ -2137,7 +2045,6 @@
 				D20E85F625875D1F00C9EE4C /* 交易明细 */,
 				D20E85F225833EC600C9EE4C /* 我的钱包 */,
 				D2DDCFAD233380AB002A24C4 /* BankCard */,
-				D290DB29226F0180004B18B4 /* HotLineView */,
 				D290DB25226EF579004B18B4 /* ShareView */,
 				D2A300342266D20900AE2EC3 /* GuideVC */,
 				D2A3001D2265B7AD00AE2EC3 /* AccountList */,
@@ -2285,15 +2192,6 @@
 			path = ShareView;
 			sourceTree = "<group>";
 		};
-		D290DB29226F0180004B18B4 /* HotLineView */ = {
-			isa = PBXGroup;
-			children = (
-				D290DB2A226F01F0004B18B4 /* HotLineView.h */,
-				D290DB2B226F01F0004B18B4 /* HotLineView.m */,
-			);
-			path = HotLineView;
-			sourceTree = "<group>";
-		};
 		D29316881EF3B62F0034E6FB /* 登录 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2425,13 +2323,6 @@
 		D2A3001D2265B7AD00AE2EC3 /* AccountList */ = {
 			isa = PBXGroup;
 			children = (
-				D2A3003E226706BB00AE2EC3 /* OrderAccountList */,
-				D2A3001E2265B7CD00AE2EC3 /* AccountListVC.h */,
-				D2A3001F2265B7CD00AE2EC3 /* AccountListVC.m */,
-				D2A300212265B7DF00AE2EC3 /* AccountListCell.h */,
-				D2A300222265B7DF00AE2EC3 /* AccountListCell.m */,
-				D2A300482267248E00AE2EC3 /* AccountFilterView.h */,
-				D2A300492267248E00AE2EC3 /* AccountFilterView.m */,
 				D2BCE9142269653A00E8C4E2 /* ListAlertView.h */,
 				D2BCE9152269653A00E8C4E2 /* ListAlertView.m */,
 			);
@@ -2445,30 +2336,6 @@
 				D2A300362266D21800AE2EC3 /* GuideView.m */,
 			);
 			path = GuideVC;
-			sourceTree = "<group>";
-		};
-		D2A3003E226706BB00AE2EC3 /* OrderAccountList */ = {
-			isa = PBXGroup;
-			children = (
-				D2A3003F226706CE00AE2EC3 /* OrderAccountListVC.h */,
-				D2A30040226706CE00AE2EC3 /* OrderAccountListVC.m */,
-				D2A300422267072000AE2EC3 /* OrderAccountListCell.h */,
-				D2A300432267072000AE2EC3 /* OrderAccountListCell.m */,
-				D2A3004522671E1000AE2EC3 /* InputAccountView.h */,
-				D2A3004622671E1000AE2EC3 /* InputAccountView.m */,
-			);
-			path = OrderAccountList;
-			sourceTree = "<group>";
-		};
-		D2A7975C2488C8470062B4F6 /* CarDetail */ = {
-			isa = PBXGroup;
-			children = (
-				D2A7975E2488C8470062B4F6 /* CarDetailVC.h */,
-				D2A797602488C8470062B4F6 /* CarDetailVC.m */,
-				D2A7975F2488C8470062B4F6 /* CarDetailView.h */,
-				D2A7975D2488C8470062B4F6 /* CarDetailView.m */,
-			);
-			path = CarDetail;
 			sourceTree = "<group>";
 		};
 		D2A946D02192B0B600AD1E5B /* SelectAddress */ = {
@@ -2877,34 +2744,6 @@
 			path = "版本升级页面";
 			sourceTree = "<group>";
 		};
-		D2C6D14022DEBBC100A22EA6 /* 散货 */ = {
-			isa = PBXGroup;
-			children = (
-				D235C40025D282CC0044E34A /* 散货操作 */,
-				D2C6D14D22DEC95D00A22EA6 /* 散货详情 */,
-				D2C6D14122DEBBFA00A22EA6 /* BulkCargoListManageVC.h */,
-				D2C6D14222DEBBFA00A22EA6 /* BulkCargoListManageVC.m */,
-				D2C6D14422DEBC3100A22EA6 /* BulkCargoListVC.h */,
-				D2C6D14522DEBC3100A22EA6 /* BulkCargoListVC.m */,
-				D2C6D14722DEBDE600A22EA6 /* BulkCargoListCell.h */,
-				D2C6D14822DEBDE600A22EA6 /* BulkCargoListCell.m */,
-			);
-			path = "散货";
-			sourceTree = "<group>";
-		};
-		D2C6D14D22DEC95D00A22EA6 /* 散货详情 */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6D15222DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.h */,
-				D2C6D15322DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.m */,
-				D2C6D15C22DF0FBB00A22EA6 /* BulkCargoOrderDetailView.h */,
-				D2C6D15D22DF0FBB00A22EA6 /* BulkCargoOrderDetailView.m */,
-				D257759624D3BFB000449C75 /* BulkCargoOrderDetailTrackView.h */,
-				D257759724D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m */,
-			);
-			path = "散货详情";
-			sourceTree = "<group>";
-		};
 		D2C6D15822DEEEF600A22EA6 /* 散货 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3157,18 +2996,11 @@
 		D2FC339A247F56D4000DE338 /* AddCar */ = {
 			isa = PBXGroup;
 			children = (
-				D2A7975C2488C8470062B4F6 /* CarDetail */,
-				D2FC339E247F57AE000DE338 /* AuthorityImageView.h */,
-				D2FC339F247F57AE000DE338 /* AuthorityImageView.m */,
-				D2FC339C247F5776000DE338 /* AddCarVC.h */,
-				D2FC339B247F5776000DE338 /* AddCarVC.m */,
+				D279A47825DE3B5D0088DAAB /* CarHelper.h */,
+				D279A47925DE3B5D0088DAAB /* CarHelper.m */,
 				D24D0741248A353F0029FCEC /* CarType.json */,
 				D2B9FF1D248E0D620082E8D2 /* EnergyType.json */,
 				D2B9FF1E248E0D620082E8D2 /* LicenseType.json */,
-				D2C5826F2480F2C800121039 /* CarListVC.h */,
-				D2C582702480F2C800121039 /* CarListVC.m */,
-				D2C582722480F39500121039 /* CarListCell.h */,
-				D2C582732480F39500121039 /* CarListCell.m */,
 			);
 			path = AddCar;
 			sourceTree = "<group>";
@@ -3644,7 +3476,6 @@
 				D22B1D572383E40700BC00F0 /* ScanListCell.m in Sources */,
 				D2DFD7B1229E251F00363142 /* RequestApi+Dictionary.m in Sources */,
 				C6B343F61F20A186005FE308 /* UIImage+LHP.m in Sources */,
-				D2A300232265B7DF00AE2EC3 /* AccountListCell.m in Sources */,
 				D29C2DC322C3059B00BD2F64 /* ModelPackageType.m in Sources */,
 				D20E85F925875D2E00C9EE4C /* DealHistoryListVC.m in Sources */,
 				D2BE30BD21070C170059929D /* ModelLabel.m in Sources */,
@@ -3652,7 +3483,6 @@
 				D2164ED11F05CFC1005120C3 /* UIButton+Creat.m in Sources */,
 				D2DDC42C259C4D6300C810B5 /* ExchangeIntegraOrderListVC.m in Sources */,
 				D28A867D225F1572001E3372 /* SettingCell.m in Sources */,
-				D2C6D14922DEBDE600A22EA6 /* BulkCargoListCell.m in Sources */,
 				D22A413721805B220057C3B4 /* PerfectAddressDetailCell.m in Sources */,
 				D22BA9DF1E5EB8CA00C5B391 /* FSCalendarWeekdayView.m in Sources */,
 				D2D5266425A5956500F99306 /* SuggestDetailVC.m in Sources */,
@@ -3661,7 +3491,6 @@
 				D2BC9AAF1DFFDF0400B0468E /* GlobalData.m in Sources */,
 				D2CD1BA41E233BBE0042182B /* BaseImage.m in Sources */,
 				D22BA9DB1E5EB8CA00C5B391 /* FSCalendarHeaderView.m in Sources */,
-				D235C40825D282CC0044E34A /* BulkCargoOperateView.m in Sources */,
 				D26B88CC225C422D0051FA78 /* LoginView.m in Sources */,
 				D2ACCC1B21DC8DFD00F39E28 /* TopAlertView.m in Sources */,
 				D2A300332266BF9500AE2EC3 /* EditInfoVC.m in Sources */,
@@ -3671,13 +3500,11 @@
 				D20DCA082579E429003B89B5 /* AutoConfigRobView.m in Sources */,
 				D20E85F525833EC600C9EE4C /* MyPocketVC.m in Sources */,
 				D20E860C2588462100C9EE4C /* AuthView.m in Sources */,
-				D2C6D14322DEBBFA00A22EA6 /* BulkCargoListManageVC.m in Sources */,
 				D20375FA210717B10054F8A6 /* ModelBaseData.m in Sources */,
 				D2B9FF362490B5890082E8D2 /* SelectCarTypeVC.m in Sources */,
 				D2C55806238BE70E0050694F /* ScheduleOrderInfoVC.m in Sources */,
 				D2996A4121E6E3AA00562587 /* UpImageWithTextVC.m in Sources */,
 				D2C6D15B22DEEEF600A22EA6 /* ModelBulkCargoOrder.m in Sources */,
-				D2A3004722671E1000AE2EC3 /* InputAccountView.m in Sources */,
 				D285E2991E6D49E100DE9A6D /* NSDate+CategorySld.m in Sources */,
 				D293A39A1E011987005B772A /* LoadingView.m in Sources */,
 				D28A3191258C88C8006AC450 /* MyMsgListVC.m in Sources */,
@@ -3686,9 +3513,9 @@
 				D28A1F71225D976800F252A5 /* InputPwdVC.m in Sources */,
 				D259D54B228E4B2F00CE2632 /* RequestApi+UserApi.m in Sources */,
 				C6A031171F0CC7AA00C90032 /* ReturnAttributeStr.m in Sources */,
+				D279A47A25DE3B5D0088DAAB /* CarHelper.m in Sources */,
 				D2478141218C35A1005747FC /* DVFoodPieModel.m in Sources */,
 				D22851AA25934AE300100231 /* UICollectionWaterLayout.m in Sources */,
-				D2C6D14622DEBC3100A22EA6 /* BulkCargoListVC.m in Sources */,
 				D2545A5D1E72AD2500DEC7CE /* UIControl+Category.m in Sources */,
 				D22431A21E10C08A00C9F10A /* AliClient.m in Sources */,
 				D26B88CF225C48D50051FA78 /* LoginTextField.m in Sources */,
@@ -3698,7 +3525,6 @@
 				D2BC9AB81DFFE0B100B0468E /* NoticeView.m in Sources */,
 				D24992D11E05140C001A32DF /* BaseNavController.m in Sources */,
 				D239EACA1E2E0EB000E803F6 /* MJChiBaoZiHeader.m in Sources */,
-				D2A300202265B7CD00AE2EC3 /* AccountListVC.m in Sources */,
 				D275DA032179C09C0060BB0E /* BaseNavView+Logical.m in Sources */,
 				D21B301B23A0E2D6005B43D0 /* ModelAttaceedCompany.m in Sources */,
 				D2BCE91322695F0F00E8C4E2 /* FeedbackVC.m in Sources */,
@@ -3709,6 +3535,7 @@
 				D20E8603258845FB00C9EE4C /* AuthOneVC.m in Sources */,
 				D2B6B9CE1E961456005F00C6 /* ImagePickerCollectionCell.m in Sources */,
 				D23458401FD4E5E100F72EF5 /* UIImageView+Category.m in Sources */,
+				D279A48025DE3D480088DAAB /* BulkCargoOrderDetailTrackView.m in Sources */,
 				D215DC0225BE978F002DAA27 /* ModelComment.m in Sources */,
 				D2745FAA2087442900A0AD05 /* NoticeSectionView.m in Sources */,
 				D2D089111E0E22D900BE1E4C /* PlaceHolderTextView.m in Sources */,
@@ -3740,7 +3567,6 @@
 				D21B3005239F9442005B43D0 /* ModelAttachCompany.m in Sources */,
 				D29316901EF3BD980034E6FB /* GlobalMethod+Authority.m in Sources */,
 				D20FFB6E1E0D18B900ACA896 /* DownListViewBG.m in Sources */,
-				D290DB2C226F01F0004B18B4 /* HotLineView.m in Sources */,
 				D28A8684225F1B0F001E3372 /* IntegralRecordCell.m in Sources */,
 				D2F3A4FC2570EA11009EBF3F /* AutoConfigOrderListVC.m in Sources */,
 				D2C99C381E0BC021001D5DBA /* AddSubtractView.m in Sources */,
@@ -3764,7 +3590,6 @@
 				D2AADB592191627800E2173E /* RequestApi+TransportPrice.m in Sources */,
 				D2136CED1E13C142003B4B92 /* NSMutableArray+Insert.m in Sources */,
 				D215DC0F25C16E79002DAA27 /* TestTableVC.m in Sources */,
-				D235C40925D282CC0044E34A /* BulkCargoOperateLoadView.m in Sources */,
 				D2BC0C9925B573DB0030599D /* ModelPathListItem.m in Sources */,
 				D28A868B225F1E8E001E3372 /* CarTeamListCell.m in Sources */,
 				D289FEAF1E8F366C00C2636B /* SectionIndexView.m in Sources */,
@@ -3777,7 +3602,6 @@
 				D22BA9D41E5EB8CA00C5B391 /* FSCalendarCell.m in Sources */,
 				D259AC4A20F435CF00F71C87 /* SendMsgHelper.m in Sources */,
 				D26B88D6225C9E7F0051FA78 /* ForgetPwdVC.m in Sources */,
-				D2A3004A2267248E00AE2EC3 /* AccountFilterView.m in Sources */,
 				D2DFD7912296A58F00363142 /* ModelBaseInfo.m in Sources */,
 				D27470BA22A8E801009B645D /* ModelAccountList.m in Sources */,
 				D2A1EF3E25C951870066864D /* SelectOrderVC.m in Sources */,
@@ -3787,7 +3611,6 @@
 				D22851A7259345AC00100231 /* IntegralCollectionCell.m in Sources */,
 				D28A31A52591BD83006AC450 /* CreditListVC.m in Sources */,
 				D20DCA052578CA69003B89B5 /* OrderFilterView.m in Sources */,
-				D257759824D3BFB000449C75 /* BulkCargoOrderDetailTrackView.m in Sources */,
 				D2D5265825A44E8800F99306 /* SuggestVC.m in Sources */,
 				D2A1EF4125C951DE0066864D /* SelectOrderCell.m in Sources */,
 				D28A8688225F1E78001E3372 /* CarTeamListVC.m in Sources */,
@@ -3803,7 +3626,6 @@
 				D24D0742248A353F0029FCEC /* CarType.json in Sources */,
 				D2136CEA1E13AAE9003B4B92 /* GlobalMethod+Data.m in Sources */,
 				D20E8612258AF7ED00C9EE4C /* AuthListVC.m in Sources */,
-				D2A797612488C8470062B4F6 /* CarDetailView.m in Sources */,
 				D2C55812238CC9D50050694F /* ModelValidCar.m in Sources */,
 				D2D9A41A2015D2180025963B /* AppDelegate.m in Sources */,
 				D2A1EF4B25CA9A180066864D /* SelfPossessOrderListVC.m in Sources */,
@@ -3813,8 +3635,6 @@
 				D27470B022A798DA009B645D /* RequestApi+Location.m in Sources */,
 				D22B1D542383E34400BC00F0 /* ScanOrderListVC.m in Sources */,
 				D2D5265E25A5463500F99306 /* FeedBackHistoryListVC.m in Sources */,
-				D235C40725D282CC0044E34A /* BulkCargoOperateVC.m in Sources */,
-				D23327CE2185A6CB00495488 /* OrderListManagementVC.m in Sources */,
 				D28A319925908D79006AC450 /* CreateAddressVC.m in Sources */,
 				D23398601EFCFFD7001F71D6 /* NSMutableParagraphStyle+Category.m in Sources */,
 				D20E86062588460700C9EE4C /* AuthTwoVC.m in Sources */,
@@ -3822,7 +3642,6 @@
 				D22851A12591E4D800100231 /* IntegralCenterVC.m in Sources */,
 				D28B6FE71E794589001CC3A8 /* BaseCell.m in Sources */,
 				D2B1040E22ED94CC002D9BFF /* LocationEagleInstance.m in Sources */,
-				D23327C421855EDC00495488 /* DriverOperateView.m in Sources */,
 				D2BE30DA210713760059929D /* LinkScrollView.m in Sources */,
 				D2F3A50625762702009EBF3F /* AutoConfigDetailVC.m in Sources */,
 				D285E2961E6D472F00DE9A6D /* NSDateFormatter+Category.m in Sources */,
@@ -3838,7 +3657,6 @@
 				D2DDC4292599C0B200C810B5 /* ExchangeIntegraProductView.m in Sources */,
 				D2BF1DA41EB0719300957348 /* BaseTableVC+KeyboardObserve.m in Sources */,
 				D2BE30DD2107141D0059929D /* ImageControl.m in Sources */,
-				D2C582712480F2C800121039 /* CarListVC.m in Sources */,
 				D224319A1E10AC0300C9F10A /* TestVC.m in Sources */,
 				D2478142218C35A1005747FC /* DVPieChart.m in Sources */,
 				D20E85FF258764CE00C9EE4C /* DealHistoryDetailVC.m in Sources */,
@@ -3855,10 +3673,8 @@
 				D2FC33A4247F5A56000DE338 /* ModelCar.m in Sources */,
 				D28A319B25908D79006AC450 /* AddressListVC.m in Sources */,
 				D20FFB6B1E0D0A7700ACA896 /* DownListView.m in Sources */,
-				D2A30041226706CE00AE2EC3 /* OrderAccountListVC.m in Sources */,
 				D21014FA1EB81A010096C9CF /* MultiRadioBtnView.m in Sources */,
 				D257759524D2AF1300449C75 /* RejectOrderReason.m in Sources */,
-				D2FC33A0247F57AE000DE338 /* AuthorityImageView.m in Sources */,
 				D2DDCFB3233380CD002A24C4 /* AddCardVC.m in Sources */,
 				D2D5267525B0450C00F99306 /* OrcHelper.m in Sources */,
 				D23327AC21854FE000495488 /* MapView.m in Sources */,
@@ -3889,11 +3705,9 @@
 				D23F02FA1E037F34004E768F /* GlobalMethod+UI.m in Sources */,
 				D2BE30D6210712200059929D /* ModelCompany.m in Sources */,
 				D2152F6121815DBF0085437D /* CommentStarView.m in Sources */,
-				D2C6D15E22DF0FBB00A22EA6 /* BulkCargoOrderDetailView.m in Sources */,
 				D21CA05B1F06408B00FAE8B3 /* NSUserDefaults+Category.m in Sources */,
 				D22BA9DE1E5EB8CA00C5B391 /* FSCalendarTransitionCoordinator.m in Sources */,
 				D2996A2B21E6E2D800562587 /* CustomAttributeTextView.m in Sources */,
-				D23327C121855BBE00495488 /* DriverOperateVC.m in Sources */,
 				D2DDC436259D66D400C810B5 /* AddPathVC.m in Sources */,
 				D2996A4221E6E3AA00562587 /* UpImageWithTextCell.m in Sources */,
 				D28A318B258B2E72006AC450 /* MyMsgVC.m in Sources */,
@@ -3904,8 +3718,6 @@
 				D25FA2AD216B2B9D00E2B8AF /* AdvertiesementView.m in Sources */,
 				DAB62BA91E73AC30002AE835 /* NSNumber+Category.m in Sources */,
 				D22851B425942CED00100231 /* ModelIntegralProduct.m in Sources */,
-				D2FC339D247F5776000DE338 /* AddCarVC.m in Sources */,
-				D2C6D15422DEE7BA00A22EA6 /* BulkCargoOrderDetailVC.m in Sources */,
 				D22BA9D71E5EB8CA00C5B391 /* FSCalendarConstants.m in Sources */,
 				D2BE30C5210711430059929D /* ModelAryIndex.m in Sources */,
 				D275DB411DFFA43B00670A40 /* UITabBar+littleRedDotBadge.m in Sources */,
@@ -3915,10 +3727,8 @@
 				D2A946D72192B69C00AD1E5B /* ModelProvince.m in Sources */,
 				D23327C82185A23900495488 /* OrderListVC.m in Sources */,
 				D2AADB502191625400E2173E /* RequestApi+Order.m in Sources */,
-				D2C582742480F39500121039 /* CarListCell.m in Sources */,
 				D2C6D14C22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m in Sources */,
 				D2996A4C21E6E4C700562587 /* UpImageView.m in Sources */,
-				D2A300442267072000AE2EC3 /* OrderAccountListCell.m in Sources */,
 				D23327CB2185A27900495488 /* OrderListCell.m in Sources */,
 				DA85246B1D65B5AE00AB04CC /* main.m in Sources */,
 				D2BC9AB31DFFE02800B0468E /* GlobalMethod.m in Sources */,
@@ -3928,13 +3738,13 @@
 				D26B88D2225C7C030051FA78 /* InputCodeVC.m in Sources */,
 				D21B3008239F9DE4005B43D0 /* CarTeamListManagementVC.m in Sources */,
 				D2A1EF4525C95A940066864D /* ModelProblemHistoryItem.m in Sources */,
-				D2A3003A2266F75A00AE2EC3 /* InputNumView.m in Sources */,
 				D22499EE219A95C300608246 /* SettingVC.m in Sources */,
 				D28F186F2551264E0020BF65 /* PrivateAlertView.m in Sources */,
 				D2C9C7DD1EE562220020E4E3 /* AMapPOI+Category.m in Sources */,
 				D26510651E2880FB0084C9E2 /* UIView+Size.m in Sources */,
 				D22BA9D01E5EB8CA00C5B391 /* FSCalendar+Deprecated.m in Sources */,
 				D259D54A228E4B2F00CE2632 /* RequestApi+UserAuth.m in Sources */,
+				D279A47F25DE3D480088DAAB /* BulkCargoOperateLoadView.m in Sources */,
 				D2AC4FA41E04BBF800385682 /* BaseNavView.m in Sources */,
 				D28A8681225F1AEC001E3372 /* IntegralRecordVC.m in Sources */,
 				D2D5266F25AC23B700F99306 /* RequestApi+Auth.m in Sources */,
@@ -3945,7 +3755,6 @@
 				D2A1EF2C25C8E47F0066864D /* RequestApi+Integral.m in Sources */,
 				D21015081EB879BF0096C9CF /* NSDate+Format.m in Sources */,
 				D27646AB1F2B0FD2001096DB /* UIView+Coordeinate.m in Sources */,
-				D2A797622488C8470062B4F6 /* CarDetailVC.m in Sources */,
 				D2C27AC11E0266880097DAAD /* GlobalMethod+Version.m in Sources */,
 				D2C5580F238CC18D0050694F /* ScheduleConfirmView.m in Sources */,
 				D22499E8219A74FF00608246 /* WebVC.m in Sources */,
@@ -3955,7 +3764,6 @@
 				D22BA9DD1E5EB8CA00C5B391 /* FSCalendarStickyHeader.m in Sources */,
 				D2996A4021E6E3AA00562587 /* CollectionImageCell.m in Sources */,
 				D2A1EF3225C922DD0066864D /* RequestApi+Problem.m in Sources */,
-				D2A3003D226704D100AE2EC3 /* InputPlumbumNumView.m in Sources */,
 				D2A1EF4825CA854F0066864D /* ModelMsgItem.m in Sources */,
 				D2BE30E5210716310059929D /* VersionUpView.m in Sources */,
 				D22F88F41F94B2590005944C /* UIPickerView+Category.m in Sources */,

@@ -11,7 +11,6 @@
 #import "OrderDetailVC.h"
 //request
 #import "RequestApi+Order.h"
-#import "BulkCargoListCell.h"
 #import "NSDate+YYAdd.h"
 
 @interface AutoConfigOrderListCell ()

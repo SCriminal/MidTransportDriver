@@ -1,17 +1,13 @@
 //
-//  AddCarVC.h
-//  Motorcade
+//  CarHelper.h
+//  Driver
 //
-//  Created by 隋林栋 on 2019/5/6.
-//Copyright © 2019 ping. All rights reserved.
-//
+//  Created by 隋林栋 on 2021/2/18.
+//Copyright © 2021 ping. All rights reserved.
 
-#import "BaseTableVC.h"
+#import <Foundation/Foundation.h>
 
-@interface AddCarVC : BaseTableVC
-
-@property (nonatomic, assign) double carID;
-
+@interface CarHelper : NSObject
 #pragma mark exchange type
 + (NSString *)exchangeVehicleType:(NSString *)identity;
 + (NSString *)exchangeLicenseType:(NSString *)identity;

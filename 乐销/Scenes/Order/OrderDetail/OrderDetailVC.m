@@ -11,7 +11,6 @@
 #import "BaseNavView+Logical.h"
 //sub view
 #import "OrderDetailTopView.h"
-#import "OrderDetailAccessoryView.h"
 //request
 //request
 #import "RequestDriver2.h"

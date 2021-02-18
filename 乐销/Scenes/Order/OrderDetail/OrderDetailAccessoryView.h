@@ -16,5 +16,5 @@
 @property (nonatomic, strong) NSMutableArray *aryImageDatas;
 
 #pragma mark 刷新view
-- (void)resetViewWithAry:(NSArray *)ary modelOrder:(ModelOrderList *)modelOrder;
+- (void)resetViewWithAry:(NSArray *)ary modelOrder:(ModelTransportOrder *)modelOrder;
 @end
