@@ -24,6 +24,7 @@
 #import <MapKit/MapKit.h>
 #import "ThirdMap.h"
 #import "RejectOrderView.h"
+#import "LocationRecordInstance.h"
 
 @interface OrderListVC ()
 @property (nonatomic, strong) OrderFilterView *filterView;
@@ -215,7 +216,9 @@
                 NSMutableArray *ary = [aryImages fetchValues:@"url"];
                 [RequestApi requestLoadWithUrls:[ary componentsJoinedByString:@","] number:model.orderNumber description:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                     [weakSelf refreshHeaderAll];
-                    
+                    [[LocationRecordInstance sharedInstance]startLocationWithShippingNoteInfos:@[model] listener:^(id model, NSError *error) {
+                                  
+                              }];
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                     
                 }];
@@ -236,7 +239,9 @@
                 NSMutableArray *ary = [aryImages fetchValues:@"url"];
                 [RequestApi requestUnloadWithUrls:[ary componentsJoinedByString:@","] number:model.orderNumber description:reason delayReasoon:reason1 delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                     [weakSelf refreshHeaderAll];
-                    
+                    [[LocationRecordInstance sharedInstance]stopLocationWithShippingNoteInfos:@[model] listener:^(id model, NSError *error) {
+                                  
+                              }];
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                     
                 }];

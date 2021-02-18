@@ -22,6 +22,7 @@
 #import "ThirdMap.h"
 #import "BaseVC+Location.h"
 #import "BulkCargoOrderDetailTrackView.h"
+#import "LocationRecordInstance.h"
 
 @interface OrderDetailVC ()
 @property (nonatomic, strong) BaseNavView *nav;
@@ -47,7 +48,9 @@
             NSMutableArray *ary = [aryImages fetchValues:@"url"];
             [RequestApi requestLoadWithUrls:[ary componentsJoinedByString:@","] number:weakSelf.orderList.orderNumber                description:reason delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 [weakSelf refreshHeaderAll];
-                
+                [[LocationRecordInstance sharedInstance]startLocationWithShippingNoteInfos:@[weakSelf.orderList] listener:^(id model, NSError *error) {
+                              
+                          }];
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                 
             }];
@@ -67,7 +70,9 @@
             NSMutableArray *ary = [aryImages fetchValues:@"url"];
             [RequestApi requestUnloadWithUrls:[ary componentsJoinedByString:@","] number:weakSelf.orderList.orderNumber description:reason delayReasoon:reason1 delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 [weakSelf refreshHeaderAll];
-                
+                [[LocationRecordInstance sharedInstance]stopLocationWithShippingNoteInfos:@[weakSelf.orderList] listener:^(id model, NSError *error) {
+                              
+                          }];
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                 
             }];
