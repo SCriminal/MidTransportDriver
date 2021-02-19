@@ -285,6 +285,7 @@
         _ivHead = [UIImageView new];
         [_ivHead sd_setImageWithURL:[NSURL URLWithString:[GlobalData sharedInstance].GB_UserModel.headUrl] placeholderImage:[UIImage imageNamed:IMAGE_HEAD_DEFAULT]];
         _ivHead.widthHeight = XY(W(55),W(55));
+        _ivHead.contentMode = UIViewContentModeScaleAspectFill;
         [GlobalMethod setRoundView:_ivHead color:[UIColor clearColor] numRound:_ivHead.width/2.0 width:0];
     }
     return _ivHead;
@@ -338,7 +339,7 @@
     self.ivHead.leftTop = XY(W(15),W(15));
     
     [self.labelInfo fitTitle:@"点击上传头像" variable:0];
-    self.labelInfo.leftCenterY = XY(W(90),self.ivHead.centerY);
+    self.labelInfo.leftCenterY = XY(W(99),self.ivHead.centerY);
     
     {
         UIImageView * iv = [UIImageView new];

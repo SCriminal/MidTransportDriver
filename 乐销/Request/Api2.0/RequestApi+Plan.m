@@ -182,7 +182,7 @@
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"urls":RequestStrKey(urls),
                               @"unloadDescription":RequestStrKey(description),
-                              @"delayReasoon":RequestStrKey(delayReasoon),
+                              @"delayReason":RequestStrKey(delayReasoon),
                            @"number":RequestStrKey(orderNumber)};
         [self putUrl:@"/zhongcheyun/loms/order/status/4" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -277,7 +277,7 @@
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"urls":RequestStrKey(urls),
                               @"description":RequestStrKey(description),
-                              @"delayReasoon":RequestStrKey(delayReasoon),
+                              @"delayReason":RequestStrKey(delayReasoon),
                            @"number":RequestStrKey(orderNumber)};
         [self putUrl:@"/tms/lo/status/4/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -290,7 +290,7 @@
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"reasoon":RequestStrKey(reason),
+        NSDictionary *dic = @{@"reason":RequestStrKey(reason),
                            @"number":RequestStrKey(number)};
         [self putUrl:@"/tms/lo/status/99/driver/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
