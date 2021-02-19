@@ -14,4 +14,5 @@
 @property (nonatomic,strong)AVPlayerItem *currentPlayerItem;
 
 - (void)playVideo:(NSString *)strUrl;
+- (void)timerStart;
 @end

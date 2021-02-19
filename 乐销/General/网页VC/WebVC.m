@@ -8,9 +8,9 @@
 
 #import "WebVC.h"
 
-@interface WebVC ()
+@interface WebVC ()<UIWebViewDelegate>
 @property (nonatomic, strong) UIWebView *webDetails;
-
+@property (nonatomic, assign) BOOL isLoadFinished;
 @end
 
 @implementation WebVC
@@ -26,6 +26,11 @@
     if (!_webDetails) {
         _webDetails = [UIWebView new];
         _webDetails.frame = CGRectMake(0, NAVIGATIONBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT);
+        if (@available(iOS 11.0, *)) {
+            _webDetails.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+
+        }
+        _webDetails.delegate = self;
     }
     return _webDetails;
 }
@@ -35,6 +40,7 @@
     [super viewDidLoad];
     //添加导航栏
     [self addNav];
+    self.isLoadFinished = false;
     [self.view addSubview:self.webDetails];
     [self.webDetails loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 }
@@ -57,6 +63,13 @@
 #pragma mark status bar
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleDefault;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    if (!self.isLoadFinished) {
+        self.webDetails.scrollView.contentOffset = CGPointMake(0, 0);
+        self.isLoadFinished = true;
+    }
 }
 
 @end

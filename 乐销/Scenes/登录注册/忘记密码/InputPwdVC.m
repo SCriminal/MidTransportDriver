@@ -110,6 +110,10 @@
         [GlobalMethod showAlert:@"两次密码不一致"];
         return;
     }
+    if (self.tfPwd.tf.text.length < 6) {
+        [GlobalMethod showAlert:@"密码至少6位，请重新输入"];
+        return;
+    }
     [RequestApi requestForgetPwdWithApp:REQUEST_APP account:self.strPhone smsCode:self.code password:self.tfPwd.tf.text userType:1 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         if ([GB_Nav hasClass:@"LoginViewController"]) {
             [GB_Nav popToClass:@"LoginViewController"];

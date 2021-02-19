@@ -137,8 +137,6 @@
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
-    [self initLocation];
     [self addNav];
     [self.view addSubview:self.topView];
     [self.tableView registerClass:[AutoConfigOrderListCell class] forCellReuseIdentifier:@"AutoConfigOrderListCell"];
@@ -148,8 +146,6 @@
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, W(12), 0);
     [self addRefreshHeader];
     [self addRefreshFooter];
-    //request
-    [self requestList];
 }
 - (void)addNav{
     //table
@@ -162,6 +158,12 @@
     }];
     [nav configBlueStyle];
     [self.view addSubview:nav];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestExtendToken) name:NOTICE_EXTENDTOKEN object:nil];
+    
+    [self initLocation];
+
+
 }
 #pragma mark UITableViewDelegate
 //row num
@@ -180,7 +182,6 @@
         [weakSelf requestCarInfo];
     };
     cell.blockOutTime = ^(AutoConfigOrderListCell *c) {
-        NSLog(@"sld out time %@",c.model.planNumber);
         if ([weakSelf.aryDatas containsObject:c.model]) {
             [weakSelf.aryDatas removeObject:c.model];
             [weakSelf.tableView reloadData];
@@ -407,8 +408,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self timerStart];
-    [self requestExtendToken];
-
+    [self refreshHeaderAll];
 }
 
 - (void)requestExtendToken{

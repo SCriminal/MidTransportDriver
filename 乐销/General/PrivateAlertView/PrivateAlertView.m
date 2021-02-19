@@ -226,6 +226,9 @@
     [GlobalMethod writeBool:true local:LOCAL_PRIVATE_ALERT exchangeKey:false];
     
     [self removeFromSuperview];
+    if (self.blockDismiss) {
+        self.blockDismiss();
+    }
 }
 
 @end

@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIView *viewWhite;
 @property (nonatomic, strong) UILabel *labelAlert;
 @property (nonatomic, strong) UILabel *labeTitle;
+@property (nonatomic, strong) void (^blockDismiss)(void);
 
 - (void)show;
 @end

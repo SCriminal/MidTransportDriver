@@ -99,17 +99,7 @@
     AppDelegate * delegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
     delegate.window = window;
     [UIApplication sharedApplication].idleTimerDisabled=true;
-    //显示引导页
-    if (![GlobalMethod readBoolLocal:LOCAL_SHOWED_GUIDE_BEFORE exchangeKey:false]) {
-        GuideView * guideView = [GuideView new];
-        [guideView show];
-        //第一次
-        [GlobalMethod writeBool:true local:LOCAL_SHOWED_GUIDE_BEFORE exchangeKey:false];
-    }
-    if (![GlobalMethod readBoolLocal:LOCAL_PRIVATE_ALERT exchangeKey:false]) {
-        PrivateAlertView * privateView = [PrivateAlertView new];
-        [privateView show];
-    }
+   
 
     if (![GlobalMethod isLoginSuccess]) {
         [GB_Nav pushVCName:@"LoginViewController" animated:false];

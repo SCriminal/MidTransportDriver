@@ -95,7 +95,6 @@
     [self addSubview:self.ivAD];
     [self addSubview:self.labelAlert];
     [self addSubview:self.controlSkip];
-    [self timerStart];
 }
 
 #pragma mark 定时器相关
@@ -169,7 +168,9 @@
     [self dismiss];
 }
 - (void)dismiss{
-    [UIView animateWithDuration:0.3 animations:^{
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_EXTENDTOKEN object:nil];
+    
+    [UIView animateWithDuration:0.4 animations:^{
         self.alpha = 0;
     }completion:^(BOOL finished) {
         [self removeFromSuperview];

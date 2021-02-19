@@ -145,11 +145,11 @@ WEAKSELF
     [GlobalMethod endEditing];
     BOOL needAuth = true;
     if (self.isFirst) {
-        if (self.grossMass <= 4500) {
+        if (self.grossMass <= 4500 && self.grossMass !=0) {
             needAuth = false;
         }
     }else{
-        if (self.modelAuthCar.grossMass<=4500) {
+        if (self.modelAuthCar.grossMass<=4500&& self.grossMass !=0) {
             needAuth = false;
         }
     }

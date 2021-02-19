@@ -28,8 +28,9 @@
 #import "LocationRecordInstance.h"
 //bug
 #import <Bugly/Bugly.h>
-
-
+#import "GuideView.h"
+#import "PrivateAlertView.h"
+#import "AdvertiesementView.h"
 @interface AppDelegate ()<UIAlertViewDelegate,UNUserNotificationCenterDelegate,WXApiDelegate,WeiboSDKDelegate>{
 
 }
@@ -43,7 +44,28 @@
     
     //create root nav
     [GlobalMethod createRootNav];
-    [self.window addSubview:[NSClassFromString(@"AdvertiesementView") new]];
+  
+    //显示引导页
+    if (![GlobalMethod readBoolLocal:LOCAL_SHOWED_GUIDE_BEFORE exchangeKey:false]) {
+        GuideView * guideView = [GuideView new];
+        [guideView show];
+        //第一次
+        [GlobalMethod writeBool:true local:LOCAL_SHOWED_GUIDE_BEFORE exchangeKey:false];
+    }
+    
+    AdvertiesementView * adView = [AdvertiesementView new];
+    [self.window addSubview:adView];
+    
+    if (![GlobalMethod readBoolLocal:LOCAL_PRIVATE_ALERT exchangeKey:false]) {
+        PrivateAlertView * privateView = [PrivateAlertView new];
+        privateView.blockDismiss = ^{
+            [adView timerStart];
+        };
+        [privateView show];
+    }else{
+        [adView timerStart];
+    }
+    
     //注册通知
     [self registerForRemoteNotification];
     //配置 app id

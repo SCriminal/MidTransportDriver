@@ -88,8 +88,6 @@
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, W(12), 0);
     [self addRefreshHeader];
     [self addRefreshFooter];
-    //request
-    [self requestList];
 }
 
 
@@ -130,6 +128,10 @@
     [GB_Nav pushViewController:operateVC animated:true];
 }
 #pragma mark request
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self refreshHeaderAll];
+}
 - (void)requestList{
     NSString * strOrderStatus = nil;
     switch (self.indexSelected) {
