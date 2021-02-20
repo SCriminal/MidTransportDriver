@@ -26,6 +26,7 @@
         _head = [UIImageView new];
         _head.image = [UIImage imageNamed:IMAGE_HEAD_DEFAULT];
         _head.widthHeight = XY(W(65),W(65));
+        _head.contentMode = UIViewContentModeScaleAspectFill;
         [GlobalMethod setRoundView:_head color:[UIColor clearColor] numRound:_head.width/2.0 width:0];
         _head.userInteractionEnabled = true;
     }

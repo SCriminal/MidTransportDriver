@@ -363,10 +363,10 @@
     [label fitTitle:title variable:0];
     if (isLeft) {
         control.frame = CGRectMake(0, STATUSBAR_HEIGHT, W(100), NAVIGATIONBAR_HEIGHT - STATUSBAR_HEIGHT);
-        label.left = W(20);
+        label.left = W(15);
     } else {
         control.frame = CGRectMake(SCREEN_WIDTH - W(100), STATUSBAR_HEIGHT, W(100), NAVIGATIONBAR_HEIGHT - STATUSBAR_HEIGHT);
-        label.right = control.width - W(20);
+        label.right = control.width - W(15);
     }
     label.centerY = control.height/2.0;
     [control addSubview: label];

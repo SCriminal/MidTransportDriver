@@ -25,8 +25,6 @@
 #import "RequestDriver2.h"
 //bank card list
 #import "BankCardListVC.h"
-//ListAlertView
-#import "ListAlertView.h"
 #import "SelectBankNameVC.h"
 
 @interface AddCardVC ()<UITextFieldDelegate>
@@ -37,7 +35,6 @@
 @property (nonatomic, strong) ModelBaseData *modelBankCity;
 @property (nonatomic, strong) ModelBaseData *modelBankNum;
 
-@property (nonatomic, strong) ListAlertView *listView;
 
 @property (nonatomic, strong) UIView *selectBankCell;
 @property (nonatomic, strong) NSMutableArray *aryBanks;
@@ -169,21 +166,7 @@
     return self.aryFilterBanks;
 
 }
-- (ListAlertView *)listView{
-    if (!_listView) {
-        _listView = [ListAlertView new];
-        WEAKSELF
-        _listView.blockSelected = ^(NSInteger index) {
-            [GlobalMethod hideKeyboard];
-            if (weakSelf.aryFilterBanks.count >index) {
-                weakSelf.modelBankName.subString  = weakSelf.aryFilterBanks[index];
-                [weakSelf.tableView reloadData];
-            }
-        };
 
-    }
-    return _listView;
-}
 - (ModelBaseData *)modelBankAccount{
     if (!_modelBankAccount) {
         _modelBankAccount =[ModelBaseData new];

@@ -35,8 +35,8 @@
 - (UIImageView *)ivBG{
     if (!_ivBG) {
         _ivBG = [UIImageView new];
-        _ivBG.image = IMAGE_WHITE_BG;
-        _ivBG.backgroundColor = [UIColor clearColor];
+        _ivBG.image = nil;
+        _ivBG.backgroundColor = [UIColor whiteColor];
     }
     return _ivBG;
 }
@@ -74,12 +74,12 @@
         return;
     }
     self.aryDatas = ary.mutableCopy;
-    self.tableView.leftTop = XY(point.x, point.y+W(10));
+    self.tableView.leftTop = XY(point.x, point.y);
     self.tableView.width = width;
     self.tableView.height = MIN([ListAlertCell fetchHeight:nil]*ary.count, MIN(SCREEN_HEIGHT/3.0*2.0, SCREEN_HEIGHT - W(20) - self.tableView.top));
     [self.tableView reloadData];
     
-    self.ivBG.frame = CGRectInset(self.tableView.frame, -W(10), -W(10));
+    self.ivBG.frame = CGRectInset(self.tableView.frame, 0, 0);
     
     [[UIApplication sharedApplication].keyWindow addSubview:self];
 }
@@ -93,7 +93,7 @@
     [cell resetCellWithModel:self.aryDatas[indexPath.row]];
     [cell.labelTitle fitTitle:self.aryDatas[indexPath.row] variable:self.tableView.width - W(40)];
 
-    cell.labelTitle.textColor = COLOR_333;
+    cell.labelTitle.textColor = (self.indexSelected == indexPath.row)?COLOR_BLUE:COLOR_333;
     cell.line.hidden = indexPath.row == self.aryDatas.count -1;
     cell.line.width = self.tableView.width - W(40);
     

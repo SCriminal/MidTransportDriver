@@ -45,7 +45,6 @@
 - (NoResultView *)noResultView{
     if (!_noResultView) {
         _noResultView = [NoResultView new];
-      
     }
     return _noResultView;
 }
@@ -141,16 +140,16 @@
     [self.view addSubview:self.topView];
     [self.tableView registerClass:[AutoConfigOrderListCell class] forCellReuseIdentifier:@"AutoConfigOrderListCell"];
     self.tableView.frame = CGRectMake(0, self.topView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.topView.bottom - TABBAR_HEIGHT);
-
+    
     self.tableView.backgroundColor = COLOR_BACKGROUND;
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, W(12), 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(W(12), 0, 0, 0);
     [self addRefreshHeader];
     [self addRefreshFooter];
 }
 - (void)addNav{
     //table
 
-    BaseNavView * nav = [BaseNavView initNavTitle:@"智能配货" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(23), W(23)) leftBlock:^{
+    BaseNavView * nav = [BaseNavView initNavTitle:@"智能配货" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(25), W(25)) leftBlock:^{
         [GB_Nav pushVCName:@"MyMsgVC" animated:true];
 
     } rightTitle:@"我的报价" righBlock:^{
@@ -462,9 +461,10 @@
 @end
 
 @implementation NewAutoConfigOrderListVC
+
 - (void)addNav{
     //table
-    BaseNavView * nav = [BaseNavView initNavTitle:@"最新货源" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(23), W(23)) leftBlock:^{
+    BaseNavView * nav = [BaseNavView initNavTitle:@"最新货源" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(25), W(25)) leftBlock:^{
         [GB_Nav pushVCName:@"MyMsgVC" animated:true];
 
     } rightTitle:@"我的报价" righBlock:^{
@@ -496,14 +496,24 @@
         [self.aryDatas addObjectsFromArray:aryRequest];
         [self.tableView reloadData];
         [self requestCommentList];
-
+        if (self.aryDatas.count == 0) {
+            [self requestPath];
+        }
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
+            if (self.aryDatas.count == 0) {
+                [self requestPath];
+            }
         }];
    
    
 }
 
-
+- (void)requestPath{
+    [self pathRequested:nil];
+}
+- (void)pathRequested:(NSArray *)aryPath{
+    [self.noResultView resetWithImageName:@"empty_waybill_default" title:@"暂无数据"];
+    [self showNoResult];
+}
 @end
 

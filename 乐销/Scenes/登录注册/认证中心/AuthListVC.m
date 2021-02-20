@@ -90,7 +90,7 @@
         mCar.subTitle = modelAuth.vehicleSubmitTime?[NSString stringWithFormat:@"提交时间：%@",[GlobalMethod exchangeTimeWithStamp:modelAuth.vehicleSubmitTime andFormatter:TIME_SEC_SHOW]]:@"未提交";
         mBiz.subTitle = modelAuth.bizSubmitTime?[NSString stringWithFormat:@"提交时间：%@",[GlobalMethod exchangeTimeWithStamp:modelAuth.bizSubmitTime andFormatter:TIME_SEC_SHOW]]:@"未提交";
 
-        mDriver.thirdTitle = modelAuth.driverReviewTime?[NSString stringWithFormat:@"审核时间：%@",[GlobalMethod exchangeTimeWithStamp:modelAuth.driverReviewTime andFormatter:TIME_SEC_SHOW]]:@"";
+        mDriver.thirdTitle = (modelAuth.driverReviewTime)?[NSString stringWithFormat:@"审核时间：%@",[GlobalMethod exchangeTimeWithStamp:modelAuth.driverReviewTime andFormatter:TIME_SEC_SHOW]]:@"";
         mCar.thirdTitle = modelAuth.vehicleReviewTime?[NSString stringWithFormat:@"审核时间：%@",[GlobalMethod exchangeTimeWithStamp:modelAuth.vehicleReviewTime andFormatter:TIME_SEC_SHOW]]:@"";
         mBiz.thirdTitle = modelAuth.bizReviewTime?[NSString stringWithFormat:@"审核时间：%@",[GlobalMethod exchangeTimeWithStamp:modelAuth.bizReviewTime andFormatter:TIME_SEC_SHOW]]:@"";
         
@@ -204,7 +204,7 @@
     
     CGFloat top = self.submitTime.bottom;
     self.authTime.hidden = true;
-    if (isStr(model.thirdTitle)) {
+    if (isStr(model.thirdTitle) && (model.num == 10||model.num==11)) {
         self.authTime.hidden = false;
             [self.authTime fitTitle:model.thirdTitle variable:0];
         self.authTime.leftTop = XY(W(15),top+W(13));
@@ -213,7 +213,7 @@
     self.reason.hidden = true;
     if (isStr(model.fourTitle) && model.num == 11) {
         self.reason.hidden = false;
-            [self.reason fitTitle: [NSString stringWithFormat:@"%@",model.fourTitle] variable:SCREEN_WIDTH - W(30)];
+            [self.reason fitTitle: [NSString stringWithFormat:@"驳回原因：%@",model.fourTitle] variable:SCREEN_WIDTH - W(30)];
         self.reason.leftTop = XY(W(15),top+W(13));
         top = self.reason.bottom;
     }

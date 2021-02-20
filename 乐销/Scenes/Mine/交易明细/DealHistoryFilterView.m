@@ -10,7 +10,6 @@
 //date picker
 #import "DatePicker.h"
 //list view
-#import "ListAlertView.h"
 //date
 #import "NSDate+YYAdd.h"
 @interface DealHistoryFilterView ()<UITextFieldDelegate>
