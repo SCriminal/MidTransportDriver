@@ -84,7 +84,7 @@
         };
         mDriver.title = @"司机信息";
         mCar.title = @"车辆信息";
-        mBiz.title = @"运营信息";
+        mBiz.title = @"营运信息";
         
         mDriver.subTitle = modelAuth.driverSubmitTime?[NSString stringWithFormat:@"提交时间：%@",[GlobalMethod exchangeTimeWithStamp:modelAuth.driverSubmitTime andFormatter:TIME_SEC_SHOW]]:@"未提交";
         mCar.subTitle = modelAuth.vehicleSubmitTime?[NSString stringWithFormat:@"提交时间：%@",[GlobalMethod exchangeTimeWithStamp:modelAuth.vehicleSubmitTime andFormatter:TIME_SEC_SHOW]]:@"未提交";

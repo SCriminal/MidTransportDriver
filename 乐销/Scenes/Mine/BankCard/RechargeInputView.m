@@ -139,11 +139,9 @@
                         btn.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
                         [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:6 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
                         [btn setTitleColor:COLOR_666 forState:UIControlStateNormal];
-        
                     }
                 }
             }
-        
     }
    
     {
