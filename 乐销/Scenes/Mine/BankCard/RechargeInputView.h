@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface RechargeInputView : UIView
-@property (nonatomic, strong) void (^blockConfirm)(double weight,double price);
+@property (nonatomic, strong) void (^blockConfirm)(double ,double );
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(id)model;

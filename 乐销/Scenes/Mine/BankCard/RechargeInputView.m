@@ -49,7 +49,7 @@
       UIView * viewWhiteBG = [UIView new];
     self.viewWhitBG = viewWhiteBG;
           viewWhiteBG.backgroundColor = [UIColor whiteColor];
-          viewWhiteBG.widthHeight = XY(SCREEN_WIDTH, W(285)+iphoneXBottomInterval);
+          viewWhiteBG.widthHeight = XY(SCREEN_WIDTH, W(364)+iphoneXBottomInterval);
           viewWhiteBG.bottom = SCREEN_HEIGHT;
           [viewWhiteBG addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight radius:8 lineWidth:0 lineColor:[UIColor clearColor]];
           [self addSubview:viewWhiteBG];
@@ -65,6 +65,25 @@
         [l fitTitle:@"充值" variable:SCREEN_WIDTH - W(30)];
         l.leftTop = XY(W(20), W(20));
         [viewWhiteBG addSubview:l];
+    }
+    {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(35) weight:UIFontWeightMedium];
+        l.textColor = COLOR_333;
+        l.backgroundColor = [UIColor clearColor];
+        l.numberOfLines = 0;
+        l.lineSpace = W(0);
+        [l fitTitle:@"¥" variable:SCREEN_WIDTH - W(30)];
+        l.leftTop = XY(W(20), W(67));
+        [viewWhiteBG addSubview:l];
+        [viewWhiteBG addSubview:self.tfPrice];
+        self.tfPrice.widthHeight = XY(W(200), [UIFont fetchHeight:F(35)]);
+        self.tfPrice.leftCenterY = XY(l.right + W(11), l.centerY);
+        
+        [viewWhiteBG addControlFrame:CGRectMake(0, W(60), W(220), W(60)) belowView:self.tfPrice target:self action:@selector(priceClick)];
+    }
+    {
+        [viewWhiteBG addLineFrame:CGRectMake(W(20), W(114), SCREEN_WIDTH - W(40), 1)];
     }
     NSArray * aryBtn = @[^(){
         ModelBtn * m = [ModelBtn new];
@@ -89,7 +108,7 @@
     }()];
     {
         CGFloat btnLeft = W(20);
-        CGFloat btnTop = W(67);
+        CGFloat btnTop = W(146);
         for (int i = 0; i<aryBtn.count; i++) {
             ModelBtn * m = aryBtn[i];
             UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -103,12 +122,28 @@
             [viewWhiteBG addSubview:btn];
             btnLeft = btn.right + W(19);
             if ((i+1)%3==0) {
-                btnTop = W(120);
+                btnTop = W(199);
                 btnLeft = W(20);
 
             }
         }
-        [self btnClick:[viewWhiteBG viewWithTag:100]];
+            for (int i = 0; i<5; i++) {
+               UIButton * btn = [self.viewWhitBG viewWithTag:i+100];
+                if ([btn isKindOfClass:[UIButton class]]) {
+//                    if (btn.tag == sender.tag) {
+//                        btn.backgroundColor = COLOR_BLUE;
+//                        [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:6 lineWidth:0 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+//                        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//                    }else
+                    {
+                        btn.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
+                        [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:6 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+                        [btn setTitleColor:COLOR_666 forState:UIControlStateNormal];
+        
+                    }
+                }
+            }
+        
     }
    
     {
@@ -120,7 +155,7 @@
         iv.highlightedImage = [UIImage imageNamed:@"auth_selected"];
         iv.highlighted = true;
         iv.widthHeight = XY(W(12),W(12));
-        iv.leftTop = XY(W(20),W(184));
+        iv.leftTop = XY(W(20),W(263));
         self.iconSelect = iv;
         [viewWhiteBG addSubview:iv];
         [viewWhiteBG addControlFrame:CGRectInset(iv.frame, -W(20), -W(20)) belowView:iv target:self action:@selector(ivClick)];
@@ -177,7 +212,7 @@
            YYTextContainer *container = [YYTextContainer containerWithSize:CGSizeMake(W(230), MAXFLOAT)];
            YYTextLayout *textLayout = [YYTextLayout layoutWithContainer:container text: mAttributedString];
            label.height = textLayout.textBoundingSize.height;
-           label.leftCenterY = XY(W(44),W(190));
+           label.leftCenterY = XY(W(44),W(269));
     }
     
    
@@ -189,7 +224,7 @@
         btn.titleLabel.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnConfirmClick) forControlEvents:UIControlEventTouchUpInside];
-        btn.rightTop = XY(SCREEN_WIDTH - W(20), W(216));
+        btn.rightTop = XY(SCREEN_WIDTH - W(20), W(295));
         [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:0 lineColor:COLOR_BORDER];
         [viewWhiteBG addSubview:btn];
     }
@@ -215,6 +250,11 @@
 }
 - (void)keyboardShow:(NSNotification *)notice{
     CGRect frame = [notice.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    [self btnClick:^(){
+        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.tag = 1000;
+        return btn;
+    }()];
     [UIView animateWithDuration:0.3 animations:^{
         self.viewWhitBG.bottom = frame.origin.y;
     }];
@@ -241,14 +281,23 @@
     [self btnDismissClick];
 }
 - (void)btnDismissClick{
-    [GlobalMethod endEditing];
-    [self removeFromSuperview];
+    if ([self.tfPrice isFirstResponder]) {
+        [GlobalMethod endEditing];
+    }else{
+        [self removeFromSuperview];
+    }
+    
 }
 - (void)btnConfirmClick{
+    [GlobalMethod endEditing];
+    if (!self.iconSelect.highlighted) {
+        [GlobalMethod showAlert:@"请先阅读并同意条款"];
+        return;
+    }
     if (self.blockConfirm) {
         self.blockConfirm(self.tfPrice.text.doubleValue, 0);
     }
-    [self btnDismissClick];
+    [self removeFromSuperview];
 }
 - (void)ivClick{
     self.iconSelect.highlighted =  !self.iconSelect.highlighted;
@@ -256,21 +305,24 @@
 
 #pragma mark 点击事件
 - (void)btnClick:(UIButton *)sender{
-    for (int i = 0; i<5; i++) {
-       UIButton * btn = [self.viewWhitBG viewWithTag:i+100];
-        if ([btn isKindOfClass:[UIButton class]]) {
-            if (btn.tag == sender.tag) {
-                btn.backgroundColor = COLOR_BLUE;
-                [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:6 lineWidth:0 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
-                [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            }else{
-                btn.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
-                [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:6 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
-                [btn setTitleColor:COLOR_666 forState:UIControlStateNormal];
-
-            }
-        }
+    if (isStr(sender.titleLabel.text)) {
+        self.tfPrice.text = [sender.titleLabel.text substringFromIndex:1];
     }
-    self.indexSelected = sender.tag - 100;
+//    for (int i = 0; i<5; i++) {
+//       UIButton * btn = [self.viewWhitBG viewWithTag:i+100];
+//        if ([btn isKindOfClass:[UIButton class]]) {
+//            if (btn.tag == sender.tag) {
+//                btn.backgroundColor = COLOR_BLUE;
+//                [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:6 lineWidth:0 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+//                [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//            }else{
+//                btn.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
+//                [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:6 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+//                [btn setTitleColor:COLOR_666 forState:UIControlStateNormal];
+//
+//            }
+//        }
+//    }
+//    self.indexSelected = sender.tag - 100;
 }
 @end

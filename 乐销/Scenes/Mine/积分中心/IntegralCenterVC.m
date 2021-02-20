@@ -174,17 +174,18 @@
             for (NSString * str in aryTitle) {
                 ModelBaseData * item = [ModelBaseData new];
                 item.string = str;
-                if (isAfter) {
-                    item.enumType = -1;
-                }else if ([dicResponse valueForKey:str]) {
-                    item.enumType = 1;
-                }else {
-                    item.enumType = 0;
-                }
-                [aryReturn addObject:item];
                 if ([str isEqualToString:[NSDate date].weekdayStr_sld]) {
                     isAfter = true;
                 }
+                if ([dicResponse valueForKey:str]) {
+                    item.enumType = 1;
+                }else if (isAfter) {
+                    item.enumType = -1;
+                }else{
+                    item.enumType = 0;
+                }
+                [aryReturn addObject:item];
+               
             }
             self.topView.isSigned = [dicResponse valueForKey:[NSDate date].weekdayStr_sld];
             [self.topView resetViewWithModel:aryReturn];
