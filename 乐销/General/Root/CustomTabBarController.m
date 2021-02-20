@@ -57,12 +57,14 @@
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = @{NSForegroundColorAttributeName :  [UIColor colorWithHexString:@"757F84"],NSFontAttributeName:[UIFont systemFontOfSize:F(10)]};
         appearance.backgroundImage = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(1, 1)];
         appearance.shadowColor = [UIColor whiteColor];
+        appearance.stackedLayoutAppearance.normal.titlePositionAdjustment = UIOffsetMake(0, -W(2));
         tabBar.standardAppearance = appearance;
     } else {
         [[CustomTabBar appearance]setBackgroundColor:[UIColor whiteColor]];
         [[CustomTabBar appearance]setShadowImage:[UIImage new]];//将TabBar上的黑线去掉
         [[CustomTabBar appearance]setBackgroundImage:[UIImage new]];
     }
+
     [tabBar addSubview:self.shadow];
     [tabBar addSubview:self.btnWhistle];
     // 设置代理
@@ -93,28 +95,9 @@
     [vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName : COLOR_BLUE ,NSFontAttributeName:[UIFont systemFontOfSize:F(10)]} forState:UIControlStateSelected];
 
     //设置字体和图片的距离
-    CGFloat spaceTop;
-    CGFloat imageTop;
-    CGFloat fontSize;
-    if (SCREEN_WIDTH == 320) {
-        imageTop = -2;
-        fontSize = 9;
-        spaceTop = -8;
-    }else if (SCREEN_WIDTH == 375){
-        imageTop = -2;
-        fontSize = 11;
-        spaceTop = -5;
-    }else if (SCREEN_WIDTH == 414){
-        imageTop = -2;
-        fontSize = 12;
-        spaceTop = -9;
-    }else{
-        imageTop = -2;
-        fontSize = 11;
-        spaceTop = -9;
-    }
+    CGFloat imageTop = -2;
     [vc.tabBarItem setImageInsets:UIEdgeInsetsMake(imageTop,0, -imageTop, 0)];
-    [vc.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, spaceTop-2)];
+    [vc.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -W(2))];
 }
 
 - (void)viewWillLayoutSubviews

@@ -361,9 +361,9 @@
                                          useCharacter:nil
                                           unladenMass:0
                                                   vin:self.modelVin.subString
-                                  drivingRegisterDate:0
+                                  drivingRegisterDate:self.modelOCRDribingFace.registerDateStamp
                                          engineNumber:nil
-                                     drivingIssueDate:0
+                                     drivingIssueDate:self.modelOCRDribingFace.issueDateStamp
                                                 model:nil
                                            rtbpNumber:nil
                                             isRequest:true delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
@@ -397,9 +397,9 @@
                                                           useCharacter:nil
                                                            unladenMass:0
                                                                    vin:self.modelVin.subString
-                                                   drivingRegisterDate:0
+                                                   drivingRegisterDate:self.modelOCRDribingFace.registerDateStamp
                                                           engineNumber:nil
-                                                      drivingIssueDate:0
+                                                      drivingIssueDate:self.modelOCRDribingFace.issueDateStamp
                                                                  model:nil
                                                             rtbpNumber:nil
                                                              isRequest:false delegate:self success:nil failure:nil];
