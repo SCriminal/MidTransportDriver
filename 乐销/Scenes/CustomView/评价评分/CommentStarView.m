@@ -133,7 +133,7 @@
     if (!_ivStar) {
         _ivStar = [UIImageView new];
         _ivStar.image = [UIImage imageNamed:@"star_g"];
-        _ivStar.widthHeight = XY(W(11), W(11));
+        _ivStar.widthHeight = XY(W(15), W(15));
         _ivStar.backgroundColor = [UIColor clearColor];
     }
     return _ivStar;

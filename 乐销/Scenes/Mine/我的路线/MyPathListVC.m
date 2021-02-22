@@ -24,7 +24,7 @@
 - (NoResultView *)noResultView{
     if (!_noResultView) {
         _noResultView = [NoResultView new];
-        [_noResultView resetWithImageName:@"empty_waybill_default" title:@"暂无路线"];
+        [_noResultView resetWithImageName:@"empty_path" title:@"暂无路线"];
     }
     return _noResultView;
 }

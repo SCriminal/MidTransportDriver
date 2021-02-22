@@ -23,6 +23,7 @@
 #import "RechargeInputView.h"
 #import "GuideView.h"
 #import "AuthTwoVC.h"
+#import "OrderDetailVC.h"
 
 @interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate> 
 
@@ -74,9 +75,14 @@
 }
 
 - (void)jump{
-    [self.view addSubview:[NSClassFromString(@"AdvertiesementView") new]];
-
-}
+//    [self.view addSubview:[NSClassFromString(@"OrderDetailVC") new]];
+    OrderDetailVC * operateVC = [OrderDetailVC new];
+    operateVC.orderList = ^(){
+        ModelTransportOrder  * m = [ModelTransportOrder new];
+        return m;
+    }();
+    
+    [GB_Nav pushViewController:operateVC animated:true];}
 /**
  当前周的日期范围
 

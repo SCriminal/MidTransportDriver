@@ -7,6 +7,7 @@
 //
 
 #import "OrderDetailTopView.h"
+
 @implementation OrderDetailView
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -426,4 +427,115 @@
 
 }
 
+@end
+
+
+@implementation OrderDetailCommentView
+#pragma mark 初始化
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor whiteColor];
+        self.width = SCREEN_WIDTH;
+        self.clipsToBounds = false;
+        [self resetViewWithModel:nil];
+    }
+    return self;
+}
+
+
+#pragma mark 刷新view
+- (void)resetViewWithModel:(ModelTransportOrder *)model{
+    [self removeAllSubViews];//移除线
+    self.model = model;
+    CGFloat top = 0;
+    {
+        UIView * view = [UIView new];
+        view.backgroundColor = COLOR_BACKGROUND;
+        view.widthHeight = XY(SCREEN_WIDTH, W(10));
+        top = view.bottom;
+        [self addSubview:view];
+    }
+    {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        l.textColor = COLOR_333;
+        l.backgroundColor = [UIColor clearColor];
+        [l fitTitle:@"我的评价" variable:SCREEN_WIDTH - W(30)];
+        l.leftTop = XY(W(15), W(15)+top);
+        [self addSubview:l];
+        top = l.bottom;
+        
+        top = [self addLineFrame:CGRectMake(W(15), top+W(15), SCREEN_WIDTH - W(30), 1)];
+    }
+    {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        l.textColor = COLOR_666;
+        l.backgroundColor = [UIColor clearColor];
+        l.numberOfLines = 0;
+        l.lineSpace = W(0);
+        [l fitTitle:@"评分：" variable:SCREEN_WIDTH - W(30)];
+        l.leftTop = XY(W(15), W(15) + top);
+        [self addSubview:l];
+        top = l.bottom;
+        
+        CommentStarView * starView = [CommentStarView new];
+        self.starView = starView;
+        starView.isShowGrayStarBg = true;
+        starView.interval = W(12);
+        [starView configDefaultView];
+        starView.userInteractionEnabled = true;
+        starView.leftCenterY = XY(W(64), l.centerY);
+        [self addSubview:starView];
+    }
+    {
+        UIView * view = [UIView new];
+        view.backgroundColor = [UIColor whiteColor];
+        view.widthHeight = XY(W(345), W(80));
+        view.leftTop = XY(W(15), W(15)+top);
+        [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+        [self addSubview:view];
+        top = view.bottom;
+        
+        PlaceHolderTextView *textView = [PlaceHolderTextView new];
+        textView.backgroundColor = [UIColor clearColor];
+        self.textView = textView;
+        [GlobalMethod setLabel:textView.placeHolder widthLimit:0 numLines:0 fontNum:F(14) textColor:COLOR_SUBTITLE text:@"请填写评价内容"];
+        textView.font = textView.placeHolder.font;
+        [textView setTextColor:COLOR_TITLE];
+        textView.widthHeight = XY(view.width - W(24), view.height - W(30));
+        textView.center = view.center;
+        [self addSubview:textView];
+
+    }
+    
+    {
+        UIView * view = [UIView new];
+        view.backgroundColor = COLOR_BACKGROUND;
+        view.widthHeight = XY(SCREEN_WIDTH, W(10));
+        view.top = top + W(15);
+        top = view.bottom;
+        [self addSubview:view];
+    }
+    {
+        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.widthHeight = XY(W(355), W(39));
+        btn.backgroundColor = COLOR_BLUE;
+        [btn setTitle:@"提交评价" forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(btnConfirmClick) forControlEvents:UIControlEventTouchUpInside];
+        btn.leftTop = XY(W(10), W(10)+top);
+        [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:0 lineColor:COLOR_BORDER];
+        [self addSubview:btn];
+        top = btn.bottom;
+    }
+    self.height = top;
+}
+- (void)btnConfirmClick{
+    if (self.blockConfirm) {
+        self.blockConfirm(self.starView.currentScore, self.textView.text);
+    }
+}
 @end

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CommentStarView.h"
+#import "PlaceHolderTextView.h"
 
 @interface OrderDetailView : UIView
 @property (nonatomic, strong) ModelTransportOrder *model;
@@ -27,4 +29,15 @@
 #pragma mark 刷新cell
 - (void)resetCellWithModel:(ModelLocationItem *)model;
 
+@end
+
+
+@interface OrderDetailCommentView : UIView
+@property (nonatomic, strong) CommentStarView *starView;
+@property (nonatomic, strong) PlaceHolderTextView *textView;
+@property (nonatomic, strong) void (^blockConfirm)(float,NSString *);
+
+@property (nonatomic, strong) ModelTransportOrder *model;
+
+- (void)resetViewWithModel:(ModelTransportOrder *)model;
 @end

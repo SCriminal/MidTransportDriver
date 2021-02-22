@@ -236,7 +236,7 @@
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"number":RequestStrKey(number),};
+        NSDictionary *dic = @{@"number":UnPackStr(number),};
         [self getUrl:@"/loms/order/driver/{number}" delegate:delegate parameters:dic success:success failure:failure];
 }
 

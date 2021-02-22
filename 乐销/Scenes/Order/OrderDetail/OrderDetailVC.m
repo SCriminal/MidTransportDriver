@@ -33,6 +33,7 @@
 @property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) BulkCargoOperateLoadView *upLoadImageView;
 @property (nonatomic, strong) BulkCargoOperateLoadView *upUnLoadImageView;
+@property (nonatomic, strong) OrderDetailCommentView *commentView;
 
 
 @end
@@ -40,6 +41,12 @@
 @implementation OrderDetailVC
 
 #pragma mark lazy init
+- (OrderDetailCommentView *)commentView{
+    if (!_commentView) {
+        _commentView = [OrderDetailCommentView new];
+    }
+    return _commentView;
+}
 - (BulkCargoOperateLoadView *)upLoadImageView{
     if (!_upLoadImageView) {
         WEAKSELF
@@ -164,6 +171,9 @@
     [self.view addSubview:self.bottomView];
     [self addRefreshHeader];
     [self requestList];
+    [self addObserveOfKeyboard];
+    self.tableView.tableFooterView = self.commentView;
+
 }
 #pragma mark UITableViewDelegate
 //row num
@@ -187,6 +197,7 @@
 #pragma mark refresh table header view
 - (void)reconfigTableHeaderView{
     self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.trackView]];
+    
 }
 #pragma mark request
 - (void)requestList{
@@ -202,6 +213,7 @@
 
         self.tableView.height = SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - self.bottomView.height;
         [self reconfigTableHeaderView];
+        self.tableView.tableFooterView = self.commentView;
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
