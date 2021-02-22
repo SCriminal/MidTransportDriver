@@ -204,7 +204,7 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
             self.distanceShow = nil;
         }
         if (self.lengthMin || self.lengthMax) {
-            self.carLenthSHow = [NSString stringWithFormat:@"%@-%@米",self.lengthMin?NSNumber.dou(self.lengthMin/100.0).stringValue:@"",NSNumber.dou(self.lengthMax/100.0).stringValue];
+            self.carLenthSHow = [NSString stringWithFormat:@"%@-%@米",NSNumber.dou(self.lengthMin/100.0).stringValue,NSNumber.dou(self.lengthMax/100.0).stringValue];
         }else{
             self.carLenthSHow = nil;
         }

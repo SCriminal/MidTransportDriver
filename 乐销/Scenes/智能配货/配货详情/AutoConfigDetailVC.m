@@ -284,7 +284,7 @@
     self.newsView.hidden = true;
     if (isStr(modelPlan.comment)) {
         self.newsView.hidden = false;
-        self.newsView.centerXTop = XY(SCREEN_WIDTH/2.0, top);
+        self.newsView.centerXTop = XY(SCREEN_WIDTH/2.0, top+ W(20));
         [self.newsView resetWithAry:@[modelPlan.comment]];
         top = self.newsView.bottom ;
     }

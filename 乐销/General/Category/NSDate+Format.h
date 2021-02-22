@@ -42,4 +42,5 @@
 - (NSString*)weekdayStr_sld;
 + (NSString *)stringWithDate:(NSDate *)date format:(NSString *)format;
 + (NSString *)currentScopeWeek:(NSUInteger)firstWeekday dateFormat:(NSString *)dateFormat;
+- (NSString *)timeZoneShow;
 @end

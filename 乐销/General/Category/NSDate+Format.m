@@ -234,7 +234,9 @@
 
 - (NSString *)timeAgoShow
 {
-	NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self];
+    NSDate * dCurrent = [NSDate date];
+
+	NSTimeInterval delta = [dCurrent timeIntervalSinceDate:self];
 
 	if (delta < 1 * MINUTE)
 	{
@@ -400,5 +402,9 @@
 //    NSString *lastDay = [formatter stringFromDate:lastDate];
     
     return [NSString stringWithFormat:@"%@",firstDay];
+}
+
+- (NSString *)timeZoneShow{
+    return [GlobalMethod exchangeDate:self formatter:TIME_SEC_SHOW];
 }
 @end

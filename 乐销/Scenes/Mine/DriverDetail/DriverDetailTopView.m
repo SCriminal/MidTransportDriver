@@ -87,7 +87,7 @@
     return _loginTime;
 }
 - (UILabel *)sign{
-    if (!_sign) { 
+    if (!_sign) {
         _sign = [UILabel new];
         _sign.textColor = [UIColor whiteColor];
         _sign.numberOfLines = 1;
