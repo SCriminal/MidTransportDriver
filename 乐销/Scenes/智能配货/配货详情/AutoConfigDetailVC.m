@@ -18,7 +18,7 @@
 @property (nonatomic, strong) AutoConfigDetailView *topView;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) ModelAuthCar *modelCarInfo;
-
+@property (nonatomic, assign) BOOL isShow;
 @end
 
 @implementation AutoConfigDetailVC
@@ -28,11 +28,18 @@
         _timeView.date = [GlobalMethod exchangeTimeStampToDate:self.modelList.startTime];
         WEAKSELF
         _timeView.blockOutTime = ^{
+            if (weakSelf.isShow) {
+                return;
+            }
+#ifndef SLD_TEST
             ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
             modelConfirm.blockClick = ^{
                 [GB_Nav popViewControllerAnimated:true];
             };
             [BaseAlertView initWithTitle:@"提示" content:@"倒计时已结束，请选择其他运单" aryBtnModels:@[modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
+            [weakSelf timerStop];
+            weakSelf.isShow = true;
+#endif
         };
         _timeView.blockClick = ^{
             [weakSelf requestCarInfo];
@@ -272,16 +279,16 @@
     [self.addressTo fitTitle:[NSString stringWithFormat:@"%@%@",UnPackStr(modelPlan.endCityName),UnPackStr(modelPlan.endCountyName)] variable:W(160)];
     self.addressTo.centerXCenterY = XY((SCREEN_WIDTH - self.iconAddress.right - W(10))/2.0 + SCREEN_WIDTH/2.0 + self.iconAddress.width/2.0, self.iconAddress.centerY);
     
-    CGFloat top = self.iconAddress.bottom + W(20);
+    CGFloat top = self.iconAddress.bottom ;
     self.newsView.centerXTop = XY(SCREEN_WIDTH/2.0, top);
     self.newsView.hidden = true;
     if (isStr(modelPlan.comment)) {
         self.newsView.hidden = false;
         self.newsView.centerXTop = XY(SCREEN_WIDTH/2.0, top);
         [self.newsView resetWithAry:@[modelPlan.comment]];
-        top = self.newsView.bottom + W(20);
+        top = self.newsView.bottom ;
     }
-    
+    top +=W(2);
     NSMutableArray * ary = [NSMutableArray new];
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
@@ -379,7 +386,7 @@
                 l.numberOfLines = 0;
                 l.lineSpace = W(0);
                 [l fitTitle:modelB.title variable:SCREEN_WIDTH - W(30)];
-                l.leftTop = XY(W(15), top + W(15));
+                l.leftTop = XY(W(15), top + W(12));
                 [self addSubview:l];
             }
             {
@@ -390,7 +397,7 @@
                 l.numberOfLines = 0;
                 l.lineSpace = W(0);
                 [l fitTitle:isStr(modelB.subTitle)?modelB.subTitle:@"暂无" variable:SCREEN_WIDTH - W(115)];
-                l.leftTop = XY(W(90), top + W(15));
+                l.leftTop = XY(W(90), top + W(12));
                 [self addSubview:l];
                 top = l.bottom;
             }

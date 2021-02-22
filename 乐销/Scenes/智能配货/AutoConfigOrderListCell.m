@@ -159,13 +159,13 @@
 
        self.addressTo.centerXCenterY = XY((SCREEN_WIDTH - self.iconAddress.right - W(10))/2.0 + SCREEN_WIDTH/2.0 + self.iconAddress.width/2.0, self.iconAddress.centerY);
        
-    CGFloat top = self.addressTo.bottom + W(20);
+    CGFloat top = self.addressTo.bottom + W(18);
     self.newsView.hidden = true;
     if (isStr(model.comment)) {
         self.newsView.hidden = false;
         self.newsView.centerXTop = XY(SCREEN_WIDTH/2.0, top);
         [self.newsView resetWithAry:@[model.comment]];
-        top = self.newsView.bottom + W(20);
+        top = self.newsView.bottom + W(18);
     }
   
     {
@@ -181,9 +181,9 @@
     }
     
     [self.goodsName fitTitle:[NSString stringWithFormat:@"%@ %@",isStr(model.cargoName)?model.cargoName:@"暂无货物名称",UnPackStr(model.internalBaseClassDescription)] variable:SCREEN_WIDTH/2.0-W(15)];
-      self.goodsName.leftTop = XY(W(15),top+ W(20));
+      self.goodsName.leftTop = XY(W(15),top+ W(11));
     [self.time fitTitle:[GlobalMethod exchangeTimeStampToDate:model.createTime].timeAgoShow variable:SCREEN_WIDTH/2.0 -W(15)];
-      self.time.rightTop = XY(SCREEN_WIDTH - W(15),top+ W(20));
+      self.time.rightTop = XY(SCREEN_WIDTH - W(15),top+ W(11));
     top = self.time.bottom;
     
     {
@@ -199,10 +199,10 @@
                [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_666,        NSFontAttributeName :  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular]} range:NSMakeRange(0, strAttribute.length)];
                [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_RED,        NSFontAttributeName :  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular]} range:[self.price.text rangeOfString:str2]];
                self.price.attributedText = strAttribute;
-               self.price.leftTop = XY(W(15), top+ W(20));
+               self.price.leftTop = XY(W(15), top+ W(11));
     }
     [self.distance fitTitle:isStr(model.distanceShow)?[NSString stringWithFormat:@"约%@装货",model.distanceShow]:@"暂无距离" variable:SCREEN_WIDTH/2.0 -W(15)];
-      self.distance.rightTop = XY(SCREEN_WIDTH - W(15),top+ W(20));
+      self.distance.rightTop = XY(SCREEN_WIDTH - W(15),top+ W(11));
     top = self.distance.bottom;
       
     self.timeView.date = model.dateStart;

@@ -140,9 +140,14 @@
     [self.view addSubview:self.topView];
     [self.tableView registerClass:[AutoConfigOrderListCell class] forCellReuseIdentifier:@"AutoConfigOrderListCell"];
     self.tableView.frame = CGRectMake(0, self.topView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.topView.bottom - TABBAR_HEIGHT);
-    
+    self.tableView.tableHeaderView = ^(){
+        UIView * v = [UIView new];
+        v.backgroundColor = COLOR_BACKGROUND;
+        v.widthHeight = XY(SCREEN_WIDTH, W(12));
+        return v;
+    }();
     self.tableView.backgroundColor = COLOR_BACKGROUND;
-    self.tableView.contentInset = UIEdgeInsetsMake(W(12), 0, 0, 0);
+//    self.tableView.contentInset = UIEdgeInsetsMake(W(12), 0, 0, 0);
     [self addRefreshHeader];
     [self addRefreshFooter];
 }
@@ -181,10 +186,12 @@
         [weakSelf requestCarInfo];
     };
     cell.blockOutTime = ^(AutoConfigOrderListCell *c) {
+#ifndef SLD_TEST
         if ([weakSelf.aryDatas containsObject:c.model]) {
             [weakSelf.aryDatas removeObject:c.model];
             [weakSelf.tableView reloadData];
         }
+#endif
     };
     return cell;
 }
@@ -216,7 +223,9 @@
         for (ModelAutOrderListItem * item in aryRequest.copy) {
             int interval = [item.dateStart timeIntervalSinceNow];
                 if(interval<=0){
+#ifndef SLD_TEST
                     [aryRequest removeObject:item];
+#endif
                 }
         }
         if (self.isRemoveAll) {

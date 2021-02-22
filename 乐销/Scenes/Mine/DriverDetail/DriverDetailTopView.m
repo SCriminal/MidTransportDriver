@@ -20,7 +20,6 @@
 @implementation DriverDetailTopView
 
 #pragma mark 懒加载
-
 - (UIImageView *)head{
     if (_head == nil) {
         _head = [UIImageView new];
@@ -32,6 +31,7 @@
     }
     return _head;
 }
+
 - (UIImageView *)authImage{
     if (!_authImage) {
         UIImageView * iv = [UIImageView new];
@@ -87,7 +87,7 @@
     return _loginTime;
 }
 - (UILabel *)sign{
-    if (!_sign) {
+    if (!_sign) { 
         _sign = [UILabel new];
         _sign.textColor = [UIColor whiteColor];
         _sign.numberOfLines = 1;
