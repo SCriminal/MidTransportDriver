@@ -51,7 +51,7 @@
                            success:(void (^)(NSDictionary * response, id mark))success
                            failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{};
-    [self getUrl:@"https://api.zhongcheyun.cn/zhongcheyun/dict/bank/1_0_35/label/list" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/zhongcheyun/bank/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 /**

@@ -135,7 +135,7 @@
         return strNumber;
     }
     NSString * strPre = [strNumber substringToIndex:4];
-    NSString * strSuf = [strNumber substringFromIndex:strNumber.length - 3];
+    NSString * strSuf = [strNumber substringFromIndex:strNumber.length - 4];
     
     return [NSString stringWithFormat:@"%@ **** **** **** %@",strPre,strSuf];
 }

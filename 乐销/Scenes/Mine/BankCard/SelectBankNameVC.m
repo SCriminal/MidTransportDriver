@@ -73,7 +73,7 @@
 #pragma mark request
 - (void)requestList{
     [RequestApi requestBankListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        self.aryBanks = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelPackageType"];
+        self.aryBanks = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelPackageType"];
         [self filterBanks:nil];
         [self.tableView reloadData];
        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

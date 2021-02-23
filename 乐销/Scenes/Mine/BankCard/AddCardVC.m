@@ -298,7 +298,7 @@
 
 - (void)requestBank{
     [RequestApi requestBankListWithDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        NSArray * aryBanks = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelPackageType"];
+        NSArray * aryBanks = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelPackageType"];
         self.aryBanks = [aryBanks fetchValues:@"name"];;
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
