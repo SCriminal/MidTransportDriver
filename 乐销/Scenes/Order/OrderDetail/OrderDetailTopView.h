@@ -35,7 +35,17 @@
 @interface OrderDetailCommentView : UIView
 @property (nonatomic, strong) CommentStarView *starView;
 @property (nonatomic, strong) PlaceHolderTextView *textView;
+@property (nonatomic, strong) UILabel *score;
 @property (nonatomic, strong) void (^blockConfirm)(float,NSString *);
+
+@property (nonatomic, strong) ModelTransportOrder *model;
+
+- (void)resetViewWithModel:(ModelTransportOrder *)model;
+@end
+
+@interface OrderDetailCommentShowView : UIView
+@property (nonatomic, strong) CommentStarView *starView;
+@property (nonatomic, strong) UILabel *score;
 
 @property (nonatomic, strong) ModelTransportOrder *model;
 

@@ -595,6 +595,22 @@ delegate:(id <RequestDelegate>)delegate
 }
 
 /**
+ 2.0评价货主
+ */
++(void)requestCommentOrderNumber:(NSString *)orderNumber
+                         content:(NSString *)content
+                           score:(double)score
+                        delegate:(id <RequestDelegate>)delegate
+                              success:(void (^)(NSDictionary * response, id mark))success
+                              failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"orderNumber":RequestStrKey(orderNumber),
+                          @"content":RequestStrKey(content),
+                          @"score":RequestDoubleKey(score)
+    };
+    [self postUrl:@"/loms/evaluation/ent" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
  刷洗token
  */
 +(void)requestRefreshTokenDelegate:(id <RequestDelegate>)delegate

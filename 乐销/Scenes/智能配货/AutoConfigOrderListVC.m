@@ -222,7 +222,8 @@
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelAutOrderListItem"];
         for (ModelAutOrderListItem * item in aryRequest.copy) {
             int interval = [item.dateStart timeIntervalSinceNow];
-                if(interval<=0){
+                if(interval<=0 ){
+//                    || item.remainShow == 0
 #ifndef SLD_TEST
                     [aryRequest removeObject:item];
 #endif
@@ -492,7 +493,8 @@
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelAutOrderListItem"];
         for (ModelAutOrderListItem * item in aryRequest.copy) {
             int interval = [item.dateStart timeIntervalSinceNow];
-                if(interval<=0){
+            if(interval<=0 ){
+//                || item.remainShow == 0
                     [aryRequest removeObject:item];
                 }
         }

@@ -34,6 +34,7 @@
 @property (nonatomic, strong) BulkCargoOperateLoadView *upLoadImageView;
 @property (nonatomic, strong) BulkCargoOperateLoadView *upUnLoadImageView;
 @property (nonatomic, strong) OrderDetailCommentView *commentView;
+@property (nonatomic, strong) OrderDetailCommentShowView *commentShowView;
 
 
 @end
@@ -41,9 +42,19 @@
 @implementation OrderDetailVC
 
 #pragma mark lazy init
+- (OrderDetailCommentShowView *)commentShowView{
+    if (!_commentShowView) {
+        _commentShowView = [OrderDetailCommentShowView new];
+    }
+    return _commentShowView;
+}
 - (OrderDetailCommentView *)commentView{
     if (!_commentView) {
         _commentView = [OrderDetailCommentView new];
+        WEAKSELF
+        _commentView.blockConfirm = ^(float score, NSString *content) {
+            [weakSelf requestComment:content score:score];
+        };
     }
     return _commentView;
 }
@@ -172,7 +183,7 @@
     [self addRefreshHeader];
     [self requestList];
     [self addObserveOfKeyboard];
-    self.tableView.tableFooterView = self.commentView;
+    self.tableView.tableFooterView = self.commentShowView;
 
 }
 #pragma mark UITableViewDelegate
@@ -311,5 +322,12 @@
         [self.upUnLoadImageView.collection_Image.collectionView reloadData];
     }
 }
-
+- (void)requestComment:(NSString *)content score:(double)score{
+    [RequestApi requestCommentOrderNumber:self.orderList.orderNumber content:content score:score delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"评价成功"];
+        [self requestList];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+}
 @end

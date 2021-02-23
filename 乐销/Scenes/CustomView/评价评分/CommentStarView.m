@@ -25,21 +25,19 @@
     return _aryDatas;
 }
 - (CGFloat)currentScore{
-    return (self.indexSelect+1) / 2.0;
+    return round((self.indexSelect+1) / 2.0);
 }
 - (void)setCurrentScore:(CGFloat)currentScore{
     [self resetViewWithIndex:(NSInteger)(currentScore*2-1)];
 }
 #pragma mark touch
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
-    //    NSLog(@"beginTrackingWithTouch");
     [self touchPoint:[touch locationInView:self]];
     return YES;
 }
 
 - (void)cancelTrackingWithEvent:(UIEvent *)event {
     [super cancelTrackingWithEvent:event];
-    //    NSLog(@"cancelTrackingWithEvent");
 }
 
 - (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -73,7 +71,9 @@
     for (int i = 0; i<5; i++) {
         NSString * strImageName = @"star_g";
         if (index >= i*2) {
-            strImageName = (index == i*2)?@"star_b":@"star_l";
+//            strImageName = (index == i*2)?@"star_b":@"star_l";
+            strImageName = @"star_l";
+
         }
         CommentStarItemView * itemView =  [self fetchWithIndex:i];
         itemView.ivStar.image = [UIImage imageNamed:strImageName];
@@ -81,6 +81,9 @@
     if (!self.isShowGrayStarBg) {
 //        NSLog(@"%lf  %lf",ceil(self.currentScore),[self fetchItemSize].width);
         self.width = ceil(self.currentScore) * [self fetchItemSize].width;
+    }
+    if (self.blockScoreChange) {
+        self.blockScoreChange(self.currentScore);
     }
 }
 

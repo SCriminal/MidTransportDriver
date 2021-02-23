@@ -52,8 +52,8 @@
 
 
 #define TIME_REQUEST_OUT 8
-#define REQUEST_APP @"1"
-#define REQUEST_CLIENT @"3"
+#define REQUEST_APP @"YbiLMphn35TQh6Pm"
+#define REQUEST_CLIENT @"A1LNLYhn35TQh6Pm"
 #define REQUEST_TERMINALTYPE @"1"
 
 //选取照片数量

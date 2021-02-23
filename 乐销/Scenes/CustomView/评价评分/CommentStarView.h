@@ -23,6 +23,8 @@
  interval
  */
 @property (nonatomic, assign) CGFloat interval;
+@property (nonatomic, strong) void (^blockScoreChange)(double);
+
 //添加subview
 - (void)configDefaultView;
 

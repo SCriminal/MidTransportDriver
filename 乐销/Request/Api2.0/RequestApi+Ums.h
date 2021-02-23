@@ -335,6 +335,16 @@ success:(void (^)(NSDictionary * response, id mark))success
 delegate:(id <RequestDelegate>)delegate
                               success:(void (^)(NSDictionary * response, id mark))success
                              failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+ 2.0评价货主
+ */
++(void)requestCommentOrderNumber:(NSString *)orderNumber
+                         content:(NSString *)content
+                           score:(double)score
+                        delegate:(id <RequestDelegate>)delegate
+                              success:(void (^)(NSDictionary * response, id mark))success
+                         failure:(void (^)(NSString * errorStr, id mark))failure;
 /**
  刷洗token
  */

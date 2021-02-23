@@ -54,16 +54,16 @@
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"startAreaId":NSNumber.dou(startAreaId),
-                           @"endAreaId":NSNumber.dou(endAreaId),
-                           @"page":NSNumber.dou(page),
-                           @"count":NSNumber.dou(count),
-                           @"vehicleTypeId":NSNumber.dou(vehicleTypeId),
-                           @"mode":NSNumber.dou(mode),
+        NSDictionary *dic = @{@"startAreaId":RequestLongKey(startAreaId),
+                           @"endAreaId":RequestLongKey(endAreaId),
+                           @"page":RequestLongKey(page),
+                           @"count":RequestLongKey(count),
+                           @"vehicleTypeId":RequestLongKey(vehicleTypeId),
+                           @"mode":RequestLongKey(mode),
                            @"lat":RequestStrKey(lat),
                            @"lng":RequestStrKey(lng),
                               @"vehicleTypeCode":RequestStrKey(vehicleTypeCode),
-                           @"sort":NSNumber.dou(sort)};
+                           @"sort":RequestLongKey(sort)};
         [self getUrl:@"/plan/plan/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 
@@ -174,8 +174,8 @@
 2.0卸车
 */
 +(void)requestUnloadWithUrls:(NSString *)urls
-                 description:(NSString *)description
                 number:(NSString *)orderNumber
+                 description:(NSString *)description
                 delayReasoon:(NSString *)delayReasoon
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
