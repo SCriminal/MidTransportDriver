@@ -75,3 +75,4 @@
 #import "ModelProblemHistoryItem.h"
 #import "ModelMsgItem.h"
 #import "ModelModule.h"
+#import "ModelCreditListItem.h"

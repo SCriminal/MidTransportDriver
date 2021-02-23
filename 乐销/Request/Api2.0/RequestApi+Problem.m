@@ -57,4 +57,18 @@
         NSDictionary *dic = @{};
         [self getUrl:@"/zhongcheyun/score" delegate:delegate parameters:dic success:success failure:failure];
 }
+
+/**
+ 列表信用
+*/
++(void)requestCreditListWithPage:(double)page
+                            count:(double)count
+                         delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"page":RequestLongKey(page),
+                       @"count":RequestLongKey(count)};
+        [self getUrl:@"/zhongcheyun/score/point/list/user/total" delegate:delegate parameters:dic success:success failure:failure];
+}
+
 @end

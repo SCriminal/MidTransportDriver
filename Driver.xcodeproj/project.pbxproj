@@ -162,6 +162,7 @@
 		D279A47A25DE3B5D0088DAAB /* CarHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D279A47925DE3B5D0088DAAB /* CarHelper.m */; };
 		D279A47F25DE3D480088DAAB /* BulkCargoOperateLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = D279A47B25DE3D480088DAAB /* BulkCargoOperateLoadView.m */; };
 		D279A48025DE3D480088DAAB /* BulkCargoOrderDetailTrackView.m in Sources */ = {isa = PBXBuildFile; fileRef = D279A47C25DE3D480088DAAB /* BulkCargoOrderDetailTrackView.m */; };
+		D279A48325E4E1F50088DAAB /* ModelCreditListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D279A48225E4E1EE0088DAAB /* ModelCreditListItem.m */; };
 		D279C0141E29D77800D0FF94 /* CustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D279C0131E29D77800D0FF94 /* CustomPicker.m */; };
 		D2821CBC218AD9B90057688B /* ORChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2821CB0218AD9B80057688B /* ORChartView.m */; };
 		D2821CBD218AD9B90057688B /* UIButton+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = D2821CB3218AD9B80057688B /* UIButton+EnlargeTouchArea.m */; };
@@ -723,6 +724,8 @@
 		D279A47C25DE3D480088DAAB /* BulkCargoOrderDetailTrackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulkCargoOrderDetailTrackView.m; sourceTree = "<group>"; };
 		D279A47D25DE3D480088DAAB /* BulkCargoOperateLoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkCargoOperateLoadView.h; sourceTree = "<group>"; };
 		D279A47E25DE3D480088DAAB /* BulkCargoOrderDetailTrackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkCargoOrderDetailTrackView.h; sourceTree = "<group>"; };
+		D279A48125E4E1EE0088DAAB /* ModelCreditListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelCreditListItem.h; sourceTree = "<group>"; };
+		D279A48225E4E1EE0088DAAB /* ModelCreditListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelCreditListItem.m; sourceTree = "<group>"; };
 		D279C0121E29D77800D0FF94 /* CustomPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPicker.h; sourceTree = "<group>"; };
 		D279C0131E29D77800D0FF94 /* CustomPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPicker.m; sourceTree = "<group>"; };
 		D2821CB0218AD9B80057688B /* ORChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORChartView.m; sourceTree = "<group>"; };
@@ -1490,6 +1493,8 @@
 		D22851B125942CED00100231 /* 积分 */ = {
 			isa = PBXGroup;
 			children = (
+				D279A48125E4E1EE0088DAAB /* ModelCreditListItem.h */,
+				D279A48225E4E1EE0088DAAB /* ModelCreditListItem.m */,
 				D2A1EF4F25CBECDF0066864D /* ModelModule.h */,
 				D2A1EF5025CBECDF0066864D /* ModelModule.m */,
 				D2A1EF4625CA854D0066864D /* ModelMsgItem.h */,
@@ -3732,6 +3737,7 @@
 				D23327CB2185A27900495488 /* OrderListCell.m in Sources */,
 				DA85246B1D65B5AE00AB04CC /* main.m in Sources */,
 				D2BC9AB31DFFE02800B0468E /* GlobalMethod.m in Sources */,
+				D279A48325E4E1F50088DAAB /* ModelCreditListItem.m in Sources */,
 				D2C55803238BD0100050694F /* ModelScheduleList.m in Sources */,
 				C657C0761FCEAFED00039F53 /* NSDictionary+Model.m in Sources */,
 				D215DC0625BFB878002DAA27 /* MyPriceOrderListManagementVC.m in Sources */,

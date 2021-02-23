@@ -19,6 +19,6 @@
 @property (strong, nonatomic) UILabel *num;
 
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(id)model;
+- (void)resetCellWithModel:(ModelCreditListItem *)model;
 
 @end

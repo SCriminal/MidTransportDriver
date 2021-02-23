@@ -40,6 +40,15 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)requestCreditNumWithDelegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                             failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+ 列表信用
+*/
++(void)requestCreditListWithPage:(double)page
+                            count:(double)count
+                         delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                         failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

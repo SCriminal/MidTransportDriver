@@ -232,7 +232,6 @@
         m.subLeft = W(120);
     }
     [self.tableView reloadData];
-    [self requestDetail];
     [self requestCarType];
 }
 
@@ -379,7 +378,7 @@
     }];
 }
 - (NSString *)fetchRequestJson{
-   NSDictionary * dic =      [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString
+   NSDictionary * dic = [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString
                                                            vehicleType:self.modelCarType.identifier.doubleValue
                                                                  owner:self.modelCarOwner.subString
                                                              grossMass:self.modelOCRDrivingBack.grossMass.doubleValue
@@ -447,13 +446,15 @@
 - (void)requestCarType{
     NSArray * ary = [GlobalMethod readAry:LOCAL_CAR_TYPE modelName:@"ModelIntegralProduct"];
     if (ary.count) {
+        [self requestDetail];
         return;
     }
-    [RequestApi requestCarTypeDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestCarTypeDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSArray * ary = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelIntegralProduct"];
         [GlobalMethod writeAry:ary key:LOCAL_CAR_TYPE];
+        [self requestDetail];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
+            [self requestDetail];
         }];
 }
 @end
