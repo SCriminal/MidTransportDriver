@@ -607,7 +607,7 @@ delegate:(id <RequestDelegate>)delegate
                           @"content":RequestStrKey(content),
                           @"score":RequestDoubleKey(score)
     };
-    [self postUrl:@"/loms/evaluation/ent" delegate:delegate parameters:dic success:success failure:failure];
+    [self postUrl:@"/zhongcheyun/evaluation/ent" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 /**

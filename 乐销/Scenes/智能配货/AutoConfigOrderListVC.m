@@ -32,7 +32,7 @@
 @property (nonatomic, strong) NSMutableDictionary *dicComments;
 @property (nonatomic, strong) ModelAuthCar *modelCarInfo;
 @property (nonatomic, strong) ModelAutOrderListItem *modelList;
-
+@property (nonatomic, assign) NSInteger orderTypeIndex;
 @property (nonatomic, assign) BOOL isRequestSuccess;
 @end
 
@@ -57,8 +57,10 @@
 - (AutoConfigOrderListFilterView *)filterView{
     if (!_filterView) {
         _filterView = [AutoConfigOrderListFilterView new];
+        WEAKSELF
         _filterView.blockSearchClick = ^(NSInteger carType, NSInteger orderType) {
-            
+            weakSelf.orderTypeIndex = orderType;
+            [weakSelf refreshHeaderAll];
         };
     }
     return _filterView;
@@ -214,9 +216,9 @@
 }
 #pragma mark request
 - (void)requestList{
-    
+   
     ModelAddress * location = [GlobalMethod readModelForKey:LOCAL_LOCATION_UPTODATE modelName:@"ModelAddress" exchange:false];
-    [RequestApi requestAutoOrderListWithMode:nil startAreaId:NSNumber.dou(self.areaStart.iDProperty).stringValue endAreaId:NSNumber.dou(self.areaEnd.iDProperty).stringValue createStartTime:0 createEndTime:0 page:self.pageNum count:20 lat:NSNumber.dou(location.lat).stringValue lng:NSNumber.dou(location.lng).stringValue sort:self.topView.indexSelected+1 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestAutoOrderListWithMode:self.orderTypeIndex?NSNumber.dou(self.orderTypeIndex).stringValue:nil startAreaId:NSNumber.dou(self.areaStart.iDProperty).stringValue endAreaId:NSNumber.dou(self.areaEnd.iDProperty).stringValue createStartTime:0 createEndTime:0 page:self.pageNum count:20 lat:NSNumber.dou(location.lat).stringValue lng:NSNumber.dou(location.lng).stringValue sort:self.topView.indexSelected+1 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.isRequestSuccess = true;
         self.pageNum ++;
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelAutOrderListItem"];
@@ -482,6 +484,8 @@
     }];
     [nav configBlueStyle];
     [self.view addSubview:nav];
+    
+    self.topView.blockFilter = nil;
 }
 - (void)requestList{
     
