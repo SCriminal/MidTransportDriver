@@ -221,8 +221,8 @@
                            @"shipperName":RequestStrKey(shipperName),
                            @"plateNumber":RequestStrKey(plateNumber),
                            @"driverName":RequestStrKey(driverName),
-                              @"startTime":RequestDoubleKey(startTime),
-                              @"endTime":RequestDoubleKey(endTime),
+                              @"startTime":RequestLongKey(startTime),
+                              @"endTime":RequestLongKey(endTime),
                               @"orderStatues":RequestStrKey(orderStatues),
 
         };

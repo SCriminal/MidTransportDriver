@@ -309,6 +309,7 @@
 }
 - (void)btnSearchClick{
     if (self.blockSearchClick) {
+       
         self.blockSearchClick(self.btnTagSelected,self.tfBillNo.text,self.dateStart,self.dateEnd);
     }
     [GlobalMethod endEditing];

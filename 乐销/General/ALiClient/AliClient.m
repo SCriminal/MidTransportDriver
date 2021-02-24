@@ -49,6 +49,9 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
         case ENUM_UP_IMAGE_TYPE_BANK_CARD:
             return @"ums/bank/card/";
             break;
+        case ENUM_UP_IMAGE_TYPE_ORDER_SELF:
+            return @"tms/agreement/";
+            break;
         default:
             break;
     }

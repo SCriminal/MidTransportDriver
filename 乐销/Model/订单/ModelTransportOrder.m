@@ -215,11 +215,12 @@ NSString *const kModelTransportOrderEndLat = @"endLat";
                 break;
             case 4:
                 self.unitShow = @"吨";
-                self.qtyShow = self.transportQty/1000.0;
+                self.qtyShow = [NSNumber bigDecimal:self.transportQty divide:1000.0];
+
                 break;
             case 5:
                 self.unitShow = @"立方米";
-                self.qtyShow = self.transportQty/1000000000.0;
+                self.qtyShow = [NSNumber bigDecimal:self.transportQty divide:1000000000.0];
                 break;
             default:
                 break;

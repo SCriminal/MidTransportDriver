@@ -20,4 +20,7 @@
 +(NSNumber *)exchangeStr:(NSString *)str;
 + (NSNumber *)numberWithString:(NSString *)string;
 + (NSNumber * (^)(NSString *))lonFromStr;
++ (double)bigDecimal:(double)num1 divide:(double)num2;
++ (double)bigDecimal:(double)num1 multiply:(double)num2;
+
 @end

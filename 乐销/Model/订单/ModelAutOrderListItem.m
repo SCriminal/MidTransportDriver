@@ -267,10 +267,11 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
         case 3:
             break;
         case 4:
-            qty = qty*1000.0;
+            qty = [NSNumber bigDecimal:qty multiply:1000.0];
             break;
         case 5:
-            qty = qty*1000000000.0;
+            qty = [NSNumber bigDecimal:qty multiply:1000000000.0];
+
             break;
         default:
             break;
@@ -287,10 +288,10 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
         case 3:
             break;
         case 4:
-            qty = qty/1000.0;
+            qty = [NSNumber bigDecimal:qty divide:1000.0];
             break;
         case 5:
-            qty = qty/1000000000.0;
+            qty = [NSNumber bigDecimal:qty divide:1000000000.0];
             break;
         default:
             break;

@@ -271,7 +271,7 @@
 
 - (void)imagesSelect:(NSArray *)aryImages
 {
-    [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_ORDER;
+    [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_ORDER_SELF;
 
     [[AliClient sharedInstance]updateImageAry:aryImages  storageSuccess:nil upSuccess:nil upHighQualitySuccess:nil fail:nil];
     for (BaseImage *image in aryImages) {

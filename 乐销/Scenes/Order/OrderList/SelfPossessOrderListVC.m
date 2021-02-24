@@ -24,6 +24,7 @@
 #import <MapKit/MapKit.h>
 #import "ThirdMap.h"
 #import "RejectOrderView.h"
+#import "NSDate+YYAdd.h"
 
 @interface SelfPossessOrderListVC ()
 @property (nonatomic, strong) OrderFilterView *filterView;
@@ -157,9 +158,16 @@
         default:
             break;
     }
-    
-    [RequestApi requestSelfPossessOrderListWithPage:self.pageNum count:20 orderNumber:isStr(self.billNo)?self.billNo:nil shipperName:nil plateNumber:nil driverName:nil                       startTime:self.dateStart?self.dateStart.timeIntervalSince1970:0
-                                 endTime:self.dateEnd?self.dateEnd.timeIntervalSince1970:0
+    NSDate * dateStart = self.dateStart;
+    if (dateStart == nil) {
+        dateStart = [[NSDate date] dateByAddingYears:-1000];
+    }
+    NSDate * dateEnd = self.dateEnd;
+    if (dateEnd == nil) {
+        dateEnd = [NSDate date];
+    }
+    [RequestApi requestSelfPossessOrderListWithPage:self.pageNum count:20 orderNumber:isStr(self.billNo)?self.billNo:nil shipperName:nil plateNumber:nil driverName:nil                       startTime:dateStart.timeIntervalSince1970
+                                 endTime:dateEnd.timeIntervalSince1970
                             orderStatues:strOrderStatus
                                 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.pageNum ++;
@@ -274,7 +282,7 @@
 
 - (void)imagesSelect:(NSArray *)aryImages
 {
-    [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_ORDER;
+    [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_ORDER_SELF;
 
     [[AliClient sharedInstance]updateImageAry:aryImages  storageSuccess:nil upSuccess:nil upHighQualitySuccess:nil fail:nil];
     for (BaseImage *image in aryImages) {

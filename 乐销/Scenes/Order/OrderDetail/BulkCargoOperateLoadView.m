@@ -238,6 +238,10 @@
             return;
         }
     }
+    if (self.collection_Image.aryDatas.count == 0) {
+        [GlobalMethod showAlert:self.labelTitle.text];
+        return;
+    }
     if (self.blockComplete) {
         self.blockComplete(self.collection_Image.aryDatas,self.textView.text,isStr(self.subTextView.text)?self.subTextView.text:nil);
     }

@@ -71,7 +71,7 @@
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"发货量：";
-        m.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(model.qtyShow),model.unitShow];
+        m.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(model.qtyShow).stringValue,model.unitShow];
         m.colorSelect = nil;
         m.left = W(92);
         return m;
@@ -214,38 +214,9 @@
         m.left = W(62);
         return m;
     }()].mutableCopy;
-    NSArray * ary2 = @[^(){
-        ModelBtn * m = [ModelBtn new];
-        m.title = @"路线轨迹";
-        m.subTitle = nil;
-        m.colorSelect = nil;
-        m.isSelected = true;
-        return m;
-    }(),^(){
-        ModelBtn * m = [ModelBtn new];
-        m.title = @"当前位置：";
-        m.subTitle = @"山东省潍坊市奎文区世博国际大厦";
-        m.colorSelect = nil;
-        m.left = W(93);
-        return m;
-    }(),^(){
-        ModelBtn * m = [ModelBtn new];
-        m.title = @"当前时速：";
-        m.subTitle = @"20km/h";
-        m.colorSelect = nil;
-        m.left = W(93);
-        return m;
-    }(),^(){
-        ModelBtn * m = [ModelBtn new];
-        m.title = @"已驶里程：";
-        m.subTitle = @"20km";
-        m.colorSelect = nil;
-        m.left = W(93);
-        return m;
-    }()].mutableCopy;
+    
     NSMutableArray * aryAll = [NSMutableArray arrayWithArray:ary0];
     [aryAll addObjectsFromArray:ary1];
-//    [aryAll addObjectsFromArray:ary2];
     
     CGFloat top =  [self addLabel:aryAll top:W(72)];
     self.height = top;

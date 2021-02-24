@@ -541,8 +541,8 @@
             timestampString = "594266547.0674371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "-updateImageAry:storageSuccess:upSuccess:upHighQualitySuccess:fail:"
             landmarkType = "7">
          </BreakpointContent>
@@ -558,8 +558,8 @@
             timestampString = "594266547.068126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "-updateImageAry:storageSuccess:upSuccess:upHighQualitySuccess:fail:"
             landmarkType = "7">
          </BreakpointContent>
@@ -575,8 +575,8 @@
             timestampString = "594266547.068473"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "-updateImageAry:storageSuccess:upSuccess:upHighQualitySuccess:fail:"
             landmarkType = "7">
          </BreakpointContent>
@@ -592,8 +592,8 @@
             timestampString = "594266547.068817"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "-upImageData:urlSuffix:blockSuccess:blockFailure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -911,8 +911,8 @@
             timestampString = "594266547.069627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "-updateImageAry:storageSuccess:upSuccess:upHighQualitySuccess:fail:"
             landmarkType = "7">
             <Locations>
@@ -1452,7 +1452,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "232"
             endingLineNumber = "232"
-            landmarkName = "-request:blockSuccess:"
+            landmarkName = "-requestUpuserLocation:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1602,8 +1602,8 @@
             timestampString = "594266547.070766"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "-updateImageAry:storageSuccess:upSuccess:upHighQualitySuccess:fail:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1671,9 +1671,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "247"
-            endingLineNumber = "247"
-            landmarkName = "-request:blockSuccess:"
-            landmarkType = "7">
+            endingLineNumber = "247">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1958,9 +1956,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "296"
-            endingLineNumber = "296"
-            landmarkName = "LocationRecordInstance"
-            landmarkType = "3">
+            endingLineNumber = "296">
             <Locations>
                <Location
                   uuid = "9B9942BD-4BF2-451E-B342-61ACE62E049C - b3e1df84e659c1c5"
@@ -2295,8 +2291,8 @@
             timestampString = "594266547.072386"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "-upImageHeigh:urlSuffix:blockSuccess:blockFailure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2652,9 +2648,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "243"
-            endingLineNumber = "243"
-            landmarkName = "-request:blockSuccess:"
-            landmarkType = "7">
+            endingLineNumber = "243">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2687,7 +2681,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
             endingLineNumber = "108"
-            landmarkName = "-startLocationWithShippingNoteInfos:listener:"
+            landmarkName = "-stopLocationWithShippingNoteInfos:listener:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2704,7 +2698,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
             endingLineNumber = "158"
-            landmarkName = "-stopLocationWithShippingNoteInfos:listener:"
+            landmarkName = "-amapLocationManager:doRequireLocationAuth:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2720,7 +2714,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "156"
             endingLineNumber = "156"
-            landmarkName = "-stopLocationWithShippingNoteInfos:listener:"
+            landmarkName = "-amapLocationManager:doRequireLocationAuth:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2744,7 +2738,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "04BB5DA5-BD74-44DF-936C-83C64982A26E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/General/GlobalMethod/GlobalMethod+Version.m"
@@ -3150,8 +3144,8 @@
             filePath = "&#x4e50;&#x9500;/General/ALiClient/AliClient.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-updateImageAry:storageSuccess:upSuccess:upHighQualitySuccess:fail:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3632,7 +3626,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "117"
             endingLineNumber = "117"
-            landmarkName = "-startLocationWithShippingNoteInfos:listener:"
+            landmarkName = "-amapLocationManager:didUpdateLocation:reGeocode:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3792,7 +3786,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
             endingLineNumber = "114"
-            landmarkName = "-startLocationWithShippingNoteInfos:listener:"
+            landmarkName = "-stopLocationWithShippingNoteInfos:listener:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3808,7 +3802,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
             endingLineNumber = "135"
-            landmarkName = "-startLocationWithShippingNoteInfos:listener:"
+            landmarkName = "-amapLocationManager:didUpdateLocation:reGeocode:"
             landmarkType = "7">
             <Locations>
                <Location
@@ -3856,7 +3850,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
             endingLineNumber = "137"
-            landmarkName = "-stopLocationWithShippingNoteInfos:listener:"
+            landmarkName = "-amapLocationManager:didUpdateLocation:reGeocode:"
             landmarkType = "7">
             <Locations>
                <Location
@@ -3904,7 +3898,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "139"
             endingLineNumber = "139"
-            landmarkName = "-stopLocationWithShippingNoteInfos:listener:"
+            landmarkName = "-amapLocationManager:didUpdateLocation:reGeocode:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3920,7 +3914,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "184"
             endingLineNumber = "184"
-            landmarkName = "-amapLocationManager:didUpdateLocation:reGeocode:"
+            landmarkName = "-request:blockSuccess:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3936,7 +3930,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
             endingLineNumber = "189"
-            landmarkName = "-amapLocationManager:didUpdateLocation:reGeocode:"
+            landmarkName = "-request:blockSuccess:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3944,7 +3938,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "4984ABD2-5977-4D53-9080-BCADB381EF96"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
@@ -3952,7 +3946,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "162"
             endingLineNumber = "162"
-            landmarkName = "-stopLocationWithShippingNoteInfos:listener:"
+            landmarkName = "-amapLocationManager:didFailWithError:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3960,7 +3954,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "95ECCEAC-3D10-44BC-83C6-DCDAA1562C4E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
@@ -3968,40 +3962,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
             endingLineNumber = "166"
-            landmarkName = "-stopLocationWithShippingNoteInfos:listener:"
+            landmarkName = "-amapLocationManager:didChangeAuthorizationStatus:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "95ECCEAC-3D10-44BC-83C6-DCDAA1562C4E - c3364ba4824c8aff"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__69-[LocationRecordInstance stopLocationWithShippingNoteInfos:listener:]_block_invoke_6"
-                  moduleName = "Driver"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/suilindong/Desktop/%E4%B8%AD%E8%BD%A6%E8%BF%90%E5%8F%B8%E6%9C%BA%E7%AB%AF/%E4%B9%90%E9%94%80/General/LocationRecord/LocationRecordInstance.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "167"
-                  endingLineNumber = "167"
-                  offsetFromSymbolStart = "1235">
-               </Location>
-               <Location
-                  uuid = "95ECCEAC-3D10-44BC-83C6-DCDAA1562C4E - c3364ba4834c8abe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__69-[LocationRecordInstance stopLocationWithShippingNoteInfos:listener:]_block_invoke_7"
-                  moduleName = "Driver"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/suilindong/Desktop/%E4%B8%AD%E8%BD%A6%E8%BF%90%E5%8F%B8%E6%9C%BA%E7%AB%AF/%E4%B9%90%E9%94%80/General/LocationRecord/LocationRecordInstance.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "73">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4144,7 +4106,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
             endingLineNumber = "131"
-            landmarkName = "-timerRun"
+            landmarkName = "-requestCarInfo"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4240,8 +4202,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
-            landmarkName = "-timeView"
-            landmarkType = "7">
+            landmarkName = "AutoConfigDetailVC"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5064,7 +5026,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "3747B7AF-750E-42EA-A291-4B58E6BEC528"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/General/GlobalData/GlobalData.m"
@@ -5073,6 +5035,54 @@
             startingLineNumber = "35"
             endingLineNumber = "35"
             landmarkName = "-setGB_UserModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FBBFFA09-8018-4AAE-BB6B-5019DD28C20D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderDetail/OrderDetailTopView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-resetViewWithModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "976A7F26-FD40-46DA-9183-C2948AE6771F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderDetail/OrderDetailTopView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-resetViewWithModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F3513B5D-4D9E-48F3-AE71-B33374F5C8A8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Model/&#x8ba2;&#x5355;/ModelTransportOrder.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
+            landmarkName = "-initWithDictionary:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
