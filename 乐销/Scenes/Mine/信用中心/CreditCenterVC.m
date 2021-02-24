@@ -118,7 +118,7 @@
 #pragma mark request
 - (void)requestList{
     [RequestApi requestCreditNumWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        self.score = [response doubleValueForKey:@"score"];
+        self.score = (int)([response doubleValueForKey:@"score"]/100.0);
       
         [self reconfigView];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
