@@ -6356,7 +6356,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "8982E159-F642-4DC5-9282-324C22EE1B10"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderDetail/OrderDetailVC.m"
@@ -6413,6 +6413,22 @@
             startingLineNumber = "183"
             endingLineNumber = "183"
             landmarkName = "+requestUnloadWithUrls:number:description:delayReasoon:delegate:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0DC4998B-2A2F-4E92-8616-DBAA3B664D4B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x6d4b;&#x8bd5;/TestVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-addVersion"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

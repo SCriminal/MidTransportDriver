@@ -86,7 +86,7 @@
     self.lineSpace = W(5);
     self.textColor = COLOR_SUBTITLE;
     self.font = [UIFont systemFontOfSize:F(15)];
-    
+    self.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0);
     [self addSubview:self.placeHolder];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginEditing:) name:UITextViewTextDidBeginEditingNotification object:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endEdit:) name:UITextViewTextDidEndEditingNotification object:self];
