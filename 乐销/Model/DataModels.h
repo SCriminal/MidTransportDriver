@@ -39,8 +39,6 @@
 #import "ModelScheduleInfo.h"
 //有效车辆
 #import "ModelValidCar.h"
-//散货
-#import "ModelBulkCargoOrder.h"
 
 //附件
 #import "ModelAccessoryItem.h"

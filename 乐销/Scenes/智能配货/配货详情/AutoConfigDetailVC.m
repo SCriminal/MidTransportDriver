@@ -300,14 +300,14 @@
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"发货量：";
-        model.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(modelPlan.qtyShow).stringValue,modelPlan.unitShow];
+        model.subTitle = [NSString stringWithFormat:@"%@%@",modelPlan.qtyShow,modelPlan.unitShow];
         model.isSelected = false;
         return model;
     }()];
     [ary addObject:^(){
         ModelBtn * model = [ModelBtn new];
         model.title = @"剩余量：";
-        model.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(modelPlan.remainShow).stringValue,modelPlan.unitShow];
+        model.subTitle = [NSString stringWithFormat:@"%@%@",modelPlan.remainShow,modelPlan.unitShow];
         model.isSelected = true;
         return model;
     }()];

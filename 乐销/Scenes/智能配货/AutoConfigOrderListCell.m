@@ -169,8 +169,8 @@
     }
   
     {
-        NSString * strRemain = [NSString stringWithFormat:@"（剩%@%@）",NSNumber.dou(model.remainShow).stringValue,model.unitShow];
-        [self.goodsInfo fitTitle:[NSString stringWithFormat:@"%@%@%@%@%@%@%@",NSNumber.dou(model.qtyShow).stringValue,model.unitShow,strRemain,isStr(model.vehicleDescription)?@"/":@"",UnPackStr(model.vehicleDescription),isStr(model.carLenthSHow)?@"/":@"",UnPackStr(model.carLenthSHow)] variable:SCREEN_WIDTH - W(30)];
+        NSString * strRemain = [NSString stringWithFormat:@"（剩%@%@）",model.remainShow,model.unitShow];
+        [self.goodsInfo fitTitle:[NSString stringWithFormat:@"%@%@%@%@%@%@%@",model.qtyShow,model.unitShow,strRemain,isStr(model.vehicleDescription)?@"/":@"",UnPackStr(model.vehicleDescription),isStr(model.carLenthSHow)?@"/":@"",UnPackStr(model.carLenthSHow)] variable:SCREEN_WIDTH - W(30)];
         
         NSMutableAttributedString * strAttribute = [[NSMutableAttributedString alloc]initWithString:self.goodsInfo.text];
         [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_333,        NSFontAttributeName :  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular]} range:NSMakeRange(0, strAttribute.length)];

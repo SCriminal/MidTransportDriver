@@ -69,7 +69,8 @@
 @property (nonatomic, strong) NSString * orderStatusShow;
 @property (nonatomic, strong) UIColor *colorStateShow;
 @property (nonatomic, strong) NSString *unitShow;
-@property (nonatomic, assign) double qtyShow;
+@property (nonatomic, strong) NSString *qtyShow;
+
 @property (nonatomic, assign) double priceShow;
 
 @property (nonatomic, assign) double startAreaId;

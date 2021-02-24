@@ -201,7 +201,7 @@ NSString *const kModelTransportOrderEndLat = @"endLat";
 
         
         //logical
-        self.qtyShow = self.transportQty;
+        self.qtyShow = NSNumber.dou(self.transportQty).stringValue;
         self.priceShow = self.unitPrice/100.0;
         switch ((int)self.priceUnit) {
             case 1:

@@ -168,7 +168,6 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
         
         //logical
         self.dateStart = [GlobalMethod exchangeTimeStampToDate:self.startTime];
-        self.qtyShow = self.qty;
         self.priceShow = self.unitPrice/100.0;
         self.qtyShow = [self exchangeQtyShow:self.qty];
         self.remainShow = [self exchangeQtyShow:self.storageQty];
@@ -267,10 +266,10 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
         case 3:
             break;
         case 4:
-            qty = [NSNumber bigDecimal:qty multiply:1000.0];
+            qty = qty *1000.0;
             break;
         case 5:
-            qty = [NSNumber bigDecimal:qty multiply:1000000000.0];
+            qty = qty *1000000000.0;
 
             break;
         default:
@@ -279,7 +278,8 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
     return  qty;
 }
 
-- (double)exchangeQtyShow:(double)qty{
+- (NSString *)exchangeQtyShow:(double)qty{
+    NSString * strReturn = NSNumber.dou(qty).stringValue;
     switch ((int)self.priceUnit) {
         case 1:
             break;
@@ -288,15 +288,15 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
         case 3:
             break;
         case 4:
-            qty = [NSNumber bigDecimal:qty divide:1000.0];
+            strReturn = [NSNumber bigDecimal:qty divide:1000.0];
             break;
         case 5:
-            qty = [NSNumber bigDecimal:qty divide:1000000000.0];
+            strReturn = [NSNumber bigDecimal:qty divide:1000000000.0];
             break;
         default:
             break;
     }
-    return  qty;
+    return  strReturn;
 }
 
 - (NSString *)resetDistance:(CGFloat)meter{

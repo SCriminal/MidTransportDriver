@@ -51,7 +51,7 @@
 - (void)resetViewWithModel:(ModelAutOrderListItem *)model{
     self.model = model;
     if (model.loadQty) {
-        self.tfWeight.text = NSNumber.dou([model exchangeQtyShow:model.loadQty]).stringValue;
+        self.tfWeight.text = [model exchangeQtyShow:model.loadQty];
     }
     [self removeAllSubViews];//移除线
     //重置视图坐标
@@ -98,7 +98,7 @@
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"剩余量：";
-        m.subTitle = [NSString stringWithFormat:@"剩%@%@",NSNumber.dou(model.remainShow).stringValue,model.unitShow];
+        m.subTitle = [NSString stringWithFormat:@"剩%@%@",model.remainShow,model.unitShow];
         m.colorSelect = COLOR_RED;
         m.left = W(142);
         return m;
@@ -307,7 +307,7 @@
 - (void)resetViewWithModel:(ModelAutOrderListItem *)model{
     self.model = model;
     if (model.loadQty) {
-        self.tfWeight.text = NSNumber.dou([model exchangeQtyShow:model.loadQty]).stringValue;
+        self.tfWeight.text = [model exchangeQtyShow:model.loadQty];
     }
     [self removeAllSubViews];//移除线
     //重置视图坐标
@@ -354,7 +354,7 @@
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"剩余量：";
-        m.subTitle = [NSString stringWithFormat:@"剩%@%@",NSNumber.dou(model.remainShow).stringValue,model.unitShow];
+        m.subTitle = [NSString stringWithFormat:@"剩%@%@",model.remainShow,model.unitShow];
         m.colorSelect = COLOR_RED;
         m.left = W(142);
         return m;

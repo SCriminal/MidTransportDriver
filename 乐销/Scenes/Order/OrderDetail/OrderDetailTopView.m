@@ -71,7 +71,7 @@
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"发货量：";
-        m.subTitle = [NSString stringWithFormat:@"%@%@",NSNumber.dou(model.qtyShow).stringValue,model.unitShow];
+        m.subTitle = [NSString stringWithFormat:@"%@%@",model.qtyShow,model.unitShow];
         m.colorSelect = nil;
         m.left = W(92);
         return m;

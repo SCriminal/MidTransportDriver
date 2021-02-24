@@ -102,17 +102,17 @@
     return [formatter numberFromString:string];
 }
 
-+ (double)bigDecimal:(double)num1 divide:(double)num2{
++ (NSString *)bigDecimal:(double)num1 divide:(double)num2{
     NSDecimalNumber *decimalNumber1 = [NSDecimalNumber decimalNumberWithString:NSNumber.dou(num1).stringValue];
     NSDecimalNumber *decimalNumber2 = [NSDecimalNumber decimalNumberWithString:NSNumber.dou(num2).stringValue];;
     NSDecimalNumber *result = [decimalNumber1 decimalNumberByDividingBy:decimalNumber2];
-    return  result.doubleValue;
+    return  result.stringValue;
 }
-+ (double)bigDecimal:(double)num1 multiply:(double)num2{
++ (NSString *)bigDecimal:(double)num1 multiply:(double)num2{
     NSDecimalNumber *decimalNumber1 = [NSDecimalNumber decimalNumberWithString:NSNumber.dou(num1).stringValue];
     NSDecimalNumber *decimalNumber2 = [NSDecimalNumber decimalNumberWithString:NSNumber.dou(num2).stringValue];;
     NSDecimalNumber *result = [decimalNumber1 decimalNumberByMultiplyingBy:decimalNumber2];
-    return  result.doubleValue;
+    return  result.stringValue;
 
 }
 @end

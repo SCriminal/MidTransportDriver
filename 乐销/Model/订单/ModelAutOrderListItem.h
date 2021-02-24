@@ -68,15 +68,15 @@
 
 //logical
 @property (nonatomic, strong) NSString *unitShow;
-@property (nonatomic, assign) double qtyShow;
-@property (nonatomic, assign) double remainShow;
+@property (nonatomic, strong) NSString * qtyShow;
+@property (nonatomic, strong) NSString * remainShow;
 @property (nonatomic, assign) double priceShow;
 @property (nonatomic, strong) NSString *distanceShow;
 @property (nonatomic, strong) NSString *carLenthSHow;
 @property (nonatomic, strong) NSString *comment;
 
 - (double)exchangeRequestQty:(double)qty;
-- (double)exchangeQtyShow:(double)qty;
+- (NSString *)exchangeQtyShow:(double)qty;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
