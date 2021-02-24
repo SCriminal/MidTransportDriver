@@ -153,7 +153,6 @@
 		D2745FAA2087442900A0AD05 /* NoticeSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2745FA92087442900A0AD05 /* NoticeSectionView.m */; };
 		D27470AD22A787DA009B645D /* LocationRecordInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = D27470AC22A787DA009B645D /* LocationRecordInstance.m */; };
 		D27470B022A798DA009B645D /* RequestApi+Location.m in Sources */ = {isa = PBXBuildFile; fileRef = D27470AF22A798DA009B645D /* RequestApi+Location.m */; };
-		D27470BA22A8E801009B645D /* ModelAccountList.m in Sources */ = {isa = PBXBuildFile; fileRef = D27470B822A8E7FF009B645D /* ModelAccountList.m */; };
 		D275D9EB2179707C0060BB0E /* OrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D275D9EA2179707C0060BB0E /* OrderDetailVC.m */; };
 		D275DA032179C09C0060BB0E /* BaseNavView+Logical.m in Sources */ = {isa = PBXBuildFile; fileRef = D275DA022179C09C0060BB0E /* BaseNavView+Logical.m */; };
 		D275DB381DFFA43B00670A40 /* NSData+transformData.m in Sources */ = {isa = PBXBuildFile; fileRef = D275DB221DFFA43B00670A40 /* NSData+transformData.m */; };
@@ -196,7 +195,6 @@
 		D28B6FE71E794589001CC3A8 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28B6FE61E794589001CC3A8 /* BaseCell.m */; };
 		D28F186F2551264E0020BF65 /* PrivateAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D28F186E2551264E0020BF65 /* PrivateAlertView.m */; };
 		D290DB28226EF586004B18B4 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = D290DB27226EF586004B18B4 /* ShareView.m */; };
-		D29191FE21E0A6F6001B2F9E /* ModelOrderList.m in Sources */ = {isa = PBXBuildFile; fileRef = D29191FC21E0A6F6001B2F9E /* ModelOrderList.m */; };
 		D293168C1EF3B62F0034E6FB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D293168A1EF3B62F0034E6FB /* LoginViewController.m */; };
 		D29316901EF3BD980034E6FB /* GlobalMethod+Authority.m in Sources */ = {isa = PBXBuildFile; fileRef = D293168F1EF3BD980034E6FB /* GlobalMethod+Authority.m */; };
 		D293A39A1E011987005B772A /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D293A3981E011987005B772A /* LoadingView.m */; };
@@ -286,7 +284,6 @@
 		D2C5580F238CC18D0050694F /* ScheduleConfirmView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C5580E238CC18D0050694F /* ScheduleConfirmView.m */; };
 		D2C55812238CC9D50050694F /* ModelValidCar.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C55810238CC9D40050694F /* ModelValidCar.m */; };
 		D2C6D14C22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D14B22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m */; };
-		D2C6D15B22DEEEF600A22EA6 /* ModelBulkCargoOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D15A22DEEEF600A22EA6 /* ModelBulkCargoOrder.m */; };
 		D2C6D16122DF245600A22EA6 /* ModelLocationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D15F22DF245500A22EA6 /* ModelLocationItem.m */; };
 		D2C99C341E0BA42F001D5DBA /* RadioBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C99C331E0BA42F001D5DBA /* RadioBtnView.m */; };
 		D2C99C381E0BC021001D5DBA /* AddSubtractView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C99C371E0BC021001D5DBA /* AddSubtractView.m */; };
@@ -332,9 +329,7 @@
 		D2DFD7912296A58F00363142 /* ModelBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD78B2296A58E00363142 /* ModelBaseInfo.m */; };
 		D2DFD7922296A58F00363142 /* ModelAuthorityImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD78C2296A58E00363142 /* ModelAuthorityImage.m */; };
 		D2DFD7942297C28800363142 /* OrderDetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD7932297C28800363142 /* OrderDetailTopView.m */; };
-		D2DFD79A2297D69D00363142 /* ModelOrderOperateTimeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD7992297D69D00363142 /* ModelOrderOperateTimeItem.m */; };
 		D2DFD79E2299071B00363142 /* ModelWXApiReq.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD79D2299071B00363142 /* ModelWXApiReq.m */; };
-		D2DFD7A122991BE200363142 /* ModelPackageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD7A022991BE100363142 /* ModelPackageInfo.m */; };
 		D2DFD7A9229BE59D00363142 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D23327CA2185A27900495488 /* OrderListCell.m */; };
 		D2DFD7B1229E251F00363142 /* RequestApi+Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD7AF229E251F00363142 /* RequestApi+Dictionary.m */; };
 		D2E46D7821D4A1A1007B04A1 /* DriverDetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E46D7721D4A1A1007B04A1 /* DriverDetailTopView.m */; };
@@ -705,8 +700,6 @@
 		D27470AC22A787DA009B645D /* LocationRecordInstance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationRecordInstance.m; sourceTree = "<group>"; };
 		D27470AE22A798DA009B645D /* RequestApi+Location.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+Location.h"; sourceTree = "<group>"; };
 		D27470AF22A798DA009B645D /* RequestApi+Location.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Location.m"; sourceTree = "<group>"; };
-		D27470B822A8E7FF009B645D /* ModelAccountList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAccountList.m; sourceTree = "<group>"; };
-		D27470B922A8E7FF009B645D /* ModelAccountList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAccountList.h; sourceTree = "<group>"; };
 		D275D9E92179707C0060BB0E /* OrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailVC.h; sourceTree = "<group>"; };
 		D275D9EA2179707C0060BB0E /* OrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailVC.m; sourceTree = "<group>"; };
 		D275DA012179C09C0060BB0E /* BaseNavView+Logical.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseNavView+Logical.h"; sourceTree = "<group>"; };
@@ -788,8 +781,6 @@
 		D29072CC1F20919B00726EBB /* MacroLocalKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroLocalKey.h; sourceTree = "<group>"; };
 		D290DB26226EF586004B18B4 /* ShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
 		D290DB27226EF586004B18B4 /* ShareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
-		D29191FC21E0A6F6001B2F9E /* ModelOrderList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelOrderList.m; sourceTree = "<group>"; };
-		D29191FD21E0A6F6001B2F9E /* ModelOrderList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelOrderList.h; sourceTree = "<group>"; };
 		D29316891EF3B62F0034E6FB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D293168A1EF3B62F0034E6FB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D293168E1EF3BD980034E6FB /* GlobalMethod+Authority.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GlobalMethod+Authority.h"; sourceTree = "<group>"; };
@@ -969,8 +960,6 @@
 		D2C55811238CC9D40050694F /* ModelValidCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelValidCar.h; sourceTree = "<group>"; };
 		D2C6D14A22DEBE8F00A22EA6 /* RequestApi+BulkCargo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+BulkCargo.h"; sourceTree = "<group>"; };
 		D2C6D14B22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+BulkCargo.m"; sourceTree = "<group>"; };
-		D2C6D15922DEEEF600A22EA6 /* ModelBulkCargoOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBulkCargoOrder.h; sourceTree = "<group>"; };
-		D2C6D15A22DEEEF600A22EA6 /* ModelBulkCargoOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBulkCargoOrder.m; sourceTree = "<group>"; };
 		D2C6D15F22DF245500A22EA6 /* ModelLocationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelLocationItem.m; sourceTree = "<group>"; };
 		D2C6D16022DF245600A22EA6 /* ModelLocationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelLocationItem.h; sourceTree = "<group>"; };
 		D2C99C321E0BA42F001D5DBA /* RadioBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioBtnView.h; sourceTree = "<group>"; };
@@ -1051,12 +1040,8 @@
 		D2DFD78E2296A58E00363142 /* ModelBaseInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBaseInfo.h; sourceTree = "<group>"; };
 		D2DFD78F2296A58E00363142 /* ModelAuthorityImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAuthorityImage.h; sourceTree = "<group>"; };
 		D2DFD7932297C28800363142 /* OrderDetailTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailTopView.m; sourceTree = "<group>"; };
-		D2DFD7982297D69C00363142 /* ModelOrderOperateTimeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelOrderOperateTimeItem.h; sourceTree = "<group>"; };
-		D2DFD7992297D69D00363142 /* ModelOrderOperateTimeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelOrderOperateTimeItem.m; sourceTree = "<group>"; };
 		D2DFD79C2299071B00363142 /* ModelWXApiReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelWXApiReq.h; sourceTree = "<group>"; };
 		D2DFD79D2299071B00363142 /* ModelWXApiReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelWXApiReq.m; sourceTree = "<group>"; };
-		D2DFD79F22991BE100363142 /* ModelPackageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelPackageInfo.h; sourceTree = "<group>"; };
-		D2DFD7A022991BE100363142 /* ModelPackageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelPackageInfo.m; sourceTree = "<group>"; };
 		D2DFD7AF229E251F00363142 /* RequestApi+Dictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Dictionary.m"; sourceTree = "<group>"; };
 		D2DFD7B0229E251F00363142 /* RequestApi+Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RequestApi+Dictionary.h"; sourceTree = "<group>"; };
 		D2E46D7621D4A1A1007B04A1 /* DriverDetailTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DriverDetailTopView.h; sourceTree = "<group>"; };
@@ -1815,7 +1800,6 @@
 				D284B2C824936B4100E2605A /* OCR */,
 				D2FC33A1247F5A56000DE338 /* 车辆 */,
 				D2D871042338C8D700F79173 /* 银行卡 */,
-				D2C6D15822DEEEF600A22EA6 /* 散货 */,
 				D25E8AE622B0EE950091CF4D /* 车队 */,
 				D2DFD79B2299071B00363142 /* 微信支付 */,
 				D2ACCC1C21DC8E4600F39E28 /* 推送 */,
@@ -2438,20 +2422,12 @@
 				D2C5580B238CB7DB0050694F /* ModelScheduleInfo.m */,
 				D2C55801238BD0100050694F /* ModelScheduleList.h */,
 				D2C55802238BD0100050694F /* ModelScheduleList.m */,
-				D27470B922A8E7FF009B645D /* ModelAccountList.h */,
-				D27470B822A8E7FF009B645D /* ModelAccountList.m */,
 				D2B9373E22D828380005B5D2 /* ModelAccessoryItem.h */,
 				D2B9373F22D828390005B5D2 /* ModelAccessoryItem.m */,
-				D2DFD7982297D69C00363142 /* ModelOrderOperateTimeItem.h */,
-				D2DFD7992297D69D00363142 /* ModelOrderOperateTimeItem.m */,
 				D29C2DC122C3059B00BD2F64 /* ModelPackageType.h */,
 				D29C2DC222C3059B00BD2F64 /* ModelPackageType.m */,
-				D2DFD79F22991BE100363142 /* ModelPackageInfo.h */,
-				D2DFD7A022991BE100363142 /* ModelPackageInfo.m */,
 				D2DCF77B25BBC37A00C8BA86 /* ModelTransportOrder.h */,
 				D2DCF77A25BBC37A00C8BA86 /* ModelTransportOrder.m */,
-				D29191FD21E0A6F6001B2F9E /* ModelOrderList.h */,
-				D29191FC21E0A6F6001B2F9E /* ModelOrderList.m */,
 			);
 			path = "订单";
 			sourceTree = "<group>";
@@ -2747,15 +2723,6 @@
 				D2BE30E4210716310059929D /* VersionUpView.h */,
 			);
 			path = "版本升级页面";
-			sourceTree = "<group>";
-		};
-		D2C6D15822DEEEF600A22EA6 /* 散货 */ = {
-			isa = PBXGroup;
-			children = (
-				D2C6D15922DEEEF600A22EA6 /* ModelBulkCargoOrder.h */,
-				D2C6D15A22DEEEF600A22EA6 /* ModelBulkCargoOrder.m */,
-			);
-			path = "散货";
 			sourceTree = "<group>";
 		};
 		D2C99C311E0BA41E001D5DBA /* RadioBtnView */ = {
@@ -3509,7 +3476,6 @@
 				D2B9FF362490B5890082E8D2 /* SelectCarTypeVC.m in Sources */,
 				D2C55806238BE70E0050694F /* ScheduleOrderInfoVC.m in Sources */,
 				D2996A4121E6E3AA00562587 /* UpImageWithTextVC.m in Sources */,
-				D2C6D15B22DEEEF600A22EA6 /* ModelBulkCargoOrder.m in Sources */,
 				D285E2991E6D49E100DE9A6D /* NSDate+CategorySld.m in Sources */,
 				D293A39A1E011987005B772A /* LoadingView.m in Sources */,
 				D28A3191258C88C8006AC450 /* MyMsgListVC.m in Sources */,
@@ -3600,7 +3566,6 @@
 				D289FEAF1E8F366C00C2636B /* SectionIndexView.m in Sources */,
 				C699DAFA1EEA8857005DC71C /* NSString+LHP.m in Sources */,
 				D2B6B9CB1E960C97005F00C6 /* ImagePickerVC.m in Sources */,
-				D2DFD79A2297D69D00363142 /* ModelOrderOperateTimeItem.m in Sources */,
 				D20E85EA2580D49100C9EE4C /* WithdrawInputView.m in Sources */,
 				D216F53F1E56AB9800E11ED2 /* NSArray+Safe.m in Sources */,
 				D2512BCA1E8CDA0F005F9B54 /* CustomPickerView.m in Sources */,
@@ -3608,7 +3573,6 @@
 				D259AC4A20F435CF00F71C87 /* SendMsgHelper.m in Sources */,
 				D26B88D6225C9E7F0051FA78 /* ForgetPwdVC.m in Sources */,
 				D2DFD7912296A58F00363142 /* ModelBaseInfo.m in Sources */,
-				D27470BA22A8E801009B645D /* ModelAccountList.m in Sources */,
 				D2A1EF3E25C951870066864D /* SelectOrderVC.m in Sources */,
 				D2B9FF28248F2D3E0082E8D2 /* TakeAPictureView.m in Sources */,
 				D2B9374022D828390005B5D2 /* ModelAccessoryItem.m in Sources */,
@@ -3622,7 +3586,6 @@
 				D23B6EFF25BA77E20044E28C /* ModelAutOrderListItem.m in Sources */,
 				D23B6EF625B81C470044E28C /* ModelAuthBusiness.m in Sources */,
 				D22BA9D61E5EB8CA00C5B391 /* FSCalendarCollectionViewLayout.m in Sources */,
-				D29191FE21E0A6F6001B2F9E /* ModelOrderList.m in Sources */,
 				D25145D21E33055300E8107F /* NSArray+Category.m in Sources */,
 				D2F3A5022574EDE1009EBF3F /* AutoConfigTimeView.m in Sources */,
 				D2043B4B1F42CDAC0032AFB0 /* UIScrollView+Category.m in Sources */,
@@ -3719,7 +3682,6 @@
 				D22BA9D31E5EB8CA00C5B391 /* FSCalendarCalculator.m in Sources */,
 				D217D8C61E1B8B8B0094FD55 /* BaseAlertView.m in Sources */,
 				D2A1EF2925C54F2F0066864D /* ModelDealItem.m in Sources */,
-				D2DFD7A122991BE200363142 /* ModelPackageInfo.m in Sources */,
 				D25FA2AD216B2B9D00E2B8AF /* AdvertiesementView.m in Sources */,
 				DAB62BA91E73AC30002AE835 /* NSNumber+Category.m in Sources */,
 				D22851B425942CED00100231 /* ModelIntegralProduct.m in Sources */,
