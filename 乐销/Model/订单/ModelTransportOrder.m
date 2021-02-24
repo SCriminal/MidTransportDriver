@@ -62,7 +62,8 @@ NSString *const kModelTransportOrderEndContacter = @"endContacter";
 NSString *const kModelTransportOrderLoadTime = @"loadTime";
 NSString *const kModelTransportOrderStartProvinceName = @"startProvinceName";
 NSString *const kModelTransportOrderUnitPrice = @"unitPrice";
-
+NSString *const kModelTransportOrderEndLng = @"endLng";
+NSString *const kModelTransportOrderEndLat = @"endLat";
 
 @interface ModelTransportOrder ()
 @end
@@ -195,6 +196,8 @@ NSString *const kModelTransportOrderUnitPrice = @"unitPrice";
             self.loadTime = [dict doubleValueForKey:kModelTransportOrderLoadTime];
             self.startProvinceName = [dict stringValueForKey:kModelTransportOrderStartProvinceName];
             self.unitPrice = [dict doubleValueForKey:kModelTransportOrderUnitPrice];
+        self.endLng = [dict doubleValueForKey:kModelTransportOrderEndLng];
+        self.endLat = [dict doubleValueForKey:kModelTransportOrderEndLat];
 
         
         //logical
@@ -287,6 +290,8 @@ NSString *const kModelTransportOrderUnitPrice = @"unitPrice";
     [mutableDict setValue:[NSNumber numberWithDouble:self.loadTime] forKey:kModelTransportOrderLoadTime];
     [mutableDict setValue:self.startProvinceName forKey:kModelTransportOrderStartProvinceName];
     [mutableDict setValue:[NSNumber numberWithDouble:self.unitPrice] forKey:kModelTransportOrderUnitPrice];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.endLng] forKey:kModelTransportOrderEndLng];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.endLat] forKey:kModelTransportOrderEndLat];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

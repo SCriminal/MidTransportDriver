@@ -75,6 +75,9 @@
 @property (nonatomic, assign) double startAreaId;
 @property (nonatomic, assign) double endAreaId;
 
+@property (nonatomic, assign) double endLng;
+@property (nonatomic, assign) double endLat;
+
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

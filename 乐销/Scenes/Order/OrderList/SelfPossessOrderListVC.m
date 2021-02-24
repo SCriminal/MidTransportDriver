@@ -262,7 +262,7 @@
                 [GlobalMethod showAlert:@"定位失败，请稍后重试"];
                 return;
             }
-            UIAlertController * vc =[ThirdMap getInstalledMapAppWithEndLocation:CLLocationCoordinate2DMake(moddelLocal.lat, moddelLocal.lng) currentLocation:CLLocationCoordinate2DMake(moddelLocal.lat+1, moddelLocal.lng+1)];
+            UIAlertController * vc =[ThirdMap getInstalledMapAppWithEndLocation:CLLocationCoordinate2DMake(moddelLocal.lat, moddelLocal.lng) currentLocation:CLLocationCoordinate2DMake(model.endLat, model.endLng)];
             [self presentViewController:vc animated:YES completion:nil];
             
         }
