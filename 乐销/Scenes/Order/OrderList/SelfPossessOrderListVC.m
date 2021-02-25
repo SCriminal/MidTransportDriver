@@ -72,7 +72,7 @@
     [super viewDidLoad];
     //table
     WEAKSELF
-    BaseNavView * nav = [BaseNavView initNavTitle:@"自有运单中心" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(25), W(25)) leftBlock:^{
+    BaseNavView * nav = [BaseNavView initNavTitle:@"自有运单" leftImageName:@"nav_auto" leftImageSize:CGSizeMake(W(25), W(25)) leftBlock:^{
         [GB_Nav pushVCName:@"MyMsgVC" animated:true];
 
     } rightImageName:@"nav_filter_white" rightImageSize:CGSizeMake(W(23), W(23)) righBlock:^{

@@ -135,16 +135,20 @@
     }
 }
 - (void)showSelectImage{
+    if (self.aryDatas.count >= NUM_IMAGE) {
+        [GlobalMethod showAlert:[NSString stringWithFormat:@"最多上传%@张",NSNumber.dou(NUM_IMAGE).stringValue]];
+        return;
+    }
     BaseVC * vc = (BaseVC *)[self fetchVC];
     if ([vc respondsToSelector:@selector(showImageVC:)]) {
-        [vc showImageVC:NUM_IMAGE];
+        [vc showImageVC:NUM_IMAGE-self.aryDatas.count];
     }else {
         if ([vc isKindOfClass:NSClassFromString(@"CustomTabBarController")]) {
             CustomTabBarController * tabbarvc = (CustomTabBarController *)vc;
             BaseTableVC *manageVC = [[tabbarvc viewControllers] objectAtIndex:tabbarvc.selectedIndex];
             if ([manageVC isKindOfClass:BaseTableVC.class]) {
                  if ([manageVC respondsToSelector:@selector(showImageVC:)]) {
-                       [manageVC showImageVC:NUM_IMAGE];
+                       [manageVC showImageVC:NUM_IMAGE-self.aryDatas.count];
                    }
             }
         }

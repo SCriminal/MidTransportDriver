@@ -170,7 +170,7 @@
   
     {
         NSString * strRemain = [NSString stringWithFormat:@"（剩%@%@）",model.remainShow,model.unitShow];
-        [self.goodsInfo fitTitle:[NSString stringWithFormat:@"%@%@%@%@%@%@%@",model.qtyShow,model.unitShow,strRemain,isStr(model.vehicleDescription)?@"/":@"",UnPackStr(model.vehicleDescription),isStr(model.carLenthSHow)?@"/":@"",UnPackStr(model.carLenthSHow)] variable:SCREEN_WIDTH - W(30)];
+        [self.goodsInfo fitTitle:[NSString stringWithFormat:@"%@%@%@%@%@",model.qtyShow,model.unitShow,strRemain,isStr(model.vehicleDescription)?@"/":@"",UnPackStr(model.vehicleDescription)] variable:SCREEN_WIDTH - W(30)];
         
         NSMutableAttributedString * strAttribute = [[NSMutableAttributedString alloc]initWithString:self.goodsInfo.text];
         [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_333,        NSFontAttributeName :  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular]} range:NSMakeRange(0, strAttribute.length)];
@@ -192,7 +192,7 @@
         if (self.model.mode == 2) {//1 抢单 2 报价
             str2 = @"待报价";
         }else{
-            str2 = [NSString stringWithFormat:@"%@元/%@",NSNumber.dou(model.priceShow).stringValue,model.unitShow];
+            str2 = [NSString stringWithFormat:@"%@元/%@",model.priceShow,model.unitShow];
         }
         [self.price fitTitle:[NSString stringWithFormat:@"%@%@",str1,str2] variable:SCREEN_WIDTH/2.0 -W(15)];
         NSMutableAttributedString * strAttribute = [[NSMutableAttributedString alloc]initWithString:self.price.text];

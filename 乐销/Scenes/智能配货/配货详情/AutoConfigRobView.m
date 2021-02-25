@@ -53,6 +53,7 @@
     if (model.loadQty) {
         self.tfWeight.text = [model exchangeQtyShow:model.loadQty];
     }
+    
     [self removeAllSubViews];//移除线
     //重置视图坐标
     {
@@ -177,6 +178,11 @@
             self.tfWeight.contentType = ENUM_TEXT_CONTENT_TYPE_NUMBER;
         }
     }
+    if ([model.unitShow isEqualToString:@"车"]) {
+        self.tfWeight.text = @"1";
+        [self priceChange];
+        self.tfWeight.userInteractionEnabled = false;
+    }
 }
 - (void)addLabelAry:(NSArray *)ary superView:(UIView *)superView{
     for (ModelBtn *m in ary) {
@@ -236,14 +242,18 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 - (void)weightClick{
-    [self.tfWeight becomeFirstResponder];
+    if ([self.model.unitShow isEqualToString:@"车"]) {
+    
+    }else{
+        [self.tfWeight becomeFirstResponder];
+    }
 }
 - (void)priceChange{
-    double price = 0;
+    NSString * price = nil;
     if (self.tfWeight.text.doubleValue) {
-        price = self.model.unitPrice/100.0 * self.tfWeight.text.doubleValue;
+        price = [NSNumber bigDecimal:self.model.unitPrice divide:100 multiply:self.tfWeight.text.doubleValue];
     }
-    [self.labelPriceAll fitTitle:[NSString stringWithFormat:@"%@元",NSNumber.dou(price).stringValue] variable:0];
+    [self.labelPriceAll fitTitle:[NSString stringWithFormat:@"%@元",price?:@"0"] variable:0];
     self.labelPriceAll.rightTop = XY(SCREEN_WIDTH - W(20),W(212));
 }
 
@@ -436,6 +446,10 @@
             self.tfWeight.contentType = ENUM_TEXT_CONTENT_TYPE_NUMBER;
         }
     }
+    if ([model.unitShow isEqualToString:@"车"]) {
+        self.tfWeight.text = @"1";
+        self.tfWeight.userInteractionEnabled = false;
+    }
 }
 - (void)addLabelAry:(NSArray *)ary superView:(UIView *)superView{
     for (ModelBtn *m in ary) {
@@ -495,7 +509,12 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 - (void)weightClick{
-    [self.tfWeight becomeFirstResponder];
+    if ([self.model.unitShow isEqualToString:@"车"]) {
+    
+    }else{
+        [self.tfWeight becomeFirstResponder];
+    }
+    
 }
 
 - (void)priceClick{

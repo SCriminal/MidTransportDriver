@@ -115,4 +115,12 @@
     return  result.stringValue;
 
 }
+
++ (NSString *)bigDecimal:(double)num1 divide:(double)num2 multiply:(double)num3{
+    NSDecimalNumber *decimalNumber1 = [NSDecimalNumber decimalNumberWithString:NSNumber.dou(num1).stringValue];
+    NSDecimalNumber *decimalNumber2 = [NSDecimalNumber decimalNumberWithString:NSNumber.dou(num2).stringValue];
+    NSDecimalNumber *decimalNumber3 = [NSDecimalNumber decimalNumberWithString:NSNumber.dou(num3).stringValue];;
+    NSDecimalNumber *result = [[decimalNumber1 decimalNumberByDividingBy:decimalNumber2] decimalNumberByMultiplyingBy:decimalNumber3];
+    return  result.stringValue;
+}
 @end

@@ -25,9 +25,12 @@
 #import "AuthTwoVC.h"
 #import "OrderDetailVC.h"
 #import "RejectOrderView.h"
+/*
 
-@interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate> 
 
+
+ */
+@interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate>
 @property (nonatomic, strong) UIWebView *web;
 @property (nonatomic, strong) UILabel *labelShow;
 
@@ -92,10 +95,7 @@
     
     [GB_Nav pushViewController:operateVC animated:true];}
 /**
- 当前周的日期范围
- 根本 根本内容 最高效力 依据 不可抵触 行为准则 最高形式
- 权利
- 基本权利
+
  @param firstWeekday 星期起始日
  @param dateFormat 日期格式
  @return 结果字符串

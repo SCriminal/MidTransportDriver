@@ -168,7 +168,7 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
         
         //logical
         self.dateStart = [GlobalMethod exchangeTimeStampToDate:self.startTime];
-        self.priceShow = self.unitPrice/100.0;
+        self.priceShow = [NSNumber bigDecimal:self.unitPrice divide:100.0];
         self.qtyShow = [self exchangeQtyShow:self.qty];
         self.remainShow = [self exchangeQtyShow:self.storageQty];
 
@@ -203,7 +203,7 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
             self.distanceShow = nil;
         }
         if (self.lengthMin || self.lengthMax) {
-            self.carLenthSHow = [NSString stringWithFormat:@"%@-%@米",NSNumber.dou(self.lengthMin/100.0).stringValue,NSNumber.dou(self.lengthMax/100.0).stringValue];
+            self.carLenthSHow = [NSString stringWithFormat:@"%@-%@米",[NSNumber bigDecimal:self.lengthMin divide:1000.0] ,[NSNumber bigDecimal:self.lengthMax divide:1000.0]];
         }else{
             self.carLenthSHow = nil;
         }

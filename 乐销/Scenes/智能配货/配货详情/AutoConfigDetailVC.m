@@ -97,6 +97,9 @@
         ModelAutOrderListItem * orderDetail = [ModelAutOrderListItem modelObjectWithDictionary:response];
         orderDetail.comment = self.modelList.comment;
         self.modelList = orderDetail;
+        [self.topView resetViewWithModel:self.modelList];        
+        self.tableView.tableHeaderView = self.topView;
+
         [self requestComment];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
@@ -322,7 +325,7 @@
         [ary addObject:^(){
             ModelBtn * model = [ModelBtn new];
             model.title = @"单价：";
-            model.subTitle = [NSString stringWithFormat:@"%@元/%@",NSNumber.dou(modelPlan.priceShow).stringValue,modelPlan.unitShow];
+            model.subTitle = [NSString stringWithFormat:@"%@元/%@",modelPlan.priceShow,modelPlan.unitShow];
             model.isSelected = true;
             return model;
         }()];

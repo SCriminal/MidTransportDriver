@@ -57,7 +57,7 @@
 #define REQUEST_TERMINALTYPE @"1"
 
 //选取照片数量
-#define NUM_IMAGE 20
+#define NUM_IMAGE 9
 //Tag
 #define TAG_LINE 371
 #define TAG_KEYBOARD 372

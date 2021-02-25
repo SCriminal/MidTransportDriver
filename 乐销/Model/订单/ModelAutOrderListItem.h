@@ -70,7 +70,7 @@
 @property (nonatomic, strong) NSString *unitShow;
 @property (nonatomic, strong) NSString * qtyShow;
 @property (nonatomic, strong) NSString * remainShow;
-@property (nonatomic, assign) double priceShow;
+@property (nonatomic, strong) NSString * priceShow;
 @property (nonatomic, strong) NSString *distanceShow;
 @property (nonatomic, strong) NSString *carLenthSHow;
 @property (nonatomic, strong) NSString *comment;

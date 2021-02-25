@@ -194,7 +194,7 @@
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
-        m.title = model.unloadTime?@"到达：":nil;
+        m.title = model.unloadTime?@"卸车：":nil;
         m.subTitle = model.unloadTime?[GlobalMethod exchangeTimeWithStamp:model.unloadTime andFormatter:TIME_SEC_SHOW]:nil;
         m.colorSelect = nil;
         m.left = W(62);

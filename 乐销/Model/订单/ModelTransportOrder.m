@@ -351,7 +351,7 @@ NSString *const kModelTransportOrderEndLat = @"endLat";
             return COLOR_GREEN;
             break;
         case 99:
-            return COLOR_RED;
+            return COLOR_GREEN;
             break;
         default:
             break;

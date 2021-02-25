@@ -22,5 +22,5 @@
 + (NSNumber * (^)(NSString *))lonFromStr;
 + (NSString *)bigDecimal:(double)num1 divide:(double)num2;
 + (NSString *)bigDecimal:(double)num1 multiply:(double)num2;
-
++ (NSString *)bigDecimal:(double)num1 divide:(double)num2 multiply:(double)num3;
 @end
