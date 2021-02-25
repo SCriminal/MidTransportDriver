@@ -10,9 +10,10 @@
 #import "UITextField+Text.h"
 #import "PlaceHolderTextView.h"
 
-@interface RejectOrderView ()
+@interface RejectOrderView ()<UITextViewDelegate>
 @property (nonatomic, strong) PlaceHolderTextView *tfReason;
 @property (nonatomic, strong) UIView *viewWhitBG;
+@property (nonatomic, strong) UIButton *btnSelected;
 
 @end
 
@@ -25,7 +26,7 @@
         _tfReason.textColor = COLOR_333;
 
         _tfReason.backgroundColor = [UIColor clearColor];
-//        _tfReason.delegate = self;
+        _tfReason.delegate = self;
         _tfReason.placeHolder.fontNum = F(14);
         _tfReason.placeHolder.textColor = COLOR_999;
         [_tfReason.placeHolder fitTitle:@"请填写您的拒绝原因（也可选择下面填入)" variable:W(304)];
@@ -138,13 +139,13 @@
         ModelBtn * m = ary[i];
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.widthHeight = XY(W(104), W(34));
-        btn.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
         [btn setTitle:m.title forState:UIControlStateNormal];
         btn.titleLabel.fontNum = F(14);
-        [btn setTitleColor:COLOR_666 forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        btn.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
+        [btn setTitleColor:COLOR_666 forState:UIControlStateNormal];
         [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:5 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
-        
+        btn.tag = i+100;
 
         [superView addSubview:btn];
         btn.leftTop = XY(left, top);
@@ -187,8 +188,22 @@
 
 #pragma mark 点击事件
 - (void)btnClick:(UIButton *)sender{
-    NSString * append= self.tfReason.text.length>0?[NSString stringWithFormat:@"\n%@",sender.titleLabel.text]:sender.titleLabel.text;
-    self.tfReason.text = [self.tfReason.text stringByAppendingString:append];
+    for (int i = 0; i<4; i++) {
+        UIButton * btn = [self.viewWhitBG viewWithTag:i+100];
+        self.btnSelected.backgroundColor = [UIColor whiteColor];
+        [btn setTitleColor:COLOR_666 forState:UIControlStateNormal];
+        [btn addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:5 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+    }
+    if (self.btnSelected == sender) {
+        self.btnSelected = nil;
+        self.tfReason.text = @"";
+    }else{
+        self.btnSelected = sender;
+        self.btnSelected.backgroundColor = COLOR_BLUE;
+                        [self.btnSelected setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                        [self.btnSelected addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:6 lineWidth:0 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+        self.tfReason.text = self.btnSelected.titleLabel.text;
+    }
 }
 #pragma mark text delegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -201,7 +216,11 @@
 - (void)textViewClick{
     [self.tfReason becomeFirstResponder];
 }
-
+- (void)textViewDidChange:(UITextView *)textView{
+    if (textView.text.length == 0) {
+        [self btnClick:nil];
+    }
+}
 
 - (void)endClick{
     [GlobalMethod endEditing];

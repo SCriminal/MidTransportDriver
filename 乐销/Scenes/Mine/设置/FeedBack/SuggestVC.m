@@ -44,6 +44,7 @@
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewBG.userInteractionEnabled = true;
     //添加导航栏
     [self configView];
 }
@@ -53,6 +54,8 @@
         view.backgroundColor = [UIColor whiteColor];
         view.widthHeight = XY(SCREEN_WIDTH, W(288));
         view.leftTop = XY(W(0), W(10));
+        [view addTarget:self action:@selector(hideKeyboard)];
+
         [self.view addSubview:view];
     }
     {
@@ -115,9 +118,12 @@
 }
 
 
-
+- (void)hideKeyboard{
+    [GlobalMethod endEditing];
+}
 #pragma mark 点击事件
 - (void)btnClick:(UIButton *)sender{
+    [GlobalMethod endEditing];
     self.indexSelected = sender.tag - 100;
     for (int i = 0; i<4; i++) {
         UIButton * btn = [self.view viewWithTag:i+100];
@@ -142,7 +148,7 @@
 #pragma mark request
 - (void)request{
    
-    if (self.textView.text.length <5) {
+    if (self.textView.text.length <=0) {
         [GlobalMethod showAlert:@"请输入更多内容"];
         return;
     }

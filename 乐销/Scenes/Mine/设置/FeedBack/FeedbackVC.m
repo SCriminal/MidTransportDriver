@@ -63,6 +63,7 @@
 #pragma mark view did load
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     //添加导航栏
     [self configView];
 }
@@ -72,6 +73,7 @@
         view.backgroundColor = [UIColor whiteColor];
         view.widthHeight = XY(SCREEN_WIDTH, W(237));
         view.leftTop = XY(W(0), W(10));
+        [view addTarget:self action:@selector(hideKeyboardClick)];
         [self.view addSubview:view];
     }
     {
@@ -126,6 +128,8 @@
         view.widthHeight = XY(SCREEN_WIDTH, W(138));
         view.leftTop = XY(W(0), W(257));
         [self.view addSubview:view];
+        [view addTarget:self action:@selector(hideKeyboardClick)];
+
     }
     {
         UILabel * l = [UILabel new];
@@ -148,6 +152,8 @@
 }
 
 - (void)numClick{
+    [GlobalMethod endEditing];
+
     SelectOrderVC * selectVC = [SelectOrderVC new];
     WEAKSELF
     selectVC.blockSelected = ^(ModelTransportOrder * item) {
@@ -159,12 +165,14 @@
 }
 - (void)saveClick{
     [self request];
-
+}
+- (void)hideKeyboardClick{
+    [GlobalMethod endEditing];
 }
 #pragma mark request
 - (void)request{
    
-    if (self.textView.text.length <5) {
+    if (self.textView.text.length <=0) {
         [GlobalMethod showAlert:@"请输入更多内容"];
         return;
     }
@@ -211,7 +219,10 @@
 }
 //选择图片
 - (void)showImageVC:(int)imageNum{
-    
-    [self showImageVC:3 cameraType:ENUM_CAMERA_DEFAULT];
+    if (self.collection_Image.aryDatas.count>=3) {
+        [GlobalMethod showAlert:@"最多上传3张,请先删除"];
+        return;
+    }
+    [self showImageVC:3-self.collection_Image.aryDatas.count cameraType:ENUM_CAMERA_DEFAULT];
 }
 @end

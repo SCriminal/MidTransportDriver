@@ -106,9 +106,13 @@
     [self.view addSubview:self.sliderView];
     [self.view addSubview:self.scAll];
     self.view.clipsToBounds = true;
+    
+
     [self setupChildVC];
 }
-
+- (void)hideKeyboard{
+    [GlobalMethod endEditing];
+}
 #pragma mark refresh all
 - (void)refreshAll{
     for (BaseTableVC * tableVC in self.childViewControllers) {
@@ -137,6 +141,7 @@
 }
 #pragma mark slider delegate
 - (void)protocolSliderViewBtnSelect:(NSUInteger)tag btn:(CustomSliderControl *)control{
+    [GlobalMethod endEditing];
     [UIView animateWithDuration:0.5 animations:^{
         self.scAll.contentOffset = CGPointMake(SCREEN_WIDTH * tag, 0);
     } completion:^(BOOL finished) {

@@ -322,7 +322,7 @@ NSString *const kModelTransportOrderEndLat = @"endLat";
             return @"已完成";
             break;
         case 99:
-            return @"已取消";
+            return @"已关闭";
             break;
         default:
             break;
