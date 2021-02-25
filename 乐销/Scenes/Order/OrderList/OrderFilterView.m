@@ -304,12 +304,24 @@
     [self resetBtn:100];
     [self.labelTimeStart fitTitle:@"开始时间" variable:0];
     [self.labelTimeEnd fitTitle:@"结束时间" variable:0];
-    [self btnSearchClick];
     
+    if (self.blockSearchClick) {
+        self.blockSearchClick(self.btnTagSelected,self.tfBillNo.text,nil,nil);
+    }
+    [GlobalMethod endEditing];
+    [self removeFromSuperview];
 }
 - (void)btnSearchClick{
+    NSDate * dateStart = self.dateStart;
+    if (dateStart == nil) {
+        dateStart = [[NSDate date] dateByAddingYears:-1000];
+    }
+    NSDate * dateEnd = self.dateEnd;
+    if (dateEnd == nil) {
+        dateEnd = [NSDate date];
+    }
     if (self.blockSearchClick) {
-        self.blockSearchClick(self.btnTagSelected,self.tfBillNo.text,self.dateStart,self.dateEnd);
+        self.blockSearchClick(self.btnTagSelected,self.tfBillNo.text,dateStart,dateEnd);
     }
     [GlobalMethod endEditing];
     [self removeFromSuperview];

@@ -157,16 +157,9 @@
         default:
             break;
     }
-    NSDate * dateStart = self.dateStart;
-    if (dateStart == nil) {
-        dateStart = [[NSDate date] dateByAddingYears:-1000];
-    }
-    NSDate * dateEnd = self.dateEnd;
-    if (dateEnd == nil) {
-        dateEnd = [NSDate date];
-    }
-    [RequestApi requestOrderListWithPage:self.pageNum count:20 orderNumber:isStr(self.billNo)?self.billNo:nil shipperName:nil plateNumber:nil driverName:nil                       startTime:dateStart.timeIntervalSince1970
-                                 endTime:dateEnd.timeIntervalSince1970
+  
+    [RequestApi requestOrderListWithPage:self.pageNum count:20 orderNumber:isStr(self.billNo)?self.billNo:nil shipperName:nil plateNumber:nil driverName:nil                       startTime:self.dateStart?self.dateStart.timeIntervalSince1970:0
+                                 endTime:self.dateEnd?self.dateEnd.timeIntervalSince1970:0
                             orderStatues:strOrderStatus
                                 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.pageNum ++;
