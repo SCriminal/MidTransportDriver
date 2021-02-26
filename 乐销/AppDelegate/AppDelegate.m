@@ -253,15 +253,7 @@
 {
 
     //消息进入 直接跳转
-    ModelApns * model = [ModelApns modelObjectWithDictionary:response.notification.request.content.userInfo];
-    if (model.type == 1) {
-        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_ORDER_REFERSH object:nil];
-        [GlobalMethod jumpToOrderList];
-    }else if(model.type == 3){
-        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_MSG_REFERSH object:nil];
-        [GlobalMethod jumpToMsgVC];
-    }
-
+//    ModelApns * model = [ModelApns modelObjectWithDictionary:response.notification.request.content.userInfo];
     completionHandler();
 }
 
@@ -270,12 +262,15 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     ModelApns * model = [ModelApns modelObjectWithDictionary:userInfo];
     [[TopAlertView sharedInstance]showWithModel:model];
-    if (model.type == 1) {
-        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_ORDER_REFERSH object:nil];
-
-    }else if(model.type == 3){
-        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_MSG_REFERSH object:nil];
-
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_MSG_REFERSH object:nil];
+    if (model.type >= 11 && model.type<=18) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_AUTH_REFERSH object:nil];
+    }else if(model.type >= 19 && model.type <=22){
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_TRANSPORTORDER_REFERSH object:nil];
+    }else if(model.type >= 23 && model.type <=27){
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_POCKET_REFERSH object:nil];
+    }else if(model.type ==28){
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_AUTOORDER_REFERSH object:nil];
     }
 
     //进行消息处理 通过字段进行区分是否是即时通讯消息
@@ -283,8 +278,6 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
     //阿里回执
     [CloudPushSDK sendNotificationAck:userInfo];
     
-    //    NSString * strJson = [GlobalMethod exchangeDicToJson:userInfo];
-
 }
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{

@@ -108,6 +108,7 @@
 - (AutoConfigTimeView *)timeView{
     if (!_timeView) {
         _timeView = [AutoConfigTimeView new];
+        _timeView.userInteractionEnabled = false;
         WEAKSELF
         _timeView.blockOutTime = ^{
             if (weakSelf.blockOutTime) {
@@ -127,8 +128,6 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshTimer) name:NOTICE_AUTOORDERLIST_REFERSH object:nil];
-
         self.contentView.backgroundColor = COLOR_BACKGROUND;
         self.backgroundColor = COLOR_BACKGROUND;
         self.selectionStyle = UITableViewCellSelectionStyleNone;

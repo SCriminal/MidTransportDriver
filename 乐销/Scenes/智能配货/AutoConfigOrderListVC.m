@@ -166,7 +166,8 @@
     [self.view addSubview:nav];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestExtendToken) name:NOTICE_EXTENDTOKEN object:nil];
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshHeaderAll) name:NOTICE_AUTOORDER_REFERSH object:nil];
+
     [self initLocation];
 
 
@@ -455,7 +456,6 @@
 }
 - (void)timerRun{
     if (self.aryDatas.count) {
-//        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_AUTOORDERLIST_REFERSH object:nil];
         for (AutoConfigOrderListCell * cell in self.tableView.visibleCells) {
             [cell.timeView resetTime];
         }

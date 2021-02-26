@@ -22,6 +22,7 @@
     [self addNav];
     //table
     [self.tableView registerClass:[AuthListCell class] forCellReuseIdentifier:@"AuthListCell"];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshHeaderAll) name:NOTICE_AUTH_REFERSH object:nil];
     //request
     [self requestList];
     [self addRefreshHeader];

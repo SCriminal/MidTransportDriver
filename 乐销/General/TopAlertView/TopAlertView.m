@@ -9,6 +9,7 @@
 #import "TopAlertView.h"
 //order detail view
 #import "OrderDetailVC.h"
+#import "MyMsgManagementVC.h"
 @implementation TopAlertView
 
 SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
@@ -145,19 +146,26 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
 }
 #pragma mark click
 - (void)btnClick:(UIButton *)sender {
-    switch (sender.tag) {
-        case 1://数据解析  跳转页面
-        {
-            if (self.model.type == 1) {
-                [GlobalMethod jumpToOrderList];
-            }
-            [self timerStop];
-        }
-            break;
-            
-        default:
-            break;
+    NSString * channel = @"1";
+    ModelApns * model = self.model;
+    if (model.type >= 11 && model.type<=18) {
+        channel = @"3";
+    }else if(model.type >= 19 && model.type <=22){
+        channel = @"2";
+    }else if(model.type >= 23 && model.type <=27){
+        channel = @"4";
+    }else if(model.type ==28){
+        channel = @"1";
     }
+    MyMsgManagementVC * vc = [MyMsgManagementVC new];
+    vc.channel = channel;
+    if ([GB_Nav hasClass:@"MyMsgManagementVC"]) {
+        [GB_Nav popLastAndPushVC:vc];
+    }else{
+        [GB_Nav pushViewController:vc animated:true];
+    }
+    [self timerStop];
+
 }
 
 @end

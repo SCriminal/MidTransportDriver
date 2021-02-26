@@ -809,7 +809,6 @@
 		D2996A4721E6E3EE00562587 /* ModelCell_TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelCell_TextView.m; sourceTree = "<group>"; };
 		D2996A4A21E6E4C700562587 /* UpImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpImageView.m; sourceTree = "<group>"; };
 		D2996A4B21E6E4C700562587 /* UpImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpImageView.h; sourceTree = "<group>"; };
-		D29A5860219557DC00A13E4F /* MacroLogicalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroLogicalData.h; sourceTree = "<group>"; };
 		D29C2DC122C3059B00BD2F64 /* ModelPackageType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelPackageType.h; sourceTree = "<group>"; };
 		D29C2DC222C3059B00BD2F64 /* ModelPackageType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelPackageType.m; sourceTree = "<group>"; };
 		D29F6F601E4C0AB600B6F20B /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -2530,7 +2529,6 @@
 			children = (
 				D24DFE9A22F122EA0072B607 /* LDMacro.h */,
 				D2BC9A961DFFA9C000B0468E /* PrefixHeader.pch */,
-				D29A5860219557DC00A13E4F /* MacroLogicalData.h */,
 				D2D5266525AC234600F99306 /* RequestDriver2.h */,
 				D2BC9A931DFFA9C000B0468E /* Header.h */,
 				D2BC9A971DFFA9C000B0468E /* Singleton.h */,

@@ -83,7 +83,8 @@
     [self.view addSubview:nav];
     [self.tableView registerClass:[OrderListCell class] forCellReuseIdentifier:@"OrderListCell"];
     self.tableView.frame = CGRectMake(0, NAVIGATIONBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT);
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshHeaderAll) name:NOTICE_TRANSPORTORDER_REFERSH object:nil];
+
     self.tableView.backgroundColor = COLOR_BACKGROUND;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, W(12), 0);
     [self addRefreshHeader];

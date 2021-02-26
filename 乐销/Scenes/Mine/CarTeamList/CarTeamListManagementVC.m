@@ -88,7 +88,6 @@
     [self.view addSubview:self.sliderView];
     [self.view addSubview:self.scAll];
     [self setupChildVC];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshAll) name:NOTICE_MSG_REFERSH object:nil];
     
     [GlobalMethod requestBindDeviceToken];
     [GlobalMethod requestExtendToken];

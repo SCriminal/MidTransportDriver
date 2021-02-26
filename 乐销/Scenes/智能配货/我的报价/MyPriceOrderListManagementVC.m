@@ -127,8 +127,6 @@
     self.view.clipsToBounds = true;
     [self setupChildVC];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshAll) name:NOTICE_ORDER_REFERSH object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshAll) name:UIApplicationDidBecomeActiveNotification object:nil];
     
 }
 

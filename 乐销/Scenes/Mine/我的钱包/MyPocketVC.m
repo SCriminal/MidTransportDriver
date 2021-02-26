@@ -24,7 +24,7 @@
     //添加导航栏
     [self addNav];
     //table
-    //    [self.tableView registerClass:[<#CellName#> class] forCellReuseIdentifier:@"<#CellName#>"];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshHeaderAll) name:NOTICE_AUTH_REFERSH object:nil];
     self.tableView.height = SCREEN_HEIGHT;
     self.tableView.top = 0;
     self.tableView.backgroundColor = [UIColor clearColor];

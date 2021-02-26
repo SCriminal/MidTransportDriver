@@ -21,7 +21,6 @@
 #import "Singleton.h"//单例
 #import "Header.h"//计算
 #import "MacroLocalKey.h"//本地key
-#import "MacroLogicalData.h"//逻辑定义
 //pod LD
 #import "LDMacro.h"
 //category
