@@ -28,6 +28,7 @@
         _scAll.backgroundColor = [UIColor clearColor];
         _scAll.delegate = self;
         _scAll.pagingEnabled = true;
+        _scAll.scrollEnabled = false;
         _scAll.showsVerticalScrollIndicator = false;
         _scAll.showsHorizontalScrollIndicator = false;
     }
@@ -144,12 +145,13 @@
 }
 #pragma mark slider delegate
 - (void)protocolSliderViewBtnSelect:(NSUInteger)tag btn:(CustomSliderControl *)control{
-    [UIView animateWithDuration:0.5 animations:^{
-        self.scAll.contentOffset = CGPointMake(SCREEN_WIDTH * tag, 0);
-    } completion:^(BOOL finished) {
-        
-    }];
-    
+    if (self.childViewControllers.count > tag) {
+        MyMsgListVC * listVC = self.childViewControllers[tag];
+        if ([listVC isKindOfClass:MyMsgListVC.class]) {
+            [listVC refreshHeaderAll];
+        }
+    }
+    self.scAll.contentOffset = CGPointMake(SCREEN_WIDTH * tag, 0);
 }
 #pragma mark 添加导航栏
 - (void)addNav{

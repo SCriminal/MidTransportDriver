@@ -74,6 +74,7 @@
     }else{
         [RequestApi requestMsgDetailWithNumber:m.number delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             m.content = [response stringValueForKey:@"content"];
+            m.isRead = 1;
             [self.tableView reloadData];
             
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -162,7 +163,7 @@
 - (void)resetCellWithModel:(ModelMsgItem *)model{
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-    self.state.text = @"未读";
+    self.state.text = model.isRead?@"已读":@"未读";
     self.state.backgroundColor = model.isRead?[UIColor colorWithHexString:@"#D4DEF0"]:[UIColor colorWithHexString:@"#FF9523"];
     self.state.leftTop = XY(W(15),W(17));
     
@@ -170,7 +171,7 @@
     self.msgTitle.leftCenterY = XY(W(6)+self.state.right,self.state.centerY);
     
     self.msgContent.hidden = !isStr(model.content);
-    if (self.msgContent.hidden) {
+    if (!self.msgContent.hidden) {
         [self.msgContent resetAttributeStrFixed:W(346) models:@[^(){
             ModelLabel * m = [ModelLabel new];
             m.text = model.content;
@@ -194,7 +195,7 @@
     self.iconArrow.rightCenterY = XY(SCREEN_WIDTH - W(15),self.state.centerY);
     self.iconArrow.highlighted = self.msgContent.hidden;
     //设置总高度
-    self.height = (self.msgContent.hidden?self.msgContent.bottom:self.state.bottom)+W(18);
+    self.height = (self.msgContent.hidden?self.state.bottom:self.msgContent.bottom)+W(18);
     [self.contentView addLineFrame:CGRectMake(W(15), self.height - 1, SCREEN_WIDTH - W(30), 1)];
 }
 
