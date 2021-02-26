@@ -35,5 +35,6 @@
 #define W(n)  ((n)* [UIScreen mainScreen].bounds.size.width / 375.0f)
 #define F(n)  (([UIScreen mainScreen].bounds.size.width == 320)?(n-1):([UIScreen mainScreen].bounds.size.width == 375)?(n):([UIScreen mainScreen].bounds.size.width == 414)?(n+1):(n+2))
 #define H(n)  (n*[UIScreen mainScreen].bounds.size.height / 667.0f)
+#define Round2f(n)  ((floor((n)*100 + 0.5))/100.0)
 
 #endif /* LDMacro_h */

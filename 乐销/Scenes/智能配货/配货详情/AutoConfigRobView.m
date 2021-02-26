@@ -253,7 +253,7 @@
     if (self.tfWeight.text.doubleValue) {
         price = [NSNumber bigDecimal:self.model.unitPrice divide:100 multiply:self.tfWeight.text.doubleValue];
     }
-    [self.labelPriceAll fitTitle:[NSString stringWithFormat:@"%@元",price?:@"0"] variable:0];
+    [self.labelPriceAll fitTitle:[NSString stringWithFormat:@"%.2f元",Round2f(price.doubleValue)] variable:0];
     self.labelPriceAll.rightTop = XY(SCREEN_WIDTH - W(20),W(212));
 }
 

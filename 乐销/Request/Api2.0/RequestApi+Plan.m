@@ -123,8 +123,8 @@
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"planNumber":RequestStrKey(planNumber),
                            @"vehicleId":NSNumber.dou(vehicleId),
-                           @"qty":NSNumber.dou(qty),
-                           @"price":NSNumber.dou(price)};
+                           @"qty":NSNumber.lon(qty),
+                           @"price":NSNumber.lon((int)price)};
         [self postUrl:@"/zhongcheyun/plan/match/mode/2" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
@@ -139,8 +139,8 @@
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"planNumber":RequestStrKey(planNumber),
                            @"vehicleId":NSNumber.dou(vehicleId),
-                           @"qty":NSNumber.dou(qty),
-                           @"price":NSNumber.dou(price)};
+                           @"qty":NSNumber.lon(qty),
+                           @"price":NSNumber.lon((int)price)};
         [self postUrl:@"/zhongcheyun/plan/match/mode/1" delegate:delegate parameters:dic success:success failure:failure];
 }
 
