@@ -7,7 +7,8 @@
 //
 
 #import "SelectBankNameVC.h"
-#import "RequestApi+Dictionary.h"
+//request
+#import "RequestDriver2.h"
 
 @interface SelectBankNameVC ()
 @property (nonatomic, strong) NSMutableArray *aryBanks;

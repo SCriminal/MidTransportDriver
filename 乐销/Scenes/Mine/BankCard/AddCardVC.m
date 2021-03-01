@@ -13,14 +13,15 @@
 #import "DatePicker.h"
 #import "BaseVC+BaseImageSelectVC.h"
 //request
-#import "RequestApi+UserApi.h"
+
 //上传图片
 #import "AliClient.h"
 #import "BaseTableVC+Authority.h"
 //nav
 #import "BaseNavView+Logical.h"
 //request
-#import "RequestApi+Dictionary.h"
+//request
+#import "RequestDriver2.h"
 //request
 #import "RequestDriver2.h"
 //bank card list

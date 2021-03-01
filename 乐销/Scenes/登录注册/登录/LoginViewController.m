@@ -21,8 +21,8 @@
 //text edit
 #import "UITextField+Text.h"
 //request
-#import "RequestApi+UserAuth.h"
-#import "RequestApi+UserApi.h"
+
+
 //forget vc
 #import "ForgetPwdVC.h"
 //request

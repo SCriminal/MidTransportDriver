@@ -40,5 +40,4 @@
 
 //跳转到订单
 + (void)jumpToOrderList;
-+ (void)jumpToMsgVC;
 @end

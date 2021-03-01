@@ -57,10 +57,7 @@
 		D216F53F1E56AB9800E11ED2 /* NSArray+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = D216F53C1E56AB9800E11ED2 /* NSArray+Safe.m */; };
 		D216F5401E56AB9800E11ED2 /* NSMutableArray+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = D216F53E1E56AB9800E11ED2 /* NSMutableArray+Safe.m */; };
 		D217D8C61E1B8B8B0094FD55 /* BaseAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D217D8C51E1B8B8B0094FD55 /* BaseAlertView.m */; };
-		D21B2FBF23960AF2005B43D0 /* AttachedCarTeamListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B2FBE23960AF2005B43D0 /* AttachedCarTeamListVC.m */; };
-		D21B2FC223960C48005B43D0 /* AttachedCarTeamListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B2FC123960C48005B43D0 /* AttachedCarTeamListCell.m */; };
 		D21B3005239F9442005B43D0 /* ModelAttachCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B3004239F9442005B43D0 /* ModelAttachCompany.m */; };
-		D21B3008239F9DE4005B43D0 /* CarTeamListManagementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B3007239F9DE4005B43D0 /* CarTeamListManagementVC.m */; };
 		D21B301B23A0E2D6005B43D0 /* ModelAttaceedCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B301A23A0E2D5005B43D0 /* ModelAttaceedCompany.m */; };
 		D21B58D81FA6A5BF00B2A788 /* UIImage+info.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B58D71FA6A5BF00B2A788 /* UIImage+info.m */; };
 		D21CA05B1F06408B00FAE8B3 /* NSUserDefaults+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D21CA05A1F06408B00FAE8B3 /* NSUserDefaults+Category.m */; };
@@ -133,8 +130,6 @@
 		D2545A5D1E72AD2500DEC7CE /* UIControl+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2545A5C1E72AD2500DEC7CE /* UIControl+Category.m */; };
 		D257759524D2AF1300449C75 /* RejectOrderReason.m in Sources */ = {isa = PBXBuildFile; fileRef = D257759424D2AF1300449C75 /* RejectOrderReason.m */; };
 		D259AC4A20F435CF00F71C87 /* SendMsgHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259AC4920F435CF00F71C87 /* SendMsgHelper.m */; };
-		D259D54A228E4B2F00CE2632 /* RequestApi+UserAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = D259D546228E4B2F00CE2632 /* RequestApi+UserAuth.m */; };
-		D259D54B228E4B2F00CE2632 /* RequestApi+UserApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D259D549228E4B2F00CE2632 /* RequestApi+UserApi.m */; };
 		D25E8AE922B0EE960091CF4D /* ModelMotrocadeList.m in Sources */ = {isa = PBXBuildFile; fileRef = D25E8AE722B0EE950091CF4D /* ModelMotrocadeList.m */; };
 		D25EB6BC20EA230C0082AD73 /* EditVC_Title.m in Sources */ = {isa = PBXBuildFile; fileRef = D25EB6BB20EA230C0082AD73 /* EditVC_Title.m */; };
 		D25F55D92178801000FD4898 /* 闪屏.m4v in Resources */ = {isa = PBXBuildFile; fileRef = D25F55D82178801000FD4898 /* 闪屏.m4v */; };
@@ -190,8 +185,6 @@
 		D28A867D225F1572001E3372 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A867B225F1571001E3372 /* SettingCell.m */; };
 		D28A8681225F1AEC001E3372 /* IntegralRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A8680225F1AEC001E3372 /* IntegralRecordVC.m */; };
 		D28A8684225F1B0F001E3372 /* IntegralRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A8683225F1B0F001E3372 /* IntegralRecordCell.m */; };
-		D28A8688225F1E78001E3372 /* CarTeamListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A8687225F1E78001E3372 /* CarTeamListVC.m */; };
-		D28A868B225F1E8E001E3372 /* CarTeamListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28A868A225F1E8E001E3372 /* CarTeamListCell.m */; };
 		D28B6FE71E794589001CC3A8 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D28B6FE61E794589001CC3A8 /* BaseCell.m */; };
 		D28F186F2551264E0020BF65 /* PrivateAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D28F186E2551264E0020BF65 /* PrivateAlertView.m */; };
 		D290DB28226EF586004B18B4 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = D290DB27226EF586004B18B4 /* ShareView.m */; };
@@ -232,8 +225,6 @@
 		D2A946D72192B69C00AD1E5B /* ModelProvince.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946D52192B69B00AD1E5B /* ModelProvince.m */; };
 		D2A946DA2192B75600AD1E5B /* SelectDistrictView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946D92192B75600AD1E5B /* SelectDistrictView.m */; };
 		D2A946DD2192C66900AD1E5B /* GlobalMethod+Logical.m in Sources */ = {isa = PBXBuildFile; fileRef = D2A946DC2192C66900AD1E5B /* GlobalMethod+Logical.m */; };
-		D2AADB502191625400E2173E /* RequestApi+Order.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AADB4F2191625400E2173E /* RequestApi+Order.m */; };
-		D2AADB592191627800E2173E /* RequestApi+TransportPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AADB582191627800E2173E /* RequestApi+TransportPrice.m */; };
 		D2AC4FA41E04BBF800385682 /* BaseNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2AC4FA31E04BBF800385682 /* BaseNavView.m */; };
 		D2ACCC1B21DC8DFD00F39E28 /* TopAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ACCC1A21DC8DFD00F39E28 /* TopAlertView.m */; };
 		D2ACCC2121DC8E4600F39E28 /* ModelAps.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ACCC1D21DC8E4600F39E28 /* ModelAps.m */; };
@@ -276,14 +267,12 @@
 		D2BE30E5210716310059929D /* VersionUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BE30E3210716310059929D /* VersionUpView.m */; };
 		D2BF1DA41EB0719300957348 /* BaseTableVC+KeyboardObserve.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BF1DA31EB0719300957348 /* BaseTableVC+KeyboardObserve.m */; };
 		D2C27AC11E0266880097DAAD /* GlobalMethod+Version.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C27AC01E0266880097DAAD /* GlobalMethod+Version.m */; };
-		D2C55800238BCADC0050694F /* RequestApi+Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C557FF238BCADC0050694F /* RequestApi+Schedule.m */; };
 		D2C55803238BD0100050694F /* ModelScheduleList.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C55802238BD0100050694F /* ModelScheduleList.m */; };
 		D2C55806238BE70E0050694F /* ScheduleOrderInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C55805238BE70E0050694F /* ScheduleOrderInfoVC.m */; };
 		D2C55809238BE7710050694F /* ScheduleInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C55808238BE7710050694F /* ScheduleInfoView.m */; };
 		D2C5580C238CB7DB0050694F /* ModelScheduleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C5580B238CB7DB0050694F /* ModelScheduleInfo.m */; };
 		D2C5580F238CC18D0050694F /* ScheduleConfirmView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C5580E238CC18D0050694F /* ScheduleConfirmView.m */; };
 		D2C55812238CC9D50050694F /* ModelValidCar.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C55810238CC9D40050694F /* ModelValidCar.m */; };
-		D2C6D14C22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D14B22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m */; };
 		D2C6D16122DF245600A22EA6 /* ModelLocationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C6D15F22DF245500A22EA6 /* ModelLocationItem.m */; };
 		D2C99C341E0BA42F001D5DBA /* RadioBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C99C331E0BA42F001D5DBA /* RadioBtnView.m */; };
 		D2C99C381E0BC021001D5DBA /* AddSubtractView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C99C371E0BC021001D5DBA /* AddSubtractView.m */; };
@@ -331,7 +320,6 @@
 		D2DFD7942297C28800363142 /* OrderDetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD7932297C28800363142 /* OrderDetailTopView.m */; };
 		D2DFD79E2299071B00363142 /* ModelWXApiReq.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD79D2299071B00363142 /* ModelWXApiReq.m */; };
 		D2DFD7A9229BE59D00363142 /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D23327CA2185A27900495488 /* OrderListCell.m */; };
-		D2DFD7B1229E251F00363142 /* RequestApi+Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DFD7AF229E251F00363142 /* RequestApi+Dictionary.m */; };
 		D2E46D7821D4A1A1007B04A1 /* DriverDetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E46D7721D4A1A1007B04A1 /* DriverDetailTopView.m */; };
 		D2E4837B1E5ABCF100D91AAD /* UINavigationController+EndEditing.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E4837A1E5ABCF100D91AAD /* UINavigationController+EndEditing.m */; };
 		D2E50D0A1E319E650045AD3F /* BaseVC+KeyboardObserve.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E50D091E319E650045AD3F /* BaseVC+KeyboardObserve.m */; };
@@ -513,14 +501,8 @@
 		D216F53E1E56AB9800E11ED2 /* NSMutableArray+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Safe.m"; sourceTree = "<group>"; };
 		D217D8C41E1B8B8B0094FD55 /* BaseAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseAlertView.h; sourceTree = "<group>"; };
 		D217D8C51E1B8B8B0094FD55 /* BaseAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseAlertView.m; sourceTree = "<group>"; };
-		D21B2FBD23960AF2005B43D0 /* AttachedCarTeamListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttachedCarTeamListVC.h; sourceTree = "<group>"; };
-		D21B2FBE23960AF2005B43D0 /* AttachedCarTeamListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttachedCarTeamListVC.m; sourceTree = "<group>"; };
-		D21B2FC023960C48005B43D0 /* AttachedCarTeamListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttachedCarTeamListCell.h; sourceTree = "<group>"; wrapsLines = 0; };
-		D21B2FC123960C48005B43D0 /* AttachedCarTeamListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttachedCarTeamListCell.m; sourceTree = "<group>"; };
 		D21B3003239F9442005B43D0 /* ModelAttachCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAttachCompany.h; sourceTree = "<group>"; };
 		D21B3004239F9442005B43D0 /* ModelAttachCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAttachCompany.m; sourceTree = "<group>"; };
-		D21B3006239F9DE4005B43D0 /* CarTeamListManagementVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarTeamListManagementVC.h; sourceTree = "<group>"; };
-		D21B3007239F9DE4005B43D0 /* CarTeamListManagementVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarTeamListManagementVC.m; sourceTree = "<group>"; };
 		D21B301923A0E2D5005B43D0 /* ModelAttaceedCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAttaceedCompany.h; sourceTree = "<group>"; };
 		D21B301A23A0E2D5005B43D0 /* ModelAttaceedCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAttaceedCompany.m; sourceTree = "<group>"; };
 		D21B58D61FA6A5BE00B2A788 /* UIImage+info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+info.h"; sourceTree = "<group>"; };
@@ -663,10 +645,6 @@
 		D257759424D2AF1300449C75 /* RejectOrderReason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RejectOrderReason.m; sourceTree = "<group>"; };
 		D259AC4820F435CF00F71C87 /* SendMsgHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMsgHelper.h; sourceTree = "<group>"; };
 		D259AC4920F435CF00F71C87 /* SendMsgHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendMsgHelper.m; sourceTree = "<group>"; };
-		D259D546228E4B2F00CE2632 /* RequestApi+UserAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+UserAuth.m"; sourceTree = "<group>"; };
-		D259D547228E4B2F00CE2632 /* RequestApi+UserApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RequestApi+UserApi.h"; sourceTree = "<group>"; };
-		D259D548228E4B2F00CE2632 /* RequestApi+UserAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RequestApi+UserAuth.h"; sourceTree = "<group>"; };
-		D259D549228E4B2F00CE2632 /* RequestApi+UserApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+UserApi.m"; sourceTree = "<group>"; };
 		D25E8AE722B0EE950091CF4D /* ModelMotrocadeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelMotrocadeList.m; sourceTree = "<group>"; };
 		D25E8AE822B0EE950091CF4D /* ModelMotrocadeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelMotrocadeList.h; sourceTree = "<group>"; };
 		D25EB6BA20EA230C0082AD73 /* EditVC_Title.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditVC_Title.h; sourceTree = "<group>"; };
@@ -770,10 +748,6 @@
 		D28A8680225F1AEC001E3372 /* IntegralRecordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegralRecordVC.m; sourceTree = "<group>"; };
 		D28A8682225F1B0F001E3372 /* IntegralRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralRecordCell.h; sourceTree = "<group>"; };
 		D28A8683225F1B0F001E3372 /* IntegralRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegralRecordCell.m; sourceTree = "<group>"; };
-		D28A8686225F1E78001E3372 /* CarTeamListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarTeamListVC.h; sourceTree = "<group>"; };
-		D28A8687225F1E78001E3372 /* CarTeamListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarTeamListVC.m; sourceTree = "<group>"; };
-		D28A8689225F1E8E001E3372 /* CarTeamListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarTeamListCell.h; sourceTree = "<group>"; };
-		D28A868A225F1E8E001E3372 /* CarTeamListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarTeamListCell.m; sourceTree = "<group>"; };
 		D28B6FE51E794589001CC3A8 /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
 		D28B6FE61E794589001CC3A8 /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
 		D28F186D2551264E0020BF65 /* PrivateAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateAlertView.h; sourceTree = "<group>"; };
@@ -857,10 +831,6 @@
 		D2A946DB2192C66900AD1E5B /* GlobalMethod+Logical.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GlobalMethod+Logical.h"; sourceTree = "<group>"; };
 		D2A946DC2192C66900AD1E5B /* GlobalMethod+Logical.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GlobalMethod+Logical.m"; sourceTree = "<group>"; };
 		D2AADB3D2191220E00E2173E /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
-		D2AADB4E2191625400E2173E /* RequestApi+Order.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+Order.h"; sourceTree = "<group>"; };
-		D2AADB4F2191625400E2173E /* RequestApi+Order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Order.m"; sourceTree = "<group>"; };
-		D2AADB572191627800E2173E /* RequestApi+TransportPrice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+TransportPrice.h"; sourceTree = "<group>"; };
-		D2AADB582191627800E2173E /* RequestApi+TransportPrice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+TransportPrice.m"; sourceTree = "<group>"; };
 		D2AC4FA21E04BBF800385682 /* BaseNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavView.h; sourceTree = "<group>"; };
 		D2AC4FA31E04BBF800385682 /* BaseNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavView.m; sourceTree = "<group>"; };
 		D2ACCC1921DC8DFD00F39E28 /* TopAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopAlertView.h; sourceTree = "<group>"; };
@@ -943,8 +913,6 @@
 		D2BF1DA31EB0719300957348 /* BaseTableVC+KeyboardObserve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseTableVC+KeyboardObserve.m"; sourceTree = "<group>"; };
 		D2C27ABF1E0266880097DAAD /* GlobalMethod+Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GlobalMethod+Version.h"; sourceTree = "<group>"; };
 		D2C27AC01E0266880097DAAD /* GlobalMethod+Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GlobalMethod+Version.m"; sourceTree = "<group>"; };
-		D2C557FE238BCADC0050694F /* RequestApi+Schedule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+Schedule.h"; sourceTree = "<group>"; };
-		D2C557FF238BCADC0050694F /* RequestApi+Schedule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Schedule.m"; sourceTree = "<group>"; };
 		D2C55801238BD0100050694F /* ModelScheduleList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelScheduleList.h; sourceTree = "<group>"; };
 		D2C55802238BD0100050694F /* ModelScheduleList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelScheduleList.m; sourceTree = "<group>"; };
 		D2C55804238BE70E0050694F /* ScheduleOrderInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleOrderInfoVC.h; sourceTree = "<group>"; };
@@ -957,8 +925,6 @@
 		D2C5580E238CC18D0050694F /* ScheduleConfirmView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleConfirmView.m; sourceTree = "<group>"; };
 		D2C55810238CC9D40050694F /* ModelValidCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelValidCar.m; sourceTree = "<group>"; };
 		D2C55811238CC9D40050694F /* ModelValidCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelValidCar.h; sourceTree = "<group>"; };
-		D2C6D14A22DEBE8F00A22EA6 /* RequestApi+BulkCargo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RequestApi+BulkCargo.h"; sourceTree = "<group>"; };
-		D2C6D14B22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+BulkCargo.m"; sourceTree = "<group>"; };
 		D2C6D15F22DF245500A22EA6 /* ModelLocationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelLocationItem.m; sourceTree = "<group>"; };
 		D2C6D16022DF245600A22EA6 /* ModelLocationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelLocationItem.h; sourceTree = "<group>"; };
 		D2C99C321E0BA42F001D5DBA /* RadioBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioBtnView.h; sourceTree = "<group>"; };
@@ -1041,8 +1007,6 @@
 		D2DFD7932297C28800363142 /* OrderDetailTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailTopView.m; sourceTree = "<group>"; };
 		D2DFD79C2299071B00363142 /* ModelWXApiReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelWXApiReq.h; sourceTree = "<group>"; };
 		D2DFD79D2299071B00363142 /* ModelWXApiReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelWXApiReq.m; sourceTree = "<group>"; };
-		D2DFD7AF229E251F00363142 /* RequestApi+Dictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RequestApi+Dictionary.m"; sourceTree = "<group>"; };
-		D2DFD7B0229E251F00363142 /* RequestApi+Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RequestApi+Dictionary.h"; sourceTree = "<group>"; };
 		D2E46D7621D4A1A1007B04A1 /* DriverDetailTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DriverDetailTopView.h; sourceTree = "<group>"; };
 		D2E46D7721D4A1A1007B04A1 /* DriverDetailTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DriverDetailTopView.m; sourceTree = "<group>"; };
 		D2E483791E5ABCF100D91AAD /* UINavigationController+EndEditing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+EndEditing.h"; sourceTree = "<group>"; };
@@ -1974,9 +1938,6 @@
 			isa = PBXGroup;
 			children = (
 				D2DFD7AE229E251F00363142 /* 其他 */,
-				D2AADB4A2191623600E2173E /* 订单 */,
-				D2AADB4B2191623600E2173E /* 用户 */,
-				D2AADB4D2191623600E2173E /* 运价 */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -2036,7 +1997,6 @@
 				D290DB25226EF579004B18B4 /* ShareView */,
 				D2A300342266D20900AE2EC3 /* GuideVC */,
 				D2A3001D2265B7AD00AE2EC3 /* AccountList */,
-				D28A8685225F1E63001E3372 /* CarTeamList */,
 				D28A867E225F1ADB001E3372 /* IntegralRecord */,
 				D2B5F40B2198187A0057E525 /* 设置 */,
 				D239D112218822D6009D7D45 /* DriverDetail */,
@@ -2134,23 +2094,6 @@
 				D28A8683225F1B0F001E3372 /* IntegralRecordCell.m */,
 			);
 			path = IntegralRecord;
-			sourceTree = "<group>";
-		};
-		D28A8685225F1E63001E3372 /* CarTeamList */ = {
-			isa = PBXGroup;
-			children = (
-				D21B3006239F9DE4005B43D0 /* CarTeamListManagementVC.h */,
-				D21B3007239F9DE4005B43D0 /* CarTeamListManagementVC.m */,
-				D28A8686225F1E78001E3372 /* CarTeamListVC.h */,
-				D28A8687225F1E78001E3372 /* CarTeamListVC.m */,
-				D28A8689225F1E8E001E3372 /* CarTeamListCell.h */,
-				D28A868A225F1E8E001E3372 /* CarTeamListCell.m */,
-				D21B2FBD23960AF2005B43D0 /* AttachedCarTeamListVC.h */,
-				D21B2FBE23960AF2005B43D0 /* AttachedCarTeamListVC.m */,
-				D21B2FC023960C48005B43D0 /* AttachedCarTeamListCell.h */,
-				D21B2FC123960C48005B43D0 /* AttachedCarTeamListCell.m */,
-			);
-			path = CarTeamList;
 			sourceTree = "<group>";
 		};
 		D28B6FE41E79456C001CC3A8 /* BaseCell */ = {
@@ -2342,39 +2285,6 @@
 				D2A946D62192B69B00AD1E5B /* ModelProvince.h */,
 			);
 			path = "省市区";
-			sourceTree = "<group>";
-		};
-		D2AADB4A2191623600E2173E /* 订单 */ = {
-			isa = PBXGroup;
-			children = (
-				D2AADB4E2191625400E2173E /* RequestApi+Order.h */,
-				D2AADB4F2191625400E2173E /* RequestApi+Order.m */,
-				D2C6D14A22DEBE8F00A22EA6 /* RequestApi+BulkCargo.h */,
-				D2C6D14B22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m */,
-				D2C557FE238BCADC0050694F /* RequestApi+Schedule.h */,
-				D2C557FF238BCADC0050694F /* RequestApi+Schedule.m */,
-			);
-			path = "订单";
-			sourceTree = "<group>";
-		};
-		D2AADB4B2191623600E2173E /* 用户 */ = {
-			isa = PBXGroup;
-			children = (
-				D259D547228E4B2F00CE2632 /* RequestApi+UserApi.h */,
-				D259D549228E4B2F00CE2632 /* RequestApi+UserApi.m */,
-				D259D548228E4B2F00CE2632 /* RequestApi+UserAuth.h */,
-				D259D546228E4B2F00CE2632 /* RequestApi+UserAuth.m */,
-			);
-			path = "用户";
-			sourceTree = "<group>";
-		};
-		D2AADB4D2191623600E2173E /* 运价 */ = {
-			isa = PBXGroup;
-			children = (
-				D2AADB572191627800E2173E /* RequestApi+TransportPrice.h */,
-				D2AADB582191627800E2173E /* RequestApi+TransportPrice.m */,
-			);
-			path = "运价";
 			sourceTree = "<group>";
 		};
 		D2AC4FA11E04BBE800385682 /* BaseNavBar */ = {
@@ -2903,8 +2813,6 @@
 		D2DFD7AE229E251F00363142 /* 其他 */ = {
 			isa = PBXGroup;
 			children = (
-				D2DFD7B0229E251F00363142 /* RequestApi+Dictionary.h */,
-				D2DFD7AF229E251F00363142 /* RequestApi+Dictionary.m */,
 				D27470AE22A798DA009B645D /* RequestApi+Location.h */,
 				D27470AF22A798DA009B645D /* RequestApi+Location.m */,
 			);
@@ -3428,7 +3336,6 @@
 				D2DDC42F259C4F4700C810B5 /* ExchangeIntegraOrderDetailVC.m in Sources */,
 				D05D438520B6DF2A00E59862 /* SimpleProgressView.m in Sources */,
 				C6BAD7051EDBCBF300954439 /* UIView+Category.m in Sources */,
-				D2C55800238BCADC0050694F /* RequestApi+Schedule.m in Sources */,
 				D21B58D81FA6A5BF00B2A788 /* UIImage+info.m in Sources */,
 				D23B6EF025B675D00044E28C /* RequestApi+Dic.m in Sources */,
 				D2DCF78A25BD124D00C8BA86 /* ThirdMap.m in Sources */,
@@ -3444,7 +3351,6 @@
 				D2164ED21F05CFC1005120C3 /* UIButton+countDown.m in Sources */,
 				D2DFD7902296A58F00363142 /* ModelAuthorityInfo.m in Sources */,
 				D22B1D572383E40700BC00F0 /* ScanListCell.m in Sources */,
-				D2DFD7B1229E251F00363142 /* RequestApi+Dictionary.m in Sources */,
 				C6B343F61F20A186005FE308 /* UIImage+LHP.m in Sources */,
 				D29C2DC322C3059B00BD2F64 /* ModelPackageType.m in Sources */,
 				D20E85F925875D2E00C9EE4C /* DealHistoryListVC.m in Sources */,
@@ -3480,7 +3386,6 @@
 				D2DCF77C25BBC37A00C8BA86 /* ModelTransportOrder.m in Sources */,
 				D2A1EF3525C9271B0066864D /* ModelIntegralOrder.m in Sources */,
 				D28A1F71225D976800F252A5 /* InputPwdVC.m in Sources */,
-				D259D54B228E4B2F00CE2632 /* RequestApi+UserApi.m in Sources */,
 				C6A031171F0CC7AA00C90032 /* ReturnAttributeStr.m in Sources */,
 				D279A47A25DE3B5D0088DAAB /* CarHelper.m in Sources */,
 				D2478141218C35A1005747FC /* DVFoodPieModel.m in Sources */,
@@ -3556,11 +3461,9 @@
 				D2C6D16122DF245600A22EA6 /* ModelLocationItem.m in Sources */,
 				D2BE30C6210711430059929D /* ModelBtn.m in Sources */,
 				D2DFD7942297C28800363142 /* OrderDetailTopView.m in Sources */,
-				D2AADB592191627800E2173E /* RequestApi+TransportPrice.m in Sources */,
 				D2136CED1E13C142003B4B92 /* NSMutableArray+Insert.m in Sources */,
 				D215DC0F25C16E79002DAA27 /* TestTableVC.m in Sources */,
 				D2BC0C9925B573DB0030599D /* ModelPathListItem.m in Sources */,
-				D28A868B225F1E8E001E3372 /* CarTeamListCell.m in Sources */,
 				D289FEAF1E8F366C00C2636B /* SectionIndexView.m in Sources */,
 				C699DAFA1EEA8857005DC71C /* NSString+LHP.m in Sources */,
 				D2B6B9CB1E960C97005F00C6 /* ImagePickerVC.m in Sources */,
@@ -3580,14 +3483,12 @@
 				D20DCA052578CA69003B89B5 /* OrderFilterView.m in Sources */,
 				D2D5265825A44E8800F99306 /* SuggestVC.m in Sources */,
 				D2A1EF4125C951DE0066864D /* SelectOrderCell.m in Sources */,
-				D28A8688225F1E78001E3372 /* CarTeamListVC.m in Sources */,
 				D23B6EFF25BA77E20044E28C /* ModelAutOrderListItem.m in Sources */,
 				D23B6EF625B81C470044E28C /* ModelAuthBusiness.m in Sources */,
 				D22BA9D61E5EB8CA00C5B391 /* FSCalendarCollectionViewLayout.m in Sources */,
 				D25145D21E33055300E8107F /* NSArray+Category.m in Sources */,
 				D2F3A5022574EDE1009EBF3F /* AutoConfigTimeView.m in Sources */,
 				D2043B4B1F42CDAC0032AFB0 /* UIScrollView+Category.m in Sources */,
-				D21B2FBF23960AF2005B43D0 /* AttachedCarTeamListVC.m in Sources */,
 				D2BCE9162269653A00E8C4E2 /* ListAlertView.m in Sources */,
 				D24D0742248A353F0029FCEC /* CarType.json in Sources */,
 				D2136CEA1E13AAE9003B4B92 /* GlobalMethod+Data.m in Sources */,
@@ -3661,7 +3562,6 @@
 				D265F8AB207C52DF00CB11DD /* BaseTableVC+Select.m in Sources */,
 				D2996A4421E6E3AA00562587 /* ImageDetailBigView.m in Sources */,
 				D24CBB712580782500F6AB3E /* RejectOrderView.m in Sources */,
-				D21B2FC223960C48005B43D0 /* AttachedCarTeamListCell.m in Sources */,
 				D28A31A2259193CF006AC450 /* CreditCenterVC.m in Sources */,
 				D2E50D0A1E319E650045AD3F /* BaseVC+KeyboardObserve.m in Sources */,
 				D2A1EF3A25C93ABA0066864D /* SelectAddressCell.m in Sources */,
@@ -3691,8 +3591,6 @@
 				D2A1EF3B25C93ABA0066864D /* SelectAddressVC.m in Sources */,
 				D2A946D72192B69C00AD1E5B /* ModelProvince.m in Sources */,
 				D23327C82185A23900495488 /* OrderListVC.m in Sources */,
-				D2AADB502191625400E2173E /* RequestApi+Order.m in Sources */,
-				D2C6D14C22DEBE8F00A22EA6 /* RequestApi+BulkCargo.m in Sources */,
 				D2996A4C21E6E4C700562587 /* UpImageView.m in Sources */,
 				D23327CB2185A27900495488 /* OrderListCell.m in Sources */,
 				DA85246B1D65B5AE00AB04CC /* main.m in Sources */,
@@ -3702,14 +3600,12 @@
 				C657C0761FCEAFED00039F53 /* NSDictionary+Model.m in Sources */,
 				D215DC0625BFB878002DAA27 /* MyPriceOrderListManagementVC.m in Sources */,
 				D26B88D2225C7C030051FA78 /* InputCodeVC.m in Sources */,
-				D21B3008239F9DE4005B43D0 /* CarTeamListManagementVC.m in Sources */,
 				D2A1EF4525C95A940066864D /* ModelProblemHistoryItem.m in Sources */,
 				D22499EE219A95C300608246 /* SettingVC.m in Sources */,
 				D28F186F2551264E0020BF65 /* PrivateAlertView.m in Sources */,
 				D2C9C7DD1EE562220020E4E3 /* AMapPOI+Category.m in Sources */,
 				D26510651E2880FB0084C9E2 /* UIView+Size.m in Sources */,
 				D22BA9D01E5EB8CA00C5B391 /* FSCalendar+Deprecated.m in Sources */,
-				D259D54A228E4B2F00CE2632 /* RequestApi+UserAuth.m in Sources */,
 				D279A47F25DE3D480088DAAB /* BulkCargoOperateLoadView.m in Sources */,
 				D2AC4FA41E04BBF800385682 /* BaseNavView.m in Sources */,
 				D28A8681225F1AEC001E3372 /* IntegralRecordVC.m in Sources */,

@@ -188,12 +188,10 @@
         [weakSelf requestCarInfo];
     };
     cell.blockOutTime = ^(AutoConfigOrderListCell *c) {
-#ifndef SLD_TEST
         if ([weakSelf.aryDatas containsObject:c.model]) {
             [weakSelf.aryDatas removeObject:c.model];
             [weakSelf.tableView reloadData];
         }
-#endif
     };
     return cell;
 }
@@ -210,7 +208,7 @@
     operateVC.modelList = model;
     WEAKSELF
     operateVC.blockBack = ^(UIViewController *vc) {
-        [weakSelf refreshHeaderAll];
+        [weakSelf refreshHeaderAll]        ;
     };
     [GB_Nav pushViewController:operateVC animated:true];
 }
@@ -225,9 +223,7 @@
         for (ModelAutOrderListItem * item in aryRequest.copy) {
             int interval = [item.dateStart timeIntervalSinceNow];
                 if(interval<=0  || item.storageQty == 0){
-#ifndef SLD_TEST
                     [aryRequest removeObject:item];
-#endif
                 }
         }
         if (self.isRemoveAll) {
@@ -380,7 +376,6 @@
         }
     }
     [RequestApi requestCommentListWithUserIds:[ary componentsJoinedByString:@","] delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        NSLog(@"%@",response);
         NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelComment"];
         for (ModelComment * item in ary) {
             [self.dicComments setObject:item forKey:NSNumber.dou(item.userId).stringValue];

@@ -7,10 +7,9 @@
 //
 
 #import "GlobalMethod+Request.h"
-#import "RequestApi+UserApi.h"
+
 #import "VersionUpView.h"
-#import "RequestApi+UserApi.h"
-#import "RequestApi+Dictionary.h"
+
 //request
 #import "RequestDriver2.h"
 //阿里云推送

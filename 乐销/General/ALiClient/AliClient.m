@@ -14,7 +14,6 @@
 //model
 #import "ModelAliClient_Base.h"
 //request
-#import "RequestApi+Dictionary.h"
 //md5
 #import "NSString+YYAdd.h"
 

@@ -17,7 +17,7 @@
 //
 #import "RequestApi+Location.h"
 //import request
-#import "RequestApi+UserApi.h"
+
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
 #import "RechargeInputView.h"

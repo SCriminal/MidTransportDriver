@@ -170,9 +170,5 @@
     [GB_Nav popToRootViewControllerAnimated:true];
 }
 
-+ (void)jumpToMsgVC{
-    if ([GlobalMethod isLoginSuccess]) {
-        [GB_Nav popToClass:@"CarTeamListManagementVC"];
-    }
-}
+
 @end

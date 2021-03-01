@@ -11,8 +11,6 @@
 #import "BaseNavView+Logical.h"
 //sub view
 #import "ScheduleInfoView.h"
-//request
-#import "RequestApi+Schedule.h"
 //share
 #import "ShareView.h"
 //confirm view
@@ -129,18 +127,18 @@
 }
 
 - (void)requestConfirm:(ModelValidCar *)model phone:(NSString *)phone endAddrId:(double)endAddrId endAddr:(NSString *)endAddr endContact:(NSString *)endContact endPhone:(NSString *)endPhone endEntName:(NSString *)endEntName{
-    [RequestApi requestScheduleConfirmWithPlannumber:self.modelOrder.number vehicleId:model.iDProperty driverPhone:phone endAddrId:endAddrId endAddr:endAddr endLng:nil endLat:nil endContact:endContact endPhone:endPhone endEntName:endEntName delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        [GlobalMethod showAlert:@"下单成功"];
-        NSMutableArray * ary = [NSMutableArray arrayWithArray:GB_Nav.viewControllers];
-        for (BaseTableVC * vc in ary) {
-            if ([vc isKindOfClass:NSClassFromString(@"ScanOrderListVC")]) {
-                [vc refreshHeaderAll];
-            }
-        }
-        [GB_Nav popViewControllerAnimated:true];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+//    [RequestApi requestScheduleConfirmWithPlannumber:self.modelOrder.number vehicleId:model.iDProperty driverPhone:phone endAddrId:endAddrId endAddr:endAddr endLng:nil endLat:nil endContact:endContact endPhone:endPhone endEntName:endEntName delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//        [GlobalMethod showAlert:@"下单成功"];
+//        NSMutableArray * ary = [NSMutableArray arrayWithArray:GB_Nav.viewControllers];
+//        for (BaseTableVC * vc in ary) {
+//            if ([vc isKindOfClass:NSClassFromString(@"ScanOrderListVC")]) {
+//                [vc refreshHeaderAll];
+//            }
+//        }
+//        [GB_Nav popViewControllerAnimated:true];
+//    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//
+//    }];
 }
 
 @end

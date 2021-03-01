@@ -10,7 +10,6 @@
 //text view
 #import "PlaceHolderTextView.h"
 //request
-#import "RequestApi+Dictionary.h"
 //图片选择collection
 #import "Collection_Image.h"
 //request

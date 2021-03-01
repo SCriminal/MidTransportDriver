@@ -78,6 +78,13 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)requestModelsWithDelegate:(_Nullable id<RequestDelegate> )delegate
                           success:(void (^)(NSDictionary * response, id mark))success
                          failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+ 银行列表
+ */
++(void)requestBankListWithDelegate:(id <RequestDelegate>)delegate
+                           success:(void (^)(NSDictionary * response, id mark))success
+                           failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

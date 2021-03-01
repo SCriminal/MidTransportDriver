@@ -10,7 +10,7 @@
 //order detail vc
 #import "OrderDetailVC.h"
 //request
-#import "RequestApi+Order.h"
+
 #import "NSDate+YYAdd.h"
 
 @interface AutoConfigOrderListCell ()

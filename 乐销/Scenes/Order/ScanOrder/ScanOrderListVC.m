@@ -10,13 +10,12 @@
 //cell
 #import "ScanListCell.h"
 //request
-#import "RequestApi+Schedule.h"
 //info vc
 #import "ScheduleOrderInfoVC.h"
 //qrvc
 #import "QRCoderVC.h"
 //rquest
-#import "RequestApi+UserApi.h"
+
 
 @interface ScanOrderListVC ()
 @property (nonatomic, strong) UIImageView *ivScan;
@@ -88,21 +87,21 @@
 
 #pragma mark request
 - (void)requestList{
-    [RequestApi requestScheduleListWithPlannumber:nil waybillNumber:nil driverName:nil driverPhone:nil vehicleNumber:nil startTime:0 endTime:0 states:@"1,21" page:self.pageNum count:50 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        self.pageNum ++;
-        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelScheduleList"];
-        
-        if (self.isRemoveAll) {
-            [self.aryDatas removeAllObjects];
-        }
-        if (!isAry(aryRequest)) {
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
-        }
-        [self.aryDatas addObjectsFromArray:aryRequest];
-        [self.tableView reloadData];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+//    [RequestApi requestScheduleListWithPlannumber:nil waybillNumber:nil driverName:nil driverPhone:nil vehicleNumber:nil startTime:0 endTime:0 states:@"1,21" page:self.pageNum count:50 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//        self.pageNum ++;
+//        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelScheduleList"];
+//
+//        if (self.isRemoveAll) {
+//            [self.aryDatas removeAllObjects];
+//        }
+//        if (!isAry(aryRequest)) {
+//            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+//        }
+//        [self.aryDatas addObjectsFromArray:aryRequest];
+//        [self.tableView reloadData];
+//    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//
+//    }];
     
     
 }
@@ -112,16 +111,16 @@
     if ([GlobalData sharedInstance].GB_UserModel.reviewStatus != 1) {
         [self requestCarList];
     }else{
-        [RequestApi requestUserInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            ModelBaseInfo * model = [ModelBaseInfo modelObjectWithDictionary:response];
-            if (model.reviewStatus != 1) {
-                [self requestCarList];
-            }else{
-                [GlobalMethod showBigAlert:@"审核通过才可以扫码下单"];
-            }
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
-        }];
+//        [RequestApi requestUserInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//            ModelBaseInfo * model = [ModelBaseInfo modelObjectWithDictionary:response];
+//            if (model.reviewStatus != 1) {
+//                [self requestCarList];
+//            }else{
+//                [GlobalMethod showBigAlert:@"审核通过才可以扫码下单"];
+//            }
+//        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//
+//        }];
     }
 }
 

@@ -31,7 +31,6 @@
             if (weakSelf.isShow) {
                 return;
             }
-#ifndef SLD_TEST
             ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
             modelConfirm.blockClick = ^{
                 [GB_Nav popViewControllerAnimated:true];
@@ -39,7 +38,6 @@
             [BaseAlertView initWithTitle:@"提示" content:@"倒计时已结束，请选择其他运单" aryBtnModels:@[modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
             [weakSelf timerStop];
             weakSelf.isShow = true;
-#endif
         };
         _timeView.blockClick = ^{
             [weakSelf requestCarInfo];

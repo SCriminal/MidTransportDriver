@@ -17,8 +17,6 @@
 #import <MAMapKit/MAPolylineRenderer.h>
 
 //request
-//request
-#import "RequestApi+BulkCargo.h"
 #import "RequestApi+Location.h"
 
 @interface BulkCargoOrderDetailTrackView ()<MAMapViewDelegate,NSURLSessionDelegate>

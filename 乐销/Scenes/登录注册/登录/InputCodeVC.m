@@ -8,8 +8,8 @@
 
 #import "InputCodeVC.h"
 //request
-#import "RequestApi+UserApi.h"
-#import "RequestApi+UserAuth.h"
+
+
 //
 #import "InputPwdVC.h"
 //request

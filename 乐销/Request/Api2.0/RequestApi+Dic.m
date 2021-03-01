@@ -123,4 +123,14 @@
     
 }
 
+/**
+ 银行列表
+ */
++(void)requestBankListWithDelegate:(id <RequestDelegate>)delegate
+                           success:(void (^)(NSDictionary * response, id mark))success
+                           failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{};
+    [self getUrl:@"/zhongcheyun/bank/list/total" delegate:delegate parameters:dic success:success failure:failure];
+}
+
 @end
