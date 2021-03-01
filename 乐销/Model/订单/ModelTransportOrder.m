@@ -198,8 +198,9 @@ NSString *const kModelTransportOrderEndLat = @"endLat";
             self.unitPrice = [dict doubleValueForKey:kModelTransportOrderUnitPrice];
         self.endLng = [dict doubleValueForKey:kModelTransportOrderEndLng];
         self.endLat = [dict doubleValueForKey:kModelTransportOrderEndLat];
+        self.evaluateScore = [dict doubleValueForKey:@"evaluateScore"];
+        self.evaluateContent = [dict stringValueForKey:@"evaluateContent"];
 
-        
         //logical
         self.qtyShow = NSNumber.dou(self.transportQty).stringValue;
         self.priceShow = self.unitPrice/100.0;
@@ -293,6 +294,9 @@ NSString *const kModelTransportOrderEndLat = @"endLat";
     [mutableDict setValue:[NSNumber numberWithDouble:self.unitPrice] forKey:kModelTransportOrderUnitPrice];
     [mutableDict setValue:[NSNumber numberWithDouble:self.endLng] forKey:kModelTransportOrderEndLng];
     [mutableDict setValue:[NSNumber numberWithDouble:self.endLat] forKey:kModelTransportOrderEndLat];
+    [mutableDict setValue:self.evaluateContent forKey:@"evaluateContent"];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.evaluateScore] forKey:@"evaluateScore"];
+
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -317,6 +321,9 @@ NSString *const kModelTransportOrderEndLat = @"endLat";
             break;
         case 5:
             return @"已到达";
+            break;
+        case 6:
+            return @"结算中";
             break;
         case 9:
             return @"已完成";
@@ -345,6 +352,9 @@ NSString *const kModelTransportOrderEndLat = @"endLat";
             return COLOR_GREEN;
             break;
         case 5:
+            return COLOR_GREEN;
+            break;
+        case 6:
             return COLOR_GREEN;
             break;
         case 9:

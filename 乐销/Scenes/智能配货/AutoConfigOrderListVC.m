@@ -181,7 +181,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     AutoConfigOrderListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"AutoConfigOrderListCell"];
     [cell resetCellWithModel: self.aryDatas[indexPath.row]];
-//    [cell.newsView timerStart];
     
     WEAKSELF
     cell.blockDetail = ^(ModelAutOrderListItem *model) {
@@ -313,8 +312,6 @@
     [self showNoResult];
 }
 -  (void)requestCarInfo{
-    [RequestInstance manager].operationQueue;
-
     [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelAuthCar * model = [ModelAuthCar modelObjectWithDictionary:response];
         self.modelCarInfo = model;

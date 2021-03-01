@@ -183,7 +183,6 @@
     [self addRefreshHeader];
     [self requestList];
     [self addObserveOfKeyboard];
-    self.tableView.tableFooterView = self.commentShowView;
 
 }
 #pragma mark UITableViewDelegate
@@ -224,7 +223,13 @@
 
         self.tableView.height = SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - self.bottomView.height;
         [self reconfigTableHeaderView];
-        self.tableView.tableFooterView = self.commentView;
+        if (self.orderList.isDriverEvaluation) {
+            [self.commentShowView resetViewWithModel:self.orderList];
+            self.tableView.tableFooterView = self.commentShowView;
+        }else{
+            self.tableView.tableFooterView = self.commentView;
+
+        }
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];

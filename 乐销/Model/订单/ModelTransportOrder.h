@@ -65,6 +65,9 @@
 @property (nonatomic, assign) double loadTime;
 @property (nonatomic, strong) NSString *startProvinceName;
 @property (nonatomic, assign) double unitPrice;
+@property (nonatomic, strong) NSString *evaluateContent;
+@property (nonatomic, assign) double evaluateScore;
+
 //logical
 @property (nonatomic, strong) NSString * orderStatusShow;
 @property (nonatomic, strong) UIColor *colorStateShow;

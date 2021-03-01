@@ -149,7 +149,7 @@
             strOrderStatus = @"3";
             break;
         case 4:
-            strOrderStatus = @"4";
+            strOrderStatus = @"4,5,6";
             break;
         case 5:
             strOrderStatus = @"9";

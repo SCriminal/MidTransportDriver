@@ -596,14 +596,14 @@
         starView.userInteractionEnabled = false;
         starView.leftCenterY = XY(W(64), l.centerY);
         [self addSubview:starView];
-        [starView setCurrentScore:2];
+        [starView setCurrentScore:model.evaluateScore];
     }
     {
         UILabel * score = [UILabel new];
         score.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         score.textColor = COLOR_333;
         score.backgroundColor = [UIColor clearColor];
-        [score fitTitle:@"2.0" variable:SCREEN_WIDTH - W(30)];
+        [score fitTitle:[NSString stringWithFormat:@"%.1f",model.evaluateScore] variable:SCREEN_WIDTH - W(30)];
         score.leftCenterY = XY(self.starView.right + W(0), self.starView.centerY);
         [self addSubview:score];
         self.score = score;
@@ -626,7 +626,7 @@
         l.backgroundColor = [UIColor clearColor];
         l.numberOfLines = 0;
         l.lineSpace = W(0);
-        [l fitTitle:@"合作愉快" variable:SCREEN_WIDTH - W(83)];
+        [l fitTitle:UnPackStr(model.evaluateContent) variable:SCREEN_WIDTH - W(83)];
         l.leftTop = XY(W(63), W(15) + top);
         [self addSubview:l];
         top = l.bottom;
