@@ -9,13 +9,10 @@
 #import "OrderListVC.h"
 //cell
 #import "OrderListCell.h"
-
-//request
 //request
 #import "RequestDriver2.h"
 //detail
 #import "OrderDetailVC.h"
-
 //bottom view
 #import "OrderManagementBottomView.h"
 #import "OrderFilterView.h"
@@ -130,7 +127,7 @@
 }
 #pragma mark request
 - (void)viewDidAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     [self refreshHeaderAll];
 }
 - (void)requestList{

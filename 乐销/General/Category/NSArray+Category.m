@@ -48,7 +48,7 @@
             }
         }else{
             if ([model respondsToSelector:NSSelectorFromString(compareKey)]&&[model valueForKeyPath:compareKey]) {
-                NSNumber * num = [model valueForKeyPath:compareKey];
+//                NSNumber * num = [model valueForKeyPath:compareKey];
                 id isEqual =[dic objectForKey:[model valueForKeyPath:compareKey]];
                 if ([model respondsToSelector:NSSelectorFromString(exchangeKey)]) {
                     [model setValue:[NSNumber numberWithBool:isEqual?true:false] forKeyPath:exchangeKey];

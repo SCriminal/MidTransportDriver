@@ -59,7 +59,7 @@ static const char isKeyboardObserveKey = '\0';
     //    键盘的实时Y
     CGFloat keyHeight = SCREEN_HEIGHT -  frame.origin.y;
     //    屏幕的高度
-    CGFloat screenH = [UIScreen mainScreen].bounds.size.height;
+//    CGFloat screenH = [UIScreen mainScreen].bounds.size.height;
     //    动画时间
     CGFloat keyDuration = [noti.userInfo[UIKeyboardAnimationDurationUserInfoKey]floatValue];
     CGFloat yCorrect = 0;

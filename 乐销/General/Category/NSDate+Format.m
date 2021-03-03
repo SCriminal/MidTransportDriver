@@ -141,7 +141,7 @@
             break;
     }
     
-    NSString *result = [self stringWithDateFormat:@"yy/MM/dd"];
+    NSString *result = nil;
     if ([nowStr isEqualToString:todayStr1]) {
         result = [self stringWithDateFormat:@"HH:mm"];
     }
@@ -203,7 +203,7 @@
             break;
     }
     
-    NSString *result = [self stringWithDateFormat:@"yy/MM/dd"];
+    NSString *result = nil;
     if ([nowStr isEqualToString:todayStr1]) {
         result = [self stringWithDateFormat:@"HH:mm"];
     }

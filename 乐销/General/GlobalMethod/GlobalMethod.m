@@ -220,7 +220,7 @@
 
 //转换data to dic
 + (NSDictionary *)exchangeDataToDic:(NSData *)data{
-    NSString * str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+//    NSString * str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     if (data == nil || ![data isKindOfClass:[NSData class]]) {
         return nil;
     }
@@ -416,13 +416,13 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString * strPath = [documentsDirectory stringByAppendingPathComponent:@"default"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    long long num = 0;
     if ([fileManager fileExistsAtPath:strPath]){
-        num = [[fileManager attributesOfItemAtPath:strPath error:nil] fileSize];
+        [[fileManager attributesOfItemAtPath:strPath error:nil] fileSize];
+        //    NSLog(@"%@",[NSString stringWithFormat:@"%l",num/(1024.0*1024.0)]);
+        //    return [NSString stringWithFormat:@"%l",num/(1024.0*1024.0)];
+
     }
     return 0;
-    //    NSLog(@"%@",[NSString stringWithFormat:@"%l",num/(1024.0*1024.0)]);
-    //    return [NSString stringWithFormat:@"%l",num/(1024.0*1024.0)];
 }
 
 

@@ -23,6 +23,8 @@
 #import "AuthOneVC.h"
 #import "AutoConfigRobView.h"
 #import "RequestInstance.h"
+#import "CustomTabBarController.h"
+
 @interface AutoConfigOrderListVC ()
 @property (nonatomic, strong) AutoConfigOrderListFilterView *filterView;
 @property (nonatomic, strong) AutoConfigOrderListAutoFilterView *topView;
@@ -108,7 +110,7 @@
             [UIView animateWithDuration:0.3 animations:^{
                 listNew.alpha = 1;
             }];
-            listNew.blockSelected = ^(NSInteger index) {
+            listNew.blockSelected = ^(int index) {
                 switch (index) {
                     case 0:
                         weakSelf.topView.labelAuto.text = @"智能";
@@ -141,6 +143,10 @@
     [self addNav];
     [self.view addSubview:self.topView];
     [self.tableView registerClass:[AutoConfigOrderListCell class] forCellReuseIdentifier:@"AutoConfigOrderListCell"];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(timerStop) name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(timerStart) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshHeaderAll) name:NOTICE_AUTOORDER_REFERSH object:nil];
+
     self.tableView.frame = CGRectMake(0, self.topView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.topView.bottom - TABBAR_HEIGHT);
     self.tableView.tableHeaderView = ^(){
         UIView * v = [UIView new];
@@ -166,7 +172,6 @@
     [self.view addSubview:nav];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestExtendToken) name:NOTICE_EXTENDTOKEN object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshHeaderAll) name:NOTICE_AUTOORDER_REFERSH object:nil];
 
     [self initLocation];
 
@@ -181,7 +186,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     AutoConfigOrderListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"AutoConfigOrderListCell"];
     [cell resetCellWithModel: self.aryDatas[indexPath.row]];
-    
     WEAKSELF
     cell.blockDetail = ^(ModelAutOrderListItem *model) {
         weakSelf.modelList = model;
@@ -409,7 +413,7 @@
 
 #pragma mark 定时器相关
 - (void)viewDidAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     [self timerStart];
     [self refreshHeaderAll];
 }
@@ -442,11 +446,18 @@
 }
 - (void)timerStart{
     //开启定时器
-    if (_timer == nil) {
-        _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRun) userInfo:nil repeats:true];
+    CustomTabBarController * vc = (CustomTabBarController *)GB_Nav.lastVC;
+    if([vc isKindOfClass:CustomTabBarController.class]){
+        if([[vc selectedViewController]isEqual:self]){
+            if (_timer == nil) {
+                _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRun) userInfo:nil repeats:true];
+            }
+        }
     }
+   
 }
 - (void)timerRun{
+    NSLog(@"time run sld");
     if (self.aryDatas.count) {
         for (AutoConfigOrderListCell * cell in self.tableView.visibleCells) {
             [cell.timeView resetTime];

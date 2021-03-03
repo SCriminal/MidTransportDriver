@@ -443,7 +443,7 @@
     NSArray * ary = [self.aryDatas fetchValues:@"nameShow"];
     [listNew showWithPoint:[self.viewBG convertPoint:CGPointMake(self.viewBorder.left, self.viewBorder.bottom) toView:[UIApplication sharedApplication].keyWindow]  width:self.viewBorder.width ary:ary];
     WEAKSELF
-    listNew.blockSelected = ^(NSInteger index) {
+    listNew.blockSelected = ^(int index) {
         weakSelf.indexSelect = index;
         ModelValidCar * model = (weakSelf.indexSelect<=weakSelf.aryDatas.count-1)?weakSelf.aryDatas[weakSelf.indexSelect]:nil;
         [weakSelf.labelCarNumber fitTitle:model.nameShow variable:W(200)];

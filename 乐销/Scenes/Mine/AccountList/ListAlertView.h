@@ -12,7 +12,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIImageView *ivBG;
 @property (nonatomic, strong) NSMutableArray *aryDatas;
-@property (nonatomic, strong) void (^blockSelected)(NSInteger);
+@property (nonatomic, strong) void (^blockSelected)(int);
 @property (nonatomic, assign) int indexSelected;
 #pragma mark 刷新view
 - (void)resetViewWithModel:(id)model;

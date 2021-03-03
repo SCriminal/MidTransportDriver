@@ -311,7 +311,7 @@
         CGFloat numberX;// = breakPointX;
         CGFloat numberY = breakPointY - numberHeight;
         
-        CGFloat titleX = breakPointX;
+        CGFloat titleX = 0;
         CGFloat titleY = breakPointY + 2;
         
         

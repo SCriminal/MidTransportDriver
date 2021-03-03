@@ -71,7 +71,9 @@
     [self.timeView resetTime];
     
     self.tableView.tableHeaderView = self.topView;
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(timerStop) name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(timerStart) name:UIApplicationDidBecomeActiveNotification object:nil];
+
     //table
     self.tableView.backgroundColor = COLOR_BACKGROUND;
     //request
@@ -95,9 +97,9 @@
         ModelAutOrderListItem * orderDetail = [ModelAutOrderListItem modelObjectWithDictionary:response];
         orderDetail.comment = self.modelList.comment;
         self.modelList = orderDetail;
-        [self.topView resetViewWithModel:self.modelList];        
+        [self.topView resetViewWithModel:self.modelList];
+        self.timeView.date = [GlobalMethod exchangeTimeStampToDate:self.modelList.startTime];
         self.tableView.tableHeaderView = self.topView;
-
         [self requestComment];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
@@ -188,7 +190,7 @@
 
 #pragma mark 定时器相关
 - (void)viewDidAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     [self timerStart];
 }
 - (void)viewWillDisappear:(BOOL)animated{
@@ -197,8 +199,10 @@
 }
 - (void)timerStart{
     //开启定时器
-    if (_timer == nil) {
-        _timer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
+    if ([GB_Nav.viewControllers.lastObject isEqual:self]) {
+        if (_timer == nil) {
+            _timer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
+        }
     }
 }
 - (void)timerRun{

@@ -66,7 +66,7 @@
             }
         }
         //保存地址到本地
-        ModelAddress * modelAddress = [ModelAddress initWithAMapLocationReGeocode:regeocode location:location];
+//        ModelAddress * modelAddress = [ModelAddress initWithAMapLocationReGeocode:regeocode location:location];
         self.centerCoordinate = location.coordinate;
         self.mapView.centerCoordinate =location.coordinate;
     }];

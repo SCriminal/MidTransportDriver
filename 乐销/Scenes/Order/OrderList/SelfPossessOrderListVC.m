@@ -132,7 +132,7 @@
 }
 #pragma mark request
 - (void)viewDidAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     [self refreshHeaderAll];
 }
 - (void)requestList{
