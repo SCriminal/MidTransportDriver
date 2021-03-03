@@ -476,12 +476,12 @@
     [nav configBlueStyle];
     [self.view addSubview:nav];
     
-    self.topView.blockFilter = nil;
+//    self.topView.blockFilter = nil;
 }
 - (void)requestList{
     
     ModelAddress * location = [GlobalMethod readModelForKey:LOCAL_LOCATION_UPTODATE modelName:@"ModelAddress" exchange:false];
-    [RequestApi requestNewOrderListWithStartareaid:self.areaStart.iDProperty endAreaId:self.areaEnd.iDProperty page:self.pageNum count:20 vehicleTypeId:0 mode:0 lat:NSNumber.dou(location.lat).stringValue lng:NSNumber.dou(location.lng).stringValue sort:self.topView.indexSelected+1                           vehicleTypeCode:nil
+    [RequestApi requestNewOrderListWithStartareaid:self.areaStart.iDProperty endAreaId:self.areaEnd.iDProperty page:self.pageNum count:20 vehicleTypeId:0 mode:self.orderTypeIndex?:0 lat:NSNumber.dou(location.lat).stringValue lng:NSNumber.dou(location.lng).stringValue sort:self.topView.indexSelected+1                           vehicleTypeCode:nil
  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.isRequestSuccess = true;
         self.pageNum ++;

@@ -88,9 +88,7 @@
             NSMutableArray *ary = [aryImages fetchValues:@"url"];
             [RequestApi requestUnloadWithUrls:[ary componentsJoinedByString:@","] number:weakSelf.orderList.orderNumber description:reason delayReasoon:reason1 delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 [weakSelf refreshHeaderAll];
-                [[LocationRecordInstance sharedInstance]stopLocationWithShippingNoteInfos:@[weakSelf.orderList] listener:^(id model, NSError *error) {
-                              
-                          }];
+                [[LocationRecordInstance sharedInstance]stopLocationWithShippingNoteInfos:@[weakSelf.orderList] listener:nil];
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                 
             }];
@@ -223,13 +221,17 @@
 
         self.tableView.height = SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - self.bottomView.height;
         [self reconfigTableHeaderView];
-        if (self.orderList.isDriverEvaluation) {
-            [self.commentShowView resetViewWithModel:self.orderList];
-            self.tableView.tableFooterView = self.commentShowView;
+        if (self.orderList.orderStatus >= 4 && self.orderList.orderStatus<99) {
+            if (self.orderList.isDriverEvaluation) {
+                [self.commentShowView resetViewWithModel:self.orderList];
+                self.tableView.tableFooterView = self.commentShowView;
+            }else{
+                self.tableView.tableFooterView = self.commentView;
+            }
         }else{
-            self.tableView.tableFooterView = self.commentView;
-
+            self.tableView.tableFooterView = nil;
         }
+       
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
@@ -280,7 +282,7 @@
         {
             
             self.upUnLoadImageView.isOutTime = self.orderList.isOutOfTime;
-            [self.upLoadImageView resetViewWithModel:nil];
+            [self.upUnLoadImageView resetViewWithModel:nil];
             [self.upUnLoadImageView show];
         }
             break;

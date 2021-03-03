@@ -153,7 +153,7 @@
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"number":RequestStrKey(number)};
-        [self putUrl:@"/loms/order/status/2/{number}" delegate:delegate parameters:dic success:success failure:failure];
+        [self putUrl:@"/zhongcheyun/loms/order/status/2" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 /**

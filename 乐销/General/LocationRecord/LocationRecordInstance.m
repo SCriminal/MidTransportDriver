@@ -107,7 +107,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
     NSMutableArray * aryDatas = [NSMutableArray new];
     for (ModelTransportOrder * modelItem in shippingNoteInfos) {
         if ([modelItem isKindOfClass:[ModelTransportOrder class]]) {
-            [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelItem.orderNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":modelItem.startCountyCode,@"endCountrySubdivisionCode":modelItem.endCountyCode}];
+            [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelItem.orderNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":UnPackStr(modelItem.startCountyCode),@"endCountrySubdivisionCode":UnPackStr(modelItem.endCountyCode)}];
             [self.mapTransport stopLocationWithShippingNoteInfos:aryDatas listener:listener];
             
         }
