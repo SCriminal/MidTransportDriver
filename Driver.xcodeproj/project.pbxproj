@@ -124,6 +124,7 @@
 		D24CBB712580782500F6AB3E /* RejectOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D24CBB6F2580782500F6AB3E /* RejectOrderView.m */; };
 		D24D0742248A353F0029FCEC /* CarType.json in Sources */ = {isa = PBXBuildFile; fileRef = D24D0741248A353F0029FCEC /* CarType.json */; };
 		D24D0743248A40260029FCEC /* CarType.json in Resources */ = {isa = PBXBuildFile; fileRef = D24D0741248A353F0029FCEC /* CarType.json */; };
+		D2508E2E25F1D55700250786 /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D2508E2D25F1D55700250786 /* Location.gpx */; };
 		D2512BCA1E8CDA0F005F9B54 /* CustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2512BC91E8CDA0F005F9B54 /* CustomPickerView.m */; };
 		D25145CF1E32ECA700E8107F /* UITableView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D25145CE1E32ECA700E8107F /* UITableView+Category.m */; };
 		D25145D21E33055300E8107F /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D25145D11E33055300E8107F /* NSArray+Category.m */; };
@@ -633,6 +634,7 @@
 		D24CBB702580782500F6AB3E /* RejectOrderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RejectOrderView.h; sourceTree = "<group>"; };
 		D24D0741248A353F0029FCEC /* CarType.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CarType.json; sourceTree = "<group>"; };
 		D24DFE9A22F122EA0072B607 /* LDMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDMacro.h; sourceTree = "<group>"; };
+		D2508E2D25F1D55700250786 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		D2512BC81E8CDA0F005F9B54 /* CustomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPickerView.h; sourceTree = "<group>"; };
 		D2512BC91E8CDA0F005F9B54 /* CustomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPickerView.m; sourceTree = "<group>"; };
 		D25145CD1E32ECA700E8107F /* UITableView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Category.h"; sourceTree = "<group>"; };
@@ -2418,6 +2420,7 @@
 				D2BC9A831DFFA75600B0468E /* allCities.plist */,
 				D2BC9A841DFFA75600B0468E /* allCitiesDics.plist */,
 				D2BC9A851DFFA75600B0468E /* hotCities.plist */,
+				D2508E2D25F1D55700250786 /* Location.gpx */,
 			);
 			path = plist;
 			sourceTree = "<group>";
@@ -3240,6 +3243,7 @@
 				D2F733B41E8642EE0008E561 /* LocalData.json in Resources */,
 				DAA3C9E71D668FF6009CFDF7 /* Images.xcassets in Resources */,
 				D2B9FF1F248E0D620082E8D2 /* EnergyType.json in Resources */,
+				D2508E2E25F1D55700250786 /* Location.gpx in Resources */,
 				D2726BA721BE04DA006B626F /* AliyunEmasServices-Info.plist in Resources */,
 				DAAEC65E1E5E900E0034AED0 /* area.plist in Resources */,
 				D2BC9A871DFFA75600B0468E /* allCities.plist in Resources */,

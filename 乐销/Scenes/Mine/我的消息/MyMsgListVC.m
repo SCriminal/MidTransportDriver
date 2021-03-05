@@ -137,8 +137,8 @@
 - (UIImageView *)iconArrow{
     if (_iconArrow == nil) {
         _iconArrow = [UIImageView new];
-        _iconArrow.image = [UIImage imageNamed:@"msg_down"];
-        _iconArrow.highlightedImage = [UIImage imageNamed:@"msg_up"];
+        _iconArrow.image = [UIImage imageNamed:@"msg_up"];
+        _iconArrow.highlightedImage = [UIImage imageNamed:@"msg_down"];
         _iconArrow.widthHeight = XY(W(12),W(12));
     }
     return _iconArrow;

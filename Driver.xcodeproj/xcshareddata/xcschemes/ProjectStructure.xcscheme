@@ -73,8 +73,8 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <LocationScenarioReference
-         identifier = "Hong Kong, China"
-         referenceType = "1">
+         identifier = "../&#x4e50;&#x9500;/Resource/plist/Location.gpx"
+         referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>
    <ProfileAction

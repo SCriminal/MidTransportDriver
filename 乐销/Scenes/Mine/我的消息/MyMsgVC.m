@@ -23,8 +23,6 @@
     [self addNav];
     //table
     [self.tableView registerClass:[MyMsgCell class] forCellReuseIdentifier:@"MyMsgCell"];
-    //request
-    [self requestList];
 }
 
 #pragma mark 添加导航栏
@@ -56,6 +54,12 @@
     ModelBtn * item = self.aryDatas[indexPath.row];
     vc.channel = item.vcName;
     [GB_Nav pushViewController:vc animated:true];
+
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    //request
+    [self requestList];
 
 }
 #pragma mark request

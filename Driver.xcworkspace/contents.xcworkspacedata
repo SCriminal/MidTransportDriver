@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:&#x4e50;&#x9500;/Resource/plist/Location.gpx">
+   </FileRef>
+   <FileRef
       location = "group:Driver.xcodeproj">
    </FileRef>
    <FileRef
