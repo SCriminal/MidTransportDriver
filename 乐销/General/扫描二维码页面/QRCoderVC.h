@@ -21,7 +21,7 @@
 
 @interface QRCoderVC : BaseVC<UIAlertViewDelegate, AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureMetadataOutputObjectsDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
-@property (nonatomic, assign) id<CustomViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<CustomViewControllerDelegate> delegate;
 @property (nonatomic,strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 @property (nonatomic, strong) UIButton *cancelButton;

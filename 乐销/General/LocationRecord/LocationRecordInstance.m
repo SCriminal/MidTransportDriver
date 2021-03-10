@@ -176,7 +176,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
         return;
     }
     static NSDate * dateRequest = nil;
-    if (dateRequest && [[NSDate date]timeIntervalSinceDate:dateRequest]<30) {
+    if (dateRequest && [[NSDate date]timeIntervalSinceDate:dateRequest]<60) {
         return;
     }
     NSMutableArray * aryJson = [NSMutableArray array];

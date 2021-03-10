@@ -32,6 +32,8 @@
     //request
     [self requestList];
     [self reconfigView];
+
+
 }
 - (void)reconfigView{
     [self.headerView removeAllSubViews];
@@ -85,7 +87,7 @@
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
-        m.title = [NSString stringWithFormat:@"%@ %@",UnPackStr(self.modelItem.contacter), self.modelItem.contactPhone];
+        m.title = [NSString stringWithFormat:@"%@ %@",UnPackStr(self.modelItem.contacter), UnPackStr(self.modelItem.contactPhone)];
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
@@ -158,7 +160,6 @@
     BaseNavView * nav = [BaseNavView initNavBackTitle:@"订单明细" rightView:nil];
     [nav configBackBlueStyle];
     [self.view addSubview:nav];
-    [self reconfigView];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;

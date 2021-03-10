@@ -237,7 +237,6 @@
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
         [self.aryDatas addObjectsFromArray:aryRequest];
-        [self.tableView reloadData];
         if (self.aryDatas.count == 0) {
             [self requestPath];
         }
@@ -394,7 +393,8 @@
         }
         [self.tableView reloadData];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
+            [self.tableView reloadData];
+
         }];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
@@ -510,7 +510,6 @@
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
         [self.aryDatas addObjectsFromArray:aryRequest];
-        [self.tableView reloadData];
         [self requestCommentList];
         if (self.aryDatas.count == 0) {
             [self requestPath];
