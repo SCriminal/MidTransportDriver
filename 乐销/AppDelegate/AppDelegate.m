@@ -253,7 +253,8 @@
 {
 
     //消息进入 直接跳转
-//    ModelApns * model = [ModelApns modelObjectWithDictionary:response.notification.request.content.userInfo];
+    ModelApns * model = [ModelApns modelObjectWithDictionary:response.notification.request.content.userInfo];
+    [TopAlertView jumpToModel:model];
     completionHandler();
 }
 

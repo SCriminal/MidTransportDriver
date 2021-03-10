@@ -635,6 +635,7 @@
 		D24D0741248A353F0029FCEC /* CarType.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CarType.json; sourceTree = "<group>"; };
 		D24DFE9A22F122EA0072B607 /* LDMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDMacro.h; sourceTree = "<group>"; };
 		D2508E2D25F1D55700250786 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		D2508E2F25F2199C00250786 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Location.gpx; path = "/Users/suilindong/Desktop/中车运司机端/乐销/Resource/plist/Location.gpx"; sourceTree = "<absolute>"; };
 		D2512BC81E8CDA0F005F9B54 /* CustomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPickerView.h; sourceTree = "<group>"; };
 		D2512BC91E8CDA0F005F9B54 /* CustomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPickerView.m; sourceTree = "<group>"; };
 		D25145CD1E32ECA700E8107F /* UITableView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Category.h"; sourceTree = "<group>"; };
@@ -2413,6 +2414,7 @@
 		D2BC9A821DFFA75600B0468E /* plist */ = {
 			isa = PBXGroup;
 			children = (
+				D2508E2F25F2199C00250786 /* Location.gpx */,
 				D2F733B31E8642EE0008E561 /* LocalData.json */,
 				D2726BA621BE04DA006B626F /* AliyunEmasServices-Info.plist */,
 				D2FD667520D254920048D351 /* module.plist */,

@@ -29,11 +29,13 @@
 }
 - (void)reconfigView{
     NSString * greed = nil;
-    if (self.score >= 81) {
+    if (self.score >= 90) {
+        greed = @"极好";
+    }else if (self.score > 80) {
         greed = @"优秀";
-    }else if(self.score >= 71){
+    }else if(self.score > 70){
         greed = @"良好";
-    }else if(self.score >= 31){
+    }else if(self.score > 30){
         greed = @"一般";
     }else{
         greed = @"过低";

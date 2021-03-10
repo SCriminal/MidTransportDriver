@@ -168,7 +168,7 @@
         NSDictionary *dic = @{@"urls":RequestStrKey(urls),
                               @"loadDescription":RequestStrKey(description),
                            @"number":RequestStrKey(number)};
-        [self putUrl:@"/loms/order/status/3/{number}" delegate:delegate parameters:dic success:success failure:failure];
+        [self putUrl:@"/zhongcheyun/loms/order/status/3" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
 2.0卸车

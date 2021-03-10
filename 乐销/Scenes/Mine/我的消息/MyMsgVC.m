@@ -23,6 +23,7 @@
     [self addNav];
     //table
     [self.tableView registerClass:[MyMsgCell class] forCellReuseIdentifier:@"MyMsgCell"];
+    [self addRefreshHeader];
 }
 
 #pragma mark 添加导航栏

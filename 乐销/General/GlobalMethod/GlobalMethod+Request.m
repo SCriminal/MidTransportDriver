@@ -38,7 +38,15 @@
         }
         [RequestApi requestBindDeviceIdWithDeviceID:nil delegate:nil success:nil failure:nil];
     }
-    
+}
+
++(void)requestCarNum{
+    [RequestApi requestCarAuthDetailWithDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        ModelAuthCar * model = [ModelAuthCar modelObjectWithDictionary:response];
+        [GlobalData sharedInstance].GB_UserModel;
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
 }
 //request package type
 + (void)requestPackageType{

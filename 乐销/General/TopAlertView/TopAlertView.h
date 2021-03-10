@@ -20,7 +20,7 @@
 
 #pragma mark 刷新view
 - (void)showWithModel:(ModelApns *)model;
-
++ (void)jumpToModel:(ModelApns *)model;
 //单例
 DECLARE_SINGLETON(TopAlertView)
 @end
