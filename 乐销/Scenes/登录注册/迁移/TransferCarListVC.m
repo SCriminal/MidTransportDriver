@@ -10,6 +10,7 @@
 //request
 #import "RequestDriver2.h"
 
+#import "TransferSuccessVC.h"
 @interface TransferCarListVC ()
 @property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) UIView *footerView;
@@ -93,7 +94,8 @@
         l.backgroundColor = [UIColor clearColor];
         l.numberOfLines = 0;
         l.lineSpace = W(8);
-        [l fitTitle:@"检测到您目前含有2辆车，请选择您最常运的车辆开始吧" variable:SCREEN_WIDTH - W(60)];
+        
+        [l fitTitle:[NSString stringWithFormat:@"检测到您目前含有%lu辆车，请选择您最常运的车辆开始吧",(unsigned long)self.aryDatas.count] variable:SCREEN_WIDTH - W(60)];
         l.leftTop = XY(W(30), W(50)+top);
         [self.headerView addSubview:l];
         top = l.bottom;
@@ -115,13 +117,35 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [TransferCarListCell fetchHeight:self.aryDatas[indexPath.row]];
 }
-
-- (void)transferClick{
-    
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    for (ModelTransportOrder *m in self.aryDatas) {
+        m.isSelected = false;
+    }
+    ModelTransportOrder * m = [self.aryDatas objectAtIndex:indexPath.row];
+    m.isSelected = true;
+    [self.tableView reloadData];
 }
-
+- (void)transferClick{
+    [GB_Nav popLastAndPushVC:[TransferSuccessVC new]];
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    self.navigationController.interactivePopGestureRecognizer.enabled = false;
+}
 #pragma mark request
 - (void)requestList{
+    self.aryDatas = @[^(){
+        ModelTransportOrder * m = [ModelTransportOrder new];
+        m.planNumber = @"123";
+        m.vehicleId = 1;
+        return m;
+    }(),^(){
+        ModelTransportOrder * m = [ModelTransportOrder new];
+        m.planNumber = @"1234";
+        m.vehicleId = 12;
+        return m;
+    }(),].mutableCopy;
+    [self.tableView reloadData];
     [self reconfigView];
 
 }
@@ -154,12 +178,14 @@
     return self;
 }
 #pragma mark 刷新cell
-- (void)resetCellWithModel:(id)model{
+- (void)resetCellWithModel:(ModelTransportOrder *)model{
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-    self.carNumber.text  = @"";
+    
+    self.carNumber.text  = UnPackStr(model.planNumber);
     self.carNumber.centerXTop = XY(SCREEN_WIDTH/2.0,0);
-
+    self.carNumber.textColor = model.isSelected?COLOR_BLUE:COLOR_666;
+    [GlobalMethod setRoundView:self.carNumber color:model.isSelected?COLOR_BLUE:COLOR_666 numRound:4 width:1];
     //设置总高度
     self.height = self.carNumber.bottom + W(30);
 }

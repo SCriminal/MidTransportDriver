@@ -81,6 +81,7 @@
 
 @property (nonatomic, assign) double endLng;
 @property (nonatomic, assign) double endLat;
+@property (nonatomic, assign) BOOL isSelected;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
