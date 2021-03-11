@@ -31,6 +31,9 @@
 #import "GuideView.h"
 #import "PrivateAlertView.h"
 #import "AdvertiesementView.h"
+//request
+#import "RequestApi+Location.h"
+
 @interface AppDelegate ()<UIAlertViewDelegate,UNUserNotificationCenterDelegate,WXApiDelegate,WeiboSDKDelegate>{
 
 }
@@ -261,7 +264,19 @@
 - (void)easemobApplication:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+    //阿里回执
+    [CloudPushSDK sendNotificationAck:userInfo];
+
     ModelApns * model = [ModelApns modelObjectWithDictionary:userInfo];
+    if (model.type == 19) {
+        ModelAddress * mLocation = [GlobalMethod readModelForKey:LOCAL_LOCATION_UPTODATE modelName:@"ModelAddress" exchange:false];
+        if (mLocation.lat && mLocation.lng ) {
+            [RequestApi requestAddLocationWithLng:mLocation.lng addr:mLocation.desc lat:mLocation.lat spd:mLocation.spd delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            }];
+        }
+        return;
+    }
     [[TopAlertView sharedInstance]showWithModel:model];
     [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_MSG_REFERSH object:nil];
     if (model.type >= 11 && model.type<=18) {
@@ -276,9 +291,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
 
     //进行消息处理 通过字段进行区分是否是即时通讯消息
     //如果是leancloud 来的消息
-    //阿里回执
-    [CloudPushSDK sendNotificationAck:userInfo];
-    
+       
 }
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{
