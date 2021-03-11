@@ -129,6 +129,7 @@
 		D25145CF1E32ECA700E8107F /* UITableView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D25145CE1E32ECA700E8107F /* UITableView+Category.m */; };
 		D25145D21E33055300E8107F /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D25145D11E33055300E8107F /* NSArray+Category.m */; };
 		D2545A5D1E72AD2500DEC7CE /* UIControl+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2545A5C1E72AD2500DEC7CE /* UIControl+Category.m */; };
+		D255464425F9C4C300DDC39A /* TransferCarListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D255464325F9C4C300DDC39A /* TransferCarListVC.m */; };
 		D257759524D2AF1300449C75 /* RejectOrderReason.m in Sources */ = {isa = PBXBuildFile; fileRef = D257759424D2AF1300449C75 /* RejectOrderReason.m */; };
 		D259AC4A20F435CF00F71C87 /* SendMsgHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259AC4920F435CF00F71C87 /* SendMsgHelper.m */; };
 		D25E8AE922B0EE960091CF4D /* ModelMotrocadeList.m in Sources */ = {isa = PBXBuildFile; fileRef = D25E8AE722B0EE950091CF4D /* ModelMotrocadeList.m */; };
@@ -644,6 +645,8 @@
 		D25145D11E33055300E8107F /* NSArray+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Category.m"; sourceTree = "<group>"; };
 		D2545A5B1E72AD2500DEC7CE /* UIControl+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+Category.h"; sourceTree = "<group>"; };
 		D2545A5C1E72AD2500DEC7CE /* UIControl+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+Category.m"; sourceTree = "<group>"; };
+		D255464225F9C4C300DDC39A /* TransferCarListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransferCarListVC.h; sourceTree = "<group>"; };
+		D255464325F9C4C300DDC39A /* TransferCarListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransferCarListVC.m; sourceTree = "<group>"; };
 		D257759324D2AF1300449C75 /* RejectOrderReason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RejectOrderReason.h; sourceTree = "<group>"; };
 		D257759424D2AF1300449C75 /* RejectOrderReason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RejectOrderReason.m; sourceTree = "<group>"; };
 		D259AC4820F435CF00F71C87 /* SendMsgHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMsgHelper.h; sourceTree = "<group>"; };
@@ -1616,6 +1619,15 @@
 				D25145CE1E32ECA700E8107F /* UITableView+Category.m */,
 			);
 			path = BaseTableView;
+			sourceTree = "<group>";
+		};
+		D255464125F9C4A600DDC39A /* 迁移 */ = {
+			isa = PBXGroup;
+			children = (
+				D255464225F9C4C300DDC39A /* TransferCarListVC.h */,
+				D255464325F9C4C300DDC39A /* TransferCarListVC.m */,
+			);
+			path = "迁移";
 			sourceTree = "<group>";
 		};
 		D25E8AE622B0EE950091CF4D /* 车队 */ = {
@@ -3080,6 +3092,7 @@
 		DAC5CF561DFFC3C20032E76F /* 登录注册 */ = {
 			isa = PBXGroup;
 			children = (
+				D255464125F9C4A600DDC39A /* 迁移 */,
 				D20E8600258845EA00C9EE4C /* 认证中心 */,
 				D26B88D3225C9E6E0051FA78 /* 忘记密码 */,
 				D25F55B52178529700FD4898 /* 完善信息 */,
@@ -3575,6 +3588,7 @@
 				D2F11C6D2097103600F18CBD /* UITextField+Text.m in Sources */,
 				D2D5265525A44E1A00F99306 /* FeedBackManagementVC.m in Sources */,
 				D23F02FA1E037F34004E768F /* GlobalMethod+UI.m in Sources */,
+				D255464425F9C4C300DDC39A /* TransferCarListVC.m in Sources */,
 				D2BE30D6210712200059929D /* ModelCompany.m in Sources */,
 				D2152F6121815DBF0085437D /* CommentStarView.m in Sources */,
 				D21CA05B1F06408B00FAE8B3 /* NSUserDefaults+Category.m in Sources */,

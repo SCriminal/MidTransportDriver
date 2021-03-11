@@ -128,7 +128,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
         MAMapPoint point2 =  MAMapPointForCoordinate(CLLocationCoordinate2DMake(addressLast.lat,addressLast.lng));
         //2.计算距离
         CLLocationDistance distance = MAMetersBetweenMapPoints(point1,point2);
-        if (distance > 5||addressLast.lat == 0) {
+        if (distance > 5) {
             [[GlobalData sharedInstance].aryLocations addObject:modelAddress];
             [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_LOCATION_CHANGE object:nil];
             [self requestUpuserLocation:modelAddress];
@@ -142,11 +142,10 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
         MAMapPoint point2 = MAMapPointForCoordinate(CLLocationCoordinate2DMake(addressLast.lat,addressLast.lng));
         //2.计算距离
         CLLocationDistance distance = MAMetersBetweenMapPoints(point1,point2);
-        if (distance <800) {
+        if (distance <100) {
             return;
         }
     }
-    
     [ary addObject:modelAddress];
     [GlobalMethod writeAry:ary key:LOCAL_LOCATION_RECORD];
     //请求
@@ -188,8 +187,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
                              @"collectTime":[NSNumber numberWithLong:(long)modelItem.dateRecord],
                              @"addr":UnPackStr(modelItem.desc),
                              @"lat":NSNumber.dou(modelItem.lat),
-                             @"spd":NSNumber.lon(modelItem.spd)
-        }];
+                             @"spd":NSNumber.lon(modelItem.spd)}];
     }
     NSString * strJson = [GlobalMethod exchangeDicToJson:aryJson];
     [RequestApi requestAddLocationsWithData:strJson delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
@@ -211,7 +209,6 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
         if (successBlock) {
             successBlock();
         }
-        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_LOCATION_UP_SUCCESS object:nil];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
@@ -222,7 +219,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
         return;
     }
     static NSDate * dateRequestLocation = nil;
-    if (dateRequestLocation && [[NSDate date]timeIntervalSinceDate:dateRequestLocation]<180) {
+    if (dateRequestLocation && [[NSDate date]timeIntervalSinceDate:dateRequestLocation]<30) {
         return;
     }
     [RequestApi requestAddLocationWithLng:model.lng addr:model.desc lat:model.lat spd:model.spd delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {

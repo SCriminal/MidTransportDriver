@@ -457,7 +457,7 @@
    
 }
 - (void)timerRun{
-    NSLog(@"time run sld");
+//    NSLog(@"time run sld");
     if (self.aryDatas.count) {
         for (AutoConfigOrderListCell * cell in self.tableView.visibleCells) {
             [cell.timeView resetTime];

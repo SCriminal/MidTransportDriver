@@ -300,17 +300,8 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
 }
 
 - (NSString *)resetDistance:(CGFloat)meter{
-    //低于10m显示 <10m，1000m以内显示m 1000m以上 100km以下显示 xx km 超过100km显示 >100km
-    if(meter <10){
-        return @"<10m";
-    }
-    if(meter <1000){
-        return [NSString stringWithFormat:@"%.0fm",meter];
-    }
-    if(meter <100000){
-        return [NSString stringWithFormat:@"%.0fkm",meter/1000.0];
-    }
-    return @">100km";
+    return [NSString stringWithFormat:@"%.2fkm",meter/1000.0];
+
 }
 
 - (NSDictionary *)dictionaryRepresentation {

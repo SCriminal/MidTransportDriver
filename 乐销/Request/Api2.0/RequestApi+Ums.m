@@ -623,4 +623,24 @@ delegate:(id <RequestDelegate>)delegate
     [self postUrl:@"/ums/user/login/refresh/token" delegate:delegate parameters:dic success:success failure:failure];
 }
 
+/**
+温馨提示
+*/
++(void)requestOriginCarListWithDelegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{};
+        [self getUrl:@"/ums/1_0/vehicle/list" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
+马上迁移
+*/
++(void)requestOriginTransferWithVehicleId:(double)vehicleId
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"vehicleId":NSNumber.dou(vehicleId)};
+        [self postUrl:@"/ums/1_0/transfer" delegate:delegate parameters:dic success:success failure:failure];
+}
+
 @end

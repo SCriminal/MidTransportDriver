@@ -80,20 +80,8 @@
 
 - (void)jump{
 //    [self.view addSubview:[NSClassFromString(@"OrderDetailVC") new]];
-    RejectOrderView * v = [RejectOrderView new];
-    [v resetViewWithModel:^(){
-        ModelTransportOrder * m = [ModelTransportOrder new];
-        return m;
-    }()];
-    [self.view addSubview:v];
-    return;
-    OrderDetailVC * operateVC = [OrderDetailVC new];
-    operateVC.orderList = ^(){
-        ModelTransportOrder  * m = [ModelTransportOrder new];
-        return m;
-    }();
-    
-    [GB_Nav pushViewController:operateVC animated:true];}
+    [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
+}
 /**
 
  @param firstWeekday 星期起始日

@@ -351,6 +351,20 @@ delegate:(id <RequestDelegate>)delegate
 +(void)requestRefreshTokenDelegate:(id <RequestDelegate>)delegate
                               success:(void (^)(NSDictionary * response, id mark))success
                            failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+温馨提示
+*/
++(void)requestOriginCarListWithDelegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+马上迁移
+*/
++(void)requestOriginTransferWithVehicleId:(double)vehicleId
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                  failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END
