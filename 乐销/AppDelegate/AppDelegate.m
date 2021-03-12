@@ -33,6 +33,7 @@
 #import "AdvertiesementView.h"
 //request
 #import "RequestApi+Location.h"
+#import "TimerHelper.h"
 
 @interface AppDelegate ()<UIAlertViewDelegate,UNUserNotificationCenterDelegate,WXApiDelegate,WeiboSDKDelegate>{
 
@@ -73,16 +74,13 @@
     [self registerForRemoteNotification];
     //配置 app id
     [self configureAPIKey];
-    //quick login
-    [self configLogin];
-
+    
     return YES;
 }
 //config flash login
 - (void)configLogin{
     //􏱲􏱳􏱴􏱵
-    [CLShanYanSDKManager initWithAppId:FLASH_ID AppKey:FLASH_KEY
-                               timeOut:4 complete:nil];
+//    [CLShanYanSDKManager initWithAppId:FLASH_ID AppKey:FLASH_KEY timeOut:4 complete:nil];
 }
 //注册通知
 -(void)registerForRemoteNotification {
@@ -129,6 +127,8 @@
     }];
         //开启地理位置定位
     [[LocationRecordInstance sharedInstance]startRecord];
+    
+    [[TimerHelper sharedInstance] timerStart];
     //bug
     [Bugly startWithAppId:@"af4bcb1f7d"];
 

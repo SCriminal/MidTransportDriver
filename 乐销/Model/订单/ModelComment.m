@@ -58,8 +58,8 @@ NSString *const kModelCommentScore5Qty = @"score5Qty";
         self.score2Qty = [dict doubleValueForKey:kModelCommentScore2Qty];
         self.score5Qty = [dict doubleValueForKey:kModelCommentScore5Qty];
 
-        double num = self.score1Qty*1+self.score2Qty*2+self.score3Qty*3+self.score4Qty*4+self.score5Qty*5;
-        double numAll = (self.score1Qty+self.score2Qty+self.score3Qty+self.score4Qty+self.score5Qty)*5;
+        double num = self.score5Qty;
+        double numAll = (self.score1Qty+self.score2Qty+self.score3Qty+self.score4Qty+self.score5Qty);
         self.praiseRateShow = numAll?[NSString stringWithFormat:@"%.f%%",round(num/numAll*100.0)]:@"0%";
     }
     

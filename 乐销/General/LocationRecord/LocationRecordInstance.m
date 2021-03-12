@@ -179,6 +179,8 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
         return;
     }
     NSMutableArray * aryJson = [NSMutableArray array];
+    
+        ModelTransportOrder * modelOrder =  [GlobalMethod readModelForKey:LOCAL_TRANSPORT_LOADING modelName:@"ModelTransportOrder"];
     for (ModelAddress * modelItem in aryParameter) {
         [aryJson addObject:@{@"uploaderId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.iDProperty),
                              @"lng":NSNumber.dou(modelItem.lng),
@@ -187,7 +189,10 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
                              @"collectTime":[NSNumber numberWithLong:(long)modelItem.dateRecord],
                              @"addr":UnPackStr(modelItem.desc),
                              @"lat":NSNumber.dou(modelItem.lat),
-                             @"spd":NSNumber.lon(modelItem.spd)}];
+                             @"spd":NSNumber.lon(modelItem.spd),
+                             @"orderNumber":UnPackStr(modelOrder.orderNumber),
+                             @"plateNumber":UnPackStr(modelOrder.plateNumber)
+        }];
     }
     NSString * strJson = [GlobalMethod exchangeDicToJson:aryJson];
     [RequestApi requestAddLocationsWithData:strJson delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {

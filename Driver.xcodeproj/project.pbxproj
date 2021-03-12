@@ -131,6 +131,7 @@
 		D2545A5D1E72AD2500DEC7CE /* UIControl+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D2545A5C1E72AD2500DEC7CE /* UIControl+Category.m */; };
 		D255464425F9C4C300DDC39A /* TransferCarListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D255464325F9C4C300DDC39A /* TransferCarListVC.m */; };
 		D255464725F9DEE300DDC39A /* TransferSuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D255464625F9DEE300DDC39A /* TransferSuccessVC.m */; };
+		D255464A25FB49C100DDC39A /* TimerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D255464925FB49C000DDC39A /* TimerHelper.m */; };
 		D257759524D2AF1300449C75 /* RejectOrderReason.m in Sources */ = {isa = PBXBuildFile; fileRef = D257759424D2AF1300449C75 /* RejectOrderReason.m */; };
 		D259AC4A20F435CF00F71C87 /* SendMsgHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D259AC4920F435CF00F71C87 /* SendMsgHelper.m */; };
 		D25E8AE922B0EE960091CF4D /* ModelMotrocadeList.m in Sources */ = {isa = PBXBuildFile; fileRef = D25E8AE722B0EE950091CF4D /* ModelMotrocadeList.m */; };
@@ -650,6 +651,8 @@
 		D255464325F9C4C300DDC39A /* TransferCarListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransferCarListVC.m; sourceTree = "<group>"; };
 		D255464525F9DEE300DDC39A /* TransferSuccessVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransferSuccessVC.h; sourceTree = "<group>"; };
 		D255464625F9DEE300DDC39A /* TransferSuccessVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransferSuccessVC.m; sourceTree = "<group>"; };
+		D255464825FB49C000DDC39A /* TimerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimerHelper.h; sourceTree = "<group>"; };
+		D255464925FB49C000DDC39A /* TimerHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimerHelper.m; sourceTree = "<group>"; };
 		D257759324D2AF1300449C75 /* RejectOrderReason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RejectOrderReason.h; sourceTree = "<group>"; };
 		D257759424D2AF1300449C75 /* RejectOrderReason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RejectOrderReason.m; sourceTree = "<group>"; };
 		D259AC4820F435CF00F71C87 /* SendMsgHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMsgHelper.h; sourceTree = "<group>"; };
@@ -2161,6 +2164,8 @@
 		D29316951EF3DF8A0034E6FB /* Singleton */ = {
 			isa = PBXGroup;
 			children = (
+				D255464825FB49C000DDC39A /* TimerHelper.h */,
+				D255464925FB49C000DDC39A /* TimerHelper.m */,
 				D259AC4820F435CF00F71C87 /* SendMsgHelper.h */,
 				D259AC4920F435CF00F71C87 /* SendMsgHelper.m */,
 			);
@@ -3470,6 +3475,7 @@
 				D2F3A4FC2570EA11009EBF3F /* AutoConfigOrderListVC.m in Sources */,
 				D2C99C381E0BC021001D5DBA /* AddSubtractView.m in Sources */,
 				D22A413121803C650057C3B4 /* PerfectTextCell.m in Sources */,
+				D255464A25FB49C100DDC39A /* TimerHelper.m in Sources */,
 				D23B6EF925B8229C0044E28C /* ModelAuthCar.m in Sources */,
 				D21CA0611F064D0C00FAE8B3 /* NSURL+Category.m in Sources */,
 				D289669B226427FE006E2196 /* WelcomeVC.m in Sources */,

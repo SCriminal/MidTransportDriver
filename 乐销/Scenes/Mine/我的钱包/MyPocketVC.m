@@ -200,7 +200,7 @@
 - (void)requestList{
     [RequestApi requestPocketWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         double amt = [response doubleValueForKey:@"amt"];
-        [self.accountNum fitTitle:[NSString stringWithFormat:@"%.2f",amt] variable:SCREEN_WIDTH - W(30)];
+        [self.accountNum fitTitle:[NSString stringWithFormat:@"%.2f",amt/100.0] variable:SCREEN_WIDTH - W(30)];
         self.accountNum.centerXTop = XY(SCREEN_WIDTH/2.0, W(45)+NAVIGATIONBAR_HEIGHT);
 
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
