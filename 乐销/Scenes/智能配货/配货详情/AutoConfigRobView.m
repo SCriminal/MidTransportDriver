@@ -269,6 +269,7 @@
         [GlobalMethod showAlert:@"请输入数量"];
         return;
     }
+    
     if (self.blockConfirm) {
         self.blockConfirm(self.tfWeight.text.doubleValue, self.labelPriceAll.text.doubleValue);
     }
@@ -530,6 +531,10 @@
 - (void)btnConfirmClick{
     if (self.tfWeight.text.doubleValue == 0) {
         [GlobalMethod showAlert:@"请输入数量"];
+        return;
+    }
+    if (self.tfPrice.text.doubleValue < 1) {
+        [GlobalMethod showAlert:@"单价不能低于1元"];
         return;
     }
     if (self.blockConfirm) {

@@ -313,9 +313,9 @@
 }
 - (void)btnSearchClick{
     NSDate * dateStart = self.dateStart;
-    if (dateStart == nil) {
-        dateStart = [[NSDate date] dateByAddingYears:-1000];
-    }
+//    if (dateStart == nil) {
+//        dateStart = [[NSDate date] dateByAddingYears:-1000];
+//    }
     NSDate * dateEnd = self.dateEnd;
     if (dateEnd == nil) {
         dateEnd = [NSDate date];
