@@ -4830,8 +4830,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/&#x6211;&#x7684;&#x6d88;&#x606f;/MyMsgManagementVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "-protocolSliderViewBtnSelect:btn:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5200,6 +5200,54 @@
             startingLineNumber = "36"
             endingLineNumber = "36"
             landmarkName = "-timerRun"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8CAA43BB-F583-4B32-B297-81BAFC908F26"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Mine/&#x4ea4;&#x6613;&#x660e;&#x7ec6;/DealHistoryListVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "-resetCellWithModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AEE25F63-F9C8-46ED-A16C-3450FF9E1124"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderList/OrderListVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "-requestList"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "18278C9A-3891-4B80-8CD0-EE03442B6147"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Request/Api2.0/RequestApi+Plan.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "+requestOrderListWithPage:count:orderNumber:shipperName:plateNumber:driverName:startTime:endTime:orderStatues:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

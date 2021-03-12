@@ -90,7 +90,25 @@
 }
 - (BaseNavView *)nav{
     if (!_nav) {
-        BaseNavView * nav = [BaseNavView initNavBackTitle:@"我的消息" rightView:nil];
+        NSString * title = nil;
+//        渠道 1-配货消息 2-运单消息 3-认证消息 4-其他消息
+        switch (self.channel.intValue) {
+            case 1:
+                title = @"配货消息";
+                break;
+            case 2:
+                title = @"运单消息";
+                break;
+            case 3:
+                title = @"认证消息";
+                break;
+            case 4:
+                title = @"其他消息";
+                break;
+            default:
+                break;
+        }
+        BaseNavView * nav = [BaseNavView initNavBackTitle:UnPackStr(title) rightView:nil];
         [nav configBackBlueStyle];
         _nav = nav;
         [self.view addSubview:nav];

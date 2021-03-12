@@ -168,11 +168,11 @@
 
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
-    self.stateShow.text = [model.chargeTypeShow substringToIndex:1];
+    self.stateShow.text = model.chargeTitleShow;
     self.stateShow.leftCenterY = XY(W(15),self.height/2.0);
     self.stateShow.backgroundColor = model.chargeColorShow;
     
-        [self.state fitTitle:model.chargeTitleShow variable:W(240)];
+        [self.state fitTitle:model.chargeTypeShow variable:W(240)];
     self.state.leftTop = XY(W(71),W(2)+self.stateShow.top);
     [self.price fitTitle:[NSString stringWithFormat:@"%@%@",model.direction==1?@"+":@"-",NSNumber.dou(model.amt/100.0).stringValue] variable:W(150)];
     self.price.rightCenterY = XY(SCREEN_WIDTH - W(15),self.height/2.0);

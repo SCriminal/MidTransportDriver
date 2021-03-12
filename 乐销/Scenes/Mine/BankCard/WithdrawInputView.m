@@ -105,7 +105,7 @@
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.widthHeight = XY(W(335), W(39));
         btn.backgroundColor = COLOR_ORANGE;
-        [btn setTitle:@"确认报价" forState:UIControlStateNormal];
+        [btn setTitle:@"确认提现" forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnConfirmClick) forControlEvents:UIControlEventTouchUpInside];

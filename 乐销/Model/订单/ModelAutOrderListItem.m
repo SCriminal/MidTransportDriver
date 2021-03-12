@@ -216,7 +216,7 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
 + (NSString *)matchStatusExchange:(double)status{
     switch ((int)status) {//1匹配中/2已同意/11已拒绝/21已过期
         case 1:
-            return @"匹配中";
+            return @"待确认";
             break;
         case 2:
             return @"已确认";
