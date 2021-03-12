@@ -25,8 +25,8 @@ NSString *const kModelAuthBusinessReviewStatus = @"reviewStatus";
 
 
 @interface ModelAuthBusiness ()
-@property (nonatomic, assign) id reviewerName;
-@property (nonatomic, assign) id reason;
+@property (nonatomic, strong) NSString * reviewerName;
+@property (nonatomic, strong) NSString * reason;
 
 @end
 
@@ -65,8 +65,8 @@ NSString *const kModelAuthBusinessReviewStatus = @"reviewStatus";
             self.roadUrl = [dict stringValueForKey:kModelAuthBusinessRoadUrl];
             self.reviewTime = [dict doubleValueForKey:kModelAuthBusinessReviewTime];
             self.rtpEndDate = [dict doubleValueForKey:kModelAuthBusinessRtpEndDate];
-            self.reviewerName = [dict objectForKey:kModelAuthBusinessReviewerName];
-            self.reason = [dict objectForKey:kModelAuthBusinessReason];
+            self.reviewerName = [dict stringValueForKey:kModelAuthBusinessReviewerName];
+            self.reason = [dict stringValueForKey:kModelAuthBusinessReason];
             self.reviewerId = [dict doubleValueForKey:kModelAuthBusinessReviewerId];
             self.submitterName = [dict stringValueForKey:kModelAuthBusinessSubmitterName];
             self.submitTime = [dict doubleValueForKey:kModelAuthBusinessSubmitTime];

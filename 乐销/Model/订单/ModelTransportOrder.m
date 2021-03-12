@@ -66,8 +66,8 @@ NSString *const kModelTransportOrderEndLng = @"endLng";
 NSString *const kModelTransportOrderEndLat = @"endLat";
 
 @interface ModelTransportOrder ()
-@property (nonatomic, assign) id externalNumber;
-@property (nonatomic, assign) id externalBatchNumber;
+@property (nonatomic, strong) NSString * externalNumber;
+@property (nonatomic, strong) NSString * externalBatchNumber;
 
 @end
 
@@ -187,10 +187,10 @@ NSString *const kModelTransportOrderEndLat = @"endLat";
         self.loadUrls =  [dict arrayValueForKey:kModelTransportOrderLoadUrls];
             self.endAddr = [dict stringValueForKey:kModelTransportOrderEndAddr];
             self.isDriverEvaluation = [dict doubleValueForKey:kModelTransportOrderIsDriverEvaluation];
-            self.externalBatchNumber = [dict objectForKey:kModelTransportOrderExternalBatchNumber];
+            self.externalBatchNumber = [dict stringValueForKey:kModelTransportOrderExternalBatchNumber];
             self.driverName = [dict stringValueForKey:kModelTransportOrderDriverName];
             self.endTime = [dict doubleValueForKey:kModelTransportOrderEndTime];
-            self.externalNumber = [dict objectForKey:kModelTransportOrderExternalNumber];
+            self.externalNumber = [dict stringValueForKey:kModelTransportOrderExternalNumber];
             self.endCountyId = [dict doubleValueForKey:kModelTransportOrderEndCountyId];
         self.unloadUrls =  [dict arrayValueForKey:kModelTransportOrderUnloadUrls];
             self.shipperName = [dict stringValueForKey:kModelTransportOrderShipperName];

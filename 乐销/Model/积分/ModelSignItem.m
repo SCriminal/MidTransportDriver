@@ -16,7 +16,7 @@ NSString *const kModelSignItemDirection = @"direction";
 
 
 @interface ModelSignItem ()
-@property (nonatomic, assign) id internalBaseClassDescription;
+@property (nonatomic, strong) NSString * internalBaseClassDescription;
 
 @end
 
@@ -42,7 +42,7 @@ NSString *const kModelSignItemDirection = @"direction";
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
             self.pointTime = [dict doubleValueForKey:kModelSignItemPointTime];
             self.channel = [dict stringValueForKey:kModelSignItemChannel];
-            self.internalBaseClassDescription = [dict objectForKey:kModelSignItemDescription];
+            self.internalBaseClassDescription = [dict stringValueForKey:kModelSignItemDescription];
             self.point = [dict doubleValueForKey:kModelSignItemPoint];
             self.direction = [dict doubleValueForKey:kModelSignItemDirection];
 

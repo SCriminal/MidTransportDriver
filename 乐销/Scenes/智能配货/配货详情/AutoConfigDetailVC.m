@@ -134,14 +134,25 @@
         ModelAuthCar * model = [ModelAuthCar modelObjectWithDictionary:response];
         self.modelCarInfo = model;
         if (!model.vehicleId) {
-            ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
-            ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"立即提交" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
-            modelConfirm.blockClick = ^(void){
-                AuthOneVC * vc = [AuthOneVC new];
-                vc.isFirst = true;
-                [GB_Nav pushViewController:vc animated:true];
-            };
-            [BaseAlertView initWithTitle:@"提示" content:@"请先提交车辆信息" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
+            [RequestApi requestUserAuthAllInfoWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                ModelAuthorityInfo * modelAuth = [ModelAuthorityInfo modelObjectWithDictionary:response];
+                
+                ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+               ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"立即提交" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_BLUE];
+               modelConfirm.blockClick = ^(void){
+                   //1未提交 2审核中 10通过 11未通过
+                   if (modelAuth.driverStatus == 1 && modelAuth.bizStatus == 1 && modelAuth.vehicleStatus == 1) {
+                       AuthOneVC * vc = [AuthOneVC new];
+                       vc.isFirst = true;
+                       [GB_Nav pushViewController:vc animated:true];
+                   }else{
+                       [GB_Nav pushVCName:@"AuthListVC" animated:true];
+                   }
+               };
+               [BaseAlertView initWithTitle:@"提示" content:@"请先提交车辆信息" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:[UIApplication sharedApplication].keyWindow];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
             return;
         }
         WEAKSELF
