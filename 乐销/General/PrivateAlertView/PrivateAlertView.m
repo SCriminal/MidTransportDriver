@@ -136,7 +136,7 @@
             if (heightDic) {
                 WebVC * vc = [WebVC new];
                                   vc.navTitle = @"用户协议";
-                                  vc.url = @"https://www.zhongcheyun.cn/user/agreement";
+                                  vc.url = [NSString stringWithFormat:@"%@/site/app/content-detail?number=%@",URL_SHARE,@"agreement_user"];
                                   [GB_Nav pushViewController:vc animated:true];
                 [weakSelf removeFromSuperview];
                 vc.blockBack = ^(UIViewController *vc) {
@@ -163,7 +163,7 @@
             if (heightDic) {
                 WebVC * vc = [WebVC new];
                                    vc.navTitle = @"隐私政策";
-                                   vc.url = @"https://www.zhongcheyun.cn/privacy";
+                vc.url = [NSString stringWithFormat:@"%@/site/app/content-detail?number=%@",URL_SHARE,@"agreement_privacy"];
                                    [GB_Nav pushViewController:vc animated:true];
                 [weakSelf removeFromSuperview];
                 vc.blockBack = ^(UIViewController *vc) {

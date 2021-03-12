@@ -134,7 +134,9 @@
 #pragma mark request
 - (void)requestDetail{
     [self.titleView resetViewWithModel:self.modelDetail];
-    [self.webDetail loadHTMLString:[UnPackStr(self.modelDetail.body) fitWebImage] baseURL:nil];
+    
+    [self.webDetail loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/site/app/score-detail?number=%@",URL_SHARE,UnPackStr(self.modelDetail.number)]]]];
+//    [self.webDetail loadHTMLString:[UnPackStr(self.modelDetail.body) fitWebImage] baseURL:nil];
     [self config];
 }
 

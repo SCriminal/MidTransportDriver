@@ -35,7 +35,8 @@
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *introduce;
 @property (nonatomic, assign) double reviewStatus;
-
+@property (nonatomic, assign) double isUser1;
+@property (nonatomic, assign) double isVehicle;
 //logical
 @property (nonatomic, readonly) NSString *authStatusShow;
 

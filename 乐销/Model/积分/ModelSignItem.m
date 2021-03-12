@@ -16,6 +16,8 @@ NSString *const kModelSignItemDirection = @"direction";
 
 
 @interface ModelSignItem ()
+@property (nonatomic, assign) id internalBaseClassDescription;
+
 @end
 
 @implementation ModelSignItem

@@ -24,6 +24,7 @@ NSString *const kModelAuthorityInfoBizStatus = @"bizStatus";
 
 
 @interface ModelAuthorityInfo ()
+
 @end
 
 @implementation ModelAuthorityInfo
@@ -54,7 +55,7 @@ NSString *const kModelAuthorityInfoBizStatus = @"bizStatus";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.vehicleDescription = [dict objectForKey:kModelAuthorityInfoVehicleDescription];
+            self.vehicleDescription = [dict stringValueForKey:kModelAuthorityInfoVehicleDescription];
             self.driverReviewTime = [dict doubleValueForKey:kModelAuthorityInfoDriverReviewTime];
             self.driverSubmitTime = [dict doubleValueForKey:kModelAuthorityInfoDriverSubmitTime];
             self.vehicleReviewTime = [dict doubleValueForKey:kModelAuthorityInfoVehicleReviewTime];
@@ -63,8 +64,8 @@ NSString *const kModelAuthorityInfoBizStatus = @"bizStatus";
             self.driverStatus = [dict doubleValueForKey:kModelAuthorityInfoDriverStatus];
             self.userId = [dict doubleValueForKey:kModelAuthorityInfoUserId];
             self.vehicleStatus = [dict doubleValueForKey:kModelAuthorityInfoVehicleStatus];
-            self.bizDescription = [dict objectForKey:kModelAuthorityInfoBizDescription];
-            self.driverDescription = [dict objectForKey:kModelAuthorityInfoDriverDescription];
+            self.bizDescription = [dict stringValueForKey:kModelAuthorityInfoBizDescription];
+            self.driverDescription = [dict stringValueForKey:kModelAuthorityInfoDriverDescription];
             self.bizReviewTime = [dict doubleValueForKey:kModelAuthorityInfoBizReviewTime];
             self.bizStatus = [dict doubleValueForKey:kModelAuthorityInfoBizStatus];
 

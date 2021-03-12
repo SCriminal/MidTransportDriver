@@ -66,7 +66,7 @@ NSString *const kModelIntegralOrderOrderNumber = @"orderNumber";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.contacter = [dict objectForKey:kModelIntegralOrderContacter];
+            self.contacter = [dict stringValueForKey:kModelIntegralOrderContacter];
             self.skuCoverUrl = [dict stringValueForKey:kModelIntegralOrderSkuCoverUrl];
             self.areaId = [dict doubleValueForKey:kModelIntegralOrderAreaId];
             self.skuPoint = [dict doubleValueForKey:kModelIntegralOrderSkuPoint];
@@ -76,7 +76,7 @@ NSString *const kModelIntegralOrderOrderNumber = @"orderNumber";
             self.cityName = [dict stringValueForKey:kModelIntegralOrderCityName];
             self.countyName = [dict stringValueForKey:kModelIntegralOrderCountyName];
             self.addr = [dict stringValueForKey:kModelIntegralOrderAddr];
-            self.reply = [dict objectForKey:kModelIntegralOrderReply];
+            self.reply = [dict stringValueForKey:kModelIntegralOrderReply];
             self.lat = [dict doubleValueForKey:kModelIntegralOrderLat];
             self.qty = [dict doubleValueForKey:kModelIntegralOrderQty];
             self.skuNumber = [dict stringValueForKey:kModelIntegralOrderSkuNumber];
@@ -86,6 +86,7 @@ NSString *const kModelIntegralOrderOrderNumber = @"orderNumber";
             self.lng = [dict doubleValueForKey:kModelIntegralOrderLng];
             self.orderNumber = [dict stringValueForKey:kModelIntegralOrderOrderNumber];
 
+        self.addrShow = [NSString stringWithFormat:@"%@%@%@%@",UnPackStr(self.provinceName),[self.cityName isEqualToString:self.provinceName]?@"":UnPackStr(self.cityName),UnPackStr(self.countyName),UnPackStr(self.addr)];
     }
     
     return self;

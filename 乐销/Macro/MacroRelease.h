@@ -20,7 +20,7 @@
 
 //#define URL_HEAD  @"https://api.zhongcheyun.cn"//外网
 //#define URL_IMAGE @"https://img.zhongcheyun.cn"//阿里云
-#define URL_SHARE @"https://www.zhongcheyun.cn"//
+#define URL_SHARE @"http://192.168.20.73:7000"//
 
 #define TRANSPORT_AGENCY_ENV  @"release"//@"release"
 
@@ -33,7 +33,7 @@
 #endif
 
 #if DEBUG
-#define SLD_TEST //sld_test
+//#define SLD_TEST //sld_test
 #endif
 
 //交通部

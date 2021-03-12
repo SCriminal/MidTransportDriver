@@ -11,7 +11,6 @@
 
 @interface ModelAuthorityInfo : NSObject
 
-@property (nonatomic, assign) id vehicleDescription;
 @property (nonatomic, assign) double driverReviewTime;
 @property (nonatomic, assign) double driverSubmitTime;
 @property (nonatomic, assign) double vehicleReviewTime;
@@ -20,10 +19,12 @@
 @property (nonatomic, assign) double driverStatus;
 @property (nonatomic, assign) double userId;
 @property (nonatomic, assign) double vehicleStatus;
-@property (nonatomic, assign) id bizDescription;
-@property (nonatomic, assign) id driverDescription;
 @property (nonatomic, assign) double bizReviewTime;
 @property (nonatomic, assign) double bizStatus;
+
+@property (nonatomic, strong) NSString * bizDescription;
+@property (nonatomic,  strong) NSString * driverDescription;
+@property (nonatomic,  strong) NSString * vehicleDescription;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

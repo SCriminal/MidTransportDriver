@@ -13,7 +13,6 @@
 
 @property (nonatomic, assign) double pointTime;
 @property (nonatomic, strong) NSString *channel;
-@property (nonatomic, assign) id internalBaseClassDescription;
 @property (nonatomic, assign) double point;
 @property (nonatomic, assign) double direction;
 

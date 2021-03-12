@@ -15,7 +15,6 @@
 //request
 #import "RequestDriver2.h"
 //share
-#import "ShareView.h"
 #import "OrderListCellBtnView.h"
 #import "RejectOrderView.h"
 #import "BulkCargoOperateLoadView.h"

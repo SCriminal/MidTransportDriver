@@ -66,6 +66,9 @@ NSString *const kModelTransportOrderEndLng = @"endLng";
 NSString *const kModelTransportOrderEndLat = @"endLat";
 
 @interface ModelTransportOrder ()
+@property (nonatomic, assign) id externalNumber;
+@property (nonatomic, assign) id externalBatchNumber;
+
 @end
 
 @implementation ModelTransportOrder

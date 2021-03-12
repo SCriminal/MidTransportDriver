@@ -129,8 +129,9 @@
         [GlobalData sharedInstance].GB_Key = [response stringValueForKey:@"token"];
         [GlobalData sharedInstance].GB_REFRESH_TOKEN = [response stringValueForKey:@"refreshToken"];
         [GlobalMethod writeStr:[GlobalMethod exchangeDate:[NSDate date] formatter:TIME_SEC_SHOW] forKey:LOCAL_LOGIN_TIME];
-        [self requestUserInfo2WithDelegate:delegate success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            [GlobalMethod requestLoginResponse:response mark:mark success:success failure:failure];
+        [self requestUserInfo2WithDelegate:delegate success:^(NSDictionary * _Nonnull responseUser, id  _Nonnull mark) {
+            [GlobalMethod requestLoginResponse:responseUser isVehicle:[response doubleValueForKey:@"isVehicle"]
+                                       isUser1:[response doubleValueForKey:@"isUser1"] mark:mark success:success failure:failure];
         }  failure:failure];
     } failure:failure];
 }

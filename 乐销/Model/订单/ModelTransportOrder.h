@@ -53,10 +53,9 @@
 @property (nonatomic, strong) NSArray *loadUrls;
 @property (nonatomic, strong) NSString *endAddr;
 @property (nonatomic, assign) double isDriverEvaluation;
-@property (nonatomic, assign) id externalBatchNumber;
 @property (nonatomic, strong) NSString *driverName;
 @property (nonatomic, assign) double endTime;
-@property (nonatomic, assign) id externalNumber;
+
 @property (nonatomic, assign) double endCountyId;
 @property (nonatomic, strong) NSArray *unloadUrls;
 @property (nonatomic, strong) NSString *shipperName;

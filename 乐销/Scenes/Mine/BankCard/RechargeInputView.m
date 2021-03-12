@@ -189,7 +189,7 @@
                    if (heightDic) {
                        WebVC * vc = [WebVC new];
                                          vc.navTitle = @"中车运平台充值条款";
-                                         vc.url = @"https://www.zhongcheyun.cn/user/agreement";
+                       vc.url = [NSString stringWithFormat:@"%@/site/app/content-detail?number=%@",URL_SHARE,@"agreement_recharge"];
                                          [GB_Nav pushViewController:vc animated:true];
                    }
                };

@@ -12,7 +12,6 @@
 //sub view
 #import "ScheduleInfoView.h"
 //share
-#import "ShareView.h"
 //confirm view
 //#import "ScheConfirmView.h"
 

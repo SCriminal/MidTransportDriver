@@ -33,6 +33,8 @@ NSString *const kModelBaseInfoCityName = @"cityName";
 NSString *const kModelBaseInfoAddress = @"address";
 NSString *const kModelBaseInfoIntroduce = @"introduce";
 NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
+NSString *const kModelBaseInfoIsUser1 = @"isUser1";
+NSString *const kModelBaseInfoIsVehicle = @"isVehicle";
 
 @interface ModelBaseInfo ()
 @property (nonatomic, strong) NSString *contactPhone;
@@ -161,6 +163,9 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
             self.address = [dict stringValueForKey:kModelBaseInfoAddress];
             self.introduce = [dict stringValueForKey:kModelBaseInfoIntroduce];
         self.reviewStatus = [dict doubleValueForKey:kModelBaseInfoReviewStatus];
+        self.isUser1 = [dict doubleValueForKey:kModelBaseInfoIsUser1];
+        self.isVehicle = [dict doubleValueForKey:kModelBaseInfoIsVehicle];
+
     }
     return self;
     
@@ -193,6 +198,9 @@ NSString *const kModelBaseInfoReviewStatus = @"reviewStatus";
     [mutableDict setValue:self.address forKey:kModelBaseInfoAddress];
     [mutableDict setValue:self.introduce forKey:kModelBaseInfoIntroduce];
     [mutableDict setValue:[NSNumber numberWithDouble:self.reviewStatus] forKey:kModelBaseInfoReviewStatus];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.isUser1] forKey:kModelBaseInfoIsUser1];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.isVehicle] forKey:kModelBaseInfoIsVehicle];
+
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 

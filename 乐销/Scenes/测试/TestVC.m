@@ -1,7 +1,7 @@
 //
 //  TestVC.m
 //  中车运
-//
+//13300000099
 //  Created by 隋林栋 on 2016/12/22.
 //  Copyright © 2016年 ping. All rights reserved.
 //
@@ -10,7 +10,6 @@
 #import "BaseNavView+Logical.h"
 #import "BaseVC+BaseImageSelectVC.h"
 #import <CL_ShanYanSDK/CL_ShanYanSDK.h>
-#import "ShareView.h"
 #import "TopAlertView.h"
 //阿里云推送
 #import <CloudPushSDK/CloudPushSDK.h>
@@ -33,6 +32,7 @@
 @interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate>
 @property (nonatomic, strong) UIWebView *web;
 @property (nonatomic, strong) UILabel *labelShow;
+@property (nonatomic, strong) dispatch_source_t timer;
 
 @end
 
@@ -80,21 +80,26 @@
 
 - (void)jump{
 //    [self.view addSubview:[NSClassFromString(@"OrderDetailVC") new]];
-    [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
+//    [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
+    [self startTimer];
 }
-/**
-
- @param firstWeekday 星期起始日
- @param dateFormat 日期格式
- @return 结果字符串
- */
-
-- (void)addVersion{
-//    [RequestApi requestAddVersionWithForceUpdate:false versionNumber:@"1.53" description:@"1.优化轨迹获取逻辑；\n2.设置中增加版本号显示\n" delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-//        NSLog(@"success");
-//    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-//
-//    }];
+- (void)startTimer{
+    // 倒计时的时间 测试数据
+    // 当前时间的时间戳
+    // 计算时间差值
+    
+    
+    if (_timer == nil) {
+        
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+            dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 2.0*NSEC_PER_SEC,  0); //每秒执行
+            dispatch_source_set_event_handler(_timer, ^{
+                NSLog(@"sld timer");
+            });
+            dispatch_resume(_timer);
+        
+    }
 }
 
 @end

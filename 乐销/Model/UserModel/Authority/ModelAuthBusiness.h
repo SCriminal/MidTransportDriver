@@ -17,8 +17,6 @@
 @property (nonatomic, strong) NSString *roadUrl;
 @property (nonatomic, assign) double reviewTime;
 @property (nonatomic, assign) double rtpEndDate;
-@property (nonatomic, assign) id reviewerName;
-@property (nonatomic, assign) id reason;
 @property (nonatomic, assign) double reviewerId;
 @property (nonatomic, strong) NSString *submitterName;
 @property (nonatomic, assign) double submitTime;

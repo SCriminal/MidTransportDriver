@@ -25,6 +25,9 @@ NSString *const kModelAuthBusinessReviewStatus = @"reviewStatus";
 
 
 @interface ModelAuthBusiness ()
+@property (nonatomic, assign) id reviewerName;
+@property (nonatomic, assign) id reason;
+
 @end
 
 @implementation ModelAuthBusiness

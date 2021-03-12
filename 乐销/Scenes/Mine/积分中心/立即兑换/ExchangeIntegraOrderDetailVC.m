@@ -91,7 +91,7 @@
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
-        m.title = self.modelItem.addr;
+        m.title = self.modelItem.addrShow;
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];

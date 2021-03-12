@@ -11,7 +11,7 @@
 
 @interface ModelIntegralOrder : NSObject
 
-@property (nonatomic, assign) id contacter;
+@property (nonatomic, strong) NSString *contacter;
 @property (nonatomic, strong) NSString *skuCoverUrl;
 @property (nonatomic, assign) double areaId;
 @property (nonatomic, assign) double skuPoint;
@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSString *cityName;
 @property (nonatomic, strong) NSString *countyName;
 @property (nonatomic, strong) NSString *addr;
-@property (nonatomic, assign) id reply;
+@property (nonatomic, strong) NSString *reply;
 @property (nonatomic, assign) double lat;
 @property (nonatomic, assign) double qty;
 @property (nonatomic, strong) NSString *skuNumber;
@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSString *provinceName;
 @property (nonatomic, assign) double lng;
 @property (nonatomic, strong) NSString *orderNumber;
+@property (nonatomic, strong) NSString *addrShow;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

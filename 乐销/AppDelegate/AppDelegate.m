@@ -269,11 +269,13 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
 
     ModelApns * model = [ModelApns modelObjectWithDictionary:userInfo];
     if (model.type == 19) {
-        ModelAddress * mLocation = [GlobalMethod readModelForKey:LOCAL_LOCATION_UPTODATE modelName:@"ModelAddress" exchange:false];
-        if (mLocation.lat && mLocation.lng ) {
-            [RequestApi requestAddLocationWithLng:mLocation.lng addr:mLocation.desc lat:mLocation.lat spd:mLocation.spd delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            }];
+        if ([GlobalMethod isLoginSuccess]) {
+            ModelAddress * mLocation = [GlobalMethod readModelForKey:LOCAL_LOCATION_UPTODATE modelName:@"ModelAddress" exchange:false];
+            if (mLocation.lat && mLocation.lng ) {
+                [RequestApi requestAddLocationWithLng:mLocation.lng addr:mLocation.desc lat:mLocation.lat spd:mLocation.spd delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                }];
+            }
         }
         return;
     }

@@ -54,6 +54,8 @@
 
 //登录
 + (void)requestLoginResponse:(NSDictionary *)response
+                   isVehicle:(double)isVehicle
+                     isUser1:(double)isUser1
                         mark:(id)mark
                      success:(void (^)(NSDictionary * response, id mark))success
                      failure:(void (^)(NSString * errorStr, id mark))failure{
