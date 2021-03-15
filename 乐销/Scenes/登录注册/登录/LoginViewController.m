@@ -21,7 +21,7 @@
 //text edit
 #import "UITextField+Text.h"
 //request
-
+#import "TransferCarListVC.h"
 
 //forget vc
 #import "ForgetPwdVC.h"
@@ -163,10 +163,13 @@
 - (void)requestWithPwd{
     NSString * strPhone = [self.tfPhone.tf.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     [RequestApi requestLoginWithApp:@"2" client:@"1" password:self.tfPwd.tf.text account:strPhone terminalType:1 terminalNumber:@"1" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        [GB_Nav popToRootViewControllerAnimated:true];
+        ModelBaseInfo * m = [GlobalData sharedInstance].GB_UserModel;
+        if ([GlobalData sharedInstance].GB_UserModel.isUser1 == 1 && [GlobalData sharedInstance].GB_UserModel.isVehicle == 0 && [GlobalData sharedInstance].GB_UserModel.user1Auth == 1) {
+            [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
+        }else{
+            [GB_Nav popToRootViewControllerAnimated:true];
+        }
 
-        
-       
         [GlobalMethod showAlert:@"登录成功"];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             

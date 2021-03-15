@@ -43,7 +43,18 @@
             [btn addTarget:self action:@selector(transferClick)];
             return btn;
         }()];
-        _footerView.height = W(75);
+        [_footerView addSubview:^(){
+            UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            btn.widthHeight = XY(W(315), W(39));
+            btn.backgroundColor = [UIColor clearColor];
+            [btn setTitle:@"退出登录" forState:UIControlStateNormal];
+            [btn setTitleColor:COLOR_999 forState:UIControlStateNormal];
+            btn.titleLabel.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
+            btn.centerXTop = XY(SCREEN_WIDTH/2.0, W(65));
+            [btn addTarget:self action:@selector(dismissClick)];
+            return btn;
+        }()];
+        _footerView.height = W(140);
     }
     return _footerView;
 }
@@ -126,7 +137,28 @@
     [self.tableView reloadData];
 }
 - (void)transferClick{
-    [GB_Nav popLastAndPushVC:[TransferSuccessVC new]];
+    ModelTransportOrder * selected = nil;
+    for (ModelTransportOrder * m in self.aryDatas) {
+        if (m.isSelected) {
+            selected = m;
+            break;
+        }
+    }
+    if (selected) {
+        [RequestApi requestOriginTransferWithVehicleId:selected.vehicleId  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [GB_Nav popLastAndPushVC:[TransferSuccessVC new]];
+
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                    
+                }];
+
+    }else{
+        [GlobalMethod showAlert:@"请选择车辆"];
+    }
+}
+- (void)dismissClick{
+    [GlobalMethod clearUserInfo];
+    [GB_Nav popToClass:@"LoginViewController"];
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -134,19 +166,16 @@
 }
 #pragma mark request
 - (void)requestList{
-    self.aryDatas = @[^(){
-        ModelTransportOrder * m = [ModelTransportOrder new];
-        m.planNumber = @"123";
-        m.vehicleId = 1;
-        return m;
-    }(),^(){
-        ModelTransportOrder * m = [ModelTransportOrder new];
-        m.planNumber = @"1234";
-        m.vehicleId = 12;
-        return m;
-    }(),].mutableCopy;
-    [self.tableView reloadData];
-    [self reconfigView];
+    [RequestApi requestOriginCarListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.aryDatas = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelTransportOrder"];
+        [self.tableView reloadData];
+        [self reconfigView];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            [self.tableView reloadData];
+            [self reconfigView];
+
+        }];
+   
 
 }
 @end
@@ -182,7 +211,7 @@
     [self.contentView removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
     
-    self.carNumber.text  = UnPackStr(model.planNumber);
+    self.carNumber.text  = UnPackStr(model.plateNumber);
     self.carNumber.centerXTop = XY(SCREEN_WIDTH/2.0,0);
     self.carNumber.textColor = model.isSelected?COLOR_BLUE:COLOR_666;
     [GlobalMethod setRoundView:self.carNumber color:model.isSelected?COLOR_BLUE:COLOR_666 numRound:4 width:1];

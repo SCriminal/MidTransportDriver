@@ -131,7 +131,7 @@
         [GlobalMethod writeStr:[GlobalMethod exchangeDate:[NSDate date] formatter:TIME_SEC_SHOW] forKey:LOCAL_LOGIN_TIME];
         [self requestUserInfo2WithDelegate:delegate success:^(NSDictionary * _Nonnull responseUser, id  _Nonnull mark) {
             [GlobalMethod requestLoginResponse:responseUser isVehicle:[response doubleValueForKey:@"isVehicle"]
-                                       isUser1:[response doubleValueForKey:@"isUser1"] mark:mark success:success failure:failure];
+                                       isUser1:[response doubleValueForKey:@"isUser1"] user1Auth:[response doubleValueForKey:@"user1Auth"]  mark:mark success:success failure:failure];
         }  failure:failure];
     } failure:failure];
 }
@@ -640,7 +640,7 @@ delegate:(id <RequestDelegate>)delegate
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"vehicleId":NSNumber.dou(vehicleId)};
+        NSDictionary *dic = @{@"vehicle1Id":NSNumber.dou(vehicleId)};
         [self postUrl:@"/ums/1_0/transfer" delegate:delegate parameters:dic success:success failure:failure];
 }
 

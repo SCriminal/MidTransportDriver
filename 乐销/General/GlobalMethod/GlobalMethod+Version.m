@@ -56,11 +56,16 @@
 + (void)requestLoginResponse:(NSDictionary *)response
                    isVehicle:(double)isVehicle
                      isUser1:(double)isUser1
+                   user1Auth:(double)user1Auth
                         mark:(id)mark
                      success:(void (^)(NSDictionary * response, id mark))success
                      failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithDictionary:response];
+    [dic setValue:NSNumber.dou(isVehicle) forKey:@"isVehicle"];
+    [dic setValue:NSNumber.dou(isUser1) forKey:@"isUser1"];
+    [dic setValue:NSNumber.dou(user1Auth) forKey:@"user1Auth"];
 
-    [GlobalData sharedInstance].GB_UserModel = [ModelBaseInfo modelObjectWithDictionary:response];
+    [GlobalData sharedInstance].GB_UserModel = [ModelBaseInfo modelObjectWithDictionary:dic];
     [GlobalMethod requestBindDeviceToken];
     if (success) {
         success(response,mark);
@@ -102,9 +107,13 @@
     delegate.window = window;
     [UIApplication sharedApplication].idleTimerDisabled=true;
    
-
+    
     if (![GlobalMethod isLoginSuccess]) {
         [GB_Nav pushVCName:@"LoginViewController" animated:false];
+    }else{
+        if ([GlobalData sharedInstance].GB_UserModel.isUser1 == 1 && [GlobalData sharedInstance].GB_UserModel.isVehicle == 0 && [GlobalData sharedInstance].GB_UserModel.user1Auth == 1) {
+            [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
+        }
     }
     //请求版本
     [GlobalMethod requestVersion:nil];

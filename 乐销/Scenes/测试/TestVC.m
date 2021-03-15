@@ -80,8 +80,8 @@
 
 - (void)jump{
 //    [self.view addSubview:[NSClassFromString(@"OrderDetailVC") new]];
-//    [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
-    [self startTimer];
+    [GB_Nav pushVCName:@"TransferSuccessVC" animated:true];
+//    [self startTimer];
 }
 - (void)startTimer{
     // 倒计时的时间 测试数据

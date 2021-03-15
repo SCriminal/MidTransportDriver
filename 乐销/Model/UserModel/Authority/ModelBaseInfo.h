@@ -37,6 +37,8 @@
 @property (nonatomic, assign) double reviewStatus;
 @property (nonatomic, assign) double isUser1;
 @property (nonatomic, assign) double isVehicle;
+@property (nonatomic, assign) double user1Auth;
+
 //logical
 @property (nonatomic, readonly) NSString *authStatusShow;
 

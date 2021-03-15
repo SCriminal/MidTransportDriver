@@ -56,7 +56,7 @@
 
             [RequestApi requestUserInfo2WithDelegate:delegate success:^(NSDictionary * _Nonnull responseUser, id  _Nonnull mark) {
                 [GlobalMethod requestLoginResponse:responseUser                    isVehicle:[response doubleValueForKey:@"isVehicle"]
-                                           isUser1:[response doubleValueForKey:@"isUser1"]
+                                           isUser1:[response doubleValueForKey:@"isUser1"] user1Auth:[response doubleValueForKey:@"user1Auth"] 
  mark:mark  success:success failure:failure];
             }  failure:failure];
         } failure:failure];

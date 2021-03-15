@@ -20,6 +20,7 @@
 + (void)requestLoginResponse:(NSDictionary *)response
                    isVehicle:(double)isVehicle
                      isUser1:(double)isUser1
+                   user1Auth:(double)user1Auth
                         mark:(id)mark
                      success:(void (^)(NSDictionary * response, id mark))success
                      failure:(void (^)(NSString * errorStr, id mark))failure;

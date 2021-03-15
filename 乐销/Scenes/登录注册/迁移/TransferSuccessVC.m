@@ -42,7 +42,19 @@
             [btn addTarget:self action:@selector(transferClick)];
             return btn;
         }()];
-        _footerView.height = W(75);
+        [_footerView addSubview:^(){
+            UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            btn.widthHeight = XY(W(315), W(39));
+            btn.backgroundColor = [UIColor clearColor];
+            [btn setTitle:@"退出登录" forState:UIControlStateNormal];
+            [btn setTitleColor:COLOR_999 forState:UIControlStateNormal];
+            btn.titleLabel.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
+            btn.centerXTop = XY(SCREEN_WIDTH/2.0, W(203)+W(5)+W(40));
+            [btn addTarget:self action:@selector(dismissClick)];
+            return btn;
+        }()];
+        _footerView.height = W(203)+W(5)+W(40) + W(50);
+        
     }
     return _footerView;
 }
@@ -68,7 +80,7 @@
         l.backgroundColor = [UIColor clearColor];
         l.numberOfLines = 0;
         l.lineSpace = W(20);
-        [l fitTitle:@"层迁移完成，\n欢迎体验全新版司机端" variable:SCREEN_WIDTH - W(60)];
+        [l fitTitle:@"迁移完成，\n欢迎体验全新版司机端" variable:SCREEN_WIDTH - W(60)];
         l.leftTop = XY(W(30), W(146)+NAVIGATIONBAR_HEIGHT);
         [self.headerView addSubview:l];
         top = l.bottom;
@@ -80,8 +92,11 @@
 
 
 - (void)transferClick{
-    [GB_Nav popViewControllerAnimated:true];
+    [GB_Nav popToRootViewControllerAnimated:true];
 }
-
+- (void)dismissClick{
+    [GlobalMethod clearUserInfo];
+    [GB_Nav popToClass:@"LoginViewController"];
+}
 @end
 

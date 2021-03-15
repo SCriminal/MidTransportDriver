@@ -165,7 +165,9 @@ NSString *const kModelBaseInfoIsVehicle = @"isVehicle";
         self.reviewStatus = [dict doubleValueForKey:kModelBaseInfoReviewStatus];
         self.isUser1 = [dict doubleValueForKey:kModelBaseInfoIsUser1];
         self.isVehicle = [dict doubleValueForKey:kModelBaseInfoIsVehicle];
+        self.user1Auth = [dict doubleValueForKey:@"user1Auth"];
 
+        
     }
     return self;
     
@@ -200,7 +202,7 @@ NSString *const kModelBaseInfoIsVehicle = @"isVehicle";
     [mutableDict setValue:[NSNumber numberWithDouble:self.reviewStatus] forKey:kModelBaseInfoReviewStatus];
     [mutableDict setValue:[NSNumber numberWithDouble:self.isUser1] forKey:kModelBaseInfoIsUser1];
     [mutableDict setValue:[NSNumber numberWithDouble:self.isVehicle] forKey:kModelBaseInfoIsVehicle];
-
+    [mutableDict setValue:[NSNumber numberWithDouble:self.user1Auth] forKey:@"user1Auth"];
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
@@ -217,7 +219,7 @@ NSString *const kModelBaseInfoIsVehicle = @"isVehicle";
             return @"女";
             break;
             case 3:
-                       return @"未知";
+            return @"未知";
                        break;
         default:
             break;

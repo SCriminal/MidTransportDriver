@@ -172,9 +172,11 @@
 }
 - (void)requestLogin:(NSString *)code{
     [RequestApi requestLoginWithAppid:@"1" clientId:@"1" phone:self.strPhone code:code delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        [GB_Nav popToRootViewControllerAnimated:true];
-
-      
+        if ([GlobalData sharedInstance].GB_UserModel.isUser1 == 1 && [GlobalData sharedInstance].GB_UserModel.isVehicle == 0 && [GlobalData sharedInstance].GB_UserModel.user1Auth == 1) {
+            [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
+        }else{
+            [GB_Nav popToRootViewControllerAnimated:true];
+        }
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             [self.codeView clearCode];
 
