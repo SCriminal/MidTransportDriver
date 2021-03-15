@@ -19,7 +19,6 @@
 
 @interface LocationRecordInstance ()<AMapLocationManagerDelegate>
 @property (nonatomic, strong) MapService *mapTransport;
-
 @end
 
 @implementation LocationRecordInstance
@@ -128,9 +127,8 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
         MAMapPoint point2 =  MAMapPointForCoordinate(CLLocationCoordinate2DMake(addressLast.lat,addressLast.lng));
         //2.计算距离
         CLLocationDistance distance = MAMetersBetweenMapPoints(point1,point2);
-        if (distance > 5) {
+        if (distance > 5 || addressLast.lat == 0) {
             [[GlobalData sharedInstance].aryLocations addObject:modelAddress];
-            [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_LOCATION_CHANGE object:nil];
             [self requestUpuserLocation:modelAddress];
         }
     }
@@ -180,7 +178,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
     }
     NSMutableArray * aryJson = [NSMutableArray array];
     
-        ModelTransportOrder * modelOrder =  [GlobalMethod readModelForKey:LOCAL_TRANSPORT_LOADING modelName:@"ModelTransportOrder"];
+    ModelTransportOrder * modelOrder =  [GlobalMethod readModelForKey:LOCAL_TRANSPORT_LOADING modelName:@"ModelTransportOrder"];
     for (ModelAddress * modelItem in aryParameter) {
         [aryJson addObject:@{@"uploaderId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.iDProperty),
                              @"lng":NSNumber.dou(modelItem.lng),
@@ -232,6 +230,21 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
 
     }];
+    
+   
+}
+- (void)requestUpuserLocation{
+    if (![GlobalMethod isLoginSuccess]) {
+        return;
+    }
+    ModelAddress * mLocation = [GlobalMethod readModelForKey:LOCAL_LOCATION_UPTODATE modelName:@"ModelAddress" exchange:false];
+    if (mLocation.lat && mLocation.lng ) {
+        [RequestApi requestAddLocationWithLng:mLocation.lng addr:mLocation.desc lat:mLocation.lat spd:mLocation.spd delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+    }
+   
 }
 
 @end

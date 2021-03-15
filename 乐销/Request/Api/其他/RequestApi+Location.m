@@ -19,11 +19,13 @@
                                delegate:(id <RequestDelegate>)delegate
                                 success:(void (^)(NSDictionary * response, id mark))success
                                 failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSString * plateNumber = [GlobalMethod readStrFromUser:LOCAL_PLATE_NUMBER];
     NSDictionary *dic = @{
                           @"lng":NSNumber.dou(lng),
                           @"addr":UnPackStr(addr),
                           @"lat":NSNumber.dou(lat),
-                          @"spd":NSNumber.lon(spd)
+                          @"spd":NSNumber.lon(spd),
+                          @"plateNumber":isStr(plateNumber)?plateNumber:[NSNull null]
                           };
     [self putUrl:@"/location/user" delegate:delegate parameters:dic success:success failure:failure];
 }

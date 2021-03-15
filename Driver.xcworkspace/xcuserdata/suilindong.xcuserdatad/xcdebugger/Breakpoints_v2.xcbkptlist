@@ -151,8 +151,8 @@
             timestampString = "598442204.18136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "-configureAPIKey"
             landmarkType = "7">
          </BreakpointContent>
@@ -168,8 +168,8 @@
             timestampString = "598442204.181743"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "-configureAPIKey"
             landmarkType = "7">
          </BreakpointContent>
@@ -185,8 +185,8 @@
             timestampString = "598442204.181969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "-registerForRemoteNotification"
             landmarkType = "7">
             <Locations>
@@ -355,8 +355,8 @@
             timestampString = "598442204.182374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "-configureAPIKey"
             landmarkType = "7">
          </BreakpointContent>
@@ -639,8 +639,8 @@
             timestampString = "598442204.183094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "-configureAPIKey"
             landmarkType = "7">
          </BreakpointContent>
@@ -656,8 +656,8 @@
             timestampString = "598442204.183364"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "-configureAPIKey"
             landmarkType = "7">
             <Locations>
@@ -1450,8 +1450,8 @@
             timestampString = "604225259.887427"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "-requestUpuserLocation:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1619,8 +1619,8 @@
             timestampString = "596371067.8969719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "+requestCarLocationWithuploaderId:startTime:endTime:vehicleNumber:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1636,8 +1636,8 @@
             timestampString = "596371067.897034"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "+requestCarLocationWithuploaderId:startTime:endTime:vehicleNumber:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1670,8 +1670,8 @@
             timestampString = "604225259.887593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247">
+            startingLineNumber = "251"
+            endingLineNumber = "251">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1753,8 +1753,8 @@
             timestampString = "604225259.887807"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-startLocationWithShippingNoteInfos:listener:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1951,8 +1951,8 @@
             timestampString = "596371067.897383"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "+requestAddLocationWithLng:addr:lat:spd:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2426,8 +2426,8 @@
             timestampString = "598442204.186076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "-applicationWillTerminate:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2511,8 +2511,10 @@
             timestampString = "604225259.889155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243">
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "-requestUpuserLocation:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2526,8 +2528,8 @@
             timestampString = "604225259.8892339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "-dealloc"
             landmarkType = "7">
          </BreakpointContent>
@@ -3774,8 +3776,8 @@
             filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "-init"
             landmarkType = "7">
          </BreakpointContent>
@@ -4782,8 +4784,8 @@
             filePath = "&#x4e50;&#x9500;/AppDelegate/AppDelegate.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "-easemobApplication:didReceiveRemoteNotification:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5086,8 +5088,8 @@
             filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "-startLocationWithShippingNoteInfos:listener:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5118,8 +5120,8 @@
             filePath = "&#x4e50;&#x9500;/Singleton/TimerHelper.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "-timerRun"
             landmarkType = "7">
          </BreakpointContent>
@@ -5134,8 +5136,8 @@
             filePath = "&#x4e50;&#x9500;/Singleton/TimerHelper.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "-timerRun"
             landmarkType = "7">
             <Locations>
@@ -5197,8 +5199,8 @@
             filePath = "&#x4e50;&#x9500;/Singleton/TimerHelper.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "-timerRun"
             landmarkType = "7">
          </BreakpointContent>
@@ -5249,6 +5251,118 @@
             endingLineNumber = "218"
             landmarkName = "+requestOrderListWithPage:count:orderNumber:shipperName:plateNumber:driverName:startTime:endTime:orderStatues:delegate:success:failure:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "94CBE64A-02B7-47BB-9C6E-4EAA76832181"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "-amapLocationManager:didUpdateLocation:reGeocode:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F1DD346C-1278-4CA6-AC85-E5694892D509"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Request/Api/&#x5176;&#x4ed6;/RequestApi+Location.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "+requestAddLocationWithLng:addr:lat:spd:delegate:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "42978D8E-5E03-4013-A211-548E22907BA5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Request/Api/&#x5176;&#x4ed6;/RequestApi+Location.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "+requestAddLocationsWithData:delegate:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD6257E7-D64A-42CE-B495-558A051A772E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "-request:blockSuccess:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AE15EF49-5259-4931-9B8E-C8EF66D9C226"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "-request:blockSuccess:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AE15EF49-5259-4931-9B8E-C8EF66D9C226 - 418fcef7b205f2ad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[LocationRecordInstance request:blockSuccess:]"
+                  moduleName = "Driver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E4%B8%AD%E8%BD%A6%E8%BF%90%E5%8F%B8%E6%9C%BA%E7%AB%AF/%E4%B9%90%E9%94%80/General/LocationRecord/LocationRecordInstance.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "196"
+                  endingLineNumber = "196"
+                  offsetFromSymbolStart = "4535">
+               </Location>
+               <Location
+                  uuid = "AE15EF49-5259-4931-9B8E-C8EF66D9C226 - 71b222534d03e42d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__47-[LocationRecordInstance request:blockSuccess:]_block_invoke"
+                  moduleName = "Driver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E4%B8%AD%E8%BD%A6%E8%BF%90%E5%8F%B8%E6%9C%BA%E7%AB%AF/%E4%B9%90%E9%94%80/General/LocationRecord/LocationRecordInstance.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "196"
+                  endingLineNumber = "196"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -13,5 +13,5 @@ DECLARE_SINGLETON(TimerHelper)
 @property (nonatomic, strong) YYTimer *timer;
 - (void)timerStart;
 - (void)timerStop;
-
+- (void)timerRun;
 @end

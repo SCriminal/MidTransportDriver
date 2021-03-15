@@ -9,6 +9,7 @@
 #import "TimerHelper.h"
 //request
 #import "RequestDriver2.h"
+#import "LocationRecordInstance.h"
 
 @implementation TimerHelper
 SYNTHESIZE_SINGLETONE_FOR_CLASS(TimerHelper)
@@ -25,7 +26,8 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TimerHelper)
     if (self.timer == nil) {
         self.timer = [YYTimer timerWithTimeInterval:60 target:self selector:@selector(timerRun) repeats:true];
     }
-    
+    [self timerRun];
+    [[LocationRecordInstance sharedInstance]requestUpuserLocation];
 }
 - (void)timerStop{
     [self.timer invalidate];
@@ -42,6 +44,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TimerHelper)
             if (aryRequest.count>0 ) {
                 ModelTransportOrder * order = aryRequest.firstObject;
                 [GlobalMethod writeModel:order key:LOCAL_TRANSPORT_LOADING];
+                [GlobalMethod writeStr:order.plateNumber forKey:LOCAL_PLATE_NUMBER];
             }
         }failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         }];

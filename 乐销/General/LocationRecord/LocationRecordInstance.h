@@ -16,7 +16,7 @@ DECLARE_SINGLETON(LocationRecordInstance)
 //start
 - (void)startRecord;
 - (void)upLocation:(void (^)(void))successBlock;
-
+- (void)requestUpuserLocation;
 
 #pragma mark 交通部
 -(void)startLocationWithShippingNoteInfos:(NSArray *)shippingNoteInfos listener:(void(^)(id model, NSError *error))listener;
