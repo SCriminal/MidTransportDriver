@@ -56,6 +56,11 @@ NS_ASSUME_NONNULL_BEGIN
                 success:(void (^)(NSDictionary * response, id mark))success
                         failure:(void (^)(NSString * errorStr, id mark))failure;
 
+
++(void)requestLocationOrderDelegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                            failure:(void (^)(NSString * errorStr, id mark))failure;
+
 +(void)requestOrderDetailWithNumber:(NSString *)number
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success

@@ -1450,8 +1450,8 @@
             timestampString = "604225259.887427"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "-requestUpuserLocation:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1670,8 +1670,8 @@
             timestampString = "604225259.887593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251">
+            startingLineNumber = "253"
+            endingLineNumber = "253">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2511,8 +2511,8 @@
             timestampString = "604225259.889155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "-requestUpuserLocation:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4800,8 +4800,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
             landmarkName = "-viewDidAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5056,8 +5056,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "452"
-            endingLineNumber = "452"
+            startingLineNumber = "456"
+            endingLineNumber = "456"
             landmarkName = "-timerStart"
             landmarkType = "7">
          </BreakpointContent>
@@ -5072,8 +5072,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/&#x667a;&#x80fd;&#x914d;&#x8d27;/AutoConfigOrderListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "460"
-            endingLineNumber = "460"
+            startingLineNumber = "464"
+            endingLineNumber = "464"
             landmarkName = "-timerRun"
             landmarkType = "7">
          </BreakpointContent>
@@ -5120,8 +5120,8 @@
             filePath = "&#x4e50;&#x9500;/Singleton/TimerHelper.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "-timerRun"
             landmarkType = "7">
          </BreakpointContent>
@@ -5136,8 +5136,8 @@
             filePath = "&#x4e50;&#x9500;/Singleton/TimerHelper.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "-timerRun"
             landmarkType = "7">
             <Locations>
@@ -5327,8 +5327,8 @@
             filePath = "&#x4e50;&#x9500;/General/LocationRecord/LocationRecordInstance.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "-request:blockSuccess:"
             landmarkType = "7">
             <Locations>

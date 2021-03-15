@@ -36,16 +36,11 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TimerHelper)
 
 - (void)timerRun{
     if ([GlobalMethod isLoginSuccess]) {
-        [RequestApi requestOrderListWithPage:1 count:20 orderNumber:nil shipperName:nil plateNumber:nil driverName:nil                       startTime:0
-                                     endTime:0
-                                orderStatues:@"3"
-                                    delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelTransportOrder"];
-            if (aryRequest.count>0 ) {
-                ModelTransportOrder * order = aryRequest.firstObject;
-                [GlobalMethod writeModel:order key:LOCAL_TRANSPORT_LOADING];
-                [GlobalMethod writeStr:order.plateNumber forKey:LOCAL_PLATE_NUMBER];
-            }
+        [RequestApi requestLocationOrderDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        
+            [GlobalMethod writeStr:[response stringValueForKey:@"orderNumber"]  forKey:LOCAL_TRANSPORT_NUMBER];
+            [GlobalMethod writeStr:[response stringValueForKey:@"plateNumber"] forKey:LOCAL_PLATE_NUMBER];
+
         }failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         }];
     }

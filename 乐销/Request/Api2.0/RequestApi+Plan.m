@@ -230,6 +230,18 @@
 }
 
 /**
+2.0 运单列表(司机)
+*/
++(void)requestLocationOrderDelegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{
+
+        };
+        [self getUrl:@"/loms/order/driver/status/3" delegate:delegate parameters:dic success:success failure:failure];
+}
+
+/**
 2.0 运单详情(司机)
 */
 +(void)requestOrderDetailWithNumber:(NSString *)number

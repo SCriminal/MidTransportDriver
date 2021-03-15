@@ -378,6 +378,10 @@
             }
         }
     }
+    if (ary.count == 0) {
+        [self.tableView reloadData];
+        return;
+    }
     [RequestApi requestCommentListWithUserIds:[ary componentsJoinedByString:@","] delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelComment"];
         for (ModelComment * item in ary) {
