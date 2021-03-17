@@ -166,6 +166,7 @@ NSString *const kModelBaseInfoIsVehicle = @"isVehicle";
         self.isUser1 = [dict doubleValueForKey:kModelBaseInfoIsUser1];
         self.isVehicle = [dict doubleValueForKey:kModelBaseInfoIsVehicle];
         self.user1Auth = [dict doubleValueForKey:@"user1Auth"];
+        self.isTransfered = [dict doubleValueForKey:@"isTransfered"];
 
         
     }
@@ -203,6 +204,9 @@ NSString *const kModelBaseInfoIsVehicle = @"isVehicle";
     [mutableDict setValue:[NSNumber numberWithDouble:self.isUser1] forKey:kModelBaseInfoIsUser1];
     [mutableDict setValue:[NSNumber numberWithDouble:self.isVehicle] forKey:kModelBaseInfoIsVehicle];
     [mutableDict setValue:[NSNumber numberWithDouble:self.user1Auth] forKey:@"user1Auth"];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.isTransfered] forKey:@"isTransfered"];
+
+    
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 

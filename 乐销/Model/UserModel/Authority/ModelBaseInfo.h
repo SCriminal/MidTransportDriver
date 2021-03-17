@@ -38,6 +38,7 @@
 @property (nonatomic, assign) double isUser1;
 @property (nonatomic, assign) double isVehicle;
 @property (nonatomic, assign) double user1Auth;
+@property (nonatomic, assign) double isTransfered;
 
 //logical
 @property (nonatomic, readonly) NSString *authStatusShow;

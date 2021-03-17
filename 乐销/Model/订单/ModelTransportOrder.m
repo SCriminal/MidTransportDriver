@@ -203,6 +203,7 @@ NSString *const kModelTransportOrderEndLat = @"endLat";
         self.endLat = [dict doubleValueForKey:kModelTransportOrderEndLat];
         self.evaluateScore = [dict doubleValueForKey:@"evaluateScore"];
         self.evaluateContent = [dict stringValueForKey:@"evaluateContent"];
+        self.vehicle1Id = [dict doubleValueForKey:@"vehicle1Id"];
 
         //logical
         self.qtyShow = NSNumber.dou(self.transportQty).stringValue;
@@ -299,7 +300,7 @@ NSString *const kModelTransportOrderEndLat = @"endLat";
     [mutableDict setValue:[NSNumber numberWithDouble:self.endLat] forKey:kModelTransportOrderEndLat];
     [mutableDict setValue:self.evaluateContent forKey:@"evaluateContent"];
     [mutableDict setValue:[NSNumber numberWithDouble:self.evaluateScore] forKey:@"evaluateScore"];
-
+    [mutableDict setValue:[NSNumber numberWithDouble:self.vehicle1Id] forKey:@"vehicle1Id"];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

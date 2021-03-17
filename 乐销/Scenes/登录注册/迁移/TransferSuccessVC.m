@@ -68,6 +68,8 @@
     [self reconfigView];
     //request
     [self requestList];
+    [GlobalData sharedInstance].GB_UserModel.isTransfered = 1;
+    [GlobalData saveUserModel];
 }
 
 - (void)reconfigView{

@@ -146,7 +146,6 @@
             }
             [weakSelf.tableView reloadData];
         };
-        [_trackView resetViewWithModel:self.orderList];
 
     }
     return _trackView;
@@ -174,7 +173,6 @@
     [self.tableView registerClass:OrderDetailTrackCell.class forCellReuseIdentifier:@"OrderDetailTrackCell"];
     self.tableBackgroundView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.tableHeaderView = [UIView initWithViews:@[self.topView,self.trackView]];
     self.tableView.height = SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - self.bottomView.height;
     [self.view addSubview:self.bottomView];
     [self addRefreshHeader];
@@ -210,7 +208,7 @@
 - (void)requestList{
     [RequestApi requestOrderDetailWithNumber:self.orderList.orderNumber delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.orderList = [ModelTransportOrder modelObjectWithDictionary:response];
-        
+        [self.trackView resetViewWithModel:self.orderList];
         [self.topView resetViewWithModel:self.orderList];
         [self.btnView resetViewWithModel:self.orderList];
         

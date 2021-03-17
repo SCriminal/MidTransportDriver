@@ -145,7 +145,7 @@
         }
     }
     if (selected) {
-        [RequestApi requestOriginTransferWithVehicleId:selected.vehicleId  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [RequestApi requestOriginTransferWithVehicleId:selected.vehicle1Id  delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             [GB_Nav popLastAndPushVC:[TransferSuccessVC new]];
 
                 } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -153,7 +153,12 @@
                 }];
 
     }else{
-        [GlobalMethod showAlert:@"请选择车辆"];
+        if (self.aryDatas.count == 0) {
+            [GB_Nav popLastAndPushVC:[TransferSuccessVC new]];
+        }else{
+            [GlobalMethod showAlert:@"请选择车辆"];
+
+        }
     }
 }
 - (void)dismissClick{

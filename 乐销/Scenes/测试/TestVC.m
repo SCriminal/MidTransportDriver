@@ -25,9 +25,6 @@
 #import "OrderDetailVC.h"
 #import "RejectOrderView.h"
 /*
-
-
-
  */
 @interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate>
 @property (nonatomic, strong) UIWebView *web;
@@ -80,7 +77,7 @@
 
 - (void)jump{
 //    [self.view addSubview:[NSClassFromString(@"OrderDetailVC") new]];
-    [GB_Nav pushVCName:@"TransferSuccessVC" animated:true];
+    [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
 //    [self startTimer];
 }
 - (void)startTimer{

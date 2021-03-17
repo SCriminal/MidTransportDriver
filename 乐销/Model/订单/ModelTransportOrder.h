@@ -38,6 +38,7 @@
 @property (nonatomic, strong) NSString *endCityName;
 @property (nonatomic, strong) NSString *endCountyName;
 @property (nonatomic, assign) double vehicleId;
+@property (nonatomic, assign) double vehicle1Id;
 @property (nonatomic, strong) NSString *startCityName;
 @property (nonatomic, assign) double finishTime;
 @property (nonatomic, strong) NSString *channel;

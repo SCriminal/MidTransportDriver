@@ -38,7 +38,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TimerHelper)
     if ([GlobalMethod isLoginSuccess]) {
         [RequestApi requestLocationOrderDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         
-            [GlobalMethod writeStr:[response stringValueForKey:@"orderNumber"]  forKey:LOCAL_TRANSPORT_NUMBER];
+            [GlobalMethod writeStr:[response stringValueForKey:@"number"]  forKey:LOCAL_TRANSPORT_NUMBER];
             [GlobalMethod writeStr:[response stringValueForKey:@"plateNumber"] forKey:LOCAL_PLATE_NUMBER];
 
         }failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

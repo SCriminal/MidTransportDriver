@@ -90,9 +90,10 @@
 -(void)requestTrick{
     
     double startTtime = 0;
-    if (self.modelOrder.acceptTime) {
-        startTtime = self.modelOrder.acceptTime;
-    }else if(self.modelOrder.loadTime){
+//    if (self.modelOrder.acceptTime) {
+//        startTtime = self.modelOrder.acceptTime;
+//    }else
+        if(self.modelOrder.loadTime){
         startTtime = self.modelOrder.loadTime;
     }
     if (!startTtime) {
