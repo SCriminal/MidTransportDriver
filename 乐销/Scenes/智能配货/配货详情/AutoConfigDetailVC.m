@@ -191,7 +191,7 @@
 }
 - (void)requestRobe:(double)price weight:(double)weight{
     [RequestApi requestRobWithPlannumber:self.modelList.planNumber vehicleId:self.modelCarInfo.vehicleId qty:[self.modelList exchangeRequestQty:weight] price:price*100.0 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        [GlobalMethod showAlert:@"抢单成功"];
+        [GlobalMethod showAlert:@"抢单成功,等待货主确认"];
         [GB_Nav popViewControllerAnimated:true];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
