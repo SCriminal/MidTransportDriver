@@ -97,7 +97,8 @@
                        failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{
         @"page":@1,
-        @"count":@1000
+        @"count":@1000,
+        @"scope":@"1"
     };
     [self getUrl:@"/zhongcheyun/vehicletype/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -109,6 +110,7 @@
                           success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{
+        @"scope":@"1",
                           @"clientNumber":REQUEST_CLIENT,
                           @"number":[GlobalMethod getVersion]};
     [self getUrl:@"/app/version/new" delegate:delegate parameters:dic success:success failure:failure];
@@ -129,7 +131,7 @@
 +(void)requestBankListWithDelegate:(id <RequestDelegate>)delegate
                            success:(void (^)(NSDictionary * response, id mark))success
                            failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{};
+    NSDictionary *dic = @{                          @"scope":@"1"};
     [self getUrl:@"/zhongcheyun/bank/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 
