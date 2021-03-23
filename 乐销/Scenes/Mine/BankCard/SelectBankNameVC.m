@@ -75,6 +75,7 @@
 - (void)requestList{
     [RequestApi requestBankListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.aryBanks = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelPackageType"];
+        
         [self filterBanks:nil];
         [self.tableView reloadData];
        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -125,7 +126,7 @@
         _tfSearch = [UITextField new];
         _tfSearch.font = [UIFont systemFontOfSize:F(13)];
         _tfSearch.textAlignment = NSTextAlignmentLeft;
-        _tfSearch.placeholder = @"请输入商铺名称";
+        _tfSearch.placeholder = @"请输入银行名称";
         _tfSearch.borderStyle = UITextBorderStyleNone;
         _tfSearch.backgroundColor = [UIColor clearColor];
         _tfSearch.delegate = self;

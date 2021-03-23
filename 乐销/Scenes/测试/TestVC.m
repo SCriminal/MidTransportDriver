@@ -77,10 +77,13 @@
 
 - (void)jump{
 //    [self.view addSubview:[NSClassFromString(@"OrderDetailVC") new]];
-    [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
+//    [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
 //    [self startTimer];
+    [self test15];
 }
-
+- (void)test15{
+    
+}
 /*
  
  */

@@ -3344,8 +3344,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/BankCard/SelectBankNameVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "-filterBanks:"
             landmarkType = "7">
          </BreakpointContent>
