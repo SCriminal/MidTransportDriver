@@ -75,7 +75,11 @@
 - (void)requestList{
     [RequestApi requestBankListWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.aryBanks = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelPackageType"];
-        
+//        NSMutableArray * aryResponse = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelPackageType"];
+//        self.aryBanks = [NSMutableArray array];
+//        while (self.aryBanks.count < 150000) {
+//            [self.aryBanks addObjectsFromArray:aryResponse];
+//        }
         [self filterBanks:nil];
         [self.tableView reloadData];
        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -92,7 +96,7 @@
     for (ModelPackageType * item in self.aryBanks) {
         NSString * str = item.name;
         if ([str containsString:key]) {
-            [self.aryDatas addObject:str];
+            [self.aryDatas addObject:item];
         }
     }
     [self.tableView reloadData];
