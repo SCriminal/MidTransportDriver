@@ -8,7 +8,7 @@
 #import "ModelComment.h"
 
 
-NSString *const kModelCommentFinishWaybillSum = @"finishWaybillSum";
+NSString *const kModelCommentFinishWaybillSum = @"finishQty";
 NSString *const kModelCommentScore = @"score";
 NSString *const kModelCommentCellphone = @"cellphone";
 NSString *const kModelCommentName = @"realName";

@@ -1770,8 +1770,8 @@
             timestampString = "597805667.277193"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "-showWithModel:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4640,8 +4640,8 @@
             filePath = "&#x4e50;&#x9500;/Model/&#x8ba2;&#x5355;/ModelTransportOrder.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "-initWithDictionary:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4656,8 +4656,8 @@
             filePath = "&#x4e50;&#x9500;/Model/&#x8ba2;&#x5355;/ModelTransportOrder.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "-initWithDictionary:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4672,8 +4672,8 @@
             filePath = "&#x4e50;&#x9500;/Model/&#x8ba2;&#x5355;/ModelTransportOrder.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "-initWithDictionary:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4784,8 +4784,8 @@
             filePath = "&#x4e50;&#x9500;/AppDelegate/AppDelegate.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "-easemobApplication:didReceiveRemoteNotification:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5618,6 +5618,38 @@
             startingLineNumber = "250"
             endingLineNumber = "250"
             landmarkName = "-resetCellWithModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6DD1B8E8-0D09-4EC0-A8CE-4E5B7F1099BF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/General/TopAlertView/TopAlertView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "+jumpToModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B10049E-CBBB-422A-96AD-53F37335C09B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/AppDelegate/AppDelegate.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "-easemobApplication:didReceiveRemoteNotification:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

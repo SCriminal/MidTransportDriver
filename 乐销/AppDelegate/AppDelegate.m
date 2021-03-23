@@ -271,7 +271,6 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
     ModelApns * model = [ModelApns modelObjectWithDictionary:userInfo];
     if (model.type == 29) {
         [[LocationRecordInstance sharedInstance]requestUpuserLocation];
-       
         return;
     }
     [[TopAlertView sharedInstance]showWithModel:model];

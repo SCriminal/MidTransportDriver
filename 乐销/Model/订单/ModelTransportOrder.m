@@ -205,6 +205,10 @@ NSString *const kModelTransportOrderEndLat = @"endLat";
         self.evaluateContent = [dict stringValueForKey:@"evaluateContent"];
         self.vehicle1Id = [dict doubleValueForKey:@"vehicle1Id"];
 
+        if (self.shipperPrice == 0) {
+            self.shipperPrice = [dict doubleValueForKey:@"driverPrice"];
+        }
+
         //logical
         self.qtyShow = NSNumber.dou(self.transportQty).stringValue;
         self.priceShow = self.unitPrice/100.0;

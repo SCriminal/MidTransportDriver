@@ -22,6 +22,7 @@
     //添加导航栏
     [self addNav];
     //table
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestList) name:NOTICE_MSG_REFERSH object:nil];
     [self.tableView registerClass:[MyMsgCell class] forCellReuseIdentifier:@"MyMsgCell"];
     [self addRefreshHeader];
 }

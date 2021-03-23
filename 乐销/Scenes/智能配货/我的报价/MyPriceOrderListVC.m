@@ -191,6 +191,13 @@
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
+        m.title = @"运输量：";
+        m.subTitle = [NSString stringWithFormat:@"%@%@",model.qtyShow,model.unitShow];
+        m.colorSelect = nil;
+        m.thirdTitle = nil;
+        return m;
+    }(),^(){
+        ModelBtn * m = [ModelBtn new];
         m.title = @"运费报价：";
         m.subTitle = [NSString stringWithFormat:@"%@元",NSNumber.dou(model.price/100.0).stringValue];
         m.colorSelect = COLOR_RED;

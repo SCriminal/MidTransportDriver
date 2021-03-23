@@ -10,6 +10,7 @@
 //order detail view
 #import "OrderDetailVC.h"
 #import "MyMsgManagementVC.h"
+#import "MyMsgVC.h"
 @implementation TopAlertView
 
 SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
@@ -150,25 +151,31 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
     [self timerStop];
 
 }
+
 + (void)jumpToModel:(ModelApns *)model{
     if ([GlobalMethod isLoginSuccess]) {
-        NSString * channel = @"1";
-        if (model.type >= 11 && model.type<=18) {
-            channel = @"3";
-        }else if(model.type >= 19 && model.type <=22){
-            channel = @"2";
-        }else if(model.type >= 23 && model.type <=27){
-            channel = @"4";
-        }else if(model.type ==28){
-            channel = @"1";
-        }
-        MyMsgManagementVC * vc = [MyMsgManagementVC new];
-        vc.channel = channel;
-        if ([GB_Nav hasClass:@"MyMsgManagementVC"]) {
-            [GB_Nav popLastAndPushVC:vc];
+        if ([GB_Nav hasClass:@"MyMsgVC"]) {
+            [GB_Nav popToClass:@"MyMsgVC"];
         }else{
-            [GB_Nav pushViewController:vc animated:true];
+            [GB_Nav pushViewController:[MyMsgVC new] animated:true];
         }
+//        NSString * channel = @"1";
+//        if (model.type >= 11 && model.type<=18) {
+//            channel = @"3";
+//        }else if(model.type >= 19 && model.type <=22){
+//            channel = @"2";
+//        }else if(model.type >= 23 && model.type <=27){
+//            channel = @"4";
+//        }else if(model.type ==28){
+//            channel = @"1";
+//        }
+//        MyMsgManagementVC * vc = [MyMsgManagementVC new];
+//        vc.channel = channel;
+//        if ([GB_Nav hasClass:@"MyMsgManagementVC"]) {
+//            [GB_Nav popLastAndPushVC:vc];
+//        }else{
+//            [GB_Nav pushViewController:vc animated:true];
+//        }
     }
 }
 
