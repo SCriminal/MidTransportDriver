@@ -54,7 +54,7 @@
 - (LoginTextField *)tfPwd{
     if (!_tfPwd) {
         _tfPwd = [LoginTextField new];
-        [_tfPwd resetViewWithTitle:@"" placeHolder:@"请输入至少6位密码"];
+        [_tfPwd resetViewWithTitle:@"" placeHolder:@"请输入至少8位密码"];
         _tfPwd.top = self.labelPwd.bottom + W(65);
         _tfPwd.tf.secureTextEntry = true;
     }
@@ -110,8 +110,12 @@
         [GlobalMethod showAlert:@"两次密码不一致"];
         return;
     }
-    if (self.tfPwd.tf.text.length < 6) {
-        [GlobalMethod showAlert:@"密码至少6位，请重新输入"];
+    if (self.tfPwd.tf.text.length < 8) {
+        [GlobalMethod showAlert:@"密码至少8位，请重新输入"];
+        return;
+    }
+    if (![GlobalMethod isValidPasswordString:self.tfPwd.tf.text]) {
+        [GlobalMethod showAlert:@"密码至少包含一个字母和一个数字，请重新输入"];
         return;
     }
     [RequestApi requestForgetPwdWithApp:REQUEST_APP account:self.strPhone smsCode:self.code password:self.tfPwd.tf.text userType:1 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {

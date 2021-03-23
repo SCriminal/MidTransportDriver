@@ -117,4 +117,6 @@
 // timestamp毫秒，用的时候要除以1000转化成秒
 + (NSString *)exchangeTimeWithStamp:(double)timestamp andFormatter:(NSString *)format;
 + (NSDate *)exchangeTimeStampToDate:(double)timestamp;
+
++(BOOL)isValidPasswordString:(NSString *)pwd;
 @end

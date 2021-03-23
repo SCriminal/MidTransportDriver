@@ -122,8 +122,11 @@
 //    self.labelEdit.rightCenterY = XY(self.iconDelete.left- W(20),self.labelName.centerY);
 //    self.iconEdit.rightCenterY = XY(self.labelEdit.left- W(2),self.labelName.centerY);
 //    [self.contentView addControlFrame:CGRectInset(self.labelEdit.frame, -W(20), -W(30)) belowView:self.labelEdit target:self action:@selector(editClick)];
-
-    self.height = self.ivBG.height;
+    for (UIView * subView in self.contentView.subviews) {
+        subView.top += W(10);
+    }
+    
+    self.height = self.ivBG.bottom;
 }
 
 - (NSString *)fetchBankNum{

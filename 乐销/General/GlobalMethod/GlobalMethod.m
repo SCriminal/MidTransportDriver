@@ -551,5 +551,34 @@
 + (NSDate *)exchangeTimeStampToDate:(double)timestamp{
     return [NSDate dateWithTimeIntervalSince1970:timestamp];
 }
+
++(BOOL)isValidPasswordString:(NSString *)pwd
+{
+    BOOL result = NO;
+    if ([pwd length] >= 8 ){
+        //数字条件
+        NSRegularExpression *tNumRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"[0-9]" options:NSRegularExpressionCaseInsensitive error:nil];
+        
+        //符合数字条件的有几个
+        NSUInteger tNumMatchCount = [tNumRegularExpression numberOfMatchesInString:pwd
+                                                                           options:NSMatchingReportProgress
+                                                                             range:NSMakeRange(0, pwd.length)];
+        
+        //英文字条件
+        NSRegularExpression *tLetterRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"[A-Za-z]" options:NSRegularExpressionCaseInsensitive error:nil];
+        
+        //符合英文字条件的有几个
+        NSUInteger tLetterMatchCount = [tLetterRegularExpression numberOfMatchesInString:pwd
+                                                                                 options:NSMatchingReportProgress
+                                                                                   range:NSMakeRange(0, pwd.length)];
+        
+        if(tNumMatchCount >= 1 && tLetterMatchCount >= 1){
+            result = YES;
+        }
+ 
+    }
+    return result;
+
+}
 @end
 

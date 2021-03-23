@@ -38,7 +38,7 @@
     [super viewDidLoad];
     //添加导航栏
     [self addNav];
-    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     //table
     [self.tableView registerClass:[CardListCell class] forCellReuseIdentifier:@"CardListCell"];
 //    self.tableView.contentInset = UIEdgeInsetsMake(W(10), 0, 0, 0);
