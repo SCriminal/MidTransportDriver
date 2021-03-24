@@ -82,7 +82,7 @@ NSString *const kModelDealItemFlowNumber = @"flowNumber";
                 break;
             case 3:
                 self.chargeTypeShow = @"冻结解冻";
-                self.chargeTitleShow = self.direction == 1?@"冻":@"解";
+                self.chargeTitleShow = self.direction == 1?@"解":@"冻";
                 break;
             case 4:
                 self.chargeTypeShow = @"运费消费";

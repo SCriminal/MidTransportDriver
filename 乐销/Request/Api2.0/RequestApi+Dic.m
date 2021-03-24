@@ -15,7 +15,7 @@
 +(void)requestProvinceWithDelegate:(id <RequestDelegate>)delegate
                            success:(void (^)(NSDictionary * response, id mark))success
                            failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{};
+    NSDictionary *dic = @{        @"scope":@"1"};
     [self getUrl:@"/zhongcheyun/area/1/1/list" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
@@ -25,7 +25,7 @@
                 delegate:(id <RequestDelegate>)delegate
                  success:(void (^)(NSDictionary * response, id mark))success
                  failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"id":NSNumber.dou(identity)};
+    NSDictionary *dic = @{@"id":NSNumber.dou(identity),        @"scope":@"1"};
     [self getUrl:@"/zhongcheyun/area/1/2/list/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
@@ -35,7 +35,7 @@
                 delegate:(id <RequestDelegate>)delegate
                  success:(void (^)(NSDictionary * response, id mark))success
                  failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"id":NSNumber.dou(identity)};
+    NSDictionary *dic = @{@"id":NSNumber.dou(identity),        @"scope":@"1"};
     [self getUrl:@"/zhongcheyun/area/1/3/list/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
 

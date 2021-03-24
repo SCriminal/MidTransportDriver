@@ -77,7 +77,7 @@
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{};
-        [self getUrl:@"/cash/cash/driver" delegate:delegate parameters:dic success:success failure:failure];
+        [self getUrl:@"/cash/account/driver" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 /**

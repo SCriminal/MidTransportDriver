@@ -57,7 +57,10 @@
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"page":NSNumber.dou(page),
-                           @"count":NSNumber.dou(count)};
+                           @"count":NSNumber.dou(count),
+                              @"scope":@"1",
+
+        };
         [self getUrl:@"/zhongcheyun/point/sku/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 
