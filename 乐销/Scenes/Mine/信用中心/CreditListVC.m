@@ -135,7 +135,8 @@
     self.time.leftTop = XY(W(15),self.name.bottom+W(13));
     self.height = self.time.bottom + W(18);
     
-    [self.num fitTitle:[NSString stringWithFormat:@"%@%@",model.point>0?@"+":@"-",NSNumber.dou(fabs(model.point)/100.0).stringValue] variable:0];
+    [self.num fitTitle:[NSString stringWithFormat:@"%@%@",model.point>0?@"+":@"-",[NSNumber bigDecimal:fabs(model.point) divide:100.0]] variable:0];
+    
     self.num.rightCenterY = XY(SCREEN_WIDTH - W(15),self.height/2.0 );
     [self.contentView addLineFrame:CGRectMake(W(15), self.height - 1, SCREEN_WIDTH - W(30), 1)];
 }

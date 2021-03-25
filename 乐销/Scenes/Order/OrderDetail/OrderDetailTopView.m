@@ -78,7 +78,8 @@
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"运输费用：";
-        m.subTitle = [NSString stringWithFormat:@"%@元",NSNumber.dou(model.shipperPrice/100.0).stringValue];
+        m.subTitle = [NSString stringWithFormat:@"%@元",[NSNumber bigDecimal:model.shipperPrice divide:100.0]];
+        
         m.colorSelect = COLOR_RED;
         m.left = W(92);
         return m;

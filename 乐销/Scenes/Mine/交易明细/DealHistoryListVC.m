@@ -174,7 +174,8 @@
     
         [self.state fitTitle:model.chargeTypeShow variable:W(240)];
     self.state.leftTop = XY(W(71),W(2)+self.stateShow.top);
-    [self.price fitTitle:[NSString stringWithFormat:@"%@%@",model.direction==1?@"+":@"-",NSNumber.dou(model.amt/100.0).stringValue] variable:W(150)];
+    [self.price fitTitle:[NSString stringWithFormat:@"%@%@",model.direction==1?@"+":@"-",[NSNumber bigDecimal:model.amt divide:100.0]] variable:W(150)];
+    
     self.price.rightCenterY = XY(SCREEN_WIDTH - W(15),self.height/2.0);
     [self.time fitTitle:[GlobalMethod exchangeTimeWithStamp:model.flowTime andFormatter:TIME_SEC_SHOW] variable:0];
     self.time.leftBottom = XY(W(71),self.stateShow.bottom-W(2));

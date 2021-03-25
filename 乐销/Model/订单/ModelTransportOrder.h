@@ -74,7 +74,6 @@
 @property (nonatomic, strong) NSString *unitShow;
 @property (nonatomic, strong) NSString *qtyShow;
 
-@property (nonatomic, assign) double priceShow;
 
 @property (nonatomic, assign) double startAreaId;
 @property (nonatomic, assign) double endAreaId;

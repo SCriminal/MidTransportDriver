@@ -199,7 +199,8 @@
     }(),^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"运费报价：";
-        m.subTitle = [NSString stringWithFormat:@"%@元",NSNumber.dou(model.price/100.0).stringValue];
+        m.subTitle = [NSString stringWithFormat:@"%@元",[NSNumber bigDecimal:model.price divide:100.0]];
+        
         m.colorSelect = COLOR_RED;
         m.thirdTitle = nil;
         return m;

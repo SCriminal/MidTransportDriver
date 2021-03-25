@@ -61,7 +61,8 @@
         l.backgroundColor = [UIColor clearColor];
         l.numberOfLines = 0;
         l.lineSpace = W(0);
-        [l fitTitle:[NSString stringWithFormat:@"%@%@",self.modelItem.direction==1?@"+":@"-",NSNumber.dou(self.modelItem.amt/100.0).stringValue] variable:SCREEN_WIDTH - W(30)];
+        [l fitTitle:[NSString stringWithFormat:@"%@%@",self.modelItem.direction==1?@"+":@"-", [NSNumber bigDecimal:self.modelItem.amt divide:100.0]] variable:SCREEN_WIDTH - W(30)];
+       
         l.centerXTop = XY(SCREEN_WIDTH/2.0, W(165));
         [view addSubview:l];
     }

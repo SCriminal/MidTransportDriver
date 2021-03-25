@@ -21,7 +21,7 @@
     //添加导航栏
     [self addNav];
     //table
-//    [self.tableView registerClass:[<#CellName#> class] forCellReuseIdentifier:@"<#CellName#>"];
+//    [self.tableView registerClass:[<#CellName#> class] forCellReuseIdentifier:@"<#CellName#>"];13510001000
     //request
     self.tableView.backgroundColor = COLOR_BACKGROUND;
     [self requestList];
@@ -29,13 +29,14 @@
 }
 - (void)reconfigView{
     NSString * greed = nil;
-    if (self.score >= 90) {
+    double scoreValie = self.score/100.0;
+    if (scoreValie >= 90) {
         greed = @"极好";
-    }else if (self.score > 80) {
+    }else if (scoreValie > 80) {
         greed = @"优秀";
-    }else if(self.score > 70){
+    }else if(scoreValie > 70){
         greed = @"良好";
-    }else if(self.score > 30){
+    }else if(scoreValie > 30){
         greed = @"一般";
     }else{
         greed = @"过低";
@@ -77,7 +78,7 @@
             l.font = [UIFont systemFontOfSize:F(40) weight:UIFontWeightRegular];
             l.textColor = COLOR_BLUE;
             l.backgroundColor = [UIColor clearColor];
-            [l fitTitle:NSNumber.dou(self.score).stringValue variable:SCREEN_WIDTH - W(30)];
+            [l fitTitle:[NSNumber bigDecimal:self.score divide:100.0] variable:SCREEN_WIDTH - W(30)];
             l.centerXTop = XY(SCREEN_WIDTH/2.0, W(77));
             [viewAll addSubview:l];
         }
@@ -120,8 +121,7 @@
 #pragma mark request
 - (void)requestList{
     [RequestApi requestCreditNumWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        self.score = [response doubleValueForKey:@"score"]/100.0;
-      
+        self.score = [response doubleValueForKey:@"score"];
         [self reconfigView];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
