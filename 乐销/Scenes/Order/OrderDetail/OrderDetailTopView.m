@@ -597,14 +597,14 @@
         starView.userInteractionEnabled = false;
         starView.leftCenterY = XY(W(64), l.centerY);
         [self addSubview:starView];
-        [starView setCurrentScore:model.evaluateScore];
+        [starView setCurrentScore:model.evaluateScore/10.0];
     }
     {
         UILabel * score = [UILabel new];
         score.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
         score.textColor = COLOR_333;
         score.backgroundColor = [UIColor clearColor];
-        [score fitTitle:[NSString stringWithFormat:@"%.1f",model.evaluateScore] variable:SCREEN_WIDTH - W(30)];
+        [score fitTitle:[NSString stringWithFormat:@"%.1f",model.evaluateScore/10.0] variable:SCREEN_WIDTH - W(30)];
         score.leftCenterY = XY(self.starView.right + W(0), self.starView.centerY);
         [self addSubview:score];
         self.score = score;

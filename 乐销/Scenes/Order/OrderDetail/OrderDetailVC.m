@@ -327,7 +327,7 @@
     }
 }
 - (void)requestComment:(NSString *)content score:(double)score{
-    [RequestApi requestCommentOrderNumber:self.orderList.orderNumber content:content score:score delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestCommentOrderNumber:self.orderList.orderNumber content:content score:score*10.0 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"评价成功"];
         [self requestList];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
