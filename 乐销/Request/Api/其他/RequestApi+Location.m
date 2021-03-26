@@ -45,7 +45,7 @@
                           @"vehicleNumber":RequestStrKey(vehicleNumber),
                           @"sortCreateTime":@3
                           };
-    [self getUrl:@"/location/location/list/sort" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/location/trail/list/sort" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  添加车辆地理位置

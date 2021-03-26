@@ -65,6 +65,7 @@
 @property (nonatomic, assign) double replyTime;
 @property (nonatomic, assign) double matchTime;
 @property (nonatomic, strong) NSDate *dateStart;
+@property (nonatomic, strong) NSString *relationOrderNumber;
 
 //logical
 @property (nonatomic, strong) NSString *unitShow;

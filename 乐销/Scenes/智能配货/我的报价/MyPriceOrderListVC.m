@@ -226,7 +226,18 @@
         m.thirdTitle = nil;
         return m;
     }()].mutableCopy;
-   
+    if (isStr(model.relationOrderNumber)) {
+        [ary addObject:^(){
+            ModelBtn * m = [ModelBtn new];
+            m.title = @"关联运单：";
+            m.subTitle = nil;
+            m.colorSelect = nil;
+            m.thirdTitle = model.matchNumber;
+            m.num = 1;
+            return m;
+        }()];
+       
+    }
     if (model.matchStatus == 2) {
         [ary addObject:^(){
             ModelBtn * m = [ModelBtn new];
@@ -300,8 +311,14 @@
                 phone.leftCenterY = XY(l.right ,l.centerY);
                 [self.contentView addSubview:phone];
                 
-                UIView * con =[self.contentView addControlFrame:CGRectInset(phone.frame, -W(20), -W(20)) belowView:phone target:self action:@selector(copyClick)];
-                con.tag = 1;
+                if (m.num == 1) {
+                    UIView * con =[self.contentView addControlFrame:CGRectInset(phone.frame, -W(20), -W(20)) belowView:phone target:self action:@selector(relationClick)];
+                    con.tag = 1;
+                }else{
+                    UIView * con =[self.contentView addControlFrame:CGRectInset(phone.frame, -W(20), -W(20)) belowView:phone target:self action:@selector(copyClick)];
+                    con.tag = 1;
+                }
+               
             }
         }
     }
@@ -316,7 +333,12 @@
 
 - (void)copyClick{
     [GlobalMethod copyToPlte:self.model.matchNumber];
-    [GlobalMethod showAlert:@"复制成功"];
+    [GlobalMethod showAlert:@"复制配货编号成功"];
+}
+
+- (void)relationClick{
+    [GlobalMethod copyToPlte:self.model.relationOrderNumber];
+    [GlobalMethod showAlert:@"复制关联运单成功"];
 }
 
 @end

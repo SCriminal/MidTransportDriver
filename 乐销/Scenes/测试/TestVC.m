@@ -78,10 +78,9 @@
 }
 
 - (void)jump{
-//    [self.view addSubview:[NSClassFromString(@"OrderDetailVC") new]];
-//    [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
+    [GB_Nav pushVCName:@"AuthOneVC" animated:true];
 //    [self startTimer];
-    [self test15];
+//    [self test15];
 }
 - (void)test15{
     
@@ -93,8 +92,6 @@
     // 倒计时的时间 测试数据
     // 当前时间的时间戳
     // 计算时间差值
-    
-    
     if (_timer == nil) {
         
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);

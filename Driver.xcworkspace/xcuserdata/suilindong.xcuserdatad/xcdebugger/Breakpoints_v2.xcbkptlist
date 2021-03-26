@@ -4386,7 +4386,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "176"
             endingLineNumber = "176"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkName = "-addNav"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4418,7 +4418,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "171"
             endingLineNumber = "171"
-            landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4434,7 +4434,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "194"
             endingLineNumber = "194"
-            landmarkName = "-imageSelect:"
+            landmarkName = "-tableView:heightForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4450,7 +4450,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "142"
             endingLineNumber = "142"
-            landmarkName = "-viewDidLoad"
+            landmarkName = "-modelCar"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4704,8 +4704,8 @@
             filePath = "&#x4e50;&#x9500;/Model/&#x8ba2;&#x5355;/ModelAutOrderListItem.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "-initWithDictionary:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4736,8 +4736,8 @@
             filePath = "&#x4e50;&#x9500;/Model/&#x8ba2;&#x5355;/ModelAutOrderListItem.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "-initWithDictionary:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5650,6 +5650,22 @@
             startingLineNumber = "271"
             endingLineNumber = "271"
             landmarkName = "-easemobApplication:didReceiveRemoteNotification:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B501F594-95DF-46F8-BBF0-2F092602677E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x6d4b;&#x8bd5;/TestVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-jump"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

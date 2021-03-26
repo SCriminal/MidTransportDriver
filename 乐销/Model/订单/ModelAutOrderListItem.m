@@ -164,6 +164,7 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
         self.plateNumber = [dict stringValueForKey:kModelAutOrderListItemPlateNumber];
         self.replyTime = [dict doubleValueForKey:kModelAutOrderListItemReplyTime];
         self.matchTime = [dict doubleValueForKey:kModelAutOrderListItemMatchTime];
+        self.relationOrderNumber = [dict stringValueForKey:@"relationOrderNumber"];
 
         
         //logical
@@ -359,6 +360,7 @@ NSString *const kModelAutOrderListItemMatchTime = @"matchTime";
     [mutableDict setValue:self.plateNumber forKey:kModelAutOrderListItemPlateNumber];
     [mutableDict setValue:[NSNumber numberWithDouble:self.replyTime] forKey:kModelAutOrderListItemReplyTime];
     [mutableDict setValue:[NSNumber numberWithDouble:self.matchTime] forKey:kModelAutOrderListItemMatchTime];
+    [mutableDict setValue:self.relationOrderNumber forKey:@"relationOrderNumber"];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
