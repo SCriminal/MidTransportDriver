@@ -46,7 +46,7 @@
 }
 + (NSNumber *(^)(double))lon{
     return ^(double num){
-        return [NSDecimalNumber numberWithLong:num];
+        return [NSDecimalNumber numberWithLong:lround(num)];
     };
 }
 + (double (^)(NSNumber *))douValue{
