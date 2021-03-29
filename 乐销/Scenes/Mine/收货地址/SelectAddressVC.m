@@ -50,14 +50,16 @@
 #pragma mark 添加导航栏
 - (void)addNav{
     WEAKSELF
-    [self.view addSubview:[BaseNavView initNavBackTitle:@"选择收货地址" rightTitle:@"添加地址" rightBlock:^{
+    BaseNavView * nav = [BaseNavView initNavBackTitle:@"选择收货地址" rightTitle:@"添加地址" rightBlock:^{
         CreateAddressVC * vc = [CreateAddressVC new];
         vc.blockBack = ^(UIViewController *v) {
             [weakSelf refreshHeaderAll];
         };
         [GB_Nav pushViewController:vc animated:true];
         
-    }]];
+    }];
+    [nav configBackBlueStyle];
+    [self.view addSubview:nav];
 }
 
 #pragma mark UITableViewDelegate
@@ -114,7 +116,9 @@
     }];
 }
 
-
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 @end
 
 

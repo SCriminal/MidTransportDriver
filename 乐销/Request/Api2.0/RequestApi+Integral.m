@@ -42,7 +42,7 @@
         NSDictionary *dic = @{@"startPointTime":NSNumber.lon(dateFirst.timeIntervalSince1970),
                            @"endPointTime":NSNumber.lon(dateEnd.timeIntervalSince1970),
                            @"page":NSNumber.dou(1),
-                              @"scope":@"1",
+                              @"scope":@"2",
                            @"count":NSNumber.dou(100)};
         [self getUrl:@"/zhongcheyun/point/log/list/sign/total" delegate:delegate parameters:dic success:success failure:failure];
 }
