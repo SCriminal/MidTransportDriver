@@ -212,8 +212,8 @@
         [self.topView resetViewWithModel:self.orderList];
         [self.btnView resetViewWithModel:self.orderList];
         
-        self.bottomView.height = self.btnView.height + W(20) + iphoneXBottomInterval;
-//        self.bottomView.height = self.btnView.height?(self.btnView.height + W(20) + iphoneXBottomInterval):0;
+//        self.bottomView.height = self.btnView.height + W(20) + iphoneXBottomInterval;
+        self.bottomView.height = self.btnView.height?(self.btnView.height + W(20) + iphoneXBottomInterval):iphoneXBottomInterval;
         self.bottomView.bottom = SCREEN_HEIGHT;
 
         self.tableView.height = SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT - self.bottomView.height;
@@ -226,7 +226,12 @@
                 self.tableView.tableFooterView = self.commentView;
             }
         }else{
-            self.tableView.tableFooterView = nil;
+            self.tableView.tableFooterView = ^(){
+                UIView * viewBG = [UIView new];
+                viewBG.widthHeight = XY(SCREEN_WIDTH, W(10));
+                viewBG.backgroundColor = COLOR_BACKGROUND;
+                return viewBG;
+            }();
         }
        
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

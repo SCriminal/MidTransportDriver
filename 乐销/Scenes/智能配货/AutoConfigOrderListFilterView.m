@@ -90,7 +90,7 @@
     [self addLabel:@"类型" top:self.isShowCarType?W(137):W(17)];
     [self addSubBtn];
     
-    [self.viewBG addLineFrame:CGRectMake(W(20),self.viewBG.height - W(75), SCREEN_WIDTH - W(40), 1)];
+    [self.viewBG addLineFrame:CGRectMake(W(15),self.viewBG.height - W(75), SCREEN_WIDTH - W(30), 1)];
     
     self.btnSearch.widthHeight = XY(W(165),W(39));
     self.btnReset.widthHeight = XY(W(165),W(39));

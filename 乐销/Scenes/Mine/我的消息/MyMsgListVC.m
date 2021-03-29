@@ -23,7 +23,7 @@
 - (NoResultView *)noResultView{
     if (!_noResultView) {
         _noResultView = [NoResultView new];
-        [_noResultView resetWithImageName:@"empty_waybill_default" title:@"暂无消息"];
+        [_noResultView resetWithImageName:@"empty_msg" title:@"暂无消息"];
     }
     return _noResultView;
 }

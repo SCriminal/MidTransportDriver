@@ -294,7 +294,7 @@
         view.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
         view.widthHeight = XY(W(64), W(34));
         view.leftTop = XY(W(15), W(8));
-        [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:3 lineWidth:0 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+        [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:3 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
         [self insertSubview:view belowSubview:self.addressTo];
         
         UIImageView * iv = [UIImageView new];
@@ -329,7 +329,7 @@
         view.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
         view.widthHeight = XY(W(64), W(34));
         view.leftTop = XY(W(105), W(8));
-        [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:3 lineWidth:0 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+        [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:3 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
         [self insertSubview:view belowSubview:self.addressTo];
         
         UIImageView * iv = [UIImageView new];
@@ -355,7 +355,7 @@
            view.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
            view.widthHeight = XY(W(64), W(34));
            view.leftTop = XY(W(179), W(8));
-           [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:3 lineWidth:0 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+           [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:3 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
            [self insertSubview:view belowSubview:self.addressTo];
            
            UIImageView * iv = [UIImageView new];
@@ -379,7 +379,7 @@
               view.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
               view.widthHeight = XY(W(64), W(34));
               view.leftTop = XY(W(253), W(8));
-              [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:3 lineWidth:0 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
+              [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:3 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
               [self insertSubview:view belowSubview:self.addressTo];
               
               UIImageView * iv = [UIImageView new];

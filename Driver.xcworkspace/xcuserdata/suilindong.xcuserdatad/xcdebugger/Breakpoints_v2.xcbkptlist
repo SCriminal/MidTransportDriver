@@ -117,8 +117,8 @@
             timestampString = "596457748.12672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -134,8 +134,8 @@
             timestampString = "596457748.126778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-click"
             landmarkType = "7">
          </BreakpointContent>
@@ -3970,8 +3970,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
             endingLineNumber = "94"
-            landmarkName = "-requestList"
-            landmarkType = "7">
+            landmarkName = "AddressListVC"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "829E4557-18CE-46A9-8CAB-78A53103B808 - 1b4bbadbf40182a4"
@@ -4017,9 +4017,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "-requestEdit:"
-            landmarkType = "7">
+            endingLineNumber = "140">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4960,8 +4958,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderDetail/OrderDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "-requestOperate:model:"
             landmarkType = "7">
          </BreakpointContent>

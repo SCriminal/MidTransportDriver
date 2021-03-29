@@ -214,7 +214,7 @@
     
     CGFloat top = [self addLineFrame:CGRectMake(W(15), self.labelTitle.bottom + W(15), SCREEN_WIDTH - W(30), 1)];
     self.mapViewSuperiew.centerXTop = XY(SCREEN_WIDTH/2.0, top + W(15));
-    
+        
     self.height = self.mapViewSuperiew.bottom + W(20);
 }
 

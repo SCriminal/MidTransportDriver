@@ -11,6 +11,8 @@
 @interface ListAlertView : UIView<UITableViewDelegate, UITableViewDataSource,UIScrollViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIImageView *ivBG;
+@property (nonatomic, strong) UIView *viewBG;
+
 @property (nonatomic, strong) NSMutableArray *aryDatas;
 @property (nonatomic, strong) void (^blockSelected)(int);
 @property (nonatomic, assign) int indexSelected;

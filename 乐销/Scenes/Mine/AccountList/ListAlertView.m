@@ -13,7 +13,14 @@
 @end
 
 @implementation ListAlertView
-
+- (UIView *)viewBG{
+    if (!_viewBG) {
+        _viewBG = [UIView new];
+        _viewBG.backgroundColor = COLOR_BLACK_ALPHA_PER60;
+        _viewBG.width = SCREEN_WIDTH;
+    }
+    return _viewBG;
+}
 - (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, NAVIGATIONBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT) style:UITableViewStyleGrouped];
@@ -61,6 +68,7 @@
 }
 //添加subview
 - (void)addSubView{
+    [self addSubview:self.viewBG];
     [self addSubview:self.ivBG];
     [self addSubview:self.tableView];
     [self.tableView registerClass:[ListAlertCell class] forCellReuseIdentifier:@"ListAlertCell"];
@@ -78,7 +86,8 @@
     self.tableView.width = width;
     self.tableView.height = MIN([ListAlertCell fetchHeight:nil]*ary.count, MIN(SCREEN_HEIGHT/3.0*2.0, SCREEN_HEIGHT - W(20) - self.tableView.top));
     [self.tableView reloadData];
-    
+    self.viewBG.top = point.y;
+    self.viewBG.height =SCREEN_HEIGHT - point.y;
     self.ivBG.frame = CGRectInset(self.tableView.frame, 0, 0);
     
     [[UIApplication sharedApplication].keyWindow addSubview:self];

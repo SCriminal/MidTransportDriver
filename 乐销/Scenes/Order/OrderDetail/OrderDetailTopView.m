@@ -519,7 +519,7 @@
         [self addSubview:btn];
         top = btn.bottom;
     }
-    self.height = top;
+    self.height = top+W(10);
 }
 - (void)btnConfirmClick{
     [GlobalMethod endEditing];
@@ -632,8 +632,8 @@
         [self addSubview:l];
         top = l.bottom;
     }
-   
-    self.height = top + W(15);
+    [self addLineFrame:CGRectMake(0, top + W(15), SCREEN_WIDTH, W(10)) color:COLOR_BACKGROUND];
+    self.height = top + W(25);
 }
 
 @end
