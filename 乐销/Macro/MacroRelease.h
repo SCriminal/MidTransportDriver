@@ -16,18 +16,17 @@
 
 #define URL_HEAD  @"http://112.253.1.72:10231"
 #define URL_IMAGE @"http://112.253.1.72:10231"//image
-//#define URL_SHARE @"http://112.253.1.72:10201"
+//#define URL_HEAD  @"http://api.v2.zhongcheyun.cn"//外网
+//#define URL_IMAGE @"http://file.zhongcheyun.cn/oss/zhongcheyun/display"//阿里云
 
-//#define URL_HEAD  @"https://api.zhongcheyun.cn"//外网
-//#define URL_IMAGE @"https://img.zhongcheyun.cn"//阿里云
 #define URL_SHARE @"http://192.168.20.73:7000"//
 
 #define TRANSPORT_AGENCY_ENV  @"release"//@"release"
 
 #else
-#define URL_HEAD  @"https://api.zhongcheyun.cn"//外网
-#define URL_IMAGE @"https://img.zhongcheyun.cn"//阿里云
-#define URL_SHARE @"https://www.zhongcheyun.cn"//
+#define URL_HEAD  @"http://api.v2.zhongcheyun.cn"//外网
+#define URL_IMAGE @"http://file.zhongcheyun.cn/oss/zhongcheyun/display"//阿里云
+#define URL_SHARE @"http://index.zhongcheyun.cn"//
 #define TRANSPORT_AGENCY_ENV  @"release"//@"release"  debug
 
 #endif
