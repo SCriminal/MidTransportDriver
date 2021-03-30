@@ -3392,8 +3392,8 @@
             filePath = "&#x4e50;&#x9500;/General/PrivateAlertView/PrivateAlertView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "-testUrl"
             landmarkType = "7">
          </BreakpointContent>
@@ -5744,6 +5744,22 @@
             startingLineNumber = "124"
             endingLineNumber = "124"
             landmarkName = "+requestPlanPriceWithPlannumber:vehicleId:qty:price:delegate:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "78FC387A-C605-44AB-88CA-EFE6A3B36E9B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/General/PrivateAlertView/PrivateAlertView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-testUrl"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

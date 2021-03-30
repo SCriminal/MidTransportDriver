@@ -138,11 +138,23 @@
                                   vc.navTitle = @"用户协议";
                                   vc.url = [NSString stringWithFormat:@"%@/site/app/content-detail?number=%@",URL_SHARE,@"agreement_user"];
                                   [GB_Nav pushViewController:vc animated:true];
-                [weakSelf removeFromSuperview];
+                for (UIView * viewSub in [UIApplication sharedApplication].keyWindow.subviews) {
+                    if ([viewSub isKindOfClass:NSClassFromString(@"PrivateAlertView")]||[viewSub isKindOfClass:NSClassFromString(@"AdvertiesementView")]||[viewSub isKindOfClass:NSClassFromString(@"GuideView")]) {
+                        viewSub.alpha = 0;
+                    }
+                }
                 vc.blockBack = ^(UIViewController *vc) {
-                    PrivateAlertView * privateView = [PrivateAlertView new];
-                          [privateView show];
+                   
+                            [UIView animateWithDuration:0.2 animations:^{
+                                for (UIView * viewSub in [UIApplication sharedApplication].keyWindow.subviews) {
+                                    if ([viewSub isKindOfClass:NSClassFromString(@"PrivateAlertView")]||[viewSub isKindOfClass:NSClassFromString(@"AdvertiesementView")]||[viewSub isKindOfClass:NSClassFromString(@"GuideView")]) {
+                                        viewSub.alpha = 1;
+                                    }
+                                }
+                            } completion:^(BOOL finished) {
+                            }];
                 };
+                
             }
         };
         [mAttributedString setTextHighlight:highlight range:[text rangeOfString:substrinsgForMatch2]];
@@ -165,10 +177,21 @@
                                    vc.navTitle = @"隐私政策";
                 vc.url = [NSString stringWithFormat:@"%@/site/app/content-detail?number=%@",URL_SHARE,@"agreement_privacy"];
                                    [GB_Nav pushViewController:vc animated:true];
-                [weakSelf removeFromSuperview];
+                for (UIView * viewSub in [UIApplication sharedApplication].keyWindow.subviews) {
+                    if ([viewSub isKindOfClass:NSClassFromString(@"PrivateAlertView")]||[viewSub isKindOfClass:NSClassFromString(@"AdvertiesementView")]||[viewSub isKindOfClass:NSClassFromString(@"GuideView")]) {
+                        viewSub.hidden = true;
+                    }
+                }
                 vc.blockBack = ^(UIViewController *vc) {
-                    PrivateAlertView * privateView = [PrivateAlertView new];
-                          [privateView show];
+                    [UIView animateWithDuration:0.2 animations:^{
+                        for (UIView * viewSub in [UIApplication sharedApplication].keyWindow.subviews) {
+                            if ([viewSub isKindOfClass:NSClassFromString(@"PrivateAlertView")]||[viewSub isKindOfClass:NSClassFromString(@"AdvertiesementView")]||[viewSub isKindOfClass:NSClassFromString(@"GuideView")]) {
+                                viewSub.alpha = 1;
+                            }
+                        }
+
+                    } completion:^(BOOL finished) {
+                    }];
                 };
             }
         };
