@@ -95,7 +95,6 @@
             sliderView.isHasSlider = true;
             sliderView.isScroll = false;
             sliderView.isLineVerticalHide = true;
-            sliderView.viewSlidColor = [UIColor colorWithHexString:@"4E4745"];
             sliderView.viewSlidWidth = W(45);
             sliderView.delegate = self;
             sliderView.line.hidden = true;

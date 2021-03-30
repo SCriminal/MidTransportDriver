@@ -250,7 +250,7 @@
 }
 - (UIColor *)textColorSelect{
     if (_textColorSelect == nil) {
-        _textColorSelect = COLOR_333;
+        _textColorSelect = COLOR_BLUE;
     }
     return  _textColorSelect;
 }

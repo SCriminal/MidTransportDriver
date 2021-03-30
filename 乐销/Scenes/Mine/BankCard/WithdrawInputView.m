@@ -176,6 +176,6 @@
     [self btnDismissClick];
 }
 - (void)yueClick{
-    
+    self.tfPrice.text = [NSNumber bigDecimal:self.amtNum divide:100.0];
 }
 @end

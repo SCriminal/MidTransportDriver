@@ -13,7 +13,7 @@
 #import "RequestDriver2.h"
 @interface MyPocketVC ()
 @property (nonatomic, strong) UILabel *accountNum;
-
+@property (nonatomic, assign) int amtNum;
 @end
 
 @implementation MyPocketVC
@@ -188,19 +188,28 @@
 }
 -(void)rechargeClick{
     RechargeInputView * view = [RechargeInputView new];
+    WEAKSELF
+    view.blockConfirm = ^(double price, double num) {
+        RechargeCodeView * codeView = [RechargeCodeView new];
+        [weakSelf.view addSubview:codeView];
+        codeView.blockComplete = ^(NSString * code) {
+//            weakSelf
+        };
+    }; 
     [view resetViewWithModel:nil];
     [self.view addSubview:view];
 }
 -(void)withdrawClick{
     WithdrawInputView * view = [WithdrawInputView new];
+    view.amtNum = self.amtNum;
     [view resetViewWithModel:nil];
     [self.view addSubview:view];
 }
 #pragma mark request
 - (void)requestList{
     [RequestApi requestPocketWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        double amt = [response doubleValueForKey:@"amt"];
-        [self.accountNum fitTitle:[NSString stringWithFormat:@"%.2f",amt/100.0] variable:SCREEN_WIDTH - W(30)];
+        self.amtNum = [response intValueForKey:@"amt"];
+        [self.accountNum fitTitle:[NSString stringWithFormat:@"%.2f",self.amtNum/100.0] variable:SCREEN_WIDTH - W(30)];
         self.accountNum.centerXTop = XY(SCREEN_WIDTH/2.0, W(45)+NAVIGATIONBAR_HEIGHT);
 
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

@@ -16,3 +16,13 @@
 
 
 @end
+
+@interface RechargeCodeView : UIView<UITextFieldDelegate>
+@property (nonatomic, strong) UITextField *tf;
+@property (nonatomic, strong) void (^blockComplete)(NSString *);
+
+#pragma mark 刷新view
+- (void)resetViewWithModel:(id)model;
+- (void)clearCode;
+
+@end
