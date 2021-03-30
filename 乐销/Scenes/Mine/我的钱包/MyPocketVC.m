@@ -14,6 +14,8 @@
 @interface MyPocketVC ()
 @property (nonatomic, strong) UILabel *accountNum;
 @property (nonatomic, assign) int amtNum;
+@property (nonatomic, strong) WithdrawCodeView *codeView;
+
 @end
 
 @implementation MyPocketVC
@@ -189,12 +191,9 @@
 -(void)rechargeClick{
     RechargeInputView * view = [RechargeInputView new];
     WEAKSELF
-    view.blockConfirm = ^(double price, double num) {
-        RechargeCodeView * codeView = [RechargeCodeView new];
-        [weakSelf.view addSubview:codeView];
-        codeView.blockComplete = ^(NSString * code) {
-//            weakSelf
-        };
+    view.blockConfirm = ^(double price) {
+        [weakSelf requestRecharge:price];
+      
     }; 
     [view resetViewWithModel:nil];
     [self.view addSubview:view];
@@ -203,6 +202,10 @@
     WithdrawInputView * view = [WithdrawInputView new];
     view.amtNum = self.amtNum;
     [view resetViewWithModel:nil];
+    WEAKSELF
+    view.blockConfirm = ^(double price) {
+        [weakSelf requestWithDrawCode:price];
+    };
     [self.view addSubview:view];
 }
 #pragma mark request
@@ -212,6 +215,37 @@
         [self.accountNum fitTitle:[NSString stringWithFormat:@"%.2f",self.amtNum/100.0] variable:SCREEN_WIDTH - W(30)];
         self.accountNum.centerXTop = XY(SCREEN_WIDTH/2.0, W(45)+NAVIGATIONBAR_HEIGHT);
 
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+}
+- (void)requestRecharge:(double)price{
+    [RequestApi requestRechargeWithPrice:price*100.0 description:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [GlobalMethod showAlert:@"充值成功"];
+        [self requestList];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+}
+
+- (void)requestWithDrawCode:(double)price{
+    [RequestApi requestWithDrawCodeWithPrice:price*100.0 description:nil delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        NSString * mybankTradeNumber = [response stringValueForKey:@"mybankTradeNumber"];
+        self.codeView = [WithdrawCodeView new];
+        [self.view addSubview:self.codeView];
+        WEAKSELF
+        self.codeView.blockComplete = ^(NSString * code) {
+            [weakSelf requestWithDraw:code mybankTradeNumber:mybankTradeNumber];
+        };
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+}
+- (void)requestWithDraw:(NSString *)code mybankTradeNumber:(NSString *)mybankTradeNumber{
+    [RequestApi requestWithDrawWithMybanktradenumber:mybankTradeNumber smsCode:code delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [self.codeView removeFromSuperview];
+        [GlobalMethod showAlert:@"提现成功"];
+        [self requestList];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];

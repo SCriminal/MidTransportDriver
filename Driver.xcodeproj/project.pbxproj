@@ -1296,8 +1296,8 @@
 		D20E85F225833EC600C9EE4C /* 我的钱包 */ = {
 			isa = PBXGroup;
 			children = (
-				D20E85F325833EC600C9EE4C /* MyPocketVC.m */,
 				D20E85F425833EC600C9EE4C /* MyPocketVC.h */,
+				D20E85F325833EC600C9EE4C /* MyPocketVC.m */,
 			);
 			path = "我的钱包";
 			sourceTree = "<group>";

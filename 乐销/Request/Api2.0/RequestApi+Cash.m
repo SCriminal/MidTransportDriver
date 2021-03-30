@@ -102,4 +102,42 @@
                            @"count":NSNumber.dou(count)};
         [self getUrl:@"/cash/flow/list/driver/total" delegate:delegate parameters:dic success:success failure:failure];
 }
+
+/**
+充值
+*/
++(void)requestRechargeWithPrice:(double)price
+                description:(NSString *)description
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"price":NSNumber.lon(price),
+                           @"description":RequestStrKey(description)};
+        [self postUrl:@"/cash/trade" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
+提现
+*/
++(void)requestWithDrawWithMybanktradenumber:(NSString *)mybankTradeNumber
+                smsCode:(NSString *)smsCode
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"mybankTradeNumber":RequestStrKey(mybankTradeNumber),
+                           @"smsCode    ":RequestStrKey(smsCode)};
+        [self postUrl:@"/cash/withdraw/confirm" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
+提现-发送验证码
+*/
++(void)requestWithDrawCodeWithPrice:(double)price
+                description:(NSString *)description
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"price":NSNumber.lon(price),
+                           @"description":RequestStrKey(description)};
+        [self postUrl:@"/cash/withdraw" delegate:delegate parameters:dic success:success failure:failure];
+}
+
 @end

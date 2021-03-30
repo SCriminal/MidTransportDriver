@@ -167,15 +167,167 @@
 }
 - (void)btnDismissClick{
     [GlobalMethod endEditing];
-    [self removeFromSuperview];
+    [UIView animateWithDuration:0.2 animations:^{
+            self.alpha = 0;
+        } completion:^(BOOL finished) {
+            [self removeFromSuperview];
+        }];
 }
 - (void)btnConfirmClick{
     if (self.blockConfirm) {
-        self.blockConfirm(self.tfPrice.text.doubleValue, 0);
+        self.blockConfirm(self.tfPrice.text.doubleValue);
     }
-    [self btnDismissClick];
 }
 - (void)yueClick{
     self.tfPrice.text = [NSNumber bigDecimal:self.amtNum divide:100.0];
+}
+@end
+
+
+@implementation WithdrawCodeView
+#pragma mark 懒加载
+- (UITextField *)tf{
+    if (!_tf) {
+        _tf = [UITextField new];
+        _tf.delegate = self;
+        _tf.keyboardType = UIKeyboardTypeNumberPad;
+        _tf.backgroundColor = [UIColor clearColor];
+        _tf.textColor = [UIColor clearColor];
+        _tf.height = 0;
+        [_tf addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
+    }
+    return _tf;
+}
+
+#pragma mark 初始化
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.5];
+        self.width = SCREEN_WIDTH;
+        self.height = SCREEN_HEIGHT;
+        [self resetViewWithModel:nil];
+    }
+    return self;
+}
+
+
+#pragma mark 刷新view
+- (void)resetViewWithModel:(id)model{
+    [self removeAllSubViews];//移除线
+    [self addSubview:self.tf];
+
+    CGFloat top = W(215);
+    {
+        UIView * view = [UIView new];
+        view.backgroundColor = [UIColor whiteColor];
+        view.widthHeight = XY(W(315), W(237));
+        view.centerXTop = XY(SCREEN_WIDTH/2.0, top);
+        [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:0 lineColor:[UIColor clearColor]];
+        [self addSubview:view];
+    }
+    {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(17) weight:UIFontWeightMedium];
+        l.backgroundColor = [UIColor clearColor];
+        l.textColor = COLOR_333;
+        [l fitTitle:@"请输入支付验证码" variable:SCREEN_WIDTH - W(30)];
+        l.centerXTop = XY(SCREEN_WIDTH/2.0, top + W(22));
+        [self addSubview:l];
+    }
+    {
+        UIImageView * iv = [UIImageView new];
+        iv.backgroundColor = [UIColor clearColor];
+        iv.contentMode = UIViewContentModeScaleAspectFill;
+        iv.clipsToBounds = true;
+        iv.image = [UIImage imageNamed:@"inputClose"];
+        iv.widthHeight = XY(W(25),W(25));
+        iv.rightTop = XY(SCREEN_WIDTH- W(45),top + W(19));
+        [self addSubview:iv];
+
+        [self addControlFrame:CGRectInset(iv.frame, -W(40), -W(40)) belowView:iv target:self action:@selector(closeClick)];
+    }
+    {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
+        l.textColor = COLOR_999;
+        l.backgroundColor = [UIColor clearColor];
+        NSString * phone = [GlobalData sharedInstance].GB_UserModel.cellPhone.length>4?[GlobalData sharedInstance].GB_UserModel.cellPhone:@"*******";
+        [l fitTitle:[NSString stringWithFormat:@"已向%@****%@发送一条短信", [phone substringToIndex:3],[phone substringFromIndex:phone.length - 4]] variable:SCREEN_WIDTH - W(30)];
+        l.centerXTop = XY(SCREEN_WIDTH/2.0, top + W(54));
+        [self addSubview:l];
+    }
+    {
+        UIImageView * iv = [UIImageView new];
+        iv.backgroundColor = [UIColor clearColor];
+        iv.contentMode = UIViewContentModeScaleAspectFill;
+        iv.clipsToBounds = true;
+        iv.image = [UIImage imageNamed:@"withdraw_line"];
+        iv.widthHeight = XY(W(272),W(44));
+        iv.centerXTop = XY(SCREEN_WIDTH/2.0,top + W(106));
+        [iv addTarget:self action:@selector(click)];
+        [self addSubview:iv];
+    }
+    //刷新view
+    CGFloat left = W(52);
+    CGFloat width = (W(272))/6.0;
+    for (int i = 0; i<6; i++) {
+        UILabel * labelShow = [[UILabel alloc]initWithFrame:CGRectMake(left, top + W(106), width, W(44))];
+        labelShow.backgroundColor = [UIColor clearColor];
+        labelShow.textColor = COLOR_333;
+        labelShow.font = [UIFont systemFontOfSize:F(24) weight:UIFontWeightBold];
+        labelShow.tag = 20+i;
+        labelShow.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:labelShow];
+        left = labelShow.right;
+    }
+    [self addLineFrame:CGRectMake(W(30), top + W(180), SCREEN_WIDTH - W(60), 1)];
+    {
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        l.textColor = COLOR_BLUE;
+        l.backgroundColor = [UIColor clearColor];
+        [l fitTitle:@"支付确认" variable:SCREEN_WIDTH - W(30)];
+        l.centerXTop = XY(SCREEN_WIDTH/2.0, W(202)+top);
+        [self addSubview:l];
+        
+        [self addControlFrame:CGRectMake(W(30), top + W(180), SCREEN_WIDTH - W(60), W(55)) belowView:l target:self action:@selector(btnConfirm)];
+    }
+    [self click];
+}
+
+#pragma mark text change
+- (void)textChange{
+    if (self.tf.text.length >6 ) {
+        self.tf.text = [self.tf.text substringToIndex:6];
+    }
+    NSString * str = self.tf.text;
+    for (int i = 0; i<6; i++) {
+        UILabel * label = [self viewWithTag:20+i];
+        if (str.length >= i+1) {
+            NSString * strCharacter = [str substringWithRange:NSMakeRange(i, 1)];
+            label.text = strCharacter;
+        }else{
+            label.text = @"";
+        }
+    }
+    
+}
+- (void)clearCode{
+    self.tf.text = @"";
+    [self textChange];
+}
+- (void)click{
+    [self.tf becomeFirstResponder];
+}
+- (void)closeClick{
+    [GlobalMethod endEditing];
+    [self removeFromSuperview];
+}
+- (void)btnConfirm{
+    if (self.blockComplete) {
+        self.blockComplete(self.tf.text);
+    }
+    [self closeClick];
 }
 @end

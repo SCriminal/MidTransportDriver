@@ -75,6 +75,31 @@ NS_ASSUME_NONNULL_BEGIN
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                              failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+充值
+*/
++(void)requestRechargeWithPrice:(double)price
+                description:(NSString *)description
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                        failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+提现
+*/
++(void)requestWithDrawWithMybanktradenumber:(NSString *)mybankTradeNumber
+                smsCode:(NSString *)smsCode
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                    failure:(void (^)(NSString * errorStr, id mark))failure;
+/**
+提现-发送验证码
+*/
++(void)requestWithDrawCodeWithPrice:(double)price
+                description:(NSString *)description
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                            failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END
