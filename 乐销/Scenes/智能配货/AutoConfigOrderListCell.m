@@ -288,11 +288,12 @@
 - (void)resetViewWithModel:(id)model{
     [self removeSubViewWithTag:TAG_LINE];//移除线
     self.height = W(50);
+    CGFloat widthArrow = W(11);
     //刷新view
     {
         UIView * view = [UIView new];
         view.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
-        view.widthHeight = XY(W(64), W(34));
+        view.widthHeight = XY(W(64)+widthArrow, W(34));
         view.leftTop = XY(W(15), W(8));
         [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:3 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
         [self insertSubview:view belowSubview:self.addressTo];
@@ -306,7 +307,7 @@
         iv.rightCenterY = XY(view.right - W(9),view.centerY);
         [self addSubview:iv];
         
-        self.addressFrom.width =  W(46);
+        self.addressFrom.width =  W(46)+widthArrow;
         self.addressFrom.height = view.height;
         self.addressFrom.leftCenterY = view.leftCenterY;
         self.addressFrom.text = @"起点";
@@ -321,14 +322,14 @@
         iv.clipsToBounds = true;
         iv.image = [UIImage imageNamed:@"right_gray"];
         iv.widthHeight = XY(W(14),W(14));
-        iv.leftCenterY = XY(W(85),self.height/2.0);
+        iv.leftCenterY = XY(W(85)+widthArrow,self.height/2.0);
         [self addSubview:iv];
     }
     {
         UIView * view = [UIView new];
         view.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
-        view.widthHeight = XY(W(64), W(34));
-        view.leftTop = XY(W(105), W(8));
+        view.widthHeight = XY(W(64)+widthArrow, W(34));
+        view.leftTop = XY(W(105)+widthArrow, W(8));
         [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:3 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
         [self insertSubview:view belowSubview:self.addressTo];
         
@@ -341,7 +342,7 @@
         iv.rightCenterY = XY(view.right - W(9),view.centerY);
         [self addSubview:iv];
         
-        self.addressTo.width =  W(46);
+        self.addressTo.width =  W(46)+widthArrow;
         self.addressTo.height = view.height;
         self.addressTo.leftCenterY = view.leftCenterY;
         self.addressTo.text = @"终点" ;
@@ -353,8 +354,8 @@
     {
            UIView * view = [UIView new];
            view.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
-           view.widthHeight = XY(W(64), W(34));
-           view.leftTop = XY(W(179), W(8));
+           view.widthHeight = XY(W(64)+widthArrow, W(34));
+           view.leftTop = XY(W(179)+widthArrow*2, W(8));
            [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:3 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
            [self insertSubview:view belowSubview:self.addressTo];
            
@@ -368,7 +369,7 @@
            [self addSubview:iv];
            
                [self.labelAuto fitTitle:@"智能" variable:W(40)];
-           self.labelAuto.leftCenterY = XY(W(view.left + W(9)),view.centerY);
+           self.labelAuto.leftCenterY = XY(W(view.left + W(9)+widthArrow/2.0),view.centerY);
            
            [view addTarget:self action:@selector(autoClick)];
 
@@ -377,8 +378,8 @@
     {
               UIView * view = [UIView new];
               view.backgroundColor = [UIColor colorWithHexString:@"#FCFCFC"];
-              view.widthHeight = XY(W(64), W(34));
-              view.leftTop = XY(W(253), W(8));
+              view.widthHeight = XY(W(64)+widthArrow, W(34));
+              view.leftTop = XY(W(253)+widthArrow*3, W(8));
               [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:3 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#D7DBDA"]];
               [self insertSubview:view belowSubview:self.addressTo];
               
@@ -392,22 +393,22 @@
               [self addSubview:iv];
               
                   [self.filter fitTitle:@"筛选" variable:W(40)];
-              self.filter.leftCenterY = XY(W(view.left + W(9)),view.centerY);
+              self.filter.leftCenterY = XY(W(view.left + W(9)+widthArrow/2.0),view.centerY);
               
               [view addTarget:self action:@selector(filterClick)];
 
           }
     {
-        UIImageView * iv = [UIImageView new];
-        iv.backgroundColor = [UIColor clearColor];
-        iv.contentMode = UIViewContentModeScaleAspectFill;
-        iv.clipsToBounds = true;
-        iv.image = [UIImage imageNamed:@"voice"];
-        iv.widthHeight = XY(W(23),W(23));
-        iv.rightCenterY = XY(SCREEN_WIDTH - W(15),self.height/2.0);
-        [self addSubview:iv];
-        
-        [self addControlFrame:CGRectInset(iv.frame, -W(20), -W(20)) belowView:iv target:self action:@selector(voiceClick)];
+//        UIImageView * iv = [UIImageView new];
+//        iv.backgroundColor = [UIColor clearColor];
+//        iv.contentMode = UIViewContentModeScaleAspectFill;
+//        iv.clipsToBounds = true;
+//        iv.image = [UIImage imageNamed:@"voice"];
+//        iv.widthHeight = XY(W(23),W(23));
+//        iv.rightCenterY = XY(SCREEN_WIDTH - W(15),self.height/2.0);
+//        [self addSubview:iv];
+//
+//        [self addControlFrame:CGRectInset(iv.frame, -W(20), -W(20)) belowView:iv target:self action:@selector(voiceClick)];
     }
     //设置总高度
 }
