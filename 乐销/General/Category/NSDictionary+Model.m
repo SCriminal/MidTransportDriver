@@ -27,7 +27,7 @@
         id value = [self objectForKey:key];
         //判断value类型
         if (value&&([value isKindOfClass:[NSString class]]||[value isKindOfClass:[NSNumber class]])) {
-            double numReturn = [value intValue];
+            int numReturn = [value intValue];
             return  isinf(numReturn)?0:numReturn;
         }
     }

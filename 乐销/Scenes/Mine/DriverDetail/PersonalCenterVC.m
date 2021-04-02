@@ -208,18 +208,22 @@
             m.string = @"其他服务";
         NSMutableArray * ary = [NSMutableArray array];
         for (ModelModule *item in aryRequest) {
-            ModelBtn * mB = [ModelBtn new];
-            mB.title = item.name;
-            mB.imageName = item.iconUrl;
-            mB.vcName =item.to;
-            [ary addObject:mB];
+            if (item.isOpen) {
+                ModelBtn * mB = [ModelBtn new];
+                mB.title = item.name;
+                mB.imageName = item.iconUrl;
+                mB.vcName =item.to;
+                [ary addObject:mB];
+            }
         }
         m.aryDatas = ary;
-         
+        
         if (self.aryModule.count > 1) {
             [self.aryModule removeLastObject];
         }
-        [self.aryModule addObject:m];
+        if (ary.count > 0) {
+            [self.aryModule addObject:m];
+        }
         
         [self.modelView resetWithAry:self.aryModule];
         self.tableView.tableFooterView = nil;

@@ -13,7 +13,7 @@
 #import "RequestDriver2.h"
 @interface MyPocketVC ()
 @property (nonatomic, strong) UILabel *accountNum;
-@property (nonatomic, assign) int amtNum;
+@property (nonatomic, assign) long amtNum;
 @property (nonatomic, strong) WithdrawCodeView *codeView;
 
 @end
@@ -77,6 +77,7 @@
         [topView addSubview:l];
         self.accountNum = l;
     }
+    CGFloat hideTop = W(107);
 //    {
 //        UIView * view = [UIView new];
 //        view.backgroundColor = [UIColor whiteColor];
@@ -109,6 +110,7 @@
 //            [view addControlFrame:CGRectMake(view.width/2.0, 0, view.width/2.0, view.height) belowView:l target:self action:@selector(withdrawClick)];
 //        }
 //        [view addLineFrame:CGRectMake(W(171), W(18), 1, W(25))];
+//        hideTop = W(183);
 //    }
     
     NSArray * aryBtn = @[^(){
@@ -132,7 +134,7 @@
         UIView * view = [UIView new];
         view.backgroundColor = [UIColor whiteColor];
         view.widthHeight = XY(W(345), aryBtn.count *W(56));
-        view.centerXTop = XY(SCREEN_WIDTH/2.0, W(107)+NAVIGATIONBAR_HEIGHT);//183
+        view.centerXTop = XY(SCREEN_WIDTH/2.0, hideTop+NAVIGATIONBAR_HEIGHT);//183
         [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:0 lineColor:[UIColor clearColor]];
         [topView addSubview:view];
         CGFloat btnTop = 0;
@@ -211,7 +213,7 @@
 #pragma mark request
 - (void)requestList{
     [RequestApi requestPocketWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        self.amtNum = [response intValueForKey:@"amt"];
+        self.amtNum = isDic(response)?[response intValueForKey:@"amt"]:0;
         [self.accountNum fitTitle:[NSString stringWithFormat:@"%.2f",self.amtNum/100.0] variable:SCREEN_WIDTH - W(30)];
         self.accountNum.centerXTop = XY(SCREEN_WIDTH/2.0, W(45)+NAVIGATIONBAR_HEIGHT);
 

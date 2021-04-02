@@ -9,6 +9,7 @@
 #import "RequestInstance.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
+#import <CloudPushSDK/CloudPushSDK.h>
 
 @implementation RequestInstance
 
@@ -68,7 +69,16 @@
         [dicExt setObject:[infoDictionary objectForKey:@"CFBundleShortVersionString"] forKey:@"version"];
         [dicExt setObject:[infoDictionary objectForKey:@"CFBundleDisplayName"] forKey:@"displayName"];
         [dicExt setObject:[infoDictionary objectForKey:@"CFBundleIdentifier"] forKey:@"bundleId"];
+        [dicExt setObject:REQUEST_APP forKey:@"appId"];
+        [dicExt setObject:REQUEST_CLIENT forKey:@"clientId"];
+        [dicExt setObject:[infoDictionary objectForKey:@"CFBundleShortVersionString"] forKey:@"versionNumber"];
+
         [dicExt setObject:[[UIDevice currentDevice] model] forKey:@"iphoneModel"];
+        
+        NSString * deviceID = [CloudPushSDK getDeviceId];
+        if (isStr(deviceID)) {
+            [dicExt setObject:deviceID forKey:@"terminalNumber"];
+        }
         dicConstant = [NSDictionary dictionaryWithDictionary:dicExt];
     }
     
@@ -82,7 +92,8 @@
         [dicExt setObject:NSNumber.dou(lng) forKey:@"lng"];
     }
     
-    NSString * strExt  = [[NSString alloc]initWithData:[NSJSONSerialization dataWithJSONObject:dicExt options:0 error:nil] encoding:NSUTF8StringEncoding ];
+    
+    NSString * strExt  = [[NSString alloc]initWithData:[NSJSONSerialization dataWithJSONObject:@{@"client":dicExt} options:0 error:nil] encoding:NSUTF8StringEncoding ];
     
     NSString * agent = [NSString stringWithFormat:@"tlanx/%@(%@;iOS %@;Scale/%.2f)",[GlobalMethod getVersion],[GlobalMethod LookDeviceName],[UIDevice currentDevice].systemVersion,[UIScreen mainScreen].scale];
     [self.requestSerializer setValue:agent forHTTPHeaderField:@"User-Agent"];

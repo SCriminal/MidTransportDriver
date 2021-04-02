@@ -25,6 +25,12 @@
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
+    if (lat.doubleValue == 0 || lng.doubleValue == 0) {
+        if (failure) {
+            failure(@"",nil);
+        }
+        return;
+    }
         NSDictionary *dic = @{@"mode":RequestStrKey(mode),
                            @"startAreaId":RequestStrKey(startAreaId),
                            @"endAreaId":RequestStrKey(endAreaId),
@@ -35,6 +41,7 @@
                            @"lat":RequestStrKey(lat),
                            @"lng":RequestStrKey(lng),
                            @"sort":RequestLongKey(sort)};
+   
         [self getUrl:@"/plan/plan/driver/match/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
 
@@ -54,6 +61,12 @@
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
+    if (lat.doubleValue == 0 || lng.doubleValue == 0) {
+        if (failure) {
+            failure(@"",nil);
+        }
+        return;
+    }
         NSDictionary *dic = @{@"startAreaId":RequestLongKey(startAreaId),
                            @"endAreaId":RequestLongKey(endAreaId),
                            @"page":RequestLongKey(page),

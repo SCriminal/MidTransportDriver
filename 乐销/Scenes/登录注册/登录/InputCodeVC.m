@@ -171,32 +171,48 @@
   
 }
 - (void)requestLogin:(NSString *)code{
+    static BOOL isRequest = false;
+    if (isRequest) {
+        return;
+    }else{
+        isRequest = true;
     [RequestApi requestLoginWithAppid:@"1" clientId:@"1" phone:self.strPhone code:code delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        isRequest = false;
         if ([GlobalData sharedInstance].GB_UserModel.isUser1 == 1 && [GlobalData sharedInstance].GB_UserModel.isVehicle == 0 && [GlobalData sharedInstance].GB_UserModel.user1Auth == 1) {
             [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
         }else{
             [GB_Nav popToRootViewControllerAnimated:true];
         }
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            isRequest = false;
             [self.codeView clearCode];
 
         }];
-  
+    }
 }
 - (void)requestMatchCode:(NSString *)code{
     NSLog(@"sld code %@",code);
     NSString * strPhone = [self.strPhone stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [RequestApi requestMatchCodeAccount:strPhone code:code delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        InputPwdVC * inputPwdVC = [ InputPwdVC new];
-        inputPwdVC.strPhone = self.strPhone;
-        inputPwdVC.code = code;
-        [GB_Nav pushViewController:inputPwdVC animated:true];
+    static BOOL isRequest = false;
+    if (isRequest) {
+        return;
+    }else{
+        isRequest = true;
+        [RequestApi requestMatchCodeAccount:strPhone code:code delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            isRequest = false;
+            InputPwdVC * inputPwdVC = [ InputPwdVC new];
+            inputPwdVC.strPhone = self.strPhone;
+            inputPwdVC.code = code;
+            [GB_Nav pushViewController:inputPwdVC animated:true];
 
-            
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            [self.codeView clearCode];
+                
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                isRequest = false;
+                [self.codeView clearCode];
 
-        }];
+            }];
+    }
+   
    
 }
 @end
@@ -268,6 +284,9 @@
 
 #pragma mark text change
 - (void)textChange{
+    if (self.tf.text.length>6) {
+        self.tf.text = [self.tf.text substringToIndex:6];
+    }
     NSString * str = self.tf.text;
     for (int i = 0; i<6; i++) {
         UILabel * label = [self viewWithTag:20+i];

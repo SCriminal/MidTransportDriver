@@ -221,9 +221,12 @@
    
     ModelAddress * location = [GlobalMethod readModelForKey:LOCAL_LOCATION_UPTODATE modelName:@"ModelAddress" exchange:false];
     [RequestApi requestAutoOrderListWithMode:self.orderTypeIndex?NSNumber.dou(self.orderTypeIndex).stringValue:nil startAreaId:NSNumber.dou(self.areaStart.iDProperty).stringValue endAreaId:NSNumber.dou(self.areaEnd.iDProperty).stringValue createStartTime:0 createEndTime:0 page:self.pageNum count:20 lat:NSNumber.dou(location.lat).stringValue lng:NSNumber.dou(location.lng).stringValue sort:self.topView.indexSelected+1 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        self.isRequestSuccess = true;
+       
         self.pageNum ++;
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelAutOrderListItem"];
+        if (aryRequest.count) {
+            self.isRequestSuccess = true;
+        }
         for (ModelAutOrderListItem * item in aryRequest.copy) {
             int interval = [item.dateStart timeIntervalSinceNow];
                 if(interval<=0  || item.storageQty == 0){
@@ -409,7 +412,7 @@
 - (void)btnAddClick{
     [GB_Nav pushVCName:@"AddPathVC" animated:true];
 }
-- (void)fetchAddress{
+- (void)fetchAddress:(ModelAddress *)clPlace{
     if (!self.isRequestSuccess) {
         [self refreshHeaderAll];
     }
