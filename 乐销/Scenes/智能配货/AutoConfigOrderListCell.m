@@ -249,6 +249,8 @@
         _labelAuto = [UILabel new];
         _labelAuto.textColor = COLOR_666;
         _labelAuto.font =  [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
+        _labelAuto.textAlignment = NSTextAlignmentCenter;
+
     }
     return _labelAuto;
 }
@@ -257,6 +259,8 @@
         _filter = [UILabel new];
         _filter.textColor = COLOR_666;
         _filter.font =  [UIFont systemFontOfSize:F(14) weight:UIFontWeightRegular];
+        _filter.textAlignment = NSTextAlignmentCenter;
+
     }
     return _filter;
 }
@@ -307,9 +311,9 @@
         iv.rightCenterY = XY(view.right - W(9),view.centerY);
         [self addSubview:iv];
         
-        self.addressFrom.width =  W(46)+widthArrow;
+        self.addressFrom.width =  W(46)+widthArrow-W(2);
         self.addressFrom.height = view.height;
-        self.addressFrom.leftCenterY = view.leftCenterY;
+        self.addressFrom.leftCenterY = XY(view.left+W(2), view.centerY);
         self.addressFrom.text = @"起点";
         
         [view addTarget:self action:@selector(fromClick)];
@@ -342,9 +346,9 @@
         iv.rightCenterY = XY(view.right - W(9),view.centerY);
         [self addSubview:iv];
         
-        self.addressTo.width =  W(46)+widthArrow;
+        self.addressTo.width =  W(46)+widthArrow-W(2);
         self.addressTo.height = view.height;
-        self.addressTo.leftCenterY = view.leftCenterY;
+        self.addressTo.leftCenterY = XY(view.left+W(2), view.centerY);
         self.addressTo.text = @"终点" ;
 
         [view addTarget:self action:@selector(toClick)];
@@ -368,10 +372,11 @@
            iv.rightCenterY = XY(view.right - W(9),view.centerY);
            [self addSubview:iv];
            
-               [self.labelAuto fitTitle:@"智能" variable:W(40)];
-           self.labelAuto.leftCenterY = XY(W(view.left + W(9)+widthArrow/2.0),view.centerY);
-           
-           [view addTarget:self action:@selector(autoClick)];
+        self.labelAuto.width =  W(46)+widthArrow-W(2);
+        self.labelAuto.height = view.height;
+        self.labelAuto.leftCenterY = XY(view.left+W(2), view.centerY);
+        self.labelAuto.text = @"智能" ;
+        [view addTarget:self action:@selector(autoClick)];
 
        }
     
@@ -392,9 +397,11 @@
               iv.rightCenterY = XY(view.right - W(9),view.centerY);
               [self addSubview:iv];
               
-                  [self.filter fitTitle:@"筛选" variable:W(40)];
-              self.filter.leftCenterY = XY(W(view.left + W(9)+widthArrow/2.0),view.centerY);
-              
+        self.filter.width =  W(46)+widthArrow-W(2);
+        self.filter.height = view.height;
+        self.filter.leftCenterY = XY(view.left+W(2), view.centerY);
+        self.filter.text = @"筛选" ;
+        
               [view addTarget:self action:@selector(filterClick)];
 
           }

@@ -91,7 +91,13 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
                         [self upImageHeigh:image.asset urlSuffix:image.identity blockSuccess:^(void){
                             image.upHightQualityComplete = true;
                             [self upHighQualifySuccess:aryDatas block:upHighQualitySuccess];
-                        }blockFailure:nil];
+                        }blockFailure:^{
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                if (fail) {
+                                    fail();
+                                }
+                            });
+                        }];
                     }];
                 }
                 //judge up success

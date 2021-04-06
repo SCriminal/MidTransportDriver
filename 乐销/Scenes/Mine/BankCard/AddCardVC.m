@@ -333,7 +333,7 @@
         }];
        
     } fail:^{
-        
+        [self.loadingView hideLoading];
     }];
     
 }
