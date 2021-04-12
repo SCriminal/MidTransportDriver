@@ -197,6 +197,7 @@
 		D293A39A1E011987005B772A /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D293A3981E011987005B772A /* LoadingView.m */; };
 		D293A39E1E01304B005B772A /* BaseTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D293A39D1E01304B005B772A /* BaseTableVC.m */; };
 		D296376326202963009A9879 /* WMZCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D296376226202961009A9879 /* WMZCodeView.m */; };
+		D296376626243365009A9879 /* ImageCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D296376526243365009A9879 /* ImageCodeView.m */; };
 		D2996A2B21E6E2D800562587 /* CustomAttributeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2996A2A21E6E2D800562587 /* CustomAttributeTextView.m */; };
 		D2996A4021E6E3AA00562587 /* CollectionImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2996A2F21E6E3AA00562587 /* CollectionImageCell.m */; };
 		D2996A4121E6E3AA00562587 /* UpImageWithTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2996A3321E6E3AA00562587 /* UpImageWithTextVC.m */; };
@@ -780,6 +781,8 @@
 		D293A39D1E01304B005B772A /* BaseTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableVC.m; sourceTree = "<group>"; };
 		D296376126202961009A9879 /* WMZCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMZCodeView.h; sourceTree = "<group>"; };
 		D296376226202961009A9879 /* WMZCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMZCodeView.m; sourceTree = "<group>"; };
+		D296376426243365009A9879 /* ImageCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCodeView.h; sourceTree = "<group>"; };
+		D296376526243365009A9879 /* ImageCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCodeView.m; sourceTree = "<group>"; };
 		D2996A2921E6E2D800562587 /* CustomAttributeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAttributeTextView.h; sourceTree = "<group>"; };
 		D2996A2A21E6E2D800562587 /* CustomAttributeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAttributeTextView.m; sourceTree = "<group>"; };
 		D2996A2F21E6E3AA00562587 /* CollectionImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionImageCell.m; sourceTree = "<group>"; };
@@ -2154,6 +2157,8 @@
 			children = (
 				D296376126202961009A9879 /* WMZCodeView.h */,
 				D296376226202961009A9879 /* WMZCodeView.m */,
+				D296376426243365009A9879 /* ImageCodeView.h */,
+				D296376526243365009A9879 /* ImageCodeView.m */,
 				D29316891EF3B62F0034E6FB /* LoginViewController.h */,
 				D293168A1EF3B62F0034E6FB /* LoginViewController.m */,
 				D26B88CA225C422D0051FA78 /* LoginView.h */,
@@ -3396,6 +3401,7 @@
 				D28A867D225F1572001E3372 /* SettingCell.m in Sources */,
 				D22A413721805B220057C3B4 /* PerfectAddressDetailCell.m in Sources */,
 				D22BA9DF1E5EB8CA00C5B391 /* FSCalendarWeekdayView.m in Sources */,
+				D296376626243365009A9879 /* ImageCodeView.m in Sources */,
 				D2D5266425A5956500F99306 /* SuggestDetailVC.m in Sources */,
 				D216F5341E56966200E11ED2 /* NSDictionary+Category.m in Sources */,
 				D2D871072338C8D700F79173 /* ModelBank.m in Sources */,

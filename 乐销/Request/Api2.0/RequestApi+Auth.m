@@ -205,4 +205,29 @@
     [self putUrl:@"/auth/user/terminal/number" delegate:delegate parameters:dic success:success failure:failure];
     
 }
+
+/**
+校验
+*/
++(void)requestVertifyImageCodeWithId:(double)id
+                width:(double)width
+                x:(double)x
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"id":NSNumber.dou(id),
+                           @"width":NSNumber.dou(width),
+                           @"x":NSNumber.dou(x),
+                              @"scope":@"1",};
+        [self postUrl:@"/auth/captcha/2_0_5/3" delegate:delegate parameters:dic success:success failure:failure];
+}
+/**
+获取
+*/
++(void)requestFetchImageCodeWithDelegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{                            @"scope":@"1",};
+        [self getUrl:@"/auth/captcha/2_0_5/3" delegate:delegate parameters:dic success:success failure:failure];
+}
 @end

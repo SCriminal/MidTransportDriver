@@ -26,7 +26,7 @@
 #import "RejectOrderView.h"
 //request
 #import "RequestDriver2.h"
-#import "WMZCodeView.h"
+#import "ImageCodeView.h"
 
 /*
  
@@ -82,6 +82,11 @@
 }
 
 - (void)jump{
+//    [RequestApi requestFetchImageCodeWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//
+//        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//
+//        }];
 //    [GB_Nav pushVCName:@"InputCodeVC" animated:true];
 //    [self startTimer];
     [self test15];
@@ -89,11 +94,7 @@
 
 - (void)test15{
     //使用方法
-    WMZCodeView * codeView = [[WMZCodeView shareInstance] addCodeViewWithType:1 withImageName:@"A" witgFrame:CGRectMake(0, 50, [UIScreen mainScreen].bounds.size.width, 50)  withBlock:^(BOOL success) {
-        if (success) {
-            NSLog(@"成功");
-        }
-    }];
+    ImageCodeView * codeView = [ImageCodeView new];
    [self.view addSubview:codeView ];
 
 }

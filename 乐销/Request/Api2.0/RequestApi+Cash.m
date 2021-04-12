@@ -116,7 +116,7 @@
         [self postUrl:@"/zhongcheyun/cash/trade/driver" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
-提现
+提现  http://172.16.1.101:8087/project/208/interface/api/12201
 */
 +(void)requestWithDrawWithMybanktradenumber:(NSString *)mybankTradeNumber
                 smsCode:(NSString *)smsCode
@@ -125,10 +125,10 @@
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"mybankTradeNumber":RequestStrKey(mybankTradeNumber),
                            @"smsCode":RequestStrKey(smsCode)};
-        [self postUrl:@"/zhongcheyun/cash/trade/confirm/driver" delegate:delegate parameters:dic success:success failure:failure];
+        [self postUrl:@"/cash/trade/1_0_10/withdraw/driver/confirm" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
-提现-发送验证码
+提现-发送验证码 http://172.16.1.101:8087/project/208/interface/api/12189
 */
 +(void)requestWithDrawCodeWithPrice:(double)price
                 description:(NSString *)description
@@ -137,7 +137,9 @@
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"price":NSNumber.lon(price),
                            @"description":@""};
-        [self postUrl:@"/cash/trade/1_0_10/withdraw/driver/confirm" delegate:delegate parameters:dic success:success failure:failure];
+        [self postUrl:@"/cash/tradeapply/1_0_10/withdraw/status/1/driver" delegate:delegate parameters:dic success:success failure:failure];
 }
+
+
 
 @end

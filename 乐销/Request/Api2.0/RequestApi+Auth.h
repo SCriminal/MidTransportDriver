@@ -106,6 +106,23 @@ NS_ASSUME_NONNULL_BEGIN
                               delegate:(_Nullable id <RequestDelegate>)delegate
                                success:(void (^)(NSDictionary * response, id mark))success
                                failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+校验
+*/
++(void)requestVertifyImageCodeWithId:(double)id
+                width:(double)width
+                x:(double)x
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+failure:(void (^)(NSString * errorStr, id mark))failure;
+
+/**
+获取
+*/
++(void)requestFetchImageCodeWithDelegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                                 failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END
