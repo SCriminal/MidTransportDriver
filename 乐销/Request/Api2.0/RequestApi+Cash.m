@@ -137,7 +137,7 @@
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"price":NSNumber.lon(price),
                            @"description":@""};
-        [self postUrl:@"/cash/trade/withdraw/driver" delegate:delegate parameters:dic success:success failure:failure];
+        [self postUrl:@"/cash/trade/1_0_10/withdraw/driver/confirm" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 @end

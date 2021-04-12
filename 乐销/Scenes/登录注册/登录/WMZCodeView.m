@@ -26,11 +26,6 @@
 //背景图片宽度
 #define imageHeight 200
 
-//滑块高度
-#define sliderHeight 40
-
-//默认需要点击文本的数量
-#define codeLabelCount 4
 
 //默认还需要添加的点击文本的数量
 #define codeAddLabelCount 3
@@ -57,7 +52,6 @@
 
 @property(nonatomic,assign)CGPoint randomPoint;               //随机位置
 
-@property(nonatomic,strong)WMZSlider *WMZSlider;              //自定义滑动
 
 @property(nonatomic,strong)WMZSlider *slider;                 //滑动
 
@@ -67,15 +61,6 @@
 
 @property(nonatomic,assign)CGFloat height;                    //self的frame的height
 
-@property(nonatomic,copy)NSString *allChinese;                //所显示的所有中文
-
-@property(nonatomic,copy)NSString *factChinese;               //实际需要点击的中文
-
-@property(nonatomic,copy)NSString *selectChinese;             //点击的中文
-
-@property(nonatomic,assign)int tapCount;                      //点击数量
-
-@property(nonatomic,strong)NSMutableArray *btnArr;            //按钮数组
 
 
 
@@ -123,10 +108,8 @@
     })];
     
     [self addSubview:({
-        self.slider.frame = CGRectMake(margin, CGRectGetMaxY(self.mainImage.frame)+margin, self.width-margin*2, 30);
+        self.slider.frame = CGRectMake(margin, CGRectGetMaxY(self.mainImage.frame)+margin, W(284), 37);
         [self.slider addTarget:self action:@selector(buttonAction:forEvent:) forControlEvents:UIControlEventAllTouchEvents];
-        self.slider.layer.masksToBounds = YES;
-        self.slider.layer.cornerRadius = 15;
         self.slider;
     })];
     
@@ -146,29 +129,6 @@
 }
 
 
-//滑块滑动事件
-- (void)sliderValueChanged:(UISlider *)slider{
-    [self.WMZSlider setValue:slider.value animated:NO];
-    if (slider.value >0) {
-        self.WMZSlider.minimumTrackTintColor = [UIColor redColor];
-    }else{
-        self.WMZSlider.minimumTrackTintColor = [UIColor clearColor];
-    }
-
-
-    if (!slider.isTracking && slider.value != 1) {
-        [self.WMZSlider setValue:0 animated:YES];
-        if (slider.value >0) {
-            self.WMZSlider.minimumTrackTintColor = [UIColor redColor];
-        }else{
-            self.WMZSlider.minimumTrackTintColor = [UIColor clearColor];
-        }
-    }
-    if (!slider.isTracking&&slider.value==1) {
-        [self.layer addAnimation:successAnimal() forKey:@"successAnimal"];
-        [self successShow];
-    }
-}
 
 //添加可移动的图片
 - (void)addMoveImage{
@@ -201,81 +161,11 @@
    
 }
 
-//添加随机位置的文本
-- (void)addLabelImage{
-    NSMutableArray *tempArr = [NSMutableArray new];
-    for (int i = 0; i< self.allChinese.length; i++) {
-        [tempArr addObject:[self.allChinese substringWithRange:NSMakeRange(i, 1)]];
-    }
-    NSArray* arr = [NSArray arrayWithArray:tempArr];
-    arr = [arr sortedArrayUsingComparator:^NSComparisonResult(NSString *str1, NSString *str2) {
-        int seed = arc4random_uniform(2);
-        if (seed) {
-            return [str1 compare:str2];
-        } else {
-            return [str2 compare:str1];
-        }
-    }];
-    
-    NSMutableString *string = [[NSMutableString alloc]initWithString:@""];
-    for (int i = 0; i<arr.count; i++) {
-        [string appendString:arr[i]];
-    }
-    self.allChinese = [NSString stringWithFormat:@"%@",string];
-    CGFloat btnWidth = (self.width-2*margin-(arr.count-1)*margin)/arr.count;
-    
 
-  
-    
-    if (self.btnArr.count==0) {
-        UIButton *tempBtn = nil;
-        for (int i = 0; i<arr.count; i++) {
-            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-            btn.backgroundColor = [UIColor whiteColor];
-            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [btn setTitle:arr[i] forState:UIControlStateNormal];
-            btn.titleLabel.font = [UIFont systemFontOfSize:20.0];
-            btn.layer.masksToBounds = YES;
-            btn.layer.cornerRadius = btnWidth/2;
-            [btn addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
-           
-           
-            
-            [self.btnArr addObject:btn];
-        }
-    }else{
-         for (int i = 0; i<self.btnArr.count; i++) {
-             UIButton *btn = self.btnArr[i];
-             [btn setTitle:arr[i] forState:UIControlStateNormal];
-              
-         }
-    }
-    
-
-}
 
 //按钮点击事件
 - (void)tapAction:(UIButton*)btn{
-    if (self.tapCount==0) {
-       
-    }
-    self.tapCount+=1;
-    self.selectChinese = [NSString stringWithFormat:@"%@%@",self.selectChinese?:@"",btn.titleLabel.text];
-    btn.backgroundColor = [UIColor redColor];
-    
-    if (self.tapCount==self.factChinese.length) {
-      
-        
-        if ([self.selectChinese isEqualToString:self.factChinese]) {
-            [self.layer addAnimation:successAnimal() forKey:@"successAnimal"];
-            [self successShow];
-            
-        }else{
-            [self.layer addAnimation:failAnimal() forKey:@"failAnimal"];
-            
-        }
-        [self defaultBtnAndData];
-    }
+
 }
 
 
@@ -320,15 +210,7 @@
     self.moveImage.frame = rect;
 }
 
-//恢复默认数据（CodeTypeLabel,CodeTypeNineLabel ）
-- (void)defaultBtnAndData{
-    self.selectChinese = @"";
-    self.tapCount = 0;
-    for (int i = 0; i<self.btnArr.count; i++) {
-        UIButton *btn = self.btnArr[i];
-        btn.backgroundColor = [UIColor whiteColor];
-    }
-}
+
 
 //刷新按钮事件
 - (void)refreshAction{
@@ -336,16 +218,6 @@
     [self addMoveImage];
     [self defaultSlider];
    
-}
-
-
-//设置提示文本
-- (void)setMyTipLabetText{
-    NSString *str = [NSString stringWithFormat:@"按顺序点击‘%@’完成验证",self.factChinese];
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:str];
-    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:WMZfont+2] range:[str rangeOfString:self.factChinese]];
-    [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:[str rangeOfString:self.factChinese]];
-    self.tipLabel.attributedText = attStr;
 }
 
 
@@ -527,6 +399,18 @@ static inline UIBezierPath* getCodePath(){
     if (!_slider) {
         _slider = [WMZSlider new];
         _slider.thumbTintColor = [UIColor greenColor];
+        UIImage *leftTrack = [[UIImage imageNamed:@"SliderTrackLeft"]
+        resizableImageWithCapInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
+         
+        [_slider setMinimumTrackImage:leftTrack forState:UIControlStateNormal];
+            
+        UIImage *rightTrack = [[UIImage imageNamed:@"SliderTrackRight"]
+        resizableImageWithCapInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
+         
+        [_slider setMaximumTrackImage:rightTrack forState:UIControlStateNormal];
+        [_slider setThumbImage:[UIImage imageNamed:@"slider_default"] forState:UIControlStateNormal];
+        [_slider setThumbImage:[UIImage imageNamed:@"slider_default"] forState:UIControlStateHighlighted];
+
     }
     return _slider;
 }
@@ -563,41 +447,13 @@ static inline UIBezierPath* getCodePath(){
     return _maskLayer;
 }
 
-- (WMZSlider *)WMZSlider{
-    if (!_WMZSlider) {
-        _WMZSlider = [WMZSlider new];
-    }
-    return _WMZSlider;
-}
 
-- (NSString *)factChinese{
-    if (!_factChinese) {
-        _factChinese = [self getRandomChineseWithCount:codeLabelCount];
-    }
-    return _factChinese;
-}
-
-- (NSString *)allChinese{
-    if (!_allChinese) {
-        _allChinese = [NSString stringWithFormat:@"%@%@",self.factChinese,[self getRandomChineseWithCount: codeAddLabelCount]];
-    }
-    return _allChinese;
-}
-
-- (NSMutableArray *)btnArr{
-    if (!_btnArr) {
-        _btnArr = [NSMutableArray new];
-    }
-    return _btnArr;
-}
 
 @end
 
 @implementation WMZSlider
 //改变滑动条高度
-- (CGRect)trackRectForBounds:(CGRect)bounds{
-    return CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-}
+
 
 
 - (UILabel *)label{
