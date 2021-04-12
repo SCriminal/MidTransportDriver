@@ -34,7 +34,7 @@
         NSDictionary *dic = @{@"accountNumber":RequestStrKey(accountNumber),
                            @"bankId":NSNumber.dou(bankId),
                            @"accountName":RequestStrKey(accountName)};
-        [self postUrl:@"/cash/bank/card/user" delegate:delegate parameters:dic success:success failure:failure];
+        [self postUrl:@"/zhongcheyun/bank/user" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
 编辑
@@ -112,8 +112,8 @@
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"price":NSNumber.lon(price),
-                           @"description":RequestStrKey(description)};
-        [self postUrl:@"/cash/trade" delegate:delegate parameters:dic success:success failure:failure];
+                           @"description":@""};
+        [self postUrl:@"/zhongcheyun/cash/trade/driver" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
 提现
@@ -124,8 +124,8 @@
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"mybankTradeNumber":RequestStrKey(mybankTradeNumber),
-                           @"smsCode    ":RequestStrKey(smsCode)};
-        [self postUrl:@"/cash/withdraw/confirm" delegate:delegate parameters:dic success:success failure:failure];
+                           @"smsCode":RequestStrKey(smsCode)};
+        [self postUrl:@"/zhongcheyun/cash/trade/confirm/driver" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
 提现-发送验证码
@@ -136,8 +136,8 @@
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
         NSDictionary *dic = @{@"price":NSNumber.lon(price),
-                           @"description":RequestStrKey(description)};
-        [self postUrl:@"/cash/withdraw" delegate:delegate parameters:dic success:success failure:failure];
+                           @"description":@""};
+        [self postUrl:@"/cash/trade/withdraw/driver" delegate:delegate parameters:dic success:success failure:failure];
 }
 
 @end

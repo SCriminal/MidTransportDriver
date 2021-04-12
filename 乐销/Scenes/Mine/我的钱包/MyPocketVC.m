@@ -78,13 +78,13 @@
         self.accountNum = l;
     }
     CGFloat hideTop = W(107);
-//    {
-//        UIView * view = [UIView new];
-//        view.backgroundColor = [UIColor whiteColor];
-//        view.widthHeight = XY(W(345), W(61));
-//        view.centerXTop = XY(SCREEN_WIDTH/2.0, W(107)+NAVIGATIONBAR_HEIGHT);
-//        [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:0 lineColor:[UIColor clearColor]];
-//        [topView addSubview:view];
+    {
+        UIView * view = [UIView new];
+        view.backgroundColor = [UIColor whiteColor];
+        view.widthHeight = XY(W(345), W(61));
+        view.centerXTop = XY(SCREEN_WIDTH/2.0, W(107)+NAVIGATIONBAR_HEIGHT);
+        [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:4 lineWidth:0 lineColor:[UIColor clearColor]];
+        [topView addSubview:view];
 //        {
 //            UILabel * l = [UILabel new];
 //            l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
@@ -97,21 +97,22 @@
 //            [view addSubview:l];
 //            [view addControlFrame:CGRectMake(0, 0, view.width/2.0, view.height) belowView:l target:self action:@selector(rechargeClick)];
 //        }
-//        {
-//            UILabel * l = [UILabel new];
-//            l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
-//            l.textColor = COLOR_333;
-//            l.backgroundColor = [UIColor clearColor];
-//            l.numberOfLines = 0;
-//            l.lineSpace = W(0);
-//            [l fitTitle:@"提现" variable:SCREEN_WIDTH - W(30)];
-//            l.centerXCenterY = XY(view.width/2.0 + W(171)/2.0, view.height/2.0);
-//            [view addSubview:l];
-//            [view addControlFrame:CGRectMake(view.width/2.0, 0, view.width/2.0, view.height) belowView:l target:self action:@selector(withdrawClick)];
-//        }
+        {
+            UILabel * l = [UILabel new];
+            l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
+            l.textColor = COLOR_333;
+            l.backgroundColor = [UIColor clearColor];
+            l.numberOfLines = 0;
+            l.lineSpace = W(0);
+            [l fitTitle:@"提现" variable:SCREEN_WIDTH - W(30)];
+            l.centerXCenterY = XY(view.width/2.0 , view.height/2.0);
+//            + W(171)/2.0
+            [view addSubview:l];
+            [view addControlFrame:CGRectMake(view.width/2.0, 0, view.width/2.0, view.height) belowView:l target:self action:@selector(withdrawClick)];
+        }
 //        [view addLineFrame:CGRectMake(W(171), W(18), 1, W(25))];
-//        hideTop = W(183);
-//    }
+        hideTop = W(183);
+    }
     
     NSArray * aryBtn = @[^(){
         ModelBtn * m = [ModelBtn new];

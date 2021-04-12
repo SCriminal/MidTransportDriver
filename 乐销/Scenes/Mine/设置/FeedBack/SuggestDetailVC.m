@@ -140,7 +140,7 @@
         l.backgroundColor = [UIColor clearColor];
         [l fitTitle:@"平台回复" variable:SCREEN_WIDTH - W(30)];
         l.leftTop = XY(W(15), W(20));
-        [self.topView addSubview:l];
+        [self.bottomView addSubview:l];
     }
     NSArray * ary = @[^(){
         ModelBaseData * m = [ModelBaseData new];

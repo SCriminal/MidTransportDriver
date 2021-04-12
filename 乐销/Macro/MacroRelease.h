@@ -14,8 +14,8 @@
 
 //#define URL_HEAD  @"http://192.168.20.27:10000"//刘炳晨
 
-#define URL_HEAD  @"http://112.253.1.72:10231"
-#define URL_IMAGE @"http://112.253.1.72:10231"//image
+#define URL_HEAD  @"http://112.253.1.72:10201"
+#define URL_IMAGE @"http://112.253.1.72:10201"//image
 #define URL_SHARE @"http://192.168.20.73:7000"
 
 //#define URL_HEAD  @"https://api.v2.zhongcheyun.cn"//外网

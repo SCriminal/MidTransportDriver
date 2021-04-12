@@ -26,8 +26,12 @@
 #import "RejectOrderView.h"
 //request
 #import "RequestDriver2.h"
+#import "WMZCodeView.h"
+
 /*
+ 
  */
+
 @interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate>
 @property (nonatomic, strong) UIWebView *web;
 @property (nonatomic, strong) UILabel *labelShow;
@@ -78,12 +82,20 @@
 }
 
 - (void)jump{
-    [GB_Nav pushVCName:@"InputCodeVC" animated:true];
+//    [GB_Nav pushVCName:@"InputCodeVC" animated:true];
 //    [self startTimer];
-//    [self test15];
+    [self test15];
 }
+
 - (void)test15{
-    
+    //使用方法
+    WMZCodeView * codeView = [[WMZCodeView shareInstance] addCodeViewWithType:1 withImageName:@"A" witgFrame:CGRectMake(0, 50, [UIScreen mainScreen].bounds.size.width, 50)  withBlock:^(BOOL success) {
+        if (success) {
+            NSLog(@"成功");
+        }
+    }];
+   [self.view addSubview:codeView ];
+
 }
 /*
  
