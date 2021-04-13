@@ -196,7 +196,6 @@
 		D29316901EF3BD980034E6FB /* GlobalMethod+Authority.m in Sources */ = {isa = PBXBuildFile; fileRef = D293168F1EF3BD980034E6FB /* GlobalMethod+Authority.m */; };
 		D293A39A1E011987005B772A /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D293A3981E011987005B772A /* LoadingView.m */; };
 		D293A39E1E01304B005B772A /* BaseTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D293A39D1E01304B005B772A /* BaseTableVC.m */; };
-		D296376326202963009A9879 /* WMZCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D296376226202961009A9879 /* WMZCodeView.m */; };
 		D296376626243365009A9879 /* ImageCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D296376526243365009A9879 /* ImageCodeView.m */; };
 		D2996A2B21E6E2D800562587 /* CustomAttributeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2996A2A21E6E2D800562587 /* CustomAttributeTextView.m */; };
 		D2996A4021E6E3AA00562587 /* CollectionImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2996A2F21E6E3AA00562587 /* CollectionImageCell.m */; };
@@ -779,8 +778,6 @@
 		D293A3981E011987005B772A /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		D293A39C1E01304B005B772A /* BaseTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableVC.h; sourceTree = "<group>"; };
 		D293A39D1E01304B005B772A /* BaseTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableVC.m; sourceTree = "<group>"; };
-		D296376126202961009A9879 /* WMZCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMZCodeView.h; sourceTree = "<group>"; };
-		D296376226202961009A9879 /* WMZCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMZCodeView.m; sourceTree = "<group>"; };
 		D296376426243365009A9879 /* ImageCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCodeView.h; sourceTree = "<group>"; };
 		D296376526243365009A9879 /* ImageCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCodeView.m; sourceTree = "<group>"; };
 		D2996A2921E6E2D800562587 /* CustomAttributeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAttributeTextView.h; sourceTree = "<group>"; };
@@ -2155,8 +2152,6 @@
 		D29316881EF3B62F0034E6FB /* 登录 */ = {
 			isa = PBXGroup;
 			children = (
-				D296376126202961009A9879 /* WMZCodeView.h */,
-				D296376226202961009A9879 /* WMZCodeView.m */,
 				D296376426243365009A9879 /* ImageCodeView.h */,
 				D296376526243365009A9879 /* ImageCodeView.m */,
 				D29316891EF3B62F0034E6FB /* LoginViewController.h */,
@@ -3638,7 +3633,6 @@
 				D23327CB2185A27900495488 /* OrderListCell.m in Sources */,
 				DA85246B1D65B5AE00AB04CC /* main.m in Sources */,
 				D2BC9AB31DFFE02800B0468E /* GlobalMethod.m in Sources */,
-				D296376326202963009A9879 /* WMZCodeView.m in Sources */,
 				D279A48325E4E1F50088DAAB /* ModelCreditListItem.m in Sources */,
 				D2C55803238BD0100050694F /* ModelScheduleList.m in Sources */,
 				C657C0761FCEAFED00039F53 /* NSDictionary+Model.m in Sources */,

@@ -114,25 +114,24 @@
     [self addSubview:self.slider];
     [self addSubview:self.alert];
 
-    //初始化页面
-    [self resetViewWithModel:nil];
 }
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model{
+- (void)resetViewWithModel:(NSString *)urlBig urlSmal:(NSString *)urlSmall alert:(NSString *)alert identity:(double)identity{
+    self.identity = identity;
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
     CGFloat top = SCREEN_HEIGHT/2.0-W(110);
     self.whitBG.width = W(314);
     self.whitBG.centerXTop = XY(SCREEN_WIDTH/2.0,top);
 
-    [self.ivBig sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"slider_default"]];
+    [self.ivBig sd_setImageWithURL:[NSURL URLWithString:UnPackStr(urlBig)] placeholderImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT]];
     self.ivBig.widthHeight = XY(W(284), W(142));
     self.ivBig.centerXTop = XY(SCREEN_WIDTH/2.0,self.whitBG.top+W(15));
 //
-    [self.ivSmall sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"SliderTrackRight"]];
-    self.ivSmall.widthHeight = XY(W(20), W(20));
-    self.ivSmall.leftTop = XY(W(46),self.ivBig.top+W(20));
+    [self.ivSmall sd_setImageWithURL:[NSURL URLWithString:UnPackStr(urlSmall)] placeholderImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT]];
+    self.ivSmall.widthHeight = XY(W(142)*91.0/240.0, W(142));
+    self.ivSmall.leftTop = XY(W(0),self.ivBig.top);
     
     self.sliderBG.widthHeight = XY(W(284), 37);
     self.sliderBG.leftTop = XY(W(46),self.ivBig.bottom+W(12));
@@ -140,6 +139,7 @@
     self.slider.widthHeight = self.sliderBG.widthHeight;
     self.slider.leftTop = self.sliderBG.leftTop;
     
+//    [self.alert fitTitle:UnPackStr(alert) variable:0];
     self.alert.centerXCenterY = XY(SCREEN_WIDTH/2.0,self.slider.centerY);
 
     self.whitBG.height = self.slider.bottom + W(15) - top;
@@ -154,7 +154,7 @@
         self.alert.hidden = true;
     }else if(phase == UITouchPhaseEnded){
         if (self.blockEnd) {
-            self.blockEnd(self.slider.value);
+            self.blockEnd(self.slider.value*(self.ivBig.width - self.ivSmall.width),self.identity,self.ivBig.width);
         }
     }else if (phase == UITouchPhaseMoved){
         [self changeSliderWithVlue:slider.value];
@@ -164,7 +164,7 @@
 
 //设置默认的滑动
 - (void)reconfigSlider{
-    self.slider.value = 0.05;
+    self.slider.value = 0;
     [self changeSliderWithVlue:self.slider.value];
     self.alert.hidden = false;
 }

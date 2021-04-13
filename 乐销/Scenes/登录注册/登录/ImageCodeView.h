@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface ImageCodeView : UIView
-@property (nonatomic, strong) void (^blockEnd)(double x);
+@property (nonatomic, strong) void (^blockEnd)(double x,double identity,double width);
+@property (nonatomic, assign) double identity;
 
 #pragma mark 刷新view
 
 //设置默认的滑动
 - (void)reconfigSlider;
-- (void)resetViewWithModel:(id)model;
+- (void)resetViewWithModel:(NSString *)urlBig urlSmal:(NSString *)urlSmall alert:(NSString *)alert identity:(double)identity;
 
 @end

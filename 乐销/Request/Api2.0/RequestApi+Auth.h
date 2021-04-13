@@ -110,7 +110,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 校验
 */
-+(void)requestVertifyImageCodeWithId:(double)id
++(void)requestVertifyImageCodeWithId:(double)identity
+phone:(NSString *)phone
                 width:(double)width
                 x:(double)x
                 delegate:(id <RequestDelegate>)delegate
