@@ -158,7 +158,6 @@
         }
     }else if (phase == UITouchPhaseMoved){
         [self changeSliderWithVlue:slider.value];
-        
     }
 }
 

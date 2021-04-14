@@ -48,7 +48,6 @@
 #define RESPONSE_CODE_RELOGIN 1000//重新登陆
 //#define RESPONSE_CODE_RELOGIN2 1//重新登陆
 
-#define RESPONSE_CODE_SCHEDULE 10803//有待确认计划单
 
 
 #define TIME_REQUEST_OUT 8

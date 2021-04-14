@@ -29,6 +29,7 @@
 //request
 #import "RequestDriver2.h"
 #import "AuthOneVC.h"
+#import "ImageCodeView.h"
 
 @interface LoginViewController ()
 @property (nonatomic, strong) UILabel *labelHello;
@@ -38,6 +39,8 @@
 @property (nonatomic, strong) LoginTextField *tfPwd;
 @property (nonatomic, strong) LoginAuthorityView *authorityView;
 @property (nonatomic, assign) BOOL pwdLogin;
+@property (nonatomic, strong) ImageCodeView *codeView;
+
 @end
 
 @implementation LoginViewController
@@ -172,11 +175,60 @@
 
         [GlobalMethod showAlert:@"登录成功"];
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
+            if (mark && [mark isKindOfClass:NSString.class] && [mark isEqualToString:@"3"]) {
+                [self showImageCode];
+            }
         }];
  
 }
+- (void)showImageCode{
+    [RequestApi requestFetchImageCodeWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        NSArray * ary = [response arrayValueForKey:@"display"];
+        if (ary.count >= 2) {
+            //使用方法
+            ImageCodeView * codeView = [ImageCodeView new];
+            [codeView resetViewWithModel:ary[0] urlSmal:ary[1] alert:[response stringValueForKey:@"tip"] identity:[response doubleValueForKey:@"id"]];
+           [self.view addSubview:codeView];
+            WEAKSELF
+            codeView.blockEnd = ^(double x, double identity, double width) {
+                [weakSelf vertifyImageCode:x identity:identity width:width];
+            };
+            self.codeView = codeView;
+        }
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
 
+        }];
+}
+- (void)vertifyImageCode:(double)x identity:(double)identity width:(double)width{
+    NSString * strPhone = [self.tfPhone.tf.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    [RequestApi requestVertifyImageCodeWithId:identity phone:strPhone width:width x:x delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        switch ([response intValueForKey:@"status"]) {
+            case 1:
+                [self.codeView removeFromSuperview];
+                [GlobalMethod showAlert:@"验证成功"];
+                break;
+            case 2:
+                [self.codeView reconfigSlider];
+                [GlobalMethod showAlert:@"验证失败"];
+                break;
+            case 3:
+                [self.codeView reconfigSlider];
+                [GlobalMethod showAlert:@"验证次数过多"];
+                break;
+            case 4:
+                [self.codeView reconfigSlider];
+                [GlobalMethod showAlert:@"无该图形验证码"];
+                [self.codeView removeFromSuperview];
+
+                break;
+            default:
+                break;
+        }
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        [self.codeView reconfigSlider];
+    }];
+}
 - (void)requestSendCode{
     NSString * strPhone = [self.tfPhone.tf.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     [RequestApi requestLoginCodeWithAppid:@"1" phone:strPhone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {

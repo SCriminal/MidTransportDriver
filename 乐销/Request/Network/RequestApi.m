@@ -128,7 +128,7 @@ constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
         }
         //判断请求状态
         int codeResponse = [dicResponse intValueForKey:RESPONSE_CODE];
-        if(codeResponse == RESPONSE_CODE_SUCCESS||codeResponse == RESPONSE_CODE_SCHEDULE){
+        if(codeResponse == RESPONSE_CODE_SUCCESS){
             [self requestSuccessDelegate:delegate responseDic:returnAll?dicResponse:dicResponse[RESPONSE_DATA] success:success];
             return;
         }

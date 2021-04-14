@@ -29,7 +29,6 @@
 #import "ImageCodeView.h"
 
 /*
- 
  */
 
 @interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate>
@@ -82,46 +81,7 @@
 }
 
 - (void)jump{
-    [RequestApi requestFetchImageCodeWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        NSArray * ary = [response arrayValueForKey:@"display"];
-        if (ary.count >= 2) {
-            //使用方法
-            ImageCodeView * codeView = [ImageCodeView new];
-            [codeView resetViewWithModel:ary[0] urlSmal:ary[1] alert:[response stringValueForKey:@"tip"] identity:[response doubleValueForKey:@"id"]];
-           [self.view addSubview:codeView];
-            WEAKSELF
-            codeView.blockEnd = ^(double x, double identity, double width) {
-                [RequestApi requestVertifyImageCodeWithId:identity phone:@"15263676100" width:width x:x delegate:weakSelf success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                    switch ([response intValueForKey:@"status"]) {
-                        case 1:
-                            [codeView removeFromSuperview];
-                            [GlobalMethod showAlert:@"验证成功"];
-                            break;
-                        case 2:
-                            [codeView reconfigSlider];
-                            [GlobalMethod showAlert:@"验证失败"];
-                            break;
-                        case 3:
-                            [codeView reconfigSlider];
-                            [GlobalMethod showAlert:@"验证次数过多"];
-                            break;
-                        case 4:
-                            [codeView reconfigSlider];
-                            [GlobalMethod showAlert:@"无该图形验证码"];
-                            [codeView removeFromSuperview];
-
-                            break;
-                        default:
-                            break;
-                    }
-                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                    [codeView reconfigSlider];
-                }];
-            };
-        }
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-
-        }];
+   
 //    [self test15];
 }
 

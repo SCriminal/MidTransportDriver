@@ -24,6 +24,7 @@ typedef void(^MapServiceBlock)(NSObject *object);
 
 /// 开始上传定位
 /// @param shippingNoteInfos 运单信息数组
+///
 /// @param listener 返回结果回调函数
 -(void)startLocationWithShippingNoteInfos:(NSArray *)shippingNoteInfos listener:(void(^)(id model, NSError *error))listener;
 
