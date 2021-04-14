@@ -48,6 +48,10 @@
 @property (nonatomic, strong) NSString *birthDate;
 @property (nonatomic, assign) double birthDateStamp;
 @property (nonatomic, strong) NSString *startDate;
+@property (nonatomic, strong) NSString *endDate;
+@property (nonatomic, assign) double startDateStamp;
+@property (nonatomic, assign) double endDateStamp;
+
 @property (nonatomic, strong) NSString *licenseNumber;
 @property (nonatomic, strong) NSString *angle;
 @property (nonatomic, strong) NSString *legalPerson;

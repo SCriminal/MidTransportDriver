@@ -238,6 +238,10 @@
                                                          driverClass:self.modelOCRDriver.vehicleType
                                                 driverArchivesNumber:self.modelOCRDriver.licenseNumber
                                                 driverFirstIssueDate:self.modelOCRDriver.startDate
+                                                         idStartDate:self.modelOCRIDFace.startDateStamp
+                                                           idEndDate:self.modelOCRIDFace.endDateStamp
+                                                         dlStartDate:self.modelOCRDriver.startDateStamp
+                                                           dlEndDate:self.modelOCRDriver.endDateStamp
                                                            isRequest:true
                                                             delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 [GlobalMethod showAlert:@"上传成功"];
@@ -270,7 +274,10 @@
                                                                      driverClass:self.modelOCRDriver.vehicleType
                                                             driverArchivesNumber:self.modelOCRDriver.licenseNumber
                                                             driverFirstIssueDate:self.modelOCRDriver.startDate
-                                                                       isRequest:false
+                                                                     idStartDate:self.modelOCRIDFace.startDateStamp
+                                                                       idEndDate:self.modelOCRIDFace.endDateStamp
+                                                                     dlStartDate:self.modelOCRDriver.startDateStamp
+                                                                       dlEndDate:self.modelOCRDriver.endDateStamp                                                                       isRequest:false
                                                                         delegate:nil success:nil failure:nil];
     return [GlobalMethod exchangeDicToJson:dic];
 }

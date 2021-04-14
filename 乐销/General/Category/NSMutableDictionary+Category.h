@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSMutableDictionary (Category)
-
+- (void)removeNull;
 @end

@@ -181,11 +181,15 @@
                 driverClass:(NSString *)driverClass
                 driverArchivesNumber:(NSString *)driverArchivesNumber
                 driverFirstIssueDate:(NSString *)driverFirstIssueDate
+                                                  idStartDate:(double)idStartDate
+                                                    idEndDate:(double)idEndDate
+                                                  dlStartDate:(double)dlStartDate
+                                                    dlEndDate:(double)dlEndDate
                                                     isRequest:(BOOL)isRequest
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"idEmblemUrl":RequestStrKey(idEmblemUrl),
+        NSMutableDictionary *dic = @{@"idEmblemUrl":RequestStrKey(idEmblemUrl),
                            @"idFaceUrl":RequestStrKey(idFaceUrl),
                            @"dlUrl":RequestStrKey(driverUrl),
                            @"vehiclePersonUrl":RequestStrKey(vehicleUrl),
@@ -201,7 +205,14 @@
                            @"dlBirthday":RequestStrKey(driverBirthday),
                            @"dlClass":RequestStrKey(driverClass),
                            @"dlArchivesNumber":RequestStrKey(driverArchivesNumber),
-                           @"dlFirstIssueDate":RequestStrKey(driverFirstIssueDate)};
+                           @"dlFirstIssueDate":RequestStrKey(driverFirstIssueDate),
+                              @"idStartDate":RequestLongKey(idStartDate),
+                              @"idEndDate":RequestLongKey(idEndDate),
+                              @"dlStartDate":RequestLongKey(dlStartDate),
+                              @"dlEndDate":RequestLongKey(dlEndDate),
+        }.mutableCopy;
+    [dic removeNull];
+
     if (isRequest) {
         [self postUrl:@"/ums/driver/status/2/driver" delegate:delegate parameters:dic success:success failure:failure];
     }

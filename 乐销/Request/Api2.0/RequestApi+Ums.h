@@ -108,6 +108,10 @@ NS_ASSUME_NONNULL_BEGIN
                 driverClass:(NSString *)driverClass
                 driverArchivesNumber:(NSString *)driverArchivesNumber
                 driverFirstIssueDate:(NSString *)driverFirstIssueDate
+                                                  idStartDate:(double)idStartDate
+                                                    idEndDate:(double)idEndDate
+                                                  dlStartDate:(double)dlStartDate
+                                                    dlEndDate:(double)dlEndDate
                                                     isRequest:(BOOL)isRequest
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success

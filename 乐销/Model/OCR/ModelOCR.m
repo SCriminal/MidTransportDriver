@@ -34,6 +34,7 @@ NSString *const kModelOCRGender = @"gender";
 NSString *const kModelOCRBirthDate = @"birthDate";
 NSString *const kModelOCRIssue = @"issue";
 NSString *const kModelOCRStartDate = @"startDate";
+NSString *const kModelOCREndDate = @"endDate";
 NSString *const kModelOCRLicenseNumber = @"licenseNumber";
 NSString *const kModelOCRAngle = @"angle";
 NSString *const kModelOCRLegalPerson = @"legalPerson";
@@ -113,6 +114,7 @@ NSString *const kModelOCRRegisterNumber = @"registerNumber";
         self.bankName = [dict stringValueForKey:@"bankName"];
         self.cardNumber = [dict stringValueForKey:@"cardNumber"];
         self.validDate = [dict stringValueForKey:@"validDate"];
+        self.endDate = [dict stringValueForKey:@"endDate"];
 
         if (!isStr(self.iDNumber)) {
             self.iDNumber = [dict stringValueForKey:@"iDNumber"];
@@ -126,6 +128,8 @@ NSString *const kModelOCRRegisterNumber = @"registerNumber";
         self.issueDateStamp = [GlobalMethod exchangeStringToDate:self.issueDate formatter:@"YYYYMMDD"].timeIntervalSince1970;
         self.registerDateStamp  = [GlobalMethod exchangeStringToDate:self.registerDate formatter:@"YYYYMMDD"].timeIntervalSince1970;
         self.birthDateStamp  = [GlobalMethod exchangeStringToDate:self.birthDate formatter:@"YYYYMMDD"].timeIntervalSince1970;
+        self.startDateStamp  = [GlobalMethod exchangeStringToDate:self.startDate formatter:@"YYYYMMDD"].timeIntervalSince1970;
+        self.endDateStamp  = [GlobalMethod exchangeStringToDate:self.endDate formatter:@"YYYYMMDD"].timeIntervalSince1970;
 
     }
     
@@ -173,6 +177,7 @@ NSString *const kModelOCRRegisterNumber = @"registerNumber";
     [mutableDict setValue:self.bankName forKey:@"bankName"];
     [mutableDict setValue:self.cardNumber forKey:@"cardNumber"];
     [mutableDict setValue:self.validDate forKey:@"validDate"];
+    [mutableDict setValue:self.endDate forKey:@"endDate"];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

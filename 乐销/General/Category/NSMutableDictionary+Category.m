@@ -35,5 +35,11 @@
     [self sldSetObject:value forKey:key];
 }
 
-
+- (void)removeNull{
+    for (NSString * key in self.allKeys.copy) {
+        if ([self valueForKey:key] == [NSNull null]) {
+            [self removeObjectForKey:key];
+        }
+    }
+}
 @end
