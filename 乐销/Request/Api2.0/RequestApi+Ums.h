@@ -107,7 +107,7 @@ NS_ASSUME_NONNULL_BEGIN
                 driverBirthday:(NSString *)driverBirthday
                 driverClass:(NSString *)driverClass
                 driverArchivesNumber:(NSString *)driverArchivesNumber
-                driverFirstIssueDate:(NSString *)driverFirstIssueDate
+                driverFirstIssueDate:(double)driverFirstIssueDate
                                                   idStartDate:(double)idStartDate
                                                     idEndDate:(double)idEndDate
                                                   dlStartDate:(double)dlStartDate

@@ -180,7 +180,7 @@
                 driverBirthday:(NSString *)driverBirthday
                 driverClass:(NSString *)driverClass
                 driverArchivesNumber:(NSString *)driverArchivesNumber
-                driverFirstIssueDate:(NSString *)driverFirstIssueDate
+                driverFirstIssueDate:(double)driverFirstIssueDate
                                                   idStartDate:(double)idStartDate
                                                     idEndDate:(double)idEndDate
                                                   dlStartDate:(double)dlStartDate
@@ -205,7 +205,7 @@
                            @"dlBirthday":RequestStrKey(driverBirthday),
                            @"dlClass":RequestStrKey(driverClass),
                            @"dlArchivesNumber":RequestStrKey(driverArchivesNumber),
-                           @"dlFirstIssueDate":RequestStrKey(driverFirstIssueDate),
+                           @"dlFirstIssueDate":RequestLongKey(driverFirstIssueDate),
                               @"idStartDate":RequestLongKey(idStartDate),
                               @"idEndDate":RequestLongKey(idEndDate),
                               @"dlStartDate":RequestLongKey(dlStartDate),

@@ -237,9 +237,9 @@
                                                       driverBirthday:self.modelOCRDriver.birthDate
                                                          driverClass:self.modelOCRDriver.vehicleType
                                                 driverArchivesNumber:self.modelOCRDriver.licenseNumber
-                                                driverFirstIssueDate:self.modelOCRDriver.startDate
-                                                         idStartDate:self.modelOCRIDFace.startDateStamp
-                                                           idEndDate:self.modelOCRIDFace.endDateStamp
+                                                driverFirstIssueDate:self.modelOCRDriver.issueDateStamp
+                                                         idStartDate:self.modelOCRIDCounty.startDateStamp
+                                                           idEndDate:self.modelOCRIDCounty.endDateStamp
                                                          dlStartDate:self.modelOCRDriver.startDateStamp
                                                            dlEndDate:self.modelOCRDriver.endDateStamp
                                                            isRequest:true
@@ -273,9 +273,9 @@
                                                                   driverBirthday:self.modelOCRDriver.birthDate
                                                                      driverClass:self.modelOCRDriver.vehicleType
                                                             driverArchivesNumber:self.modelOCRDriver.licenseNumber
-                                                            driverFirstIssueDate:self.modelOCRDriver.startDate
-                                                                     idStartDate:self.modelOCRIDFace.startDateStamp
-                                                                       idEndDate:self.modelOCRIDFace.endDateStamp
+                                                            driverFirstIssueDate:self.modelOCRDriver.issueDateStamp
+                                                                     idStartDate:self.modelOCRIDCounty.startDateStamp
+                                                                       idEndDate:self.modelOCRIDCounty.endDateStamp
                                                                      dlStartDate:self.modelOCRDriver.startDateStamp
                                                                        dlEndDate:self.modelOCRDriver.endDateStamp                                                                       isRequest:false
                                                                         delegate:nil success:nil failure:nil];
@@ -338,7 +338,7 @@
         if (self.modelImageSelected == self.modelCountry) {
             [RequestApi requestOCRIdentityWithurl:image.imageURL side:@"back" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"backResult"]];
-                self.modelOCRIDFace = model;
+                self.modelOCRIDCounty = model;
                 
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                 
@@ -346,7 +346,7 @@
         }
         if (self.modelImageSelected == self.modelDriver) {
             [RequestApi requestOCRDriverWithurl:image.imageURL side:@"face" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"frontResult"]];
+                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"faceResult"]];
                 self.modelOCRDriver = model;
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                 
