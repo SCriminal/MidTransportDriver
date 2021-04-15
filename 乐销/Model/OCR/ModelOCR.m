@@ -125,11 +125,12 @@ NSString *const kModelOCRRegisterNumber = @"registerNumber";
             self.width = [[aryDimension objectAtIndex:1] doubleValue];
             self.height = [[aryDimension objectAtIndex:2] doubleValue];
         }
-        self.issueDateStamp = [GlobalMethod exchangeStringToDate:self.issueDate formatter:@"YYYYMMDD"].timeIntervalSince1970;
-        self.registerDateStamp  = [GlobalMethod exchangeStringToDate:self.registerDate formatter:@"YYYYMMDD"].timeIntervalSince1970;
-        self.birthDateStamp  = [GlobalMethod exchangeStringToDate:self.birthDate formatter:@"YYYYMMDD"].timeIntervalSince1970;
-        self.startDateStamp  = [GlobalMethod exchangeStringToDate:self.startDate formatter:@"YYYYMMDD"].timeIntervalSince1970;
-        self.endDateStamp  = [GlobalMethod exchangeStringToDate:self.endDate formatter:@"YYYYMMDD"].timeIntervalSince1970;
+        self.issueDateStamp = [GlobalMethod exchangeStringToDate:self.issueDate formatter:@"YYYYMMdd"].timeIntervalSince1970;
+        self.registerDateStamp  = [GlobalMethod exchangeStringToDate:self.registerDate formatter:@"YYYYMMdd"].timeIntervalSince1970;
+        self.birthDateStamp  = [GlobalMethod exchangeStringToDate:self.birthDate formatter:@"YYYYMMdd"].timeIntervalSince1970;
+        NSDate * date = [GlobalMethod exchangeStringToDate:self.startDate formatter:@"YYYYMMdd"];
+        self.startDateStamp  = date.timeIntervalSince1970;
+        self.endDateStamp  = [GlobalMethod exchangeStringToDate:self.endDate formatter:@"YYYYMMdd"].timeIntervalSince1970;
 
     }
     

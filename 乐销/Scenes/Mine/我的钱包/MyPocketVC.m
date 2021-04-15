@@ -114,15 +114,17 @@
         hideTop = W(183);
     }
     
-    NSArray * aryBtn = @[^(){
-        ModelBtn * m = [ModelBtn new];
-        m.title = @"银行卡管理";
-        m.imageName = @"card_card";
-        m.blockClick = ^{
-            [GB_Nav pushVCName:@"BankCardListVC" animated:true];
-        };
-        return m;
-    }(),^(){
+    NSArray * aryBtn = @[
+//        ^(){
+//        ModelBtn * m = [ModelBtn new];
+//        m.title = @"银行卡管理";
+//        m.imageName = @"card_card";
+//        m.blockClick = ^{
+//            [GB_Nav pushVCName:@"BankCardListVC" animated:true];
+//        };
+//        return m;
+//    }(),
+         ^(){
         ModelBtn * m = [ModelBtn new];
         m.title = @"交易明细";
         m.imageName = @"card_money";

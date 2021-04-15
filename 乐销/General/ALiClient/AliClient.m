@@ -206,6 +206,8 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AliClient)
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager.requestSerializer setValue:REQUEST_CLIENT forHTTPHeaderField:@"Referer"];
+    
     manager.requestSerializer.timeoutInterval = 20;
     //ignore security
     manager.securityPolicy.allowInvalidCertificates=YES;

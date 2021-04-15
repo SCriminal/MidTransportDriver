@@ -37,6 +37,7 @@
         self.securityPolicy.allowInvalidCertificates=YES;
         //是否在证书域字段中验证域名
         [self.securityPolicy setValidatesDomainName:NO];
+         
     }
     return self;
 }
@@ -99,6 +100,8 @@
     [self.requestSerializer setValue:agent forHTTPHeaderField:@"User-Agent"];
     [self.requestSerializer setValue:@"4" forHTTPHeaderField:@"Source"];
     [self.requestSerializer setValue:[strExt base64Encode] forHTTPHeaderField:@"Ext"];
+    [self.requestSerializer setValue:REQUEST_CLIENT forHTTPHeaderField:@"Referer"];
+
 
 }
 @end

@@ -2494,8 +2494,8 @@
             timestampString = "598330467.807397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "-configHeader"
             landmarkType = "7">
          </BreakpointContent>
@@ -3904,8 +3904,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/&#x6211;&#x7684;&#x94b1;&#x5305;/MyPocketVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "MyPocketVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -5741,8 +5741,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Mine/&#x6211;&#x7684;&#x94b1;&#x5305;/MyPocketVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "-requestList"
             landmarkType = "7">
          </BreakpointContent>
@@ -5837,8 +5837,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Network/RequestInstance.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "-configHeader"
             landmarkType = "7">
          </BreakpointContent>
@@ -6064,6 +6064,38 @@
             startingLineNumber = "279"
             endingLineNumber = "279"
             landmarkName = "-imageSelect:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DD66A9CD-8883-421E-8EB8-DF24B994CB2F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Model/OCR/ModelOCR.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "-initWithDictionary:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B9E8907C-24FF-4CDA-AD52-74BE9436E2DB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/General/GlobalMethod/GlobalMethod+UI.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "+exchangeStringToDate:formatter:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
