@@ -25,7 +25,7 @@
                           @"addr":UnPackStr(addr),
                           @"lat":NSNumber.dou(lat),
                           @"spd":NSNumber.lon(spd),
-//                          @"terminalType":@4,
+                          @"terminalType":@4,
                           @"plateNumber":isStr(plateNumber)?plateNumber:[NSNull null]
                           };
     [self putUrl:@"/location/user" delegate:delegate parameters:dic success:success failure:failure];

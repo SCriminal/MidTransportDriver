@@ -176,7 +176,8 @@
         return;
     }else{
         isRequest = true;
-    [RequestApi requestLoginWithAppid:@"1" clientId:@"1" phone:self.strPhone code:code delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestLoginWithAppid:@"1" clientId:@"1" phone:self.strPhone code:code
+ delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         isRequest = false;
         if ([GlobalData sharedInstance].GB_UserModel.isUser1 == 1 && [GlobalData sharedInstance].GB_UserModel.isVehicle == 0 && [GlobalData sharedInstance].GB_UserModel.user1Auth == 1) {
             [GB_Nav pushVCName:@"TransferCarListVC" animated:true];

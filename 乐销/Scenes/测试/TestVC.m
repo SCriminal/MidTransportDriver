@@ -27,7 +27,23 @@
 //request
 #import "RequestDriver2.h"
 #import "ImageCodeView.h"
-
+#import "LocationRecordInstance.h"
+//cell
+#import "OrderListCell.h"
+//request
+#import "RequestDriver2.h"
+//detail
+#import "OrderDetailVC.h"
+//bottom view
+#import "OrderManagementBottomView.h"
+#import "OrderFilterView.h"
+#import "BulkCargoOperateLoadView.h"
+#import "BaseVC+Location.h"
+#import <MapKit/MapKit.h>
+#import "ThirdMap.h"
+#import "RejectOrderView.h"
+#import "LocationRecordInstance.h"
+#import "NSDate+YYAdd.h"
 /*
  */
 
@@ -82,11 +98,14 @@
 
 - (void)jump{
    
-//    [self test15];
+    [self test15];
 }
 
 - (void)test15{
-   
+    [[LocationRecordInstance sharedInstance]stopLocationWithShippingNoteInfos:@[[ModelTransportOrder new] ] listener:^(id model, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+
 
 }
 /*
@@ -104,7 +123,6 @@
                 NSLog(@"sld timer");
             });
             dispatch_resume(_timer);
-        
     }
 }
 

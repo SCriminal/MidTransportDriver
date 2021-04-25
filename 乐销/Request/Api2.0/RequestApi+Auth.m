@@ -32,6 +32,9 @@
                 account:(NSString *)account
                 terminalType:(double)terminalType
                 terminalNumber:(NSString *)terminalNumber
+                 captchaId:(double)captchaId
+              captchaWidth:(double)captchaWidth
+                  captchaX:(double)captchaX
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
@@ -39,9 +42,12 @@
                            @"client":REQUEST_CLIENT,
                            @"password":RequestStrKey([password base64Encode]),
                            @"phone":RequestStrKey(account),
-                           @"terminalType":NSNumber.dou(terminalType),
+                           @"terminalType":@4,
                            @"terminalNumber":RequestStrKey([CloudPushSDK getDeviceId]),
-                              @"scope":@"1"
+                              @"scope":@"1",
+                              @"captchaId":RequestLongKey(captchaId),
+                                             @"captchaWidth":RequestLongKey(captchaWidth),
+                                             @"captchaX":RequestLongKey(captchaX),
         };
         [self postUrl:@"/ums/user/login/1" delegate:delegate parameters:dic success:^(NSDictionary * response, id mark){
             if (!isDic(dic) || !isStr([response stringValueForKey:@"token"])) {
@@ -216,7 +222,8 @@ phone:(NSString *)phone
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
-        NSDictionary *dic = @{@"id":NSNumber.lon(identity),
+        NSDictionary *dic = @{
+            @"id":NSNumber.lon(identity),
                            @"width":NSNumber.lon(width),
                            @"x":NSNumber.lon(x),
                               @"scope":@"1",

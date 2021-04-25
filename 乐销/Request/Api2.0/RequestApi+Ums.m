@@ -115,9 +115,10 @@
                           @"client":REQUEST_CLIENT,
                           @"phone":RequestStrKey(phone),
                           @"code":RequestStrKey(code),
-                          @"terminalType":@1,
+                          @"terminalType":@4,
                           @"scope":@"1",
-                          @"terminalNumber":RequestStrKey( [CloudPushSDK getDeviceId])
+                          @"terminalNumber":RequestStrKey( [CloudPushSDK getDeviceId]),
+
     };
     [self postUrl:@"/ums/login/1" delegate:delegate parameters:dic success:^(NSDictionary * response, id mark){
         if (!isDic(dic) || !isStr([response stringValueForKey:@"token"])) {

@@ -185,12 +185,12 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
         [aryJson addObject:@{@"uploaderId":NSNumber.dou([GlobalData sharedInstance].GB_UserModel.iDProperty),
                              @"lng":NSNumber.dou(modelItem.lng),
                              @"terminalNumber":UnPackStr([CloudPushSDK getDeviceId]),
-                             @"terminalType":@1,
+                             @"terminalType":@4,
                              @"collectTime":[NSNumber numberWithLong:(long)modelItem.dateRecord],
                              @"addr":UnPackStr(modelItem.desc),
                              @"lat":NSNumber.dou(modelItem.lat),
                              @"spd":NSNumber.lon(modelItem.spd),
-                             @"orderNumber":UnPackStr(orderNumber),
+                             @"loNumber":UnPackStr(orderNumber),
                              @"plateNumber":UnPackStr(plateNumber)
         }];
     }

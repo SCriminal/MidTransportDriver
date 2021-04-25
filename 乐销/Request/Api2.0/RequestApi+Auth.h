@@ -28,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
                 account:(NSString *)account
                 terminalType:(double)terminalType
                 terminalNumber:(NSString *)terminalNumber
+                 captchaId:(double)captchaId
+              captchaWidth:(double)captchaWidth
+                  captchaX:(double)captchaX
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure;

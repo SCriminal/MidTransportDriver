@@ -112,7 +112,7 @@
         WEAKSELF
         _btnView.blockMainClick = ^{
             if (weakSelf.pwdLogin) {
-                [weakSelf requestWithPwd];
+                [weakSelf requestWithPwd:0 identity:0 width:0];
             }else{
                 [weakSelf requestSendCode];
             }
@@ -163,10 +163,27 @@
 
 
 #pragma mark request
-- (void)requestWithPwd{
+- (void)requestWithPwd:(double)x identity:(double)identity width:(double)width{
     NSString * strPhone = [self.tfPhone.tf.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [RequestApi requestLoginWithApp:@"2" client:@"1" password:self.tfPwd.tf.text account:strPhone terminalType:1 terminalNumber:@"1" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        ModelBaseInfo * m = [GlobalData sharedInstance].GB_UserModel;
+    [RequestApi requestLoginWithApp:@"2" client:@"1" password:self.tfPwd.tf.text account:strPhone terminalType:4 terminalNumber:@"1"
+                          captchaId:identity
+                       captchaWidth:width
+                           captchaX:x
+ delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        switch ([response intValueForKey:@"captchaStatus"]) {
+            case 1:
+                [self.codeView reconfigSlider];
+                [self.codeView removeFromSuperview];
+                [GlobalMethod showAlert:@"验证成功"];
+                break;
+            case 2:
+                [self.codeView reconfigSlider];
+                [GlobalMethod showAlert:@"验证失败"];
+                return;
+                break;
+            default:
+                break;
+        }
         if ([GlobalData sharedInstance].GB_UserModel.isUser1 == 1 && [GlobalData sharedInstance].GB_UserModel.isVehicle == 0 && [GlobalData sharedInstance].GB_UserModel.user1Auth == 1) {
             [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
         }else{
@@ -177,7 +194,10 @@
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             if (mark && [mark isKindOfClass:NSString.class] && [mark isEqualToString:@"3"]) {
                 [self showImageCode];
+                return;
             }
+            [self.codeView reconfigSlider];
+            [self.codeView removeFromSuperview];
         }];
  
 }
@@ -191,7 +211,7 @@
            [self.view addSubview:codeView];
             WEAKSELF
             codeView.blockEnd = ^(double x, double identity, double width) {
-                [weakSelf vertifyImageCode:x identity:identity width:width];
+                [weakSelf requestWithPwd:x identity:identity width:width];
             };
             self.codeView = codeView;
         }
@@ -199,36 +219,7 @@
 
         }];
 }
-- (void)vertifyImageCode:(double)x identity:(double)identity width:(double)width{
-    NSString * strPhone = [self.tfPhone.tf.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
-    [RequestApi requestVertifyImageCodeWithId:identity phone:strPhone width:width x:x delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        switch ([response intValueForKey:@"status"]) {
-            case 1:
-                [self.codeView removeFromSuperview];
-                [GlobalMethod showAlert:@"验证成功"];
-                break;
-            case 2:
-                [self.codeView reconfigSlider];
-                [GlobalMethod showAlert:@"验证失败"];
-                break;
-            case 3:
-                [self.codeView reconfigSlider];
-                [GlobalMethod showAlert:@"验证次数过多"];
-                break;
-            case 4:
-                [self.codeView reconfigSlider];
-                [GlobalMethod showAlert:@"无该图形验证码"];
-                [self.codeView removeFromSuperview];
 
-                break;
-            default:
-                break;
-        }
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        [self.codeView reconfigSlider];
-    }];
-}
 - (void)requestSendCode{
     NSString * strPhone = [self.tfPhone.tf.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     [RequestApi requestLoginCodeWithAppid:@"1" phone:strPhone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
