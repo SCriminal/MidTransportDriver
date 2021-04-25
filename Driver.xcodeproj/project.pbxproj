@@ -555,8 +555,6 @@
 		D24A93CC2360470B00CB672C /* AuthorityReVerifyingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthorityReVerifyingVC.h; sourceTree = "<group>"; };
 		D24A93CD2360470B00CB672C /* AuthorityReVerifyingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthorityReVerifyingVC.m; sourceTree = "<group>"; };
 		D24ABE071E52FB8100ED2C65 /* 乐销.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "乐销.entitlements"; sourceTree = "<group>"; };
-		D24CBB67257E270500F6AB3E /* UpTransportShareInstance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpTransportShareInstance.h; sourceTree = "<group>"; };
-		D24CBB68257E270500F6AB3E /* UpTransportShareInstance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpTransportShareInstance.m; sourceTree = "<group>"; };
 		D24D0741248A353F0029FCEC /* CarType.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CarType.json; sourceTree = "<group>"; };
 		D24DFE9A22F122EA0072B607 /* LDMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDMacro.h; sourceTree = "<group>"; };
 		D2512BC81E8CDA0F005F9B54 /* CustomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPickerView.h; sourceTree = "<group>"; };
@@ -1550,8 +1548,6 @@
 			children = (
 				D27470AB22A787DA009B645D /* LocationRecordInstance.h */,
 				D27470AC22A787DA009B645D /* LocationRecordInstance.m */,
-				D24CBB67257E270500F6AB3E /* UpTransportShareInstance.h */,
-				D24CBB68257E270500F6AB3E /* UpTransportShareInstance.m */,
 				D2B1040C22ED94CC002D9BFF /* LocationEagleInstance.h */,
 				D2B1040D22ED94CC002D9BFF /* LocationEagleInstance.m */,
 			);
@@ -3623,7 +3619,7 @@
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv7 armv7s arm64";
+				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
 			};
 			name = Debug;
 		};

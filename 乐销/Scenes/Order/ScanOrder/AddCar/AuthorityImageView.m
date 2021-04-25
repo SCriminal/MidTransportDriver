@@ -97,7 +97,7 @@
     if (_labelTitle == nil) {
         _labelTitle = [UILabel new];
         _labelTitle.textAlignment = NSTextAlignmentCenter;
-        _labelTitle.widthHeight = XY(self.ivBG.width, [UIFont fetchHeight:F(6)]) ;
+        _labelTitle.widthHeight = XY(self.ivBG.width, [UIFont fetchHeight:F(12)]) ;
 
     }
     return _labelTitle;
