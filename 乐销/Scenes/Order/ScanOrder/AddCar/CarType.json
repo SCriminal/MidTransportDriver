@@ -1,6 +1,7 @@
 [
  {
     "label" : "重型半挂牵引车",
+    "isTrailer" : 1,
     "status" : 1,
     "value" : 60,
     "value2" : "Q11"
@@ -39,7 +40,8 @@
     "label" : "牵引车",
     "status" : 0,
     "value" : 4,
-    "value2" : "Q00"
+    "value2" : "Q00",
+    "isTrailer" : 1,
   },
   {
     "label" : "普通挂车",
@@ -361,30 +363,35 @@
   },
   {
     "label" : "重型全挂牵引车",
+    "isTrailer" : 1,
     "status" : 1,
     "value" : 61,
     "value2" : "Q12"
   },
   {
     "label" : "中型半挂牵引车",
+    "isTrailer" : 1,
     "status" : 1,
     "value" : 62,
     "value2" : "Q21"
   },
   {
     "label" : "中型全挂牵引车",
+    "isTrailer" : 1,
     "status" : 1,
     "value" : 63,
     "value2" : "Q22"
   },
   {
     "label" : "轻型半挂牵引车",
+    "isTrailer" : 1,
     "status" : 1,
     "value" : 64,
     "value2" : "Q31"
   },
   {
     "label" : "轻型全挂牵引车",
+    "isTrailer" : 1,
     "status" : 1,
     "value" : 65,
     "value2" : "Q32"

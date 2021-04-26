@@ -35,6 +35,7 @@
 @property (nonatomic, strong) ModelBaseData *modelVehicleType;
 @property (nonatomic, strong) ModelBaseData *modelVehicleLoad;
 @property (nonatomic, strong) ModelBaseData *modelUnbindDriver;
+@property (nonatomic, strong) ModelBaseData *modelTrailNumber;
 @property (nonatomic, strong) UIView *viewHeaderFailure;
 @property (nonatomic, strong) AuthorityImageView *bottomView;
 @property (nonatomic, strong) ModelCar *modelDetail;
@@ -96,6 +97,20 @@
     }
     return _modelOwner;
 }
+- (ModelBaseData *)modelTrailNumber{
+    if (!_modelTrailNumber) {
+        _modelTrailNumber = ^(){
+            ModelBaseData * model = [ModelBaseData new];
+            model.enumType = ENUM_PERFECT_CELL_TEXT;
+            model.imageName = @"";
+            model.string = @"挂车车牌";
+            model.placeHolderString = @"输入挂车车牌";
+            model.isRequired = true;
+            return model;
+        }();
+    }
+    return _modelTrailNumber;
+}
 - (ModelBaseData *)modelVehicleType{
     if (!_modelVehicleType) {
         WEAKSELF
@@ -112,7 +127,7 @@
                 selectVC.blockSelected = ^(NSString *type, NSNumber *idNumber) {
                     weakSelf.modelVehicleType.subString = type;
                     weakSelf.modelVehicleType.identifier = idNumber.stringValue;
-                    [weakSelf.tableView reloadData];
+                    [weakSelf configData];
                 };
                 [GB_Nav pushViewController:selectVC animated:true];
             };
@@ -224,6 +239,9 @@
 #pragma mark config data
 - (void)configData{
     self.aryDatas = @[self.modelUnbindDriver,self.modelCarNum,self.modelVehicleLoad,self.modelOwner,self.modelVehicleType].mutableCopy;
+    if ([self.modelVehicleType.subString containsString:@"牵引车"]) {
+        [self.aryDatas addObject:self.modelTrailNumber];
+    }
     [self.tableView reloadData];
     
 }
@@ -303,7 +321,7 @@
                         engineNumber:self.modelOCRFace.engineNumber
                        vehicleNumber:self.modelCarNum.subString
                          licenceType:0
-                       trailerNumber:nil
+                       trailerNumber:self.modelTrailNumber.subString
                       vehicleLicense:nil
                        vehicleLength:0
                          vehicleType:self.modelVehicleType.identifier.doubleValue
@@ -371,6 +389,7 @@
         self.modelVehicleType.subString = [AddCarVC exchangeVehicleType:self.modelVehicleType.identifier];
         self.modelVehicleType.isChangeInvalid = modelDetail.isAuthorityAcceptOrAuthering;
         
+        self.modelTrailNumber.subString = modelDetail.trailerNumber;
         
         [self configData];
 
@@ -477,6 +496,7 @@
     }
     return nil;
 }
+
 + (NSNumber *)exchangeVehicleTypeWithName:(NSString *)name{
     NSString * strPath = [[NSBundle mainBundle]pathForResource:@"CarType" ofType:@"json"];
     NSArray * ary = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:strPath] options:0 error:nil];
