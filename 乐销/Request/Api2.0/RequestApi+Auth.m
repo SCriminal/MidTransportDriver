@@ -206,7 +206,7 @@
     }
     NSDictionary *dic = @{@"app":REQUEST_APP,
                           @"client":REQUEST_CLIENT,
-                          @"type":REQUEST_TERMINALTYPE,
+                          @"type":@4,
                           @"number":deviceID};
     [self putUrl:@"/auth/user/terminal/number" delegate:delegate parameters:dic success:success failure:failure];
     
