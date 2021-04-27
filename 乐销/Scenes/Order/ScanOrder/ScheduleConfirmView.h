@@ -8,6 +8,7 @@
 
 @property (nonatomic, strong) UIView *viewBG;
 @property (nonatomic, strong) UILabel *labelTitle;
+@property (nonatomic, strong) UILabel *labelAlert;
 @property (nonatomic, strong) UIImageView *ivClose;
 @property (nonatomic, strong) UIImageView *ivDown;
 @property (nonatomic, strong) UIImageView *ivDown1;

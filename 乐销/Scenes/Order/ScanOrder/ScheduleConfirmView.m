@@ -11,11 +11,13 @@
 #import "ListAlertView.h"
 #import "UITextField+Text.h"
 #import "SelectDistrictView.h"
+#import <NSAttributedString+YYText.h>
 
 @interface ScheduleConfirmView ()<UITextFieldDelegate>
 @property (nonatomic, assign) NSInteger indexSelect;
 @property (nonatomic, assign) BOOL isShowAll;
 @property (nonatomic, strong) SelectDistrictView *selectDistrictView;
+@property (nonatomic, strong) ModelValidCar *carSelected;
 
 @end
 
@@ -41,6 +43,26 @@
     }
     return _labelTitle;
 }
+- (UILabel *)labelAlert{
+    if (_labelAlert == nil) {
+        _labelAlert = [UILabel new];
+        _labelAlert.textColor = COLOR_RED;
+        _labelAlert.font =  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
+        _labelAlert.numberOfLines = 0;
+        _labelAlert.lineSpace = W(3);
+        [_labelAlert fitTitle:@"根据交通部规定，牵引车运输需完善挂车信息。请于6月1日之前重新提交车辆认证，否则后期将无法下单。【去认证】" variable:W(275)];
+        NSString * str1 = @"根据交通部规定，牵引车运输需完善挂车信息。请于6月1日之前重新提交车辆认证，否则后期将无法下单。";
+        NSString * str2 = @"【去认证】";
+        NSMutableAttributedString * strAttribute = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@",str1,str2]];
+        [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_RED,        NSFontAttributeName : [UIFont systemFontOfSize:F(12)]} range:NSMakeRange(0, str1.length)];
+        [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_BLUE,        NSFontAttributeName : [UIFont systemFontOfSize:F(12)]} range:NSMakeRange(str1.length, str2.length)];
+        strAttribute.lineSpacing = W(3);
+        _labelAlert.attributedText = strAttribute;
+        
+    }
+    return _labelAlert;
+}
+
 - (UIImageView *)ivClose{
     if (_ivClose == nil) {
         _ivClose = [UIImageView new];
@@ -279,6 +301,7 @@
     _aryDatas = aryDatas;
     if (aryDatas.count) {
         ModelValidCar * model = _aryDatas.firstObject;
+        self.carSelected = model;
         [self.labelCarNumber fitTitle:model.nameShow variable:W(200)];
     }
 }
@@ -320,7 +343,8 @@
     [self.viewBG addSubview:self.tfReceiverPhone];
     [self.viewBG addSubview:self.labelReceiveAddress];
     [self.viewBG addSubview:self.ivDown1];
-    
+    [self.viewBG addSubview:self.labelAlert];
+
     //初始化页面
     [self resetViewWithModel:true];
 }
@@ -329,24 +353,34 @@
 - (void)resetViewWithModel:(BOOL)showAll{
     self.isShowAll = showAll;
     [self removeSubViewWithTag:TAG_LINE];//移除线
+    
+    CGFloat alertHeight = 0;
+    self.labelAlert.hidden = [self.carSelected.nameShow  containsString:@"亚泰"];
+    if (!self.labelAlert.hidden) {
+        self.labelAlert.top = W(67);
+        self.labelAlert.centerX = self.viewBG.width/2.0;
+        alertHeight = W(53);
+    }
     //刷新view
-    self.viewBG.widthHeight = XY(W(315), W(333));
+    self.viewBG.width = W(315);
     
     self.labelTitle.centerXTop = XY(self.viewBG.width/2.0,W(25));
     
     self.ivClose.rightTop = XY(self.viewBG.width - W(16),W(21));
     [self.viewBG addControlFrame:CGRectInset(self.ivClose.frame, -W(20), -W(20)) belowView:self.ivClose target:self action:@selector(closeClick)];
     
-    self.viewNameBorder.centerXTop = XY(self.viewBG.width/2.0, W(77));
+   
+    
+    self.viewNameBorder.centerXTop = XY(self.viewBG.width/2.0, W(77)+alertHeight);
     self.labelName.leftCenterY = XY(self.viewNameBorder.left + W(15),self.viewNameBorder.centerY);
     
-    self.viewBorder.centerXTop = XY(self.viewBG.width/2.0,W(142));
+    self.viewBorder.centerXTop = XY(self.viewBG.width/2.0,W(65)+self.viewNameBorder.top);
     
     self.ivDown.rightCenterY = XY(self.viewBorder.right - W(15),self.viewBorder.centerY);
     
     self.labelCarNumber.leftCenterY = XY(self.viewBorder.left + W(15),self.viewBorder.centerY);
     
-    self.viewPhoneBorder.centerXTop =  XY(self.viewBG.width/2.0,W(207));
+    self.viewPhoneBorder.centerXTop =  XY(self.viewBG.width/2.0,W(130)+self.viewNameBorder.top);
     self.tfPhone.widthHeight = XY(self.viewPhoneBorder.width - W(30),self.viewPhoneBorder.height);
     self.tfPhone.leftCenterY = XY(self.viewBorder.left + W(15),self.viewPhoneBorder.centerY);
     
@@ -361,11 +395,10 @@
     self.ivDown.hidden = !showAll;
     CGFloat top = self.viewPhoneBorder.bottom;
     if (showAll) {
-        self.viewBG.height +=  W(65)*5;
         for (int i = 0; i<ary.count; i++) {
             UIView * vMain = ary[i];
             UIView * vSub = arySub[i];
-            vSub.centerXTop =  XY(self.viewBG.width/2.0,top+W(20));
+            vSub.centerXTop =  XY(self.viewBG.width/2.0,top+W(15));
             top = vSub.bottom;
             if ([vMain isKindOfClass:[UILabel class]]) {
                 vMain.leftCenterY = XY(vSub.left + W(15),vSub.centerY);
@@ -376,6 +409,7 @@
         }
     }
     self.ivDown1.rightCenterY = XY(self.viewReceiveAddressBorder.right - W(15),self.viewReceiveAddressBorder.centerY);
+    self.viewBG.height = top + W(80);
     [self.viewBG addLineFrame:CGRectMake(0, self.viewBG.height - W(55), self.viewBG.width, 1)];
     
     self.btnSubmit.widthHeight = XY(self.viewBG.width,W(55));
@@ -385,7 +419,6 @@
         self.viewBG.centerXCenterY = XY(SCREEN_WIDTH/2.0,SCREEN_HEIGHT/2.0);
     }else{
         self.viewBG.centerXTop = XY(SCREEN_WIDTH/2.0,MIN(SCREEN_HEIGHT/2.0-W(203)/2.0, W(167)));
-        
     }
     
 }
@@ -447,6 +480,8 @@
         weakSelf.indexSelect = index;
         ModelValidCar * model = (weakSelf.indexSelect<=weakSelf.aryDatas.count-1)?weakSelf.aryDatas[weakSelf.indexSelect]:nil;
         [weakSelf.labelCarNumber fitTitle:model.nameShow variable:W(200)];
+        weakSelf.carSelected = model;
+        [weakSelf resetViewWithModel:weakSelf.isShowAll];
     };
 }
 - (void)selectAddressClick{
