@@ -216,6 +216,8 @@ typedef NS_ENUM(NSUInteger, ENUM_ORDER_OPERATE_TYPE) {
                 drivingEndDate:(double)drivingEndDate
                 driving2NegativeUrl:(NSString *)driving2NegativeUrl
                    identity:(double)identity
+         trailerDriving2Url:(NSString *)trailerDriving2Url
+         trailerDriving3Url:(NSString *)trailerDriving3Url
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                     failure:(void (^)(NSString * errorStr, id mark))failure;

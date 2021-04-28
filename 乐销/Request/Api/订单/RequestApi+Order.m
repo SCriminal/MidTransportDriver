@@ -433,6 +433,8 @@
                 drivingEndDate:(double)drivingEndDate
                 driving2NegativeUrl:(NSString *)driving2NegativeUrl
                    identity:(double)identity
+         trailerDriving2Url:(NSString *)trailerDriving2Url
+         trailerDriving3Url:(NSString *)trailerDriving3Url
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
                 failure:(void (^)(NSString * errorStr, id mark))failure{
@@ -470,6 +472,8 @@
                            @"drivingIssueDate":RequestLongKey(drivingIssueDate),
                            @"drivingEndDate":RequestLongKey(drivingEndDate),
                            @"driving2NegativeUrl":RequestStrKey(driving2NegativeUrl),
+                              @"trailerDriving2Url":RequestStrKey(trailerDriving2Url),
+                              @"trailerDriving3Url":RequestStrKey(trailerDriving3Url),
                               @"id":RequestLongKey(identity),
         };
         if(identity){

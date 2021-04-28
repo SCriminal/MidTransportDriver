@@ -311,7 +311,9 @@
     ModelImage * model1 = [self.bottomView.aryDatas objectAtIndex:1];
     ModelImage * model2 = [self.bottomView.aryDatas objectAtIndex:2];
     ModelImage * model3 = [self.bottomView.aryDatas objectAtIndex:3];
-    
+    ModelImage * modelTrail0 = [self.trailImageView.aryDatas objectAtIndex:0];
+    ModelImage * modelTrail1 = [self.trailImageView.aryDatas objectAtIndex:1];
+
     if (!isStr(model0.image.imageURL)) {
         [GlobalMethod showAlert:[NSString stringWithFormat:@"请添加%@",model0.desc]];
         return;
@@ -327,6 +329,16 @@
     if (!isStr(model3.image.imageURL)) {
         [GlobalMethod showAlert:[NSString stringWithFormat:@"请添加%@",model3.desc]];
         return;
+    }
+    if ([self.modelVehicleType.subString containsString:@"牵引车"]) {
+        if (!isStr(modelTrail0.image.imageURL)) {
+            [GlobalMethod showAlert:[NSString stringWithFormat:@"请添加%@",modelTrail0.desc]];
+            return;
+        }
+        if (!isStr(modelTrail1.image.imageURL)) {
+            [GlobalMethod showAlert:[NSString stringWithFormat:@"请添加%@",modelTrail0.desc]];
+            return;
+        }
     }
     for (ModelBaseData *model  in self.aryDatas) {
         if (model.isRequired) {
@@ -374,6 +386,8 @@
                       drivingEndDate:0
                  driving2NegativeUrl:UnPackStr(model3.image.imageURL)
                             identity:self.carID
+                  trailerDriving2Url:UnPackStr(modelTrail0.image.imageURL)
+                  trailerDriving3Url:UnPackStr(modelTrail1.image.imageURL)
                             delegate:self
                              success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"您的车辆信息已经提交成功"];
@@ -437,15 +451,28 @@
             model.desc = @"添加挂车驾驶证主页";
             model.image = [BaseImage imageWithImage:[UIImage imageNamed:@"camera_行驶证正"] url:nil];
             model.isEssential = true;
-            model.url = modelDetail.driving2NegativeUrl;
+            model.url = modelDetail.trailerDriving2Url;
             model.imageType = ENUM_UP_IMAGE_TYPE_COMPANY_CAR;
+            model.blockUpSuccess = ^(ModelImage *upImage) {
+                [RequestApi requestOCRDriverWithurl:upImage.url side:@"face" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                    ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"faceResult"]];
+                    weakSelf.modelOCRFace = model;
+                    if (isStr(model.plateNumber)) {
+                        weakSelf.modelTrailNumber.subString = model.plateNumber;
+                        [weakSelf.tableView reloadData];
+                    }
+                  
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                    
+                }];
+            };
             return model;
         }(),^(){
             ModelImage * model = [ModelImage new];
             model.desc = @"添加挂车驾驶证副页";
             model.image = [BaseImage imageWithImage:[UIImage imageNamed:@"camera_行驶证正"] url:nil];
             model.isEssential = true;
-            model.url = modelDetail.driving2NegativeUrl;
+            model.url = modelDetail.trailerDriving3Url;
             model.imageType = ENUM_UP_IMAGE_TYPE_COMPANY_CAR;
             return model;
         }()]];
@@ -473,7 +500,7 @@
                     if (typeID) {
                         weakSelf.modelVehicleType.subString = model.vehicleType;
                         weakSelf.modelVehicleType.identifier = typeID.stringValue;
-                        
+                        [weakSelf configData];
                     }
                 }
                 [weakSelf.tableView reloadData];

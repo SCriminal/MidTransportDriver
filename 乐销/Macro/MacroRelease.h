@@ -28,7 +28,7 @@
 #endif
 
 #if DEBUG
-#define SLD_TEST //sld_test
+//#define SLD_TEST //sld_test
 #endif
 
 //交通部

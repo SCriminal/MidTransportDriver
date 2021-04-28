@@ -171,6 +171,8 @@ NSString *const kModelCarDriving2NegativeUrl = @"driving2NegativeUrl";
         self.drivingAgency = [dict stringValueForKey:kModelCarDrivingAgency];
         self.model = [dict stringValueForKey:kModelCarModel];
         self.driving2NegativeUrl = [dict stringValueForKey:kModelCarDriving2NegativeUrl];
+        self.trailerDriving2Url = [dict stringValueForKey:@"trailerDriving2Url"];
+        self.trailerDriving3Url = [dict stringValueForKey:@"trailerDriving3Url"];
 
         if (self.qualificationState == 0) {
             self.qualificationState = [dict doubleValueForKey:@"state"];
@@ -236,6 +238,8 @@ NSString *const kModelCarDriving2NegativeUrl = @"driving2NegativeUrl";
     [mutableDict setValue:self.drivingAgency forKey:kModelCarDrivingAgency];
     [mutableDict setValue:self.model forKey:kModelCarModel];
     [mutableDict setValue:self.driving2NegativeUrl forKey:kModelCarDriving2NegativeUrl];
+    [mutableDict setValue:self.trailerDriving2Url forKey:@"trailerDriving2Url"];
+    [mutableDict setValue:self.trailerDriving3Url forKey:@"trailerDriving3Url"];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

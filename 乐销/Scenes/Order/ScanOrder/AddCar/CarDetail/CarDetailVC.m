@@ -168,6 +168,22 @@
             model.isChangeInvalid = self.modelDetail.isAuthorityAcceptOrAuthering;
             model.imageType = ENUM_UP_IMAGE_TYPE_COMPANY_CAR;
             return model;
+        }(),^(){
+            ModelImage * model = [ModelImage new];
+            model.desc = @"挂车驾驶证主页";
+            model.url = self.modelDetail.trailerDriving2Url;
+            model.image = [BaseImage imageWithImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT] url:[NSURL URLWithString:model.url]];
+            model.isChangeInvalid = self.modelDetail.isAuthorityAcceptOrAuthering;
+            model.imageType = ENUM_UP_IMAGE_TYPE_COMPANY_CAR;
+            return model;
+        }(),^(){
+            ModelImage * model = [ModelImage new];
+            model.desc = @"挂车驾驶证副页";
+            model.url = self.modelDetail.trailerDriving3Url;
+            model.image = [BaseImage imageWithImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT] url:[NSURL URLWithString:model.url]];
+            model.isChangeInvalid = self.modelDetail.isAuthorityAcceptOrAuthering;
+            model.imageType = ENUM_UP_IMAGE_TYPE_COMPANY_CAR;
+            return model;
         }()]];
         self.tableView.tableFooterView = self.bottomView;
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

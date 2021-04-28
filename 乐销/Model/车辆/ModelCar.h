@@ -58,6 +58,8 @@
 @property (nonatomic, strong) NSString *drivingAgency;
 @property (nonatomic, strong) NSString *model;
 @property (nonatomic, strong) NSString *driving2NegativeUrl;
+@property (nonatomic, strong) NSString *trailerDriving2Url;
+@property (nonatomic, strong) NSString *trailerDriving3Url;
 
 //logical
 @property (nonatomic, readonly) NSString *authStatusShow;
