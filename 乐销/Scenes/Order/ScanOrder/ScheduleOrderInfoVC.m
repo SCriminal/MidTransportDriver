@@ -99,6 +99,9 @@
         _confirmView.blockAllComplete = ^(ModelValidCar *model, NSString *phone, NSString *companyName, double addressId, NSString *addressDetail, NSString *receiverName, NSString *receiverPhone) {
             [weakSelf requestConfirm:model phone:phone endAddrId:addressId endAddr:addressDetail endContact:receiverName endPhone:receiverPhone endEntName:companyName];
         };
+        _confirmView.blockAlertClick = ^{
+            
+        };
     }
     return _confirmView;
 }

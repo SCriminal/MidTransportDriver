@@ -33,6 +33,7 @@
 @property (nonatomic, strong) UIButton *btnSubmit;
 @property (nonatomic, strong) void (^blockComplete)(ModelValidCar *model,NSString*phone);
 @property (nonatomic, strong) void (^blockAllComplete)(ModelValidCar *model,NSString*phone,NSString *companyName,double addressId,NSString *addressDetail,NSString *receiverName,NSString *receiverPhone);
+@property (nonatomic, strong) void (^blockAlertClick)(void);
 
 @property (nonatomic, strong) NSMutableArray *aryDatas;
 @property (nonatomic, strong) ModelProvince *modelProvince;

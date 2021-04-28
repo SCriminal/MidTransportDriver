@@ -58,7 +58,7 @@
         [strAttribute setAttributes:@{NSForegroundColorAttributeName : COLOR_BLUE,        NSFontAttributeName : [UIFont systemFontOfSize:F(12)]} range:NSMakeRange(str1.length, str2.length)];
         strAttribute.lineSpacing = W(3);
         _labelAlert.attributedText = strAttribute;
-        
+        [_labelAlert addTarget:self action:@selector(alertClick)];
     }
     return _labelAlert;
 }
@@ -526,5 +526,10 @@
     
     [GlobalMethod endEditing];
     [self removeFromSuperview];
+}
+- (void)alertClick{
+    if (self.blockAlertClick) {
+        self.blockAlertClick();
+    }
 }
 @end

@@ -49,7 +49,9 @@
     }
     
     //设置总高度
-    self.height = bottom+W(20);}
+    self.height = bottom+W(20);
+    
+}
 
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{

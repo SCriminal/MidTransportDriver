@@ -38,6 +38,8 @@
 @property (nonatomic, strong) ModelBaseData *modelTrailNumber;
 @property (nonatomic, strong) UIView *viewHeaderFailure;
 @property (nonatomic, strong) AuthorityImageView *bottomView;
+@property (nonatomic, strong) AuthorityImageView *trailImageView;
+
 @property (nonatomic, strong) ModelCar *modelDetail;
 @property (nonatomic, strong) ModelOCR *modelOCRFace;
 @property (nonatomic, strong) ModelOCR *modelOCRBack;
@@ -184,6 +186,13 @@
     }
     return _bottomView;
 }
+- (AuthorityImageView *)trailImageView{
+    if (!_trailImageView) {
+        _trailImageView = [AuthorityImageView new];
+    }
+    return _trailImageView;
+}
+
 - (UIView *)viewHeaderFailure{
     if (!_viewHeaderFailure) {
         _viewHeaderFailure = [UIView new];
@@ -241,6 +250,14 @@
     self.aryDatas = @[self.modelUnbindDriver,self.modelCarNum,self.modelVehicleLoad,self.modelOwner,self.modelVehicleType].mutableCopy;
     if ([self.modelVehicleType.subString containsString:@"牵引车"]) {
         [self.aryDatas addObject:self.modelTrailNumber];
+        self.viewHeaderFailure.height = self.trailImageView.bottom;
+        self.trailImageView.hidden = false;
+        self.tableView.tableHeaderView = self.viewHeaderFailure;
+    }else{
+        [self.aryDatas removeObject:self.modelTrailNumber];
+        self.viewHeaderFailure.height = self.bottomView.bottom;
+        self.trailImageView.hidden = true;
+        self.tableView.tableHeaderView = self.viewHeaderFailure;
     }
     [self.tableView reloadData];
     
@@ -248,21 +265,26 @@
 - (void)configHeaderView:(NSString *)reason{
     [self.viewHeaderFailure removeAllSubViews];
     [self.viewHeaderFailure addSubview:self.bottomView];
+    
+    [self.viewHeaderFailure addSubview:self.trailImageView];
+    self.trailImageView.hidden = true;
+    self.trailImageView.top = self.bottomView.bottom-W(5);
+    
     if (self.modelDetail.qualificationState == 10) {
-         UILabel * l = [UILabel new];
-           l.font = [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
-           l.textColor = [UIColor whiteColor];
-           l.backgroundColor = [UIColor clearColor];
-           l.numberOfLines = 0;
-           l.lineSpace = W(3);
-           [l fitTitle:[NSString stringWithFormat:@"%@",UnPackStr(reason)] variable:SCREEN_WIDTH - W(30)];
-           l.leftTop = XY(W(15), W(10));
-           [self.viewHeaderFailure addSubview:l];
+        UILabel * l = [UILabel new];
+        l.font = [UIFont systemFontOfSize:F(16) weight:UIFontWeightRegular];
+        l.textColor = [UIColor whiteColor];
+        l.backgroundColor = [UIColor clearColor];
+        l.numberOfLines = 0;
+        l.lineSpace = W(3);
+        [l fitTitle:[NSString stringWithFormat:@"%@",UnPackStr(reason)] variable:SCREEN_WIDTH - W(30)];
+        l.leftTop = XY(W(15), W(10));
+        [self.viewHeaderFailure addSubview:l];
         self.bottomView.top = l.bottom + l.top;
     }else{
         self.bottomView.top = 0;
     }
-   self.viewHeaderFailure.height = self.bottomView.bottom;
+    self.viewHeaderFailure.height = self.bottomView.bottom;
     self.tableView.tableHeaderView = self.viewHeaderFailure;
     
 }
@@ -392,7 +414,7 @@
         self.modelTrailNumber.subString = modelDetail.trailerNumber;
         
         [self configData];
-
+        
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
@@ -410,6 +432,23 @@
 }
 - (void)refreshBottomView:(ModelCar *)modelDetail{
     WEAKSELF
+        [self.trailImageView resetViewWithAryModels:@[^(){
+            ModelImage * model = [ModelImage new];
+            model.desc = @"添加挂车驾驶证主页";
+            model.image = [BaseImage imageWithImage:[UIImage imageNamed:@"camera_行驶证正"] url:nil];
+            model.isEssential = true;
+            model.url = modelDetail.driving2NegativeUrl;
+            model.imageType = ENUM_UP_IMAGE_TYPE_COMPANY_CAR;
+            return model;
+        }(),^(){
+            ModelImage * model = [ModelImage new];
+            model.desc = @"添加挂车驾驶证副页";
+            model.image = [BaseImage imageWithImage:[UIImage imageNamed:@"camera_行驶证正"] url:nil];
+            model.isEssential = true;
+            model.url = modelDetail.driving2NegativeUrl;
+            model.imageType = ENUM_UP_IMAGE_TYPE_COMPANY_CAR;
+            return model;
+        }()]];
     [self.bottomView resetViewWithAryModels:@[^(){
         ModelImage * model = [ModelImage new];
         model.desc = @"添加行驶证主页";

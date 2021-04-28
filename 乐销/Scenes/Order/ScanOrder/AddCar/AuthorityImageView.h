@@ -11,7 +11,6 @@
 @interface AuthorityImageView : UIView
 @property (nonatomic, strong) NSMutableArray *aryDatas;
 
-
 #pragma mark 刷新view
 - (void)resetViewWithAryModels:(NSArray *)aryModels;
 @end
