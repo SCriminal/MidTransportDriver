@@ -17,7 +17,7 @@
 #import "ShareView.h"
 //confirm view
 #import "ScheduleConfirmView.h"
-
+#import "CarListVC.h"
 @interface ScheduleOrderInfoVC ()
 @property (nonatomic, strong) BaseNavView *nav;
 @property (nonatomic, strong) ScheduleInfoTopView *topView;
@@ -99,9 +99,14 @@
         _confirmView.blockAllComplete = ^(ModelValidCar *model, NSString *phone, NSString *companyName, double addressId, NSString *addressDetail, NSString *receiverName, NSString *receiverPhone) {
             [weakSelf requestConfirm:model phone:phone endAddrId:addressId endAddr:addressDetail endContact:receiverName endPhone:receiverPhone endEntName:companyName];
         };
-        _confirmView.blockAlertClick = ^{
-            
+        _confirmView.blockAlertClick = ^(ModelValidCar *car) {
+            CarListVC * listVC = [CarListVC new];
+            listVC.blockBack = ^(UIViewController *v) {
+                [weakSelf requestCarList];
+            };
+            [GB_Nav pushViewController:listVC animated:true];
         };
+        
     }
     return _confirmView;
 }

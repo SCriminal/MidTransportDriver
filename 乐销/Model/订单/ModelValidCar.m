@@ -50,7 +50,9 @@ NSString *const kModelValidCarId = @"id";
             self.fleetName = [dict stringValueForKey:kModelValidCarFleetName];
         self.state = [dict doubleValueForKey:kModelValidCarState];
         self.iDProperty = [dict doubleValueForKey:kModelValidCarId];
-        
+        self.trailerNumber = [dict stringValueForKey:@"trailerNumber"];
+    self.isTrailer = [dict doubleValueForKey:@"isTrailer"];
+
         if (!isStr(self.vehicleNumber)) {
                         self.vehicleNumber = [dict stringValueForKey:@"number"];
         }
@@ -69,6 +71,8 @@ NSString *const kModelValidCarId = @"id";
     [mutableDict setValue:self.fleetName forKey:kModelValidCarFleetName];
     [mutableDict setValue:[NSNumber numberWithDouble:self.state] forKey:kModelValidCarState];
     [mutableDict setValue:[NSNumber numberWithDouble:self.iDProperty] forKey:kModelValidCarId];
+    [mutableDict setValue:self.trailerNumber forKey:@"trailerNumber"];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.isTrailer] forKey:@"isTrailer"];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

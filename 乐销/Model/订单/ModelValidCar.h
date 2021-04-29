@@ -15,6 +15,8 @@
 @property (nonatomic, readonly) NSString *nameShow;
 @property (nonatomic, assign) double state;
 @property (nonatomic, assign) double iDProperty;
+@property (nonatomic, strong) NSString *trailerNumber;
+@property (nonatomic, assign) double isTrailer;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

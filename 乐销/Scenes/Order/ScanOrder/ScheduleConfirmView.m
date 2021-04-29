@@ -355,7 +355,7 @@
     [self removeSubViewWithTag:TAG_LINE];//移除线
     
     CGFloat alertHeight = 0;
-    self.labelAlert.hidden = [self.carSelected.nameShow  containsString:@"亚泰"];
+    self.labelAlert.hidden = !(self.carSelected.isTrailer && self.carSelected.trailerNumber.length == 0) ;
     if (!self.labelAlert.hidden) {
         self.labelAlert.top = W(67);
         self.labelAlert.centerX = self.viewBG.width/2.0;
@@ -529,7 +529,9 @@
 }
 - (void)alertClick{
     if (self.blockAlertClick) {
-        self.blockAlertClick();
+        self.blockAlertClick(self.carSelected);
     }
+    [GlobalMethod endEditing];
+    [self removeFromSuperview];
 }
 @end
