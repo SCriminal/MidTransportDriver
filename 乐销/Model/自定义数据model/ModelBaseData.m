@@ -54,6 +54,7 @@ NSString *const kModelBaseDataEnumType = @"enumType";
             self.isSelected = [dict boolValueForKey:kModelBaseDataIsSelected];
             self.hideState = [dict boolValueForKey:kModelBaseDataHideState];
             self.enumType = [dict doubleValueForKey:kModelBaseDataEnumType];
+        self.type = [dict doubleValueForKey:@"type"];
 
     }
     
@@ -76,6 +77,7 @@ NSString *const kModelBaseDataEnumType = @"enumType";
     [mutableDict setValue:[NSNumber numberWithBool:self.isSelected] forKey:kModelBaseDataIsSelected];
     [mutableDict setValue:[NSNumber numberWithBool:self.hideState] forKey:kModelBaseDataHideState];
     [mutableDict setValue:[NSNumber numberWithDouble:self.enumType] forKey:kModelBaseDataEnumType];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.type] forKey:@"type"];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSArray *urls;
 @property (nonatomic, assign) double point;
 @property (nonatomic, strong) NSString *number;
+@property (nonatomic, assign) double isTrailer;
 
 //logical
 @property (nonatomic, assign) BOOL selected;

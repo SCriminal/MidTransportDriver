@@ -9,7 +9,7 @@
 #import "BaseTableVC.h"
 
 @interface SelectCarTypeVC : BaseTableVC
-@property (nonatomic, strong) void (^blockSelected)(NSString *type,NSNumber * idNumber);
+@property (nonatomic, strong) void (^blockSelected)(NSString *type,NSNumber * idNumber,NSNumber * isTrail);
 
 @end
 

@@ -142,6 +142,9 @@ NS_ASSUME_NONNULL_BEGIN
                 drivingIssueDate:(double)drivingIssueDate
                 model:(NSString *)model
                 rtbpNumber:(NSString *)rtbpNumber
+                            trailerDriving2Url:(NSString *)trailerDriving2Url
+                            trailerDriving3Url:(NSString *)trailerDriving3Url
+                            trailerPlateNumber:(NSString *)trailerPlateNumber
                                      isRequest:(BOOL)isRequest
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success

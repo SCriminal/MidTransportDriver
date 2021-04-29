@@ -283,6 +283,8 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_POCKET_REFERSH object:nil];
     }else if(model.type ==28){
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_AUTOORDER_REFERSH object:nil];
+    }else if(model.type >= 30 && model.type <=32){
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_AUTH_REFERSH object:nil];
     }
 
     //进行消息处理 通过字段进行区分是否是即时通讯消息

@@ -28,6 +28,15 @@
     }
     return nil;
 }
++ (NSNumber *)exchangeVehicleIsTrailWithName:(NSString *)name{
+    NSArray * ary = [GlobalMethod readAry:LOCAL_CAR_TYPE modelName:@"ModelIntegralProduct"];
+    for (ModelIntegralProduct * item in ary) {
+        if ([name isEqualToString:item.name]) {
+            return NSNumber.dou(item.isTrailer);
+        }
+    }
+    return nil;
+}
 + (NSString *)exchangeLicenseType:(NSString *)identity{
     NSString * strPath = [[NSBundle mainBundle]pathForResource:@"LicenseType" ofType:@"json"];
     NSArray * ary = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:strPath] options:0 error:nil];

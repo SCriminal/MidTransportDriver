@@ -23,7 +23,11 @@
 @property (nonatomic, strong) ModelBaseData *modelMain;
 @property (nonatomic, strong) ModelBaseData *modelSub;
 @property (nonatomic, strong) ModelBaseData *modelThree;
+@property (nonatomic, strong) ModelBaseData *modelTrailMain;
+@property (nonatomic, strong) ModelBaseData *modelTrailSub;
 @property (nonatomic, strong) ModelBaseData *modelCarNo;
+@property (nonatomic, strong) ModelBaseData *modelTrailCarNo;
+
 @property (nonatomic, strong) ModelBaseData *modelCarType;
 @property (nonatomic, strong) ModelBaseData *modelCarOwner;
 @property (nonatomic, strong) ModelBaseData *modelVin;
@@ -61,7 +65,7 @@
         _authBtnView.blockDismissClick = ^{
             [weakSelf saveAllProperty];
             [GB_Nav popToRootViewControllerAnimated:true];
-
+            
         };
         _authBtnView.blockConfirmClick  = ^{
             [weakSelf requestUP];
@@ -74,29 +78,61 @@
         _modelMain =[ModelBaseData new];
         _modelMain.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelMain.string = @"行驶证主页";
-//        _modelMain.subString = self.model.bankName;
+        //        _modelMain.subString = self.model.bankName;
         _modelMain.placeHolderString = @"点击上传";
         WEAKSELF
         _modelMain.blocClick = ^(ModelBaseData *model) {
             weakSelf.modelImageSelected = model;
             [weakSelf showImageVC:1 cameraType:ENUM_CAMERA_ROAD];
-
+            
         };
     }
     return _modelMain;
+}
+- (ModelBaseData *)modelTrailMain{
+    if (!_modelTrailMain) {
+        _modelTrailMain =[ModelBaseData new];
+        _modelTrailMain.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
+        _modelTrailMain.string = @"挂车驾驶证主页";
+        //        _modelMain.subString = self.model.bankName;
+        _modelTrailMain.placeHolderString = @"点击上传";
+        WEAKSELF
+        _modelTrailMain.blocClick = ^(ModelBaseData *model) {
+            weakSelf.modelImageSelected = model;
+            [weakSelf showImageVC:1 cameraType:ENUM_CAMERA_ROAD];
+            
+        };
+    }
+    return _modelTrailMain;
+}
+- (ModelBaseData *)modelTrailSub{
+    if (!_modelTrailSub) {
+        _modelTrailSub =[ModelBaseData new];
+        _modelTrailSub.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
+        _modelTrailSub.string = @"挂车驾驶证副页";
+        //        _modelMain.subString = self.model.bankName;
+        _modelTrailSub.placeHolderString = @"点击上传";
+        WEAKSELF
+        _modelTrailSub.blocClick = ^(ModelBaseData *model) {
+            weakSelf.modelImageSelected = model;
+            [weakSelf showImageVC:1 cameraType:ENUM_CAMERA_ROAD];
+            
+        };
+    }
+    return _modelTrailSub;
 }
 - (ModelBaseData *)modelSub{
     if (!_modelSub) {
         _modelSub =[ModelBaseData new];
         _modelSub.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelSub.string = @"行驶证副页";
-//        _modelSub.subString = self.model.bankName;
+        //        _modelSub.subString = self.model.bankName;
         _modelSub.placeHolderString = @"点击上传";
         WEAKSELF
         _modelSub.blocClick = ^(ModelBaseData *model) {
             weakSelf.modelImageSelected = model;
             [weakSelf showImageVC:1];
-
+            
         };
     }
     return _modelSub;
@@ -106,13 +142,13 @@
         _modelThree =[ModelBaseData new];
         _modelThree.enumType = ENUM_PERFECT_CELL_SELECT_LOGO;
         _modelThree.string = @"行驶证检验页";
-//        _modelThree.subString = self.model.bankName;
+        //        _modelThree.subString = self.model.bankName;
         _modelThree.placeHolderString = @"点击上传";
         WEAKSELF
         _modelThree.blocClick = ^(ModelBaseData *model) {
             weakSelf.modelImageSelected = model;
             [weakSelf showImageVC:1];
-
+            
         };
     }
     return _modelThree;
@@ -123,27 +159,38 @@
         _modelCarNo.enumType = ENUM_PERFECT_CELL_TEXT;
         _modelCarNo.string = @"车牌号码";
         _modelCarNo.isChangeInvalid = false;
-//        _modelCarNo.subString = self.model.idNumber;
+        //        _modelCarNo.subString = self.model.idNumber;
         _modelCarNo.placeHolderString = @"填写车牌号码";
-      
+        
     }
     return _modelCarNo;
+}
+- (ModelBaseData *)modelTrailCarNo{
+    if (!_modelTrailCarNo) {
+        _modelTrailCarNo =[ModelBaseData new];
+        _modelTrailCarNo.enumType = ENUM_PERFECT_CELL_TEXT;
+        _modelTrailCarNo.string = @"牵引车牌";
+        _modelTrailCarNo.isChangeInvalid = false;
+        _modelTrailCarNo.placeHolderString = @"填写牵引车牌";
+    }
+    return _modelTrailCarNo;
 }
 - (ModelBaseData *)modelCarType{
     if (!_modelCarType) {
         _modelCarType =[ModelBaseData new];
         _modelCarType.enumType = ENUM_PERFECT_CELL_SELECT;
         _modelCarType.string = @"车辆类型";
-//        _modelCarType.subString = self.model.bankName;
+        //        _modelCarType.subString = self.model.bankName;
         _modelCarType.placeHolderString = @"选择车辆类型";
         WEAKSELF
         _modelCarType.blocClick = ^(ModelBaseData *model) {
             [GlobalMethod endEditing];
             SelectCarTypeVC * selectVC = [SelectCarTypeVC new];
-            selectVC.blockSelected = ^(NSString *type, NSNumber *idNumber) {
+            selectVC.blockSelected = ^(NSString *type, NSNumber *idNumber, NSNumber * isTrail) {
                 weakSelf.modelCarType.subString = type;
                 weakSelf.modelCarType.identifier = idNumber.stringValue;
-                [weakSelf.tableView reloadData];
+                weakSelf.modelCarType.type = isTrail.doubleValue;
+                [weakSelf configData];
             };
             [GB_Nav pushViewController:selectVC animated:true];
         };
@@ -156,9 +203,9 @@
         _modelCarOwner.enumType = ENUM_PERFECT_CELL_TEXT;
         _modelCarOwner.string = @"车辆所有人";
         _modelCarOwner.isChangeInvalid = false;
-//        _modelCarOwner.subString = self.model.idNumber;
+        //        _modelCarOwner.subString = self.model.idNumber;
         _modelCarOwner.placeHolderString = @"填写车辆所有人";
-      
+        
     }
     return _modelCarOwner;
 }
@@ -169,9 +216,9 @@
         _modelVin.enumType = ENUM_PERFECT_CELL_TEXT;
         _modelVin.string = @"车架号";
         _modelVin.isChangeInvalid = false;
-//        _modelVin.subString = self.model.idNumber;
+        //        _modelVin.subString = self.model.idNumber;
         _modelVin.placeHolderString = @"填写车架号(VIN)";
-      
+        
     }
     return _modelVin;
 }
@@ -224,17 +271,22 @@
     [self registAuthorityCell];
     [self addObserveOfKeyboard];
     //request
-    self.aryDatas = @[self.modelMain,self.modelSub,self.modelThree,self.modelCarNo,self.modelCarType,self.modelCarOwner,self.modelVin].mutableCopy;
+    NSArray * ary = @[self.modelMain,self.modelSub,self.modelTrailMain,self.modelTrailSub,self.modelThree,self.modelCarNo,self.modelTrailCarNo,self.modelCarType,self.modelCarOwner,self.modelVin];
     [self fetchAllProperty];
+    [self configData];
+    [self requestCarType];
+}
+- (void)configData{
     self.aryDatas = @[self.modelMain,self.modelSub,self.modelThree,self.modelCarNo,self.modelCarType,self.modelCarOwner,self.modelVin].mutableCopy;
-
+    if (self.modelCarType.type) {
+        self.aryDatas = @[self.modelMain,self.modelSub,self.modelThree,self.modelTrailMain,self.modelTrailSub, self.modelCarNo,self.modelTrailCarNo,self.modelCarType,self.modelCarOwner,self.modelVin].mutableCopy;
+    }
     for (ModelBaseData *m in self.aryDatas) {
         m.subLeft = W(120);
     }
     [self.tableView reloadData];
-    [self requestCarType];
+    
 }
-
 #pragma mark 添加导航栏
 - (void)addNav{
     BaseNavView * nav = [BaseNavView initNavBackTitle:@"认证中心" rightView:nil];
@@ -258,22 +310,22 @@
 }
 #pragma mark request
 - (void)requestList{
-   
+    
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
 - (void)imageSelect:(BaseImage *)image{
     [self showLoadingView];
-
+    
     [AliClient sharedInstance].imageType = ENUM_UP_IMAGE_TYPE_COMPANY_CAR;
     [[AliClient sharedInstance]updateImageAry:@[image] storageSuccess:^{
-       
+        
     } upSuccess:nil upHighQualitySuccess:^{
         [self.loadingView hideLoading];
         self.modelImageSelected.identifier = image.imageURL;
         [self.tableView reloadData];
-
+        
         if (self.modelImageSelected == self.modelMain) {
             [RequestApi requestOCRDrivingWithurl:image.imageURL side:@"face" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"faceResult"]];
@@ -286,6 +338,8 @@
                     if (typeID) {
                         self.modelCarType.subString = model.vehicleType;
                         self.modelCarType.identifier = typeID.stringValue;
+                        self.modelCarType.type =  [CarHelper exchangeVehicleIsTrailWithName:model.vehicleType].doubleValue;
+                        
                     }
                 }
                 if (isStr(model.owner)) {
@@ -294,26 +348,37 @@
                 if (isStr(model.vin)) {
                     self.modelVin.subString = model.vin;
                 }
-                [self.tableView reloadData];
-                        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                            
-                        }];
+                [self configData];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+        }
+        if (self.modelImageSelected == self.modelTrailMain) {
+            [RequestApi requestOCRDrivingWithurl:image.imageURL side:@"face" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"faceResult"]];
+                if (isStr(model.plateNumber)) {
+                    self.modelTrailCarNo.subString = model.plateNumber;
+                }
+                [self configData];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
         }
         if (self.modelImageSelected == self.modelSub) {
             [RequestApi requestOCRDrivingWithurl:image.imageURL side:@"back" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 ModelOCR * model = [ModelOCR modelObjectWithDictionary:[[response dictionaryValueForKey:@"data"] dictionaryValueForKey:@"backResult"]];
                 
                 self.modelOCRDrivingBack = model;
-              
+                
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                 
             }];
-         
+            
         }
         
     } fail:^{
         [self.loadingView hideLoading];
-
+        
     }];
     
 }
@@ -366,12 +431,15 @@
                                      drivingIssueDate:self.modelOCRDribingFace.issueDateStamp
                                                 model:nil
                                            rtbpNumber:nil
+                                   trailerDriving2Url:self.modelTrailMain.identifier
+                                   trailerDriving3Url:self.modelTrailSub.identifier
+                                   trailerPlateNumber:self.modelTrailCarNo.subString
                                             isRequest:true delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 [GlobalMethod showAlert:@"上传成功"];
                 [GB_Nav popViewControllerAnimated:true];
-
+                
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-
+                
             }];
         }
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -379,37 +447,40 @@
     }];
 }
 - (NSString *)fetchRequestJson{
-   NSDictionary * dic = [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString
-                                                           vehicleType:self.modelCarType.identifier.doubleValue
-                                                                 owner:self.modelCarOwner.subString
-                                                             grossMass:self.modelOCRDrivingBack.grossMass.doubleValue
-                                                          approvedLoad:self.modelOCRDrivingBack.approvedLoad.doubleValue
-                                                         vehicleLength:self.modelOCRDrivingBack.length
-                                                          vehicleWidth:self.modelOCRDrivingBack.width
-                                                         vehicleHeight:self.modelOCRDrivingBack.height
-                                                           driving1Url:self.modelMain.identifier
-                                                           driving2Url:self.modelSub.identifier
-                                                           driving3Url:self.modelThree.identifier
-                                                            plateColor:0
-                                                            energyType:isStr(self.modelOCRDrivingBack.energyType)?[CarHelper exchangeEnergeyTypeWithName:self.modelOCRDrivingBack.energyType].doubleValue:0
-                                                          tractionMass:self.modelOCRDrivingBack.tractionMass.doubleValue
-                                                        drivingEndTime:0
-                                                          useCharacter:nil
-                                                           unladenMass:0
-                                                                   vin:self.modelVin.subString
-                                                   drivingRegisterDate:self.modelOCRDribingFace.registerDateStamp
-                                                          engineNumber:nil
-                                                      drivingIssueDate:self.modelOCRDribingFace.issueDateStamp
-                                                                 model:nil
-                                                            rtbpNumber:nil
-                                                             isRequest:false delegate:self success:nil failure:nil];
+    NSDictionary * dic = [RequestApi requestAuthCarWithPlatenumber:self.modelCarNo.subString
+                                                       vehicleType:self.modelCarType.identifier.doubleValue
+                                                             owner:self.modelCarOwner.subString
+                                                         grossMass:self.modelOCRDrivingBack.grossMass.doubleValue
+                                                      approvedLoad:self.modelOCRDrivingBack.approvedLoad.doubleValue
+                                                     vehicleLength:self.modelOCRDrivingBack.length
+                                                      vehicleWidth:self.modelOCRDrivingBack.width
+                                                     vehicleHeight:self.modelOCRDrivingBack.height
+                                                       driving1Url:self.modelMain.identifier
+                                                       driving2Url:self.modelSub.identifier
+                                                       driving3Url:self.modelThree.identifier
+                                                        plateColor:0
+                                                        energyType:isStr(self.modelOCRDrivingBack.energyType)?[CarHelper exchangeEnergeyTypeWithName:self.modelOCRDrivingBack.energyType].doubleValue:0
+                                                      tractionMass:self.modelOCRDrivingBack.tractionMass.doubleValue
+                                                    drivingEndTime:0
+                                                      useCharacter:nil
+                                                       unladenMass:0
+                                                               vin:self.modelVin.subString
+                                               drivingRegisterDate:self.modelOCRDribingFace.registerDateStamp
+                                                      engineNumber:nil
+                                                  drivingIssueDate:self.modelOCRDribingFace.issueDateStamp
+                                                             model:nil
+                                                        rtbpNumber:nil
+                                                trailerDriving2Url:self.modelTrailMain.identifier
+                                                trailerDriving3Url:self.modelTrailSub.identifier
+                                                trailerPlateNumber:self.modelTrailCarNo.subString
+                                                         isRequest:false delegate:self success:nil failure:nil];
     return [GlobalMethod exchangeDicToJson:dic];
 }
 
 - (void)requestDetail{
     [RequestApi requestCarAuthDetailWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelAuthCar * model = [ModelAuthCar modelObjectWithDictionary:response];
-
+        
         if (model.reviewStatus <= 1) {
             return;
         }
@@ -430,14 +501,14 @@
         self.modelSub.identifier = model.driving2Url;
         self.modelThree.identifier = model.driving3Url;
         self.modelVin.subString = model.vin;
-        
-        if (model.reviewStatus == 2 || model.reviewStatus == 10) {
-            for (ModelBaseData * m in self.aryDatas) {
-                m.isChangeInvalid = true;
+        if (!self.isOutTime) {
+            if (model.reviewStatus == 2 || model.reviewStatus == 10) {
+                for (ModelBaseData * m in self.aryDatas) {
+                    m.isChangeInvalid = true;
+                }
+                self.authBtnView.hidden = true;
+                self.tableView.tableHeaderView = [UIView initWithViews:@[self.isFirst?self.authTopView:[NSNull null]]];
             }
-            self.authBtnView.hidden = true;
-            self.tableView.tableHeaderView = [UIView initWithViews:@[self.isFirst?self.authTopView:[NSNull null]]];
-
         }
         [self.tableView reloadData];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -454,8 +525,8 @@
         NSArray * ary = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelIntegralProduct"];
         [GlobalMethod writeAry:ary key:LOCAL_CAR_TYPE];
         [self requestDetail];
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            [self requestDetail];
-        }];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        [self requestDetail];
+    }];
 }
 @end

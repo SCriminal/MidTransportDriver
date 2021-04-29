@@ -126,6 +126,9 @@ NSString *const kModelAuthorityInfoBizStatus = @"bizStatus";
         case 11:
             return COLOR_RED;
             break;
+        case 21:
+            return COLOR_RED;
+            break;
         default:
             break;
     }
@@ -144,6 +147,9 @@ NSString *const kModelAuthorityInfoBizStatus = @"bizStatus";
             break;
         case 11:
             return @"审核未通过";
+            break;
+        case 21:
+            return @"已过期";
             break;
         default:
             break;

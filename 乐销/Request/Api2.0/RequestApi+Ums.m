@@ -245,6 +245,9 @@
                 drivingIssueDate:(double)drivingIssueDate
                 model:(NSString *)model
                 rtbpNumber:(NSString *)rtbpNumber
+                            trailerDriving2Url:(NSString *)trailerDriving2Url
+                            trailerDriving3Url:(NSString *)trailerDriving3Url
+                            trailerPlateNumber:(NSString *)trailerPlateNumber
                                      isRequest:(BOOL)isRequest
                 delegate:(id <RequestDelegate>)delegate
                 success:(void (^)(NSDictionary * response, id mark))success
@@ -271,6 +274,10 @@
                            @"engineNumber":RequestStrKey(engineNumber),
                            @"drivingIssueDate":NSNumber.dou(drivingIssueDate),
                            @"model":RequestStrKey(model),
+                              @"trailerDriving2Url":RequestStrKey(trailerDriving2Url),
+                              @"trailerDriving3Url":RequestStrKey(trailerDriving3Url),
+                              @"trailerPlateNumber":RequestStrKey(trailerPlateNumber),
+
                            @"rtbpNumber":RequestStrKey(rtbpNumber)};
     if (isRequest) {
         [self postUrl:@"/ums/vehicle/status/2/driver" delegate:delegate parameters:dic success:success failure:failure];

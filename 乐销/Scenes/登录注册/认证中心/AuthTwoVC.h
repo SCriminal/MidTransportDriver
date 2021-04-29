@@ -10,5 +10,7 @@
 
 @interface AuthTwoVC : BaseTableVC
 @property (nonatomic, assign) BOOL isFirst;
+@property (nonatomic, assign) BOOL isOutTime;
+
 - (NSString *)fetchRequestJson;
 @end

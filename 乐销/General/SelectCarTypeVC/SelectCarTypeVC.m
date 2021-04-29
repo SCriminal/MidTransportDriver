@@ -12,6 +12,8 @@
 @interface SelectCarTypeVC ()
 @property (nonatomic, strong) NSMutableArray *aryCarID;
 @property (nonatomic, strong) NSMutableArray *aryCarType;
+@property (nonatomic, strong) NSMutableArray *aryCarTrail;
+
 @property (nonatomic, strong) SearchShopNavView *searchView;
 
 @end
@@ -50,13 +52,16 @@
     
     NSMutableArray * aryLabel = [NSMutableArray new];
     NSMutableArray * aryID = [NSMutableArray new];
-   
+    NSMutableArray * aryTrail = [NSMutableArray new];
+
     for (ModelIntegralProduct * dic in ary) {
         [aryLabel addObject:dic.name];
         [aryID addObject:NSNumber.dou(dic.iDProperty)];
+        [aryTrail addObject:NSNumber.dou(dic.isTrailer)];
     }
     self.aryCarType = aryLabel;
     self.aryCarID = aryID;
+    self.aryCarTrail = aryTrail;
 }
 - (void)refreshData{
     [self.aryDatas removeAllObjects];
@@ -99,7 +104,7 @@
     if (self.blockSelected) {
         NSString * strTypeSelected = self.aryDatas[indexPath.row];
         NSUInteger index =[self.aryCarType indexOfObject:strTypeSelected];
-        self.blockSelected(strTypeSelected, self.aryCarID[index]);
+        self.blockSelected(strTypeSelected, self.aryCarID[index],self.aryCarTrail[index]);
     }
     [GB_Nav popViewControllerAnimated:true];
 }

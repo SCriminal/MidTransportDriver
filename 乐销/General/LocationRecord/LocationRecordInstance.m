@@ -97,7 +97,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
     for (ModelTransportOrder * modelItem in shippingNoteInfos) {
         if ([modelItem isKindOfClass:[ModelTransportOrder class]]) {
             [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelItem.orderNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":modelItem.startCountyCode,@"endCountrySubdivisionCode":modelItem.endCountyCode}];
-            [self.mapTransport startLocationWithShippingNoteInfos:aryDatas listener:listener];
+//            [self.mapTransport startLocationWithShippingNoteInfos:aryDatas listener:listener];
             return;
         }
     }
@@ -107,7 +107,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(LocationRecordInstance)
     for (ModelTransportOrder * modelItem in shippingNoteInfos) {
         if ([modelItem isKindOfClass:[ModelTransportOrder class]]) {
             [aryDatas addObject:@{@"shippingNoteNumber":UnPackStr(modelItem.orderNumber),@"serialNumber":@"0000",@"startCountrySubdivisionCode":UnPackStr(modelItem.startCountyCode),@"endCountrySubdivisionCode":UnPackStr(modelItem.endCountyCode)}];
-            [self.mapTransport stopLocationWithShippingNoteInfos:aryDatas listener:listener];
+//            [self.mapTransport stopLocationWithShippingNoteInfos:aryDatas listener:listener];
         }
     }
 }

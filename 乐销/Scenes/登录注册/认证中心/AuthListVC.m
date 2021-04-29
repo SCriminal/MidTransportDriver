@@ -9,6 +9,7 @@
 #import "AuthListVC.h"
 //request
 #import "RequestDriver2.h"
+#import "AuthTwoVC.h"
 @interface AuthListVC ()
 
 @end
@@ -68,7 +69,8 @@
         };
         ModelBtn *mCar = [ModelBtn new];
         mCar.blockClick = ^{
-            UIViewController * vc= [NSClassFromString(@"AuthTwoVC") new];
+            AuthTwoVC * vc= [AuthTwoVC new];
+            vc.isOutTime = modelAuth.vehicleStatus == 21;
             vc.blockBack = ^(UIViewController *v) {
                 [weakSelf requestList];
             };
@@ -219,7 +221,7 @@
         top = self.reason.bottom;
     }
     self.btn.rightCenterY = XY(SCREEN_WIDTH,self.infoName.centerY);
-    //1未提交 2审核中 10通过 11未通过
+    //1未提交 2审核中 10通过 11未通过 21已过期
     if (model.num == 1) {
         [self.btn setTitle:@"提交认证" forState:normal];
     }else  if (model.num == 2) {
@@ -227,6 +229,8 @@
     }else  if (model.num == 10) {
         [self.btn setTitle:@"查看认证" forState:normal];
     }else if (model.num == 11) {
+        [self.btn setTitle:@"重新认证" forState:normal];
+    }else if (model.num == 21) {
         [self.btn setTitle:@"重新认证" forState:normal];
     }
     self.status.text = [ModelAuthorityInfo statusTitle:model.num];

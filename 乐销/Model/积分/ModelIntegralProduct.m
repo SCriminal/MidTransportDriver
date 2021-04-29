@@ -72,6 +72,7 @@ NSString *const kModelIntegralProductUrls = @"urls";
         self.urls =  [dict arrayValueForKey:kModelIntegralProductUrls];
         self.point = [dict doubleValueForKey:@"point"];
         self.number = [dict stringValueForKey:@"number"];
+        self.isTrailer = [dict doubleValueForKey:@"isTrailer"];
 
         
     }
@@ -100,6 +101,7 @@ NSString *const kModelIntegralProductUrls = @"urls";
     [mutableDict setValue:[GlobalMethod exchangeAryModelToAryDic:self.urls] forKey:kModelIntegralProductUrls];
     [mutableDict setValue:[NSNumber numberWithDouble:self.point] forKey:kModelIntegralProductCategoryId];
     [mutableDict setValue:self.number forKey:@"number"];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.isTrailer] forKey:@"isTrailer"];
 
     
     return [NSDictionary dictionaryWithDictionary:mutableDict];

@@ -97,8 +97,14 @@
 }
 
 - (void)jump{
-   
-    [self test15];
+    [RequestApi requestCarTypeDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        NSArray * ary = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelIntegralProduct"];
+        [GlobalMethod writeAry:ary key:LOCAL_CAR_TYPE];
+//        [self exchangeValue];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+//    [self test15];
 }
 
 - (void)test15{

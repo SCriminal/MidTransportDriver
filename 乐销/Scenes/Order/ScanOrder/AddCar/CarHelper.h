@@ -14,4 +14,5 @@
 + (NSString *)exchangeEnergeyType:(NSString *)identity;
 + (NSNumber *)exchangeEnergeyTypeWithName:(NSString *)name;
 + (NSNumber *)exchangeVehicleTypeWithName:(NSString *)name;
++ (NSNumber *)exchangeVehicleIsTrailWithName:(NSString *)name;
 @end

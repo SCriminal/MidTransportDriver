@@ -103,7 +103,7 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
         }];
     }
     
-
+    
 }
 
 #pragma mark 定时器相关
@@ -142,40 +142,48 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(TopAlertView)
         [weakSelf removeFromSuperview];
         
     }];
-
+    
     
 }
 #pragma mark click
 - (void)btnClick:(UIButton *)sender {
     [TopAlertView jumpToModel:self.model];
     [self timerStop];
-
+    
 }
 
 + (void)jumpToModel:(ModelApns *)model{
     if ([GlobalMethod isLoginSuccess]) {
+        if (model.type >= 30 && model.type<=32) {
+            if ([GB_Nav hasClass:@"AuthListVC"]) {
+                [GB_Nav popToClass:@"AuthListVC"];
+            }else{
+                [GB_Nav pushViewController:[NSClassFromString(@"AuthListVC") new] animated:true];
+            }
+            return;
+        }
         if ([GB_Nav hasClass:@"MyMsgVC"]) {
             [GB_Nav popToClass:@"MyMsgVC"];
         }else{
             [GB_Nav pushViewController:[MyMsgVC new] animated:true];
         }
-//        NSString * channel = @"1";
-//        if (model.type >= 11 && model.type<=18) {
-//            channel = @"3";
-//        }else if(model.type >= 19 && model.type <=22){
-//            channel = @"2";
-//        }else if(model.type >= 23 && model.type <=27){
-//            channel = @"4";
-//        }else if(model.type ==28){
-//            channel = @"1";
-//        }
-//        MyMsgManagementVC * vc = [MyMsgManagementVC new];
-//        vc.channel = channel;
-//        if ([GB_Nav hasClass:@"MyMsgManagementVC"]) {
-//            [GB_Nav popLastAndPushVC:vc];
-//        }else{
-//            [GB_Nav pushViewController:vc animated:true];
-//        }
+        //        NSString * channel = @"1";
+        //        if (model.type >= 11 && model.type<=18) {
+        //            channel = @"3";
+        //        }else if(model.type >= 19 && model.type <=22){
+        //            channel = @"2";
+        //        }else if(model.type >= 23 && model.type <=27){
+        //            channel = @"4";
+        //        }else if(model.type ==28){
+        //            channel = @"1";
+        //        }
+        //        MyMsgManagementVC * vc = [MyMsgManagementVC new];
+        //        vc.channel = channel;
+        //        if ([GB_Nav hasClass:@"MyMsgManagementVC"]) {
+        //            [GB_Nav popLastAndPushVC:vc];
+        //        }else{
+        //            [GB_Nav pushViewController:vc animated:true];
+        //        }
     }
 }
 
