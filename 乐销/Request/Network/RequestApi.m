@@ -164,7 +164,9 @@ constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
 }
 #pragma mark fail
 + (void)requestFailDelegate:(id<RequestDelegate>)delegate errorStr:(NSString *)strError errorCode:(NSString *)errorCode failure:(void (^)(NSString * errorStr, id mark))failure{
-    [GlobalMethod performSelector:@"protocolDidRequestFailure:" delegate:delegate object:strError isHasReturn:false];
+    if (![errorCode isEqualToString:RESPONSE_CODE_IMAGE]) {
+        [GlobalMethod performSelector:@"protocolDidRequestFailure:" delegate:delegate object:strError isHasReturn:false];
+    }
     if (failure != nil) {
         failure(strError,errorCode);
     }

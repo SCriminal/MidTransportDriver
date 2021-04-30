@@ -16,6 +16,13 @@
 @property (nonatomic, strong) UIView *sliderBG;
 @property (nonatomic, strong) UISlider *slider;
 @property (nonatomic, strong) UILabel *alert;
+@property (nonatomic, strong) UILabel *title;
+@property (nonatomic, strong) UIImageView *close;
+@property (nonatomic, strong) UIControl *closeControle;
+@property (nonatomic, strong) UIView *line;
+@property (nonatomic, strong) UIImageView *refresh;
+@property (nonatomic, strong) UIControl *refreshControle;
+
 
 @end
 
@@ -55,6 +62,25 @@
     }
     return _ivSmall;
 }
+- (UIImageView *)refresh{
+    if (_refresh == nil) {
+        _refresh = [UIImageView new];
+        _refresh.image = [UIImage imageNamed:@"slider_refresh"];
+        _refresh.widthHeight = XY(W(23),W(23));
+    }
+    return _refresh;
+}
+- (UIControl *)refreshControle{
+    if (_refreshControle == nil) {
+        _refreshControle = [UIControl new];
+        _refreshControle.tag = 1;
+        [_refreshControle addTarget:self action:@selector(refreshClick) forControlEvents:UIControlEventTouchUpInside];
+        _refreshControle.backgroundColor = [UIColor clearColor];
+        _refreshControle.widthHeight = XY(W(23)+W(10),W(23)+W(5));
+    }
+    return _refreshControle;
+}
+
 - (UIView *)sliderBG{
     if (!_sliderBG) {
         _sliderBG = [UIView new];
@@ -91,6 +117,41 @@
     }
     return _alert;
 }
+- (UILabel *)title{
+    if (_title == nil) {
+        _title = [UILabel new];
+        _title.textColor = COLOR_333;
+        _title.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightRegular];
+        [_title fitTitle:@"请完成安全验证" variable:0];
+    }
+    return _title;
+}
+- (UIImageView *)close{
+    if (_close == nil) {
+        _close = [UIImageView new];
+        _close.image = [UIImage imageNamed:@"inputClose"];
+        _close.widthHeight = XY(W(23),W(23));
+    }
+    return _close;
+}
+- (UIControl *)closeControle{
+    if (_closeControle == nil) {
+        _closeControle = [UIControl new];
+        _closeControle.tag = 1;
+        [_closeControle addTarget:self action:@selector(hideClick) forControlEvents:UIControlEventTouchUpInside];
+        _closeControle.backgroundColor = [UIColor clearColor];
+        _closeControle.widthHeight = XY(W(23)+W(10),W(23)+W(10));
+    }
+    return _closeControle;
+}
+- (UIView *)line{
+    if (_line == nil) {
+        _line = [UIView new];
+        _line.backgroundColor = COLOR_LINE;
+    }
+    return _line;
+}
+
 
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -108,11 +169,17 @@
 - (void)addSubView{
     [self addSubview:self.bg];
         [self addSubview:self.whitBG];
+    [self addSubview:self.title];
+ [self addSubview:self.close];
+ [self addSubview:self.closeControle];
+ [self addSubview:self.line];
     [self addSubview:self.ivBig];
     [self addSubview:self.ivSmall];
     [self addSubview:self.sliderBG];
     [self addSubview:self.slider];
     [self addSubview:self.alert];
+    [self addSubview:self.refresh];
+[self addSubview:self.refreshControle];
 
 }
 
@@ -125,9 +192,19 @@
     self.whitBG.width = W(314);
     self.whitBG.centerXTop = XY(SCREEN_WIDTH/2.0,top);
 
+    self.title.leftTop = XY(self.whitBG.left + W(15), self.whitBG.top + W(19));
+    
+    self.close.rightTop = XY(self.whitBG.right - W(15), self.whitBG.top+W(15));
+    self.closeControle.center = self.close.center;
+    self.line.widthHeight = XY(self.whitBG.width, 1);
+    self.line.leftTop = XY(self.whitBG.left, self.whitBG.top + W(53));
+    
     [self.ivBig sd_setImageWithURL:[NSURL URLWithString:UnPackStr(urlBig)] placeholderImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT]];
     self.ivBig.widthHeight = XY(W(284), W(142));
-    self.ivBig.centerXTop = XY(SCREEN_WIDTH/2.0,self.whitBG.top+W(15));
+    self.ivBig.centerXTop = XY(SCREEN_WIDTH/2.0,self.whitBG.top+W(70));
+    
+    self.refresh.rightTop = XY(self.ivBig.right, self.ivBig.top);
+    self.refreshControle.center = self.refresh.center;
 //
     [self.ivSmall sd_setImageWithURL:[NSURL URLWithString:UnPackStr(urlSmall)] placeholderImage:[UIImage imageNamed:IMAGE_BIG_DEFAULT]];
     self.ivSmall.widthHeight = XY(W(142)*91.0/240.0, W(142));
@@ -167,7 +244,12 @@
     [self changeSliderWithVlue:self.slider.value];
     self.alert.hidden = false;
 }
-
+-(void)refreshClick{
+    if (self.blockRefresh) {
+        self.blockRefresh();
+    }
+    [self removeFromSuperview];
+}
 //图片位置随着Slider滑动改变frame
 - (void)changeSliderWithVlue:(CGFloat)value{
     self.ivSmall.x = W(46) + value * (self.ivBig.width-self.ivSmall.width);
@@ -175,4 +257,33 @@
 - (void)hideClick{
     [self removeFromSuperview];
 }
+
+-(void)valideSuccess{
+    UIImage *leftTrack = [[UIImage imageNamed:@"SliderTrackRight"]
+    resizableImageWithCapInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
+     
+    [_slider setMinimumTrackImage:leftTrack forState:UIControlStateNormal];
+        
+    UIImage *rightTrack = [[UIImage imageNamed:@"slider_gray"]
+    resizableImageWithCapInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
+    [_slider setMaximumTrackImage:rightTrack forState:UIControlStateNormal];
+    
+    [_slider setThumbImage:[UIImage imageNamed:@"slider_success"] forState:UIControlStateNormal];
+    [_slider setThumbImage:[UIImage imageNamed:@"slider_success"] forState:UIControlStateHighlighted];
+
+}
+-(void)valideFail{
+    UIImage *leftTrack = [[UIImage imageNamed:@"SliderTrackRed"]
+    resizableImageWithCapInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
+     
+    [_slider setMinimumTrackImage:leftTrack forState:UIControlStateNormal];
+        
+    UIImage *rightTrack = [[UIImage imageNamed:@"slider_gray"]
+    resizableImageWithCapInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
+    [_slider setMaximumTrackImage:rightTrack forState:UIControlStateNormal];
+    
+    [_slider setThumbImage:[UIImage imageNamed:@"slider_red"] forState:UIControlStateNormal];
+    [_slider setThumbImage:[UIImage imageNamed:@"slider_red"] forState:UIControlStateHighlighted];
+}
+
 @end

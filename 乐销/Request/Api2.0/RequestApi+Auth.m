@@ -50,6 +50,12 @@
                                              @"captchaX":RequestLongKey(captchaX),
         };
         [self postUrl:@"/ums/user/login/1" delegate:delegate parameters:dic success:^(NSDictionary * response, id mark){
+            if ([response intValueForKey:@"captchaStatus"]) {
+                if (success) {
+                    success(response,mark);
+                }
+                return;
+            }
             if (!isDic(dic) || !isStr([response stringValueForKey:@"token"])) {
                 if (failure) {
                     failure(nil,@"获取token失败");

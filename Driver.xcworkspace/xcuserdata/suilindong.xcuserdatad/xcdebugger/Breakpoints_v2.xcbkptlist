@@ -32,8 +32,8 @@
             timestampString = "596457748.1264009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "+setInitHead:"
             landmarkType = "7">
             <Locations>
@@ -1148,8 +1148,8 @@
             timestampString = "596457748.128377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "+setInitHead:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1165,8 +1165,8 @@
             timestampString = "596457748.128419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "+setInitHead:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1386,8 +1386,8 @@
             timestampString = "596457748.128862"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "+switchRequest:parameters:requestType:constructingBodyWithBlock:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2294,8 +2294,8 @@
             timestampString = "596628755.502612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -4640,8 +4640,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api2.0/RequestApi+Auth.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "+requestBindDeviceIdWithDeviceID:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4656,8 +4656,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api2.0/RequestApi+Auth.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "+requestBindDeviceIdWithDeviceID:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5263,8 +5263,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api2.0/RequestApi+Auth.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "+requestLoginWithApp:client:password:account:terminalType:terminalNumber:captchaId:captchaWidth:captchaX:delegate:success:failure:"
             landmarkType = "7">
             <Locations>
@@ -6162,6 +6162,86 @@
             startingLineNumber = "484"
             endingLineNumber = "484"
             landmarkName = "-requestDetail"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DA35B159-4687-47BD-B675-2AE46DE09799"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Request/Network/RequestApi.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "+requestFailDelegate:errorStr:errorCode:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E40CC96A-3585-48FB-A36A-B942B70F1A18"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x767b;&#x5f55;/LoginViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "-requestWithPwd:identity:width:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8AB4435F-B2FE-4416-83C9-9B22E5E364F7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x767b;&#x5f55;/LoginViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "-requestWithPwd:identity:width:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AA73CFDB-260C-40A3-8AD6-EA8646F2C2B3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x767b;&#x5f55;/LoginViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "-requestWithPwd:identity:width:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "581EC1CF-8C62-4B67-8983-201EC93A0871"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/&#x767b;&#x5f55;&#x6ce8;&#x518c;/&#x767b;&#x5f55;/LoginViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "-requestWithPwd:identity:width:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -142,7 +142,7 @@
         BaseNavView * nav = [BaseNavView initNavTitle:@"" leftImageName:nil leftImageSize:CGSizeZero leftBlock:^{
             
         } rightImageName:nil rightImageSize:CGSizeMake(W(25), W(25)) righBlock:^{
-
+            
         }];
         nav.line.hidden = true;
         return nav;
@@ -169,37 +169,57 @@
                           captchaId:identity
                        captchaWidth:width
                            captchaX:x
- delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                           delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+           
         switch ([response intValueForKey:@"captchaStatus"]) {
             case 1:
-                [self.codeView reconfigSlider];
-                [self.codeView removeFromSuperview];
-                [GlobalMethod showAlert:@"验证成功"];
+            {
+                [self.codeView valideSuccess];
+                [UIView animateWithDuration:0.5 animations:^{
+                    self.codeView.alpha = 0;
+                } completion:^(BOOL finished) {
+                    [self.codeView removeFromSuperview];
+                    [self loginSuccess];
+                }];
+            }
                 break;
             case 2:
-                [self.codeView reconfigSlider];
+            {
+                [self.codeView valideFail];
                 [GlobalMethod showAlert:@"验证失败"];
+                [UIView animateWithDuration:0.5 animations:^{
+                    self.codeView.alpha = 0;
+                } completion:^(BOOL finished) {
+                    [self.codeView reconfigSlider];
+                }];
                 return;
+            }
                 break;
             default:
                 break;
         }
-        if ([GlobalData sharedInstance].GB_UserModel.isUser1 == 1 && [GlobalData sharedInstance].GB_UserModel.isVehicle == 0 && [GlobalData sharedInstance].GB_UserModel.user1Auth == 1) {
-            [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
-        }else{
-            [GB_Nav popToRootViewControllerAnimated:true];
+        [self loginSuccess];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        if (mark && [mark isKindOfClass:NSString.class] && [mark isEqualToString:RESPONSE_CODE_IMAGE]) {
+            [self showImageCode];
         }
-
-        [GlobalMethod showAlert:@"登录成功"];
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            if (mark && [mark isKindOfClass:NSString.class] && [mark isEqualToString:@"3"]) {
-                [self showImageCode];
-                return;
-            }
-            [self.codeView reconfigSlider];
-            [self.codeView removeFromSuperview];
-        }];
- 
+        if (identity) {
+            [self.codeView valideSuccess];
+            [UIView animateWithDuration:0.5 animations:^{
+                self.codeView.alpha = 0;
+            } completion:^(BOOL finished) {
+                [self.codeView removeFromSuperview];
+            }];
+        }
+    }];
+}
+-(void)loginSuccess{
+    if ([GlobalData sharedInstance].GB_UserModel.isUser1 == 1 && [GlobalData sharedInstance].GB_UserModel.isVehicle == 0 && [GlobalData sharedInstance].GB_UserModel.user1Auth == 1) {
+        [GB_Nav pushVCName:@"TransferCarListVC" animated:true];
+    }else{
+        [GB_Nav popToRootViewControllerAnimated:true];
+    }
+    [GlobalMethod showAlert:@"登录成功"];
 }
 - (void)showImageCode{
     [RequestApi requestFetchImageCodeWithDelegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
@@ -208,16 +228,19 @@
             //使用方法
             ImageCodeView * codeView = [ImageCodeView new];
             [codeView resetViewWithModel:ary[0] urlSmal:ary[1] alert:[response stringValueForKey:@"tip"] identity:[response doubleValueForKey:@"id"]];
-           [self.view addSubview:codeView];
+            [self.view addSubview:codeView];
             WEAKSELF
             codeView.blockEnd = ^(double x, double identity, double width) {
                 [weakSelf requestWithPwd:x identity:identity width:width];
             };
+            codeView.blockRefresh = ^{
+                [weakSelf showImageCode];
+            };
             self.codeView = codeView;
         }
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-
-        }];
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
 }
 
 - (void)requestSendCode{
@@ -226,11 +249,11 @@
         InputCodeVC * codeVC = [InputCodeVC new];
         codeVC.strPhone = strPhone;
         [GB_Nav pushViewController:codeVC animated:true];
-
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
-        }];
-   
+        
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+    
 }
 #pragma mark login
 - (void)switchPwdLogin{

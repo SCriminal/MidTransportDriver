@@ -46,6 +46,8 @@
 
 #define RESPONSE_CODE_SUCCESS 0//成功
 #define RESPONSE_CODE_RELOGIN 1000//重新登陆
+#define RESPONSE_CODE_IMAGE @"3"//图形验证码
+
 //#define RESPONSE_CODE_RELOGIN2 1//重新登陆
 
 

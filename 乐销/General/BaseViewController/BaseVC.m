@@ -128,6 +128,7 @@
         return;
     }
     [GlobalMethod endEditing];
+    
     if ([self.view isShowInScreen]&&isStr(errorStr)) {
         [self.noticeView showNotice:errorStr time:1 frame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) viewShow:[UIApplication sharedApplication].keyWindow];
     }
