@@ -278,9 +278,9 @@
 }
 - (void)configData{
     self.aryDatas = @[self.modelMain,self.modelSub,self.modelThree,self.modelCarNo,self.modelCarType,self.modelCarOwner,self.modelVin].mutableCopy;
-//    if (self.modelCarType.type) {
-//        self.aryDatas = @[self.modelMain,self.modelSub,self.modelThree,self.modelTrailMain,self.modelTrailSub, self.modelCarNo,self.modelTrailCarNo,self.modelCarType,self.modelCarOwner,self.modelVin].mutableCopy;
-//    }
+    if (self.modelCarType.type) {
+        self.aryDatas = @[self.modelMain,self.modelSub,self.modelThree,self.modelTrailMain,self.modelTrailSub, self.modelCarNo,self.modelTrailCarNo,self.modelCarType,self.modelCarOwner,self.modelVin].mutableCopy;
+    }
     for (ModelBaseData *m in self.aryDatas) {
         m.subLeft = W(120);
     }
