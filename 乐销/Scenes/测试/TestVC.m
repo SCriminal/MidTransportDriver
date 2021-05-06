@@ -46,6 +46,24 @@
 #import "NSDate+YYAdd.h"
 /*
  */
+//request
+#import "RequestDriver2.h"
+#import "LocationRecordInstance.h"
+//nav
+#import "BaseNavView+Logical.h"
+//sub view
+#import "OrderDetailTopView.h"
+//request
+//request
+#import "RequestDriver2.h"
+//share
+#import "OrderListCellBtnView.h"
+#import "RejectOrderView.h"
+#import "BulkCargoOperateLoadView.h"
+#import "ThirdMap.h"
+#import "BaseVC+Location.h"
+#import "BulkCargoOrderDetailTrackView.h"
+#import "LocationRecordInstance.h"
 
 @interface TestVC ()<UIWebViewDelegate,NSURLSessionDelegate>
 @property (nonatomic, strong) UIWebView *web;
@@ -97,23 +115,28 @@
 }
 
 - (void)jump{
-    [RequestApi requestCarTypeDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        NSArray * ary = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelIntegralProduct"];
-        [GlobalMethod writeAry:ary key:LOCAL_CAR_TYPE];
-//        [self exchangeValue];
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
-        }];
-//    [self test15];
+//    [RequestApi requestCarTypeDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//        NSArray * ary = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelIntegralProduct"];
+//        [GlobalMethod writeAry:ary key:LOCAL_CAR_TYPE];
+////        [self exchangeValue];
+//        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//
+//        }];
+    [self test15];
 }
 
 - (void)test15{
-    [[LocationRecordInstance sharedInstance]stopLocationWithShippingNoteInfos:@[[ModelTransportOrder new] ] listener:^(id model, NSError *error) {
-        NSLog(@"%@",error);
+    [RequestApi requestOrderDetailWithNumber:@"1212021031600000000110" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [[LocationRecordInstance sharedInstance]stopLocationWithShippingNoteInfos:@[[ModelTransportOrder modelObjectWithDictionary:response]] listener:nil];
+
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
     }];
 
 
-}
+    }
+    
+
 /*
  
  */
