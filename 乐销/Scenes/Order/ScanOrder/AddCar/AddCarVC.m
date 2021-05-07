@@ -267,7 +267,6 @@
     [self.viewHeaderFailure addSubview:self.bottomView];
     
     [self.viewHeaderFailure addSubview:self.trailImageView];
-    self.trailImageView.hidden = true;
     self.trailImageView.top = self.bottomView.bottom-W(5);
     
     if (self.modelDetail.qualificationState == 10) {
@@ -284,8 +283,15 @@
     }else{
         self.bottomView.top = 0;
     }
-    self.viewHeaderFailure.height = self.bottomView.bottom;
-    self.tableView.tableHeaderView = self.viewHeaderFailure;
+    if ([self.modelVehicleType.subString containsString:@"牵引车"]) {
+        self.viewHeaderFailure.height = self.trailImageView.bottom;
+        self.trailImageView.hidden = false;
+        self.tableView.tableHeaderView = self.viewHeaderFailure;
+    }else{
+        self.viewHeaderFailure.height = self.bottomView.bottom;
+        self.trailImageView.hidden = true;
+        self.tableView.tableHeaderView = self.viewHeaderFailure;
+    }
     
 }
 #pragma mark image select
@@ -408,7 +414,6 @@
         if (self.modelDetail.qualificationState == 10) {
             [self requestAuditRecord];
         }
-        [self refreshBottomView:modelDetail];
         //config info
         self.modelCarNum.subString = modelDetail.vehicleNumber;
         self.modelCarNum.isChangeInvalid = modelDetail.isAuthorityAcceptOrAuthering;
@@ -427,6 +432,8 @@
         
         self.modelTrailNumber.subString = modelDetail.trailerNumber;
         
+        [self refreshBottomView:modelDetail];
+
         [self configData];
         
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
