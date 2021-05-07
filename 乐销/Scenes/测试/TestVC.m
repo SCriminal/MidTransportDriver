@@ -127,7 +127,9 @@
 
 - (void)test15{
     [RequestApi requestOrderDetailWithNumber:@"1212021031600000000110" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        [[LocationRecordInstance sharedInstance]stopLocationWithShippingNoteInfos:@[[ModelTransportOrder modelObjectWithDictionary:response]] listener:nil];
+        [[LocationRecordInstance sharedInstance]stopLocationWithShippingNoteInfos:@[[ModelTransportOrder modelObjectWithDictionary:response]] listener:^(id model, NSError *error) {
+            
+        }];
 
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
