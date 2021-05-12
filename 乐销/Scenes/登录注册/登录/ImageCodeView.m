@@ -210,11 +210,11 @@
     self.ivSmall.widthHeight = XY(W(142)*91.0/240.0, W(142));
     self.ivSmall.leftTop = XY(W(0),self.ivBig.top);
     
-    self.sliderBG.widthHeight = XY(W(284), 37);
-    self.sliderBG.leftTop = XY(W(46),self.ivBig.bottom+W(12));
+    self.sliderBG.widthHeight = XY(W(284)-W(4), 37);
+    self.sliderBG.centerXTop = XY(SCREEN_WIDTH/2.0,self.ivBig.bottom+W(12));
 
-    self.slider.widthHeight = self.sliderBG.widthHeight;
-    self.slider.leftTop = self.sliderBG.leftTop;
+    self.slider.widthHeight = XY(self.ivBig.width, self.sliderBG.height);
+    self.slider.centerXTop = self.sliderBG.centerXTop;
     
 //    [self.alert fitTitle:UnPackStr(alert) variable:0];
     self.alert.centerXCenterY = XY(SCREEN_WIDTH/2.0,self.slider.centerY);

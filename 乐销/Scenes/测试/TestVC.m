@@ -126,14 +126,10 @@
 }
 
 - (void)test15{
-    [RequestApi requestOrderDetailWithNumber:@"1212021031600000000110" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        [[LocationRecordInstance sharedInstance]stopLocationWithShippingNoteInfos:@[[ModelTransportOrder modelObjectWithDictionary:response]] listener:^(id model, NSError *error) {
-            
-        }];
+    ImageCodeView * codeView = [ImageCodeView new];
+    [codeView resetViewWithModel:@"http://112.253.1.72:10201/oss/zhongcheyun/display/auth/captcha/20210413-4-1.jpg" urlSmal:@"http://112.253.1.72:10201/oss/zhongcheyun/display/auth/captcha/20210413-4-2.jpg" alert:@"123" identity:12];
+    [self.view addSubview:codeView];
 
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
 
 
     }
