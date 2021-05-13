@@ -46,6 +46,10 @@
 @property (nonatomic, assign) double unladenMass;
 @property (nonatomic, assign) double reviewStatus;
 @property (nonatomic, assign) double drivingEndTime;
+@property (nonatomic, strong) NSString *trailerDriving2Url;
+@property (nonatomic, strong) NSString *trailerDriving3Url;
+@property (nonatomic, strong) NSString *trailerPlateNumber;
+
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

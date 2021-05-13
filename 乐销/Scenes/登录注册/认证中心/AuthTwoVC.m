@@ -489,6 +489,7 @@
         self.modelOCRDrivingBack.energyType = NSNumber.dou(model.energyType).stringValue;
         self.modelOCRDrivingBack.grossMass = NSNumber.dou(model.grossMass).stringValue;
         self.modelCarOwner.subString = model.owner;
+        self.modelTrailCarNo.subString = model.trailerPlateNumber;
         self.modelCarNo.subString = model.plateNumber;
         self.modelOCRDrivingBack.tractionMass = NSNumber.dou(model.tractionMass).stringValue;
         self.modelOCRDrivingBack.height = model.vehicleHeight;
@@ -496,11 +497,19 @@
         self.modelCarType.identifier = NSNumber.dou(model.vehicleType).stringValue;
         
         self.modelCarType.subString = model.vehicleType?[CarHelper exchangeVehicleType:self.modelCarType.identifier]:nil;
+        if (isStr(self.modelCarType.subString)) {
+            self.modelCarType.type =  [CarHelper exchangeVehicleIsTrailWithName:self.modelCarType.subString].doubleValue;
+        }
+
+        
         self.modelOCRDrivingBack.width = model.vehicleWidth;
         self.modelMain.identifier = model.driving1Url;
         self.modelSub.identifier = model.driving2Url;
         self.modelThree.identifier = model.driving3Url;
+        self.modelTrailMain.identifier = model.trailerDriving2Url;
+        self.modelTrailSub.identifier = model.trailerDriving3Url;
         self.modelVin.subString = model.vin;
+        [self configData];
         if (!self.isOutTime) {
             if (model.reviewStatus == 2 || model.reviewStatus == 10) {
                 for (ModelBaseData * m in self.aryDatas) {

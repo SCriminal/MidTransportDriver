@@ -134,6 +134,10 @@ NSString *const kModelAuthCarDrivingEndTime = @"drivingEndTime";
             self.reviewStatus = [dict doubleValueForKey:kModelAuthCarReviewStatus];
             self.drivingEndTime = [dict doubleValueForKey:kModelAuthCarDrivingEndTime];
 
+        self.trailerDriving2Url = [dict stringValueForKey:@"trailerDriving2Url"];
+        self.trailerDriving3Url = [dict stringValueForKey:@"trailerDriving3Url"];
+        self.trailerPlateNumber = [dict stringValueForKey:@"trailerPlateNumber"];
+
     }
     
     return self;
@@ -178,6 +182,11 @@ NSString *const kModelAuthCarDrivingEndTime = @"drivingEndTime";
     [mutableDict setValue:[NSNumber numberWithDouble:self.reviewStatus] forKey:kModelAuthCarReviewStatus];
     [mutableDict setValue:[NSNumber numberWithDouble:self.drivingEndTime] forKey:kModelAuthCarDrivingEndTime];
 
+    [mutableDict setValue:self.trailerDriving2Url forKey:@"trailerDriving2Url"];
+    [mutableDict setValue:self.trailerDriving3Url forKey:@"trailerDriving3Url"];
+    [mutableDict setValue:self.trailerPlateNumber forKey:@"trailerPlateNumber"];
+
+    
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
