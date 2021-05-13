@@ -99,7 +99,7 @@
         WEAKSELF
         _modelTrailMain.blocClick = ^(ModelBaseData *model) {
             weakSelf.modelImageSelected = model;
-            [weakSelf showImageVC:1 cameraType:ENUM_CAMERA_ROAD];
+            [weakSelf showImageVC:1];
             
         };
     }
@@ -115,7 +115,7 @@
         WEAKSELF
         _modelTrailSub.blocClick = ^(ModelBaseData *model) {
             weakSelf.modelImageSelected = model;
-            [weakSelf showImageVC:1 cameraType:ENUM_CAMERA_ROAD];
+            [weakSelf showImageVC:1];
             
         };
     }
@@ -282,7 +282,7 @@
         self.aryDatas = @[self.modelMain,self.modelSub,self.modelThree,self.modelTrailMain,self.modelTrailSub, self.modelCarNo,self.modelTrailCarNo,self.modelCarType,self.modelCarOwner,self.modelVin].mutableCopy;
     }
     for (ModelBaseData *m in self.aryDatas) {
-        m.subLeft = W(120);
+        m.subLeft = W(125);
     }
     [self.tableView reloadData];
     
