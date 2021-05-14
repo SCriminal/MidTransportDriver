@@ -96,6 +96,14 @@
         return m;
     }() view:self top:top + W(18)];
     
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"托  运  方";
+        m.subTitle = @"中车运";
+        m.tag = ++tag;
+        return m;
+    }() view:self top:top + W(18)];
+    
     self.height = top+W(20);
     self.ivBg.frame = CGRectMake(0, -W(10), SCREEN_WIDTH, self.height + W(20));
 }

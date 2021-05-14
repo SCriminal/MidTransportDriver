@@ -139,8 +139,16 @@
     
     top = [BulkCargoListCell addTitle:^(){
         ModelBtn * m = [ModelBtn new];
-        m.title = @"单位名称";
+        m.title = @"发  货  方";
         m.subTitle = model.shipperName;
+        m.tag = ++tag;
+        return m;
+    }() view:self.contentView top:top + W(15)];
+    
+    top = [BulkCargoListCell addTitle:^(){
+        ModelBtn * m = [ModelBtn new];
+        m.title = @"托  运  方";
+        m.subTitle = @"中车运";
         m.tag = ++tag;
         return m;
     }() view:self.contentView top:top + W(15)];

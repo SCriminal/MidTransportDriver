@@ -238,7 +238,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "151"
             endingLineNumber = "151"
-            landmarkName = "-labelTitle"
+            landmarkName = "-resetViewWithModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -965,8 +965,8 @@
             timestampString = "600691505.9867409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "940"
-            endingLineNumber = "940"
+            startingLineNumber = "948"
+            endingLineNumber = "948"
             landmarkName = "-resetViewWithTitle:aryImage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -982,8 +982,8 @@
             timestampString = "600691505.986809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "965"
-            endingLineNumber = "965"
+            startingLineNumber = "973"
+            endingLineNumber = "973"
             landmarkName = "-resetViewWithTitle:aryImage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2473,9 +2473,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "-configHeader"
-            landmarkType = "7">
+            endingLineNumber = "99">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3002,8 +3000,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/&#x6563;&#x8d27;/BulkCargoListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-resetBtn:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3018,8 +3016,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/&#x6563;&#x8d27;/BulkCargoListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "-resetCellWithModel:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3082,8 +3080,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/&#x6563;&#x8d27;/BulkCargoListCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "+addTitle:view:top:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3098,8 +3096,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Order/&#x6563;&#x8d27;/&#x6563;&#x8d27;&#x8be6;&#x60c5;/BulkCargoOrderDetailView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "588"
-            endingLineNumber = "588"
+            startingLineNumber = "596"
+            endingLineNumber = "596"
             landmarkName = "-phoneClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -3708,7 +3706,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "215"
             endingLineNumber = "215"
-            landmarkName = "-resetCellWithModel:"
+            landmarkName = "-initWithFrame:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3836,7 +3834,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
             endingLineNumber = "64"
-            landmarkName = "-viewDidLoad"
+            landmarkName = "-aryModule"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3851,7 +3849,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "260"
-            endingLineNumber = "260">
+            endingLineNumber = "260"
+            landmarkName = "-resetWithAry:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4504,7 +4504,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
             endingLineNumber = "75"
-            landmarkName = "-resetViewWithModel:"
+            landmarkName = "-addSubView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4520,7 +4520,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
-            landmarkName = "-resetViewWithModel:"
+            landmarkName = "-addSubView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5734,9 +5734,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "-configHeader"
-            landmarkType = "7">
+            endingLineNumber = "102">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5975,8 +5973,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
             endingLineNumber = "132"
-            landmarkName = "ModelOCR"
-            landmarkType = "3">
+            landmarkName = "-initWithDictionary:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
