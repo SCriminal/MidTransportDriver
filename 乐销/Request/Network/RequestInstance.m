@@ -102,6 +102,9 @@
     [self.requestSerializer setValue:[strExt base64Encode] forHTTPHeaderField:@"Ext"];
     [self.requestSerializer setValue:REQUEST_CLIENT forHTTPHeaderField:@"Referer"];
 
+    SDWebImageDownloader *sdmanager = [SDWebImageManager sharedManager].imageDownloader;
+    [sdmanager setValue:REQUEST_CLIENT forHTTPHeaderField:@"Referer"];
+   
 
 }
 @end
