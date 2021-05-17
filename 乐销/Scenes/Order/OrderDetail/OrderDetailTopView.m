@@ -92,6 +92,13 @@
         return m;
     }(),^(){
         ModelBtn * m = [ModelBtn new];
+        m.title = @"托运方：";
+        m.subTitle = @"中车运";
+        m.colorSelect = nil;
+        m.left = W(92);
+        return m;
+    }(),^(){
+        ModelBtn * m = [ModelBtn new];
         m.title = @"当前状态：";
         m.subTitle = model.orderStatusShow;
         m.colorSelect = model.colorStateShow;
