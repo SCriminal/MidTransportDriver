@@ -101,8 +101,8 @@
         return;
     }
     double finishTime = self.modelOrder.unloadTime?self.modelOrder.unloadTime:self.modelOrder.finishTime;
-    [RequestApi requestCarLocationWithuploaderId:[GlobalData sharedInstance].GB_UserModel.iDProperty startTime:startTtime endTime:finishTime?finishTime:[[NSDate date]timeIntervalSince1970] vehicleNumber:self.modelOrder.plateNumber  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        self.aryLocationRequest = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelLocationItem"];
+    [RequestApi requestCarLocationWithStartTime:startTtime endTime:finishTime?finishTime:[[NSDate date]timeIntervalSince1970] orderNumber:self.modelOrder.orderNumber  delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        self.aryLocationRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"gcj02"] toAryWithModelName:@"ModelLocationItem"];
         if (self.blockReqeustTrack) {
             self.blockReqeustTrack(self.aryLocationRequest);
         }

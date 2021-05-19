@@ -25,10 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  查询车辆地理位置
  */
-+(void)requestCarLocationWithuploaderId:(double)uploaderId
-                              startTime:(double)startTime
++(void)requestCarLocationWithStartTime:(double)startTime
                                 endTime:(double)endTime
-                          vehicleNumber:(NSString *)vehicleNumber
+                           orderNumber:(NSString *)orderNumber
                                delegate:(id <RequestDelegate>)delegate
                                 success:(void (^)(NSDictionary * response, id mark))success
                                 failure:(void (^)(NSString * errorStr, id mark))failure;

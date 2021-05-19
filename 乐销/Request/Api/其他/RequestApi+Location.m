@@ -26,6 +26,7 @@
                           @"lat":NSNumber.dou(lat),
                           @"spd":NSNumber.lon(spd),
                           @"terminalType":@4,
+                          @"writeType":@2,
                           @"plateNumber":isStr(plateNumber)?plateNumber:[NSNull null]
                           };
     [self putUrl:@"/location/user" delegate:delegate parameters:dic success:success failure:failure];
@@ -33,20 +34,20 @@
 /**
  查询车辆地理位置
  */
-+(void)requestCarLocationWithuploaderId:(double)uploaderId
-                              startTime:(double)startTime
++(void)requestCarLocationWithStartTime:(double)startTime
                                 endTime:(double)endTime
-                          vehicleNumber:(NSString *)vehicleNumber
+                           orderNumber:(NSString *)orderNumber
                                delegate:(id <RequestDelegate>)delegate
                                 success:(void (^)(NSDictionary * response, id mark))success
                                 failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"uploaderId":NSNumber.dou(uploaderId),
+    NSDictionary *dic = @{
                           @"startTime":NSNumber.lon(startTime),
                           @"endTime":NSNumber.lon(endTime),
-                          @"vehicleNumber":RequestStrKey(vehicleNumber),
-                          @"sortCreateTime":@3
+                          @"orderNumber":RequestStrKey(orderNumber),
+                          @"sortCreateTime":@3,
+                          @"displayTypes":@2
                           };
-    [self getUrl:@"/location/trail/list/sort" delegate:delegate parameters:dic success:success failure:failure];
+    [self getUrl:@"/location/trail/order/2_2_0/list" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
  添加车辆地理位置
