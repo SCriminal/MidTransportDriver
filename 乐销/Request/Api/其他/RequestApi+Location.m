@@ -56,7 +56,10 @@
                           delegate:(id <RequestDelegate>)delegate
                            success:(void (^)(NSDictionary * response, id mark))success
                            failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"data":RequestStrKey(data)};
+    NSDictionary *dic = @{@"data":RequestStrKey(data),
+                          @"writeType":@2,
+
+    };
     [self postUrl:@"/location/trail/list" delegate:delegate parameters:dic success:success failure:failure];
 }
 
